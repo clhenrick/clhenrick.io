@@ -1,0 +1,77 @@
+:root {
+  --button-bg-active: #307b6c;
+  --button-bg: #45B29D;
+}
+
+div[role="group"] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+div[role="group"] > button {
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  background-color: var(--button-bg);
+  border: none;
+}
+
+div[role="group"] > button[aria-pressed="true"] {
+  color: #fff;
+  background-color: var(--button-bg-active);
+}
+
+ul.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
+
+li.card {
+  list-style: none;
+  position: relative;
+  padding: 1.25rem;
+  border: 1px solid;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+li.card:hover,
+li.card:focus-within {
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 0.25rem var(--color-accent);
+}
+
+li.card h2 {
+  font-size: 1.25em;
+}
+
+li.card a[href] {
+  text-decoration: none;
+}
+
+li.card a[href],
+li.card a[href]:hover {
+  color: var(--text-color);
+}
+
+li.card a[href]:focus {
+  text-decoration: underline;
+}
+
+li.card:focus-within a[href]:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+li.card a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

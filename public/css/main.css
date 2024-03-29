@@ -6,6 +6,7 @@
   --color-gray-20: #e0e0e0;
 	--color-gray-50: #C0C0C0;
 	--color-gray-90: #333;
+  --color-accent: #EFC94C;
 
 	--background-color: #fff;
 
@@ -30,6 +31,7 @@
 		--text-color-link-visited: #a6a6f8;
 
 		--background-color: #15202b;
+    --border-radius: 0.25rem;
 	}
 }
 

@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/work.njk
 eleventyNavigation:
   key: Work
   order: 2
@@ -7,8 +7,36 @@ eleventyNavigation:
 
 <h1>Portfolio</h1>
 
-<ul>
+<div role="group" aria-label="filter projects">
+  <button value="all" class="button" aria-pressed="true">all</button>
+  <button value="interactive" class="button">interactive</button>
+  <button value="data-viz" class="button">data viz</button>
+  <button value="cartography" class="button">cartographic design</button>
+  <button value="shuffle" class="button">shuffle!</button>
+</div>
+
+<ul class="projects">
   {% for project in work %}
-  <li><a href="./{{ project.title | slugify }}/">{{ project.title }}</a></li>
+  <li class="card">
+    <img src="{{ project.thumb }}" alt="">
+    <h2>
+      <a href="./{{ project.title | slugify }}/">{{ project.title }}</a>
+    </h2>
+    <p>{{ project.description }}</p>
+  </li>
   {% endfor %}
 </ul>
+
+<script>
+  const filterButtons = Array.from(document.querySelectorAll("button"))
+    .filter((button) => button.value !== "shuffle");
+  const handleClick = (event) => {
+    filterButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", "false");
+    });
+    event.target.setAttribute("aria-pressed", "true");
+  }
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", handleClick);
+  });
+</script>
