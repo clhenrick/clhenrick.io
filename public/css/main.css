@@ -63,11 +63,13 @@ main:first-child {
 	margin-top: 0;
 }
 
-p:last-child {
-	margin-bottom: 0;
-}
 p {
 	line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+p:last-child {
+	margin-bottom: 0;
 }
 
 li {
