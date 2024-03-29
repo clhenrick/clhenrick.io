@@ -1,9 +1,12 @@
 const { DateTime } = require("luxon");
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const { EleventyHtmlBasePlugin, EleventyRenderPlugin } = require("@11ty/eleventy");
 
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const markdown = require("markdown-it")({
+  html: true
+})
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
@@ -11,6 +14,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(bundlerPlugin);
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 }
@@ -63,6 +67,10 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
 		return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
 	});
+
+  eleventyConfig.addFilter('markdown', value => {
+    return `<div class="md-block">${markdown.render(value)}</div>`
+  })
 
   return {
     // Control which files Eleventy will process
