@@ -23,20 +23,41 @@ div[role="group"] > button[aria-pressed="true"] {
   background-color: var(--button-bg-active);
 }
 
+ul.projects,
+ul.tags {
+  padding: 0;
+  margin: 0;
+}
+
 ul.projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 1.5rem;
-  padding: 0;
+}
+
+ul.tags {
+  display: flex;
+  gap: 1rem;
+}
+
+li.card,
+li.tag {
+  list-style: none;
 }
 
 li.card {
-  list-style: none;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 1.25rem;
   border: 1px solid;
   border-radius: var(--border-radius);
   cursor: pointer;
+}
+
+li.card[hidden] {
+  display: none;
 }
 
 li.card:hover,
@@ -74,4 +95,8 @@ li.card a::after {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+li.tag {
+  font-size: 0.8em;
 }
