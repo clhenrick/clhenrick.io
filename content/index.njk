@@ -1,0 +1,43 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+numberOfLatestPostsToShow: 3
+---
+
+{%- css %}{% include "public/css/home.css" %}{% endcss %}
+<style>
+  {% getBundle "css" %}
+</style>
+
+<section class="banner full-viewport-width">
+  <h1>Chris L Henrick</h1>
+</section>
+
+<section>
+  <h2 class="visually-hidden">Highlights</h2>
+  <ul class="cards-container">
+    <li class="card">
+      <h3>My Work</h3>
+      <p>Encompasses: Data Visualization, Web Accessibility, Prototyping, Interactive Web Maps, Interaction Design, and more.</p>
+      <a class="button" href="/work/">View Portfolio</a>
+    </li>
+    <li class="card">
+      <h3>Blog</h3>
+      <p>My ramblings on previous projects and solving problems relating to the web, data, cartography, and design.</p>
+      <a class="button" href="/blog/">View Blog</a>
+    </li>
+    <li class="card">
+      <h3>Talk to me</h3>
+      <p>Want advice on how to get creative with your data? Need a custom mapping solution? Or just want to say hello?</p>
+      <a class="button" href="/contact/">Get in Touch</a>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Latest blog articles</h2>
+</section>
+
+{# TODO #}

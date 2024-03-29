@@ -1,0 +1,37 @@
+/* credit: https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+  width: 1px;
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+}
+
+/* credit: https://codepen.io/maddesigns/pen/rOMgpQ/ */
+.full-viewport-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.button {
+  display: inline-block;
+  inline-size: fit-content;
+  touch-action: manipulation;
+  user-select: none;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.button:focus-visible {
+  outline: 2px solid magenta;
+  outline-offset: 2px;
+}

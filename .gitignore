@@ -1,0 +1,7 @@
+_site/
+node_modules/
+package-lock.json
+.cache
+Portfolio 11ty Migration.md
+make-portfolio-posts.js
+portfolio-page.hbs

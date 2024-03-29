@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Work
+  order: 2
+---
+
+<h1>Portfolio</h1>
+
+<ul>
+  {% for project in work %}
+  <li><a href="./{{ project.title | slugify }}/">{{ project.title }}</a></li>
+  {% endfor %}
+</ul>

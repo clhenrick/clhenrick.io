@@ -1,0 +1,45 @@
+---
+pagination:
+  data: work
+  size: 1
+  alias: project
+permalink: "work/{{ project.title | slugify }}/"
+layout: layouts/base.njk
+---
+
+<h1>{{project.title}}</h1>
+
+{% if project.link %}
+<p>
+  <strong>Project link:</strong> <a href={{project.link}} target="_blank">{{project.title}}</a>
+</p>
+{% endif %}
+
+{% if project.description_long %}
+<p>{{ project.description_long }}</p>
+{% endif %}
+
+{% if project.tech %}
+<p>
+  <strong>Technologies Used:</strong>
+</p>
+<ul>
+  {% for tag in project.tech %}
+  <li>{{tag}}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if project.imgs %}
+  {% for img in project.imgs %}
+  <a href="#">
+    <img alt="Screen shot of project {{project.title}}">
+  </a>
+  {% endfor %}
+{% endif %}
+
+<p>
+  <a href="/work/">
+    <span aria-hidden="true" class="back-arrow">&#8619;</span> Go back to the Portfolio
+  </a>
+</p>

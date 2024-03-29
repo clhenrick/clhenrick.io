@@ -1,0 +1,50 @@
+header {
+  display: flex;
+  gap: 1.5rem;
+}
+
+header a[href] {
+  padding: 0.5rem 0.75rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+nav li {
+  width: 100%;
+}
+
+nav li > a {
+  flex-grow: 1;
+}
+
+nav ul {
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+}
+
+nav > ul {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li > ul {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  background-color: var(--background-color);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+}
+
+nav ul li:focus-within > ul,
+nav ul li:hover > ul {
+  overflow: auto;
+  width: auto;
+  height: auto;
+  clip-path: none;
+}
