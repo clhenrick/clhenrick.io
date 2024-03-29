@@ -16,7 +16,7 @@ layout: layouts/base.njk
 {% endif %}
 
 {% if project.description_long %}
-<p>{{ project.description_long }}</p>
+<p>{{ project.description_long | markdown | safe }}</p>
 {% endif %}
 
 {% if project.tech %}
