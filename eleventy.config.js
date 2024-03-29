@@ -22,6 +22,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
+  eleventyConfig.addWatchTarget("public/css/**/*.css");
 
   eleventyConfig.addShortcode("currentBuildDate", () => {
 		return (new Date()).toISOString();
