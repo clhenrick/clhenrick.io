@@ -15,31 +15,41 @@ layout: layouts/work.njk
 </p>
 {% endif %}
 
-{% if project.description_long %}
-<p>{{ project.description_long | markdown | safe }}</p>
+{% if project.tech %}
+<section>
+  <h2>Technologies Used</h2>
+  <ul class="tech-tags">
+    {% for tag in project.tech %}
+    <li>{{tag}}</li>
+    {% endfor %}
+  </ul>
+</section>
 {% endif %}
 
-{% if project.tech %}
-<p>
-  <strong>Technologies Used:</strong>
-</p>
-<ul>
-  {% for tag in project.tech %}
-  <li>{{tag}}</li>
-  {% endfor %}
-</ul>
+{% if project.description_long %}
+<section>
+  <h2>Project Details</h2>
+  {{ project.description_long | markdown | safe }}
+</section>
 {% endif %}
 
 {% if project.imgs %}
-  {% for img in project.imgs %}
-  <a href="#">
-    <img alt="Screen shot of project {{project.title}}">
-  </a>
-  {% endfor %}
+<section>
+  <h2>Project Screenshots</h2>
+  <ul class="screenshots">
+    {% for img in project.imgs %}
+    <li>
+      <a href="#">
+        <img loading="lazy" src="/img/{{img}}" alt="Screen shot of project: {{project.title}}">
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
 {% endif %}
 
-<p>
+<nav class="secondary" aria-label="secondary">
   <a href="/work/">
     <span aria-hidden="true" class="back-arrow">&#8619;</span> Go back to the Portfolio
   </a>
-</p>
+</nav>
