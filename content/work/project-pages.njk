@@ -40,7 +40,12 @@ layout: layouts/work.njk
     {% for img in project.imgs %}
     <li>
       <a href="#">
-        <img loading="lazy" src="/img/{{img}}" alt="Screen shot of project: {{project.title}}">
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/img/{{img}}"
+          alt="Screenshot number {{loop.index}} of {{project.title}}"
+        >
       </a>
     </li>
     {% endfor %}
