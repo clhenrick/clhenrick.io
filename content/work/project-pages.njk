@@ -9,11 +9,32 @@ layout: layouts/work.njk
 
 <h1>{{project.title}}</h1>
 
-{% if project.link %}
-<p>
-  <strong>Project link:</strong> <a href={{project.link}} target="_blank">{{project.title}}</a>
-</p>
+<dl>
+{% if project.date %}
+  <div>
+    <dt>Date:</dt>
+    <dd>{{project.date}}</dd>
+  </div>
+  {% endif %}
+
+  {% if project.link %}
+  <div>
+    <dt>Project link:</dt>
+    <dd>
+      <a href={{project.link}} target="_blank">{{project.title}}</a>
+    </dd>
+  </div>
+  {% endif %}
+
+  {%if project.code %}
+  <div>
+    <dt>Code:</dt>
+    <dd>
+      <a href={{project.code}} target="_blank">{{project.code}}</a>
+    </dd>
+  </div>
 {% endif %}
+</dl>
 
 {% if project.tech %}
 <section>
