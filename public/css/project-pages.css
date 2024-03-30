@@ -10,7 +10,7 @@ dl > div {
 }
 
 section,
-dl {
+div.md-block {
   margin-bottom: 2.5rem;
 }
 

@@ -7,34 +7,36 @@ permalink: "work/{{ project.title | slugify }}/"
 layout: layouts/work.njk
 ---
 
-<h1>{{project.title}}</h1>
+<section>
+  <h1>{{project.title}}</h1>
 
-<dl>
-{% if project.date %}
-  <div>
-    <dt>Date:</dt>
-    <dd>{{project.date}}</dd>
-  </div>
+  <dl>
+  {% if project.date %}
+    <div>
+      <dt>Date:</dt>
+      <dd>{{project.date}}</dd>
+    </div>
+    {% endif %}
+
+    {% if project.link %}
+    <div>
+      <dt>Project link:</dt>
+      <dd>
+        <a href={{project.link}} target="_blank">{{project.title}}</a>
+      </dd>
+    </div>
+    {% endif %}
+
+    {%if project.code %}
+    <div>
+      <dt>Code:</dt>
+      <dd>
+        <a href={{project.code}} target="_blank">{{project.code}}</a>
+      </dd>
+    </div>
   {% endif %}
-
-  {% if project.link %}
-  <div>
-    <dt>Project link:</dt>
-    <dd>
-      <a href={{project.link}} target="_blank">{{project.title}}</a>
-    </dd>
-  </div>
-  {% endif %}
-
-  {%if project.code %}
-  <div>
-    <dt>Code:</dt>
-    <dd>
-      <a href={{project.code}} target="_blank">{{project.code}}</a>
-    </dd>
-  </div>
-{% endif %}
-</dl>
+  </dl>
+</section>
 
 {% if project.tech %}
 <section>
