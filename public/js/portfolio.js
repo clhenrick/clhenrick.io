@@ -3,7 +3,7 @@
     (button) => button.value !== "shuffle"
   );
   const shuffleButton = document.querySelector("button[value='shuffle']");
-  const cardsContainer = document.querySelector(".projects");
+  const cardsContainer = document.querySelector(".cards-container");
   const cards = Array.from(document.querySelectorAll(".card"));
 
   const onFilterButtonClick = (event) => {

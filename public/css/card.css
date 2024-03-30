@@ -1,0 +1,106 @@
+/* Card component shared styles */
+/* some code borrowed from: https://inclusive-components.design/cards/ */
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min-width, 20rem), 1fr));
+  gap: 1.5rem;
+}
+
+.tags {
+  display: flex;
+  justify-content: baseline;
+  gap: 1rem;
+}
+
+.card,
+.tag {
+  list-style: none;
+}
+
+.card,
+.card > .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card .text {
+  flex-grow: 1;
+  padding: 1.25rem;
+}
+
+.card .text > * + * {
+  margin-top: 0.75rem;
+}
+
+.card .text > *:last-child {
+  margin-top: auto;
+}
+
+.card .text > *:nth-last-child(2) {
+  margin-bottom: 0.75rem;
+}
+
+.card .img {
+  height: 8rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1rem));
+}
+
+.card .img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  border: 1px solid;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.card[hidden] {
+  display: none;
+}
+
+.card:hover,
+.card:focus-within {
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 0.25rem var(--color-accent);
+}
+
+.card h2 {
+  font-size: 1.25em;
+}
+
+.card a[href] {
+  text-decoration: none;
+}
+
+.card a[href],
+.card a[href]:hover {
+  color: var(--text-color);
+}
+
+.card a[href]:focus {
+  text-decoration: underline;
+}
+
+.card:focus-within a[href]:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+.card a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.tags > .tag {
+  font-size: 0.8em;
+  margin: 0;
+}
