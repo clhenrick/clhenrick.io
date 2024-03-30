@@ -107,7 +107,8 @@
     ],
     "size": "width3",
     "date": "2022-02-06",
-    "link": "https://clhenrick.github.io/color-legend-element/"
+    "link": "https://clhenrick.github.io/color-legend-element/",
+    "code": "https://github.com/clhenrick/color-legend-element/"
   },
   {
     "title": "HET Data Vis Prototyping",
@@ -163,7 +164,8 @@
     ],
     "size": "width3",
     "date": "2020-11-01",
-    "link": "https://covid19.antievictionmap.com"
+    "link": "https://covid19.antievictionmap.com",
+    "code": "https://github.com/antievictionmappingproject/covid-19-map"
   },
   {
     "title": "NYC Crash Mapper 2",
