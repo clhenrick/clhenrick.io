@@ -33,7 +33,15 @@ ul.screenshots li:last-child {
 }
 
 nav.secondary {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 3rem;
+}
+
+nav.secondary span[aria-hidden] {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
 }
 
 nav.secondary a {
