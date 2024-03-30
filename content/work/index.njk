@@ -18,7 +18,7 @@ eleventyNavigation:
 <ul class="projects">
   {% for project in work %}
   <li class="card">
-    <img src="{{ project.thumb }}" alt="">
+    <img src="/img/{{ project.thumb }}" alt="">
     <h2>
       <a href="./{{ project.title | slugify }}/">{{ project.title }}</a>
     </h2>
