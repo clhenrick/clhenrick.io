@@ -47,19 +47,14 @@ layout: layouts/work.njk
 </section>
 {% endif %}
 
-{% if project.description_long %}
 <section>
   <h2>Project Details</h2>
-  {{ project.description_long | markdown | safe }}
-</section>
-{% endif %}
-
-{% if project.imgs or project.video %}
-<section>
-  <h2>Project Screenshots</h2>
+  {% if project.description_long %}
+    {{ project.description_long | markdown | safe }}
+  {% endif %}
 
   {% if project.video %}
-  <div style="--aspect-ratio: 16/9;">
+  <div style="--aspect-ratio: 16/9;margin-bottom:2.5rem;">
     <iframe
       width="960"
       height="569"
@@ -89,9 +84,7 @@ layout: layouts/work.njk
     {% endfor %}
   </ul>
   {% endif %}
-
 </section>
-{% endif %}
 
 <nav class="secondary" aria-label="secondary">
   <a href="/work/">
