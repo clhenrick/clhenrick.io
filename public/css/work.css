@@ -11,14 +11,14 @@ div[role="group"] {
   margin-bottom: 3rem;
 }
 
-div[role="group"] > button {
+div[role="group"] button {
   text-transform: capitalize;
   letter-spacing: 0.1rem;
   background-color: var(--button-bg);
   border: none;
 }
 
-div[role="group"] > button[aria-pressed="true"] {
+div[role="group"] button[aria-pressed="true"] {
   color: #fff;
   background-color: var(--button-bg-active);
 }

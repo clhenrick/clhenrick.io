@@ -68,6 +68,7 @@ main:first-child {
 p {
 	line-height: 1.5;
   margin-bottom: 1.25rem;
+  max-width: 75ch;
 }
 
 p:last-child {
