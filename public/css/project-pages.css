@@ -16,9 +16,9 @@ dl {
 
 ul.screenshots,
 ul.tech-tags {
-  padding: 0;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 ul.screenshots {

@@ -19,7 +19,12 @@ eleventyNavigation:
   {% for project in work %}
   <li class="card">
     <div class="img">
-      <img src="/img/{{ project.thumb }}" alt="">
+      <img
+        src="/img/{{ project.thumb }}"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      >
     </div>
     <div class="text">
       <h2>
