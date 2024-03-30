@@ -266,7 +266,8 @@
       "mpg-habitat18.jpg"
     ],
     "size": "width3",
-    "date": "2016-12-22"
+    "date": "2016-12-22",
+    "link": "https://restorationmap.mpgranch.com"
   },
   {
     "title": "Am I Rent Stabilized?",
@@ -328,13 +329,14 @@
       "terrain-classic11.jpg"
     ],
     "size": "width3",
-    "date": "2016-12-22"
+    "date": "2016-12-22",
+    "link": "https://maps.stamen.com/terrain/"
   },
   {
     "title": "Love and Rage",
     "tags": ["cartography"],
     "description": "Map for Rebecca Solnit's Nonstop Metropolis, A New York City Atlas",
-    "description_long": "A print map I created for Rebecca Solnit's latest city atlas: Nonstop Metropolis, A New York City Atlas. I pitched the idea to Rebecca while meeting her and atlas co-author Joshua Jelly-Schapiro for coffee at Caffè Reggio near Washington Square one afternoon, and the rest was history. In order to to create this map open geospatial data was processed from sources such as 311, the NYPD, OpenStreetMap, and the NYC Open Data Portal. Cartography was done using Adobe Illustrator and MAPublisher.",
+    "description_long": "A print map I created for Rebecca Solnit's latest city atlas: [Nonstop Metropolis, A New York City Atlas](https://www.ucpress.edu/book/9780520285958/nonstop-metropolis). I pitched the idea to Rebecca while meeting her and atlas co-author Joshua Jelly-Schapiro for coffee at Caffè Reggio near Washington Square one afternoon, and the rest was history. In order to to create this map, open geospatial data was processed from sources such as NYC 311, the NYPD, OpenStreetMap, and the NYC Open Data Portal. Cartography was done using Adobe Illustrator and MAPublisher.",
     "tech": [
       "Adobe Illustrator",
       "MAPublisher",
@@ -415,7 +417,7 @@
     "title": "Landscapes of Profit",
     "tags": ["web", "data-viz"],
     "description": "An analysis of property transaction data to promote a 1% flip tax in NYC.",
-    "description_long": "Distribution of a proposed 1% \"flip tax\" on all real estate transactions in 2014 that occured within a two year period from 2003 - 2014, per New York City Council District. How much money would your council district have had for community spaces and affordable housing?\n\n[View the interactive prototype.](http://www.landscapesofprofit.com/interactive)\n\nThis project is a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard, Evander Batson, and Ingrid Burrington. Dan Taeyoung created the print map below.",
+    "description_long": "Distribution of a proposed 1% \"flip tax\" on all real estate transactions in 2014 that occured within a two year period from 2003 - 2014, per New York City Council District. How much money would your council district have had for community spaces and affordable housing.\n\nThis project is a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard, Evander Batson, and Ingrid Burrington. Dan Taeyoung created the print map below.",
     "code": "https://github.com/NYC-REIC/landscapes-of-profit/",
     "thumb": "landscapes-profit-thumb.jpg",
     "imgs": ["landscapes-profit.jpg"],
