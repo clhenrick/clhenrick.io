@@ -1,6 +1,6 @@
 :root {
   --button-bg-active: #307b6c;
-  --button-bg: #45B29D;
+  --button-bg: #45b29d;
 }
 
 div[role="group"] {
@@ -23,12 +23,6 @@ div[role="group"] > button[aria-pressed="true"] {
   background-color: var(--button-bg-active);
 }
 
-ul.projects,
-ul.tags {
-  padding: 0;
-  margin: 0;
-}
-
 ul.projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
@@ -37,20 +31,52 @@ ul.projects {
 
 ul.tags {
   display: flex;
+  justify-content: baseline;
   gap: 1rem;
 }
 
+/* Card layout credit: https://inclusive-components.design/cards/ */
 li.card,
 li.tag {
   list-style: none;
 }
 
-li.card {
-  position: relative;
+li.card,
+li.card > .text {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+
+li.card .text {
+  flex-grow: 1;
   padding: 1.25rem;
+}
+
+li.card .text > * + * {
+  margin-top: 0.75rem;
+}
+
+li.card .text > *:last-child {
+  margin-top: auto;
+}
+
+li.card .text > *:nth-last-child(2) {
+  margin-bottom: 0.75rem;
+}
+
+li.card .img {
+  height: 8rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1rem));
+}
+
+li.card .img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+li.card {
+  position: relative;
   border: 1px solid;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -97,6 +123,7 @@ li.card a::after {
   right: 0;
 }
 
-li.tag {
+ul.tags > li.tag {
   font-size: 0.8em;
+  margin: 0;
 }

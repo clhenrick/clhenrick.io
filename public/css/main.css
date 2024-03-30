@@ -17,6 +17,7 @@
 
   --padding: 1.5rem;
   --font-size: 1.25rem;
+  --border-radius: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,7 +32,6 @@
 		--text-color-link-visited: #a6a6f8;
 
 		--background-color: #15202b;
-    --border-radius: 0.25rem;
 	}
 }
 
