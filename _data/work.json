@@ -542,11 +542,12 @@
     "description_long": "",
     "link": "https://vimeo.com/97669886",
     "thumb": "guess-that-hood-thumb.jpg",
-    "imgs": ["guess-that-hood.jpg"],
     "tech": ["MongoDB", "jQuery", "Leaflet.JS", "GeoJSON", "HTML5", "CSS3"],
     "video": {
       "url": "https://vimeo.com/97669886",
-      "embed": "https://player.vimeo.com/video/97669886"
+      "embed": "https://player.vimeo.com/video/97669886?autoplay=1",
+      "thumb": "guess-that-hood.jpg",
+      "alt": "Screen recording of Guess That Hood NYC"
     },
     "code": "https://github.com/web3js/cloaked-octo-batman/tree/master/chris-henrick/mid-term",
     "size": "width2",
@@ -573,9 +574,10 @@
     "tech": ["Go-Pro", "OpenFrameworks"],
     "video": {
       "url": "https://vimeo.com/81728484",
-      "embed": "https://player.vimeo.com/video/81728484"
+      "embed": "https://player.vimeo.com/video/81728484?autoplay=1",
+      "thumb": "ppnc.jpg",
+      "alt": "Screen recording of Prospect Park non euclidean map"
     },
-    "imgs": ["ppnc.jpg"],
     "size": "width2 ",
     "date": "2013-12-16"
   },
@@ -597,10 +599,11 @@
     "description": "Visualizing my move from the SF Bay Area to NYC with D3JS.",
     "description_long": "",
     "thumb": "coast-2-coast-thumb.jpg",
-    "imgs": ["coast-2-coast.jpg"],
     "video": {
       "url": "https://vimeo.com/89143409",
-      "embed": "https://player.vimeo.com/video/89143409"
+      "embed": "https://player.vimeo.com/video/89143409?autoplay=1",
+      "thumb": "coast-2-coast.jpg",
+      "alt": "Screen recording of From Coast to Coast"
     },
     "tech": ["D3.JS", "JQuery", "QGIS"],
     "size": "",
