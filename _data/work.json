@@ -243,7 +243,7 @@
   },
   {
     "title": "MPG Ranch Habitat Restoration Map",
-    "tags": ["web", "cartography"],
+    "tags": ["web", "data-viz", "cartography"],
     "description": "An interactive web map and report builder to showcase the work of environmental scientists.",
     "description_long": "The MPG Ranch Habitat Restoration Map enables a team of environmental scientists to effectively communicate ongoing management plans and actions with their stakeholders and provides a venue for discussion of restoration research and practices through an interactive web map application. \n\n Read more about the project in a [blog post I wrote about it]({{site.url}}/mpg-habitat-restoration-map/).",
     "tech": ["React", "Redux", "Leaflet", "CARTO", "NodeJS", "AWS", "Heroku"],
