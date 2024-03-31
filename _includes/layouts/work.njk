@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+
+{% css %}{% include "public/css/card.css" %}{% endcss %}
+{% css %}{% include "public/css/embed.css" %}{% endcss %}
+{% css %}{% include "public/css/work.css" %}{% endcss %}
+{% css %}{% include "public/css/project-pages.css" %}{% endcss %}
+
+<style>{% getBundle "css" %}</style>
+
+{{ content | safe }}

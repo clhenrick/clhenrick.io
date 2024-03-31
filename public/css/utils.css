@@ -26,9 +26,10 @@
   user-select: none;
   padding: 0.5rem 0.75rem;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   text-decoration: none;
   line-height: 1;
+  cursor: pointer;
 }
 
 .button:focus-visible {

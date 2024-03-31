@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/work.njk
 eleventyNavigation:
   key: Work
   order: 2
@@ -7,8 +7,47 @@ eleventyNavigation:
 
 <h1>Portfolio</h1>
 
-<ul>
+<p>
+  Below you will find a sampling of projects I've created or contributed to over the years. This work spans the domains of web development and design, data visualization, user interface design, interaction design, and cartographic design.
+</p>
+
+<p id="filter-projects">
+  <strong>Filter Projects<strong>
+</p>
+<div role="group" aria-labelledby="filter-projects">
+  <button value="all" class="button" aria-pressed="true">all</button>
+  <button value="web" class="button" aria-pressed="false">interactive</button>
+  <button value="data-viz" class="button" aria-pressed="false">data viz</button>
+  <button value="cartography" class="button" aria-pressed="false">cartographic design</button>
+  <button value="shuffle" class="button" aria-pressed="false">shuffle!</button>
+</div>
+
+<ul class="cards-container" role="list">
   {% for project in work %}
-  <li><a href="./{{ project.title | slugify }}/">{{ project.title }}</a></li>
+  <li class="card">
+    <div class="img">
+      <img
+        src="/img/{{ project.thumb }}"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+    <div class="text">
+      <h2>
+        <a href="./{{ project.title | slugify }}/">{{ project.title }}</a>
+      </h2>
+      <p>{{ project.description }}</p>
+      {% if project.tags %}
+      <ul class="tags" role="list">
+        {% for tag in project.tags %}
+          <li class="tag">{{tag}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </li>
   {% endfor %}
 </ul>
+
+<script defer src="/js/work.js"></script>

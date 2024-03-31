@@ -1,0 +1,53 @@
+dl > div {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  line-height: 1.75;
+}
+
+section,
+div.md-block {
+  margin-bottom: 2.5rem;
+}
+
+ul.screenshots,
+ul.tech-tags {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+ul.screenshots {
+  flex-direction: column;
+}
+
+ul.screenshots li,
+ul.tech-tags li {
+  list-style: none;
+}
+
+ul.screenshots li {
+  margin-bottom: 1.25rem;
+}
+
+ul.screenshots li:last-child {
+  margin-bottom: 0;
+}
+
+nav.secondary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3rem;
+}
+
+nav.secondary span[aria-hidden] {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+nav.secondary a {
+  text-decoration: none;
+}

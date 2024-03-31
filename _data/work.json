@@ -3,7 +3,7 @@
     "title": "Cal-Adapt",
     "tags": ["web", "data-viz", "cartography"],
     "description": "Exploratory climate data visualization and web application design and development.",
-    "description_long": "Cal-Adapt is both a complex web application and content rich website that enables users to access climate data for California in the form of over a dozen interactive data visualization dashboards, data download formats, and educational content. <br><br>Cal-Adapt's frontend is a static site that interfaces with the backend through a RESTful API which is responsible for serving climate data. The majority of the project's content is stored as Markdown files which are rendered to HTML serverside during the build process, making the page load times fast. Deployment is handled using a NodeJS script that enables deploying to various environments (production, development, beta, Netlify) utilizing feature flags to include or disable various features per environment.<br><br>From 2021 through 2022, Cal-Adapt underwent both a redesign and code refactor to address usability issues and technical debt. I assisted with this effort, both in the UX design and frontend development. For this process we utilized Figma for designing UI mocks, SvelteJS as the frontend framework, SapperJS for SPA like functionality, D3JS and Layer Cake for interactive charts, MapBoxGLJS for interactive geo-visualizations, and the Carbon Design system and component library for the user interface. <br><br>Cal-Adapt is the result of a collaboration between members of UC Berkeley's [Geospatial Innovation Facility](http://gif.berkeley.edu/), including [Shruti Mukhtyar](https://twitter.com/mapchitra), Brian Galey, Eric Lehmer, Lucy Andrews, and Nancy Thomas and [Eagle Rock Analytics](http://www.eaglerockanalytics.com/) with grant funding and directional support provided by the [California State Energy Commission](https://www.energy.ca.gov/) and the [Governor's Office of Planning and Research](https://www.opr.ca.gov/).",
+    "description_long": "Cal-Adapt is both a complex web application and content rich website that enables users to access climate data for California in the form of over a dozen interactive data visualization dashboards, data download formats, and educational content. \n\nCal-Adapt's frontend is a static site that interfaces with the backend through a RESTful API which is responsible for serving climate data. The majority of the project's content is stored as Markdown files which are rendered to HTML serverside during the build process, making the page load times fast. Deployment is handled using a NodeJS script that enables deploying to various environments (production, development, beta, Netlify) utilizing feature flags to include or disable various features per environment.\n\nFrom 2021 through 2022, Cal-Adapt underwent both a redesign and code refactor to address usability issues and technical debt. I assisted with this effort, both in the UX design and frontend development. For this process we utilized Figma for designing UI mocks, SvelteJS as the frontend framework, SapperJS for SPA like functionality, D3JS and Layer Cake for interactive charts, MapBoxGLJS for interactive geo-visualizations, and the Carbon Design system and component library for the user interface. \n\nCal-Adapt is the result of a collaboration between members of UC Berkeley's [Geospatial Innovation Facility](http://gif.berkeley.edu/), including [Shruti Mukhtyar](https://twitter.com/mapchitra), Brian Galey, Eric Lehmer, Lucy Andrews, and Nancy Thomas and [Eagle Rock Analytics](http://www.eaglerockanalytics.com/) with grant funding and directional support provided by the [California State Energy Commission](https://www.energy.ca.gov/) and the [Governor's Office of Planning and Research](https://www.opr.ca.gov/).",
     "code": "https://github.com/berkeley-gif/caladapt-website-2021/",
     "tech": [
       "SvelteJS",
@@ -92,7 +92,7 @@
     "title": "Color Legend Element",
     "tags": ["web", "data-viz"],
     "description": "A web component suitable for use as a legend in data visualizations",
-    "description_long": "A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) suitable for use as a legend in data visualizations.<br>Built with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [Observable](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.<br>Check out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) for more on its usage.<br>Read a [blog post]({{ site.url }}{{ site.baseurl }}/color-legend-element/) I wrote about it.",
+    "description_long": "A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) suitable for use as a legend in data visualizations.\nBuilt with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [Observable](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.\nCheck out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) for more on its usage.\nRead a [blog post]({{ site.url }}{{ site.baseurl }}/color-legend-element/) I wrote about it.",
     "tech": ["D3JS", "Lit", "TypeScript", "Web Components"],
     "thumb": "color-legend-element.png",
     "imgs": [
@@ -107,7 +107,8 @@
     ],
     "size": "width3",
     "date": "2022-02-06",
-    "link": "https://clhenrick.github.io/color-legend-element/"
+    "link": "https://clhenrick.github.io/color-legend-element/",
+    "code": "https://github.com/clhenrick/color-legend-element/"
   },
   {
     "title": "HET Data Vis Prototyping",
@@ -163,7 +164,8 @@
     ],
     "size": "width3",
     "date": "2020-11-01",
-    "link": "https://covid19.antievictionmap.com"
+    "link": "https://covid19.antievictionmap.com",
+    "code": "https://github.com/antievictionmappingproject/covid-19-map"
   },
   {
     "title": "NYC Crash Mapper 2",
@@ -241,7 +243,7 @@
   },
   {
     "title": "MPG Ranch Habitat Restoration Map",
-    "tags": ["web", "cartography"],
+    "tags": ["web", "data-viz", "cartography"],
     "description": "An interactive web map and report builder to showcase the work of environmental scientists.",
     "description_long": "The MPG Ranch Habitat Restoration Map enables a team of environmental scientists to effectively communicate ongoing management plans and actions with their stakeholders and provides a venue for discussion of restoration research and practices through an interactive web map application. \n\n Read more about the project in a [blog post I wrote about it]({{site.url}}/mpg-habitat-restoration-map/).",
     "tech": ["React", "Redux", "Leaflet", "CARTO", "NodeJS", "AWS", "Heroku"],
@@ -264,7 +266,8 @@
       "mpg-habitat18.jpg"
     ],
     "size": "width3",
-    "date": "2016-12-22"
+    "date": "2016-12-22",
+    "link": "https://restorationmap.mpgranch.com"
   },
   {
     "title": "Am I Rent Stabilized?",
@@ -326,13 +329,14 @@
       "terrain-classic11.jpg"
     ],
     "size": "width3",
-    "date": "2016-12-22"
+    "date": "2016-12-22",
+    "link": "https://maps.stamen.com/terrain/"
   },
   {
     "title": "Love and Rage",
     "tags": ["cartography"],
     "description": "Map for Rebecca Solnit's Nonstop Metropolis, A New York City Atlas",
-    "description_long": "A print map I created for Rebecca Solnit's latest city atlas: Nonstop Metropolis, A New York City Atlas. I pitched the idea to Rebecca while meeting her and atlas co-author Joshua Jelly-Schapiro for coffee at Caffè Reggio near Washington Square one afternoon, and the rest was history. In order to to create this map open geospatial data was processed from sources such as 311, the NYPD, OpenStreetMap, and the NYC Open Data Portal. Cartography was done using Adobe Illustrator and MAPublisher.",
+    "description_long": "A print map I created for Rebecca Solnit's latest city atlas: [Nonstop Metropolis, A New York City Atlas](https://www.ucpress.edu/book/9780520285958/nonstop-metropolis). I pitched the idea to Rebecca while meeting her and atlas co-author Joshua Jelly-Schapiro for coffee at Caffè Reggio near Washington Square one afternoon, and the rest was history. In order to to create this map, open geospatial data was processed from sources such as NYC 311, the NYPD, OpenStreetMap, and the NYC Open Data Portal. Cartography was done using Adobe Illustrator and MAPublisher.",
     "tech": [
       "Adobe Illustrator",
       "MAPublisher",
@@ -353,7 +357,7 @@
     "title": "Bushwick Community Map",
     "tags": ["web", "data-viz", "cartography"],
     "description": "A map to track issues around urban development in Bushwick, NY",
-    "description_long": "The Northwest Bushwick Community Map is meant to be a resource for local community organizations and tenants rights groups to easily access disparate information around land use, housing, and urban development for the neighborhood of Bushwick in Brooklyn, NY. It is also intended to be a tool to inform NYC residents about what kinds of indicators may be used to predict new urban development and help prevent displacement of longterm residents in their own neighborhoods.<br><br> This project was a collaboration between Michael \"Ziggy\" Mintz and Brigette Blood of the Northwest Bushwick Community Group and Gabriel Gianordoli, Daniel Mastretta, and Namreta Kumar of MFA DT.",
+    "description_long": "The Northwest Bushwick Community Map is meant to be a resource for local community organizations and tenants rights groups to easily access disparate information around land use, housing, and urban development for the neighborhood of Bushwick in Brooklyn, NY. It is also intended to be a tool to inform NYC residents about what kinds of indicators may be used to predict new urban development and help prevent displacement of longterm residents in their own neighborhoods.\n\n This project was a collaboration between Michael \"Ziggy\" Mintz and Brigette Blood of the Northwest Bushwick Community Group and Gabriel Gianordoli, Daniel Mastretta, and Namreta Kumar of MFA DT.",
     "tech": [
       "CartoDB.JS",
       "Odyssey.JS",
@@ -382,7 +386,7 @@
     "title": "Greenpoint Williamsburg Toxicity Map",
     "tags": ["web", "data-viz", "cartography"],
     "description": "A map to inform residents of north Brooklyn about environmental hazards.",
-    "description_long": "The NAG Greenpoint-Williamsburg ToxiCity Map is an interactive map of toxic “hot spots” in Greenpoint and Williamsburg. Data used to compile this map came from city, state and federal sources, guided by on-the-ground knowledge from local activists. Click through the data layers on the map to understand some neighborhood trends such as population density and asthma hospital visits, and locate some specific sites such as former NuHart Plastics factory and the Exxon oil spill. Sites that have already been remediated and sites that require future remediation are included on this map.<br><br>This project was created with the help of Bowon Chung and Jessie Braden via Pratt's Spatial Analysis and Visualization Initiative.",
+    "description_long": "The NAG Greenpoint-Williamsburg ToxiCity Map is an interactive map of toxic “hot spots” in Greenpoint and Williamsburg. Data used to compile this map came from city, state and federal sources, guided by on-the-ground knowledge from local activists. Click through the data layers on the map to understand some neighborhood trends such as population density and asthma hospital visits, and locate some specific sites such as former NuHart Plastics factory and the Exxon oil spill. Sites that have already been remediated and sites that require future remediation are included on this map.\n\nThis project was created with the help of Bowon Chung and Jessie Braden via Pratt's Spatial Analysis and Visualization Initiative.",
     "tech": [
       "CartoDB.JS",
       "Leaflet.JS",
@@ -413,7 +417,7 @@
     "title": "Landscapes of Profit",
     "tags": ["web", "data-viz"],
     "description": "An analysis of property transaction data to promote a 1% flip tax in NYC.",
-    "description_long": "Distribution of a proposed 1% \"flip tax\" on all real estate transactions in 2014 that occured within a two year period from 2003 - 2014, per New York City Council District. How much money would your council district have had for community spaces and affordable housing?<br><br>[View the interactive prototype.](http://www.landscapesofprofit.com/interactive)<br><br>This project is a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard, Evander Batson, and Ingrid Burrington. <br> Dan Taeyoung created the print map below.",
+    "description_long": "Distribution of a proposed 1% \"flip tax\" on all real estate transactions in 2014 that occured within a two year period from 2003 - 2014, per New York City Council District. How much money would your council district have had for community spaces and affordable housing.\n\nThis project is a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard, Evander Batson, and Ingrid Burrington. Dan Taeyoung created the print map below.",
     "code": "https://github.com/NYC-REIC/landscapes-of-profit/",
     "thumb": "landscapes-profit-thumb.jpg",
     "imgs": ["landscapes-profit.jpg"],
@@ -538,11 +542,12 @@
     "description_long": "",
     "link": "https://vimeo.com/97669886",
     "thumb": "guess-that-hood-thumb.jpg",
-    "imgs": ["guess-that-hood.jpg"],
     "tech": ["MongoDB", "jQuery", "Leaflet.JS", "GeoJSON", "HTML5", "CSS3"],
     "video": {
       "url": "https://vimeo.com/97669886",
-      "embed": "https://player.vimeo.com/video/97669886"
+      "embed": "https://player.vimeo.com/video/97669886?autoplay=1",
+      "thumb": "guess-that-hood.jpg",
+      "alt": "Screen recording of Guess That Hood NYC"
     },
     "code": "https://github.com/web3js/cloaked-octo-batman/tree/master/chris-henrick/mid-term",
     "size": "width2",
@@ -569,9 +574,10 @@
     "tech": ["Go-Pro", "OpenFrameworks"],
     "video": {
       "url": "https://vimeo.com/81728484",
-      "embed": "https://player.vimeo.com/video/81728484"
+      "embed": "https://player.vimeo.com/video/81728484?autoplay=1",
+      "thumb": "ppnc.jpg",
+      "alt": "Screen recording of Prospect Park non euclidean map"
     },
-    "imgs": ["ppnc.jpg"],
     "size": "width2 ",
     "date": "2013-12-16"
   },
@@ -593,10 +599,11 @@
     "description": "Visualizing my move from the SF Bay Area to NYC with D3JS.",
     "description_long": "",
     "thumb": "coast-2-coast-thumb.jpg",
-    "imgs": ["coast-2-coast.jpg"],
     "video": {
       "url": "https://vimeo.com/89143409",
-      "embed": "https://player.vimeo.com/video/89143409"
+      "embed": "https://player.vimeo.com/video/89143409?autoplay=1",
+      "thumb": "coast-2-coast.jpg",
+      "alt": "Screen recording of From Coast to Coast"
     },
     "tech": ["D3.JS", "JQuery", "QGIS"],
     "size": "",
@@ -604,7 +611,7 @@
   },
   {
     "title": "Oakland Then and Now: Coastal Grasslands",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "Historic coastal grassland, bay and shoreline over the current day built up land area of Oakland, CA.",
     "description_long": "A prototype map design for the Oakland Museum of California. This map shows historic coastal grassland areas, and a historic bay and shoreline over the current day built up land area for an exhibit titled Oakland: Then and Now.",
     "thumb": "oak-then-now-grass-thumb.jpg",
@@ -614,7 +621,7 @@
   },
   {
     "title": "Oakland Then and Now: Oak Woodland",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "Historic oak woodland, bay and shoreline over the current day built up land area of Oakland, CA.",
     "description_long": "A prototype map design for the Oakland Museum of California. This map shows historic oak woodland areas, and a historic bay and shoreline over the current day built up land area for an exhibit titled Oakland: Then and Now.",
     "thumb": "oak-then-now-oak-thumb.jpg",
@@ -624,7 +631,7 @@
   },
   {
     "title": "Chinook Recovery Priority Watersheds",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "Coastal recovery watersheds for Salmon and Steelhead in California",
     "description_long": "This map was created at GreenInfo Network with Alexandra Barnish, and is a working draft showing only the coastal recovery watersheds for Salmon and Steelhead in California. Central valley recovery watersheds are not shown on this version of the map. For the most recent version please visit Sustainable Conservation's Partners in Restoration program.",
     "thumb": "chinook-thumb.jpg",
@@ -635,7 +642,7 @@
   },
   {
     "title": "CA Private Public Land",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "Private and publically owned land in California.",
     "description_long": "This map was created at GreenInfo Network with Alexandra Barnish for Sustainable Conservation's Partners in Restoration program.",
     "thumb": "public-private-thumb.jpg",
@@ -646,7 +653,7 @@
   },
   {
     "title": "Ontario",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "The province of Ontario, Canada.",
     "description_long": "A map of the province of Ontario, Canada created using Natural Earth 1:10m vector GIS data for the *Moon: Ontario* travel guide from Avalon Travel Publishing",
     "thumb": "ontario-thumb.jpg",
@@ -656,7 +663,7 @@
   },
   {
     "title": "Galapagos Islands",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "A map showing the Galapagos Islands",
     "description_long": "",
     "thumb": "galapagos-thumb.jpg",
@@ -666,7 +673,7 @@
   },
   {
     "title": "Afghanistan and Pakistan",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "Map of Afghanistan and Pakistan for the book Dirty Wars.",
     "description_long": "Map of Afghanistan and Pakistan for the book Dirty Wars: The World is a Battlefield, by Jeremy Scahill. Published by Nation Books.",
     "thumb": "afg-pak-thumb.jpg",
@@ -682,7 +689,7 @@
   },
   {
     "title": "South East Asia",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "A map of Thailand, Laos, and Cambodia.",
     "description_long": "Another map for a 9 book series on the backpacking trips taken by globetrotter David Koester. Natural Earth vector and relief data were employed for sound cartographic design.",
     "thumb": "se-asia-thumb.jpg",
@@ -703,7 +710,7 @@
   },
   {
     "title": "The North Coast",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "A split frame map I created for Moon: Northern California.",
     "description_long": "Open data from Cal Atlas and CPAD were used to make this map.",
     "tech": ["Adobe Illustrator", "MAPublisher", "QGIS"],
@@ -714,7 +721,7 @@
   },
   {
     "title": "Downtown Toronto",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "A map of downtown Toronto, Canada.",
     "description_long": "",
     "thumb": "toronto-dt-thumb.jpg",
@@ -725,7 +732,7 @@
   },
   {
     "title": "Downtown Guanajuato",
-    "tags": ["cartography", "print"],
+    "tags": ["cartography"],
     "description": "A map of downtown Guanajuato, Mexico.",
     "description_long": "",
     "thumb": "guanajuato-dt-thumb.jpg",

@@ -1,36 +1,40 @@
 :root {
   /* credit: https://modernfontstacks.com/ */
-  --font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-  --font-family-monospace: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  --font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+    sans-serif;
+  --font-family-monospace: ui-monospace, "Cascadia Code", "Source Code Pro",
+    Menlo, Consolas, "DejaVu Sans Mono", monospace;
 
   --color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
-	--color-gray-90: #333;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333;
+  --color-accent: #efc94c;
 
-	--background-color: #fff;
+  --background-color: #fff;
 
-	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050F;
+  --text-color: var(--color-gray-90);
+  --text-color-link: #082840;
+  --text-color-link-active: #5f2b48;
+  --text-color-link-visited: #17050f;
 
   --padding: 1.5rem;
   --font-size: 1.25rem;
+  --border-radius: 0;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
-		--color-gray-90: #dad8d8;
+  :root {
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
 
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
 
-		--background-color: #15202b;
-	}
+    --background-color: #15202b;
+  }
 }
 
 html,
@@ -39,11 +43,11 @@ body {
   font-weight: normal;
   text-rendering: optimizeLegibility;
   color: var(--text-color);
-	background-color: var(--background-color);
+  background-color: var(--background-color);
 }
 
 html {
-	overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 body {
@@ -60,60 +64,64 @@ footer {
 }
 
 main:first-child {
-	margin-top: 0;
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  max-width: 75ch;
 }
 
 p:last-child {
-	margin-bottom: 0;
-}
-p {
-	line-height: 1.5;
-}
-
-li {
-	line-height: 1.5;
+  margin-bottom: 0;
 }
 
 a[href] {
-	color: var(--text-color-link);
+  color: var(--text-color-link);
 }
 a[href]:visited {
-	color: var(--text-color-link-visited);
+  color: var(--text-color-link-visited);
 }
 a[href]:hover,
 a[href]:active {
-	color: var(--text-color-link-active);
+  color: var(--text-color-link-active);
 }
 
 a.skip-link:focus-visible {
   height: auto;
   width: auto;
   clip: initial;
-	clip-path: initial;
-	overflow: initial;
-	position: initial;
-	white-space: initial;
+  clip-path: initial;
+  overflow: initial;
+  position: initial;
+  white-space: initial;
 }
 
 pre,
 code {
-	font-family: var(--font-family-monospace);
+  font-family: var(--font-family-monospace);
 }
 pre:not([class*="language-"]) {
-	margin: .5em 0;
-	line-height: 1.375; /* 22px /16 */
-	-moz-tab-size: var(--syntax-tab-size);
-	-o-tab-size: var(--syntax-tab-size);
-	tab-size: var(--syntax-tab-size);
-	-webkit-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
 }
 code {
-	word-break: break-all;
+  word-break: break-all;
 }

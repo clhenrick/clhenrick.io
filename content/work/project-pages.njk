@@ -4,42 +4,95 @@ pagination:
   size: 1
   alias: project
 permalink: "work/{{ project.title | slugify }}/"
-layout: layouts/base.njk
+layout: layouts/work.njk
 ---
 
-<h1>{{project.title}}</h1>
+<section>
+  <h1>{{project.title}}</h1>
 
-{% if project.link %}
-<p>
-  <strong>Project link:</strong> <a href={{project.link}} target="_blank">{{project.title}}</a>
-</p>
-{% endif %}
+  <dl>
+  {% if project.date %}
+    <div>
+      <dt>Date:</dt>
+      <dd>{{project.date}}</dd>
+    </div>
+    {% endif %}
 
-{% if project.description_long %}
-<p>{{ project.description_long }}</p>
-{% endif %}
+    {% if project.link %}
+    <div>
+      <dt>Project link:</dt>
+      <dd>
+        <a href={{project.link}} target="_blank">{{project.title}}</a>
+      </dd>
+    </div>
+    {% endif %}
+
+    {%if project.code %}
+    <div>
+      <dt>Code:</dt>
+      <dd>
+        <a href={{project.code}} target="_blank">{{project.code}}</a>
+      </dd>
+    </div>
+  {% endif %}
+  </dl>
+</section>
 
 {% if project.tech %}
-<p>
-  <strong>Technologies Used:</strong>
-</p>
-<ul>
-  {% for tag in project.tech %}
-  <li>{{tag}}</li>
-  {% endfor %}
-</ul>
+<section>
+  <h2>Technologies Used</h2>
+  <ul class="tech-tags" role="list">
+    {% for tag in project.tech %}
+    <li>{{tag}}</li>
+    {% endfor %}
+  </ul>
+</section>
 {% endif %}
 
-{% if project.imgs %}
-  {% for img in project.imgs %}
-  <a href="#">
-    <img alt="Screen shot of project {{project.title}}">
-  </a>
-  {% endfor %}
-{% endif %}
+<section>
+  <h2>Project Details</h2>
+  {% if project.description_long %}
+    {{ project.description_long | markdown | safe }}
+  {% endif %}
 
-<p>
+  {% if project.video %}
+  <div style="--aspect-ratio: 16/9;margin-bottom:2.5rem;">
+    <iframe
+      width="960"
+      height="569"
+      src="{{project.video.embed}}"
+      srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href={{project.video.embed}}><img src='/img/{{project.video.thumb}}' alt='{{project.video.alt}}'><span aria-hidden='true'>▶</span></a>"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      title="{{project.video.title}}"
+    ></iframe>
+  </div>
+  {% endif %}
+
+  {% if project.imgs %}
+  <ul class="screenshots" role="list">
+    {% for img in project.imgs %}
+    <li>
+      <a href="#">
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/img/{{img}}"
+          alt="Screenshot {{loop.index}} of {{project.title}}"
+        >
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+
+<nav class="secondary" aria-label="secondary">
   <a href="/work/">
     <span aria-hidden="true" class="back-arrow">&#8619;</span> Go back to the Portfolio
   </a>
-</p>
+  <a href="#main" aria-label="Go back to top of page">
+    <span aria-hidden="true">&#8679;</span>
+  </a>
+</nav>
