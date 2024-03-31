@@ -65,18 +65,19 @@ main:first-child {
 	margin-top: 0;
 }
 
+h1,
+h2,
+h3 {
+  margin-bottom: 1rem;
+}
+
 p {
-	line-height: 1.5;
   margin-bottom: 1.25rem;
   max-width: 75ch;
 }
 
 p:last-child {
 	margin-bottom: 0;
-}
-
-li {
-	line-height: 1.5;
 }
 
 a[href] {
