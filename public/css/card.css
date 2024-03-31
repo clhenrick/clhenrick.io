@@ -79,6 +79,7 @@
 }
 
 .card a[href],
+.card a[href]:visited,
 .card a[href]:hover {
   color: var(--text-color);
 }
