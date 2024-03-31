@@ -1,12 +1,19 @@
 (() => {
+  const cards = Array.from(document.querySelectorAll(".card"));
+  const cardsContainer = document.querySelector(".cards-container");
+
   const filterButtons = Array.from(document.querySelectorAll("button")).filter(
     (button) => button.value !== "shuffle"
   );
   const shuffleButton = document.querySelector("button[value='shuffle']");
-  const cardsContainer = document.querySelector(".cards-container");
-  const cards = Array.from(document.querySelectorAll(".card"));
 
-  const onFilterButtonClick = (event) => {
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", onFilterButtonClick);
+  });
+
+  shuffleButton.addEventListener("click", onShuffleButtonClick);
+
+  function onFilterButtonClick(event) {
     const value = event.target.value;
 
     filterButtons.forEach((button) => {
@@ -28,19 +35,15 @@
         card.hidden = true;
       }
     });
-  };
+  }
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", onFilterButtonClick);
-  });
-
-  shuffleButton.addEventListener("click", () => {
+  function onShuffleButtonClick() {
     const shuffled = shuffle(cards);
     cardsContainer.innerHTML = "";
     shuffled.forEach((card) => {
       cardsContainer.appendChild(card);
     });
-  });
+  }
 
   // code credit: https://bost.ocks.org/mike/shuffle/
   function shuffle(array) {
