@@ -41,7 +41,7 @@ layout: layouts/work.njk
 {% if project.tech %}
 <section>
   <h2>Technologies Used</h2>
-  <ul class="tech-tags">
+  <ul class="tech-tags" role="list">
     {% for tag in project.tech %}
     <li>{{tag}}</li>
     {% endfor %}
@@ -71,7 +71,7 @@ layout: layouts/work.njk
   {% endif %}
 
   {% if project.imgs %}
-  <ul class="screenshots">
+  <ul class="screenshots" role="list">
     {% for img in project.imgs %}
     <li>
       <a href="#">

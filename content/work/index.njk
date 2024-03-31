@@ -19,7 +19,7 @@ eleventyNavigation:
   <button value="shuffle" class="button">shuffle!</button>
 </div>
 
-<ul class="cards-container">
+<ul class="cards-container" role="list">
   {% for project in work %}
   <li class="card">
     <div class="img">
@@ -36,7 +36,7 @@ eleventyNavigation:
       </h2>
       <p>{{ project.description }}</p>
       {% if project.tags %}
-      <ul class="tags">
+      <ul class="tags" role="list">
         {% for tag in project.tags %}
           <li class="tag">{{tag}}</li>
         {% endfor %}
