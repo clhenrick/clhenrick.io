@@ -6,7 +6,9 @@ h3 {
 
 dl > div {
   display: flex;
+  align-items: baseline;
   gap: 1rem;
+  line-height: 1.75;
 }
 
 section,
@@ -17,6 +19,7 @@ div.md-block {
 ul.screenshots,
 ul.tech-tags {
   display: flex;
+  align-items: baseline;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -41,6 +44,7 @@ ul.screenshots li:last-child {
 nav.secondary {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   margin-bottom: 3rem;
 }
 

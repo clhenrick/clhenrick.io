@@ -9,7 +9,8 @@
 
 .tags {
   display: flex;
-  justify-content: baseline;
+  align-items: baseline;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 

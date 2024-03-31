@@ -7,6 +7,7 @@ div[role="group"] {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: baseline;
   gap: 1rem;
   margin-bottom: 3rem;
 }
