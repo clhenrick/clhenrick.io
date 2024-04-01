@@ -7,6 +7,7 @@ numberOfLatestPostsToShow: 3
 ---
 
 {%- css %}{% include "public/css/home.css" %}{% endcss %}
+{%- css %}{% include "public/css/card.css" %}{% endcss %}
 <style>
   {% getBundle "css" %}
 </style>
@@ -17,21 +18,27 @@ numberOfLatestPostsToShow: 3
 
 <section>
   <h2 class="visually-hidden">Highlights</h2>
-  <ul class="cards-container" role="list">
+  <ul class="cards-container" role="list" style="--card-min-width:18rem">
     <li class="card">
-      <h3>My Work</h3>
-      <p>Encompasses: Data Visualization, Web Accessibility, Prototyping, Interactive Web Maps, Interaction Design, and more.</p>
-      <a class="button" href="/work/">View Portfolio</a>
+      <div class="text">
+        <h3>My Work</h3>
+        <p>Encompasses: Data Visualization, Web Accessibility, Prototyping, Interactive Web Maps, Interaction Design, and more.</p>
+        <a class="button" href="/work/">View Portfolio</a>
+      </div>
     </li>
     <li class="card">
-      <h3>Blog</h3>
-      <p>My ramblings on previous projects and solving problems relating to the web, data, cartography, and design.</p>
-      <a class="button" href="/blog/">View Blog</a>
+      <div class="text">
+        <h3>Blog</h3>
+        <p>My ramblings on previous projects and solving problems relating to the web, data, cartography, and design.</p>
+        <a class="button" href="/blog/">View Blog</a>
+      </div>
     </li>
     <li class="card">
-      <h3>Talk to me</h3>
-      <p>Want advice on how to get creative with your data? Need a custom mapping solution? Or just want to say hello?</p>
-      <a class="button" href="/contact/">Get in Touch</a>
+      <div class="text">
+        <h3>Talk to me</h3>
+        <p>Want advice on how to get creative with your data? Need a custom mapping solution? Or just want to say hello?</p>
+        <a class="button" href="/contact/">Get in Touch</a>
+      </div>
     </li>
   </ul>
 </section>
