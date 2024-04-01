@@ -1,5 +1,6 @@
 ---
 layout: layouts/base.njk
+# TODO: narrow layout
 title: "about Chris Henrick"
 description: "About Chris Henrick: Creative Technologist and Educator"
 permalink: "/about/"
