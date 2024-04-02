@@ -25,15 +25,17 @@ section {
 }
 
 .cards-container {
+  --card-margin: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.25rem;
 }
 
 @media screen and (min-width: 800px) {
   .cards-container {
+    --card-margin: 0.75rem;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 }
 
@@ -46,7 +48,13 @@ section {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1.25rem;
+  padding: 1.25rem 0;
+}
+
+@media screen and (min-width: 800px) {
+  .card .text {
+    padding: 1.25rem;
+  }
 }
 
 .card .text > *:first-child {
@@ -54,7 +62,7 @@ section {
 }
 
 .card .text > * + * {
-  margin-top: 0.75rem;
+  margin-top: var(--card-margin);
 }
 
 .card .text > *:last-child {
@@ -62,5 +70,5 @@ section {
 }
 
 .card .text > *:nth-last-child(2) {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--card-margin);
 }
