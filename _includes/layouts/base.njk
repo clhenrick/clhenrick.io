@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="{{ metadata.language }}">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ title or metadata.title }}</title>
-		<meta name="description" content="{{ description or metadata.description }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
 
-		{#- Atom and JSON feeds included by default #}
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
+    {#- Atom and JSON feeds included by default #}
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
-		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-		<meta name="generator" content="{{ eleventy.generator }}">
+    {#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
+    <meta name="generator" content="{{ eleventy.generator }}">
 
-		{#-
+    {#-
 		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
 		1. You can add to them using `{% css %}`
 		2. You can get from them using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
@@ -21,51 +21,53 @@
 		4. Learn more: https://github.com/11ty/eleventy-plugin-bundle
 		#}
 
-		{#- Add the contents of a file to the bundle #}
-		{%- css %}{% include "public/css/reset.css" %}{% endcss %}
+    {#- Add the contents of a file to the bundle #}
+    {%- css %}{% include "public/css/reset.css" %}{% endcss %}
     {%- css %}{% include "public/css/main.css" %}{% endcss %}
     {%- css %}{% include "public/css/navigation.css" %}{% endcss %}
     {%- css %}{% include "public/css/utils.css" %}{% endcss %}
-		{#- Or add from node_modules #}
-		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
+    {#- Or add from node_modules #}
+    {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 
-		{#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-		<style>{% getBundle "css" %}</style>
-		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
-	</head>
-	<body>
-		<header>
+    {#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
+    <style>
+      {% getBundle "css" %}
+    </style>
+    {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+    {#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
+  </head>
+  <body>
+    <header>
       <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
-			<a href="/" class="home-link">{{ metadata.title }}</a>
-			{#- eleventy-navigation: https://www.11ty.dev/docs/plugins/navigation/ #}
-			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
-				<ul class="nav" role="list">
-				{% for entry in collections.all | eleventyNavigation %}
-					<li class="nav-item">
-            <a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
-            {% if entry.children.length %}
-              <ul>
-                {% for child in entry.children %}
-                  <li>
-                    <a href="{{ child.url }}"{% if child.url == page.url %} aria-current="page"{% endif %}>{{ child.title }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </li>
-				{% endfor %}
-				</ul>
-			</nav>
-		</header>
+      <a href="/" class="home-link">{{ metadata.title }}</a>
+      {#- eleventy-navigation: https://www.11ty.dev/docs/plugins/navigation/ #}
+      <nav>
+        <h2 class="visually-hidden">Top level navigation menu</h2>
+        <ul class="nav" role="list">
+          {% for entry in collections.all | eleventyNavigation %}
+            <li class="nav-item">
+              <a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
+              {% if entry.children.length %}
+                <ul>
+                  {% for child in entry.children %}
+                    <li>
+                      <a href="{{ child.url }}"{% if child.url == page.url %} aria-current="page"{% endif %}>{{ child.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </header>
 
-		<main id="main">
-			{{ content | safe }}
-		</main>
+    <main id="main">
+      {{ content | safe }}
+    </main>
 
-		<footer>
+    <footer>
       {# This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} #}
     </footer>
-	</body>
+  </body>
 </html>
