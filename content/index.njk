@@ -17,29 +17,17 @@ numberOfLatestPostsToShow: 3
 </section>
 
 <section>
-  <h2 class="visually-hidden">Highlights</h2>
+  <h2 class="visually-hidden">Services</h2>
   <ul class="cards-container" role="list" style="--card-min-width:18rem">
+    {% for service in services %}
     <li class="card">
       <div class="text">
-        <h3>My Work</h3>
-        <p>Encompasses: Data Visualization, Web Accessibility, Prototyping, Interactive Web Maps, Interaction Design, and more.</p>
-        <a class="button" href="/work/">View Portfolio</a>
+        <h3>{{service.title}}</h3>
+        <p>{{service.description}}</p>
+        <a class="button" href="{{service.url}}">{{service.cta}}</a>
       </div>
     </li>
-    <li class="card">
-      <div class="text">
-        <h3>Blog</h3>
-        <p>My ramblings on previous projects and solving problems relating to the web, data, cartography, and design.</p>
-        <a class="button" href="/blog/">View Blog</a>
-      </div>
-    </li>
-    <li class="card">
-      <div class="text">
-        <h3>Talk to me</h3>
-        <p>Want advice on how to get creative with your data? Need a custom mapping solution? Or just want to say hello?</p>
-        <a class="button" href="/contact/">Get in Touch</a>
-      </div>
-    </li>
+    {% endfor %}
   </ul>
 </section>
 
