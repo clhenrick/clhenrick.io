@@ -15,11 +15,6 @@
 }
 
 .card,
-.tag {
-  list-style: none;
-}
-
-.card,
 .card > .text {
   display: flex;
   flex-direction: column;

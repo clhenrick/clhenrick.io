@@ -22,11 +22,6 @@ ul.screenshots {
   flex-direction: column;
 }
 
-ul.screenshots li,
-ul.tech-tags li {
-  list-style: none;
-}
-
 ul.screenshots li {
   margin-bottom: 1.25rem;
 }

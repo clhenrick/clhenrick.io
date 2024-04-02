@@ -4,7 +4,6 @@
 }
 * {
   margin: 0;
-  padding: 0;
 }
 body {
   line-height: 1.5;
@@ -19,4 +18,10 @@ input, button, textarea, select {
 }
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+}
+ul[role="list"] {
+  padding: 0;
+}
+ul[role="list"] li {
+  list-style: none;
 }
