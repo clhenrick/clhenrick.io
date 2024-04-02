@@ -23,3 +23,44 @@ section {
   font-size: 3.75rem;
   font-weight: bold;
 }
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+@media screen and (min-width: 800px) {
+  .cards-container {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+.card {
+  flex-grow: 1;
+  flex-basis: content;
+}
+
+.card .text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+.card .text > *:first-child {
+  margin-bottom: 0;
+}
+
+.card .text > * + * {
+  margin-top: 0.75rem;
+}
+
+.card .text > *:last-child {
+  margin-top: auto;
+}
+
+.card .text > *:nth-last-child(2) {
+  margin-bottom: 0.75rem;
+}
