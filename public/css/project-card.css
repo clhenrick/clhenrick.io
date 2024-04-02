@@ -23,6 +23,7 @@
 .card .text {
   flex-grow: 1;
   padding: 1.25rem;
+  font-weight: normal;
 }
 
 .card .text > * + * {
