@@ -8,14 +8,14 @@ module.exports = {
       cta: "View Portfolio",
     },
     {
-      title: "Blog",
+      title: "My Writing",
       description:
-        "My ramblings on previous projects and solving problems relating to the web, data, cartography, and design.",
+        "Ramblings on previous projects and solving problems relating to the web, data, cartography, and design.",
       url: "/blog/",
       cta: "View Blog",
     },
     {
-      title: "Talk to Me",
+      title: "Chatting with Me",
       description:
         "Want advice on how to get creative with your data? Need a custom mapping solution? Or just want to say hello?",
       url: "/contact/",
