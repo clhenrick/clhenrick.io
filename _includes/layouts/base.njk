@@ -39,11 +39,13 @@
   <body>
     <header>
       <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
-      <a href="/" class="home-link">{{ metadata.title }}</a>
       {#- eleventy-navigation: https://www.11ty.dev/docs/plugins/navigation/ #}
       <nav>
         <h2 class="visually-hidden">Top level navigation menu</h2>
         <ul class="nav" role="list">
+          <li>
+            <a href="/" class="home-link">{{ metadata.title }}</a>
+          </li>
           {% for entry in collections.all | eleventyNavigation %}
             <li class="nav-item">
               <a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
