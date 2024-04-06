@@ -9,12 +9,22 @@ header {
   line-height: var(--main-nav-height);
   background-color: var(--background-color);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+  isolation: isolate;
+  z-index: 1;
+  background-color: var(--background-color);
 }
 
 header a[href] {
   padding: 0 1.25rem;
   display: inline-block;
   text-decoration: none;
+}
+
+a[href].skip-link {
+  position: absolute;
+  top: 3.5rem;
+  left: 1rem;
+  background-color: var(--background-color);
 }
 
 nav {
