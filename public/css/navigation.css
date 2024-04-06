@@ -21,10 +21,24 @@ nav {
   flex-grow: 1;
 }
 
+/* TODO: default to hamburger nav */
 nav > ul {
   position: relative;
+  display: none;
+}
+
+nav.open > ul {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 63.5rem) {
+  /* ~1016px switch to horizontal navigation */
+  nav > ul {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
 }
 
 nav ul li > ul {
