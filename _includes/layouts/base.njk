@@ -46,6 +46,7 @@
           <li>
             <a href="/" class="home-link">{{ metadata.title }}</a>
           </li>
+          {# to do: split into two separate lists for desktop #}
           {% for entry in collections.all | eleventyNavigation %}
             <li class="nav-item">
               <a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>

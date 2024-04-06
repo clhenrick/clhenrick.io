@@ -80,10 +80,6 @@ module.exports = function (eleventyConfig) {
     return `<div class="md-block">${markdown.render(value)}</div>`;
   });
 
-  eleventyConfig.addFilter("log", (value) => {
-    console.log(value);
-  });
-
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
