@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+title: Search
+description: "Search the contents of Chris Henrick's website"
+permalink: "/search/"
+eleventyNavigation:
+  key: Search
+  order: 6
+---
+
+<h1> {{title}} </h1>
+
+<p>You may use the form below to search the contents of this site.</p>
+
+<form
+  id="search-form"
+  name="search-form"
+  accept-charset="utf-8"
+  method="post"
+>
+  <label for="search">Search</label>
+  <input id="search" type="search">
+  <input class="button" type="submit" value="Submit">
+</form>

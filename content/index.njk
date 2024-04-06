@@ -7,6 +7,7 @@ numberOfLatestPostsToShow: 3
 ---
 
 {%- css %}{% include "public/css/home.css" %}{% endcss %}
+
 <style>
   {% getBundle "css" %}
 </style>
@@ -16,23 +17,17 @@ numberOfLatestPostsToShow: 3
 </section>
 
 <section>
-  <h2 class="visually-hidden">Highlights</h2>
+  <h2>You may be interested in:</h2>
   <ul class="cards-container" role="list">
+    {% for service in services %}
     <li class="card">
-      <h3>My Work</h3>
-      <p>Encompasses: Data Visualization, Web Accessibility, Prototyping, Interactive Web Maps, Interaction Design, and more.</p>
-      <a class="button" href="/work/">View Portfolio</a>
+      <div class="text">
+        <h3>{{service.title}}</h3>
+        <p>{{service.description}}</p>
+        <a class="button" href="{{service.url}}">{{service.cta}}</a>
+      </div>
     </li>
-    <li class="card">
-      <h3>Blog</h3>
-      <p>My ramblings on previous projects and solving problems relating to the web, data, cartography, and design.</p>
-      <a class="button" href="/blog/">View Blog</a>
-    </li>
-    <li class="card">
-      <h3>Talk to me</h3>
-      <p>Want advice on how to get creative with your data? Need a custom mapping solution? Or just want to say hello?</p>
-      <a class="button" href="/contact/">Get in Touch</a>
-    </li>
+    {% endfor %}
   </ul>
 </section>
 

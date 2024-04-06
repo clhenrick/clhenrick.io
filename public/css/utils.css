@@ -9,6 +9,10 @@
 	white-space: nowrap;
 }
 
+.font-mono {
+  font-family: var(--font-family-monospace);
+}
+
 /* credit: https://codepen.io/maddesigns/pen/rOMgpQ/ */
 .full-viewport-width {
   width: 100vw;

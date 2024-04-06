@@ -1,4 +1,4 @@
-/* Card component shared styles */
+/* projectCard macro/component styles */
 /* some code borrowed from: https://inclusive-components.design/cards/ */
 
 .cards-container {
@@ -14,9 +14,8 @@
   gap: 1rem;
 }
 
-.card,
-.tag {
-  list-style: none;
+.card {
+  --card-text-margin: 0.75rem;
 }
 
 .card,
@@ -28,10 +27,11 @@
 .card .text {
   flex-grow: 1;
   padding: 1.25rem;
+  font-weight: normal;
 }
 
 .card .text > * + * {
-  margin-top: 0.75rem;
+  margin-top: var(--card-text-margin);
 }
 
 .card .text > *:last-child {
@@ -39,7 +39,7 @@
 }
 
 .card .text > *:nth-last-child(2) {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--card-text-margin);
 }
 
 .card .img {
@@ -72,6 +72,7 @@
 
 .card h2 {
   font-size: 1.25em;
+  margin-bottom: 0;
 }
 
 .card a[href] {

@@ -1,32 +1,30 @@
 header {
+  max-width: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: var(--main-nav-height);
   display: flex;
-  gap: 1.5rem;
+  line-height: var(--main-nav-height);
+  background-color: var(--background-color);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 header a[href] {
-  padding: 0.5rem 0.75rem;
+  padding: 0 1.25rem;
   display: inline-block;
   text-decoration: none;
 }
 
-nav li {
-  width: 100%;
-}
-
-nav li > a {
+nav {
   flex-grow: 1;
-}
-
-nav ul {
-  position: relative;
-  list-style-type: none;
-  padding: 0;
 }
 
 nav > ul {
   position: relative;
   display: flex;
-  gap: 1.5rem;
+  align-items: baseline;
 }
 
 nav ul li > ul {

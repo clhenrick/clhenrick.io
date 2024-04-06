@@ -25,51 +25,50 @@ section {
 }
 
 .cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  grid-gap: 1rem;
-  grid-auto-flow: column;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  --card-margin: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-/* TODO: use container query? */
-@media (max-width: 400px) {
+@media screen and (min-width: 800px) {
   .cards-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    --card-margin: 0.75rem;
+    flex-direction: row;
+    gap: 1.25rem;
   }
 }
 
 .card {
+  flex-grow: 1;
+  flex-basis: content;
+}
+
+.card .text {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.5rem;
+  padding: 1.25rem 0;
 }
 
-.card + .card {
-  margin-top: 0;
+@media screen and (min-width: 800px) {
+  .card .text {
+    padding: 1.25rem;
+  }
 }
 
-.card {
-  max-width: 60ch;
+.card .text > *:first-child {
+  margin-bottom: 0;
 }
 
-.card > * + * {
-  margin-top: 0.75rem;
+.card .text > * + * {
+  margin-top: var(--card-margin);
 }
 
-.card :last-child {
+.card .text > *:last-child {
   margin-top: auto;
-  align-self: flex-start;
-  flex-grow: 0;
 }
 
-.card :nth-last-child(2) {
-  margin-bottom: 0.75rem;
-  flex-grow: 1;
+.card .text > *:nth-last-child(2) {
+  margin-bottom: var(--card-margin);
 }

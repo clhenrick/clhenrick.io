@@ -19,7 +19,10 @@
 
   --padding: 1.5rem;
   --font-size: 1.25rem;
-  --border-radius: 0;
+  --border-radius: 0.1875rem;
+
+  --desktop-max-width: 60rem;
+  --main-nav-height: 3.125rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -57,10 +60,14 @@ body {
 header,
 main,
 footer {
-  max-width: 60em;
+  max-width: var(--desktop-max-width);
   margin: 0 auto;
   padding: 0 var(--padding);
   font-size: var(--font-size);
+}
+
+main {
+  margin-top: var(--main-nav-height);
 }
 
 main:first-child {
