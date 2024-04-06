@@ -22,7 +22,7 @@ header a[href] {
 
 a[href].skip-link {
   position: absolute;
-  top: 3.5rem;
+  top: var(--main-nav-height);
   left: 1rem;
   background-color: var(--background-color);
 }

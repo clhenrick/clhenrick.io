@@ -22,7 +22,7 @@
   --border-radius: 0.1875rem;
 
   --desktop-max-width: 60rem;
-  --main-nav-height: 3.125rem;
+  --main-nav-height: 3.875rem;
 }
 
 @media (prefers-color-scheme: dark) {
