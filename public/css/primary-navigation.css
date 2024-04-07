@@ -6,12 +6,19 @@ header {
   right: 0;
   height: var(--main-nav-height);
   display: flex;
+  justify-content: space-between;
   line-height: var(--main-nav-height);
   background-color: var(--background-color);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   isolation: isolate;
   z-index: 1;
   background-color: var(--background-color);
+}
+
+@media screen and (min-width: 43rem) {
+  header {
+    justify-content: flex-start;
+  }
 }
 
 header a[href] {
@@ -27,11 +34,22 @@ a[href].skip-link {
   background-color: var(--background-color);
 }
 
-nav {
-  flex-grow: 1;
+button.nav-button {
+  margin-left: auto;
 }
 
-/* TODO: default to hamburger nav */
+@media screen and (min-width: 43rem) {
+  button.nav-button {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 43rem) {
+  nav {
+    flex-grow: 1;
+  }
+}
+
 nav > ul {
   position: relative;
   display: none;
@@ -51,8 +69,10 @@ nav.open > ul {
   }
 }
 
-nav ul > li:nth-child(3n) {
-  margin-right: auto;
+@media screen and (min-width: 43rem) {
+  nav ul > li:nth-child(3n) {
+    margin-right: auto;
+  }
 }
 
 nav ul li > ul {
