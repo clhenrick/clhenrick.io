@@ -40,24 +40,12 @@
     <header>
       <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
       <a href="/" class="home-link">{{ metadata.title }}</a>
-      {#- eleventy-navigation: https://www.11ty.dev/docs/plugins/navigation/ #}
       <nav>
         <h2 class="visually-hidden">Top level navigation menu</h2>
         <ul class="nav" role="list">
-          {# to do: split into two separate lists for desktop #}
+          {% from "components/navListItem.njk" import renderNavListItem %}
           {% for entry in collections.all | eleventyNavigation %}
-            <li class="nav-item">
-              <a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
-              {% if entry.children.length %}
-                <ul role="list">
-                  {% for child in entry.children %}
-                    <li>
-                      <a href="{{ child.url }}"{% if child.url == page.url %} aria-current="page"{% endif %}>{{ child.title }}</a>
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
-            </li>
+            {{ renderNavListItem(entry) }}
           {% endfor %}
         </ul>
       </nav>
