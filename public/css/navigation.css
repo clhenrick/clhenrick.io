@@ -51,6 +51,10 @@ nav.open > ul {
   }
 }
 
+nav ul > li:nth-child(3n) {
+  margin-right: auto;
+}
+
 nav ul li > ul {
   position: absolute;
   display: flex;
