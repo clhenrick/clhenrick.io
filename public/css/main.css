@@ -23,6 +23,8 @@
 
   --desktop-max-width: 60rem;
   --main-nav-height: 3.875rem;
+
+  --focus-style-box-shadow: 0 0 0 3px var(--color-accent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -98,6 +100,14 @@ a[href]:visited {
 a[href]:hover,
 a[href]:active {
   color: var(--text-color-link-active);
+}
+
+a[href]:focus {
+  outline: none;
+}
+a[href]:focus-visible {
+  box-shadow: var(--focus-style-box-shadow);
+  text-decoration: none;
 }
 
 pre,

@@ -28,6 +28,11 @@ header a[href] {
   text-decoration: none;
 }
 
+header a[href]:focus-visible,
+header button.nav-button:focus-visible {
+  box-shadow: inset var(--focus-style-box-shadow);
+}
+
 header a[href].skip-link {
   position: absolute;
   top: var(--main-nav-height);

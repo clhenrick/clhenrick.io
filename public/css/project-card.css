@@ -81,7 +81,8 @@
 
 .card a[href],
 .card a[href]:visited,
-.card a[href]:hover {
+.card a[href]:hover,
+.card a[href]:focus {
   color: var(--text-color);
 }
 
@@ -92,6 +93,7 @@
 .card:focus-within a[href]:focus {
   text-decoration: none;
   outline: none;
+  box-shadow: none;
 }
 
 .card a::after {

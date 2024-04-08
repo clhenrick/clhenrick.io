@@ -29,14 +29,19 @@
   touch-action: manipulation;
   user-select: none;
   padding: 0.5rem 0.75rem;
-  border: 1px solid white;
+  background-color: transparent;
+  color: inherit;
+  border: none;
   border-radius: var(--border-radius);
   text-decoration: none;
   line-height: 1;
   cursor: pointer;
 }
 
+.button:focus {
+  outline: none;
+}
+
 .button:focus-visible {
-  outline: 2px solid magenta;
-  outline-offset: 2px;
+  box-shadow: var(--focus-style-box-shadow);
 }
