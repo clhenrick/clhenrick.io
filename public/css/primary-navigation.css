@@ -1,4 +1,6 @@
 header {
+  height: var(--main-nav-height);
+  overflow-y: hidden;
   max-width: none;
   position: relative;
   display: flex;
@@ -11,10 +13,27 @@ header {
   background-color: var(--background-color);
 }
 
+header.expanded {
+  height: auto;
+  overflow-y: auto;
+}
+
+header > nav {
+  height: 0;
+}
+
+header.expanded > nav {
+  height: auto;
+}
+
 @media screen and (min-width: 43rem) {
   header {
     flex-direction: row;
     height: var(--main-nav-height);
+  }
+
+  header > nav {
+    height: auto;
   }
 }
 
