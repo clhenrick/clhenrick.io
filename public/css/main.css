@@ -62,12 +62,12 @@ main,
 footer {
   max-width: var(--desktop-max-width);
   margin: 0 auto;
-  padding: 0 var(--padding);
   font-size: var(--font-size);
 }
 
 main {
   margin-top: var(--main-nav-height);
+  padding: 0 var(--padding);
 }
 
 main:first-child {
@@ -98,16 +98,6 @@ a[href]:visited {
 a[href]:hover,
 a[href]:active {
   color: var(--text-color-link-active);
-}
-
-a.skip-link:focus-visible {
-  height: auto;
-  width: auto;
-  clip: initial;
-  clip-path: initial;
-  overflow: initial;
-  position: initial;
-  white-space: initial;
 }
 
 pre,

@@ -1,12 +1,8 @@
 header {
   max-width: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  height: var(--main-nav-height);
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   line-height: var(--main-nav-height);
   background-color: var(--background-color);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
@@ -17,8 +13,13 @@ header {
 
 @media screen and (min-width: 43rem) {
   header {
-    justify-content: flex-start;
+    flex-direction: row;
+    height: var(--main-nav-height);
   }
+}
+
+header > div {
+  display: flex;
 }
 
 header a[href] {
@@ -27,15 +28,21 @@ header a[href] {
   text-decoration: none;
 }
 
-a[href].home-link {
-  padding-left: 0;
-}
-
-a[href].skip-link {
+header a[href].skip-link {
   position: absolute;
   top: var(--main-nav-height);
   left: 1rem;
   background-color: var(--background-color);
+  z-index: 1;
+}
+
+header a[href].skip-link:focus-visible {
+  height: auto;
+  width: auto;
+  clip: initial;
+  clip-path: initial;
+  overflow: initial;
+  white-space: initial;
 }
 
 button.nav-button {
@@ -55,11 +62,11 @@ button.nav-button {
 }
 
 nav > ul {
-  position: absolute;
-  top: var(--main-nav-height);
-  right: 1rem;
+  position: relative;
   display: flex;
   flex-direction: column;
+  text-align: center;
+  background-color: var(--background-color);
   z-index: 1;
 }
 
@@ -71,31 +78,52 @@ nav > ul.hidden {
   /* at 784px width switch to horizontal navigation */
   nav > ul {
     position: relative;
-    top: auto;
-    right: auto;
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    text-align: auto;
     z-index: auto;
   }
+}
+
+nav ul li a {
+  border-bottom: 1px solid;
 }
 
 @media screen and (min-width: 43rem) {
   nav ul > li:nth-child(3n) {
     margin-right: auto;
   }
+
+  nav ul li a {
+    border-bottom: none;
+  }
 }
 
-nav ul li > ul {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-  background-color: var(--background-color);
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  clip-path: inset(50%);
+@media screen and (min-width: 43rem) {
+  nav ul li > ul {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    background-color: var(--background-color);
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+  }
+}
+
+nav ul li,
+nav ul li a {
+  width: 100%;
+}
+
+@media screen and (min-width: 43rem) {
+  nav ul li,
+  nav ul li a {
+    width: auto;
+  }
 }
 
 nav ul li:focus-within > ul,
