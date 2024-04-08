@@ -27,6 +27,10 @@ header a[href] {
   text-decoration: none;
 }
 
+a[href].home-link {
+  padding-left: 0;
+}
+
 a[href].skip-link {
   position: absolute;
   top: var(--main-nav-height);
@@ -51,21 +55,28 @@ button.nav-button {
 }
 
 nav > ul {
-  position: relative;
-  display: none;
-}
-
-nav.open > ul {
+  position: absolute;
+  top: var(--main-nav-height);
+  right: 1rem;
   display: flex;
   flex-direction: column;
+  z-index: 1;
+}
+
+nav > ul.hidden {
+  display: none;
 }
 
 @media screen and (min-width: 43rem) {
   /* at 784px width switch to horizontal navigation */
   nav > ul {
+    position: relative;
+    top: auto;
+    right: auto;
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    z-index: auto;
   }
 }
 

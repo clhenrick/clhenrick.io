@@ -45,13 +45,13 @@
         class="button nav-button"
         aria-label="Navigation menu"
         aria-expanded="false"
-        aria-controls="primaryNav"
+        aria-controls="primary-nav-list"
       >
         Menu
       </button>
       <nav>
         <h2 class="visually-hidden">Top level navigation menu</h2>
-        <ul class="nav" role="list">
+        <ul id="primary-nav-list" class="nav-list" role="list">
           {% from "components/navListItem.njk" import renderNavListItem %}
           {% for entry in collections.all | eleventyNavigation %}
             {{ renderNavListItem(entry) }}
@@ -67,5 +67,6 @@
     <footer>
       {# This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} #}
     </footer>
+    <script defer src="/js/primary-navigation.js"></script>
   </body>
 </html>
