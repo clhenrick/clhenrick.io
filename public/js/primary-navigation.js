@@ -5,12 +5,11 @@
   const navList = document.querySelector("header nav > ul");
   const navLinks = Array.from(navList.querySelectorAll("li a"));
 
-  init();
+  window.addEventListener("DOMContentLoaded", init);
 
   function init() {
     smallViewportQuery.addEventListener("change", handleMediaQueryChange);
     handleMediaQueryChange(smallViewportQuery);
-    handleClickOutside();
   }
 
   function handleMediaQueryChange(event) {
