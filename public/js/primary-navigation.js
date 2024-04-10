@@ -1,9 +1,4 @@
 (() => {
-  // TODO:
-  // when focus leaves list via tab, close list
-  // when the user clicks outside the list, close the list
-  // when the user hits the escape key, close the list, return focus to menu button
-
   const smallViewportQuery = window.matchMedia("(max-width: 42.9rem");
   const navigationMenuButton = document.querySelector("button.nav-button");
   const navList = document.querySelector("header nav > ul");
@@ -29,6 +24,7 @@
   function setUpNavigation() {
     navList.classList.add("hidden");
     navList.addEventListener("keydown", handleKeyboardEvent);
+    navLinks[navLinks.length - 1].addEventListener("blur", handleLastLinkBlur);
   }
 
   function handleKeyboardEvent(event) {
@@ -93,6 +89,12 @@
   function closeNavigation() {
     navigationMenuButton.setAttribute("aria-expanded", false);
     navList.classList.add("hidden");
+  }
+
+  function handleLastLinkBlur(event) {
+    if (!event.relatedTarget || navLinks.indexOf(event.relatedTarget) === -1) {
+      closeNavigation();
+    }
   }
 
   function handleClickOutside() {
