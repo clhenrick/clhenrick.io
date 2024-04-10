@@ -11,18 +11,66 @@
 
   smallViewportQuery.addEventListener("change", handleMediaQueryChange);
   handleMediaQueryChange(smallViewportQuery);
+  handleClickOutside();
 
   function handleMediaQueryChange(event) {
     if (event.matches) {
       setUpNavMenuButton();
+      setUpNavigation();
     } else {
       navList.classList.remove("hidden");
     }
   }
 
   function setUpNavMenuButton() {
-    navList.classList.add("hidden");
     navigationMenuButton.addEventListener("click", toggleNavigation);
+  }
+
+  function setUpNavigation() {
+    navList.classList.add("hidden");
+    navList.addEventListener("keydown", handleKeyboardEvent);
+  }
+
+  function handleKeyboardEvent(event) {
+    let flag = false;
+    switch (event.key) {
+      case "Escape":
+        closeNavigation();
+        navigationMenuButton.focus();
+        break;
+      case "ArrowUp":
+      case "ArrowLeft":
+        goPrevious();
+        flag = true;
+        break;
+      case "ArrowDown":
+      case "ArrowRight":
+        goNext();
+        flag = true;
+        break;
+      case "Home":
+        navLinks[0].focus();
+        flag = true;
+        break;
+      case "End":
+        navLinks[navLinks.length - 1].focus();
+        flag = true;
+        break;
+    }
+    if (flag) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+
+  function goPrevious() {
+    const curIndex = navLinks.indexOf(document.activeElement);
+    if (curIndex > 0) navLinks[curIndex - 1].focus();
+  }
+
+  function goNext() {
+    const curIndex = navLinks.indexOf(document.activeElement);
+    if (curIndex < navLinks.length - 1) navLinks[curIndex + 1].focus();
   }
 
   function toggleNavigation() {
