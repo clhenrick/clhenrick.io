@@ -1,4 +1,6 @@
 header {
+  /* keeps the nav list dropdown a similar width to its corresponding link / list item */
+  --min-nav-link-width: 6rem;
   max-width: none;
   position: relative;
   display: flex;
@@ -96,11 +98,12 @@ nav ul li a {
 }
 
 @media screen and (min-width: 43rem) {
-  nav ul > li:nth-child(3n) {
-    margin-right: auto;
+  nav ul > li:nth-child(4n) {
+    margin-left: auto;
   }
 
   nav ul li a {
+    min-width: var(--min-nav-link-width);
     border-bottom: none;
   }
 }
@@ -117,6 +120,16 @@ nav ul li a {
     height: 1px;
     clip-path: inset(50%);
   }
+
+  nav ul li:focus-within > ul,
+  nav ul li:hover > ul {
+    overflow: auto;
+    min-width: var(--min-nav-link-width);
+    width: auto;
+    height: auto;
+    clip-path: none;
+  }
+
 }
 
 nav ul li,
@@ -129,12 +142,4 @@ nav ul li a {
   nav ul li a {
     width: auto;
   }
-}
-
-nav ul li:focus-within > ul,
-nav ul li:hover > ul {
-  overflow: auto;
-  width: auto;
-  height: auto;
-  clip-path: none;
 }
