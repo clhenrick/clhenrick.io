@@ -95,5 +95,18 @@
     navList.classList.add("hidden");
   }
 
-  // function handleBlur(event) {}
+  function handleClickOutside() {
+    document.body.addEventListener("click", (event) => {
+      if (
+        event.target === navigationMenuButton ||
+        event.target === navList ||
+        navLinks.indexOf(event.target) > -1
+      ) {
+        return;
+      }
+      if (!isNavigationHidden()) {
+        closeNavigation();
+      }
+    });
+  }
 })();
