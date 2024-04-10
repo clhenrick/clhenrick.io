@@ -1,12 +1,19 @@
 (() => {
   // TODO:
-  // when focus leaves list via tab, close list?
-  // when the user clicks outside the list, close the list?
+  // when focus leaves list via tab, close list
+  // when the user clicks outside the list, close the list
   // when the user hits the escape key, close the list, return focus to menu button
 
   const smallViewportQuery = window.matchMedia("(max-width: 42.9rem");
-  const header = document.querySelector("header.primary");
+  console.log(smallViewportQuery.matches);
+
   const navigationMenuButton = document.querySelector("button.nav-button");
+  console.log(navigationMenuButton);
+
+  const navList = document.querySelector("header nav > ul");
+  navList.classList.add("hidden");
+
+  const navLinks = navList.querySelectorAll("li a");
 
   smallViewportQuery.addEventListener("change", handleMediaQueryChange);
   handleMediaQueryChange(smallViewportQuery);
@@ -15,31 +22,32 @@
     if (event.matches) {
       setUpNavMenuButton();
     } else {
-      if (header.classList.contains("expanded")) {
-        header.classList.remove("expanded");
-      }
+      navList.classList.remove("hidden");
     }
   }
 
   function setUpNavMenuButton() {
+    navList.classList.add("hidden");
     navigationMenuButton.addEventListener("click", toggleNavigation);
   }
 
   function toggleNavigation() {
-    if (header.classList.contains("expanded")) {
-      closeNavigation();
-    } else {
+    if (navList.classList.contains("hidden")) {
       openNavigation();
+    } else {
+      closeNavigation();
     }
   }
 
   function openNavigation() {
     navigationMenuButton.setAttribute("aria-expanded", true);
-    header.classList.add("expanded");
+    navList.classList.remove("hidden");
   }
 
   function closeNavigation() {
     navigationMenuButton.setAttribute("aria-expanded", false);
-    header.classList.remove("expanded");
+    navList.classList.add("hidden");
   }
+
+  // function handleBlur(event) {}
 })();
