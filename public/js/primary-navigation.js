@@ -1,12 +1,17 @@
 (() => {
+  // NOTE: corresponds to `min-width: 43rem` breakpoint in primary-navigation.css
   const smallViewportQuery = window.matchMedia("(max-width: 42.9rem");
   const navigationMenuButton = document.querySelector("button.nav-button");
   const navList = document.querySelector("header nav > ul");
   const navLinks = Array.from(navList.querySelectorAll("li a"));
 
-  smallViewportQuery.addEventListener("change", handleMediaQueryChange);
-  handleMediaQueryChange(smallViewportQuery);
-  handleClickOutside();
+  init();
+
+  function init() {
+    smallViewportQuery.addEventListener("change", handleMediaQueryChange);
+    handleMediaQueryChange(smallViewportQuery);
+    handleClickOutside();
+  }
 
   function handleMediaQueryChange(event) {
     if (event.matches) {
@@ -97,6 +102,7 @@
     }
   }
 
+  // FIXME: should only be added when media query breakpoint is met!
   function handleClickOutside() {
     document.body.addEventListener("click", (event) => {
       if (
