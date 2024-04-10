@@ -17,8 +17,10 @@
     if (event.matches) {
       setUpNavMenuButton();
       setUpNavigation();
+      document.body.addEventListener("click", handleClickOutside);
     } else {
       navList.classList.remove("hidden");
+      document.body.removeEventListener("click", handleClickOutside);
     }
   }
 
@@ -102,19 +104,16 @@
     }
   }
 
-  // FIXME: should only be added when media query breakpoint is met!
-  function handleClickOutside() {
-    document.body.addEventListener("click", (event) => {
-      if (
-        event.target === navigationMenuButton ||
-        event.target === navList ||
-        navLinks.indexOf(event.target) > -1
-      ) {
-        return;
-      }
-      if (!isNavigationHidden()) {
-        closeNavigation();
-      }
-    });
+  function handleClickOutside(event) {
+    if (
+      event.target === navigationMenuButton ||
+      event.target === navList ||
+      navLinks.indexOf(event.target) > -1
+    ) {
+      return;
+    }
+    if (!isNavigationHidden()) {
+      closeNavigation();
+    }
   }
 })();
