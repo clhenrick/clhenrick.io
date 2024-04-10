@@ -13,7 +13,7 @@ header {
   background-color: var(--background-color);
 }
 
-@media screen and (min-width: 43rem) {
+@media screen and (min-width: 46.75rem) {
   header {
     flex-direction: row;
     height: var(--main-nav-height);
@@ -56,13 +56,13 @@ button.nav-button {
   margin-left: auto;
 }
 
-@media screen and (min-width: 43rem) {
+@media screen and (min-width: 46.75rem) {
   button.nav-button {
     display: none;
   }
 }
 
-@media screen and (min-width: 43rem) {
+@media screen and (min-width: 46.75rem) {
   nav {
     flex-grow: 1;
   }
@@ -81,7 +81,7 @@ nav > ul.hidden {
   display: none;
 }
 
-@media screen and (min-width: 43rem) {
+@media screen and (min-width: 46.75rem) {
   /* at 784px width switch to horizontal navigation */
   nav > ul {
     position: relative;
@@ -97,8 +97,8 @@ nav ul li a {
   border-bottom: 1px solid;
 }
 
-@media screen and (min-width: 43rem) {
-  nav ul > li:nth-child(4n) {
+@media screen and (min-width: 46.75rem) {
+  nav ul > li:nth-last-child(2) {
     margin-left: auto;
   }
 
@@ -108,7 +108,7 @@ nav ul li a {
   }
 }
 
-@media screen and (min-width: 43rem) {
+@media screen and (min-width: 46.75rem) {
   nav ul li > ul {
     position: absolute;
     display: flex;
@@ -137,7 +137,7 @@ nav ul li a {
   width: 100%;
 }
 
-@media screen and (min-width: 43rem) {
+@media screen and (min-width: 46.75rem) {
   nav ul li,
   nav ul li a {
     width: auto;
