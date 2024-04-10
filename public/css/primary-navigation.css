@@ -18,22 +18,9 @@ header.expanded {
   overflow-y: auto;
 }
 
-header > nav {
-  height: 0;
-}
-
-header.expanded > nav {
-  height: auto;
-}
-
 @media screen and (min-width: 43rem) {
   header {
     flex-direction: row;
-    height: var(--main-nav-height);
-  }
-
-  header > nav {
-    height: auto;
   }
 }
 
