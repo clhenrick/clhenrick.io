@@ -5,15 +5,9 @@
   // when the user hits the escape key, close the list, return focus to menu button
 
   const smallViewportQuery = window.matchMedia("(max-width: 42.9rem");
-  console.log(smallViewportQuery.matches);
-
   const navigationMenuButton = document.querySelector("button.nav-button");
-  console.log(navigationMenuButton);
-
   const navList = document.querySelector("header nav > ul");
-  navList.classList.add("hidden");
-
-  const navLinks = navList.querySelectorAll("li a");
+  const navLinks = Array.from(navList.querySelectorAll("li a"));
 
   smallViewportQuery.addEventListener("change", handleMediaQueryChange);
   handleMediaQueryChange(smallViewportQuery);
@@ -32,11 +26,15 @@
   }
 
   function toggleNavigation() {
-    if (navList.classList.contains("hidden")) {
+    if (isNavigationHidden()) {
       openNavigation();
     } else {
       closeNavigation();
     }
+  }
+
+  function isNavigationHidden() {
+    return navList.classList.contains("hidden");
   }
 
   function openNavigation() {
