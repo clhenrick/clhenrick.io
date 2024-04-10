@@ -52,6 +52,27 @@ header a[href].skip-link:focus-visible {
   white-space: initial;
 }
 
+@media screen and (min-width: 46.75rem) {
+  /* down arrow for menu items with nested children */
+  header nav a[href].with-arrow-down {
+    position: relative;
+  }
+
+  header nav a[href].with-arrow-down::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 2.5px;
+    top: 1.9375rem;
+    margin-top: -2.5px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid currentColor;
+  }
+}
+
 button.nav-button {
   margin-left: auto;
 }

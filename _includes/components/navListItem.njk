@@ -1,7 +1,13 @@
 {# renders a nav list item for the primary / top-level desktop navigation #}
 {% macro renderNavListItem(entry) %}
 <li class="nav-item">
-  <a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
+  <a
+    {% if entry.children.length %} class="with-arrow-down" {% endif %}
+    href="{{ entry.url }}"
+    {% if entry.url == page.url %} aria-current="page"{% endif %}
+  >
+  {{ entry.title }}
+  </a>
   {% if entry.children.length %}
     <ul role="list">
       {% for child in entry.children %}
