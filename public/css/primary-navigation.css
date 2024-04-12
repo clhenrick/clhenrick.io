@@ -97,7 +97,6 @@ button.nav-button {
   display: none;
   text-align: center;
   background-color: var(--background-color);
-  z-index: 1;
 }
 
 .js-enabled nav > ul.expanded {
@@ -113,8 +112,7 @@ button.nav-button {
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    text-align: auto;
-    z-index: auto;
+    text-align: start;
   }
 }
 
@@ -138,7 +136,6 @@ nav ul li a {
     position: absolute;
     display: flex;
     flex-direction: column;
-    z-index: 1;
     background-color: var(--background-color);
     overflow: hidden;
     width: 1px;
