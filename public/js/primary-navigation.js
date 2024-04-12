@@ -75,12 +75,13 @@
     if (curIndex < navLinks.length - 1) navLinks[curIndex + 1].focus();
   }
 
-  function toggleNavigation() {
+  function toggleNavigation(event) {
     if (isNavigationOpen()) {
       closeNavigation();
     } else {
       openNavigation();
     }
+    event.stopPropagation();
   }
 
   function isNavigationOpen() {
@@ -104,14 +105,6 @@
   }
 
   function handleClickOutside(event) {
-    if (
-      event.target === navigationMenuButton ||
-      event.target.parentElement === navigationMenuButton ||
-      event.target === navList ||
-      navLinks.indexOf(event.target) > -1
-    ) {
-      return;
-    }
     if (isNavigationOpen()) {
       closeNavigation();
     }
