@@ -89,7 +89,7 @@ button.nav-button {
   }
 }
 
-nav > ul {
+.js-enabled nav > ul {
   position: relative;
   display: none;
   text-align: center;
@@ -97,7 +97,7 @@ nav > ul {
   z-index: 1;
 }
 
-nav > ul.expanded {
+.js-enabled nav > ul.expanded {
   display: flex;
   flex-direction: column;
 }
