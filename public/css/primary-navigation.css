@@ -108,6 +108,7 @@ button.nav-button {
 
 @media screen and (min-width: 46.75rem) {
   /* at 784px width switch to horizontal navigation */
+  .js-enabled nav > ul,
   nav > ul {
     position: relative;
     display: flex;
