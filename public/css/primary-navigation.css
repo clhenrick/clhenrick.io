@@ -1,5 +1,5 @@
 header {
-  /* keeps the nav list dropdown a similar width to its corresponding link / list item */
+  /* NOTE: keeps the nav list dropdown a similar width to its corresponding link / list item */
   --min-nav-link-width: 6rem;
   max-width: none;
   position: relative;
@@ -10,7 +10,6 @@ header {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   isolation: isolate;
   z-index: 1;
-  background-color: var(--background-color);
 }
 
 @media screen and (min-width: 46.75rem) {
