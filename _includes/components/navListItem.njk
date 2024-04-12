@@ -11,7 +11,7 @@
   {% if entry.children.length %}
     <ul role="list">
       {% for child in entry.children %}
-        {{ renderNavListItem(child) }}
+        {{ renderNavListItem(child, pageUrl) }}
       {% endfor %}
     </ul>
   {% endif %}
