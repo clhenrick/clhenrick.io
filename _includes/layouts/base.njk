@@ -54,8 +54,8 @@
           Menu
         </button>
       </div>
-      <nav>
-        <h2 class="visually-hidden">Top level navigation menu</h2>
+      <nav aria-labelledby="nav-title">
+        <h2 id="nav-title" class="visually-hidden">Main navigation</h2>
         <ul id="primary-nav-list" class="nav-list" role="list">
           {% from "components/navListItem.njk" import renderNavListItem %}
           {% for entry in collections.all | eleventyNavigation %}
