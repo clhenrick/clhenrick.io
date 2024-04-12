@@ -20,6 +20,8 @@
     } else {
       navList.classList.remove("expanded");
       document.body.removeEventListener("click", handleClickOutside);
+      undoNavMenuButtonSetup();
+      undoNavigationSetup();
     }
   }
 
@@ -27,8 +29,16 @@
     navigationMenuButton.addEventListener("click", toggleNavigation);
   }
 
+  function undoNavMenuButtonSetup() {
+    navigationMenuButton.removeEventListener("click", toggleNavigation);
+  }
+
   function setUpNavigation() {
     navList.addEventListener("keydown", handleKeyboardEvent);
+  }
+
+  function undoNavigationSetup() {
+    navList.removeEventListener("keydown", handleKeyboardEvent);
   }
 
   function handleKeyboardEvent(event) {
