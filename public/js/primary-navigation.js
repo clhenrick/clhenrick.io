@@ -29,7 +29,6 @@
 
   function setUpNavigation() {
     navList.addEventListener("keydown", handleKeyboardEvent);
-    navLinks[navLinks.length - 1].addEventListener("blur", handleLastLinkBlur);
   }
 
   function handleKeyboardEvent(event) {
@@ -95,12 +94,6 @@
   function closeNavigation() {
     navigationMenuButton.setAttribute("aria-expanded", false);
     navList.classList.remove("expanded");
-  }
-
-  function handleLastLinkBlur(event) {
-    if (!event.relatedTarget || navLinks.indexOf(event.relatedTarget) === -1) {
-      closeNavigation();
-    }
   }
 
   function handleClickOutside(event) {
