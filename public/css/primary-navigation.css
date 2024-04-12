@@ -91,15 +91,15 @@ button.nav-button {
 
 nav > ul {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: none;
   text-align: center;
   background-color: var(--background-color);
   z-index: 1;
 }
 
-nav > ul.hidden {
-  display: none;
+nav > ul.expanded {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 46.75rem) {

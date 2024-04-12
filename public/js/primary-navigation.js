@@ -18,7 +18,7 @@
       setUpNavigation();
       document.body.addEventListener("click", handleClickOutside);
     } else {
-      navList.classList.remove("hidden");
+      navList.classList.remove("expanded");
       document.body.removeEventListener("click", handleClickOutside);
     }
   }
@@ -28,7 +28,6 @@
   }
 
   function setUpNavigation() {
-    navList.classList.add("hidden");
     navList.addEventListener("keydown", handleKeyboardEvent);
     navLinks[navLinks.length - 1].addEventListener("blur", handleLastLinkBlur);
   }
@@ -76,25 +75,25 @@
   }
 
   function toggleNavigation() {
-    if (isNavigationHidden()) {
-      openNavigation();
-    } else {
+    if (isNavigationOpen()) {
       closeNavigation();
+    } else {
+      openNavigation();
     }
   }
 
-  function isNavigationHidden() {
-    return navList.classList.contains("hidden");
+  function isNavigationOpen() {
+    return navList.classList.contains("expanded");
   }
 
   function openNavigation() {
     navigationMenuButton.setAttribute("aria-expanded", true);
-    navList.classList.remove("hidden");
+    navList.classList.add("expanded");
   }
 
   function closeNavigation() {
     navigationMenuButton.setAttribute("aria-expanded", false);
-    navList.classList.add("hidden");
+    navList.classList.remove("expanded");
   }
 
   function handleLastLinkBlur(event) {
@@ -111,7 +110,7 @@
     ) {
       return;
     }
-    if (!isNavigationHidden()) {
+    if (isNavigationOpen()) {
       closeNavigation();
     }
   }
