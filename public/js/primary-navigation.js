@@ -8,7 +8,6 @@
   window.addEventListener("DOMContentLoaded", init);
 
   function init() {
-    document.body.classList.add("js-enabled");
     smallViewportQuery.addEventListener("change", handleMediaQueryChange);
     handleMediaQueryChange(smallViewportQuery);
   }
