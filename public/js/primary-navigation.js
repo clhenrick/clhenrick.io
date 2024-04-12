@@ -59,11 +59,11 @@
         flag = true;
         break;
       case "Home":
-        navLinks[0].focus();
+        goFirst();
         flag = true;
         break;
       case "End":
-        navLinks[navLinks.length - 1].focus();
+        goLast();
         flag = true;
         break;
     }
@@ -75,12 +75,24 @@
 
   function goPrevious() {
     const curIndex = navLinks.indexOf(document.activeElement);
-    if (curIndex > 0) navLinks[curIndex - 1].focus();
+    if (curIndex > 0) {
+      navLinks[curIndex - 1].focus();
+    }
   }
 
   function goNext() {
     const curIndex = navLinks.indexOf(document.activeElement);
-    if (curIndex < navLinks.length - 1) navLinks[curIndex + 1].focus();
+    if (curIndex !== -1 && curIndex < navLinks.length - 1) {
+      navLinks[curIndex + 1].focus();
+    }
+  }
+
+  function goFirst() {
+    navLinks[0].focus();
+  }
+
+  function goLast() {
+    navLinks[navLinks.length - 1].focus();
   }
 
   function toggleNavigation(event) {
