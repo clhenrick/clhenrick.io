@@ -68,7 +68,6 @@ footer {
 }
 
 main {
-  margin-top: var(--main-nav-height);
   padding: 0 var(--padding);
 }
 
