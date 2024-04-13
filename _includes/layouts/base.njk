@@ -24,7 +24,7 @@
     {#- Add the contents of a file to the bundle #}
     {%- css %}{% include "public/css/reset.css" %}{% endcss %}
     {%- css %}{% include "public/css/main.css" %}{% endcss %}
-    {%- css %}{% include "public/css/navigation.css" %}{% endcss %}
+    {%- css %}{% include "public/css/primary-navigation.css" %}{% endcss %}
     {%- css %}{% include "public/css/utils.css" %}{% endcss %}
     {#- Or add from node_modules #}
     {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
@@ -37,29 +37,39 @@
     {#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
   </head>
   <body>
+    <script>
+      document.body.classList.add("js-enabled");
+    </script>
     <header>
-      <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
-      {#- eleventy-navigation: https://www.11ty.dev/docs/plugins/navigation/ #}
-      <nav>
-        <h2 class="visually-hidden">Top level navigation menu</h2>
-        <ul class="nav" role="list">
-          <li>
-            <a href="/" class="home-link">{{ metadata.title }}</a>
-          </li>
-          {# to do: split into two separate lists for desktop #}
+      <div>
+        <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
+        <a href="/" class="home-link">{{ metadata.title }}</a>
+        <button
+          id="nav-menu"
+          class="button nav-button"
+          aria-expanded="false"
+          aria-controls="primary-nav-list"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="currentColor"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+          </svg>
+          <span>Menu</span>
+        </button>
+      </div>
+      <nav aria-labelledby="nav-title">
+        <h2 id="nav-title" class="visually-hidden">Main navigation</h2>
+        <ul id="primary-nav-list" class="nav-list" role="list">
+          {% from "components/navListItem.njk" import renderNavListItem %}
           {% for entry in collections.all | eleventyNavigation %}
-            <li class="nav-item">
-              <a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
-              {% if entry.children.length %}
-                <ul role="list">
-                  {% for child in entry.children %}
-                    <li>
-                      <a href="{{ child.url }}"{% if child.url == page.url %} aria-current="page"{% endif %}>{{ child.title }}</a>
-                    </li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
-            </li>
+            {{ renderNavListItem(entry, page.url) }}
           {% endfor %}
         </ul>
       </nav>
@@ -72,5 +82,6 @@
     <footer>
       {# This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} #}
     </footer>
+    <script defer src="/js/primary-navigation.js"></script>
   </body>
 </html>

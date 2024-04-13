@@ -22,7 +22,9 @@
   --border-radius: 0.1875rem;
 
   --desktop-max-width: 60rem;
-  --main-nav-height: 3.125rem;
+  --main-nav-height: 3.875rem;
+
+  --focus-style-box-shadow: 0 0 0 3px var(--color-accent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -62,12 +64,11 @@ main,
 footer {
   max-width: var(--desktop-max-width);
   margin: 0 auto;
-  padding: 0 var(--padding);
   font-size: var(--font-size);
 }
 
 main {
-  margin-top: var(--main-nav-height);
+  padding: 0 var(--padding);
 }
 
 main:first-child {
@@ -100,14 +101,12 @@ a[href]:active {
   color: var(--text-color-link-active);
 }
 
-a.skip-link:focus-visible {
-  height: auto;
-  width: auto;
-  clip: initial;
-  clip-path: initial;
-  overflow: initial;
-  position: initial;
-  white-space: initial;
+a[href]:focus {
+  outline: none;
+}
+a[href]:focus-visible {
+  box-shadow: var(--focus-style-box-shadow);
+  text-decoration: none;
 }
 
 pre,

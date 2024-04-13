@@ -9,7 +9,7 @@ section {
 
 .banner {
   width: 100%;
-  aspect-ratio: 5 / 1;
+  aspect-ratio: 4 / 1;
   display: flex;
   align-items: center;
   justify-content: center;

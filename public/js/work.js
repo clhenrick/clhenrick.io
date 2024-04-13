@@ -2,7 +2,7 @@
   const cards = Array.from(document.querySelectorAll(".card"));
   const cardsContainer = document.querySelector(".cards-container");
 
-  const filterButtons = Array.from(document.querySelectorAll("button")).filter(
+  const filterButtons = Array.from(document.querySelectorAll("button.filter")).filter(
     (button) => button.value !== "shuffle"
   );
   const shuffleButton = document.querySelector("button[value='shuffle']");
