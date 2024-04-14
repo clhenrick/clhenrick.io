@@ -293,8 +293,8 @@ H.registerHelper('if', function(conditional, options) {
 
 The Handlebars HTML template looks like this:
 
-{% raw %}
 ```hbs
+{% raw %}
 <div class="org-container">
   <a href="#close" title="Close" class="close">X</a>
   <h1>
@@ -322,8 +322,8 @@ The Handlebars HTML template looks like this:
     </div>
   {{/each}}
 </div>
-```
 {% endraw %}
+```
 
 That's about it, thanks for reading and please feel free to [ping me]({{site.url}}/contact) if you have any questions or comments.
 
