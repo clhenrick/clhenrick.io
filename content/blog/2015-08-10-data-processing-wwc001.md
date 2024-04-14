@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/data-processing-wwc001.html, /data-processing-wwc001/]
 title: Data Processing Methodology for "Tracking the Energy Titans"
 # layout: page
 date: 2015-08-10

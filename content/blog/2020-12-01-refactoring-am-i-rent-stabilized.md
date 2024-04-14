@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/refactoring-am-i-rent-stabilized.html, /refactoring-am-i-rent-stabilized/]
 title: "Refactoring Am I Rent Stabilized"
 # layout: page
 date: 2020-12-01

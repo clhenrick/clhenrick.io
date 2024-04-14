@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/aws-lambda-tile-generator.html, /aws-lambda-tile-generator/]
 title: Introducing the AWS Lambda Tiler
 # layout: page
 date: 2016-12-05

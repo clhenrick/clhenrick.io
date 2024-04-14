@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/using-the-js-modular-pattern.html, /using-the-js-modular-pattern/]
 title: Using the Module Pattern in JavaScript Programming
 # layout: page
 date: 2015-11-15

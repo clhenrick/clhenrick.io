@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/using-cartodb-and-datatables.html, /using-cartodb-and-datatables/]
 title: Using CartoDB for creating data driven web pages
 # layout: page
 date: 2015-10-07

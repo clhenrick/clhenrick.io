@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/color-legend-element.html, /color-legend-element/]
 title: "Introducing &lt;color-legend-element />"
 # layout: page
 header: no

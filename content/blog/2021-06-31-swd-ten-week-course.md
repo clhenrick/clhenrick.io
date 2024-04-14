@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/swd-ten-week-course.html, /swd-ten-week-course/]
 title: "Storytelling With Data ten week course"
 # layout: page
 date: 2021-06-31

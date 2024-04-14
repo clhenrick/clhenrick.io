@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/observable-notebook-embed.html, /observable-notebook-embed/]
 title: Embedding An Observable Notebook
 # layout: page
 date: 2018-05-26

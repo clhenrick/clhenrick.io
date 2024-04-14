@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/airs-data-processing.html, /airs-data-processing/]
 title: Data processing methodology for Am I Rent Stabilized.com
 # layout: page
 date: 2015-06-01

@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/wrangling-311-data.html, /wrangling-311-data/]
 title: Wrangling NYC's 311 data
 # layout: page
 date: 2015-06-03

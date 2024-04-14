@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/accessible-select-element.html, /accessible-select-element/]
 title: "Custom and Accessible Select Menus Aren't Easy: Part One"
 # layout: page
 header: no

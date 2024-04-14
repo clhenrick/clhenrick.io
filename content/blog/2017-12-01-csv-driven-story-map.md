@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/csv-driven-story-map.html, /csv-driven-story-map/]
 title: "Notes on Building a CSV Powered Story Map"
 # layout: page
 date: 2017-12-01

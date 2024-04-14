@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/d3-for-print-carto.html, /d3-for-print-carto.html/]
 title: D3JS for Print Cartography
 # layout: page
 date: 2018-09-17

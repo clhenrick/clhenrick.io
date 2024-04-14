@@ -1,4 +1,5 @@
 ---
+redirectFrom: [/es6-spread-operator-mishap.html, /es6-spread-operator-mishap/]
 title: Avoiding Mishaps with the ES6 Spread Operator
 # layout: page
 date: 2017-06-24
