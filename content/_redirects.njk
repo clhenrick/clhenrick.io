@@ -2,7 +2,6 @@
 permalink: /_redirects
 eleventyExcludeFromCollections: true
 ---
-{# adds Netlify redirect instructions for all pages with a `redirectFrom : <url>` in the front matter #}
-{% for page in collections.all %}{% if page.url and page.data.redirectFrom %}
-{{ page.data.redirectFrom }}  {{ page.url }}
-{% endif %}{% endfor %}
+{# NOTE: adds Netlify redirect instructions for all pages with a `redirectFrom : <url>` in the front matter #}
+{% for page in collections.all %}{% if page.url and page.data.redirectFrom %}{% for oldUrl in page.data.redirectFrom %}
+{{ oldUrl }}  {{ page.url }}{% endfor %}{% endif %}{% endfor %}
