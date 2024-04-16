@@ -185,4 +185,4 @@ There are some drawbacks to this approach, of course, and I wouldn't recommend i
 
 - If you are planning on creating many, many graphics for print you probably don't want to use a manual process like SVG Crowbar. In this case you may want to look at using [Headless Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome), a tool that lets you use the Chrome web browser programmatically from the command line or via NodeJS.
 
-Happy map making with D3JS! If you found any of this useful or have any suggestions, clarifications, or questions please feel free to reach out to me via [the contact form]({{ site.url }}{{ site.baseurl }}/contact) on this site.
+Happy map making with D3JS! If you found any of this useful or have any suggestions, clarifications, or questions please feel free to reach out to me via [the contact form](/contact/) on this site.
