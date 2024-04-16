@@ -4,7 +4,6 @@ title: "Storytelling With Data ten week course"
 # layout: page
 date: 2021-06-31
 teaser: "Reflections on and learnings from completing the SWD ten week course."
-header: no
 tags:
   - Data Visualization
   - Design

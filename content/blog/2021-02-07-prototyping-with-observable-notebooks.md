@@ -4,7 +4,6 @@ title: "Observable Notebooks for Data Viz Prototyping"
 # layout: page
 date: 2021-02-06
 teaser: "Elaborating on a prototyping process for a fellowship with Google.org"
-header: no
 tags:
   - Observable Notebooks
   - Data Visualization

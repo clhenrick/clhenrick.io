@@ -4,7 +4,6 @@ title: Introducing the AWS Lambda Tiler
 # layout: page
 date: 2016-12-05
 teaser: "Server-Free Web Map Tile Generation"
-header: no
 tags:
   - AWS
   - AWS Lambda

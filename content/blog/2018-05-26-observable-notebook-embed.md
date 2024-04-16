@@ -4,7 +4,6 @@ title: Embedding An Observable Notebook
 # layout: page
 date: 2018-05-26
 teaser: "Observable: Reactive programming meets data analysis and visualization on the web"
-header: no
 tags:
   - JavaScript
   - Observable Notebooks

@@ -4,7 +4,6 @@ title: "Refactoring Am I Rent Stabilized"
 # layout: page
 date: 2020-12-01
 teaser: "Revisiting the code of a five year old project."
-header: no
 tags:
   - JavaScript
   - Refactoring

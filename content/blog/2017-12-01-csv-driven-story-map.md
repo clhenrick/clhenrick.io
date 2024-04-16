@@ -4,7 +4,6 @@ title: "Notes on Building a CSV Powered Story Map"
 # layout: page
 date: 2017-12-01
 teaser: "How I used the venerable Comma Separated Value file format in conjunction with modern front-end web technologies to create an interactive story map for Canopy."
-header: no
 tags:
   - JavaScript
   - React

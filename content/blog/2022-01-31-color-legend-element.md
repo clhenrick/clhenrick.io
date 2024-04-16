@@ -2,7 +2,6 @@
 redirectFrom: [/color-legend-element.html, /color-legend-element/]
 title: "Introducing &lt;color-legend-element />"
 # layout: page
-header: no
 date: 2022-01-31
 teaser: "Notes on building a legend UI component using Lit, D3JS, and TypeScript"
 tags:
