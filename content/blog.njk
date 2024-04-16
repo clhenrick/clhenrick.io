@@ -1,25 +1,19 @@
----js
-{
-  title: "Blog",
-  description: "The blog of Chris Henrick",
-  layout: "layouts/home.njk",
-  eleventyNavigation: {
-    key: "Blog",
-    order: 4
-  },
-  pagination: {
-    data: "collections.posts",
-    size: 3,
-    alias: "posts",
-    reverse: true,
-    before: function(paginationData, fullData) {
-      return paginationData;
-    }
-  }
-}
 ---
-
+title: "Blog"
+description: "The blog of Chris Henrick"
+layout: layouts/home.njk
+eleventyNavigation:
+  key: "Blog"
+  order: 4
+pagination:
+  data: "collections.posts"
+  size: 3
+  alias: "posts"
+  reverse: true
+---
 <h1>Blog</h1>
+{%- set pageIndex = pagination.hrefs | findIndex(page.url) %}
+<p>Page {{ pageIndex + 1 }} of {{ pagination.pages.length }}</p>
 
 {%- for post in posts %}
   <section>
@@ -41,4 +35,5 @@
 {%- endfor %}
     <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
   </ol>
+  <a href="/blog/archive/">Blog Archive</a>
 </nav>
