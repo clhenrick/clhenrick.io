@@ -80,6 +80,10 @@ module.exports = function (eleventyConfig) {
     return `<div class="md-block">${markdown.render(value)}</div>`;
   });
 
+  eleventyConfig.addFilter("findIndex", (array, target) => {
+    return array.findIndex((item) => item === target);
+  });
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
