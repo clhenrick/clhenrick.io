@@ -26,7 +26,7 @@ tags:
   }
 </style>
 
-<img alt="Animation showing the Color Legend Element's many variants." src="{{ site.url }}{{ site.baseurl }}/images/color-legend-element-2022-01-22.gif">
+<img alt="Animation showing the Color Legend Element's many variants." src="/img/color-legend-element-2022-01-22.gif">
 
 I recently [open sourced and launched](https://twitter.com/chrislhenrick/status/1484987005020766208?s=20) version 1.0 of [Color Legend Element][cle-github], a [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) that's intended to be used as a legend with data visualizations. I'm fairly satisified with its current functionality which covers common use cases when visualizing continuous, discrete, or categorical data. It's API (attributes and properties) makes it fairly straight forward to use (IMHO) and it is well documented in the [CLE website][cle-website], [Observable Notebook][cle-notebook], and [Github repository][cle-github].
 

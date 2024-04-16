@@ -13,9 +13,9 @@ tags:
   - Testing
 ---
 
-<img class="lazy" data-original="{{site.url}}{{site.baseurl}}/images/airs01.jpg" width="100%" alt="Am I Rent Stabilized home page">
+<img loading="lazy" src="/img/airs01.jpg" width="100%" alt="Am I Rent Stabilized home page">
 <noscript>
-  <img src="{{site.url}}{{site.baseurl}}/images/airs01.jpg" width="100%" alt="Am I Rent Stabilized home page">
+  <img src="/img/airs01.jpg" width="100%" alt="Am I Rent Stabilized home page">
 </noscript>
 
 ## Motivation

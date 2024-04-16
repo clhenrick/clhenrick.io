@@ -16,7 +16,7 @@ tags:
   - Heroku
 ---
 
-![the MPG Ranch Habitat Restoration Map app]({{site.urlimg}}mpg-habitat-01-overview.jpg)
+![the MPG Ranch Habitat Restoration Map app](/img/mpg-habitat-01-overview.jpg)
 
 > The MPG Ranch Habitat Restoration Map enables a team of environmental scientists to effectively
 communicate ongoing management plans and actions with their stakeholders and provides
@@ -30,7 +30,7 @@ was built with as well as how it's various pieces, companion web app (*The Slide
 and shared React slides-component fit together.
 
 ## About MPG Ranch:
-![photo of mpg-ranch]({{site.urlimg}}mpg-ranch-elk-herd.jpeg)
+![photo of mpg-ranch](/img/mpg-ranch-elk-herd.jpeg)
 *An elk herd roaming over MPG Ranch in the winter, photo credit: Teagan Hayes*
 
 > Set in the heart of Montana’s Bitterroot Valley, MPG Ranch lies on over
@@ -75,45 +75,45 @@ well as individual "management units." Users may click on a management unit poly
 to bring up a detail pane which displays that unit's photo carousel, environmental data,
 management activities, activities or "actions," and report slide decks.
 
-![habitat map landing]({{site.urlimg}}mpg-habitat02.jpg)
+![habitat map landing](/img/mpg-habitat02.jpg)
 *Default application state*
 
-![habitat map mouseover and click on a mu polygon]({{site.urlimg}}mpg-habitat13.jpg)
+![habitat map mouseover and click on a mu polygon](/img/mpg-habitat13.jpg)
 *Mousing over a management unit polygon*
 
-![habitat map detail pane]({{site.urlimg}}mpg-habitat14.jpg)
+![habitat map detail pane](/img/mpg-habitat14.jpg)
 *Management Unit detail pane opens after clicking on a polygon*
 
 #### Alternatively, a user may search for a management unit by typing in a text input field and browsing results in a list.
 
-![habitat map search by unit name]({{site.urlimg}}mpg-habitat15.jpg)
+![habitat map search by unit name](/img/mpg-habitat15.jpg)
 *Searching by a management unit name via a text input and dropdown*
 
-![]({{site.urlimg}}mpg-habitat16.jpg)
+![](/img/mpg-habitat16.jpg)
 *Clicking a management unit list item brings up the detail pane*
 
 #### Photo carousels may be opened in a lightbox mode to be viewed at a larger size.
 
-![habitat map lightbox]({{site.urlimg}}mpg-habitat05.jpg)
+![habitat map lightbox](/img/mpg-habitat05.jpg)
 *Photo carousel in lightbox mode*
 
 #### Various map layers may be toggled as well, including high resolution satellite imagery, NDVI, solar radiation, and terrain.
 
-![habitat map ndvi raster layer]({{site.urlimg}}mpg-habitat06.jpg)
+![habitat map ndvi raster layer](/img/mpg-habitat06.jpg)
 *Toggling the NDVI raster layer*
 
-![habitat map solar insolation raster layer]({{site.urlimg}}mpg-habitat07.jpg)
+![habitat map solar insolation raster layer](/img/mpg-habitat07.jpg)
 *Toggling the solar insolation raster layer*
 
-![habitat map ndvi zoomed in]({{site.urlimg}}mpg-habitat08.jpg)
+![habitat map ndvi zoomed in](/img/mpg-habitat08.jpg)
 *Zoomed in view of the NDVI raster layer*
 
 #### Clicking on a list item in the Recent Actions pane will zoom the map to the polygon and open the detail pane for that action item's corresponding management unit.
 
-![habitat map clicking a recent action item]({{site.urlimg}}mpg-habitat17.jpg)
+![habitat map clicking a recent action item](/img/mpg-habitat17.jpg)
 *Mousing over a list item in the Recent Actions pane in the lower left corner*
 
-![habitat map detail pane opened to recent actions after clicking a recent action item]({{site.urlimg}}mpg-habitat18.jpg)
+![habitat map detail pane opened to recent actions after clicking a recent action item](/img/mpg-habitat18.jpg)
 *Map pans and zooms, opens the detail pane's Actions section after clicking a Recent Action item*
 
 ## Slide Builder App
@@ -123,7 +123,7 @@ the creation of research and progress reports, without using desktop software su
 MS Powerpoint. The habitat restoration team found that this new approach saved them a
 great deal of time and frustration when creating reports, a task they previously had dreaded!
 
-![slide builder app]({{site.urlimg}}mpg-slide-builder-overview.jpg)
+![slide builder app](/img/mpg-slide-builder-overview.jpg)
 
 The Slide Builder web app was built using:
 
@@ -142,22 +142,22 @@ or remove slides as desired. Previously created slide decks may be loaded, edite
 Using my imagination and the React Bootstrap library helped me develop the interface
 fairly quickly without having to consult a wireframe or design mock up.
 
-![slide builder app - landing screen]({{site.urlimg}}mpg-slide-builder01.jpg)
+![slide builder app - landing screen](/img/mpg-slide-builder01.jpg)
 *Slide Builder app landing screen*
 
-![slide builder app - creating a new report]({{site.urlimg}}mpg-slide-builder02.jpg)
+![slide builder app - creating a new report](/img/mpg-slide-builder02.jpg)
 *Creating a new report*
 
-![slide builder app - filling out report metadata]({{site.urlimg}}mpg-slide-builder03.jpg)
+![slide builder app - filling out report metadata](/img/mpg-slide-builder03.jpg)
 *Filling out report metadata*
 
-![slide builder app - editing the title slide]({{site.urlimg}}mpg-slide-builder04.jpg)
+![slide builder app - editing the title slide](/img/mpg-slide-builder04.jpg)
 *Editing the title slide*
 
-![slide builder app - publishing a slide deck]({{site.urlimg}}mpg-slide-builder05.jpg)
+![slide builder app - publishing a slide deck](/img/mpg-slide-builder05.jpg)
 *Publishing a report slide deck*
 
-![slide builder app - publishing success!]({{site.urlimg}}mpg-slide-builder06.jpg)
+![slide builder app - publishing success!](/img/mpg-slide-builder06.jpg)
 *Notifying the user that the deck was successfully published*
 
 #### When saved, the reports are stored as JSON data in CARTO, then loaded into the Habitat Restoration Map.
@@ -170,13 +170,13 @@ and marked as "published", the report data will be fetched by the Habitat
 Restoration Map web app. When the user clicks a link for a report, the report data
 is rendered as a slide deck and displayed within a lightbox:
 
-![habitat map displaying a report slide deck 1]({{site.urlimg}}mpg-habitat09.jpg)
+![habitat map displaying a report slide deck 1](/img/mpg-habitat09.jpg)
 
-![habitat map displaying a report slide deck 2]({{site.urlimg}}mpg-habitat10.jpg)
+![habitat map displaying a report slide deck 2](/img/mpg-habitat10.jpg)
 
-![habitat map displaying a report slide deck 3]({{site.urlimg}}mpg-habitat11.jpg)
+![habitat map displaying a report slide deck 3](/img/mpg-habitat11.jpg)
 
-![habitat map displaying a report slide deck 4]({{site.urlimg}}mpg-habitat12.jpg)
+![habitat map displaying a report slide deck 4](/img/mpg-habitat12.jpg)
 
 ## React Slides Component
 
@@ -189,7 +189,7 @@ separate from either application for debugging and development purposes. I found
 process of using Github with NPM far less painful then attempting to develop the
 Slides Component as a local NPM module.
 
-![slides component placeholder]({{site.urlimg}}mpg-slides-component01.jpg)
+![slides component placeholder](/img/mpg-slides-component01.jpg)
 
 #### A slide deck is represented by an array of objects, where each object represents a particular slide:
 

@@ -87,11 +87,11 @@ In my project, I was working with data at the census tract level for all nine co
 
 I accomplished this by first exporting an SVG with the map area to include all nine counties, which was much larger than I needed. After opening the SVG file in Illustrator I drew a rectangle proportional to 8.5" x 11", and then positioned and sized it to include the area I wanted to crop my map to. You could theoretically do this in D3 without Illustrator, but as I'm comfortable working with Illustrator this approach made sense to me.
 
-![drawing and selecting a map frame in illustrator]({{site.urlimg}}illustrator-rect-crop.png)
+![drawing and selecting a map frame in illustrator](/img/illustrator-rect-crop.png)
 
 To get this "map frame" rectangle back into my D3 code, I did the following: first I selected the rectangle and using Illustrator's _transform_ window menu, changed the origin to the "upper left" to match how browsers determine the origin (e.g. `0,0`) of SVG (meaning `y` increases from top to bottom and `x` increases from left to right). Then I noted the x, y, width, and height values of my rectangle. I could now use these values to draw the same rectangle with D3!
 
-![transform window example]({{site.urlimg}}illustrator-transform-panel.png)
+![transform window example](/img/illustrator-transform-panel.png)
 
 You don't actually need the rectangle to be drawn in D3 in order to crop the map area, but it helps to draw it to verify that it looks correct. Once you crop the map area this rectangle will no longer look correct because the coordinates will have changed. However if you'd still like to have the map frame rectangle in your SVG you can simply draw a rectangle with D3 from `0,0` to `width, height`.
 
@@ -142,23 +142,23 @@ Overall the goal in prepping our map SVG is getting things "good enough" knowing
 ## Editing in Adobe Illustrator
 Now that we've prepped our SVG with D3 for importing into Illustrator and exported our SVG from the browser to a local file using SVG Crowbar, it's time to open it in Illustrator. Here's what a sample exported SVG looks like when opening it:
 
-![sample svg map opened in illustrator]({{site.urlimg}}d3-print-ai-svg-in-ai.png)
+![sample svg map opened in illustrator](/img/d3-print-ai-svg-in-ai.png)
 
 Looks fairly similar to our map in the browser right? Notice that if you click on it it's one giant group of nested elements. Here's what the Layers panel looks like:
 
-![screenshot of layers panel]({{site.urlimg}}d3-print-ai-layers-panel.png)
+![screenshot of layers panel](/img/d3-print-ai-layers-panel.png)
 
 You can see that our entire SVG is nested under "Layer 1", and that each of our map layers are nested in named groups, thanks to the `id` attributes we created with D3. This means we can select each of these groups and drag them into individual named layers, and then un-group them to make any post SVG export editing easier. You might be asking, "why not just leave the SVG groups in place and edit them there?" Well if you've ever tried to edit a "grouped anything" in Illustrator you'll know that you need to use the direct selection tool and that it can become tedious work fairly quickly. I find that it's much easier to edit my map features when they've been separated into different layers as shown below:
 
-![screenshot of layers panel with map layers]({{site.urlimg}}d3-print-ai-layers-panels-map-layers.png)
+![screenshot of layers panel with map layers](/img/d3-print-ai-layers-panels-map-layers.png)
 
 Now it might make sense to do this whole un-grouping and moving to separate layers process for one or two maps, but if you're rendering a bunch of maps you probably don't want to do this each time. For my project I was rendering the same geographic area, but with a different data overlay (choropleth visualization at the census tract level), so I decided to create a _template_ (`.ait`) file that I could reuse for each of my maps. This is a technique used frequently by cartographers when working in Illustrator when they want to keep a common look and feel for a set of maps. In a template we can define layer names, graphic styles, character styles, swatches, symbols, etc., so that there is consistency among all our maps. In this case I created a template that had all of my base map layers and labels in place, here's what it looks like below:
 
-![screenshot of map template]({{site.urlimg}}d3-print-ai-map-template.png)
+![screenshot of map template](/img/d3-print-ai-map-template.png)
 
 I used this template for each of the maps I created in Illustrator. This is done by first creating a new file from the template file (opening a `template.ait` file will default to an `untitled.ai` file). Then I grab just the tracts / choropleth group from the SVG file, and place that group in the appropriate layer in my new map file. This makes the process of creating lots of maps go much faster as you don't have to mess with all the other layers, styling, labeling, etc. Here is what a final map looks like, after creating a new file from a template and copying over just the tracts layer from an SVG file:
 
-![screenshot of finished map]({{site.urlimg}}d3-print-ai-final-map.png)
+![screenshot of finished map](/img/d3-print-ai-final-map.png)
 
 Another benefit of using a template to create your maps is that if you need to do any touch up work that is shared between all maps you can do it in one place, as it really wouldn't make sense to try to copy edits from one file to a dozen others. For my template I touched up roads, my layer ordering, label placement, and a couple county boundaries that I forgot to render in D3. The only downside to this workflow is that when you change something in your template, you'll need to recreate each of your maps again, but this typically goes much smoother and fairly quickly after you already have everything neatly separated into layers. An important tip is to remember to check "Paste Remember Layers" in the Layers panel options. That way when you copy and paste a set of map features from one file into another, it will be pasted into the correct layer.
 

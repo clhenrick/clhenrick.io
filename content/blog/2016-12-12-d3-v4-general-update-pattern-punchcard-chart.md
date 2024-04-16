@@ -34,13 +34,13 @@ I won't walk through how to set up the punchcard chart from scratch, so if you'r
 ### The Static Barley Punchcard Chart
 Here's what the Barley Punchcard Chart currently looks like:
 
-![static d3 barley punchcard chart]({{site.urlimg}}barley-punchcard-static.png)
+![static d3 barley punchcard chart](/img/barley-punchcard-static.png)
 
 The one we'll be making won't look terribly different from this. We'll be adding a simple HTML dropdown (`select` element) that will enable a user to choose from different "sites" which will then dynamically update the chart with some animations, or transitions as they're called in D3.
 
 Punchcard charts work really well for showing change over *temporarily consistent intervals*, in this case each distinct year from 1927 to 1936. When we attempt to show this data in a line chart for example, the overlap between Barley varieties make them hard to distinguish from one another:
 
-![static d3 barley line chart]({{site.urlimg}}barley-linechart.png)
+![static d3 barley line chart](/img/barley-linechart.png)
 
 Where as in the punchcard chart the size of each circle allows the user to make a clear comparison between data points. The color scheme simply helps differentiate one variety from the next.
 
