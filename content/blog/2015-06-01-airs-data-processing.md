@@ -326,7 +326,7 @@ The Handlebars HTML template looks like this:
 {% endraw %}
 ```
 
-That's about it, thanks for reading and please feel free to [ping me]({{site.url}}/contact) if you have any questions or comments.
+That's about it, thanks for reading and please feel free to [ping me](/contact/) if you have any questions or comments.
 
 ## Links to Code & Data
 - [Github Repo for Am I Rent Stabilized](https://github.com/clhenrick/am-i-rent-stabilized)

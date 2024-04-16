@@ -312,4 +312,4 @@ If you'd like to browse the source code of apps I've written that use either the
 - [Landscapes of Profit](https://github.com/nyc-reic/interactive/) :: uses loose augmentation
 - [Bushwick Community Map](https://github.com/clhenrick/BushwickCommunityMap) :: uses sub-modules
 
-Thanks for reading, and please [let me know]({{site.url}}{{base.url}}/contact/) if you have any thoughts on this post or if you found it helpful.
+Thanks for reading, and please [let me know](/contact/) if you have any thoughts on this post or if you found it helpful.

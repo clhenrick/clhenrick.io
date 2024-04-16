@@ -72,7 +72,7 @@ Here are the goals of the refactor I decided upon:
 - Make it an opportunity to use a new fancy shiny piece of web tech. See my note above for why I didn't port the code to a JavaScript framework like React, Svelte, or Vue.
 
 ## Decisions
-Perhaps most importantly, I chose not to use a JavaScript framework. I decided that adding a framework would be overhead that would get in the way of untangling and refactoring the existing code, which was written using a combination of jQuery and the <a target="_blank" rel="noopener" href="{{site.url}}{{site.baseurl}}/using-the-js-modular-pattern/">revealing module pattern in ES5</a>.
+Perhaps most importantly, I chose not to use a JavaScript framework. I decided that adding a framework would be overhead that would get in the way of untangling and refactoring the existing code, which was written using a combination of jQuery and the <a target="_blank" rel="noopener" href="/blog/2015-11-15-using-the-js-modular-pattern/">revealing module pattern in ES5</a>.
 
 Ultimately I decided to:
 
@@ -109,7 +109,7 @@ Ultimately I decided to:
   - The free personal account plan is fairly generous, you only need to pay if you go over build minutes or want premium features such as having multiple team members on an account.
 
 ## The Refactoring Process
-The first step in the refactoring processed involved reviewing the existing JS code to understand how it was structured; I needed to know what each module, code block, and function was doing. Long story short, it was a mess! I had abused the <a target="_blank" rel="noopener" href="{{site.url}}{{site.baseurl}}/using-the-js-modular-pattern/">ES5 revealing module pattern</a>, name spaced parts of the code unnecessarily deeply, and used very terse variable names at times which made it difficult to understand what any one part of the code was doing and how it might relate to another. I didn't do a good job modularizing the code either, there were bits of related logic spread throughout various modules which definitely wasn't a good organizational practice.
+The first step in the refactoring processed involved reviewing the existing JS code to understand how it was structured; I needed to know what each module, code block, and function was doing. Long story short, it was a mess! I had abused the <a target="_blank" rel="noopener" href="/blog/2015-11-15-using-the-js-modular-pattern/">ES5 revealing module pattern</a>, name spaced parts of the code unnecessarily deeply, and used very terse variable names at times which made it difficult to understand what any one part of the code was doing and how it might relate to another. I didn't do a good job modularizing the code either, there were bits of related logic spread throughout various modules which definitely wasn't a good organizational practice.
 
 Even though I was aiming to only use vanilla JS I still had bits of jQuery in a lot of places. I teased out logic that was worth keeping and could be improved while also deciding what was worth throwing away. I mainly focused on the JS, deciding not to refactor the styles which use Sass, but I did make small changes or improvements to the Sass code when I felt it was necessary or not too big of a lift.
 
