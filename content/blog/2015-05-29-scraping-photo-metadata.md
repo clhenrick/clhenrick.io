@@ -5,7 +5,6 @@ title: Scraping Photo Metadata
 date: 2015-05-29
 teaser: "Scraping digital photo exif data using Node JS for web mapping."
 header: no
-comments: true
 tags:
   - data
   - Web Scraping

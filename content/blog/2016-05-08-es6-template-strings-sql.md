@@ -5,7 +5,6 @@ title: ES6 Template Strings For SQL
 date: 2016-05-08
 teaser: "Making SQL queries in JS using ES6 template strings."
 header: no
-comments: true
 tags:
   - JavaScript
   - SQL

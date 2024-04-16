@@ -5,7 +5,6 @@ title: "Refactoring Am I Rent Stabilized"
 date: 2020-12-01
 teaser: "Revisiting the code of a five year old project."
 header: no
-comments: true
 tags:
   - JavaScript
   - Refactoring

@@ -5,7 +5,6 @@ title: "Habitat Restoration Map for MPG Ranch"
 date: 2016-12-22
 teaser: "An interactive web map to promote the work of environmental scientists and conservationists"
 header: no
-comments: true
 tags:
   - Web Mapping
   - React JS

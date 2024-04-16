@@ -5,7 +5,6 @@ title: Avoiding Mishaps with the ES6 Spread Operator
 date: 2017-06-24
 teaser: "The ES6 spread operator can easily trip you up!"
 header: no
-comments: true
 tags:
   - JavaScript
   - ES6

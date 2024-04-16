@@ -5,7 +5,6 @@ title: "Introducing &lt;color-legend-element />"
 header: no
 date: 2022-01-31
 teaser: "Notes on building a legend UI component using Lit, D3JS, and TypeScript"
-comments: true
 tags:
   - Web-Components
   - Lit

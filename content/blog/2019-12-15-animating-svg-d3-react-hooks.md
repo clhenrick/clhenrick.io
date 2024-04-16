@@ -5,7 +5,6 @@ title: "Animating SVG with D3JS and React Hooks"
 date: 2019-12-15
 teaser: "SVG + React Hooks + d3-interpolate + requestAnimationFrame"
 header: no
-comments: true
 tags:
   - JavaScript
   - React

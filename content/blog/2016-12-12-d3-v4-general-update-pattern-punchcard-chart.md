@@ -5,7 +5,6 @@ title: "D3JS v4 General Update Pattern: Punchcard Chart"
 date: 2016-12-12
 teaser: "Going from static to dynamic via the D3 v4 API"
 header: no
-comments: true
 tags:
   - JavaScript
   - D3JS

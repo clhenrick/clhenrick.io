@@ -5,7 +5,6 @@ title: "Custom and Accessible Select Menus Aren't Easy: Part One"
 header: no
 date: 2023-01-22
 teaser: "Trials and tribulations of building a custom and accessible Select menu UI component."
-comments: true
 tags:
   - HTML
   - CSS

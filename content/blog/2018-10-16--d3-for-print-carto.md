@@ -5,7 +5,6 @@ title: D3JS for Print Cartography
 date: 2018-09-17
 teaser: "Towards a D3JS Web to Print Cartography Workflow"
 header: no
-comments: true
 tags:
   - JavaScript
   - D3JS
