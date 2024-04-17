@@ -51,8 +51,7 @@ Which then gives you:
   titletext="Temperature (°C)"
   scaletype="continuous"
   tickFormat=".0f"
-  domain="[0, 100]"
->
+  domain="[0, 100]">
 </color-legend>
 
 The most important attributes are `scaletype`, `domain`, and `range` which determine how the CLE renders. The above CLE example is rendered in the DOM of this webpage (as are others that follow). Try opening your browser's developer tools and poking around at it!
