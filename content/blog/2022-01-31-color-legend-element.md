@@ -234,5 +234,6 @@ That about sums up Color Legend Element. Please make sure to check out the [CLE 
 [svelte]: https://svelte.dev/
 [template]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
 
-<script async defer src="/js/d3.min.js"></script>
-<script async defer src="/js/color-legend-element.umd.js"></script>
+<script async defer type="module">
+  import "https://esm.sh/color-legend-element@1.3.0";
+</script>
