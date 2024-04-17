@@ -15,11 +15,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
   });
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/color-legend-element/build/color-legend-element.umd.js":
-      "/js/color-legend-element.umd.js",
-    "node_modules/d3/dist/d3.min.js": "d3.min.js",
-  });
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
