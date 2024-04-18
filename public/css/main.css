@@ -131,3 +131,10 @@ pre:not([class*="language-"]) {
 code {
   word-break: break-all;
 }
+
+dl > div {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  line-height: 1.75;
+}
