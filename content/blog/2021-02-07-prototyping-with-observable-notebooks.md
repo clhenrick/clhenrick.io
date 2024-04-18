@@ -7,7 +7,7 @@ tags:
   - Observable Notebooks
   - Data Visualization
   - Prototyping
-  - Google.org Fellowship
+  - Fellowships
 ---
 
 <figure>
@@ -18,7 +18,7 @@ tags:
 ## Intro
 The work discussed in this article stems from a [Google.org](https://www.google.org/) Fellowship that I was recently a part of with [Morehouse School of Medicine](https://www.msm.edu/)’s [Satcher Health Leadership Institute](https://satcherinstitute.org/). The goal of the fellowship was to help SHLI develop a "Health Equity Tracker" website that empowers Health Equity advocates with up to date public health data and data visualization dashboards. In this post I'll discuss the more technical nature of the data visualization prototyping work I did for the project that helped inform what the team built.
 
-I'll cover:
+In this post I will cover:
 
 - What Observable Notebooks are
 - How I divided up my work into two types of notebooks
