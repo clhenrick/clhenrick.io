@@ -1,18 +1,28 @@
 ---
 layout: layouts/base.njk
 ---
+{%- css %}{% include "public/css/post.css" %}{% endcss %}
 {# Only include the syntax highlighter CSS on blog posts #}
 {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
 {# {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %} #}
 <h1>{{ title }}</h1>
+{%- if teaser %}
+<p>{{ teaser }}</p>
+{%- endif %}
 
-<ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-	{%- for tag in tags | filterTagList %}
-	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
-	{%- endfor %}
-</ul>
+<dl class="post-metadata">
+	<div class="publish-date">
+    <dt>Published on:<dt>
+    <dd><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></dd>
+  </div>
+  <div class="tags">
+    <dt>Tagged in:</dt>
+    {%- for tag in tags | filterTagList %}
+    {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+    <dd><a href="{{ tagUrl }}" class="post-tag">#{{ tag }}</a></dd>
+    {%- endfor %}
+  </div>
+</dl>
 
 {{ content | safe }}
 
