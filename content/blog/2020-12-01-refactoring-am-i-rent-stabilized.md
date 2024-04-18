@@ -11,9 +11,6 @@ tags:
 ---
 
 <img loading="lazy" src="/img/airs01.jpg" width="100%" alt="Am I Rent Stabilized home page">
-<noscript>
-  <img src="/img/airs01.jpg" width="100%" alt="Am I Rent Stabilized home page">
-</noscript>
 
 ## Motivation
 
