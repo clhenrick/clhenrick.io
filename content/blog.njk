@@ -12,6 +12,8 @@ pagination:
   alias: "posts"
   reverse: true
 ---
+{%- css %}{% include "public/css/blog.css" %}{% endcss %}
+
 <h1>Blog</h1>
 {%- set pageIndex = pagination.hrefs | findIndex(page.url) %}
 <p>Page {{ pageIndex + 1 }} of {{ pagination.pages.length }}</p>
@@ -27,7 +29,7 @@ pagination:
   </section>
 {%- endfor %}
 
-<nav aria-labelledby="pagination">
+<nav class="pagination" aria-labelledby="pagination">
   <h2 id="pagination">More Blog Posts</h2>
   <ol role="list">
     <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>

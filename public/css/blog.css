@@ -1,0 +1,11 @@
+section {
+  margin-bottom: 2rem;
+}
+
+nav.pagination > ol {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
