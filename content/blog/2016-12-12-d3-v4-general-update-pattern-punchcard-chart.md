@@ -1,7 +1,6 @@
 ---
 redirectFrom: [/d3-v4-general-update-pattern-punchcard-chart.html, /d3-v4-general-update-pattern-punchcard-chart/]
 title: "D3JS v4 General Update Pattern: Punchcard Chart"
-# layout: page
 date: 2016-12-12
 teaser: "Going from static to dynamic via the D3 v4 API"
 tags:

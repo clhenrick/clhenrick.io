@@ -1,7 +1,6 @@
 ---
 redirectFrom: [/wrangling-311-data.html, /wrangling-311-data/]
 title: Wrangling NYC's 311 data
-# layout: page
 date: 2015-06-03
 teaser: "Battling the task of downloading 311 data and importing it into PostgreSQL for analysis."
 tags:

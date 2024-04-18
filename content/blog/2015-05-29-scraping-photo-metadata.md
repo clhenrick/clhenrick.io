@@ -1,7 +1,6 @@
 ---
 redirectFrom: [/scraping-photo-metadata.html, /scraping-photo-metadata/]
 title: Scraping Photo Metadata
-# layout: page
 date: 2015-05-29
 teaser: "Scraping digital photo exif data using Node JS for web mapping."
 tags:

@@ -1,7 +1,6 @@
 ---
 redirectFrom: [/es6-template-strings-sql.html, /es6-template-strings-sql/]
 title: ES6 Template Strings For SQL
-# layout: page
 date: 2016-05-08
 teaser: "Making SQL queries in JS using ES6 template strings."
 tags:
