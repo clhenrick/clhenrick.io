@@ -1,10 +1,10 @@
 ---
 layout: layouts/base.njk
 ---
-{%- css %}{% include "public/css/post.css" %}{% endcss %}
 {# Only include the syntax highlighter CSS on blog posts #}
 {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
 {# {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %} #}
+{%- css %}{% include "public/css/post.css" %}{% endcss %}
 <h1>{{ title }}</h1>
 {%- if teaser %}
 <p>{{ teaser }}</p>
@@ -30,7 +30,7 @@ layout: layouts/base.njk
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
 {%- set nextPost = collections.posts | getNextCollectionItem %}
 {%- if nextPost or previousPost %}
-<ul class="links-nextprev">
+<ul class="links-nextprev" role="list">
 	{%- if previousPost %}<li>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
 	{%- if nextPost %}<li>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
 </ul>
