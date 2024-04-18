@@ -35,7 +35,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
     return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
-      format || "dd LLLL yyyy"
+      format || "LLLL dd, yyyy"
     );
   });
 
