@@ -14,6 +14,8 @@ pagination:
 ---
 {%- css %}{% include "public/css/blog.css" %}{% endcss %}
 
+<style>{% getBundle "css" %}</style>
+
 <h1>Blog</h1>
 {%- set pageIndex = pagination.hrefs | findIndex(page.url) %}
 <p>Page {{ pageIndex + 1 }} of {{ pagination.pages.length }}</p>
