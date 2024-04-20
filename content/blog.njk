@@ -18,16 +18,8 @@ pagination:
 {%- set pageIndex = pagination.hrefs | findIndex(page.url) %}
 <p>Page {{ pageIndex + 1 }} of {{ pagination.pages.length }}</p>
 
-{%- for post in posts %}
-  <section>
-    <h2>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-    </h2>
-    {%- if post.data.teaser %}
-    <p>{{ post.data.teaser }}</p>
-    {%- endif %}
-  </section>
-{%- endfor %}
+{% set postslist = posts | reverse %}
+{% include "postslist.njk" %}
 
 <nav class="pagination" aria-labelledby="pagination">
   <h2 id="pagination">More Blog Posts</h2>
