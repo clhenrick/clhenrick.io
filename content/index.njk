@@ -38,6 +38,7 @@ eleventyNavigation:
 
   {%- set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
   {%- set postslistCounter = postsCount %}
+  {%- set headingLevel = 3 %}
   {%- include "postslist.njk" %}
 
   {%- set morePosts = postsCount - numberOfLatestPostsToShow %}
