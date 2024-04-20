@@ -2,6 +2,7 @@
 redirectFrom: [/accessible-select-element.html, /accessible-select-element/]
 title: "Custom and Accessible Select Menus Aren't Easy: Part One"
 date: 2023-01-22
+updated: 2023-02-05
 teaser: "Trials and tribulations of building a custom and accessible Select menu UI component."
 tags:
   - HTML
@@ -10,8 +11,6 @@ tags:
   - Accessibility
   - React
 ---
-
-_Last updated on February 5, 2023_
 
 ## Introduction
 

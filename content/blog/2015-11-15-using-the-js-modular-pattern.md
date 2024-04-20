@@ -2,14 +2,13 @@
 redirectFrom: [/using-the-js-modular-pattern.html, /using-the-js-modular-pattern/]
 title: Using the Module Pattern in JavaScript Programming
 date: 2015-11-15
+updated: 2020-12-10
 teaser: "The benefits of using the revealing module pattern in JavaScript."
 tags:
   - JavaScript
   - Web Mapping
   - programming patterns
 ---
-
-*Updated on December 10, 2020*
 
 **Note:** this post discusses the ["revealing module pattern"][1] that was commonly used in JavaScript prior to widespread adoption of ["ES modules"][2] (see also this [in-depth post on ES modules][3]). If you are using a modern build tool such as Webpack, Rollup, or Create React App, or perhaps developing without a build tool for modern browsers, then you're most likely writing your code using "ES modules." If that is the case you may wish to disregard this post, but please feel free to read on!
 
