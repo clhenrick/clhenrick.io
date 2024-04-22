@@ -2,7 +2,7 @@
 redirectFrom: [/airs-data-processing.html, /airs-data-processing/]
 title: Data processing methodology for Am I Rent Stabilized.com
 date: 2015-06-01
-teaser: "Documenting how I processed NYC open data and not so open data for the backend database of Am I Rent Stabilized?"
+teaser: "Documenting how I processed NYC open data (and some not so open data) for the backend database of Am I Rent Stabilized."
 tags:
   - data
   - Web Scraping
@@ -24,6 +24,7 @@ tags:
 The development of the app stems from a [Freedom of Information Law request](https://github.com/clhenrick/dhcr-rent-stabilized-data#foil-request-info) I made in the Fall of 2014 for the [New York Department of Homes and Community Renewal](http://www.nyshcr.org/)'s list of rent-stabilized buildings in a machine readable format. When I obtained the data I was then able to do an analysis on the NYC's taxlot dataset, [MapPLUTO](http://www.nyc.gov/html/dcp/html/bytes/applbyte.shtml#pluto), to determine what properties in NYC likely have rent stabilized apartments, and are either registered or not registered with the DHCR. This is important as registration of rent-regulated apartments is essentially voluntary as it's not enforced by any city or state agency (as far as I'm aware of) so it's easy for landlords in NYC to lie to tenants about their apartment being rent-stabilized.
 
 The first thing I did was map this data (those of you who know me are saying; "of course you did!"). Red are properties that are not on the DHCR's list while blue are ones that are.
+
 [![](/img/likely_rs_map.png)](http://cdb.io/1bfz09d)
 
 Visualizing the data was great, however I was interested in pushing the usefulness of this dataset a little further. After I shared my discovery with [Caroline Woolard](http://carolinewoolard.com/), an NYC based artist and activist, she suggested using the data in an app to let people know if they are rent stabilized. The rest is history.
@@ -63,39 +64,57 @@ From here PostgreSQL was then used to analyze the data. [Here is a link to the e
 ```sql
 -- select the number of properties in the dhcr list the nyc map pluto data
 -- returns 47,130 rows
-SELECT Count(a.bbl) FROM
-    (
-        SELECT DISTINCT bbl FROM map_pluto2014v2
-    ) AS a
-    INNER JOIN
-    (
-    SELECT DISTINCT ON (bbl) bbl FROM dhcr_rs_w_bbls
-      WHERE bbl IS NOT NULL
-    ) AS b
-    ON a.bbl = b.bbl;
+SELECT
+  Count(a.bbl)
+FROM
+  (
+    SELECT DISTINCT
+      bbl
+    FROM
+      map_pluto2014v2
+  ) AS a
+  INNER JOIN (
+    SELECT DISTINCT
+      ON (bbl) bbl
+    FROM
+      dhcr_rs_w_bbls
+    WHERE
+      bbl IS NOT NULL
+  ) AS b ON a.bbl = b.bbl;
 
 
 -- select the number of properties in the dhcr list not in the map pluto "likely rent-stabilized" query
 -- returns 12,549 rows
 
-CREATE TABLE map_pluto2014v2_likely_rs AS
-    SELECT COUNT(a.bbl) FROM
-        (
-            SELECT DISTINCT bbl FROM map_pluto2014v2
-            WHERE yearbuilt < 1974 AND unitsres >= 6
-                AND (
-                ownername NOT ILIKE 'new york city housing authority'
-                or ownername NOT ILIKE 'nycha'
-                )
-                AND bldgclASs NOT ILIKE 'r%'
-        ) AS a
-        LEFT JOIN
-        (
-        SELECT DISTINCT bbl FROM dhcr_rs_w_bbls
-        WHERE bbl IS NOT NULL
-        ) AS b
-        ON a.bbl = b.bbl
-        WHERE b.bbl IS NULL;
+CREATE TABLE
+  map_pluto2014v2_likely_rs AS
+SELECT
+  COUNT(a.bbl)
+FROM
+  (
+    SELECT DISTINCT
+      bbl
+    FROM
+      map_pluto2014v2
+    WHERE
+      yearbuilt < 1974
+      AND unitsres >= 6
+      AND (
+        ownername NOT ILIKE 'new york city housing authority'
+        or ownername NOT ILIKE 'nycha'
+      )
+      AND bldgclASs NOT ILIKE 'r%'
+  ) AS a
+  LEFT JOIN (
+    SELECT DISTINCT
+      bbl
+    FROM
+      dhcr_rs_w_bbls
+    WHERE
+      bbl IS NOT NULL
+  ) AS b ON a.bbl = b.bbl
+WHERE
+  b.bbl IS NULL;
 ```
 
 These two queries tell us:
@@ -107,90 +126,123 @@ These two queries tell us:
 From here I created a table that combines data from both queries as well as a flag that states whether or not the property is listed in the DHCR data.
 
 ```sql
-CREATE TABLE map_pluto_not_dhcr AS
-  	SELECT not_dhcr.address,
-              not_dhcr.unitsres,
-              not_dhcr.borough,
-              not_dhcr.ownername,
-              not_dhcr.zipcode,
-              not_dhcr.yearbuilt,
-              not_dhcr.geom,
-              not_dhcr.cd,
-              not_dhcr.council,
-              not_dhcr.bbl::bigint
-	  FROM
-	      (
-	          SELECT a.*
-	          FROM
-	          (
-	              SELECT * FROM map_pluto2014v2
-	              WHERE yearbuilt < 1974 AND unitsres >= 6
-	                  AND (ownername not ILIKE 'new york city housing authority' or ownername not ILIKE 'nycha')
-	                  AND bldgclass not ILIKE 'r%'
-	          ) AS a
-	          LEFT JOIN
-	          (
-	          SELECT * FROM dhcr_rs_w_bbls
-	          WHERE bbl IS NOT NULL
-	          ) AS b
-	          ON a.bbl = b.bbl
-	          WHERE b.bbl IS NULL
-	      ) AS not_dhcr;
+CREATE TABLE
+  map_pluto_not_dhcr AS
+SELECT
+  not_dhcr.address,
+  not_dhcr.unitsres,
+  not_dhcr.borough,
+  not_dhcr.ownername,
+  not_dhcr.zipcode,
+  not_dhcr.yearbuilt,
+  not_dhcr.geom,
+  not_dhcr.cd,
+  not_dhcr.council,
+  not_dhcr.bbl::bigint
+FROM
+  (
+    SELECT
+      a.*
+    FROM
+      (
+        SELECT
+          *
+        FROM
+          map_pluto2014v2
+        WHERE
+          yearbuilt < 1974
+          AND unitsres >= 6
+          AND (
+            ownername not ILIKE 'new york city housing authority'
+            or ownername not ILIKE 'nycha'
+          )
+          AND bldgclass not ILIKE 'r%'
+      ) AS a
+      LEFT JOIN (
+        SELECT
+          *
+        FROM
+          dhcr_rs_w_bbls
+        WHERE
+          bbl IS NOT NULL
+      ) AS b ON a.bbl = b.bbl
+    WHERE
+      b.bbl IS NULL
+  ) AS not_dhcr;
 
-CREATE TABLE map_pluto_dhcr_rs AS
-	  SELECT dhcr.address,
-	                  dhcr.unitsres,
-	                  dhcr.borough,
-	                  dhcr.ownername,
-	                  dhcr.zipcode,
-	                  dhcr.yearbuilt,
-	                  dhcr.geom,
-	                  dhcr.cd,
-	                  dhcr.council,
-	                  dhcr.bbl::bigint
-	  FROM
-	      (SELECT c.address,
-	                      c.unitsres,
-	                      c.borough,
-	                      c.ownername,
-	                      c.zipcode,
-	                      c.yearbuilt,
-	                      c.bbl,
-	                      c.cd,
-	                      c.council,
-	                      c.geom
-	          FROM
-	          map_pluto2014v2 c,
-	          (
-	          SELECT DISTINCT bbl FROM dhcr_rs_w_bbls
-	          WHERE bbl IS NOT NULL
-	          ) d
-	          WHERE c.bbl = d.bbl
-	      ) AS dhcr;
+CREATE TABLE
+  map_pluto_dhcr_rs AS
+SELECT
+  dhcr.address,
+  dhcr.unitsres,
+  dhcr.borough,
+  dhcr.ownername,
+  dhcr.zipcode,
+  dhcr.yearbuilt,
+  dhcr.geom,
+  dhcr.cd,
+  dhcr.council,
+  dhcr.bbl::bigint
+FROM
+  (
+    SELECT
+      c.address,
+      c.unitsres,
+      c.borough,
+      c.ownername,
+      c.zipcode,
+      c.yearbuilt,
+      c.bbl,
+      c.cd,
+      c.council,
+      c.geom
+    FROM
+      map_pluto2014v2 c,
+      (
+        SELECT DISTINCT
+          bbl
+        FROM
+          dhcr_rs_w_bbls
+        WHERE
+          bbl IS NOT NULL
+      ) d
+    WHERE
+      c.bbl = d.bbl
+  ) AS dhcr;
+```
 
+I then added a column to identify properties that are registered or not registered with the DHCR:
 
--- I then added a column to identify properties that are registered or not registered with the DHCR:
+```sql
 ALTER TABLE map_pluto_not_dhcr add column registered boolean;
 UPDATE map_pluto_not_dhcr set registered = false;
 
 ALTER TABLE map_pluto_dhcr_rs add column registered boolean;
 UPDATE map_pluto_dhcr_rs set registered = true;
+```
 
+Now these two tables can be combined AND have a boolean value for whether or not they are in the DHCR's rent-stabilized buildings list:
 
--- now these two tables can be combined AND have a boolean value for whether or not they are in the DHCR's rent-stabilized buildings list.
+```sql
 -- 59,679 rows total.
 DROP TABLE map_pluto2014v2_likely_rs;
-CREATE TABLE map_pluto_likely_rs AS
-    SELECT *
-    FROM
-        map_pluto_not_dhcr
-    UNION
-    SELECT *
-    FROM
-        map_pluto_dhcr_rs;
 
+CREATE TABLE
+  map_pluto_likely_rs AS
+SELECT
+  *
+FROM
+  map_pluto_not_dhcr
+UNION
+SELECT
+  *
+FROM
+  map_pluto_dhcr_rs;
+```
 
--- check to make sure the data looks good:
+We may now run some checks to make sure the data looks good:
+
+```sql
 SELECT Count(*) FROM map_pluto_likely_rs WHERE registered IS NULL;
     -- returns 0 rows
 SELECT Count(DISTINCT bbl) FROM map_pluto_likely_rs;
@@ -205,20 +257,23 @@ SELECT Sum(unitsres) AS total_res_units FROM map_pluto_likely_rs;
 
 Lastly, the data was imported into CartoDB and some final tweaks to the data were made. Mainly this involved removing properties that belong to the New York City Housing Authority. To find out how many different spellings of this agency name were in the table, I did a spatial intersect with the [NYCHA property data](https://data.cityofnewyork.us/Housing-Development/Map-of-NYCHA-Developments/i9rv-hdr5).
 
+Remove all properties owned by the NYC Housing Authority that were missed. This involved doing a spatial intersect with polygon centroids created from a shapefile of NYCHA properties from 2011 to determine all spellings of "NYCHA":
+
 ```sql
---  Remove all properties owned by the NYC Housing Authority that were missed.
---  This involved doing a spatial intersect with polygon centroids created from
--- a shapefile of NYCHA properties from 2011 to determine all spellings of "NYCHA"
+SELECT DISTINCT
+  a.ownername
+FROM
+  map_pluto_likely_rs a,
+  nycha_centroids b
+WHERE
+  ST_Intersects (a.the_geom, b.the_geom)
+ORDER BY
+  ownername;
+```
 
-SELECT DISTINCT a.ownername
-FROM map_pluto_likely_rs a, nycha_centroids b
-where
-  ST_Intersects(
-      a.the_geom, b.the_geom
-  )
-ORDER BY ownername
+Remove properties that are obviously owned by NYCHA:
 
--- remove properties that are obviously owned by NYCHA
+```sql
 DELETE FROM map_pluto_likely_rs WHERE ownername LIKE 'NYC HOUSING%';
 DELETE FROM map_pluto_likely_rs WHERE ownername ILIKE 'new york city%';
 DELETE FROM map_pluto_likely_rs WHERE ownername LIKE 'NYC CITY HSG%';
@@ -228,13 +283,18 @@ DELETE FROM map_pluto_likely_rs WHERE ownername LIKE 'N.Y.C. HOUSING AUTHOR%';
 DELETE FROM map_pluto_likely_rs WHERE ownername LIKE 'N Y C HOUSING AUTHORI%';
 DELETE FROM map_pluto_likely_rs WHERE ownername = 'NY HOUSING AUTHORITY';
 DELETE FROM map_pluto_likely_rs WHERE ownername = 'NEW YRK CTY HSG AUTHR';
+```
 
--- pgsql2shp converted boolean value of the "registered" column to T / F,
--- so I changed the valuse to 'yes' / 'no' for CartoDB Infowindows
+The command line tool `pgsql2shp` converted the boolean value of the "registered" column to "T" / "F", so I changed the values to 'yes' / 'no' for the CartoDB InfoWindows UI:
+
+```sql
 UPDATE map_pluto_likely_rs set registered = 'no' WHERE registered = 'F';
 UPDATE map_pluto_likely_rs set registered = 'yes' WHERE registered = 'T';
+```
 
--- change boro codes to actual names for CartoDB Infowindows
+Lastly, we change the borough codes to actual names for CartoDB InfoWindows:
+
+```sql
 UPDATE map_pluto_likely_rs set borough = 'Queens' WHERE borough = 'QN';
 UPDATE map_pluto_likely_rs set borough = 'Brooklyn' WHERE borough = 'BK';
 UPDATE map_pluto_likely_rs set borough = 'Staten Island' WHERE borough = 'SI';
@@ -257,14 +317,15 @@ The data was then imported into CartoDB for use with *Am I Rent Stabilized?*. Wh
 For example:
 
 ```sql
-SELECT * FROM nyc_tenants_rights_service_areas
+SELECT
+  *
+FROM
+  nyc_tenants_rights_service_areas
 WHERE
-ST_Contains(
-  nyc_tenants_rights_service_areas.the_geom,
-  ST_GeomFromText(
-   'Point(-73.917104 40.694827)', 4326
-  )
-);
+  ST_Contains (
+    nyc_tenants_rights_service_areas.the_geom,
+    ST_GeomFromText ('Point(-73.917104 40.694827)', 4326)
+  );
 ```
 
 If a user's address is within a group's cachment area, then that group's information is passed into a modal in the app. This modal displays information such as the group's website url, phone number, contact person, and/or address. As what's present in this data varies from group to group, a Handlebars.js helper function is used to check if the data exists before passing it to the Handlebars HTML template:
@@ -291,7 +352,7 @@ H.registerHelper('if', function(conditional, options) {
 
 The Handlebars HTML template looks like this:
 
-```hbs
+```handlebars
 {% raw %}
 <div class="org-container">
   <a href="#close" title="Close" class="close">X</a>
