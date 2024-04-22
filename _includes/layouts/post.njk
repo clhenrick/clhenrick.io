@@ -1,18 +1,36 @@
 ---
 layout: layouts/base.njk
 ---
-{# Only include the syntax highlighter CSS on blog posts #}
 {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
-{# {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %} #}
+{%- css %}{% include "public/css/post.css" %}{% endcss %}
+
+<style>{% getBundle "css" %}</style>
+
 <h1>{{ title }}</h1>
 
-<ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-	{%- for tag in tags | filterTagList %}
-	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
-	{%- endfor %}
-</ul>
+{%- if teaser %}
+<p>{{ teaser }}</p>
+{%- endif %}
+
+<dl class="post-metadata">
+	<div class="publish-date">
+    <dt>Published on:<dt>
+    <dd><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></dd>
+  </div>
+{%- if updated %}
+  <div class="updated-date">
+    <dt>Last updated on:</dt>
+    <dd><time datetime="{{ updated  | htmlDateString }}">{{ updated | readableDate }}</time></dd>
+  </div>
+{%- endif %}
+  <div class="tags">
+    <dt>Tagged in:</dt>
+    {%- for tag in tags | filterTagList %}
+    {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+    <dd><a href="{{ tagUrl }}" class="post-tag">#{{ tag }}</a></dd>
+    {%- endfor %}
+  </div>
+</dl>
 
 {{ content | safe }}
 
@@ -20,7 +38,7 @@ layout: layouts/base.njk
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
 {%- set nextPost = collections.posts | getNextCollectionItem %}
 {%- if nextPost or previousPost %}
-<ul class="links-nextprev">
+<ul class="links-nextprev" role="list">
 	{%- if previousPost %}<li>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
 	{%- if nextPost %}<li>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
 </ul>

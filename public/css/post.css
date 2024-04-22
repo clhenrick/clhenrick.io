@@ -1,0 +1,30 @@
+dl,
+img,
+ul,
+ol,
+figure,
+color-legend {
+  margin-bottom: 1.75rem;
+}
+
+dl > div.publish-date {
+  gap: 0.25rem;
+}
+
+dl > div.tags {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+ul.links-nextprev {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+}

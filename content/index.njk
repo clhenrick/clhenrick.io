@@ -8,9 +8,7 @@ eleventyNavigation:
 
 {%- css %}{% include "public/css/home.css" %}{% endcss %}
 
-<style>
-  {% getBundle "css" %}
-</style>
+<style>{% getBundle "css" %}</style>
 
 <section class="banner full-viewport-width">
   <h1>Chris L Henrick</h1>
@@ -32,7 +30,17 @@ eleventyNavigation:
 </section>
 
 <section>
-  <h2>Latest blog articles</h2>
-</section>
+  {%- set postsCount = collections.posts | length %}
+  {%- set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
+  <h2>Latest Blog Posts</h2>
 
-{# TODO #}
+  {%- set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
+  {%- set postslistCounter = postsCount %}
+  {%- set headingLevel = 3 %}
+  {%- include "postslist.njk" %}
+
+  {%- set morePosts = postsCount - numberOfLatestPostsToShow %}
+  {%- if morePosts > 0 %}
+  <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/">the archive</a>.</p>
+  {%- endif %}
+</section>

@@ -1,0 +1,13 @@
+---
+title: "Blog Archive"
+description: "All the blog posts of Chris Henrick"
+layout: layouts/home.njk
+permalink: "/blog/archive/"
+eleventyNavigation:
+  parent: Blog
+  key: Archive
+---
+<h1>Blog Archive</h1>
+
+{% set postslist = collections.posts %}
+{% include "postslist.njk" %}

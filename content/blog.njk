@@ -1,10 +1,36 @@
 ---
+title: "Blog"
+description: "The blog of Chris Henrick"
+permalink: "/blog{% if pagination.pageNumber > 0 %}/{{ pagination.pageNumber }}{% endif %}/"
 layout: layouts/home.njk
 eleventyNavigation:
-  key: Archive
-  order: 3
+  key: "Blog"
+  order: 4
+pagination:
+  data: "collections.posts"
+  size: 5
+  alias: "posts"
+  reverse: true
 ---
-<h1>Blog Archive</h1>
+{%- css %}{% include "public/css/blog.css" %}{% endcss %}
 
-{% set postslist = collections.posts %}
+<style>{% getBundle "css" %}</style>
+
+<h1>Blog</h1>
+{%- set pageIndex = pagination.hrefs | findIndex(page.url) %}
+<p>Page {{ pageIndex + 1 }} of {{ pagination.pages.length }}</p>
+
+{% set postslist = posts | reverse %}
 {% include "postslist.njk" %}
+
+<nav class="pagination" aria-labelledby="pagination">
+  <h2 id="pagination">More Blog Posts</h2>
+  <ol role="list">
+    <li>{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
+{%- for pageEntry in pagination.pages %}
+    <li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+{%- endfor %}
+    <li>{% if pagination.href.next %}<a href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
+  </ol>
+  <a href="/blog/archive/">Blog Archive</a>
+</nav>
