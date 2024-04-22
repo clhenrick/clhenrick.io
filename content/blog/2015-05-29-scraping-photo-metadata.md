@@ -47,62 +47,63 @@ The end result is that I successfully geocoded 1006 out of 1008 of the photos so
 
 Next up, integrating the survey photos and data to the Bushwick Community Map!
 
-##Code
-<h3>Extracting the Photos' Titles From File Names</h3>
+## Extracting the Photos' Titles From File Names
 
-In CartoDB I eneded up creating a new column for the exif geojson and populating it with a substring of the filename, the title without the file extension, so that I could join the Exif GeoJSON and Flickr JSON datasets.
-The following SQL query did the trick:
+In CartoDB I created a new column for the exif GeoJSON and populated it with a substring of the filename, the title without the file extension, so that I could join the Exif GeoJSON and Flickr JSON datasets. The following SQL query did the trick:
 
 ```sql
 SELECT substring(file_name_column, '(.+?)(\.[^.]*$|$)') FROM table_name;
 ```
 
-[stackoverflow credit](http://stackoverflow.com/questions/624870/regex-get-filename-without-extension-in-one-shot)
+### Exif Data Extract
+The following is a Node JS script I wrote to grab the latitude and longitude data from a directory images. It reads in a directory of images and writes out a GeoJSON file containing the image name, lat, lon, and other data.
 
+It's used on the command line as follows:
 
-###Exif Data Extract
-Node JS script to grab lat lon data from images. Processes a director of images and writes a geojson file containing the image name, lat, lon, modify data. Usage: ```bash $ touch photo_data.json && node parse_photos.js > photo_data.json ```
+```bash
+node parse_photos.js > photo_data.json
+```
 
 
 ```js
-var fs = require('graceful-fs');
-var ExifImage = require('exif').ExifImage;
+var fs = require("graceful-fs");
+var ExifImage = require("exif").ExifImage;
 var exifCount = 0;
-var imgDir = path.join(__dirname, '../all_photos/');
+var imgDir = path.join(__dirname, "../all_photos/");
 var imgData = {
-  "type" : "FeatureCollection",
-  "crs": {
-    "type": "name",
-    "properties": {
-      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-      }
+  type: "FeatureCollection",
+  crs: {
+    type: "name",
+    properties: {
+      name: "urn:ogc:def:crs:OGC:1.3:CRS84",
     },
-  "features" : []
+  },
+  features: [],
 };
 var errors = [];
 
 // converts lat lon from Degrees Minutes Seconds to Decimal Degrees
 function convertDMSToDD(degrees, minutes, seconds, direction) {
-    var dd = degrees + minutes/60 + seconds/(60*60);
+  var dd = degrees + minutes / 60 + seconds / (60 * 60);
 
-    if (direction == "S" || direction == "W") {
-        dd = dd * -1;
-    } // Don't do anything for N or E
-    return dd;
+  if (direction == "S" || direction == "W") {
+    dd = dd * -1;
+  } // Don't do anything for N or E
+  return dd;
 }
 
 function parseExifData(exifObj, name) {
   var data = {
-    "type" : "Feature",
-    "geometry" : {
-      "type" : "Point",
-      "coordinates" : []
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [],
     },
-    "properties" : {}
+    properties: {},
   };
   var d = exifObj;
-  var imgName = name.split('/')
-  data.properties.file_name = imgName[imgName.length-1];
+  var imgName = name.split("/");
+  data.properties.file_name = imgName[imgName.length - 1];
   data.coordinates[1] = convertDMSToDD(
     d.gps.GPSLatitude[0],
     d.gps.GPSLatitude[1],
@@ -110,14 +111,14 @@ function parseExifData(exifObj, name) {
     d.gps.GPSLatitudeRef
   );
   data.coordinates[0] = convertDMSToDD(
-                            d.gps.GPSLongitude[0],
-                            d.gps.GPSLongitude[1],
-                            d.gps.GPSLongitude[2],
-                            d.gps.GPSLongitudeRef
-                            );
+    d.gps.GPSLongitude[0],
+    d.gps.GPSLongitude[1],
+    d.gps.GPSLongitude[2],
+    d.gps.GPSLongitudeRef
+  );
   data.properties.modify_date = d.image.ModifyDate;
   imgData.features.push(data);
-  exifCount ++;
+  exifCount++;
 
   if (exifCount === 1006) {
     imgData = JSON.stringify(imgData);
@@ -128,127 +129,136 @@ function parseExifData(exifObj, name) {
 
 function readImage(img) {
   try {
-      new ExifImage({ image : img }, function (error, exifData) {
-          if (error)
-            errors.push({name: img, err: error.message});
-          else
-            parseExifData(exifData, img);
-      });
+    new ExifImage({ image: img }, function (error, exifData) {
+      if (error) errors.push({ name: img, err: error.message });
+      else parseExifData(exifData, img);
+    });
   } catch (error) {
-      errors.push({name: img, err: error.message});
+    errors.push({ name: img, err: error.message });
   }
 }
 
 function readDataDir(path) {
   var files = fs.readdirSync(path);
   var count = 0;
-  files.forEach(function(file,i){
-    file = '../all_photos/' + file;
+  files.forEach(function (file, i) {
+    file = "../all_photos/" + file;
     readImage(file);
-    count++
+    count++;
   });
 }
 
-readDataDir('../all_photos/');
+readDataDir("../all_photos/");
 ```
 
 ### Flickr API Code
-Node JS script to grab data from the Flickr API.
+
+And here is the Node JS script to grab data from the Flickr API:
 
 ```js
-var fs = require('fs'),
-  jf = require('jsonfile'),
-  Flickr = require('flickrapi'),
-  async = require('async'),
-  joiner = require('joiner'),
-  GeoJson = require('geojson');
+var fs = require("fs"),
+  jf = require("jsonfile"),
+  Flickr = require("flickrapi"),
+  async = require("async"),
+  joiner = require("joiner"),
+  GeoJson = require("geojson");
 
 var flickrOptions = {
   api_key: "...",
   secret: "...",
-  user_id: "..."
+  user_id: "...",
 };
 
 var newGeoJson;
 
 function callFlickrAPI() {
-
   var count = 0;
   var data = [];
 
-  Flickr.tokenOnly(flickrOptions, function(error, flickr) {
-    for (var i=1; i<4; i++) {
-      flickr.photos.search({
-        user_id: flickr.options.user_id,
-        page: i,
-        per_page: 500,
-        extras: "url_m"
-      },
+  Flickr.tokenOnly(flickrOptions, function (error, flickr) {
+    for (var i = 1; i < 4; i++) {
+      flickr.photos.search(
+        {
+          user_id: flickr.options.user_id,
+          page: i,
+          per_page: 500,
+          extras: "url_m",
+        },
 
-      function(err, result) {
+        function (err, result) {
+          if (err) {
+            console.log("error: ", err);
+            return;
+          }
 
-        if (err) { console.log('error: ', err); return; }
+          var photos = result.photos.photo;
 
-        var photos = result.photos.photo;
+          for (var j = 0; j < photos.length; j++) {
+            data.push(photos[j]);
+            count++;
+          }
 
-        for (var j=0; j< photos.length; j++) {
-          data.push(photos[j]);
-          count ++;
+          if (count === 1008) {
+            processJson(data);
+          }
         }
-
-        if (count === 1008) {
-          processJson(data);
-        }
-
-      });
+      );
     }
   });
 }
 
 function processJson(data) {
   var i = 0,
-        o = [];
+    o = [];
   for (i; i < data.length; i++) {
     o.push({
-      title : data[i].title,
-      url : data[i].url_m
+      title: data[i].title,
+      url: data[i].url_m,
     });
   }
-  jf.writeFile('flickrPhotoData.json', o, function(err) {
-    if (err) { console.log('error: ', err); }
-  })
+  jf.writeFile("flickrPhotoData.json", o, function (err) {
+    if (err) {
+      console.log("error: ", err);
+    }
+  });
   joinJson(o);
 }
 
 function joinJson(data) {
   var data_a = newGeoJson,
     data_b = data,
-    key_a = 'name',
-    key_b = 'title',
-    data_joined = joiner.geoJson(data_a, key_a, data_b, key_b, 'properties');
+    key_a = "name",
+    key_b = "title",
+    data_joined = joiner.geoJson(data_a, key_a, data_b, key_b, "properties");
   writeJson(data_joined);
 }
 
 function writeJson(data) {
   var file = "flickrData.json";
-  jf.writeFile(file, data, function(err) {
-    if (err) { console.log('writeJson error: ', err); return;}
-    console.log('data written. report: ', data.report.prose.summary);
-  })
+  jf.writeFile(file, data, function (err) {
+    if (err) {
+      console.log("writeJson error: ", err);
+      return;
+    }
+    console.log("data written. report: ", data.report.prose.summary);
+  });
 }
 
 function processGeoJson() {
-  var inputGeoJson = JSON.parse(fs.readFileSync('../data/nwb_photos.geojson'));
+  var inputGeoJson = JSON.parse(fs.readFileSync("../data/nwb_photos.geojson"));
   var jsonOut = [];
-  for (var i = 0; i<inputGeoJson.features.length; i++) {
+  for (var i = 0; i < inputGeoJson.features.length; i++) {
     jsonOut.push({
-      name : inputGeoJson.features[i].properties.Name,
-      lat : inputGeoJson.features[i].geometry.coordinates[1],
-      lon : inputGeoJson.features[i].geometry.coordinates[0]
+      name: inputGeoJson.features[i].properties.Name,
+      lat: inputGeoJson.features[i].geometry.coordinates[1],
+      lon: inputGeoJson.features[i].geometry.coordinates[0],
     });
   }
 
-  newGeoJson = GeoJson.parse(jsonOut, {Point: ['lat', 'lon'], include: ['name']});
+  newGeoJson = GeoJson.parse(jsonOut, {
+    Point: ["lat", "lon"],
+    include: ["name"],
+  });
   callFlickrAPI();
 }
 
