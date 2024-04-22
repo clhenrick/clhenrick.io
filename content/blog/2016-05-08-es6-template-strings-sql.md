@@ -8,6 +8,7 @@ tags:
   - SQL
   - NodeJS
   - ES6
+  - mishaps
 ---
 
 One of my favorite features I've discovered recently while learning [ES6](http://es6-features.org/#Constants) are __Template Strings__ (officially known as [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)). Reason being is that using them is a huge improvement over of my previous method for writing SQL queries in Javascript, which was a huge PITA. This is something I tend to do fairly often when creating a custom web-map or data driven application, or when writing a Node.JS script to wrangle data. In either scenario I'm typically working with [CartoDB](https://cartodb.com)'s [SQL API](http://docs.cartodb.com/cartodb-platform/sql-api/) which lets you perform `GET` and `POST` requests to a PostgreSQL & PostGIS database to retrieve or update data.

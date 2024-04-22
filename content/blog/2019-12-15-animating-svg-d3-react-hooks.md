@@ -1,7 +1,6 @@
 ---
 redirectFrom: [/animating-svg-d3-react-hooks.html, /animating-svg-d3-react-hooks/]
 title: "Animating SVG with D3JS and React Hooks"
-# layout: page
 date: 2019-12-15
 teaser: "SVG + React Hooks + d3-interpolate + requestAnimationFrame"
 tags:

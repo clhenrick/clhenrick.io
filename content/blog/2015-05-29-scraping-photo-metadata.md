@@ -8,7 +8,7 @@ tags:
   - Web Scraping
   - NodeJS
   - Web Mapping
-  - flickr-api
+  - Flickr API
   - CartoDB
 ---
 

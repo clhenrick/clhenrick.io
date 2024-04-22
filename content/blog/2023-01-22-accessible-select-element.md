@@ -10,6 +10,7 @@ tags:
   - A11Y
   - Accessibility
   - React
+  - JavaScript
 ---
 
 ## Introduction

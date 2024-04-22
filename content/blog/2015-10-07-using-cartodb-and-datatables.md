@@ -7,6 +7,7 @@ tags:
   - data
   - CartoDB
   - data-tables
+  - SQL
 ---
 
 ## Topics Covered

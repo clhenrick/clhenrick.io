@@ -8,6 +8,7 @@ tags:
   - AWS Lambda
   - GDAL
   - Web Mapping
+  - Cartography
 ---
 
 ![assortment of map tiles generated using the AWS Lambda Tiler](/img/aws-lambda-tiler.png)

@@ -8,6 +8,7 @@ tags:
   - Data Visualization
   - Prototyping
   - Fellowships
+  - JavaScript
 ---
 
 <figure>

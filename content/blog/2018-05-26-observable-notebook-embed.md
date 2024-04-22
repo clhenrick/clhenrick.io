@@ -6,7 +6,10 @@ teaser: "Observable: Reactive programming meets data analysis and visualization 
 tags:
   - JavaScript
   - Observable Notebooks
+  - Data Visualization
 ---
+
+![screenshot of a data visualization of airline flight paths by frequency](/img/observable-notebook-embed.png)
 
 Lately I've been really enjoying playing around with the new [Observable](https://beta.observablehq.com/) Javascript Notebooks created by Mike Bostock (author of D3JS), Tom McWright, and Jeremey Ashkenas. In the world of computer programming, notebooks typically combine code, visualizations, equations, and prose in a user friendly way that may be shared with others. What sets a notebook apart from a static blog post like this one is that the code in notebooks is run in real time, outputting useful stuff such as derived data and visual graphics. One of the more well known notebook formats is the [Jupyter Notebook](http://jupyter.org/), which supports a variety of programming languages such as Python, and have become very popular with Data Science folks.
 
