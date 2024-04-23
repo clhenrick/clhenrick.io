@@ -71,6 +71,10 @@ main {
   padding: 0 var(--padding);
 }
 
+footer {
+  padding: var(--padding);
+}
+
 main:first-child {
   margin-top: 0;
 }
