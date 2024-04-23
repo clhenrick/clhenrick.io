@@ -1,4 +1,9 @@
 footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
   padding: var(--padding);
 }
 
