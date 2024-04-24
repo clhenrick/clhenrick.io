@@ -1,7 +1,7 @@
 module.exports = {
   services: [
     {
-      title: "Previous Projects",
+      title: "Projects",
       description:
         "Encompasses: Data Visualization, Web Accessibility, Prototyping, Interactive Web Maps, Interaction Design, and more.",
       url: "/work/",
@@ -10,7 +10,7 @@ module.exports = {
     {
       title: "Blog Articles",
       description:
-        "Ramblings on previous projects and solving problems relating to the web, data, cartography, and design.",
+        "Ramblings on previous projects and solving problems relating to web development, data analysis, cartography, and design.",
       url: "/blog/",
       cta: "View Blog",
     },
