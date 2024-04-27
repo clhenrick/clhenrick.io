@@ -33,6 +33,10 @@ header a[href]:visited {
   color: var(--text-color-link);
 }
 
+header a[href]:hover {
+  background-color: var(--color-accent-bg-hover);
+}
+
 header a[href]:focus-visible,
 header button.nav-button:focus-visible {
   box-shadow: inset var(--focus-style-box-shadow);

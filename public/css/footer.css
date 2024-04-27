@@ -29,10 +29,13 @@ footer ul.social-links {
 }
 
 footer a[href],
-footer a[href]:visited,
-footer a[href]:hover {
+footer a[href]:visited {
   color: var(--color-accent);
   text-decoration: none;
+}
+
+footer a[href]:hover {
+  text-decoration: underline;
 }
 
 footer a[href]:focus-visible {
