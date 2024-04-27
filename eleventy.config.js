@@ -27,8 +27,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
   eleventyConfig.addWatchTarget("public/css/**/*.css");
 
-  eleventyConfig.addShortcode("currentBuildDate", () => {
-    return new Date().toISOString();
+  eleventyConfig.addGlobalData("generated", () => {
+    const now = new Date();
+    const timeZone = "PST";
+    const buildTime = new Intl.DateTimeFormat("en-US", {
+      dateStyle: "full",
+      timeStyle: "short",
+      timeZone,
+    }).format(now);
+    return {
+      iso: now.toISOString(),
+      formatted: `${buildTime} ${timeZone}`,
+    };
   });
 
   // Filters

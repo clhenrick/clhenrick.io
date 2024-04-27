@@ -78,10 +78,7 @@
     <main id="main">
       {{ content | safe }}
     </main>
-
-    <footer>
-      {# This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} #}
-    </footer>
+    {%- include "footer.njk" %}
     <script defer src="/js/primary-navigation.js"></script>
   </body>
 </html>

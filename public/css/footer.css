@@ -1,0 +1,23 @@
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: var(--padding);
+}
+
+footer p,
+footer a {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+footer h2 {
+  font-size: 1.5rem;
+}
+
+footer ul.social-links {
+  /* horizontally aligns first li and p of each footer section */
+  margin-top: -4px;
+}

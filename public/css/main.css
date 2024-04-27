@@ -138,3 +138,10 @@ dl > div {
   gap: 1rem;
   line-height: 1.75;
 }
+
+ul.inline,
+ol.inline {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap, 0.75rem);
+}
