@@ -30,13 +30,17 @@
   user-select: none;
   padding: 0.75rem 1.75rem;
   background-color: var(--color-accent-bg);
-  color: inherit;
+  color: var(--color-accent);
   border: none;
   border-radius: var(--border-radius);
   text-align: center;
   text-decoration: none;
   line-height: 1;
   cursor: pointer;
+}
+
+a[href].button:visited {
+  color: var(--color-accent);
 }
 
 .button:hover {
