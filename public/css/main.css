@@ -26,6 +26,9 @@
   --text-color-link-visited: #17050f;
 
   --padding: 1.5rem;
+  --padding-md: 2rem;
+  --padding-lg: 4rem;
+
   --font-size: 1.25rem;
   --border-radius: 0.1875rem;
 
@@ -81,7 +84,7 @@ footer {
 
 main {
   max-width: var(--desktop-max-width);
-  padding: 0 var(--padding);
+  padding: var(--padding-lg) var(--padding);
 }
 
 main:first-child {

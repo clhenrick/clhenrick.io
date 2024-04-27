@@ -4,7 +4,15 @@ main {
 }
 
 section {
-  margin-bottom: 4rem;
+  margin-bottom: var(--padding-lg);
+}
+
+section:first-of-type {
+  margin-top: -4rem;
+}
+
+section:last-of-type {
+  margin-bottom: 0;
 }
 
 .banner {
