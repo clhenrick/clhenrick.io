@@ -1,7 +1,7 @@
 nav.pagination > ol {
+  --gap: 0.5rem;
   display: flex;
   align-items: baseline;
-  gap: 1.5rem;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
@@ -16,4 +16,8 @@ nav.pagination a[href]:hover {
 nav.pagination a[href]:focus-visible {
   box-shadow: var(--focus-style-box-shadow);
   text-decoration: none;
+}
+
+nav.pagination li a[href] {
+  padding: 0.75rem var(--padding);
 }
