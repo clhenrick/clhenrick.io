@@ -71,12 +71,12 @@ body {
 header,
 main,
 footer {
-  max-width: var(--desktop-max-width);
   margin: 0 auto;
   font-size: var(--font-size);
 }
 
 main {
+  max-width: var(--desktop-max-width);
   padding: 0 var(--padding);
 }
 
