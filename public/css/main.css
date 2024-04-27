@@ -1,16 +1,22 @@
 :root {
+  color-scheme: light dark;
+
   /* credit: https://modernfontstacks.com/ */
   --font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
     sans-serif;
   --font-family-monospace: ui-monospace, "Cascadia Code", "Source Code Pro",
     Menlo, Consolas, "DejaVu Sans Mono", monospace;
 
+  --color-accent: #f76902;
+  --color-accent-focus: #ff9447;
+
+  --background-color: #f5f2ef;
+  --background-color-secondary: #f2eae4;
+
+  --color-gray-10: #F2F2F2;
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
   --color-gray-90: #333;
-  --color-accent: #efc94c;
-
-  --background-color: #fff;
 
   --text-color: var(--color-gray-90);
   --text-color-link: #082840;
@@ -29,16 +35,19 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-gray-20: #e0e0e0;
-    --color-gray-50: #c0c0c0;
+    --color-accent: #e68933;
+    --color-accent-focus: #ffa047;
+
+    --background-color: #030303;
+    --background-color-secondary: #1E1810;
+
     --color-gray-90: #dad8d8;
 
-    /* --text-color is assigned to --color-gray-_ above */
+    --text-color: var(--color-gray-10);
+
     --text-color-link: #1493fb;
     --text-color-link-active: #6969f7;
     --text-color-link-visited: #a6a6f8;
-
-    --background-color: #15202b;
   }
 }
 
