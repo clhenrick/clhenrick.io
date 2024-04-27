@@ -32,7 +32,7 @@ module.exports = function (eleventyConfig) {
     const timeZone = "PST";
     const buildTime = new Intl.DateTimeFormat("en-US", {
       dateStyle: "full",
-      timeStyle: "medium",
+      timeStyle: "short",
       timeZone,
     }).format(now);
     return {
