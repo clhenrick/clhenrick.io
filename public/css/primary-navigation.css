@@ -6,7 +6,7 @@ header {
   display: flex;
   flex-direction: column;
   line-height: var(--main-nav-height);
-  background-color: var(--background-color);
+  background-color: var(--background-color-secondary);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   isolation: isolate;
   z-index: 1;
@@ -38,7 +38,7 @@ header a[href].skip-link {
   position: absolute;
   top: var(--main-nav-height);
   left: 1rem;
-  background-color: var(--background-color);
+  background-color: var(--background-color--secondary);
   z-index: 1;
 }
 
@@ -96,7 +96,7 @@ button.nav-button {
   position: relative;
   display: none;
   text-align: center;
-  background-color: var(--background-color);
+  background-color: var(--background-color--secondary);
 }
 
 .js-enabled nav > ul.expanded {
@@ -136,7 +136,7 @@ nav ul li a {
     position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color);
+    background-color: var(--background-color--secondary);
     overflow: hidden;
     width: 1px;
     height: 1px;
