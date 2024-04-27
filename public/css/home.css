@@ -67,6 +67,7 @@ section {
 
 .card .text > *:last-child {
   margin-top: auto;
+  min-width: 11.25rem;
 }
 
 .card .text > *:nth-last-child(2) {
