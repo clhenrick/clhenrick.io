@@ -5,3 +5,15 @@ nav.pagination > ol {
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
+
+nav.pagination a[href],
+nav.pagination a[href]:visited,
+nav.pagination a[href]:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+nav.pagination a[href]:focus-visible {
+  box-shadow: var(--focus-style-box-shadow);
+  text-decoration: none;
+}
