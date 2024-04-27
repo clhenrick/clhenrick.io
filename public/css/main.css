@@ -9,11 +9,13 @@
 
   --color-accent: #f76902;
   --color-accent-focus: #ff9447;
+  --color-accent-bg: #f6e5dd;
+  --color-accent-bg-hover:  rgba(247, 105, 2, 0.12);
 
   --background-color: #f5f2ef;
   --background-color-secondary: #f2eae4;
 
-  --color-gray-10: #F2F2F2;
+  --color-gray-10: #f2f2f2;
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
   --color-gray-90: #333;
@@ -37,9 +39,11 @@
   :root {
     --color-accent: #e68933;
     --color-accent-focus: #ffa047;
+    --color-accent-bg: #3c2a1f;
+    --color-accent-bg-hover: rgba(230, 137, 51, 0.12);
 
     --background-color: #030303;
-    --background-color-secondary: #1E1810;
+    --background-color-secondary: #1e1810;
 
     --color-gray-90: #dad8d8;
 
