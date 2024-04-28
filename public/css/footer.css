@@ -9,8 +9,17 @@ footer .footer-inner {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 2rem;
-  padding: var(--padding-lg) var(--padding) 2rem;
+  gap: var(--padding-lg);
+  padding: 0 var(--padding) 2rem;
+}
+
+footer section:first-of-type {
+  margin-top: var(--padding-lg);
+  margin-bottom: 0;
+}
+
+footer section:last-of-type {
+  margin-top: 0;
 }
 
 footer p,
