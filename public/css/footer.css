@@ -62,6 +62,10 @@ footer a[href]:focus-visible {
   text-decoration: none;
 }
 
+footer ul.meta-links {
+  --gap: var(--padding-md);
+}
+
 footer ul.social-links {
   display: flex;
   flex-direction: column;
