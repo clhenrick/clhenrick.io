@@ -83,9 +83,10 @@ header a[href].skip-link:focus-visible {
 button.nav-button {
   display: flex;
   margin-left: auto;
-  flex-basis: 6.5rem;
   align-items: center;
   gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background-color: transparent;
 }
 
 @media screen and (min-width: 46.75rem) {
