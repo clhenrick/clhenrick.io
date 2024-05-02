@@ -54,7 +54,7 @@
 
     --text-color-link: var(--color-accent); /* #1493fb; */
     --text-color-link-active: #6969f7;
-    --text-color-link-visited: #a6a6f8;
+    --text-color-link-visited: #f7d8bb;
   }
 }
 
@@ -111,9 +111,10 @@ a[href] {
   text-decoration-skip-ink: auto;
   text-decoration-thickness: 0.125rem;
   text-underline-offset: 0.15rem;
+  transition: all 0.25s ease-in;
 }
 a[href]:visited {
-  color: var(--text-color);
+  color: var(--text-color-link-visited);
 }
 
 /* a[href]:hover,
