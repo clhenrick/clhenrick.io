@@ -6,10 +6,12 @@ const {
 
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdown = require("markdown-it")({
   html: true,
 });
+const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginImages = require("./eleventy.config.images.js");
+
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
@@ -23,6 +25,7 @@ module.exports = function (eleventyConfig) {
     preAttributes: { tabindex: 0 },
   });
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(pluginImages);
 
   eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
   eleventyConfig.addWatchTarget("public/css/**/*.css");
