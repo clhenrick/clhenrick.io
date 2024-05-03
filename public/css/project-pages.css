@@ -13,14 +13,13 @@ ul.tech-tags {
 
 ul.screenshots {
   flex-direction: column;
+  gap: 3rem;
 }
 
-ul.screenshots li {
-  margin-bottom: 1.25rem;
-}
-
-ul.screenshots li:last-child {
-  margin-bottom: 0;
+ul.screenshots img,
+ul.screenshots picture {
+  width: 100%;
+  height: auto;
 }
 
 nav.secondary {
