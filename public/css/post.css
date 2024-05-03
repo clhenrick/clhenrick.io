@@ -28,3 +28,9 @@ pre[class*="language-"] {
   font-size: 1rem;
   margin-bottom: 1.75rem;
 }
+
+img,
+picture {
+  width: 100%;
+  height: auto;
+}
