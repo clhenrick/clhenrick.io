@@ -23,7 +23,6 @@ module.exports = function (eleventyConfig) {
         outputPath: "/img/",
       });
 
-      // TODO loading=eager and fetchpriority=high
       const imageAttributes = {
         alt,
         sizes,
