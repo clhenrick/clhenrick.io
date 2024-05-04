@@ -6,13 +6,13 @@ import 'zx/globals';
  * Node.js ESM script that will find and replace markdown image syntax with an Eleventy Nunjucks 'image' shortcode.
  * Note: this script uses the zx library: https://google.github.io/zx/
  * Warning: this script will write to the input file!
- * Usage: find-and-replace-md-img-tag.mjs --file=/path/to/file.md
+ * Usage: find-and-replace-md-img-tag.mjs --file=relative/path/to/file.md
  */
 
 const input = argv.file;
 if (!input) {
   echo('No input file specified');
-  echo('usage: find-and-replace-md-img-tag.mjs --file=/path/to/file.md');
+  echo('usage: find-and-replace-md-img-tag.mjs --file=relative/path/to/file.md');
   process.exit(0);
 }
 echo('Processing file: ' + input);
