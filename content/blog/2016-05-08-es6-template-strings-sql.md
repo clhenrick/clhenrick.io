@@ -15,7 +15,7 @@ One of my favorite features I've discovered recently while learning [ES6](http:/
 
 It wasn't until a couple weeks ago after my colleague [Chris Wong](http://chriswhong.com/) had [tweeted about the topic](https://twitter.com/chris_whong/status/725057071855591424) that I started thinking it would be good to write a blog post about it.
 
-![screenshot of Chris Wong's tweet](/img/chris-wong-tweet-sql-js.png)
+{% image 'chris-wong-tweet-sql-js.png', "Screenshot of Chris Wong's tweet" %}
 
 For a simple query like `SELECT * FROM some_table;` writing it out in Javascript isn't a big deal. However writing a more complex SQL query, while still keeping it human readable, is anything but fun. This is especially true for dynamically generated queries, for example using the `IN` operator on an array of values that are the result of some other process. It's really a huge headache and involves a lot of string concatenation and debugging to make sure the query is valid. Sure, there are libraries that make creating SQL queries in Javascript easier such as [Sequel](https://github.com/jeremyevans/sequel), but as far as I'm aware of they don't generate *spatial queries with PostGIS*, which is one of my go-to tools for geoprocessing or querying spatial data.
 
