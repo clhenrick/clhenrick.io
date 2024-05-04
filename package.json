@@ -23,6 +23,7 @@
     "luxon": "^3.4.4",
     "markdown-it": "^14.1.0",
     "netlify-plugin-cache": "^1.0.3",
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.29.0",
+    "zx": "^8.0.2"
   }
 }
