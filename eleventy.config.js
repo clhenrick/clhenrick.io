@@ -10,8 +10,10 @@ const markdown = require("markdown-it")({
   html: true,
 });
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginImages = require("./eleventy.config.images.js");
-
+const {
+  pluginImages,
+  pluginDataCascadeImage,
+} = require("./eleventy.config.images.js");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
@@ -26,6 +28,7 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginImages);
+  eleventyConfig.addPlugin(pluginDataCascadeImage);
 
   eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
   eleventyConfig.addWatchTarget("public/css/**/*.css");
