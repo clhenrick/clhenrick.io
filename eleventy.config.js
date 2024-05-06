@@ -17,7 +17,8 @@ const {
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
-    "./public/": "/",
+    "./public/css": "/css",
+    "./public/js": "/js",
   });
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
