@@ -26,7 +26,9 @@ eleventyNavigation:
 
 <ul class="cards-container" role="list">
   {% for project in work %}
-    {{ projectCard(project) }}
+    {%- set basename = project.thumb | replace(".jpg", "") | replace(".png", "") %}
+    {%- set thumb = work_image_thumbnails[basename] %}
+    {{ projectCard(project, thumb) }}
   {% endfor %}
 </ul>
 
