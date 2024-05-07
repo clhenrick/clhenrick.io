@@ -13,7 +13,7 @@ const input = argv.file;
 if (!input) {
   echo("No input file specified");
   echo(
-    "usage: find-and-replace-md-img-tag.mjs --file=relative/path/to/file.md"
+    "usage: zx find-and-replace-md-img-tag.mjs --file=relative/path/to/file.md"
   );
   process.exit(0);
 }
