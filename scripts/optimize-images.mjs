@@ -16,6 +16,7 @@ const isMissingRequiredArgs = !inputFile && !inputDir && !pattern;
 
 if (isMissingRequiredArgs || help) {
   echo("usage: zx optimize-images --path=relative/path/to/images/");
+  echo("see scripts/README.md for further usage.");
   process.exit(0);
 }
 
