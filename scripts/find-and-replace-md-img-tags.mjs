@@ -27,7 +27,7 @@ const matches = data.matchAll(regex);
 const matchesArray = Array.from(matches);
 
 if (!matchesArray.length) {
-  echo("No instances of ![]() found, exiting.");
+  echo("No markdown image tags found, exiting.");
   process.exit(0);
 }
 
