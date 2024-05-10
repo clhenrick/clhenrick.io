@@ -23,9 +23,9 @@ Recently at Radish Lab I created an interactive resource guide for the [Women's 
 
 WCCNY asked to have the guide exist in a searchable and filterable format, so [jQuery DataTables](https://www.datatables.net/) seemed like a practical solution. Additionally because the data is geographic in nature (the majority of the data has detailed street address location information) this meant it could be mapped. As a result I decided to use [CartoDB](http://cartodb.com) to host and map the data.
 
-You can visit the guide by clicking on the image below:
-<br><br>
-[![screen shot of the WCCNY Resource Guide](/img/wcc-resource-guide.png)](http://resourceguide.wccny.org/)
+{% image 'wcc-resource-guide.png', 'screen shot of the WCCNY Resource Guide' %}
+
+[WWCCNY Website](http://resourceguide.wccny.org/)
 
 ## What is CartoDB?
 Put simply [CartoDB](http://cartodb.com) is web platform that focuses on making it easy to map and analyze geospatial data. It is built on top of a suite of open source software for database management, GIS, and web-mapping. With CartoDB you can drag and drop data into its dashboard and instantly start prototyping an interactive map data-vizualization or querying your data with [SQL](https://en.wikipedia.org/wiki/SQL). They've built quite a large following in the GIS, web-development, and Cartography world, provide plenty of educational materials and tutorials to get you started, and have great customer service and support.

@@ -1,13 +1,12 @@
 {# Card component for use in work/index #}
-{% macro projectCard(project) %}
+{% macro projectCard(project, thumb = "") %}
 <li class="card">
   <div class="img">
-    <img
-        src="/img/{{ project.thumb }}"
-        alt=""
-        loading="lazy"
-        decoding="async"
-      >
+    {%- if thumb %}
+      {% dataCascadeImage thumb.image.stats, "" %}
+    {%- else %}
+      Missing thumbnail image!
+    {%- endif %}
   </div>
   <div class="text">
     <h2>

@@ -11,7 +11,7 @@ tags:
   - Cartography
 ---
 
-![assortment of map tiles generated using the AWS Lambda Tiler](/img/aws-lambda-tiler.png)
+{% image 'aws-lambda-tiler.png', 'assortment of map tiles generated using the AWS Lambda Tiler' %}
 
 ### _The following is a very small excerpt from the original post, you may read the full post at  [Hi.Stamen.com](https://hi.stamen.com/stamen-aws-lambda-tiler-blog-post-76fc1138a145)_
 

@@ -25,17 +25,17 @@ The development of the app stems from a [Freedom of Information Law request](htt
 
 The first thing I did was map this data (those of you who know me are saying; "of course you did!"). Red are properties that are not on the DHCR's list while blue are ones that are.
 
-[![](/img/likely_rs_map.png)](http://cdb.io/1bfz09d)
+{% image 'likely_rs_map.png', 'map of new york city showing builds that may contain rent stabilized apartments' %}
 
 Visualizing the data was great, however I was interested in pushing the usefulness of this dataset a little further. After I shared my discovery with [Caroline Woolard](http://carolinewoolard.com/), an NYC based artist and activist, she suggested using the data in an app to let people know if they are rent stabilized. The rest is history.
 
 Here are some screen shots of a few of the slides from the app's landing page:
 
-![](/img/airs_landing_page.png)
+{% image 'airs_landing_page.png', 'Screen shot of the Am I Rent Stabilized website landing page' %}
 
-![](/img/airs_address_search.png)
+{% image 'airs_address_search.png', 'Screen shot of the Am I Rent Stabilized website building search user interface' %}
 
-![](/img/airs_search_result_yes.png)
+{% image 'airs_search_result_yes.png', 'Screen shot of the Am I Rent Stabilized website example search result' %}
 
 ## DHCR & MapPLUTO Data Processing
 *Am I Rent Stabilized?* uses the dataset I created of properties that likely have rent stabilized apartments in NYC. I chose to stash this database on CartoDB so that I could take advantage of CartoDB's SQL API and the CartoDB.JS library with the app. However I did a lot of data processing on my local machine before importing the data into CartoDB. This is mainly because the MapPLUTO dataset is too large to import into CartoDB without a paid plan that gives you more storage space.

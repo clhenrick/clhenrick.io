@@ -22,9 +22,10 @@ I prefer using **PostgreSQL** (also referred to as **Postgres**) as my go-to dat
 
 ### Problem: importing a 1.5 GB CSV file into postgresql
 Typically I use **csvkit**'s [csvsql command line tool](http://csvkit.readthedocs.org/en/latest/scripts/csvsql.html) to import CSV data into **Postgres**. This normally works fairly well, but not in the case of a 1.5 GB CSV file. Basically, attempting to do this row by row *is not the answer!*
+
 The following Allen Iverson poster comes to mind:
 
-![An illustrative depiction of professional basketball player Alan Iverson with the text "war is not the answer"](/img/warisnottheanswer1.jpg)
+{% image 'warisnottheanswer1.jpg', 'An illustrative depiction of professional basketball player Alan Iverson with the text "war is not the answer' %}
 
 What we need is a way to bulk load the data.
 
