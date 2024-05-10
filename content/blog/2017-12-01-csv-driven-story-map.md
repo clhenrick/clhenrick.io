@@ -10,7 +10,7 @@ tags:
   - Webpack
   - CSV
 ---
-![canopy story map splashscreen](/img/canopy-story-map01.jpg)
+{% image 'canopy-story-map01.jpg', 'canopy story map splashscreen' %}
 
 In this post I’ll describe the workflow and framework I developed for creating an interactive “story map” for [Canopy](http://canopyplanet.org/) while I worked as a web developer for [GreenInfo Network](http://greeninfo.org). I'll describe how it was built in a way that allowed for changes to the story's **content** (copy, photos, and other media assets) as well as **map data layers** to happen in an iterative and timely manner.
 
@@ -21,7 +21,7 @@ A little about **Canopy:**
 
 Canopy hired GreenInfo to create an interactive they could use to help influence fashion and paper industries to commit to sourcing sustainable materials, rather than sourcing from logged old growth forests. It surprised me to learn that old growth logging is still a problem in places like Indonesia and even Vancouver Island in British Columbia, and that this problem is driven by developed countries' need for paper products such as cardboard, bath tissue, and cellulose.
 
-![](/img/canopy-story-map02.jpg)
+{% image 'canopy-story-map02.jpg', '' %}
 
 ## Workflow: From Spreadsheet to Web
 When creating a story map, one is often working with many people who are giving input into curating the content of the story. To facilitate this process, we used Google Sheets and set up a schema representing the necessary pieces of data to include for each part of the story, what I’ll call a “slide” from here on out. Fields in the spreadsheet such as `slide_number`, `copy`, `image_url`, `image_caption`, `map_zoom`, `map_center`, and map `data_layers` stored the necessary information for each slide. This allowed for a copy editor to easily update the content and settings for each part of the story. It allowed for me to get that data into the software I was building in relatively pain free manner.
@@ -38,13 +38,13 @@ Here’s the workflow I used for going from spreadsheet to web app:
 
 Next I’ll talk about the how I structured the application state, which is what the JSON document ends up becoming, and how that is used to render parts of the story map UI.
 
-![](/img/canopy-story-map03.jpg)
+{% image 'canopy-story-map03.jpg', '' %}
 
 ## App State
 
 For managing the story map’s application state, I used a popular Javascript library called Redux. The app state “shape” is fairly simple: It has only 4 properties: browser, lightbox, map, and slides. Each of these represent various parts of state which may be passed to React components to render parts of the app’s UI.
 
-![](/img/canopy-story-map04a.png)
+{% image 'canopy-story-map04a.png', '' %}
 
 - **browser**: stores variables pertaining to the browser’s viewport. Useful for making UI changes based on device size. This property is created by the [redux-responsive middleware](https://github.com/AlecAivazis/redux-responsive).
 
@@ -56,7 +56,7 @@ For managing the story map’s application state, I used a popular Javascript li
 
 With Redux, the app state is updated via “[actions](https://redux.js.org/docs/basics/Actions.html)” and “[reducers](https://redux.js.org/docs/basics/Reducers.html)” which describe the update to be made and return a new representation of app state. Actions may be “[dispatched](https://redux.js.org/docs/basics/Store.html#dispatching-actions)” following a user interaction, such as clicking a button. Actions are then intercepted by reducers which change the app state. UI elements “[subscribe](https://redux.js.org/docs/api/Store.html#subscribe)” to these changes and respond by updating their contents.
 
-![](/img/canopy-story-map04b.png)
+{% image 'canopy-story-map04b.png', '' %}
 
 Here, the slide index is 0, which means we are on the very first slide. In the UI, the sidebar would show 1, the more human recognizable index format.
 
@@ -69,7 +69,7 @@ One useful feature that helped to develop the story was to use the browser’s [
 
 Another helpful feature was to bind event listeners to the forwards and backwards arrow keys in the keyboard. This allowed for moving linearly through the story without having to mouse to the arrow buttons in the UI. I think keyboard short cuts and keys are super useful when using interfaces, such as tabbing through the fields in a form, and in a story map it’s no different.
 
-![](/img/canopy-story-map04.jpg)
+{% image 'canopy-story-map04.jpg', '' %}
 
 ## Story Outline Structure
 Each row in the story outline spreadsheet represents a single slide in the story. Various fields are used to configure what should be shown in a slide and on an interactive map for any given point in the story.
@@ -94,7 +94,7 @@ We included fields for:
 
 - `icon`: what type of icon should be displayed next to the title. There are 4 total, and not all slides get them.
 
-![](/img/canopy-story-map05.jpg)
+{% image 'canopy-story-map05.jpg', '' %}
 
 ## Map Data Layers Management
 A separate Google Sheet, referred to as the “data inventory,” is used to store metadata about the map layers. This spreadsheet is also converted to JSON from a CSV and loaded into the app at runtime. Having another spreadsheet for storing information on the map layers was crucial as the same map layers are used by both this story map and a separate web app that allows for freely exploring the various data layers. In the layer explorer app, users have the ability to zoom, pan, and turn map layers on and off. These types of interactions are disabled in the story map for a much simpler user experience. With the same data fueling both apps, I felt it was important to have a single source of truth about the data layers.
@@ -142,7 +142,7 @@ The script takes the CSV file (input) as the first argument and GeoJSON file (ou
 
 This made updating the story outline in the app a breeze, as I didn’t have to type out the entire command each time it needed to be updated. This process probably happened a hundred or more times over the course of the project!
 
-![](/img/canopy-story-map06.jpg)
+{% image 'canopy-story-map06.jpg', '' %}
 
 ## Conclusion
 Using spreadsheet-generated CSVs to power the story map for Canopy turned out to be a very flexible and lightweight solution. The end result was a “static site” hosted on Github Pages that doesn’t require any specialized server set up. Cloud services such as AWS S3 help with this, as did the ability to use Stamen’s beautiful [Water Color map tiles](http://maps.stamen.com/watercolor/). Building the app with React and Redux allowed for fine-grained adjustments and made implementing customized features a breeze. Developing a set schema for the story outline and a sensible workflow to go from story copy, assets, and data ➔ spreadsheet ➔ CSV ➔ JSON ➔ web app made integrating updates to the content fast.
