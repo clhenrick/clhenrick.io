@@ -23,8 +23,15 @@ function pluginImages(eleventyConfig) {
       const metadata = await eleventyImage(input, {
         widths: [...widths, null], // null means the original size
         formats: [...formats, null], // null means the original format
-        outputDir: path.join(eleventyConfig.dir.output, "img"), // Advanced usage note: `eleventyConfig.dir` works here because we’re using addPlugin.
+        // Advanced usage note: `eleventyConfig.dir` works here because we’re using addPlugin.
+        outputDir: path.join(eleventyConfig.dir.output, "img"),
         outputPath: "/img/",
+        // use the input filename instead of a hash for naming the optimized images
+        filenameFormat: function formatFilename(id, src, width, format, options) {
+          const extension = path.extname(src);
+          const name = path.basename(src, extension);
+          return `${name}-${width}w.${format}`;
+        },
       });
 
       const imageAttributes = {
