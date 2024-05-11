@@ -36,6 +36,7 @@
   --desktop-max-width: 60rem;
   --main-nav-height: 3.875rem;
 
+  --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
   --focus-style-box-shadow: 0 0 0 3px var(--color-accent);
 }
 

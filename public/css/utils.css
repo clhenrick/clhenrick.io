@@ -29,28 +29,26 @@
   touch-action: manipulation;
   user-select: none;
   padding: 0.75rem 1.75rem;
-  background-color: var(--color-accent-bg);
-  color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-white);
   border: none;
   border-radius: var(--border-radius);
   text-align: center;
   text-decoration: none;
   line-height: 1;
   cursor: pointer;
+  transition: none;
 }
 
-a[href].button:visited {
-  color: var(--color-accent);
+.button:visited {
+  color: var(--color-white);
 }
 
 .button:hover {
-  background-color: var(--color-accent-bg-hover);
-}
-
-.button:focus {
-  outline: none;
+  background-color: var(--color-accent-focus);
 }
 
 .button:focus-visible {
-  box-shadow: var(--focus-style-box-shadow);
+  outline: 3px solid var(--background-color);
+  box-shadow: var(--focus-style-button-box-shadow);
 }
