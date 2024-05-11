@@ -7,14 +7,15 @@
   --font-family-monospace: ui-monospace, "Cascadia Code", "Source Code Pro",
     Menlo, Consolas, "DejaVu Sans Mono", monospace;
 
-  --color-accent: #f76902;
-  --color-accent-focus: #ff9447;
-  --color-accent-bg: #f6e5dd;
-  --color-accent-bg-hover:  rgba(247, 105, 2, 0.12);
+  --color-accent: #00529D;
+  --color-accent-focus: #013e76;
+  --color-accent-bg: transparent;
+  --color-accent-bg-hover: transparent;
 
-  --background-color: #f5f2ef;
-  --background-color-secondary: #f2eae4;
+  --background-color: #fff;
+  --background-color-secondary: #F8F6F4;
 
+  --color-white: #fff;
   --color-gray-10: #f2f2f2;
   --color-gray-20: #e0e0e0;
   --color-gray-50: #c0c0c0;
