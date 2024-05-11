@@ -34,11 +34,13 @@ header a[href]:visited {
 }
 
 header a[href]:hover {
+  color: var(--color-accent-focus);
   background-color: var(--color-accent-bg-hover);
 }
 
 header a[href]:focus-visible,
 header button.nav-button:focus-visible {
+  outline: none;
   box-shadow: inset var(--focus-style-box-shadow);
 }
 
@@ -88,6 +90,7 @@ button.nav-button {
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem 0.75rem;
+  color: var(--text-color-link);
   background-color: transparent;
 }
 

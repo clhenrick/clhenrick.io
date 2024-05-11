@@ -10,7 +10,7 @@
   --color-accent: #00529D;
   --color-accent-focus: #013e76;
   --color-accent-bg: transparent;
-  --color-accent-bg-hover: transparent;
+  --color-accent-bg-hover: #ADD5FA;
 
   --background-color: #fff;
   --background-color-secondary: #F8F6F4;
@@ -22,7 +22,7 @@
   --color-gray-90: #333;
 
   --text-color: var(--color-gray-90);
-  --text-color-link: #082840;
+  --text-color-link: var(--color-accent);
   --text-color-link-active: #5f2b48;
   --text-color-link-visited: #17050f;
 
