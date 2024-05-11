@@ -74,14 +74,9 @@ layout: layouts/work.njk
   <ul class="screenshots" role="list">
     {% for img in project.imgs %}
     <li>
-      <a href="#">
-        <img
-          loading="lazy"
-          decoding="async"
-          src="/img/{{img}}"
-          alt="Screenshot {{loop.index}} of {{project.title}}"
-        >
-      </a>
+      {%- set altText %}Screenshot {{loop.index}} of {{project.title}}{%- endset %}
+      {# NOTE: the code below uses the image shortcode #}
+      {%- image img, altText %}
     </li>
     {% endfor %}
   </ul>
