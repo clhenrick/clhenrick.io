@@ -67,7 +67,7 @@
 .card:hover,
 .card:focus-within {
   border: 1px solid transparent;
-  box-shadow: 0 0 0 0.25rem var(--color-accent);
+  box-shadow: var(--focus-style-box-shadow);
 }
 
 .card h2 {
