@@ -37,3 +37,7 @@ nav.secondary span[aria-hidden] {
 nav.secondary a {
   text-decoration: none;
 }
+
+nav.secondary a:focus-visible {
+  box-shadow: var(--focus-style-box-shadow);
+}
