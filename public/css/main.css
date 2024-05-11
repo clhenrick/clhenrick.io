@@ -106,14 +106,14 @@ p:last-child {
   margin-bottom: 0;
 }
 
-a[href] {
+:where([href]) {
   color: var(--text-color-link);
   text-decoration-skip-ink: auto;
   text-decoration-thickness: 0.125rem;
   text-underline-offset: 0.15rem;
-  transition: all 0.25s ease-in;
+  transition: text-decoration-thickness 0.25s ease-in;
 }
-a[href]:visited {
+:where(a[href]:visited) {
   color: var(--text-color-link-visited);
 }
 
@@ -122,8 +122,8 @@ a[href]:active {
   color: var(--text-color-link-active);
 } */
 
-a[href]:hover,
-a[href]:focus {
+:where(a[href]:hover),
+:where(a[href]:focus) {
   color: var(--color-accent-focus);
   outline: none;
   text-decoration-thickness: 0.5rem;
