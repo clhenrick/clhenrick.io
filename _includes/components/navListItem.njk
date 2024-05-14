@@ -9,7 +9,7 @@
   {{- entry.title -}}
   </a>
   {%- if entry.children.length %}
-    <ul role="list">
+    <ul role="list" class="with-dropdown">
       {%- for child in entry.children %}
         {{ renderNavListItem(child, pageUrl) }}
       {%- endfor %}

@@ -1,11 +1,11 @@
 header {
   /* NOTE: keeps the nav list dropdown a similar width to its corresponding link / list item */
   --min-nav-link-width: 6rem;
+  --horiz-nav-item-gap: 0.5rem;
   max-width: none;
   position: relative;
   display: flex;
   flex-direction: column;
-  line-height: var(--main-nav-height);
   background-color: var(--background-color-secondary);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   isolation: isolate;
@@ -15,7 +15,8 @@ header {
 @media screen and (min-width: 46.75rem) {
   header {
     flex-direction: row;
-    height: var(--main-nav-height);
+    padding: 0.5rem 0;
+    gap: var(--horiz-nav-item-gap);
   }
 }
 
@@ -24,7 +25,7 @@ header > div {
 }
 
 header a[href] {
-  padding: 0 1.25rem;
+  padding: 0.75rem 1.25rem;
   display: inline-block;
   text-decoration: none;
 }
@@ -34,8 +35,8 @@ header a[href]:visited {
 }
 
 header a[href]:hover {
-  color: var(--color-accent-focus);
-  background-color: var(--color-accent-bg-hover);
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
 }
 
 header a[href]:focus-visible,
@@ -75,8 +76,8 @@ header a[href].skip-link:focus-visible {
     height: 0;
     position: absolute;
     right: 0;
-    top: 1.9375rem;
-    margin-top: -2.5px;
+    top: 2rem;
+    margin-top: -5.5px;
     margin-right: 0.75rem;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
@@ -92,6 +93,11 @@ button.nav-button {
   padding: 0.5rem 0.75rem;
   color: var(--text-color-link);
   background-color: transparent;
+}
+
+button.nav-button:hover {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
 }
 
 @media screen and (min-width: 46.75rem) {
@@ -125,6 +131,7 @@ button.nav-button {
     position: relative;
     display: flex;
     flex-direction: row;
+    gap: var(--horiz-nav-item-gap);
     align-items: baseline;
     text-align: start;
   }
@@ -146,19 +153,21 @@ nav ul li a {
 }
 
 @media screen and (min-width: 46.75rem) {
-  nav ul li > ul {
+  nav ul li > ul.with-dropdown {
     position: absolute;
     display: flex;
     flex-direction: column;
+    gap: var(--horiz-nav-item-gap);
     background-color: var(--background-color-secondary);
+    padding: 0.25rem;
     overflow: hidden;
     width: 1px;
     height: 1px;
     clip-path: inset(50%);
   }
 
-  nav ul li:focus-within > ul,
-  nav ul li:hover > ul {
+  nav ul li:focus-within > ul.with-dropdown,
+  nav ul li:hover > ul.with-dropdown {
     overflow: auto;
     min-width: var(--min-nav-link-width);
     width: auto;
