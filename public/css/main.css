@@ -36,10 +36,16 @@
   --border-radius: 0.1875rem;
 
   --desktop-max-width: 60rem;
-  --main-nav-height: 3.875rem;
+  --main-nav-height: 3.375rem;
 
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
   --focus-style-box-shadow: 0 0 0 3px var(--color-accent);
+}
+
+@media screen and (min-width: 46.75rem) {
+  :root {
+    --main-nav-height: 4.375rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
