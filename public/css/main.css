@@ -7,24 +7,26 @@
   --font-family-monospace: ui-monospace, "Cascadia Code", "Source Code Pro",
     Menlo, Consolas, "DejaVu Sans Mono", monospace;
 
+  --color-white: #fff;
+  --color-gray-10: #f2f2f2;
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #141414;
+
   --color-accent: #00529D;
   --color-accent-focus: #013e76;
+  --color-accent-invert: var(--color-white);
   --color-accent-bg: transparent;
   --color-accent-bg-hover: #ADD5FA;
 
   --background-color: #fff;
   --background-color-secondary: #F8F6F4;
 
-  --color-white: #fff;
-  --color-gray-10: #f2f2f2;
-  --color-gray-20: #e0e0e0;
-  --color-gray-50: #c0c0c0;
-  --color-gray-90: #333;
-
   --text-color: var(--color-gray-90);
   --text-color-link: var(--color-accent);
   --text-color-link-active: #5f2b48;
   --text-color-link-visited: #17050f;
+
 
   --padding: 1.5rem;
   --padding-md: 2rem;
@@ -44,13 +46,12 @@
   :root {
     --color-accent: #e68933;
     --color-accent-focus: #ffa047;
+    --color-accent-invert: var(--color-gray-90);
     --color-accent-bg: #3c2a1f;
     --color-accent-bg-hover: rgba(230, 137, 51, 0.12);
 
     --background-color: #171717;
     --background-color-secondary: #1e1810;
-
-    --color-gray-90: #dad8d8;
 
     --text-color: var(--color-gray-10);
 
