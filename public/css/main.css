@@ -123,6 +123,7 @@ p:last-child {
   text-underline-offset: 0.15rem;
   transition: text-decoration-thickness 0.25s ease-in;
 }
+
 :where(a[href]:visited) {
   color: var(--text-color-link-visited);
 }
@@ -132,8 +133,7 @@ a[href]:active {
   color: var(--text-color-link-active);
 } */
 
-:where(a[href]:hover),
-:where(a[href]:focus) {
+:where(a[href]:hover, a[href]:focus){
   color: var(--color-accent-focus);
   outline: none;
   text-decoration-thickness: 0.5rem;
@@ -147,6 +147,7 @@ pre,
 code {
   font-family: var(--font-family-monospace);
 }
+
 pre:not([class*="language-"]) {
   margin: 0.5em 0;
   line-height: 1.375; /* 22px /16 */
@@ -162,6 +163,7 @@ pre:not([class*="language-"]) {
   word-spacing: normal;
   word-break: normal;
 }
+
 code {
   word-break: break-word;
 }
