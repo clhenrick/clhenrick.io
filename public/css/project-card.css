@@ -58,6 +58,9 @@
   border: 1px solid;
   border-radius: var(--border-radius);
   cursor: pointer;
+  transition:
+    border ease-in .2s,
+    box-shadow ease-in .2s;
 }
 
 .card[hidden] {
