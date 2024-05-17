@@ -15,7 +15,7 @@
 
   --color-accent: #00529d;
   --color-accent-focus: #013e76;
-  --color-accent-secondary: #0287cc;
+  --color-accent-secondary: #012445;
   --color-accent-invert: var(--color-white);
   --color-accent-bg: transparent;
   --color-accent-bg-hover: #add5fa;
@@ -25,8 +25,8 @@
 
   --text-color: var(--color-gray-90);
   --text-color-link: var(--color-accent);
-  --text-color-link-active: #5f2b48;
-  --text-color-link-visited: #17050f;
+  --text-color-link-active: var(--color-accent-secondary);
+  --text-color-link-visited: var(--color-accent-secondary);
 
   --padding: 1.5rem;
   --padding-md: 2rem;
@@ -61,10 +61,6 @@
     --background-color-secondary: #1e1810;
 
     --text-color: var(--color-gray-10);
-
-    --text-color-link: var(--color-accent); /* #1493fb; */
-    --text-color-link-active: #6969f7;
-    --text-color-link-visited: #f7d8bb;
   }
 }
 
@@ -128,20 +124,15 @@ p:last-child {
   color: var(--text-color-link-visited);
 }
 
-/* a[href]:hover,
-a[href]:active {
+:where(a[href]:active) {
   color: var(--text-color-link-active);
-} */
+}
 
 :where(a[href]:hover, a[href]:focus){
   color: var(--color-accent-focus);
   outline: none;
   text-decoration-thickness: 0.5rem;
 }
-/* a[href]:focus-visible {
-  box-shadow: var(--focus-style-box-shadow);
-  text-decoration: none;
-} */
 
 pre,
 code {
