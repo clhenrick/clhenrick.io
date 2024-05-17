@@ -39,7 +39,7 @@
   --main-nav-height: 3.375rem;
 
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
-  --focus-style-box-shadow: 0 0 0 3px var(--color-accent);
+  --focus-style-box-shadow: 0 0 0 4px var(--color-accent);
 }
 
 @media screen and (min-width: 46.75rem) {
