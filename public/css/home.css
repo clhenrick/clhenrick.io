@@ -75,7 +75,7 @@ section:last-of-type {
 
 .card .text > *:last-child {
   margin-top: auto;
-  min-width: 11.25rem;
+  min-width: 12rem;
 }
 
 .card .text > *:nth-last-child(2) {
