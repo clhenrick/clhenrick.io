@@ -17,7 +17,6 @@ div[role="group"] button {
   letter-spacing: 0.1rem;
   color: var(--text-color);
   background-color: var(--button-bg);
-  border: none;
 }
 
 div[role="group"] button[aria-pressed="true"] {
