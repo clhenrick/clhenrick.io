@@ -173,6 +173,14 @@ dl > div {
   line-height: 1.75;
 }
 
+:where([role="list"]) {
+  padding: 0;
+}
+
+:where([role="list"]) li {
+  list-style: none;
+}
+
 ul.inline,
 ol.inline {
   display: flex;
