@@ -53,6 +53,11 @@ footer a[href]:visited {
   text-decoration: none;
 }
 
+footer p a[href],
+footer p a[href]:visited {
+  text-decoration: underline;
+}
+
 footer a[href]:hover {
   text-decoration: underline;
 }
