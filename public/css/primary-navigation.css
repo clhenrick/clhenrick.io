@@ -137,6 +137,7 @@ button.nav-button:hover {
     gap: var(--horiz-nav-item-gap);
     align-items: baseline;
     text-align: start;
+    margin-bottom: 0;
   }
 }
 
