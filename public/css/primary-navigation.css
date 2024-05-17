@@ -1,7 +1,7 @@
 header {
   /* NOTE: keeps the nav list dropdown a similar width to its corresponding link / list item */
   --min-nav-link-width: 6rem;
-  --horiz-nav-item-gap: 0.5rem;
+  --horiz-nav-item-gap: 0.75rem;
   max-width: none;
   position: relative;
   display: flex;
