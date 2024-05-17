@@ -1,7 +1,4 @@
 nav.pagination > ol {
-  --gap: 0.75rem;
-  display: flex;
-  align-items: baseline;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
