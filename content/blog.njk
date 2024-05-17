@@ -26,11 +26,11 @@ pagination:
 <nav class="pagination" aria-labelledby="pagination">
   <h2 id="pagination">More Blog Posts</h2>
   <ol role="list" class="inline">
-    <li>{% if pagination.href.previous %}<a class="button" href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
+    <li>{% if pagination.href.previous %}<a class="button" rel="prev" href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
 {%- for pageEntry in pagination.pages %}
     <li><a class="button" href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
 {%- endfor %}
-    <li>{% if pagination.href.next %}<a class="button" href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
+    <li>{% if pagination.href.next %}<a class="button" rel="next" href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
   </ol>
   <a class="button" href="/blog/archive/">Blog Archive</a>
 </nav>
