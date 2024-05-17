@@ -53,6 +53,10 @@
   border: 2px solid var(--color-accent);
 }
 
+.button:active {
+  color: var(--color-accent-secondary);
+}
+
 .button:focus-visible {
   outline: 3px solid var(--background-color);
   box-shadow: var(--focus-style-button-box-shadow);
