@@ -13,9 +13,17 @@
   --color-gray-50: #c0c0c0;
   --color-gray-90: #141414;
 
-  --color-accent: #00529d;
-  --color-accent-focus: #013e76;
-  --color-accent-secondary: #012445;
+  --color-blue: #00529d;
+  --color-blue-2: #013e76;
+  --color-blue-3: #012445;
+
+  --color-orange: #e68933;
+  --color-orange-2: #ffa047;
+  --color-orange-3: #efc94c;
+
+  --color-accent: var(--color-blue);
+  --color-accent-focus: var(--color-blue-2);
+  --color-accent-secondary: var(--color-blue-3);
   --color-accent-invert: var(--color-white);
   --color-accent-bg: transparent;
   --color-accent-bg-hover: #add5fa;
@@ -50,9 +58,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-accent: #e68933;
-    --color-accent-focus: #ffa047;
-    --color-accent-secondary: #efc94c;
+    --color-accent: var(--color-orange);
+    --color-accent-focus: var(--color-orange-2);
+    --color-accent-secondary: var(--color-orange-3);
     --color-accent-invert: var(--color-gray-90);
     --color-accent-bg: #3c2a1f;
     --color-accent-bg-hover: rgba(230, 137, 51, 0.12);
@@ -128,7 +136,7 @@ p:last-child {
   color: var(--text-color-link-active);
 }
 
-:where(a[href]:hover, a[href]:focus){
+:where(a[href]:hover, a[href]:focus) {
   color: var(--color-accent-focus);
   outline: none;
   text-decoration-thickness: 0.5rem;
