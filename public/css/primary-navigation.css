@@ -1,12 +1,12 @@
 header {
   /* NOTE: keeps the nav list dropdown a similar width to its corresponding link / list item */
   --min-nav-link-width: 6rem;
+  --horiz-nav-item-gap: 0.75rem;
   max-width: none;
   position: relative;
   display: flex;
   flex-direction: column;
-  line-height: var(--main-nav-height);
-  background-color: var(--background-color);
+  background-color: var(--background-color-secondary);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   isolation: isolate;
   z-index: 1;
@@ -15,7 +15,8 @@ header {
 @media screen and (min-width: 46.75rem) {
   header {
     flex-direction: row;
-    height: var(--main-nav-height);
+    padding: 0.5rem 0;
+    gap: var(--horiz-nav-item-gap);
   }
 }
 
@@ -24,13 +25,23 @@ header > div {
 }
 
 header a[href] {
-  padding: 0 1.25rem;
+  padding: 0.75rem 1.25rem;
   display: inline-block;
   text-decoration: none;
 }
 
+header a[href]:visited {
+  color: var(--text-color-link);
+}
+
+header a[href]:hover {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
+}
+
 header a[href]:focus-visible,
 header button.nav-button:focus-visible {
+  outline: none;
   box-shadow: inset var(--focus-style-box-shadow);
 }
 
@@ -38,7 +49,7 @@ header a[href].skip-link {
   position: absolute;
   top: var(--main-nav-height);
   left: 1rem;
-  background-color: var(--background-color);
+  background-color: var(--background-color-secondary);
   z-index: 1;
 }
 
@@ -55,6 +66,7 @@ header a[href].skip-link:focus-visible {
   /* down arrow for menu items with nested children */
   header nav a[href].with-arrow-down {
     position: relative;
+    padding-right: 2rem;
   }
 
   header nav a[href].with-arrow-down::after {
@@ -63,9 +75,10 @@ header a[href].skip-link:focus-visible {
     width: 0;
     height: 0;
     position: absolute;
-    right: 2.5px;
-    top: 1.9375rem;
-    margin-top: -2.5px;
+    right: 0;
+    top: 2rem;
+    margin-top: -5.5px;
+    margin-right: 0.75rem;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 5px solid currentColor;
@@ -75,9 +88,17 @@ header a[href].skip-link:focus-visible {
 button.nav-button {
   display: flex;
   margin-left: auto;
-  flex-basis: 6.5rem;
   align-items: center;
   gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  font-weight: normal;
+  color: var(--text-color-link);
+  background-color: transparent;
+}
+
+button.nav-button:hover {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
 }
 
 @media screen and (min-width: 46.75rem) {
@@ -96,7 +117,7 @@ button.nav-button {
   position: relative;
   display: none;
   text-align: center;
-  background-color: var(--background-color);
+  background-color: var(--background-color-secondary);
 }
 
 .js-enabled nav > ul.expanded {
@@ -111,8 +132,10 @@ button.nav-button {
     position: relative;
     display: flex;
     flex-direction: row;
+    gap: var(--horiz-nav-item-gap);
     align-items: baseline;
     text-align: start;
+    margin-bottom: 0;
   }
 }
 
@@ -132,19 +155,21 @@ nav ul li a {
 }
 
 @media screen and (min-width: 46.75rem) {
-  nav ul li > ul {
+  nav ul li > ul.with-dropdown {
     position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color);
+    gap: var(--horiz-nav-item-gap);
+    background-color: var(--background-color-secondary);
+    padding: 0.25rem;
     overflow: hidden;
     width: 1px;
     height: 1px;
     clip-path: inset(50%);
   }
 
-  nav ul li:focus-within > ul,
-  nav ul li:hover > ul {
+  nav ul li:focus-within > ul.with-dropdown,
+  nav ul li:hover > ul.with-dropdown {
     overflow: auto;
     min-width: var(--min-nav-link-width);
     width: auto;

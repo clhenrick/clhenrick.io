@@ -4,7 +4,15 @@ main {
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--padding-lg);
+}
+
+section:first-of-type {
+  margin-top: -4rem;
+}
+
+section:last-of-type {
+  margin-bottom: 0;
 }
 
 .banner {
@@ -67,6 +75,7 @@ section {
 
 .card .text > *:last-child {
   margin-top: auto;
+  min-width: 12rem;
 }
 
 .card .text > *:nth-last-child(2) {

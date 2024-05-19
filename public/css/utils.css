@@ -24,24 +24,41 @@
 }
 
 .button {
+  --button-border-width: 2px;
   display: inline-block;
   inline-size: fit-content;
   touch-action: manipulation;
   user-select: none;
-  padding: 0.5rem 0.75rem;
-  background-color: transparent;
-  color: inherit;
-  border: none;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--color-accent);
+  color: var(--color-accent-invert);
+  font-weight: bold;
+  border: var(--button-border-width) solid transparent;
   border-radius: var(--border-radius);
+  text-align: center;
   text-decoration: none;
   line-height: 1;
   cursor: pointer;
+  transition:
+    color ease-in .2s,
+    background-color ease-in .2s;
 }
 
-.button:focus {
-  outline: none;
+.button:visited {
+  color: var(--color-accent-invert);
+}
+
+.button:hover {
+  color: var(--color-accent);
+  background-color: var(--background-color);
+  border: var(--button-border-width) solid var(--color-accent);
+}
+
+.button:active {
+  color: var(--color-accent-secondary);
 }
 
 .button:focus-visible {
-  box-shadow: var(--focus-style-box-shadow);
+  outline: 3px solid var(--background-color);
+  box-shadow: var(--focus-style-button-box-shadow);
 }

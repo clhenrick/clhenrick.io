@@ -16,6 +16,7 @@
 
 .card {
   --card-text-margin: 0.75rem;
+  background-color: var(--color-accent-invert);
 }
 
 .card,
@@ -58,6 +59,9 @@
   border: 1px solid;
   border-radius: var(--border-radius);
   cursor: pointer;
+  transition:
+    border ease-in .2s,
+    box-shadow ease-in .2s;
 }
 
 .card[hidden] {
@@ -67,7 +71,7 @@
 .card:hover,
 .card:focus-within {
   border: 1px solid transparent;
-  box-shadow: 0 0 0 0.25rem var(--color-accent);
+  box-shadow: var(--focus-style-box-shadow);
 }
 
 .card h2 {
