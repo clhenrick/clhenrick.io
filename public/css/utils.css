@@ -24,6 +24,7 @@
 }
 
 .button {
+  --button-border-width: 2px;
   display: inline-block;
   inline-size: fit-content;
   touch-action: manipulation;
@@ -32,7 +33,7 @@
   background-color: var(--color-accent);
   color: var(--color-accent-invert);
   font-weight: bold;
-  border: 2px solid transparent;
+  border: var(--button-border-width) solid transparent;
   border-radius: var(--border-radius);
   text-align: center;
   text-decoration: none;
@@ -50,7 +51,7 @@
 .button:hover {
   color: var(--color-accent);
   background-color: var(--background-color);
-  border: 2px solid var(--color-accent);
+  border: var(--button-border-width) solid var(--color-accent);
 }
 
 .button:active {
