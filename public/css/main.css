@@ -10,6 +10,7 @@
   --color-white: #fff;
   --color-off-white: #f8f6f4;
   --color-off-white-2: #f5f2ef;
+  --color-off-white-3: #f6e5dd;
 
   --color-gray-10: #f2f2f2;
   --color-gray-20: #e0e0e0;
@@ -25,14 +26,14 @@
   --color-orange-3: #efc94c;
 
   --color-accent: var(--color-blue);
-  --color-accent-focus: var(--color-blue-2);
+  --color-accent-focus: var(--color-blue-3);
   --color-accent-secondary: var(--color-blue-3);
   --color-accent-invert: var(--color-white);
   --color-accent-bg: transparent;
   --color-accent-bg-hover: #add5fa;
 
   --background-color: var(--color-off-white);
-  --background-color-secondary: var(--color-off-white-2);
+  --background-color-secondary: var(--color-off-white-3);
 
   --text-color: var(--color-gray-90);
   --text-color-link: var(--color-accent);
