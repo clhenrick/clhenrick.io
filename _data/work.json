@@ -92,7 +92,7 @@
     "title": "Color Legend Element",
     "tags": ["web", "data-viz"],
     "description": "A web component suitable for use as a legend in data visualizations",
-    "description_long": "A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) suitable for use as a legend in data visualizations.\nBuilt with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [Observable](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.\nCheck out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) for more on its usage.\nRead a [blog post]({{ site.url }}{{ site.baseurl }}/color-legend-element/) I wrote about it.",
+    "description_long": "A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) suitable for use as a legend in data visualizations. Built with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [Observable](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.\nCheck out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) for more on its usage. Read more in a [blog post I wrote about it](/blog/color-legend-element/).",
     "tech": ["D3JS", "Lit", "TypeScript", "Web Components"],
     "thumb": "color-legend-element-thumb.png",
     "imgs": [
