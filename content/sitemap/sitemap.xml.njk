@@ -11,4 +11,12 @@ eleventyExcludeFromCollections: true
       <lastmod>{{ page.date | htmlDateString }}</lastmod>
     </url>
   {%- endfor %}
+  {%- for project in work %}
+    {%- set slugified %}/work/{{ project.title | slugify }}/{% endset %}
+    {%- set absoluteUrl %}{{ slugified | htmlBaseUrl(metadata.url) }}{% endset %}
+    <url>
+      <loc>{{ absoluteUrl }}</loc>
+      <lastmod>{{ project.date | dateFromISOString }}</lastmod>
+    </url>
+  {%- endfor %}
 </urlset>
