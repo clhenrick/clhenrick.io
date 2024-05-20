@@ -11,6 +11,7 @@ eleventyExcludeFromCollections: true
       <lastmod>{{ page.date | htmlDateString }}</lastmod>
     </url>
   {%- endfor %}
+  {# NOTE: The next loop is necessary as for some reason project-pages besides /work/cal-adapt/ are not being added to collections.all, perhaps because they are generated programatically from the work.json global data? #}
   {%- for project in work %}
     {%- set slugified %}/work/{{ project.title | slugify }}/{% endset %}
     {%- set absoluteUrl %}{{ slugified | htmlBaseUrl(metadata.url) }}{% endset %}
