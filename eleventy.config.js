@@ -56,6 +56,12 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addFilter("dateFromISOString", (dateString, format, zone) => {
+    // dateString is expected to be an ISO 8601 date string such as "YYYY-MM-DD"
+    // full list of options: https://moment.github.io/luxon/#/parsing?id=iso-8601
+    return DateTime.fromISO(dateString, { zone: zone || "utc" }).toFormat(format || "LLLL dd, yyyy");
+  });
+
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
