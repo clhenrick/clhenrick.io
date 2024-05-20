@@ -14,7 +14,7 @@ layout: layouts/work.njk
   {% if project.date %}
     <div>
       <dt>Date:</dt>
-      <dd>{{project.date}}</dd>
+      <dd>{{project.date | dateFromISOString("LLLL, yyyy")}}</dd>
     </div>
     {% endif %}
 
