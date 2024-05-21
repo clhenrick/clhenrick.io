@@ -32,9 +32,13 @@ These thumbnail image files are used in the portfolio (`/work/`) index page for 
 
 - Referenced as `work` in templates
 
-This data is used for the portfolio (`/work/`) index page to create the project cards (see `content/work/index.njk` and `_includes/components/projectCard.njk`) and for individual project pages (see `project-page.njk`).
+This data is used:
 
-An example project object looks like:
+- in the portfolio index page (`content/work/index.njk`) to create the project cards (see `content/work/index.njk` and `_includes/components/projectCard.njk`)
+- to create individual project pages in `/work/[project-name-page]/` (see `content/work/project-page.njk`).
+- to create part of the sitemap.xml file (see `content/sitemap.xml.njk`)
+
+An example `work` object looks like:
 
 ```json
 {
@@ -71,4 +75,5 @@ An example project object looks like:
   "link": "https://analytics.cal-adapt.org"
 }
 ```
+
 > Note that "size" is deprecated / no longer used.

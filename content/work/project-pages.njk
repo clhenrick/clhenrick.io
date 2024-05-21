@@ -5,6 +5,11 @@ pagination:
   alias: project
 permalink: "work/{{ project.title | slugify }}/"
 layout: layouts/work.njk
+tags: projects
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ project.title }}"
+    parent: "work"
 ---
 
 <section>
