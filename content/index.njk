@@ -3,9 +3,8 @@ layout: layouts/home.njk
 numberOfLatestPostsToShow: 3
 ---
 
-{%- css %}{% include "public/css/home.css" %}{% endcss %}
-
-<style>{% getBundle "css" %}</style>
+{%- set partials %}pages/home{% endset %}
+{% include "styles.njk" %}
 
 <section class="banner full-viewport-width">
   <h1>Chris L Henrick</h1>
