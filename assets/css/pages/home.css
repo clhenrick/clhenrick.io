@@ -16,7 +16,6 @@ section:last-of-type {
 }
 
 .banner {
-  width: 100%;
   aspect-ratio: 4 / 1;
   display: flex;
   align-items: center;
