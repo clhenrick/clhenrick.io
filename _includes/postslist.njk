@@ -6,7 +6,6 @@
   margin-bottom: 3rem;
 }
 {% endcss %}
-{%- css %}{% include "public/css/posts-list.css" %}{% endcss %}
 {%- set headingLevel = headingLevel if headingLevel else 2 %}
 <ol reversed class="postlist" role="list">
 {% for post in postslist | reverse %}
