@@ -8,7 +8,10 @@ eleventyNavigation:
   order: 5
 ---
 
-{%- set partials = "components/contact-form" %}
+{%- set partials %}
+  components/button,
+  components/contact-form
+{%- endset %}
 {%- set bucket = "contact" %}
 {% include "styles.njk" %}
 
