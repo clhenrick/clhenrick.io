@@ -2,13 +2,4 @@
 layout: layouts/base.njk
 ---
 
-{%- set partials %}
-  components/project-card,
-  components/embed,
-  pages/work,
-  pages/project-pages
-{%- endset %}
-{%- set bucket = "post" %}
-{% include "styles.njk" %}
-
 {{ content | safe }}
