@@ -1,13 +1,22 @@
+{# Code borrowed / influenced by https://kittygiraudel.com/2020/12/03/inlining-scripts-and-styles-in-11ty/ #}
 {% if partials %}
   {% set paths = partials.split(",") %}
-  {% if site.environment == 'production' %}
-    {% for path in paths %}
-    {% css %}{% include "../assets/css/{{ path | strip }}.css" %}{% endcss %}
-    {% endfor %}
+  {# NOTE: fallback to "default" if no `bucket` value was provided. #}
+  {% set bucket = bucket | default("default") %}
+  {% if metadata.environment == 'production' %}
+    {# in production we inline the styles to avoid a network request for our CSS #}
+    {%- for path in paths %}
+    {%- set path = path | trim %}
+    {%- set fullpath = ["../assets/css/", path, ".css"] | join %}
+    {%- css bucket %}{% include fullpath %}{% endcss %}
+    {%- endfor %}
     <style>
-      {% getBundle "css" %}
+      {# NOTE: we bucket the css so that we can create separate inlined styles #}
+      {# See: https://github.com/11ty/eleventy-plugin-bundle/blob/main/README.md#asset-bucketing #}
+      {% getBundle "css", bucket %}
     </style>
   {% else %}
+    {# in development we load CSS via <link> so that changes to our CSS don't require a manual page refresh #}
     {% for path in paths %}
       <link rel="stylesheet" href="/assets/css/{{ path | trim }}.css" />
     {% endfor %}
