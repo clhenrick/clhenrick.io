@@ -4,7 +4,7 @@
   {% set bucket = bucket | default("default") %}
   {% set regExp = r/node_modules/ %}
 
-  {# in production we inline the styles to avoid a network request for our CSS #}
+  {# in production we inline the styles to avoid network requests for our CSS for a small performance boost #}
   {% if metadata.environment == 'production' %}
     {%- for path in paths %}
       {% if regExp.test(path) %}
