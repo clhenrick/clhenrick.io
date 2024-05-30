@@ -3,7 +3,11 @@ layout: layouts/home.njk
 numberOfLatestPostsToShow: 3
 ---
 
-{%- set partials = "pages/home" %}
+{%- set partials %}
+  components/button,
+  components/posts-list,
+  pages/home
+{%- endset %}
 {%- set bucket = "home" %}
 {% include "styles.njk" %}
 
