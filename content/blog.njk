@@ -12,7 +12,10 @@ pagination:
   alias: "posts"
   reverse: true
 ---
-{%- set partials = "pages/blog" %}
+{%- set partials %}
+  pages/blog,
+  components/button
+{%- endset -%}
 {%- set bucket = "blog" %}
 {% include "styles.njk" %}
 
