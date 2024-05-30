@@ -2,11 +2,13 @@
 layout: layouts/base.njk
 ---
 
-{% css %}{% include "public/css/project-card.css" %}{% endcss %}
-{% css %}{% include "public/css/embed.css" %}{% endcss %}
-{% css %}{% include "public/css/work.css" %}{% endcss %}
-{% css %}{% include "public/css/project-pages.css" %}{% endcss %}
-
-<style>{% getBundle "css" %}</style>
+{%- set partials %}
+  components/project-card,
+  components/embed,
+  pages/work,
+  pages/project-pages
+{%- endset %}
+{%- set bucket = "post" %}
+{% include "styles.njk" %}
 
 {{ content | safe }}
