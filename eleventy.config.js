@@ -32,6 +32,7 @@ module.exports = function (eleventyConfig) {
   if (process.env.NODE_ENV !== 'production') {
     eleventyConfig.addPassthroughCopy('assets/js');
     eleventyConfig.addPassthroughCopy('assets/css');
+    eleventyConfig.addPassthroughCopy('node_modules/prismjs/themes/prism-okaidia.css');
   }
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
