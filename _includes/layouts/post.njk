@@ -1,10 +1,15 @@
 ---
 layout: layouts/base.njk
 ---
-{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
-{%- css %}{% include "public/css/post.css" %}{% endcss %}
+{# TODO: figure out how to bundle 3rd party code using styles.njk? #}
+{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 
-<style>{% getBundle "css" %}</style>
+{%- set partials %}
+  pages/post,
+  /node_modules/prismjs/themes/prism-okaidia.css
+{%- endset %}
+{%- set bucket = "post" %}
+{% include "styles.njk" %}
 
 <h1>{{ title }}</h1>
 
