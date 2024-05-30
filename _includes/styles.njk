@@ -3,12 +3,17 @@
   {% set paths = partials.split(",") %}
   {# NOTE: fallback to "default" if no `bucket` value was provided. #}
   {% set bucket = bucket | default("default") %}
+  {% set regExp = r/node_modules/ %}
   {% if metadata.environment == 'production' %}
     {# in production we inline the styles to avoid a network request for our CSS #}
     {%- for path in paths %}
-    {%- set path = path | trim %}
-    {%- set fullpath = ["../assets/css/", path, ".css"] | join %}
-    {%- css bucket %}{% include fullpath %}{% endcss %}
+      {% if regExp.test(path) %}
+        {%- css bucket %}{% include path %}{% endcss %}
+      {% else %}
+        {%- set path = path | trim %}
+        {%- set fullpath = ["../assets/css/", path, ".css"] | join %}
+        {%- css bucket %}{% include fullpath %}{% endcss %}
+      {% endif %}
     {%- endfor %}
     <style>
       {# NOTE: we bucket the css so that we can create separate inlined styles #}
@@ -18,7 +23,11 @@
   {% else %}
     {# in development we load CSS via <link> so that changes to our CSS don't require a manual page refresh #}
     {% for path in paths %}
-      <link rel="stylesheet" href="/assets/css/{{ path | trim }}.css" />
+      {% if regExp.test(path) %}
+        <link rel="stylesheet" href="{{path}}" />
+      {% else %}
+        <link rel="stylesheet" href="/assets/css/{{ path | trim }}.css" />
+      {% endif %}
     {% endfor %}
   {% endif %}
 {% endif %}
