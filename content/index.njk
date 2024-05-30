@@ -3,7 +3,8 @@ layout: layouts/home.njk
 numberOfLatestPostsToShow: 3
 ---
 
-{%- set partials %}pages/home{% endset %}
+{%- set partials = "pages/home" %}
+{%- set bucket = "home" %}
 {% include "styles.njk" %}
 
 <section class="banner full-viewport-width">
