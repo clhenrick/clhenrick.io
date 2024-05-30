@@ -8,10 +8,9 @@ eleventyNavigation:
   order: 5
 ---
 
-{%- css %}{% include "public/css/contact-form.css" %}{% endcss %}
-<style>
-  {% getBundle "css" %}
-</style>
+{%- set partials = "components/contact-form" %}
+{%- set bucket = "contact" %}
+{% include "styles.njk" %}
 
 <h1>{{ title }}</h1>
 
