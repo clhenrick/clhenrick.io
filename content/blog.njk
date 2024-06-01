@@ -13,9 +13,9 @@ pagination:
   reverse: true
 ---
 {%- set partials %}
-  pages/blog,
   components/button,
-  components/posts-list
+  components/posts-list,
+  pages/blog
 {%- endset -%}
 {%- set bucket = "blog" %}
 {% include "styles.njk" %}
