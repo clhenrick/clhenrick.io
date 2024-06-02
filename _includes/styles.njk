@@ -8,11 +8,13 @@
   {% if metadata.environment == 'production' %}
     {%- for path in paths %}
       {% if regExp.test(path) %}
-        {%- css bucket %}{% include path %}{% endcss %}
+        {%- set path = path | trim %}
+        {%- set relativePath = ["../", path] | join %}
+        {%- css bucket %}{% include relativePath %}{% endcss %}
       {% else %}
         {%- set path = path | trim %}
-        {%- set fullpath = ["../assets/css/", path, ".css"] | join %}
-        {%- css bucket %}{% include fullpath %}{% endcss %}
+        {%- set relativePath = ["../assets/css/", path, ".css"] | join %}
+        {%- css bucket %}{% include relativePath %}{% endcss %}
       {% endif %}
     {%- endfor %}
     <style>
@@ -25,7 +27,7 @@
   {% else %}
     {% for path in paths %}
       {% if regExp.test(path) %}
-        <link rel="stylesheet" href="{{ path }}" />
+        <link rel="stylesheet" href="/{{ path | trim }}" />
       {% else %}
         <link rel="stylesheet" href="/assets/css/{{ path | trim }}.css" />
       {% endif %}
