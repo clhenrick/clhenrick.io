@@ -12,6 +12,13 @@ eleventyComputed:
     parent: "work"
 ---
 
+{%- set partials %}
+  components/embed,
+  pages/project-pages
+{%- endset %}
+{%- set bucket = "project-pages" %}
+{% include "styles.njk" %}
+
 <section>
   <h1>{{project.title}}</h1>
 

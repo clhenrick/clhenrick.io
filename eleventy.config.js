@@ -16,10 +16,33 @@ const {
 } = require("./eleventy.config.images.js");
 
 module.exports = function (eleventyConfig) {
+  // Force 11ty to watch CSS and JS files
+  eleventyConfig.addWatchTarget("assets/css/**/*.css");
+  eleventyConfig.addWatchTarget("assets/js/**/*.js");
+
+  // TODO: remove this after JS is handled via minification approach
+  eleventyConfig.addWatchTarget("public/js/**/*.js");
+
+  // TODO: remove this after JS is handled via minification approach
   eleventyConfig.addPassthroughCopy({
-    "./public/css": "/css",
     "./public/js": "/js",
   });
+
+  // CSS and JavaScript are inlined in HTML for performance reasons. The problem
+  // with that is that saving a CSS or JavaScript file during development does
+  // not cause HTML files to be recompiled, which makes working on the site
+  // significantly more cumbersome. The problem is addressed by linking external
+  // stylesheets and scripts in development, and inlining their content in style
+  // script tags in production. For the assets to be linked to in development,
+  // they need to be passed through to the `_site` directory.
+  // See: https://kittygiraudel.com/2020/12/03/inlining-scripts-and-styles-in-11ty/
+  if (process.env.NODE_ENV !== "production") {
+    eleventyConfig.addPassthroughCopy("assets/js");
+    eleventyConfig.addPassthroughCopy("assets/css");
+    eleventyConfig.addPassthroughCopy(
+      "node_modules/prismjs/themes/prism-okaidia.css"
+    );
+  }
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
@@ -32,7 +55,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginDataCascadeImage);
 
   eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
-  eleventyConfig.addWatchTarget("public/css/**/*.css");
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
@@ -59,7 +81,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dateFromISOString", (dateString, format, zone) => {
     // dateString is expected to be an ISO 8601 date string such as "YYYY-MM-DD"
     // full list of options: https://moment.github.io/luxon/#/parsing?id=iso-8601
-    return DateTime.fromISO(dateString, { zone: zone || "utc" }).toFormat(format || "LLLL dd, yyyy");
+    return DateTime.fromISO(dateString, { zone: zone || "utc" }).toFormat(
+      format || "LLLL dd, yyyy"
+    );
   });
 
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {

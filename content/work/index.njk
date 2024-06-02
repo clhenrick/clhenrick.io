@@ -5,6 +5,14 @@ eleventyNavigation:
   order: 2
 ---
 
+{%- set partials %}
+  components/project-card,
+  components/button,
+  pages/work
+{%- endset %}
+{%- set bucket = "work" %}
+{% include "styles.njk" %}
+
 {% from "components/projectCard.njk" import projectCard %}
 
 <h1>Portfolio</h1>

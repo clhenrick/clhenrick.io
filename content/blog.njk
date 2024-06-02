@@ -12,9 +12,13 @@ pagination:
   alias: "posts"
   reverse: true
 ---
-{%- css %}{% include "public/css/blog.css" %}{% endcss %}
-
-<style>{% getBundle "css" %}</style>
+{%- set partials %}
+  components/button,
+  components/posts-list,
+  pages/blog
+{%- endset -%}
+{%- set bucket = "blog" %}
+{% include "styles.njk" %}
 
 <h1>Blog</h1>
 {%- set pageIndex = pagination.hrefs | findIndex(page.url) %}

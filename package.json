@@ -6,8 +6,9 @@
   "private": true,
   "scripts": {
     "build": "npx @11ty/eleventy",
+    "build:prod": "NODE_ENV=production npm run build",
     "build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
-    "start": "npx @11ty/eleventy --serve --quiet",
+    "start": "NODE_ENV=development npx @11ty/eleventy --serve --quiet --incremental",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
     "find-and-replace-md-img-tags": "zx scripts/find-and-replace-md-img-tags.mjs",

@@ -1,0 +1,36 @@
+{# Code credit: this approach of handling CSS was inspired by https://kittygiraudel.com/2020/12/03/inlining-scripts-and-styles-in-11ty/ #}
+{% if partials %}
+  {% set paths = partials.split(",") %}
+  {% set bucket = bucket | default("default") %}
+  {% set regExp = r/node_modules/ %}
+
+  {# in production we inline the styles to avoid network requests for our CSS for a small performance boost #}
+  {% if metadata.environment == 'production' %}
+    {%- for path in paths %}
+      {% if regExp.test(path) %}
+        {%- set path = path | trim %}
+        {%- set relativePath = ["../", path] | join %}
+        {%- css bucket %}{% include relativePath %}{% endcss %}
+      {% else %}
+        {%- set path = path | trim %}
+        {%- set relativePath = ["../assets/css/", path, ".css"] | join %}
+        {%- css bucket %}{% include relativePath %}{% endcss %}
+      {% endif %}
+    {%- endfor %}
+    <style>
+      {# NOTE: we "bucket" the CSS so that we can create separate inlined styles for shared / common CSS and page / layout specific CSS #}
+      {# See: https://github.com/11ty/eleventy-plugin-bundle/blob/main/README.md#asset-bucketing #}
+      {% getBundle "css", bucket %}
+    </style>
+
+  {# in development we load all CSS via a <link> so that changes to our CSS don't require a manual page refresh #}
+  {% else %}
+    {% for path in paths %}
+      {% if regExp.test(path) %}
+        <link rel="stylesheet" href="/{{ path | trim }}" />
+      {% else %}
+        <link rel="stylesheet" href="/assets/css/{{ path | trim }}.css" />
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}
