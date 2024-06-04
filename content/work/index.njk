@@ -41,4 +41,7 @@ eleventyNavigation:
   {% endfor %}
 </ul>
 
-<script defer src="/js/work.js"></script>
+{% set javascripts %}
+  work
+{% endset %}
+{% include "scripts.njk" %}
