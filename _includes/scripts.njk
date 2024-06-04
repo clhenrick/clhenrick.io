@@ -2,6 +2,7 @@
 {% if javascripts %}
   {% set paths = javascripts.split(",") %}
   {% set regExp = r/node_modules/ %}
+  {% set bucket = bucket | default("default") %}
 
   {# in production we inline all JavaScript to avoid network requests for our JS for a small performance boost #}
   {% if metadata.environment == 'production' %}
@@ -9,16 +10,18 @@
       {% if regExp.test(path) %}
         {%- set path = path | trim %}
         {%- set relativePath = ["../", path] | join %}
-        {%- js %}{% include relativePath %}{% endjs %}
+        {%- js bucket %}{% include relativePath %}{% endjs %}
       {% else %}
         {%- set path = path | trim %}
         {%- set relativePath = ["../assets/js/", path, ".js"] | join %}
-        {%- js %}{% include relativePath %}{% endjs %}
+        {%- js bucket %}{% include relativePath %}{% endjs %}
       {% endif %}
     {%- endfor %}
 
+    {# NOTE: we "bucket" the JS so that we can create separate inlined scripts for shared JS and page / layout specific JS #}
+    {# See: https://github.com/11ty/eleventy-plugin-bundle/blob/main/README.md#asset-bucketing #}
     <script>
-      {% getBundle "js" %}
+      {% getBundle "js", bucket %}
     </script>
 
   {# in development we load all JS via a <script> so that changes to our JS don't require a manual page refresh #}
