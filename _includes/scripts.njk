@@ -1,6 +1,6 @@
 {# Code credit: this approach of handling JavaScript was inspired by https://kittygiraudel.com/2020/12/03/inlining-scripts-and-styles-in-11ty/ #}
-{% if partials %}
-  {% set paths = partials.split(",") %}
+{% if javascripts %}
+  {% set paths = javascripts.split(",") %}
   {% set regExp = r/node_modules/ %}
 
   {# in production we inline all JavaScript to avoid network requests for our JS for a small performance boost #}
@@ -25,9 +25,9 @@
   {% else %}
     {% for path in paths %}
       {% if regExp.test(path) %}
-        <script defer src="/{{ path | trim }}" />
+        <script src="/{{ path | trim }}"></script>
       {% else %}
-        <script defer src="/assets/js/{{ path | trim }}.js" />
+        <script src="/assets/js/{{ path | trim }}.js"></script>
       {% endif %}
     {% endfor %}
   {% endif %}
