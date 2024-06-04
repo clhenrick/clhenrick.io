@@ -66,6 +66,11 @@
       {{ content | safe }}
     </main>
     {%- include "footer.njk" %}
-    <script defer src="/js/primary-navigation.js"></script>
+
+    {# NOTE: JavaScript shared by all pages are added here #}
+    {% set javascripts %}
+      primary-navigation
+    {% endset %}
+    {% include "scripts.njk" %}
   </body>
 </html>
