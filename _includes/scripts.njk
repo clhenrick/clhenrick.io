@@ -7,12 +7,11 @@
   {# in production we inline all JavaScript to avoid network requests for our JS for a small performance boost #}
   {% if metadata.environment == 'production' %}
     {%- for path in paths %}
+      {%- set path = path | trim %}
       {% if regExp.test(path) %}
-        {%- set path = path | trim %}
         {%- set relativePath = ["../", path] | join %}
         {%- js bucket %}{% include relativePath %}{% endjs %}
       {% else %}
-        {%- set path = path | trim %}
         {%- set relativePath = ["../assets/js/", path, ".js"] | join %}
         {%- js bucket %}{% include relativePath %}{% endjs %}
       {% endif %}
