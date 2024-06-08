@@ -1,0 +1,36 @@
+{# Code credit: this approach of handling JavaScript was inspired by https://kittygiraudel.com/2020/12/03/inlining-scripts-and-styles-in-11ty/ #}
+{% if javascripts %}
+  {% set paths = javascripts.split(",") %}
+  {% set regExp = r/node_modules/ %}
+  {% set bucket = bucket | default("default") %}
+
+  {# in production we inline all JavaScript to avoid network requests for our JS for a small performance boost #}
+  {% if metadata.environment == 'production' %}
+    {%- for path in paths %}
+      {%- set path = path | trim %}
+      {% if regExp.test(path) %}
+        {%- set relativePath = ["../", path] | join %}
+        {%- js bucket %}{% include relativePath %}{% endjs %}
+      {% else %}
+        {%- set relativePath = ["../assets/js/", path, ".js"] | join %}
+        {%- js bucket %}{% include relativePath %}{% endjs %}
+      {% endif %}
+    {%- endfor %}
+
+    {# NOTE: we "bucket" the JS so that we can create separate inlined scripts for shared JS and page / layout specific JS #}
+    {# See: https://github.com/11ty/eleventy-plugin-bundle/blob/main/README.md#asset-bucketing #}
+    <script>
+      {% getBundle "js", bucket %}
+    </script>
+
+  {# in development we load all JS via a <script> so that changes to our JS don't require a manual page refresh #}
+  {% else %}
+    {% for path in paths %}
+      {% if regExp.test(path) %}
+        <script src="/{{ path | trim }}"></script>
+      {% else %}
+        <script src="/assets/js/{{ path | trim }}.js"></script>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}

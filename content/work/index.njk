@@ -41,4 +41,8 @@ eleventyNavigation:
   {% endfor %}
 </ul>
 
-<script defer src="/js/work.js"></script>
+{%- set javascripts -%}
+  work
+{%- endset -%}
+{%- set bucket = "work" -%}
+{%- include "scripts.njk" -%}
