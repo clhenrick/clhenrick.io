@@ -68,9 +68,9 @@
     {%- include "footer.njk" %}
 
     {# NOTE: JavaScript shared by all pages are added here #}
-    {% set javascripts %}
+    {%- set javascripts -%}
       primary-navigation
-    {% endset %}
-    {% include "scripts.njk" %}
+    {%- endset -%}
+    {%- include "scripts.njk" -%}
   </body>
 </html>
