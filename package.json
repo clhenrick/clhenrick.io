@@ -26,7 +26,10 @@
     "luxon": "^3.4.4",
     "markdown-it": "^14.1.0",
     "netlify-plugin-cache": "^1.0.3",
+    "postcss": "^8.4.38",
+    "postcss-minify": "^1.1.0",
     "prismjs": "^1.29.0",
+    "terser": "^5.31.1",
     "zx": "^8.0.2"
   }
 }

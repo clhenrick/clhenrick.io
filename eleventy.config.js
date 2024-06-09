@@ -3,17 +3,19 @@ const {
   EleventyHtmlBasePlugin,
   EleventyRenderPlugin,
 } = require("@11ty/eleventy");
-
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdown = require("markdown-it")({
   html: true,
 });
+const postcss = require("postcss");
+const postcssMinify = require("postcss-minify");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const {
   pluginImages,
   pluginDataCascadeImage,
 } = require("./eleventy.config.images.js");
+const { minify } = require("terser");
 
 module.exports = function (eleventyConfig) {
   // Force 11ty to watch CSS and JS files
@@ -46,7 +48,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
-  eleventyConfig.addPlugin(bundlerPlugin);
+  eleventyConfig.addPlugin(bundlerPlugin, {
+    transforms: [transformMinifyCss, transformMinifyJs],
+  });
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
   });
@@ -148,3 +152,37 @@ module.exports = function (eleventyConfig) {
     pathPrefix: "/",
   };
 };
+
+/** minifies inlined CSS in production builds */
+async function transformMinifyCss(content) {
+  // NOTE: `this.type` returns the bundle name
+  if (this.type === "css" && process.env.NODE_ENV === "production") {
+    try {
+      const result = postcss([postcssMinify]).process(content, {
+        from: this.page.inputPath,
+        to: null,
+      });
+      return result.css;
+    } catch (error) {
+      console.error("Problem transforming CSS: ", error);
+      // fallback gracefully
+      return content;
+    }
+  }
+  return content;
+}
+
+/** minifies inlined JavaScript in production builds */
+async function transformMinifyJs(content) {
+  if (this.type === "js" && process.env.NODE_ENV === "production") {
+    try {
+      const minified = await minify(content);
+      return minified.code;
+    } catch (error) {
+      console.error("Problem minifying JS: ", error);
+      // fallback gracefully
+      return content;
+    }
+  }
+  return content;
+}
