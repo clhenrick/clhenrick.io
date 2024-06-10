@@ -41,14 +41,14 @@
   --text-color-link-visited: var(--color-accent-secondary);
 
   /* type scale ratio: 1.25 */
-  --text-size-md: 1.125rem; /* 18px */
-  --text-size-sm: 0.875rem; /* 14px */
-  --text-size-xsm: 0.625rem; /* 10px */
-  --text-size-h1: 3.4375rem; /* 55px */
-  --text-size-h2: 2.75rem; /* 44px */
-  --text-size-h3: 2.1875rem; /* 35px */
-  --text-size-h4: 1.75rem; /* 28px */
-  --text-size-h5: 1.375rem; /* 22px */
+  --text-size-md: 1.25rem; /* 20px */
+  --text-size-sm: 1rem; /* 16px */
+  --text-size-xsm: 0.8125rem; /* 13px */
+  --text-size-h1: 3.8125rem; /* 61px */
+  --text-size-h2: 3rem; /* 48px */
+  --text-size-h3: 2.4375rem; /* 39px */
+  --text-size-h4: 1.953125rem; /* 31.25px */
+  --text-size-h5: 1.5625rem; /* 25px */
 
   --padding: 1.5rem;
   --padding-md: 2rem;
