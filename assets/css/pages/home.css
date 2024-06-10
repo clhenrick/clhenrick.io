@@ -80,3 +80,7 @@ section:last-of-type {
 .card .text > *:nth-last-child(2) {
   margin-bottom: var(--card-margin);
 }
+
+.card h3 {
+  font-size: var(--text-size-h4);
+}
