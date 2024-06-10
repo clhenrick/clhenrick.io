@@ -1,3 +1,11 @@
+nav.pagination {
+  margin-top: 6rem;
+}
+
+nav.pagination > h2 {
+  font-size: var(--text-size-h4);
+}
+
 nav.pagination > ol {
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
