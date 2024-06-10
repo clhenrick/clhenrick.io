@@ -15,15 +15,14 @@ My full work and volunteer experience, educational credentials, and technical sk
 
 ## Table of Contents
 
-You may skip ahead to a section of this CV using the following links:
+You may skip ahead to a section of this CV using the following jump links:
 
 - [Professional Experience](#professional-experience)
 - [Volunteer Experience](#volunteer-experience)
 - [Education](#education)
 - [Technical Skills](#technical-skills)
 
-
-## Professional Experience
+<h2 id="professional-experience">Professional Experience</h2>
 
 ### ESRI StoryMaps
 **Senior Software Development Engineer**<br>
@@ -178,7 +177,7 @@ Philadelphia, PA
 
 Assisted [DVRPC](http://www.dvrpc.org/)'s Office of Transit, Bicycle, and Pedestrian Planning in implementing projects related to transit, pedestrian, and bicycle planning in the greater metropolitan Philadelphia area. Participated in tasks such as survey field-work, road safety audits, data scrubbing and aggregation, bicycle route mapping, and power point presentations.
 
-## Volunteer Experience
+<h2 id="volunteer-experience">Volunteer Experience:</h2>
 
 ### Anti-Eviction Mapping Project
 **Web Developer**<br>
@@ -203,7 +202,7 @@ Performed spatial data analysis and visualization to support [ASIAN Inc](http://
 Consulted with GreenInfo Network on best practices for GIS analysis and data visualization of census and in-house demographic data.
 
 
-## Education
+<h2 id="education">Education</h2>
 
 ### Storytelling With Data
 **SWD Ten Week Course Certificate**<br>
@@ -252,7 +251,7 @@ GPA 3.49
 
 Studies included drawing, print making, painting, mixed media, and graphic design.
 
-## Technical Skills
+<h2 id="technical-skills">Technical Skills</h2>
 
 - JavaScript (ES6+)
 - TypeScript
