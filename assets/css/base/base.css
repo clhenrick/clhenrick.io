@@ -40,6 +40,16 @@
   --text-color-link-active: var(--color-accent-secondary);
   --text-color-link-visited: var(--color-accent-secondary);
 
+  /* type scale ratio: 1.25 */
+  --text-size-md: 1.125rem; /* 18px */
+  --text-size-sm: 0.875rem; /* 14px */
+  --text-size-xsm: 0.625rem; /* 10px */
+  --text-size-h1: 3.4375rem; /* 55px */
+  --text-size-h2: 2.75rem; /* 44px */
+  --text-size-h3: 2.1875rem; /* 35px */
+  --text-size-h4: 1.75rem; /* 28px */
+  --text-size-h5: 1.375rem; /* 22px */
+
   --padding: 1.5rem;
   --padding-md: 2rem;
   --padding-lg: 4rem;
@@ -79,6 +89,7 @@
 html,
 body {
   font-family: var(--font-family);
+  font-size: var(--text-size-md);
   font-weight: normal;
   text-rendering: optimizeLegibility;
   color: var(--text-color);
@@ -115,6 +126,26 @@ h3 {
   margin-bottom: 1rem;
 }
 
+h1 {
+  font-size: var(--text-size-h1);
+}
+
+h2 {
+  font-size: var(--text-size-h2);
+}
+
+h3 {
+  font-size: var(--text-size-h3);
+}
+
+h4 {
+  font-size: var(--text-size-h4);
+}
+
+h5 {
+  font-size: var(--text-size-h5);
+}
+
 p {
   margin-bottom: 1.25rem;
   max-width: 75ch;
@@ -122,6 +153,16 @@ p {
 
 p:last-child {
   margin-bottom: 0;
+}
+
+caption,
+figcaption,
+.caption {
+  font-size: var(--text-size-sm);
+}
+
+small {
+  font-size: var(--text-size-xsm);
 }
 
 :where([href]) {
