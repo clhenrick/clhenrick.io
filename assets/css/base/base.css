@@ -50,6 +50,9 @@
   --text-size-h4: 1.953125rem; /* 31.25px */
   --text-size-h5: 1.5625rem; /* 25px */
 
+  --line-height-body: 1.65;
+  --line-height-heading: 1.15;
+
   --padding: 1.5rem;
   --padding-md: 2rem;
   --padding-lg: 4rem;
@@ -100,7 +103,7 @@ body {
   font-weight: normal;
   text-rendering: optimizeLegibility;
   color: var(--text-color);
-  line-height: 1.65;
+  line-height: var(--line-height-body);
   overflow-x: hidden;
 }
 
@@ -125,7 +128,7 @@ h3,
 h4,
 h5 {
   margin-bottom: 1rem;
-  line-height: 1.15;
+  line-height: var(--line-height-heading);
 }
 
 h1 {
