@@ -161,8 +161,7 @@ p:last-child {
 }
 
 caption,
-figcaption,
-.caption {
+figcaption {
   font-size: var(--text-size-sm);
 }
 
