@@ -2,7 +2,7 @@
 layout: layouts/about.njk
 # TODO: full-width layout
 title: "Curriculum Vitae"
-description: "Curriculum Vitae or Résumé of Chris Henrick"
+description: "Curriculum Vitae of Chris Henrick"
 eleventyNavigation:
   parent: About
   key: CV
