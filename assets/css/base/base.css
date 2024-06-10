@@ -121,8 +121,11 @@ main:first-child {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   margin-bottom: 1rem;
+  line-height: 1.15;
 }
 
 h1 {
