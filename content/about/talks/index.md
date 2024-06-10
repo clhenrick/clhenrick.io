@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/about.njk
 # TODO: full-width layout
 title: Talks
 description: "A list of public lectures and presentations given by Chris Henrick, ordered by date."

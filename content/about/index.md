@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/about.njk
 # TODO: narrow layout
 title: "about Chris Henrick"
 description: "About Chris Henrick: Creative Technologist and Educator"
