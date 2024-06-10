@@ -54,7 +54,6 @@
   --padding-md: 2rem;
   --padding-lg: 4rem;
 
-  --font-size: 1.25rem;
   --border-radius: 0.1875rem;
 
   --desktop-max-width: 60rem;
@@ -88,11 +87,6 @@
 
 html,
 body {
-  font-family: var(--font-family);
-  font-size: var(--text-size-md);
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-  color: var(--text-color);
   background-color: var(--background-color);
 }
 
@@ -101,6 +95,12 @@ html {
 }
 
 body {
+  font-family: var(--font-family);
+  font-size: var(--text-size-md);
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  color: var(--text-color);
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
@@ -108,7 +108,6 @@ header,
 main,
 footer {
   margin: 0 auto;
-  font-size: var(--font-size);
 }
 
 main {
