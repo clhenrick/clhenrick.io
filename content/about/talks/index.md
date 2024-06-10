@@ -14,9 +14,9 @@ eleventyNavigation:
 Lectures, presentations, and workshops I've given, listed in reverse chronological order. Most entries contain links to slides, video recordings, and/or workshop materials.
 
 ## Using Components in Figma
-*UCUX FigmaFest / Remote / April 13, 2022*<br>
+*UC UX Figma Fest / Remote / April 13, 2022*<br>
 
-Lightning talk on using [Figma](https://www.figma.com/)'s components feature: what they are, why one would want to use them, and how. Given during the University of California's User Experience group's "FigmaFest" event during the Spring of 2022.
+Lightning talk on using [Figma](https://www.figma.com/)'s components feature: what they are, why one would want to use them, and how. Given during the University of California's User Experience group's "Figma Fest" event during the Spring of 2022.
 
 [Using Components in Figma presentation slides](https://docs.google.com/presentation/d/19CYpG1DaG_cqJVyC6JGgV8t_kc2yWffbkn-goksqgy8/edit?usp=sharing)
 
@@ -28,13 +28,13 @@ What separates geo-visualization from other types of data visualization? What ar
 - [GeoVisualization Workshop at the I School (2020) presentation slides](https://docs.google.com/presentation/d/1F-VDg0ZO3L_g-fd4Apc0PQmEiKNWNyzDVesUuD3dwV0/edit?usp=sharing)
 - [GeoVisualization Workshop at the I School (2020) Observable notebook](https://observablehq.com/@clhenrick/mapboxgl-hexbin-map)
 
-## Arts, Politics, and the City: Webmapping Workshop
+## Arts, Politics, and the City: Web-mapping Workshop
 *UC Berkeley / Berkeley, CA / April 1, 2020*
 
 Guest lecture and workshop on making interactive maps for the web for a core methods course in the [Global Urban Humanities certificate program](http://globalurbanhumanities.berkeley.edu/graduate-certificate) titled *The Demos: Politics, Art and the City (Spring 2020)*. Following a lecture on cartography and making on the web, students gained hands on experience working with geospatial data on the web and creating their own interactive web map using open data on San Francisco 311 cases, [geojson.io](http://geojson.io), and [Glitch](https://glitch.com). Due to COVID-19 this talk and workshop was given remotely.
 
-- [Arts, Politics, and the City: Webmapping Workshop presentation slides](https://docs.google.com/presentation/d/15LDhtoHi3jxT4K5cQKv3yyyOT16xxrlcx-GF3iFhf5Y/edit?usp=sharing)
-- [Arts, Politics, and the City: Webmapping Workshop Glitch project](https://glitch.com/~sf-311-data)
+- [Arts, Politics, and the City: Web-mapping Workshop presentation slides](https://docs.google.com/presentation/d/15LDhtoHi3jxT4K5cQKv3yyyOT16xxrlcx-GF3iFhf5Y/edit?usp=sharing)
+- [Arts, Politics, and the City: Web-mapping Workshop Glitch project](https://glitch.com/~sf-311-data)
 
 ## Using D3JS for Print Cartography
 *NACIS Annual Meeting / Tacoma, WA / October 17, 2019*
@@ -74,7 +74,7 @@ What separates geo-visualization from other types of data visualization? What ar
 - [GeoVisualization Workshop at the I School 2017 workshop code](https://github.com/clhenrick/geovisualization_workshop_ischool)
 
 ## Practical and Impractical Uses of Terrain Data
-*NACIS Annual Meeting / Colorado Springs / October 21, 2016*
+*NACIS Annual Meeting / Colorado Springs, CO / October 21, 2016*
 
 Stamen has been collecting, processing, and experimenting with worldwide digital elevation models (DEMs) for the past year, supported by a grant from the Knight Foundation. The primary output of this is the Open Terrain project, which aims to collect resources on how to process and work with DEMs and their derivatives using open source tools, and cloud-based and scale data pipelines. In this talk we'll demonstrate a few techniques to incorporate these components into your maps as well as discuss how we're using the Open Terrain data to add hillshades to HOT's humanitarian map style and to reboot our OSM-based classic Stamen Terrain style and deploy it worldwide. We'll also explore some impractical uses of DEMs that we've experimented with purely for their aesthetic value.
 
@@ -107,18 +107,26 @@ How can maps, open data, and the web be used to advance causes for social justic
 
 Some cartographers and data analysts work closely with communities to use maps for spatial justice—equitable determination over and production of space. Meanwhile, there are many in the mapping community who care about social change but don't know how to connect their work to real advocacy. This session creates a space to think through important questions around grassroots mapping and community cartography.
 
-Participants will share, pecha-kucha style, their work in grassroots mapping and counter-cartography. Then, as a group, we'll discuss the ethics of community-based work including questions of representation, authorship, race and class. We'll also talk about what the potential impacts of grassroots mapping can be on policy and on communities themselves.
+Participants will share, [PechaKucha](https://en.wikipedia.org/wiki/PechaKucha) style, their work in grassroots mapping and counter-cartography. Then, as a group, we'll discuss the ethics of community-based work including questions of representation, authorship, race and class. We'll also talk about what the potential impacts of grassroots mapping can be on policy and on communities themselves.
 
 ## Connection
 *MFA Design & Technology Symposium / Parsons School of Design, New York, NY / May 2015*
+
+An overview of my MFA thesis project, _Am I Rent Stabilized?_, part of the Parsons MFA Design and Technology's graduating class of 2015 symposium at Parsons School of Design.
 
 [Connection presentation video recording](https://vimeo.com/album/3468048/video/130331997#t=230s)
 
 ## Visualizing Tenants Rights Activism
 *NYU Democracy Lab / New York University, New York, NY / March 10, 2015*
 
+An overview of the development and impact of _Am I Rent Stabilized?_, in the context of using open data for tenants rights advocacy in New York City.
+
 ## Narrative Capabilities of Web & Experimental Cartography
-*cARTography GeoMixer / California College of the Arts, SF / June 19, 2014*
+*cARTography GeoMixer / California College of the Arts, San Francisco / June 19, 2014*
+
+Exploring the blurring of boundaries between maps and art in contemporary cartography and the influence the two mediums have on one another.
 
 ## Bias In Cartography And Geospatial Data
 *GeoNYC Student Showcase / New York Public Library Main Branch, New York, NY / February 10, 2014*
+
+A primer on intentional and unintentional author bias in cartographic design and geospatial data creation, and some ideas on how to address it.
