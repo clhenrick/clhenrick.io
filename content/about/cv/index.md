@@ -22,7 +22,7 @@ You may skip ahead to a section of this CV using the following links:
 - [Education](#education)
 - [Technical Skills](#technical-skills)
 
----
+
 ## Professional Experience
 
 ### ESRI StoryMaps
@@ -178,8 +178,7 @@ Philadelphia, PA
 
 Assisted [DVRPC](http://www.dvrpc.org/)'s Office of Transit, Bicycle, and Pedestrian Planning in implementing projects related to transit, pedestrian, and bicycle planning in the greater metropolitan Philadelphia area. Participated in tasks such as survey field-work, road safety audits, data scrubbing and aggregation, bicycle route mapping, and power point presentations.
 
------
-## Volunteer Experience:
+## Volunteer Experience
 
 ### Anti-Eviction Mapping Project
 **Web Developer**
@@ -203,7 +202,7 @@ San Francisco, CA
 Performed spatial data analysis and visualization to support [ASIAN Inc](http://www.asianinc.org/)'s goals of improving economic and housing opportunities for low income Asian Americans in the San Francisco Bay Area.
 Consulted with GreenInfo Network on best practices for GIS analysis and data visualization of census and in-house demographic data.
 
------
+
 ## Education
 
 ### Storytelling With Data
@@ -253,7 +252,6 @@ GPA 3.49
 
 Studies included drawing, print making, painting, mixed media, and graphic design.
 
------
 ## Technical Skills
 
 - JavaScript (ES6+)
