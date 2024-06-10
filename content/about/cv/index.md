@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/cv.njk
 # TODO: full-width layout
 title: "Curriculum Vitae"
 description: "Curriculum Vitae or Résumé of Chris Henrick"
@@ -8,12 +8,6 @@ eleventyNavigation:
   key: CV
   order: 1
 ---
-
-{%- set partials %}
-  pages/cv
-{%- endset %}
-{%- set bucket = "cv" %}
-{% include "styles.njk" %}
 
 # {{title}}
 
