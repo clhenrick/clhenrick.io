@@ -57,6 +57,14 @@
   --padding-md: 2rem;
   --padding-lg: 4rem;
 
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+  --spacing-xxl: 96px;
+
   --border-radius: 0.1875rem;
 
   --desktop-max-width: 60rem;
@@ -127,12 +135,15 @@ h2,
 h3,
 h4,
 h5 {
-  margin-bottom: 1rem;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   line-height: var(--line-height-heading);
 }
 
 h1 {
   font-size: var(--text-size-h1);
+  margin-top: 0;
+  margin-bottom: var(--spacing-xl);
 }
 
 h2 {
