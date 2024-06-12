@@ -1,11 +1,14 @@
-dl,
 img,
-ul,
-ol,
+picture,
 figure,
 pre[class*="language-"],
 color-legend {
   margin-bottom: var(--spacing-lg);
+}
+
+img,
+picture {
+  height: auto;
 }
 
 code[class*="language-"],
@@ -14,22 +17,17 @@ pre[class*="language-"] {
 }
 
 dl > div.publish-date {
-  gap: 0.25rem;
+  gap: var(--spacing-xxs);
 }
 
 dl > div.tags {
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
   flex-wrap: wrap;
 }
 
 ul.links-nextprev {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
   flex-wrap: wrap;
-}
-
-img,
-picture {
-  height: auto;
 }
