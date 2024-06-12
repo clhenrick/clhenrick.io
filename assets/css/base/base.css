@@ -61,9 +61,11 @@
   --spacing-xs: 8px;
   --spacing-sm: 12px;
   --spacing-md: 16px;
+  --spacing-mmd: 24px;
   --spacing-lg: 32px;
-  --spacing-xl: 64px;
-  --spacing-xxl: 96px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 64px;
+  --spacing-xxxl: 96px;
 
   --border-radius: 0.1875rem;
 
