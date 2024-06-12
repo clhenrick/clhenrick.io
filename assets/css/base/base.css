@@ -137,8 +137,8 @@ h2,
 h3,
 h4,
 h5 {
-  margin-top: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
   line-height: var(--line-height-heading);
 }
 
@@ -165,8 +165,8 @@ h5 {
 }
 
 p {
-  margin-bottom: 1.25rem;
   max-width: 75ch;
+  margin-bottom: var(--spacing-mmd);
 }
 
 p:last-child {
@@ -234,6 +234,12 @@ dl > div {
   align-items: baseline;
   gap: 1rem;
   line-height: 1.75;
+}
+
+:where(dl),
+:where(ul),
+:where(ol) {
+  margin-bottom: var(--spacing-md);
 }
 
 :where([role="list"]) {
