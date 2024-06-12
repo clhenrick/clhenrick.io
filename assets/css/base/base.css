@@ -149,6 +149,7 @@ h1 {
 }
 
 h2 {
+  margin-top: var(--spacing-xl);
   font-size: var(--text-size-h2);
 }
 
