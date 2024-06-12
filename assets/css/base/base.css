@@ -187,7 +187,7 @@ small {
   color: var(--text-color-link);
   text-decoration-skip-ink: auto;
   text-decoration-thickness: 0.125rem;
-  text-underline-offset: 0.15rem;
+  text-underline-offset: 0.2em;
   transition: text-decoration-thickness 0.25s ease-in;
 }
 
