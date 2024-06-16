@@ -1,9 +1,14 @@
-ol[reversed] li {
+ol.postlist li {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-xl);
 }
 
-ol[reversed] li div {
+ol.postlist li > *:first-child {
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+ol.postlist li div {
   order: -1;
 }

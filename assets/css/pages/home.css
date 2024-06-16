@@ -15,6 +15,10 @@ section:last-of-type {
   margin-bottom: 0;
 }
 
+section h2 {
+  margin-top: 0;
+}
+
 .banner {
   aspect-ratio: 4 / 1;
   display: flex;
@@ -29,6 +33,7 @@ section:last-of-type {
   letter-spacing: 0.1em;
   font-size: 3.75rem;
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 .cards-container {
@@ -36,6 +41,7 @@ section:last-of-type {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 800px) {
@@ -65,6 +71,7 @@ section:last-of-type {
 }
 
 .card .text > *:first-child {
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -79,4 +86,8 @@ section:last-of-type {
 
 .card .text > *:nth-last-child(2) {
   margin-bottom: var(--card-margin);
+}
+
+.card h3 {
+  font-size: var(--text-size-h4);
 }
