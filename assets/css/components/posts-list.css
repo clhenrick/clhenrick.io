@@ -4,9 +4,9 @@ ol.postlist li {
   margin-bottom: var(--spacing-xl);
 }
 
-ol.postlist li a > * {
+ol.postlist li > *:first-child {
   margin-top: var(--spacing-xs);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 ol.postlist li div {
