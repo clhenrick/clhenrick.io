@@ -1,8 +1,9 @@
 nav.pagination {
-  margin-top: 6rem;
+  margin-top: var(--spacing-xxxl);
 }
 
 nav.pagination > h2 {
+  margin-top: 0;
   font-size: var(--text-size-h4);
 }
 
