@@ -240,7 +240,7 @@ dl > div {
 :where(dl),
 :where(ul),
 :where(ol) {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-mmd);
 }
 
 :where([role="list"]) {
