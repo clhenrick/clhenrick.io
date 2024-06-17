@@ -7,9 +7,9 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
   margin-bottom: var(--spacing-mmd);
 }
 
-textarea:focus-visible,
-input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]):focus-visible {
-  /* outline: 0.15em solid #00f; */
+textarea:focus,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]):focus {
+  outline: 0.15em solid var(--color-accent);
   box-shadow: var(--focus-style-box-shadow);
 }
 
