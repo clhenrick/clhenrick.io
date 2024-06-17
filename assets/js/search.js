@@ -3,17 +3,17 @@
 (() => {
   const form = document.querySelector('form[role="search"]');
   const textInput = document.querySelector('input[type="text"]');
-  const siteName = window.websiteName || "clhenrick.io";
+  const queryPrefix = textInput.getAttribute("value");
 
-  // clear the prepopulated site:clhenrick.io (we add it back later)
-  textInput.value = "";
+  // clear the prepopulated "site:clhenrick.io" value (we add it back later)
+  textInput.setAttribute("value", "");
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const formData = new FormData(form);
     const query = formData.get("q");
-    formData.set("q", `site:${siteName} ${query}`);
+    formData.set("q", `${queryPrefix} ${query}`);
 
     const searchParams = new URLSearchParams(formData);
     const searchResultsUrl = `https://duckduckgo.com/?${searchParams.toString()}`;

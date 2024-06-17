@@ -11,8 +11,6 @@ eleventyNavigation:
 {# NOTE: used by search.js and <form> below #}
 {%- set websiteName = metadata.url | replace("https://", "") %}
 
-<script>window.websiteName = "{{ websiteName }}";</script>
-
 {%- set partials %}
   components/button,
   pages/search
@@ -44,6 +42,7 @@ eleventyNavigation:
     id="search-text"
     name="q"
     type="text"
+    {# NOTE: tried adding an <input type="hidden"> with the "site:name" value, but DDG seems to only keep the last "q" query param value, so it gets replaced by the users search query. #}
     value="site:{{ websiteName }} "
     required
   >
