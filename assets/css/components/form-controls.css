@@ -7,6 +7,12 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
   margin-bottom: var(--spacing-mmd);
 }
 
+textarea::placeholder,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"])::placeholder {
+  opacity: 0.8;
+  color: inherit;
+}
+
 textarea:focus,
 input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]):focus {
   outline: 0.15em solid var(--color-accent);
