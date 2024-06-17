@@ -1,0 +1,19 @@
+textarea,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]) {
+  border: solid .1em currentColor;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-secondary);
+  padding: var(--spacing-xs);
+  margin-bottom: var(--spacing-mmd);
+}
+
+textarea:focus,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]):focus {
+  outline: 0.15em solid var(--color-accent);
+  box-shadow: var(--focus-style-box-shadow);
+}
+
+label {
+  display: block;
+  margin: var(--spacing-xxs) 0;
+}
