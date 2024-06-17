@@ -1,6 +1,7 @@
 form[role="search"] {
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--spacing-xxxl);
 }
 
 label {
