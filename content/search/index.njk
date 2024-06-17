@@ -41,9 +41,11 @@ eleventyNavigation:
   <input type="hidden" name="k1" value="-1">
   <label for="search-text">Search Query</label>
   <input
-    id="search-text" name="q"
+    id="search-text"
+    name="q"
     type="text"
     value="site:{{metadata.url | replace("https://", "")}} "
+    required
   >
   <button class="button" type="submit">Search</button>
 </form>
