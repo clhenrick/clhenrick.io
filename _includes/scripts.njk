@@ -25,9 +25,9 @@
   {%- else %}
     {%- for path in paths %}
       {%- if regExp.test(path) %}
-        <script defer src="/{{ path | trim }}"></script>
+        <script src="/{{ path | trim }}"></script>
       {%- else %}
-        <script defer src="/assets/js/{{ path | trim }}.js"></script>
+        <script src="/assets/js/{{ path | trim }}.js"></script>
       {%- endif %}
     {%- endfor %}
   {%- endif %}
