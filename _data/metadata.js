@@ -1,7 +1,6 @@
 module.exports = {
   title: "clhenrick.io",
-  // TODO: update url when ready to go live
-  url: "https://clhenrick-new.netlify.app/",
+  url: "https://clhenrick.io/",
   language: "en",
   description: "Coming soon...",
   environment: process.env.NODE_ENV,

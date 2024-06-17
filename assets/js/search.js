@@ -3,8 +3,7 @@
 (() => {
   const form = document.querySelector('form[role="search"]');
   const textInput = document.querySelector('input[type="text"]');
-  // TODO: retreive this value from _data/metadata.js instead of hardcoding it here
-  const siteName = "clhenrick.io";
+  const siteName = window.websiteName || "clhenrick.io";
 
   // clear the prepopulated site:clhenrick.io (we add it back later)
   textInput.value = "";

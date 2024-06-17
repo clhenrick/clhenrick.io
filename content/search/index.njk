@@ -8,6 +8,13 @@ eleventyNavigation:
   order: 6
 ---
 
+{# NOTE: used by search.js and <form> below #}
+{%- set websiteName = metadata.url | replace("https://", "") %}
+
+<script>
+  window.websiteName = "{{ websiteName }}";
+</script>
+
 {%- set partials %}
   components/button,
   pages/search
@@ -44,7 +51,7 @@ eleventyNavigation:
     id="search-text"
     name="q"
     type="text"
-    value="site:{{metadata.url | replace("https://", "")}} "
+    value="site:{{ websiteName }} "
     required
   >
   <button class="button" type="submit">Search</button>
