@@ -29,9 +29,15 @@ eleventyNavigation:
   aria-labelledby="search-title"
 >
   <h2 id="search-title" class="visually-hidden">Site</h2>
+  {# set region for search #}
   <input type="hidden" name="ki" value="us-en">
+  {# disable ads in search results #}
   <input type="hidden" name="k1" value="-1">
   <label for="search-text">Search Query</label>
-  <input id="search-text" name="q" type="text" value="site:{{metadata.title}} ">
+  <input
+    id="search-text" name="q"
+    type="text"
+    value="site:{{metadata.url | replace("https://", "")}} "
+  >
   <button class="button" type="submit">Search</button>
 </form>
