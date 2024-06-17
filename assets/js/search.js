@@ -1,7 +1,10 @@
+// Progressively enhanced search form for /search/index.njk
+// This still works without JavaScript; here we remove the prepopulated "site:clhenrick.io" from the text input's value so that it doesn't distract the user when they enter a search query.
 (() => {
   const form = document.querySelector('form[role="search"]');
   const textInput = document.querySelector('input[type="text"]');
-  const site = "clhenrick.io";
+  // TODO: retreive this value from _data/metadata.js instead of hardcoding it here
+  const siteName = "clhenrick.io";
 
   // clear the prepopulated site:clhenrick.io (we add it back later)
   textInput.value = "";
@@ -10,15 +13,12 @@
     event.preventDefault();
 
     const formData = new FormData(form);
-    console.log(formData);
+    const query = formData.get("q");
+    formData.set("q", `site:${siteName} ${query}`);
 
-    const query = formData.get('q');
-    formData.set('q', `site:${site}+${query}`);
+    const searchParams = new URLSearchParams(formData);
+    const searchResultsUrl = `https://duckduckgo.com/?${searchParams.toString()}`;
 
-    console.log(formData);
-
-    // maybe do something like window.navigate here with correct url?
-
-    // see: https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_forms_through_JavaScript#associating_a_formdata_object_and_a_form
+    window.location.href = searchResultsUrl;
   });
 })();
