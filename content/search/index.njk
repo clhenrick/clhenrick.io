@@ -15,6 +15,12 @@ eleventyNavigation:
 {%- set bucket="search" %}
 {% include "styles.njk" %}
 
+{%- set javascripts -%}
+  search
+{%- endset -%}
+{%- set bucket = "search" %}
+{%- include "scripts.njk" %}
+
 <h1>
   {{title}}
 </h1>
