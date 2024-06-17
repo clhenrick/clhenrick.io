@@ -1,0 +1,13 @@
+form[role="search"] {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: var(--spacing-xxs);
+}
+
+input[type="text"] {
+  padding: var(--spacing-xs);
+  margin-bottom: var(--spacing-mmd);
+}
