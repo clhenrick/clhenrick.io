@@ -3,12 +3,3 @@ form[role="search"] {
   flex-direction: column;
   margin-bottom: var(--spacing-xxxl);
 }
-
-label {
-  margin-bottom: var(--spacing-xxs);
-}
-
-input[type="text"] {
-  padding: var(--spacing-xs);
-  margin-bottom: var(--spacing-mmd);
-}
