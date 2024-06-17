@@ -9,22 +9,29 @@ eleventyNavigation:
 ---
 
 {%- set partials %}
-  components/button
+  components/button,
+  pages/search
 {%- endset %}
 {%- set bucket="search" %}
 {% include "styles.njk" %}
 
-<h1> {{title}} </h1>
+<h1>
+  {{title}}
+</h1>
 
-<p>You may use the form below to search the contents of this site.</p>
+<p>Search the contents of this site using <a href="https://duckduckgo.com">DuckDuckGo</a>.</p>
 
 <form
-  id="search-form"
-  name="search-form"
   accept-charset="utf-8"
-  method="post"
+  method="get"
+  role="search"
+  action="https://duckduckgo.com/"
+  aria-labelledby="search-title"
 >
-  <label for="search">Search</label>
-  <input id="search" type="search">
-  <input class="button" type="submit" value="Submit">
+  <h2 id="search-title" class="visually-hidden">Site</h2>
+  <input type="hidden" name="ki" value="us-en">
+  <input type="hidden" name="k1" value="-1">
+  <label for="search-text">Search Query</label>
+  <input id="search-text" name="q" type="text" value="site:{{metadata.title}} ">
+  <button class="button" type="submit">Search</button>
 </form>
