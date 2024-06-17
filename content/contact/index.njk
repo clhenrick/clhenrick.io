@@ -19,36 +19,47 @@ eleventyNavigation:
 <h1>{{ title }}</h1>
 
 <p>
-  You may use the form below to contact me, or you mail email me at
-  {# maybe do something trickier here like use an svg or image for the email address with an aria-label? #}
-  <span class="font-mono">chrishenrick</span> at
-  <span class="font-mono">gmail</span> dot <span class="font-mono">com</span>.
+  You may contact me using the form on this page. You may also email me at <a href="mailto:chrishenrick@gmail.com">chrishenrick@gmail.com</a>.
 </p>
 
 <form
-  id="fs-frm"
-  name="simple-contact-form"
   accept-charset="utf-8"
   action="https://formspree.io/f/xoqgkgyk"
   method="post"
 >
-  <fieldset id="fs-frm-inputs">
-    <label for="full-name">Name</label>
-    <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
-    <label for="email-address">Email Address</label>
-    <input type="email" name="_replyto" id="email-address" placeholder="email@domain.tld" required="">
-    <label for="message">Message</label>
-    <textarea rows="5" name="message" id="message" required=""></textarea>
-    <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
-  </fieldset>
-  <input class="button" type="submit" value="Submit">
-</form>
+  <label for="full-name">Name</label>
+  <input
+    type="text"
+    name="name"
+    id="full-name"
+    placeholder="What do I call you?"
+    required=""
+  >
 
-<script>
-  window.onload = function () {
-    var el = document.getElementById('g-recaptcha-response');
-    if (el) {
-      el.setAttribute('required', 'required');
-    }
-  }
-</script>
+  <label for="email-address">Email Address</label>
+  <input
+    type="email"
+    name="_replyto"
+    id="email-address"
+    placeholder="email@example.com"
+    required=""
+  >
+
+  <label for="message">Message</label>
+  <textarea
+    rows="5"
+    name="message"
+    id="message"
+    placeholder="Please, no spam here!"
+    required=""
+  ></textarea>
+
+  <input
+    type="hidden"
+    name="_subject"
+    id="email-subject"
+    value="Contact Form Submission"
+  >
+
+  <button class="button" type="submit">Submit</button>
+</form>
