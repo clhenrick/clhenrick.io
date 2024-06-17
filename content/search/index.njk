@@ -11,9 +11,7 @@ eleventyNavigation:
 {# NOTE: used by search.js and <form> below #}
 {%- set websiteName = metadata.url | replace("https://", "") %}
 
-<script>
-  window.websiteName = "{{ websiteName }}";
-</script>
+<script>window.websiteName = "{{ websiteName }}";</script>
 
 {%- set partials %}
   components/button,
@@ -34,6 +32,7 @@ eleventyNavigation:
 
 <p>Search the contents of this site using <a href="https://duckduckgo.com">DuckDuckGo</a>.</p>
 
+{# NOTE: this form is progressively enhanced, it will work without JavaScript! #}
 <form
   accept-charset="utf-8"
   method="get"
