@@ -120,27 +120,17 @@ Next, I decided to try testing the code I'd ported to React using the [VoiceOver
 Long story short, it turns out that the "Select-Only" `Combobox` pattern from the WAI APG relies on the [aria-activedescendant attribute][mdn-aria-active-descendant], which (at the time of this writing) is not fully supported in VoiceOver on Safari on MacOS due to [a bug in WebKit][webkit-bug]. The `aria-activedescendant` ARIA attribute is used in the `Combobox` to inform assistive technology (AT) such as screen readers which option is active / "visually focused" (different from the "selected" option) when navigating the list of options via the keyboard. This is important as it enables the `Combobox` component to maintain focus while the navigation of its option elements occurs. The native `<select>` HTML element behaves similarly; if you focus it using your keyboard (e.g. by tabbing to it), open its list of options (by pressing the spacebar), and then use your up and down arrow keys to navigate the list of `<options>`, you'll see that after selecting an option focus remains on the `<select>` element:
 
 <style>
-	.basic-select select,
-	.basic-select label,
-	.basic-radios label {
-		appearance: initial;
-	}
-	.basic-select label,
-	.basic-radios label {
-		color: inherit;
-		margin-bottom: 0.6rem;
-	}
-	.basic-radios input {
-		padding-right: 1rem;
-		margin: 0;
-	}
-	.basic-radios legend {
-		color: inherit;
-		background-color: inherit;
-	}
+  form {
+    margin: var(--spacing-md) 0;
+  }
+  .basic-select {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+  }
 </style>
 
-<fieldset class="basic-select">
+<form class="basic-select">
 	<label for="fruits-list">Pick a fruit</label>
 	<select id="fruits-list">
 		<option>Apples</option>
@@ -149,18 +139,35 @@ Long story short, it turns out that the "Select-Only" `Combobox` pattern from th
 		<option>Pears</option>
 		<option>Durians</option>
 	</select>
-</fieldset>
+</form>
 
 In fact it is recommended for all interactive UI components that contain interactive child elements that the keyboard arrow keys be used to navigate through their children, while the Tab key is reserved for focusing in and out of the component. Another example of this is radio button groupings:
 
-<fieldset class="basic-radios">
-	<legend>Pick a fruit</legend>
-	<input id="apples" type="radio" name="fruits"><label for="apples">Apples</label>
-	<input id="oranges" type="radio" name="fruits"><label for="oranges">Oranges</label>
-	<input id="grapes" type="radio" name="fruits"><label for="grapes">Grapes</label>
-	<input id="pears" type="radio" name="fruits"><label for="pears">Pears</label>
-	<input id="durians" type="radio" name="fruits"><label for="durians">Durians</label>
-</fieldset>
+<form>
+  <fieldset class="basic-radios">
+    <legend>Pick a fruit</legend>
+    <div class="radio-btn">
+      <input id="apples" type="radio" name="fruits">
+      <label for="apples">Apples</label>
+    </div>
+    <div class="radio-btn">
+      <input id="oranges" type="radio" name="fruits">
+      <label for="oranges">Oranges</label>
+    </div>
+    <div class="radio-btn">
+      <input id="grapes" type="radio" name="fruits">
+      <label for="grapes">Grapes</label>
+    </div>
+    <div class="radio-btn">
+      <input id="pears" type="radio" name="fruits">
+      <label for="pears">Pears</label>
+    </div>
+    <div class="radio-btn">
+      <input id="durians" type="radio" name="fruits">
+      <label for="durians">Durians</label>
+    </div>
+  </fieldset>
+</form>
 
 With the legacy Select component in our app, one would have to use the `Tab` and `Shift` + `Tab` keys to navigate between the list of options. The problem with this approach is that it moves focus out of the Select component, to its list of options, and then to the first option in the list. When an option is selected using the keyboard, focus does not return to the Select and is lost which is disorienting for users of assistive tech like screen readers. Furthermore, when using a screen reader, the `Select` component is not announced as a "combobox" as it should be and is instead announced as a "menu", another aspect that is likely to result in confusion of the component's intent or affordance.
 
