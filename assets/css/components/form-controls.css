@@ -1,3 +1,14 @@
+label {
+  display: block;
+  margin: var(--spacing-xs) 0;
+}
+
+fieldset {
+  padding: 0 var(--spacing-md);
+  margin: 0 var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
+  border: 1px solid currentColor;
+}
+
 textarea,
 input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]) {
   border: solid .1em currentColor;
@@ -19,7 +30,15 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
   box-shadow: var(--focus-style-box-shadow);
 }
 
-label {
-  display: block;
-  margin: var(--spacing-xxs) 0;
+.radio-btn,
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-xs) 0;
+}
+
+.radio-btn > label,
+.checkbox > label {
+  margin: 0;
 }
