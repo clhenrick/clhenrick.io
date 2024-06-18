@@ -30,13 +30,9 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
   box-shadow: var(--focus-style-box-shadow);
 }
 
-select {
-  padding: var(--spacing-xxs) var(--spacing-xs);
-}
-
-select:focus-visible {
-  outline: 0.15em solid var(--color-accent);
-  box-shadow: var(--focus-style-box-shadow);
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: none;
 }
 
 .radio-btn,
@@ -45,9 +41,25 @@ select:focus-visible {
   flex-direction: row;
   gap: var(--spacing-xs);
   margin: var(--spacing-xs) 0;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--border-radius);
+}
+
+.radio-btn:focus-within,
+.checkbox:focus-within {
+  box-shadow: var(--focus-style-box-shadow);
 }
 
 .radio-btn > label,
 .checkbox > label {
   margin: 0;
+}
+
+select {
+  padding: var(--spacing-xxs) var(--spacing-xs);
+}
+
+select:focus-visible {
+  outline: 0.15em solid var(--color-accent);
+  box-shadow: var(--focus-style-box-shadow);
 }
