@@ -2,7 +2,7 @@
 redirectFrom: [/accessible-select-element.html, /accessible-select-element/]
 title: "Custom and Accessible Select Menus Aren't Easy: Part One"
 date: 2023-01-22
-updated: 2023-02-05
+updated: 2024-06-18
 teaser: "Trials and tribulations of building a custom and accessible Select menu UI component."
 tags:
   - HTML
@@ -142,10 +142,10 @@ Long story short, it turns out that the "Select-Only" `Combobox` pattern from th
 	</select>
 </form>
 
-In fact it is recommended for all interactive UI components that contain interactive child elements that the keyboard arrow keys be used to navigate through their children, while the Tab key is reserved for focusing in and out of the component. Another example of this is radio button groupings:
+In fact it is recommended for all interactive UI components that contain interactive child elements that the keyboard arrow keys be used to navigate through their children, while the Tab key is reserved for focusing in and out of the component. Another example of this is radio button groupings. Notice that using the keyboard arrow keys to move through each radio button also selects it, that is the expected behavior:
 
 <form>
-  <fieldset class="basic-radios">
+  <fieldset>
     <legend>Pick a fruit</legend>
     <div class="radio-btn">
       <input id="apples" type="radio" name="fruits">
@@ -166,6 +166,34 @@ In fact it is recommended for all interactive UI components that contain interac
     <div class="radio-btn">
       <input id="durians" type="radio" name="fruits">
       <label for="durians">Durians</label>
+    </div>
+  </fieldset>
+</form>
+
+For checkboxes the expected keyboard interaction pattern is to use the Tab key to move through each checkbox and to use the Space key to check or uncheck it:
+
+<form>
+  <fieldset>
+    <legend>Pick a fruit</legend>
+    <div class="checkbox">
+      <input id="apples-cb" type="checkbox" name="fruits">
+      <label for="apples-cb">Apples</label>
+    </div>
+    <div class="checkbox">
+      <input id="oranges-cb" type="checkbox" name="fruits">
+      <label for="oranges-cb">Oranges</label>
+    </div>
+    <div class="checkbox">
+      <input id="grapes-cb" type="checkbox" name="fruits">
+      <label for="grapes-cb">Grapes</label>
+    </div>
+    <div class="checkbox">
+      <input id="pears-cb" type="checkbox" name="fruits">
+      <label for="pears-cb">Pears</label>
+    </div>
+    <div class="checkbox">
+      <input id="durians-cb" type="checkbox" name="fruits">
+      <label for="durians-cb">Durians</label>
     </div>
   </fieldset>
 </form>
