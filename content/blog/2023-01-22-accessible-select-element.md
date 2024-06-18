@@ -121,7 +121,8 @@ Long story short, it turns out that the "Select-Only" `Combobox` pattern from th
 
 <style>
   form {
-    margin: var(--spacing-md) 0;
+    margin: var(--spacing-sm) 0 var(--spacing-lg);
+    width: min(100%, 250px);
   }
   .basic-select {
     display: flex;
