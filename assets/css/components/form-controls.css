@@ -30,6 +30,15 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
   box-shadow: var(--focus-style-box-shadow);
 }
 
+select {
+  padding: var(--spacing-xxs) var(--spacing-xs);
+}
+
+select:focus-visible {
+  outline: 0.15em solid var(--color-accent);
+  box-shadow: var(--focus-style-box-shadow);
+}
+
 .radio-btn,
 .checkbox {
   display: flex;
