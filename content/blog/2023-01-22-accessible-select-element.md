@@ -147,23 +147,23 @@ In fact it is recommended for all interactive UI components that contain interac
 <form>
   <fieldset>
     <legend>Pick a fruit</legend>
-    <div class="radio-btn">
+    <div class="form-control">
       <input id="apples" type="radio" name="fruits">
       <label for="apples">Apples</label>
     </div>
-    <div class="radio-btn">
+    <div class="form-control">
       <input id="oranges" type="radio" name="fruits">
       <label for="oranges">Oranges</label>
     </div>
-    <div class="radio-btn">
+    <div class="form-control">
       <input id="grapes" type="radio" name="fruits">
       <label for="grapes">Grapes</label>
     </div>
-    <div class="radio-btn">
+    <div class="form-control">
       <input id="pears" type="radio" name="fruits">
       <label for="pears">Pears</label>
     </div>
-    <div class="radio-btn">
+    <div class="form-control">
       <input id="durians" type="radio" name="fruits">
       <label for="durians">Durians</label>
     </div>
@@ -174,24 +174,24 @@ For checkboxes the expected keyboard interaction pattern is to use the Tab key t
 
 <form>
   <fieldset>
-    <legend>Pick a fruit</legend>
-    <div class="checkbox">
+    <legend>Pick some fruits</legend>
+    <div class="form-control">
       <input id="apples-cb" type="checkbox" name="fruits">
       <label for="apples-cb">Apples</label>
     </div>
-    <div class="checkbox">
+    <div class="form-control">
       <input id="oranges-cb" type="checkbox" name="fruits">
       <label for="oranges-cb">Oranges</label>
     </div>
-    <div class="checkbox">
+    <div class="form-control">
       <input id="grapes-cb" type="checkbox" name="fruits">
       <label for="grapes-cb">Grapes</label>
     </div>
-    <div class="checkbox">
+    <div class="form-control">
       <input id="pears-cb" type="checkbox" name="fruits">
       <label for="pears-cb">Pears</label>
     </div>
-    <div class="checkbox">
+    <div class="form-control">
       <input id="durians-cb" type="checkbox" name="fruits">
       <label for="durians-cb">Durians</label>
     </div>

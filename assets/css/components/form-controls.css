@@ -35,23 +35,29 @@ input[type="radio"]:focus {
   outline: none;
 }
 
-.radio-btn,
-.checkbox {
+/* class applied to a div that wraps an input and label */
+.form-control {
   display: flex;
   flex-direction: row;
   gap: var(--spacing-xs);
-  margin: var(--spacing-xs) 0;
+  align-items: center;
   padding: 0 var(--spacing-xs);
   border-radius: var(--border-radius);
 }
 
-.radio-btn:focus-within,
-.checkbox:focus-within {
+.form-control + .form-control {
+  margin-top: var(--spacing-xs);
+}
+
+.form-control:last-child {
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-control:focus-within {
   box-shadow: var(--focus-style-box-shadow);
 }
 
-.radio-btn > label,
-.checkbox > label {
+.form-control > label {
   margin: 0;
 }
 
