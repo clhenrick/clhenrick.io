@@ -124,19 +124,22 @@ Long story short, it turns out that the "Select-Only" `Combobox` pattern from th
     margin: var(--spacing-sm) 0 var(--spacing-lg);
     width: min(100%, 250px);
   }
+  .basic-select {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+  }
 </style>
 
 <form class="basic-select">
-  <div class="form-control">
-    <label for="fruits-list">Pick a fruit</label>
-    <select id="fruits-list">
-      <option>Apples</option>
-      <option>Oranges</option>
-      <option>Grapes</option>
-      <option>Pears</option>
-      <option>Durians</option>
-    </select>
-  </div>
+	<label for="fruits-list">Pick a fruit</label>
+	<select id="fruits-list">
+		<option>Apples</option>
+		<option>Oranges</option>
+		<option>Grapes</option>
+		<option>Pears</option>
+		<option>Durians</option>
+	</select>
 </form>
 
 In fact it is recommended for all interactive UI components that contain interactive child elements that the keyboard arrow keys be used to navigate through their children, while the Tab key is reserved for focusing in and out of the component. Another example of this is radio button groupings. Notice that using the keyboard arrow keys to move through each radio button also selects it, that is the expected behavior:
