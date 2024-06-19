@@ -61,11 +61,74 @@ input[type="radio"]:focus {
   margin: 0;
 }
 
-select {
-  padding: var(--spacing-xxs) var(--spacing-xs);
+/* custom select menu styles credit: https://moderncss.dev/custom-select-styles-with-pure-css/ */
+select,
+.select-menu::after {
+  grid-area: select;
 }
 
-select:focus-visible {
+select {
+  /* A reset of styles, including removing the default dropdown arrow */
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  cursor: pointer;
+  line-height: inherit;
+  padding: var(--spacing-xxs) var(--spacing-xs);
+
+  /* Stack above custom arrow */
+  z-index: 1;
+
+  /* NOTE: focus added via .select-menu:focus-within */
+  outline: none;
+}
+
+/* Remove dropdown arrow in IE10 & IE11 */
+select::-ms-expand {
+  display: none;
+}
+
+.select-menu {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+  min-width: 15ch;
+  max-width: 30ch;
+
+  border: 1px solid currentColor;
+  border-radius: var(--border-radius);
+  padding: 0.25em 0.5em;
+
+  font-size: inherit;
+  cursor: pointer;
+  line-height: 1.1;
+
+  background-color: var(--background-color-secondary);
+}
+
+/* custom CSS triangle */
+.select-menu:not(.select--multiple)::after {
+  content: "";
+  justify-self: end;
+  width: 0.8em;
+  height: 0.5em;
+  background-color: currentColor;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+.select-menu:focus-within {
   outline: 0.15em solid var(--color-accent);
   box-shadow: var(--focus-style-box-shadow);
+}
+
+.select-menu--disabled {
+  cursor: not-allowed;
+}
+
+.select-menu + label {
+  margin-top: var(--spacing-xs);
 }
