@@ -30,7 +30,6 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
   box-shadow: var(--focus-style-box-shadow);
 }
 
-/* NOTE: focus style added via .form-control:focus-within */
 input[type="checkbox"]:focus,
 input[type="radio"]:focus {
   outline: none;
@@ -66,7 +65,7 @@ select {
   padding: var(--spacing-xxs) var(--spacing-xs);
 }
 
-/* NOTE: focus style added via .form-control:focus-within */
-select:focus {
-  outline: none;
+select:focus-visible {
+  outline: 0.15em solid var(--color-accent);
+  box-shadow: var(--focus-style-box-shadow);
 }
