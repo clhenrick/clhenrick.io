@@ -116,6 +116,7 @@ body {
   color: var(--text-color);
   line-height: var(--line-height-body);
   overflow-x: hidden;
+  accent-color: var(--color-accent);
 }
 
 header,

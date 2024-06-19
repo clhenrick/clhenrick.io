@@ -25,10 +25,6 @@ dl > div.tags {
   flex-wrap: wrap;
 }
 
-dl a[href] {
-  text-decoration: none;
-}
-
 ul.links-nextprev {
   display: flex;
   align-items: baseline;

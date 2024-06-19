@@ -14,7 +14,7 @@ eleventyNavigation:
 
 {%- set partials %}
   components/button,
-  components/form-controls,
+  components/forms/form-controls,
   pages/search
 {%- endset %}
 {%- set bucket="search" %}
@@ -46,7 +46,7 @@ eleventyNavigation:
     type="text"
     {# NOTE: tried adding an <input type="hidden"> with the "site:name" value, but DDG seems to only keep the last "q" query param value, so it gets replaced by the users search query. #}
     value="{{ searchPrefix }} "
-    required
+    required=""
   >
   <button class="button" type="submit">Search</button>
 </form>
