@@ -8,7 +8,7 @@
   const filterButtons = Array.from(document.querySelectorAll("button.filter")).filter(
     (button) => button.value !== "shuffle"
   );
-  const shuffleButton = document.querySelector("button[value='shuffle']");
+  const shuffleButton = document.querySelector("button.shuffle");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", onFilterButtonClick);
