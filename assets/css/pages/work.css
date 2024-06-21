@@ -1,4 +1,4 @@
-div[role="group"] {
+.project-filters {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@ div[role="group"] {
 }
 
 @media (prefers-color-scheme: dark) {
-  div[role="group"] {
+  .project-filters {
     --button-bg-active:var(--color-turquoise);
     --button-bg: var(--color-turquoise-light);
     --button-text-color: var(--color-gray-90);
