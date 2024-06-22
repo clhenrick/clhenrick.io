@@ -6,6 +6,7 @@
 
 .js-enabled #filter-projects {
   display: block;
+  margin-bottom: var(--spacing-sm);
 }
 
 .js-enabled .project-filters {
