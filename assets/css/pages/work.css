@@ -1,10 +1,20 @@
+/* hide filter buttons and filter button group label when JavaScript is not enabled */
+#filter-projects,
 .project-filters {
+  display: none;
+}
+
+.js-enabled #filter-projects {
+  display: block;
+}
+
+.js-enabled .project-filters {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 
   /* colors for project filter toggle buttons */
   --button-bg: var(--color-turquoise);
@@ -14,7 +24,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .project-filters {
+  .js-enabled .project-filters {
     --button-bg-pressed:var(--color-turquoise);
     --button-bg: var(--color-turquoise-light);
     --button-text-color: var(--color-gray-90);
