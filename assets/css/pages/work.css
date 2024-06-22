@@ -1,3 +1,7 @@
+main p:first-of-type {
+  margin-bottom: var(--spacing-lg);
+}
+
 /* hide filter buttons and filter button group label when JavaScript is not enabled */
 #filter-projects,
 .project-filters {
@@ -6,7 +10,7 @@
 
 .js-enabled #filter-projects {
   display: block;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .js-enabled .project-filters {
