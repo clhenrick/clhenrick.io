@@ -20,20 +20,35 @@ section h2 {
 }
 
 .banner {
-  aspect-ratio: 4 / 1;
+  aspect-ratio: 3 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #333;
+  background-image: url('/img/clhenrick-landing-header.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.banner h1 {
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-mmd);
+  background-color: var(--background-color-secondary);
+}
+
+.banner-text h1 {
   text-transform: uppercase;
   text-shadow: 2px 3px 3px #000;
   letter-spacing: 0.1em;
   font-size: 3.75rem;
   font-weight: bold;
   margin-bottom: 0;
+}
+
+.banner-text p {
+  font-size: var(--text-size-h5);
 }
 
 .cards-container {
