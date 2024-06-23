@@ -77,18 +77,18 @@ section h2 {
 }
 
 .cards-container {
-  --card-margin: 1.25rem;
+  --card-margin: var(--spacing-mmd);
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--spacing-mmd);
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .cards-container {
-    --card-margin: 0.75rem;
+    --card-margin: var(--spacing-md);
     flex-direction: row;
-    gap: 1.25rem;
+    gap: var(--spacing-xl);
   }
 }
 
@@ -101,18 +101,11 @@ section h2 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1.25rem 0;
-}
-
-@media screen and (min-width: 800px) {
-  .card .text {
-    padding: 1.25rem;
-  }
+  padding: var(--spacing-mmd) 0;
 }
 
 .card .text > *:first-child {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .card .text > * + * {
