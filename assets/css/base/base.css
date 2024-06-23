@@ -25,6 +25,10 @@
   --color-orange-2: #ffa047;
   --color-orange-3: #efc94c;
 
+  --color-turquoise: #307b6c;
+  --color-turquoise-dark: #334D5C;
+  --color-turquoise-light: #45b29d;
+
   --color-accent: var(--color-blue);
   --color-accent-focus: var(--color-blue-3);
   --color-accent-secondary: var(--color-blue-3);

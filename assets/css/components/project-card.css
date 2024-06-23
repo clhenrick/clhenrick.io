@@ -37,6 +37,7 @@
 
 .card .text > *:last-child {
   margin-top: auto;
+  margin-bottom: 0;
 }
 
 .card .text > *:nth-last-child(2) {
@@ -76,7 +77,7 @@
 
 .card h2 {
   font-size: 1.25em;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .card a[href] {
