@@ -4,11 +4,11 @@ main {
 }
 
 section {
-  margin-bottom: var(--padding-lg);
+  margin-bottom: var(--spacing-xxl);
 }
 
 section:first-of-type {
-  margin-top: -4rem;
+  margin-top: calc(-1 * var(--spacing-xxl));
 }
 
 section:last-of-type {
@@ -34,9 +34,17 @@ section h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--spacing-xxs);
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: var(--border-radius);
+}
+
+@media screen and (min-width: 600px) {
+  .banner-text {
+    gap: 0;
+    padding: var(--spacing-xs);
+  }
 }
 
 .banner-text h1,
