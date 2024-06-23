@@ -57,10 +57,6 @@
   --line-height-body: 1.65;
   --line-height-heading: 1.15;
 
-  --padding: 1.5rem;
-  --padding-md: 2rem;
-  --padding-lg: 4rem;
-
   --spacing-xxs: 4px;
   --spacing-xs: 8px;
   --spacing-sm: 12px;
@@ -131,7 +127,7 @@ footer {
 
 main {
   max-width: var(--desktop-max-width);
-  padding: var(--padding-lg) var(--padding);
+  padding: var(--spacing-xxl) var(--spacing-mmd);
 }
 
 main:first-child {

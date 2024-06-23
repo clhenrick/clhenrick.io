@@ -13,5 +13,5 @@ nav.pagination > ol {
 }
 
 nav.pagination li a[href] {
-  padding: 0.75rem var(--padding);
+  padding: 0.75rem var(--spacing-mmd);
 }

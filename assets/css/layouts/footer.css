@@ -9,8 +9,8 @@ footer .footer-inner {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--padding-lg);
-  padding: 0 var(--padding) 2rem;
+  gap: var(--spacing-xxl);
+  padding: 0 var(--spacing-mmd) 2rem;
 }
 
 footer section {
@@ -24,7 +24,7 @@ footer section {
 }
 
 footer section:first-of-type {
-  margin-top: var(--padding-lg);
+  margin-top: var(--spacing-xxl);
   margin-bottom: 0;
 }
 
@@ -69,7 +69,7 @@ footer a[href]:focus-visible {
 }
 
 footer ul.meta-links {
-  --gap: var(--padding-md);
+  --gap: var(--spacing-mmd);
 }
 
 footer ul.social-links {
