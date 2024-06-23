@@ -25,7 +25,7 @@ section h2 {
   align-items: center;
   justify-content: center;
   background-color: #333;
-  background-image: url('/img/clhenrick-landing-header.jpg');
+  background-image: url("/img/clhenrick-landing-header.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -34,21 +34,30 @@ section h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--spacing-mmd);
-  background-color: var(--background-color-secondary);
+  padding: var(--spacing-xxs);
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: var(--border-radius);
+}
+
+.banner-text h1,
+.banner-text p {
+  color: var(--color-white);
+  line-height: 1.1;
+  -webkit-text-fill-color: var(--color-white);
 }
 
 .banner-text h1 {
   text-transform: uppercase;
-  text-shadow: 2px 3px 3px #000;
   letter-spacing: 0.1em;
-  font-size: 3.75rem;
   font-weight: bold;
+  -webkit-text-stroke: 1px #000;
   margin-bottom: 0;
 }
 
 .banner-text p {
   font-size: var(--text-size-h5);
+  font-weight: bold;
+  -webkit-text-stroke: 0.65px #000;
 }
 
 .cards-container {
