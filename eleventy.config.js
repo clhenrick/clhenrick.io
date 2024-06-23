@@ -22,12 +22,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("assets/css/**/*.css");
   eleventyConfig.addWatchTarget("assets/js/**/*.js");
 
-  // TODO: remove this after JS is handled via minification approach
-  eleventyConfig.addWatchTarget("public/js/**/*.js");
-
-  // TODO: remove this after JS is handled via minification approach
+  // TODO: eventually remove this when all image files are rendered using the 11ty Image Plugin
   eleventyConfig.addPassthroughCopy({
-    "./public/js": "/js",
+    "./public/img": "/img",
   });
 
   // CSS and JavaScript are inlined in HTML for performance reasons. The problem
