@@ -35,6 +35,7 @@ section h2 {
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
+  text-align: center;
   padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: var(--border-radius);
@@ -66,6 +67,13 @@ section h2 {
   font-size: var(--text-size-h5);
   font-weight: bold;
   -webkit-text-stroke: 0.65px #000;
+  max-width: 22ch;
+}
+
+@media screen and (min-width: 600px) {
+  .banner-text p {
+    max-width: initial;
+  }
 }
 
 .cards-container {
