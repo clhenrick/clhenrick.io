@@ -88,9 +88,8 @@ header nav {
 
 @media screen and (min-width: 748px) {
   header nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    grid-template-columns: auto 1fr;
+    justify-content: initial;
   }
 }
 
@@ -125,6 +124,12 @@ nav ul.nav-list {
   grid-column: span 2;
 }
 
+@media screen and (min-width: 748px) {
+  nav ul.nav-list {
+    grid-column: span 1;
+  }
+}
+
 .js-enabled nav > ul {
   position: relative;
   display: none;
@@ -141,7 +146,6 @@ nav ul.nav-list {
   .js-enabled nav > ul,
   nav > ul {
     position: relative;
-    flex-grow: 1;
     display: flex;
     flex-direction: row;
     gap: var(--horiz-nav-item-gap);
