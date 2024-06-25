@@ -1,6 +1,6 @@
 (() => {
-  // NOTE: corresponds to `min-width: 46.75rem` breakpoint in primary-navigation.css
-  const smallViewportQuery = window.matchMedia("(max-width: 46.74rem");
+  // NOTE: corresponds to `min-width: 748px` breakpoint in primary-navigation.css
+  const smallViewportQuery = window.matchMedia("(max-width: 747px");
   const navigationMenuButton = document.querySelector("button.nav-button");
   const navList = document.querySelector("header nav > ul");
   const navLinks = Array.from(navList.querySelectorAll("li a"));
