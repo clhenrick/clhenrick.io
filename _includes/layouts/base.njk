@@ -31,6 +31,9 @@
     <header>
       <div>
         <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
+      </div>
+      <nav class="main-nav" aria-labelledby="nav-title">
+        <h2 id="nav-title" class="visually-hidden">Main navigation</h2>
         <a href="/" class="home-link">{{ metadata.title }}</a>
         <button
           id="nav-menu"
@@ -51,9 +54,6 @@
           </svg>
           <span>Menu</span>
         </button>
-      </div>
-      <nav aria-labelledby="nav-title">
-        <h2 id="nav-title" class="visually-hidden">Main navigation</h2>
         <ul id="primary-nav-list" class="nav-list" role="list">
           {% from "components/navListItem.njk" import renderNavListItem %}
           {% for entry in collections.all | eleventyNavigation %}
