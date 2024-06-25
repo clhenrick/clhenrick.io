@@ -6,11 +6,10 @@
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
 
-    {#- Atom and JSON feeds included by default #}
+    {#- TODO: Atom and JSON feeds #}
     <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
-    {#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
     <meta name="generator" content="{{ eleventy.generator }}">
 
     {# NOTE: All common CSS used throughout the site are added here #}
@@ -34,6 +33,7 @@
     <main id="main">
       {{ content | safe }}
     </main>
+
     {%- include "footer.njk" %}
 
     {# NOTE: JavaScript shared by all pages are added here #}
