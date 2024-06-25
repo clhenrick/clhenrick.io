@@ -139,6 +139,12 @@ main:first-child {
   margin-top: 0;
 }
 
+/* handles focus style for header .skip-link */
+main:focus-visible {
+  outline: var(--focus-style-outline);
+  outline-offset: calc(-1 * var(--focus-style-outline-offset));
+}
+
 h1,
 h2,
 h3,
@@ -147,6 +153,16 @@ h5 {
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
   line-height: var(--line-height-heading);
+}
+
+/* sets focus style on jump link fragments */
+h2[id]:focus,
+h3[id]:focus,
+h4[id]:focus,
+h5[id]:focus {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
+  border-radius: var(--border-radius);
 }
 
 h1 {
