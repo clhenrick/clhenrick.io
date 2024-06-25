@@ -3,29 +3,20 @@ header {
   --min-nav-link-width: 6rem;
   --horiz-nav-item-gap: 0.75rem;
   max-width: none;
-  position: relative;
-  display: flex;
-  flex-direction: column;
   background-color: var(--background-color-secondary);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
-  isolation: isolate;
-  z-index: 1;
+  position: relative;
 }
 
-@media screen and (min-width: 46.75rem) {
+/* NOTE: at 784px width switch to horizontal navigation */
+@media screen and (min-width: 748px) {
   header {
-    flex-direction: row;
     padding: 0.5rem 0;
-    gap: var(--horiz-nav-item-gap);
   }
 }
 
-header > div {
-  display: flex;
-}
-
 header a[href] {
-  padding: 0.75rem 1.25rem;
+  padding: var(--spacing-sm) var(--spacing-mmd);
   display: inline-block;
   text-decoration: none;
 }
@@ -48,7 +39,7 @@ header button.nav-button:focus-visible {
 header a[href].skip-link {
   position: absolute;
   top: var(--main-nav-height);
-  left: 1rem;
+  left: var(--spacing-md);
   background-color: var(--background-color-secondary);
   z-index: 1;
 }
@@ -62,7 +53,7 @@ header a[href].skip-link:focus-visible {
   white-space: initial;
 }
 
-@media screen and (min-width: 46.75rem) {
+@media screen and (min-width: 748px) {
   /* down arrow for menu items with nested children */
   header nav a[href].with-arrow-down {
     position: relative;
@@ -85,6 +76,23 @@ header a[href].skip-link:focus-visible {
   }
 }
 
+header nav {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-flow: row;
+  justify-content: space-between;
+  isolation: isolate;
+  z-index: 1;
+}
+
+@media screen and (min-width: 748px) {
+  header nav {
+    grid-template-columns: auto 1fr;
+    justify-content: initial;
+  }
+}
+
 button.nav-button {
   display: flex;
   margin-left: auto;
@@ -101,21 +109,25 @@ button.nav-button:hover {
   background-color: var(--color-accent);
 }
 
-@media screen and (min-width: 46.75rem) {
+@media screen and (min-width: 748px) {
   button.nav-button {
     display: none;
-  }
-}
-
-@media screen and (min-width: 46.75rem) {
-  nav {
-    flex-grow: 1;
   }
 }
 
 nav ul.nav-list,
 nav ul.with-dropdown {
   margin: 0;
+}
+
+nav ul.nav-list {
+  grid-column: span 2;
+}
+
+@media screen and (min-width: 748px) {
+  nav ul.nav-list {
+    grid-column: span 1;
+  }
 }
 
 .js-enabled nav > ul {
@@ -130,8 +142,7 @@ nav ul.with-dropdown {
   flex-direction: column;
 }
 
-@media screen and (min-width: 46.75rem) {
-  /* at 784px width switch to horizontal navigation */
+@media screen and (min-width: 748px) {
   .js-enabled nav > ul,
   nav > ul {
     position: relative;
@@ -148,7 +159,7 @@ nav ul li a {
   border-bottom: 1px solid;
 }
 
-@media screen and (min-width: 46.75rem) {
+@media screen and (min-width: 748px) {
   nav ul > li:nth-last-child(2) {
     margin-left: auto;
   }
@@ -159,7 +170,7 @@ nav ul li a {
   }
 }
 
-@media screen and (min-width: 46.75rem) {
+@media screen and (min-width: 748px) {
   nav ul li > ul.with-dropdown {
     position: absolute;
     display: flex;
@@ -181,7 +192,6 @@ nav ul li a {
     height: auto;
     clip-path: none;
   }
-
 }
 
 nav ul li,
@@ -189,7 +199,7 @@ nav ul li a {
   width: 100%;
 }
 
-@media screen and (min-width: 46.75rem) {
+@media screen and (min-width: 748px) {
   nav ul li,
   nav ul li a {
     width: auto;
