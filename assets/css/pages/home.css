@@ -24,10 +24,15 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #333;
-  background-image: url("/img/clhenrick-landing-header.jpg");
+  background-image: url("/img/oakland-map-light.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media (prefers-color-scheme: dark) {
+  .banner {
+    background-image: url("/img/oakland-map-dark.png");
+  }
 }
 
 .banner-text {
@@ -37,8 +42,18 @@ section h2 {
   gap: var(--spacing-md);
   text-align: center;
   padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(255, 255, 255, 0.25);
   border-radius: var(--border-radius);
+  line-height: 1.1;
+  text-shadow: 2px 3px 3px var(--color-white);
+}
+
+@media (prefers-color-scheme: dark) {
+  .banner-text {
+    background-color: rgba(0, 0, 0, 0.25);
+    color: var(--color-white);
+    text-shadow: 2px 3px 3px var(--color-gray-90);
+  }
 }
 
 @media screen and (min-width: 600px) {
@@ -48,25 +63,16 @@ section h2 {
   }
 }
 
-.banner-text h1,
-.banner-text p {
-  color: var(--color-white);
-  line-height: 1.1;
-  -webkit-text-fill-color: var(--color-white);
-}
-
 .banner-text h1 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: bold;
-  -webkit-text-stroke: 1px #000;
   margin-bottom: 0;
 }
 
 .banner-text p {
   font-size: var(--text-size-h5);
   font-weight: bold;
-  -webkit-text-stroke: 0.65px #000;
   max-width: 22ch;
 }
 
