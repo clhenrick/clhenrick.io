@@ -22,7 +22,7 @@ You may skip ahead to a section of this CV using the following jump links:
 - [Education](#education)
 - [Technical Skills](#technical-skills)
 
-<h2 id="professional-experience">Professional Experience</h2>
+<h2 id="professional-experience" tabindex="-1">Professional Experience</h2>
 
 ### ESRI StoryMaps
 **Senior Software Development Engineer**<br>
@@ -177,7 +177,7 @@ Philadelphia, PA
 
 Assisted [DVRPC](http://www.dvrpc.org/)'s Office of Transit, Bicycle, and Pedestrian Planning in implementing projects related to transit, pedestrian, and bicycle planning in the greater metropolitan Philadelphia area. Participated in tasks such as survey field-work, road safety audits, data scrubbing and aggregation, bicycle route mapping, and power point presentations.
 
-<h2 id="volunteer-experience">Volunteer Experience:</h2>
+<h2 id="volunteer-experience" tabindex="-1">Volunteer Experience:</h2>
 
 ### Anti-Eviction Mapping Project
 **Web Developer**<br>
@@ -202,7 +202,7 @@ Performed spatial data analysis and visualization to support [ASIAN Inc](http://
 Consulted with GreenInfo Network on best practices for GIS analysis and data visualization of census and in-house demographic data.
 
 
-<h2 id="education">Education</h2>
+<h2 id="education" tabindex="-1">Education</h2>
 
 ### Storytelling With Data
 **SWD Ten Week Course Certificate**<br>
@@ -251,7 +251,7 @@ GPA 3.49
 
 Studies included drawing, print making, painting, mixed media, and graphic design.
 
-<h2 id="technical-skills">Technical Skills</h2>
+<h2 id="technical-skills" tabindex="-1">Technical Skills</h2>
 
 - JavaScript (ES6+)
 - TypeScript

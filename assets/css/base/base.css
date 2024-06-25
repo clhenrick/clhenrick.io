@@ -76,7 +76,8 @@
   --desktop-max-width: 60rem;
   --main-nav-height: 3.375rem;
 
-  --focus-style-outline: outline: 0.15em solid var(--color-accent);
+  --focus-style-outline: 0.15em solid var(--color-accent);
+  --focus-style-outline-offset: var(--spacing-xxs);
   --focus-style-box-shadow: 0 0 0 4px var(--color-accent);
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
 }
@@ -138,6 +139,12 @@ main:first-child {
   margin-top: 0;
 }
 
+/* handles focus style for header .skip-link */
+main:focus-visible {
+  outline: var(--focus-style-outline);
+  outline-offset: calc(-1 * var(--focus-style-outline-offset));
+}
+
 h1,
 h2,
 h3,
@@ -146,6 +153,16 @@ h5 {
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
   line-height: var(--line-height-heading);
+}
+
+/* sets focus style on jump link fragments */
+h2[id]:focus,
+h3[id]:focus,
+h4[id]:focus,
+h5[id]:focus {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
+  border-radius: var(--border-radius);
 }
 
 h1 {
