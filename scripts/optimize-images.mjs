@@ -6,8 +6,8 @@ import fs from "node:fs";
 const inputFile = argv["file-path"];
 const inputDir = argv["dir-path"];
 const pattern = argv.pattern;
-const widths = argv.widths;
-const formats = argv.formats;
+let widths = argv.widths;
+let formats = argv.formats;
 const help = argv.help;
 const isDryRun = argv["dry-run"];
 const useFileName = argv["use-file-name"];
@@ -18,6 +18,14 @@ if (isMissingRequiredArgs || help) {
   echo("usage: zx optimize-images --path=relative/path/to/images/");
   echo("see scripts/README.md for further usage.");
   process.exit(0);
+}
+
+if (typeof widths === "string") {
+  widths = widths.split(",").map((value) => +value);
+}
+
+if (typeof formats === "string") {
+  formats = formats.split(",");
 }
 
 if (pattern) {
