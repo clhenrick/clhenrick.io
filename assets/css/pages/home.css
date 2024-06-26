@@ -20,18 +20,51 @@ section h2 {
 }
 
 .banner {
-  aspect-ratio: 3 / 1;
+  aspect-ratio: 4 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/img/oakland-map-light.png");
+  background-image: url(/img/oakland-map-light-600w.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+@media (min-width: 600px) {
+  .banner {
+    background-image: url(/img/oakland-map-light-1280w.jpeg);
+  }
+}
+@media (min-width: 1280px) {
+  .banner {
+    background-image: url(/img/oakland-map-light-1600w.jpeg);
+  }
+}
+@media (min-width: 1600px) {
+  .banner {
+    background-image: url(/img/oakland-map-light-2200w.jpeg);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   .banner {
-    background-image: url("/img/oakland-map-dark.png");
+    background-image: url(/img/oakland-map-dark-600w.jpeg);
+  }
+}
+@media (prefers-color-scheme: dark) and (min-width: 600px) {
+  .banner {
+    background-image: url(/img/oakland-map-dark-1280w.jpeg);
+  }
+}
+@media (prefers-color-scheme: dark) and (min-width: 1280px) {
+  .banner {
+    background-image: url(/img/oakland-map-dark-1600w.jpeg);
+  }
+}
+@media (prefers-color-scheme: dark) and (min-width: 1600px) {
+  .banner {
+    background-image: url(/img/oakland-map-dark-2200w.jpeg);
   }
 }
 
