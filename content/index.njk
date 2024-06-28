@@ -70,13 +70,13 @@ numberOfLatestPostsToShow: 3
   <h2>You may be interested in:</h2>
   <ul class="cards-container" role="list">
     {% for service in services %}
-    <li class="card">
-      <div class="text">
-        <h3>{{service.title}}</h3>
-        <p>{{service.description}}</p>
-        <a class="button" href="{{service.url}}">{{service.cta}}</a>
-      </div>
-    </li>
+      <li class="card">
+        <div class="text">
+          <h3>{{service.title}}</h3>
+          <p>{{service.description}}</p>
+          <a class="button" href="{{service.url}}">{{service.cta}}</a>
+        </div>
+      </li>
     {% endfor %}
   </ul>
 </section>
@@ -93,6 +93,6 @@ numberOfLatestPostsToShow: 3
 
   {%- set morePosts = postsCount - numberOfLatestPostsToShow %}
   {%- if morePosts > 0 %}
-  <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/archive/">the archive</a>.</p>
+    <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/archive/">the archive</a>.</p>
   {%- endif %}
 </section>
