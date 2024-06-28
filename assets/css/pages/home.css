@@ -53,8 +53,6 @@ section h2 {
   text-align: center;
   padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.25);
-  border-radius: var(--border-radius);
   line-height: 1.1;
   text-shadow: 2px 3px 3px var(--color-white);
   z-index: 1;
@@ -62,7 +60,6 @@ section h2 {
 
 @media (prefers-color-scheme: dark) {
   .banner-text {
-    background-color: rgba(0, 0, 0, 0.25);
     color: var(--color-white);
     text-shadow: 2px 3px 3px var(--color-gray-90);
   }
