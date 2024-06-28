@@ -11,7 +11,55 @@ numberOfLatestPostsToShow: 3
 {% include "styles.njk" %}
 
 <section class="banner full-viewport-width">
-  <img src="/img/oakland-map-light-1600w.jpeg" alt="" width="1600" height="785">
+  <picture>
+    <source
+      srcset="/img/oakland-map-light-400w.webp 400w,
+        /img/oakland-map-light-800w.webp 800w,
+        /img/oakland-map-light-1200w.webp 1200w,
+        /img/oakland-map-light-1600w.webp 1600w,
+        /img/oakland-map-light-2400w.webp 2400w,
+        /img/oakland-map-light-3200w.webp 3200w"
+      media="(prefers-color-scheme: light)"
+      sizes="100vw"
+    />
+    <source
+      srcset="/img/oakland-map-light-400w.jpeg 400w,
+        /img/oakland-map-light-800w.jpeg 800w,
+        /img/oakland-map-light-1200w.jpeg 1200w,
+        /img/oakland-map-light-1600w.jpeg 1600w,
+        /img/oakland-map-light-2400w.jpeg 2400w,
+        /img/oakland-map-light-3200w.jpeg 3200w"
+      media="(prefers-color-scheme: light)"
+      sizes="100vw"
+    />
+    <source
+      srcset="/img/oakland-map-dark-400w.webp 400w,
+        /img/oakland-map-dark-800w.webp 800w,
+        /img/oakland-map-dark-1200w.webp 1200w,
+        /img/oakland-map-dark-1600w.webp 1600w,
+        /img/oakland-map-dark-2400w.webp 2400w,
+        /img/oakland-map-dark-3200w.webp 3200w"
+      media="(prefers-color-scheme: dark)"
+      sizes="100vw"
+    />
+    <source
+      srcset="/img/oakland-map-dark-400w.jpeg 400w,
+        /img/oakland-map-dark-800w.jpeg 800w,
+        /img/oakland-map-dark-1200w.jpeg 1200w,
+        /img/oakland-map-dark-1600w.jpeg 1600w,
+        /img/oakland-map-dark-2400w.jpeg 2400w,
+        /img/oakland-map-dark-3200w.jpeg 3200w"
+      media="(prefers-color-scheme: dark)"
+      sizes="100vw"
+    />
+    <img
+      src="/img/oakland-map-light-1600w.jpeg"
+      width="1600"
+      height="785"
+      sizes="100vw"
+      alt="A geographic map of Oakland, California centered on Lake Merritt."
+    />
+  </picture>
   <div class="banner-text">
     <h1>Chris Henrick</h1>
     <p>Front-End Web Developer &amp; Design Engineer</p>
