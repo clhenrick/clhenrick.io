@@ -54,14 +54,22 @@ section h2 {
   padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
   margin: auto;
   line-height: 1.1;
-  text-shadow: 2px 3px 3px var(--color-white);
+  text-shadow:
+  -1px -1px 0 var(--color-white),
+   1px -1px 0 var(--color-white),
+   -1px 1px 0 var(--color-white),
+    1px 1px 0 var(--color-white);
   z-index: 1;
 }
 
 @media (prefers-color-scheme: dark) {
   .banner-text {
     color: var(--color-white);
-    text-shadow: 2px 3px 3px var(--color-gray-90);
+    text-shadow:
+    -1px -1px 0 var(--color-gray-90),
+     1px -1px 0 var(--color-gray-90),
+     -1px 1px 0 var(--color-gray-90),
+      1px 1px 0 var(--color-gray-90);
   }
 }
 
