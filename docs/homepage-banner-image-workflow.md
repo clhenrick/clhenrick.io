@@ -11,12 +11,14 @@ Describes how the banner / hero images and their corresponding HTML markup in `c
 1. Ran the `optimize-images` script as follows on a dry run to generate metadata:
 
 ```bash
-npm run optimize-images -- --file-path='./oakland-map-light.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600" --use-file-name="true" --dry-run="true"
+npm run optimize-images -- --file-path='./oakland-map-light.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true" --dry-run="true"
 
-npm run optimize-images -- --file-path='./oakland-map-dark.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600" --use-file-name="true" --dry-run="true"
+npm run optimize-images -- --file-path='./oakland-map-dark.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true" --dry-run="true"
 ```
 
 > NOTE: the `--widths` value was chosen based roughly on common device widths and their 2x equivalent values for high resolution displays.
+
+> NOTE: the `null` value is used to include the image's original size
 
 2. Used [Observable Notebook](https://observablehq.com/d/7b09eeca0f2b415e) to turn metadata into HTML markup for loading the images.
 
@@ -26,9 +28,9 @@ npm run optimize-images -- --file-path='./oakland-map-dark.png' --formats="webp,
 3. Re-ran the `optimize-images` script to create the actual images which are output in `./img`:
 
 ```bash
-npm run optimize-images -- --file-path='public/img/oakland-map-light.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600" --use-file-name="true"
+npm run optimize-images -- --file-path='public/img/oakland-map-light.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true"
 
-npm run optimize-images -- --file-path='public/img/oakland-map-dark.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600" --use-file-name="true"
+npm run optimize-images -- --file-path='public/img/oakland-map-dark.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true"
 ```
 
 4. Copied the output images to `public/img`
