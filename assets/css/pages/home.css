@@ -25,6 +25,7 @@ section h2 {
   min-height: 30vh;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .banner picture {
