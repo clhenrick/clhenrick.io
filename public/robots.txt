@@ -1,3 +1,4 @@
+# https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.txt
 User-agent: AdsBot-Google
 User-agent: Amazonbot
 User-agent: anthropic-ai
