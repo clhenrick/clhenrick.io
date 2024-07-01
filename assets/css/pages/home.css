@@ -25,6 +25,8 @@ section h2 {
   min-height: 30vh;
   position: relative;
   overflow: hidden;
+  /* prevents .banner-text from overlapping with primary-nav dropdown on wide viewport widts */
+  isolation: isolate;
 }
 
 .banner picture {
