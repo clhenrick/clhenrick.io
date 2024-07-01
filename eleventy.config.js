@@ -25,6 +25,7 @@ module.exports = function (eleventyConfig) {
   // TODO: eventually remove this when all image files are rendered using the 11ty Image Plugin
   eleventyConfig.addPassthroughCopy({
     "./public/img": "/img",
+    "./public/robots.txt": "/robots.txt",
   });
 
   // CSS and JavaScript are inlined in HTML for performance reasons. The problem
