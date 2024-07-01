@@ -6,11 +6,12 @@
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
 
-    {#- TODO: Atom and JSON feeds #}
-    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-    <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
-
+    {# Let's others know this site was created using 11ty #}
     <meta name="generator" content="{{ eleventy.generator }}">
+
+    {# RSS feeds #}
+    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="/feed.json" type="application/json" title="{{ metadata.title }}">
 
     {# NOTE: All common CSS used throughout the site are added here #}
     {%- set partials %}
