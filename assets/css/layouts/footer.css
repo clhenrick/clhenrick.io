@@ -17,7 +17,7 @@ footer section {
   flex-basis: 100%;
 }
 
-@media screen and (min-width: 51rem) {
+@media screen and (min-width: 816px) {
   footer section {
     flex-basis: content;
   }
@@ -42,11 +42,6 @@ footer h2 {
   font-size: 1.5rem;
 }
 
-footer ul.social-links {
-  /* horizontally aligns first li and p of each footer section */
-  margin-top: -4px;
-}
-
 footer a[href],
 footer a[href]:visited {
   color: var(--color-accent);
@@ -68,20 +63,26 @@ footer a[href]:focus-visible {
   text-decoration: none;
 }
 
-footer ul.meta-links {
+ul.meta-links,
+ul.social-links {
+  flex-wrap: wrap;
+}
+
+ul.meta-links {
   --gap: var(--spacing-mmd);
 }
 
-footer ul.social-links {
+ul.social-links {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   max-height: 9rem;
   max-width: 20rem;
+  /* horizontally aligns first li and p of each footer section */
+  margin-top: -4px;
 }
 
-@media screen and (min-width: 51rem) {
-  footer ul.social-links {
+@media screen and (min-width: 816px) {
+  ul.social-links {
     display: block;
     max-height: 100%;
     max-width: 100%;

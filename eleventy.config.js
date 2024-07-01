@@ -3,6 +3,7 @@ const {
   EleventyHtmlBasePlugin,
   EleventyRenderPlugin,
 } = require("@11ty/eleventy");
+const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdown = require("markdown-it")({
@@ -21,6 +22,8 @@ module.exports = function (eleventyConfig) {
   // Force 11ty to watch CSS and JS files
   eleventyConfig.addWatchTarget("assets/css/**/*.css");
   eleventyConfig.addWatchTarget("assets/js/**/*.js");
+
+  eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
 
   // TODO: eventually remove this when all image files are rendered using the 11ty Image Plugin
   eleventyConfig.addPassthroughCopy({
@@ -55,8 +58,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginImages);
   eleventyConfig.addPlugin(pluginDataCascadeImage);
-
-  eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
+  eleventyConfig.addPlugin(rssPlugin);
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
