@@ -17,6 +17,7 @@
 .card {
   --card-text-margin: 0.75rem;
   background-color: var(--color-accent-invert);
+  overflow: hidden;
 }
 
 .card,
