@@ -26,7 +26,7 @@
   </head>
 
   {# NOTE: data-page-size is used to set the max-width of content in <main> and <footer> #}
-  {%- set defaultPageSize = 'post' %}
+  {%- set defaultPageSize = 'normal' %}
   <body data-page-size="{{pageSize or defaultPageSize}}">
     <script>
       document.body.classList.add("js-enabled");

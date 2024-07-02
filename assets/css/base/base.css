@@ -69,10 +69,10 @@
 
   --border-radius: 4px;
 
-  --page-width-post: 960px;
+  --page-width-normal: 960px;
   --page-width-wide: 1220px;
 
-  --desktop-max-width: var(--page-size-post);
+  --desktop-max-width: var(--page-size-normal);
   --main-nav-height: 3.375rem;
 
   --focus-style-outline: 0.15em solid var(--color-accent);
@@ -128,8 +128,8 @@ body[data-page-size="fullwidth"] {
   --desktop-max-width: var(--page-width-wide);
 }
 
-body[data-page-size="post"] {
-  --desktop-max-width: var(--page-width-post);
+body[data-page-size="normal"] {
+  --desktop-max-width: var(--page-width-normal);
 }
 
 header,
