@@ -19,12 +19,15 @@
       base/base,
       base/utils,
       components/button,
-      layouts/primary-navigation,
+      layouts/header,
       layouts/footer
     {% endset %}
     {% include "styles.njk" %}
   </head>
-  <body>
+
+  {# NOTE: data-page-size is used to set the max-width of <main> #}
+  {%- set defaultPageSize = 'normal' %}
+  <body data-page-size="{{pageSize or defaultPageSize}}">
     <script>
       document.body.classList.add("js-enabled");
     </script>

@@ -2,14 +2,13 @@ footer {
   background-color: var(--background-color-secondary);
 }
 
-footer .footer-inner {
-  max-width: var(--desktop-max-width);
+.footer-inner {
+  max-width: var(--page-width-wide);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  gap: var(--spacing-xxxl);
   align-items: baseline;
-  justify-content: space-between;
-  gap: var(--spacing-xxl);
   padding: 0 var(--spacing-mmd) 2rem;
 }
 

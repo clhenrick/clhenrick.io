@@ -1,6 +1,5 @@
 ---
 layout: layouts/about.njk
-# TODO: narrow layout
 title: "about Chris Henrick"
 description: "About Chris Henrick, front-end web developer and design engineer"
 permalink: "/about/"
@@ -16,6 +15,8 @@ Chris Henrick is an [Oakland, California](https://en.wikipedia.org/wiki/Oakland,
 Chris is an alum of Parsons School of Design, The New School in New York City where he earned an [MFA in Design and Technology](http://www.newschool.edu/parsons/mfa-design-technology/). His thesis at MFA DT was a web app he conceptualized and coded called [Am I Rent Stabilized?](https://amirentstabilized.com) that seeks to solve the problem of NYC landlords lying to tenants about [rent-stabilization](http://www.nycrgb.org/html/resources/faq/rentstab.html#exactly) and illegally deregulating rent-stabilized apartments. You can learn more about it in an [article he wrote for Urban Omnibus](https://urbanomnibus.net/2015/05/using-open-data-to-strengthen-tenants-rights-activism/).
 
 When not at work Chris enjoys bicycling, hiking, swimming, and playing the drum set in jazz combos. Outside of his day to day work, he has assisted with organizing and facilitating [Maptime](https://maptime.io/), a community of professionals dedicated to creating a safe and welcoming space to educate non-experts about GIS, cartography, and interactive web mapping, free of charge.
+
+Be sure to take a look at my [Curriculum Vitae](/about/cv/) as well as past [talks and workshops](/about/talks/) I've given.
 
 ## A few other sites of Chris Henrick
 - [Cartography Portfolio](http://chrishenrick.com/)
