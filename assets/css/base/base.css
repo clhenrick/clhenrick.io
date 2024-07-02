@@ -69,7 +69,10 @@
 
   --border-radius: 4px;
 
-  --desktop-max-width: 60rem;
+  --page-width-post: 960px;
+  --page-width-wide: 1220px;
+
+  --desktop-max-width: var(--page-size-post);
   --main-nav-height: 3.375rem;
 
   --focus-style-outline: 0.15em solid var(--color-accent);
@@ -119,6 +122,14 @@ body {
   line-height: var(--line-height-body);
   overflow-x: hidden;
   accent-color: var(--color-accent);
+}
+
+body[data-page-size="fullwidth"] {
+  --desktop-max-width: var(--page-width-wide);
+}
+
+body[data-page-size="post"] {
+  --desktop-max-width: var(--page-width-post);
 }
 
 header,
