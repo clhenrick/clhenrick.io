@@ -4,9 +4,11 @@ ol.postlist li {
   margin-bottom: var(--spacing-xl);
 }
 
+/* postlist title, usually an h2 or h3 */
 ol.postlist li > *:first-child {
   margin-top: var(--spacing-xs);
   margin-bottom: var(--spacing-md);
+  max-width: 34ch;
 }
 
 ol.postlist li div {
