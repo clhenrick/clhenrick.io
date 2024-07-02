@@ -16,6 +16,8 @@ Chris is an alum of Parsons School of Design, The New School in New York City wh
 
 When not at work Chris enjoys bicycling, hiking, swimming, and playing the drum set in jazz combos. Outside of his day to day work, he has assisted with organizing and facilitating [Maptime](https://maptime.io/), a community of professionals dedicated to creating a safe and welcoming space to educate non-experts about GIS, cartography, and interactive web mapping, free of charge.
 
+Be sure to take a look at my [Curriculum Vitae](/about/cv/) as well as past [talks and workshops](/about/talks/) I've given.
+
 ## A few other sites of Chris Henrick
 - [Cartography Portfolio](http://chrishenrick.com/)
 - [MFA DT Thesis Blog](http://clhenrick.github.io/thesis-blog/)
