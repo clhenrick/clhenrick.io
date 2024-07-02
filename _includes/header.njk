@@ -1,18 +1,19 @@
 {# global site header and navigation #}
-<header>
-  <div>
-    <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
-  </div>
-  <nav class="main-nav" aria-labelledby="nav-title">
-    <h2 id="nav-title" class="visually-hidden">Main navigation</h2>
-    <a href="/" class="home-link">{{ metadata.title }}</a>
-    <button
+<header class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
+    </div>
+    <nav class="main-nav" aria-labelledby="nav-title">
+      <h2 id="nav-title" class="visually-hidden">Main navigation</h2>
+      <a href="/" class="home-link">{{ metadata.title }}</a>
+      <button
       id="nav-menu"
       class="button nav-button"
       aria-expanded="false"
       aria-controls="primary-nav-list"
     >
-      <svg
+        <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -20,16 +21,17 @@
         aria-hidden="true"
         fill="currentColor"
       >
-        <path d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-      </svg>
-      <span>Menu</span>
-    </button>
-    <ul id="primary-nav-list" class="nav-list" role="list">
-      {% from "components/navListItem.njk" import renderNavListItem %}
-      {% for entry in collections.all | eleventyNavigation %}
-        {{ renderNavListItem(entry, page.url) }}
-      {% endfor %}
-    </ul>
-  </nav>
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+        </svg>
+        <span>Menu</span>
+      </button>
+      <ul id="primary-nav-list" class="nav-list" role="list">
+        {% from "components/navListItem.njk" import renderNavListItem %}
+        {% for entry in collections.all | eleventyNavigation %}
+          {{ renderNavListItem(entry, page.url) }}
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
 </header>
