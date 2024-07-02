@@ -3,20 +3,13 @@ footer {
 }
 
 .footer-inner {
-  max-width: var(--desktop-max-width);
+  max-width: var(--page-width-wide);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  gap: var(--spacing-xxxl);
   align-items: baseline;
   padding: 0 var(--spacing-mmd) 2rem;
-}
-
-body[data-page-size="normal"] .footer-inner {
-  justify-content: space-between;
-}
-
-body[data-page-size="fullwidth"] .footer-inner {
-  gap: var(--spacing-xxxl);
 }
 
 footer section {
