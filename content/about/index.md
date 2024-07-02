@@ -1,6 +1,5 @@
 ---
 layout: layouts/about.njk
-# TODO: narrow layout
 title: "about Chris Henrick"
 description: "About Chris Henrick, front-end web developer and design engineer"
 permalink: "/about/"

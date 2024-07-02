@@ -1,6 +1,5 @@
 ---
 layout: layouts/about.njk
-# TODO: full-width layout
 title: "Curriculum Vitae"
 description: "Curriculum Vitae of Chris Henrick"
 eleventyNavigation:
