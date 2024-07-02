@@ -2,15 +2,21 @@ footer {
   background-color: var(--background-color-secondary);
 }
 
-footer .footer-inner {
+.footer-inner {
   max-width: var(--desktop-max-width);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: space-between;
-  gap: var(--spacing-xxl);
   padding: 0 var(--spacing-mmd) 2rem;
+}
+
+body[data-page-size="normal"] .footer-inner {
+  justify-content: space-between;
+}
+
+body[data-page-size="fullwidth"] .footer-inner {
+  gap: var(--spacing-xxxl);
 }
 
 footer section {
