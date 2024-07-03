@@ -42,6 +42,7 @@ h6 {
   overflow-wrap: break-word;
 }
 
+/* NOTE: something in here is causing text to glitch on iOS during scroll. Leaving this commented out until I can identify what it is.  */
 /* @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
