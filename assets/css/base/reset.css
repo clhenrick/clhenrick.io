@@ -42,7 +42,7 @@ h6 {
   overflow-wrap: break-word;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
@@ -50,4 +50,4 @@ h6 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
+} */
