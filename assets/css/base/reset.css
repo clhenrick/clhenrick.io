@@ -43,6 +43,7 @@ h6 {
   overflow-wrap: break-word;
 }
 
+/* TODO: one of these properties causes a text glitch in Safari on iOS when the device is in landscape orientation */
 /* @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
