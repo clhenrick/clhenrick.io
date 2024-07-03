@@ -19,8 +19,9 @@ video,
 canvas,
 svg {
   display: block;
-  max-inline-size: 100%;
-  block-size: auto;
+  max-width: 100%;
+  /* max-inline-size: 100%;
+  block-size: auto; */
 }
 
 input,
