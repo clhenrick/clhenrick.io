@@ -222,6 +222,12 @@ small {
   transition: text-decoration-thickness 0.25s ease-in;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  :where([href]) {
+    transition: none;
+  }
+}
+
 :where(a[href]:visited) {
   color: var(--text-color-link-visited);
 }
