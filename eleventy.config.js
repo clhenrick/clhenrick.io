@@ -30,6 +30,7 @@ module.exports = function (eleventyConfig) {
     // TODO: eventually remove "./public/img" when all image files are rendered using the 11ty Image Plugin
     "./public/img": "/img",
     "./public/favicon": "/favicon",
+    "./public/manifest.webmanifest": "/manifest.webmanifest",
     "./public/robots.txt": "/robots.txt",
   });
 
