@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
   <style>
     text {
-      font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
-    sans-serif;
+      font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
     }
     @media (prefers-color-scheme:dark){
       circle {
