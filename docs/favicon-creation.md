@@ -10,13 +10,13 @@ Following guidance from the article [How to Favicon in 2024: Six files that fit 
    npx svgo --multipass favicon.svg
    ```
 
-3. (NOTE: ImageMagick seems to not like the text in the SVG element, so I ended up using [cloud convert](https://cloudconvert.com/svg-to-ico) for the SVG conversions instead.) Use [ImageMagick](https://imagemagick.org/index.php)'s `convert` utility to convert the SVG file to ico:
+3. Use [ImageMagick](https://imagemagick.org/index.php)'s `convert` utility to convert the SVG file to ico:
 
    ```bash
-   convert -background transparent -format ico -resize 32x32 favicon.svg favicon.ico
+   convert -background transparent -format ico -resize 32x32 favicon-for-ico.svg favicon.ico
    ```
 
-4. Use `convert` to create the following PNG files:
+4. (_NOTE: ImageMagick seems to not like the text in the SVG element, so I ended up using [cloud convert](https://cloudconvert.com/svg-to-ico) for the SVG to PNG conversions instead._) ~~Use `convert` to create the following PNG files:~~
 
    ```bash
    convert -background transparent -format png -resize 180x180 favicon.svg apple-touch-icon.png
