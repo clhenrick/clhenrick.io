@@ -1,5 +1,11 @@
 # Eleventy Global Data
 
+## constants
+
+Shared constants used to avoid repeating the same values over and over again. Currently this consists of:
+
+- image widths arrays and sizes strings used with the Eleventy Image Plugin and its corresponding `image` shortcode.
+
 ## metadata
 
 Global site metadata:
