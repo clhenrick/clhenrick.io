@@ -22,8 +22,8 @@ function pluginImages(eleventyConfig) {
       const input = path.join(__dirname, "public", "img", filename);
 
       const metadata = await eleventyImage(input, {
-        widths: [...widths, null], // null means the original size
-        formats: [...formats, null], // null means the original format
+        widths,
+        formats,
         // Advanced usage note: `eleventyConfig.dir` works here because we’re using addPlugin.
         outputDir: path.join(eleventyConfig.dir.output, "img"),
         outputPath: "/img/",
