@@ -32,7 +32,7 @@ ul.links-nextprev {
   flex-wrap: wrap;
 }
 
-/* FIXME: temporary work around for the image shortcode rendering the <picture> element inside a <p> tag when used in a Markdown file. Otherwise the image width is unintentionally reduced to 833px on desktop. */
+/* NOTE: helps ensure the picture / img max-width is respected when the image shortcode renders the <picture> element inside a <p> tag, a result of using the shortcode in Markdown files. */
 p:has(picture) {
   max-width: 100%;
 }
