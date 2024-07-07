@@ -11,6 +11,11 @@ picture {
   height: auto;
 }
 
+figure picture,
+figure img {
+  margin-bottom: var(--spacing-md);
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-size: 1rem;
@@ -30,4 +35,9 @@ ul.links-nextprev {
   align-items: baseline;
   gap: var(--spacing-xs);
   flex-wrap: wrap;
+}
+
+/* NOTE: ensures the picture / img max-width is respected when the image shortcode renders the <picture> element inside a <p> tag, a result of using the shortcode in Markdown files. */
+p:has(picture) {
+  max-width: 100%;
 }
