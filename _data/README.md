@@ -4,7 +4,9 @@
 
 Shared constants used to avoid repeating the same values over and over again. Currently this consists of:
 
-- image widths arrays and sizes strings used with the Eleventy Image Plugin and its corresponding `image` shortcode.
+### images
+
+Image widths arrays and sizes strings used with the Eleventy Image Plugin and its corresponding `image` shortcode. See [docs/responsive-images](../docs/responsive-images.md) for more info.
 
 ## metadata
 
