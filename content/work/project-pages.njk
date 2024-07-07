@@ -87,7 +87,7 @@ eleventyComputed:
     <li>
       {%- set altText %}Screenshot {{loop.index}} of {{project.title}}{%- endset %}
       {# NOTE: the code below uses the image shortcode #}
-      {%- image img, altText %}
+      {%- image img, altText, [450,900,1232,2464], "(min-width: 1232px) 1232px, calc(100vw - 48px)" %}
     </li>
     {% endfor %}
   </ul>
