@@ -11,6 +11,11 @@ picture {
   height: auto;
 }
 
+figure picture,
+figure img {
+  margin-bottom: var(--spacing-md);
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-size: 1rem;
