@@ -6,6 +6,17 @@
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
 
+    {# Favicons, credit: https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs #}
+    {%- if metadata.environment === "production" %}
+      <link rel="icon" href="/favicon/favicon.ico" sizes="32x32">
+      <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" sizes="any">
+    {%- else %}
+      <link rel="icon" href="/favicon/favicon-dev.ico" sizes="32x32">
+      <link rel="icon" href="/favicon/favicon-dev.svg" type="image/svg+xml" sizes="any">
+    {%- endif %}
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+
     {# Let's others know this site was created using 11ty #}
     <meta name="generator" content="{{ eleventy.generator }}">
 

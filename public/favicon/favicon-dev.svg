@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+  <style>
+    text {
+      font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+    }
+    @media (prefers-color-scheme: dark){
+      rect {
+        fill: #e68933
+      }
+      text {
+        fill: #222;
+      }
+    }
+  </style>
+  <rect x="0" y="0" width="36" height="36" fill="#00529d" />
+  <text
+    x="50%"
+    y="50%"
+    dx="-0.02em"
+    dy="0.04em"
+    fill="white"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="sans-serif"
+    font-size="1.4em"
+    font-weight="bold"
+  >CH</text>
+</svg>

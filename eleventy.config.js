@@ -24,10 +24,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("assets/js/**/*.js");
 
   eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
-
-  // TODO: eventually remove this when all image files are rendered using the 11ty Image Plugin
+  eleventyConfig.addWatchTarget("public/**/*.{svg,webp,png,jpeg,ico}");
+  
   eleventyConfig.addPassthroughCopy({
+    // TODO: eventually remove "./public/img" when all image files are rendered using the 11ty Image Plugin
     "./public/img": "/img",
+    "./public/favicon": "/favicon",
+    "./public/manifest.webmanifest": "/manifest.webmanifest",
     "./public/robots.txt": "/robots.txt",
   });
 

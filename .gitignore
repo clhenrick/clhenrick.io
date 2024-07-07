@@ -5,3 +5,4 @@ package-lock.json
 Portfolio 11ty Migration.md
 make-portfolio-posts.js
 portfolio-page.hbs
+.DS_Store
