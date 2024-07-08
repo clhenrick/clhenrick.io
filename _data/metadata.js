@@ -8,6 +8,6 @@ module.exports = {
   author: {
     name: "Chris Henrick",
     email: "chrishenrick@gmail.com",
-    url: "",
+    url: "https://clhenrick.io/about/",
   },
 };
