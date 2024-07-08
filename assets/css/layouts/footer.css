@@ -7,18 +7,18 @@ footer {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-xxxl);
+  gap: var(--spacing-xl);
   align-items: baseline;
   padding: 0 var(--spacing-mmd) 2rem;
 }
 
 footer section {
-  flex-basis: 100%;
+  flex: 100%;
 }
 
 @media screen and (min-width: 816px) {
   footer section {
-    flex-basis: content;
+    flex: content;
   }
 }
 
@@ -65,6 +65,7 @@ footer a[href]:focus-visible {
 ul.meta-links,
 ul.social-links {
   flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
 ul.meta-links {
