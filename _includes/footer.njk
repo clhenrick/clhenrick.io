@@ -2,18 +2,21 @@
   <div class="footer-inner">
     <section>
       <h2>About This Site</h2>
-      <p>Designed and coded with <span aria-hidden="true">♥</span>
-        <span class="visually-hidden">love</span> by
-      <a href="/about/">Chris Henrick</a> using
-      <a href="https://www.11ty.dev/">Eleventy</a>.
-      Hosted on
-      <a href="https://netlify.com">Netlify</a>.
-    </p>
+      <p>Designed and coded with
+        <span aria-hidden="true">♥</span>
+        <span class="visually-hidden">love</span>
+        &nbsp;by&nbsp;
+        <a href="/about/">Chris Henrick</a>
+        &nbsp;using&nbsp;
+        <a href="https://www.11ty.dev/">Eleventy</a>.
+        Hosted on&nbsp;
+        <a href="https://netlify.com">Netlify</a>.
+      </p>
       <p>
         <span>©</span> Chris Henrick 2015 – current. All rights reserved.
       </p>
       <p>
-      Last built on <time datetime="{{ generated.iso }}">{{ generated.formatted }}</time>
+        Last built on <time datetime="{{ generated.iso }}">{{ generated.formatted }}</time>
       </p>
       <ul class="meta-links inline" role="list">
         <li>
@@ -33,11 +36,11 @@
     <section>
       <h2>Social Links</h2>
       <ul class="social-links" role="list">
-        {%- for name, url in metadata.social %}
-          <li>
-            <a href={{url}} {% if name == "Mastodon" %} rel="me" {% endif %} >{{name}}</a>
-          </li>
-        {%- endfor %}
+      {%- for name, url in metadata.social %}
+        <li>
+          <a href={{url}} {% if name == "Mastodon" %} rel="me" {% endif %} >{{name}}</a>
+        </li>
+      {%- endfor %}
       </ul>
     </section>
   </div>
