@@ -53,6 +53,7 @@ footer a[href]:hover {
 
 footer a[href]:focus-visible {
   box-shadow: var(--focus-style-box-shadow);
+  outline: var(--focus-style-outline);
   text-decoration: none;
 }
 
