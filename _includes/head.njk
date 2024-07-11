@@ -50,7 +50,7 @@
   <meta name="twitter:description" content="{{ description or metadata.description }}" />
   {%- if image %}
   <meta name="twitter:image" content="{{ metadata.url }}{{ image }}" />
-  {%- elif %}
+  {%- else %}
   <meta name="twitter:image" content="{{ metadata.url }}{{ metadata.titleImage }}" />
   {%- endif %}
   <meta property="twitter:image:alt" content="{{ imageAlt or metadata.titleImageAlt }}">
