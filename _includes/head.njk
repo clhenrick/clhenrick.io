@@ -24,37 +24,36 @@
 
   {# SEO #}
   <meta name="google-site-verification" content="hb0oFgJAnd2i2LvJYSEIofF5sc24xc8hx2tTNittvHA" />
-  {# TODO: MS / Bing code? #}
+  {# TODO: Add MS / Bing site code? #}
 
-  {# Social: Open Graph #}
+  {# Social: Open Graph tags #}
   <meta property="og:locale" content="en_US" />
-  <meta
-    property="og:title"
-    content={{ title or metadata.title }}
-  />
-  <meta
-    property="og:description"
-    content="{{ description or metadata.description }}"
-  />
+  <meta property="og:title" content={{ title or metadata.title }} />
+  <meta property="og:description" content="{{ description or metadata.description }}" />
   {# TODO: concatenate permalink with base url or just base url #}
   <meta property="og:url" content={{ metadata.url }} />
-  <meta
-    property="og:site_name"
-    content={{ metadata.title }}
-  />
-  {% if largeImage %}
+  <meta property="og:site_name" content={{ metadata.title }} />
+  {%- if largeImage %}
   <meta property="og:image" content="{{ metadata.url }}{{ largeImage }}">
-  {% elif image %}
+  {%- elif image %}
   <meta property="og:image" content="{{ metadata.url }}{{ image }}">
-  {% else %}
+  {%- else %}
   <meta property="og:image" content="{{ metadata.url }}{{ metadata.titleImage }}">
-  {% endif %}
+  {%- endif %}
   <meta property="og:image:alt" content="{{ imageAlt or metadata.titleImageAlt }}">
 
-
-
   {# Social: Twitter/X #}
-
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@chrislhenrick" />
+  <meta name="twitter:creator" content="@chrislhenrick" />
+  <meta name="twitter:title" content="{{ title or metadata.title }}" />
+  <meta name="twitter:description" content="{{ description or metadata.description }}" />
+  {%- if image %}
+  <meta name="twitter:image" content="{{ metadata.url }}{{ image }}" />
+  {%- elif %}
+  <meta name="twitter:image" content="{{ metadata.url }}{{ metadata.titleImage }}" />
+  {%- endif %}
+  <meta property="twitter:image:alt" content="{{ imageAlt or metadata.titleImageAlt }}">
 
   {# NOTE: All common CSS used throughout the site are added here #}
   {%- set partials %}
