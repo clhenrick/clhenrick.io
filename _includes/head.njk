@@ -58,7 +58,7 @@
   {%- endif %}
   <meta property="twitter:image:alt" content="{{ imageAlt or metadata.titleImageAlt }}">
 
-  {# NOTE: All common CSS used throughout the site are added here #}
+  {# NOTE: All common CSS used throughout the site are added here. In dev they are created as links, in prod all CSS is concatenated and inlined for a small performance boost. #}
   {%- set partials %}
       base/reset,
       base/base,
