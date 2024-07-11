@@ -1,6 +1,8 @@
 {# Sitewide head element used in all pages #}
 {%- set headTitle = title or metadata.title %}
 {%- set headDescription = description or metadata.description %}
+{%- set headImageAlt = imageAlt or metadata.titleImageAlt %}
+{%- set headImageType = imageType or metadata.titleImageType %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,13 +39,14 @@
   <meta property="og:url" content={{ metadata.url }} />
   <meta property="og:site_name" content={{ metadata.title }} />
   {%- if largeImage %}
-  <meta property="og:image" content="{{ metadata.url }}{{ largeImage }}">
+  <meta property="og:image" content="{{ metadata.url }}{{ largeImage }}" />
   {%- elif image %}
-  <meta property="og:image" content="{{ metadata.url }}{{ image }}">
+  <meta property="og:image" content="{{ metadata.url }}{{ image }}" />
   {%- else %}
-  <meta property="og:image" content="{{ metadata.url }}{{ metadata.titleImage }}">
+  <meta property="og:image" content="{{ metadata.url }}{{ metadata.titleImage }}" />
   {%- endif %}
-  <meta property="og:image:alt" content="{{ imageAlt or metadata.titleImageAlt }}">
+  <meta property="og:image:alt" content="{{ headImageAlt }}" />
+  <meta property="og:image:type" content="{{ headImageType }}" />
 
   {# Social: Twitter/X #}
   <meta name="twitter:card" content="summary_large_image" />
@@ -56,7 +59,7 @@
   {%- else %}
   <meta name="twitter:image" content="{{ metadata.url }}{{ metadata.titleImage }}" />
   {%- endif %}
-  <meta property="twitter:image:alt" content="{{ imageAlt or metadata.titleImageAlt }}">
+  <meta property="twitter:image:alt" content="{{ headImageAlt }}" />
 
   {# NOTE: All common CSS used throughout the site are added here. In dev they are created as links, in prod all CSS is concatenated and inlined for a small performance boost. #}
   {%- set partials %}
