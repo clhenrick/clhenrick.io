@@ -1,8 +1,11 @@
+{# Sitewide head element used in all pages #}
+{%- set headTitle = title or metadata.title %}
+{%- set headDescription = description or metadata.description %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title or metadata.title }}</title>
-  <meta name="description" content="{{ description or metadata.description }}">
+  <title>{{ headTitle }}</title>
+  <meta name="description" content="{{ headDescription }}">
 
   {# Favicons, credit: https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs #}
   {%- if metadata.environment === "production" %}
@@ -28,9 +31,9 @@
 
   {# Social: Open Graph tags #}
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content={{ title or metadata.title }} />
-  <meta property="og:description" content="{{ description or metadata.description }}" />
-  {# TODO: concatenate permalink with base url or just base url #}
+  <meta property="og:title" content="{{ headTitle }}" />
+  <meta property="og:description" content="{{ headDescription }}" />
+  {# TODO: concatenate permalink with base url or just base url. See: https://ogp.me/#metadata #}
   <meta property="og:url" content={{ metadata.url }} />
   <meta property="og:site_name" content={{ metadata.title }} />
   {%- if largeImage %}
@@ -46,8 +49,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@chrislhenrick" />
   <meta name="twitter:creator" content="@chrislhenrick" />
-  <meta name="twitter:title" content="{{ title or metadata.title }}" />
-  <meta name="twitter:description" content="{{ description or metadata.description }}" />
+  <meta name="twitter:title" content="{{ headTitle }}" />
+  <meta name="twitter:description" content="{{ headDescription }}" />
   {%- if image %}
   <meta name="twitter:image" content="{{ metadata.url }}{{ image }}" />
   {%- else %}
