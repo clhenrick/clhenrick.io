@@ -6,11 +6,11 @@
 
   {# Favicons, credit: https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs #}
   {%- if metadata.environment === "production" %}
-    <link rel="icon" href="/favicon/favicon.ico" sizes="32x32">
-    <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="/favicon/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" sizes="any">
   {%- else %}
-    <link rel="icon" href="/favicon/favicon-dev.ico" sizes="32x32">
-    <link rel="icon" href="/favicon/favicon-dev.svg" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="/favicon/favicon-dev.ico" sizes="32x32">
+  <link rel="icon" href="/favicon/favicon-dev.svg" type="image/svg+xml" sizes="any">
   {%- endif %}
   <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
@@ -21,6 +21,10 @@
   {# RSS feeds #}
   <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
   <link rel="alternate" href="/feed.json" type="application/feed+json" title="{{ metadata.title }}">
+
+  {# SEO #}
+  <meta name="google-site-verification" content="hb0oFgJAnd2i2LvJYSEIofF5sc24xc8hx2tTNittvHA" />
+  {# TODO: MS / Bing code? #}
 
   {# NOTE: All common CSS used throughout the site are added here #}
   {%- set partials %}
