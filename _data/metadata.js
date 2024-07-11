@@ -18,6 +18,6 @@ module.exports = {
     ["LinkedIn", "https://www.linkedin.com/in/chrishenrick/"],
     ["Ko-Fi", "https://ko-fi.com/chrislhenrick"]
   ]),
-  titleImage: "img/oakland-map-dark-900w.jpeg",
+  titleImage: "img/oakland-map-dark-1800w.webp",
   titleImageAlt: "A geographic map of the city of Oakland, California, centered on Lake Merritt.",
 };
