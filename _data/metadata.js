@@ -3,7 +3,7 @@ module.exports = {
   titleImage: "img/oakland-map-dark-1800w.webp",
   titleImageAlt: "A geographic map of the city of Oakland, California, centered on Lake Merritt.",
   titleImageType: "image/webp",
-  url: "https://deploy-preview-44--clhenrick-new.netlify.app/",
+  url: "https://clhenrick.io/",
   language: "en",
   description: "The website and blog of Chris Henrick: Front-end web developer and design engineer specializing in data visualization, web accessibility, and interactive geographic mapping.",
   environment: process.env.NODE_ENV,
