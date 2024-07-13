@@ -5,7 +5,7 @@ module.exports = {
   titleImageType: "image/webp",
   url: "https://deploy-preview-44--clhenrick-new.netlify.app/",
   language: "en",
-  description: "Web developer and design engineer specializing in data visualization, web accessibility, and interactive geographic mapping.",
+  description: "The website and blog of Chris Henrick: Front-end web developer and design engineer specializing in data visualization, web accessibility, and interactive geographic mapping.",
   environment: process.env.NODE_ENV,
   githubRepository: "https://github.com/clhenrick/portfolio-new",
   author: {
