@@ -3,6 +3,7 @@
 {%- set headDescription = teaser or description or metadata.description %}
 {%- set headImageAlt = imageAlt or metadata.titleImageAlt %}
 {%- set headImageType = imageType or metadata.titleImageType %}
+{%- set headOGType = "article" if page.url.includes("/blog/") else "website" %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +38,7 @@
   <meta property="og:title" content="{{ headTitle }}">
   <meta property="og:description" content="{{ headDescription }}">
   <meta property="og:logo" content="{{ metadata.url }}{{ metadata.logoImage }}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content={{ headOGType }}>
   <meta property="og:url" content={{ metadata.url }}{{ page.url.slice(1) }}>
   <meta property="og:site_name" content={{ metadata.title }}>
   {%- if largeImage %}
