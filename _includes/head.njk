@@ -1,6 +1,6 @@
 {# Sitewide head element used in all pages #}
 {%- set headTitle = title or metadata.title %}
-{%- set headDescription = description or metadata.description %}
+{%- set headDescription = teaser or description or metadata.description %}
 {%- set headImageAlt = imageAlt or metadata.titleImageAlt %}
 {%- set headImageType = imageType or metadata.titleImageType %}
 <head>
