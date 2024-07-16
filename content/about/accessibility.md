@@ -1,32 +1,33 @@
 ---
 layout: layouts/about.njk
 title: Accessibility Statement
+date: 2024-07-16
 description: "How this website adheres to WCAG conformance and inclusive design best practices."
 ---
 
 # {{title}}
 
-This is an accessibility statement from the owner and creator of this website, Chris L Henrick. This statement was created on <time datetime="2024-07-16">July 16, 2024</time> with help from the [W3C Accessibility Statement Generator Tool](https://www.w3.org/WAI/planning/statements/).
+This is an accessibility statement from the owner and creator of this website, {{ metadata.author.name }}. This statement was created on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time> with help from the [W3C Accessibility Statement Generator Tool](https://www.w3.org/WAI/planning/statements/).
 
 This website achieves partial level AA compliance for the [Web Content Accessibility Guidelines (WCAG) version 2.2](https://www.w3.org/TR/WCAG22/). WCAG is widely acknowledged by accessibility professionals as well as local, state, and federal government (including the [Americans with Disabilities Act](https://www.ada.gov/resources/small-entity-compliance-guide/)) within the United States as a standard for evaluating whether websites are considered digitally accessible. However, WCAG _compliance_ does not equate with _usability_ (something could technically be WCAG compliant but not usable by someone with a disability), which is why this website attempts to make sure all of its features and functionality follow usability and [inclusive design](https://en.wikipedia.org/wiki/Inclusive_design) best practices.
 
 ## Measures to support accessibility
 
-Chris Henrick takes the following measures to ensure the accessibility of clhenrick.io:
+{{ metadata.author.name }} takes the following measures to ensure the accessibility of {{ metadata.title }}:
 
 <ul>
   <li>Include accessibility as part of our mission statement.</li>
   <li>Include accessibility throughout our internal policies.</li>
   <li>Integrate accessibility into our procurement practices.</li>
-  <li>Appoint an accessibility officer (Chris Henrick).</li>
-  <li>Provide continual accessibility training for our staff (Chris Henrick).</li>
+  <li>Appoint an accessibility officer ({{ metadata.author.name }}).</li>
+  <li>Provide continual accessibility training for our staff ({{ metadata.author.name }}).</li>
   <li>Assign clear accessibility goals and responsibilities.</li>
   <li>Employ formal accessibility quality assurance methods.</li>
 </ul>
 
 ## Compatibility with browsers and assistive technology
 
-This website, clhenrick.io, is designed to be compatible with the following assistive technologies:
+This website, {{ metadata.title }}, is designed to be compatible with the following assistive technologies:
 
 <ul>
   <li>Safari with VoiceOver on MacOS</li>
@@ -66,9 +67,9 @@ Known gaps in accessibility in this site which I plan on remediating are as foll
 
 - **Video alternatives:** video embeds may exist in some pages of this site that do not have alternatives such as closed captions or transcripts. I plan on adding closed captions and transcripts for these videos.
 
-## Assessment approach
+## Assessment approaches
 
-Chris Henrick assessed the accessibility of chenrick.io through utilizing the following self-evaluation approaches:
+{{ metadata.author.name }} assessed the accessibility of {{ metadata.title }} through utilizing the following self-evaluation approaches:
 
 - Using web browser developer tools to inspect the accessibility properties of HTML elements.
 - Automated testing of the site's web pages using the [WAVE Web Accessibility  Evaluation browser extension](https://wave.webaim.org/).
@@ -76,11 +77,11 @@ Chris Henrick assessed the accessibility of chenrick.io through utilizing the fo
 
 ## Feedback
 
-If you happen to find any problems with this site in terms of its accessiblity or usability, please do not hesitate to [contact me](/contact/) about them. I take these issues very seriously and will do my best to remediate them in a timely manner.
+If you happen to find any problems with this site in terms of its accessibility or usability, please do not hesitate to [contact me](/contact/) about them. I take these issues very seriously and will do my best to remediate them in a timely manner.
 
 ## Thanks and Credits
 
-Lastly, I would like to thank the many web accessibility practicioners who work tirelessly to test, write about, speak about, and file web browser bugs on accessibility. Without these folks I would not be where I am today in terms of my knowledge of accessibility and inclusive design. They include but are not limited to:
+Lastly, I would like to thank the many web accessibility practitioners who work tirelessly to test, write about, speak about, and file web browser bugs on accessibility. Without these folks I would not be where I am today in terms of my knowledge of accessibility and inclusive design. They include but are not limited to:
 
 - [Léonie Watson](https://tink.uk/about-leonie/)
 - [Sara Soueidan](https://www.sarasoueidan.com/)
