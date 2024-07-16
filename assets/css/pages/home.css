@@ -3,19 +3,19 @@ main {
   flex-direction: column;
 }
 
-section {
+main section {
   margin-bottom: var(--spacing-xxl);
 }
 
-section:first-of-type {
+main section:first-of-type {
   margin-top: calc(-1 * var(--spacing-xxl));
 }
 
-section:last-of-type {
+main section:last-of-type {
   margin-bottom: 0;
 }
 
-section h2 {
+main section h2 {
   margin-top: 0;
 }
 
