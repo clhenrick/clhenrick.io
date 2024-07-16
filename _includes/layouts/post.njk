@@ -18,20 +18,32 @@ layout: layouts/base.njk
 
 <dl class="post-metadata">
 	<div class="publish-date">
-    <dt>Published on:<dt>
-    <dd><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></dd>
+    <dt>Published on:</dt>
+    <dd>
+      <time datetime="{{ page.date | htmlDateString }}">
+        {{ page.date | readableDate }}
+      </time>
+    </dd>
   </div>
-{%- if updated %}
+  {%- if updated %}
   <div class="updated-date">
     <dt>Last updated on:</dt>
-    <dd><time datetime="{{ updated  | htmlDateString }}">{{ updated | readableDate }}</time></dd>
+    <dd>
+      <time datetime="{{ updated  | htmlDateString }}">
+        {{ updated | readableDate }}
+      </time>
+    </dd>
   </div>
-{%- endif %}
+  {%- endif %}
   <div class="tags">
     <dt>Tagged in:</dt>
     {%- for tag in tags | filterTagList %}
     {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-    <dd><a href="{{ tagUrl }}" class="post-tag">#{{ tag }}</a></dd>
+    <dd>
+      <a href="{{ tagUrl }}" class="post-tag">
+        #{{ tag }}
+      </a>
+    </dd>
     {%- endfor %}
   </div>
 </dl>
