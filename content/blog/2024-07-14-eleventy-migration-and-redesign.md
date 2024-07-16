@@ -1,7 +1,7 @@
 ---
 title: "This site is under construction!"
 date: 2024-07-14
-draft: true
+updated: 2024-07-15
 teaser: "Notes on migrating this website from Jekyll to Eleventy, as well as a bit of (re)design in the open."
 tags:
   - Eleventy
