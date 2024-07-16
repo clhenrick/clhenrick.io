@@ -1,5 +1,6 @@
 const path = require("path");
 const eleventyImage = require("@11ty/eleventy-img");
+const constants = require("./_data/constants");
 
 /**
  * handles creating an 11ty shortcode for images.
@@ -13,16 +14,16 @@ function pluginImages(eleventyConfig) {
     async function imageShortcode(
       src,
       alt = "",
-      widths = [960, 420, 1280],
-      sizes = "100vw"
+      widths = constants.IMAGE_WIDTHS_NORMAL_PAGE_LAYOUT,
+      sizes = constants.IMAGE_SIZES_NORMAL_PAGE_LAYOUT
     ) {
       const formats = ["webp", "jpeg", "svg"];
       const filename = src.split("/").pop();
       const input = path.join(__dirname, "public", "img", filename);
 
       const metadata = await eleventyImage(input, {
-        widths: [...widths, null], // null means the original size
-        formats: [...formats, null], // null means the original format
+        widths,
+        formats,
         // Advanced usage note: `eleventyConfig.dir` works here because we’re using addPlugin.
         outputDir: path.join(eleventyConfig.dir.output, "img"),
         outputPath: "/img/",

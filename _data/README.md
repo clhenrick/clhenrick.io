@@ -1,21 +1,32 @@
 # Eleventy Global Data
 
+## constants
+
+Shared constants used to avoid repeating the same values over and over again. Currently this consists of:
+
+### images
+
+Image widths arrays and sizes strings used with the Eleventy Image Plugin and its corresponding `image` shortcode. See [docs/responsive-images](../docs/responsive-images.md) for more info.
+
 ## metadata
 
-Global site metadata:
+Global site metadata including the site's `title`, `description`, `url`, `language`, etc.
+
+The current NodeJS enivornment may be referenced from here, e.g.:
+
+```nunjucks
+{% if metadata.environment === "production" %}
+  we're in production!
+{% else %}
+  we're in develop!
+{% endif %}
+```
+
+Social media names and their corresponding URLs are available via an ES6 Map which can be iterated via Nunjucks `for` (see `footer.njk`) or used to retrieve a single URL, e.g.
 
 ```js
-{
-  title: "clhenrick.io",
-	url: "",
-	language: "en",
-	description: "Coming soon...",
-	author: {
-		name: "Chris Henrick",
-		email: "chrishenrick@gmail.com",
-		url: ""
-	}
-}
+metadata.social.get("Mastodon");
+// returns "https://indieweb.social/@clhenrick"
 ```
 
 ## work_image_thumbnails/
