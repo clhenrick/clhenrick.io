@@ -1,8 +1,9 @@
 {# Sitewide head element used in all pages #}
 {%- set headTitle = title or metadata.title %}
-{%- set headDescription = description or metadata.description %}
+{%- set headDescription = teaser or description or metadata.description %}
 {%- set headImageAlt = imageAlt or metadata.titleImageAlt %}
 {%- set headImageType = imageType or metadata.titleImageType %}
+{%- set headOGType = "article" if page.url.includes("/blog/") else "website" %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,41 +30,39 @@
   <link rel="alternate" href="/feed.json" type="application/feed+json" title="{{ metadata.title }}">
 
   {# SEO #}
-  <meta name="google-site-verification" content="hb0oFgJAnd2i2LvJYSEIofF5sc24xc8hx2tTNittvHA" />
-  <meta name="msvalidate.01" content="2515EC227874C1EE104D3FB4124CC9C5" />
+  <meta name="google-site-verification" content="hb0oFgJAnd2i2LvJYSEIofF5sc24xc8hx2tTNittvHA">
+  <meta name="msvalidate.01" content="2515EC227874C1EE104D3FB4124CC9C5">
 
   {# Social: Open Graph tags #}
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="{{ headTitle }}" />
-  <meta property="og:description" content="{{ headDescription }}" />
-  <meta property="og:logo" content="{{ metadata.url }}{{ metadata.logoImage }}" />
-  {# TODO: consider using "article" type for blog posts: https://ogp.me/#no_vertical #}
-  <meta property="og:type" content="website" />
-  {# TODO: concatenate permalink with base url or just base url. See: https://ogp.me/#metadata #}
-  <meta property="og:url" content={{ metadata.url }} />
-  <meta property="og:site_name" content={{ metadata.title }} />
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="{{ headTitle }}">
+  <meta property="og:description" content="{{ headDescription }}">
+  <meta property="og:logo" content="{{ metadata.url }}{{ metadata.logoImage }}">
+  <meta property="og:type" content={{ headOGType }}>
+  <meta property="og:url" content={{ metadata.url }}{{ page.url.slice(1) }}>
+  <meta property="og:site_name" content={{ metadata.title }}>
   {%- if largeImage %}
-  <meta property="og:image" content="{{ metadata.url }}{{ largeImage }}" />
+  <meta property="og:image" content="{{ metadata.url }}{{ largeImage }}">
   {%- elif image %}
-  <meta property="og:image" content="{{ metadata.url }}{{ image }}" />
+  <meta property="og:image" content="{{ metadata.url }}{{ image }}">
   {%- else %}
-  <meta property="og:image" content="{{ metadata.url }}{{ metadata.titleImage }}" />
+  <meta property="og:image" content="{{ metadata.url }}{{ metadata.titleImage }}">
   {%- endif %}
-  <meta property="og:image:alt" content="{{ headImageAlt }}" />
-  <meta property="og:image:type" content="{{ headImageType }}" />
+  <meta property="og:image:alt" content="{{ headImageAlt }}">
+  <meta property="og:image:type" content="{{ headImageType }}">
 
   {# Social: Twitter/X #}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@chrislhenrick" />
-  <meta name="twitter:creator" content="@chrislhenrick" />
-  <meta name="twitter:title" content="{{ headTitle }}" />
-  <meta name="twitter:description" content="{{ headDescription }}" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@chrislhenrick">
+  <meta name="twitter:creator" content="@chrislhenrick">
+  <meta name="twitter:title" content="{{ headTitle }}">
+  <meta name="twitter:description" content="{{ headDescription }}">
   {%- if image %}
-  <meta name="twitter:image" content="{{ metadata.url }}{{ image }}" />
+  <meta name="twitter:image" content="{{ metadata.url }}{{ image }}">
   {%- else %}
-  <meta name="twitter:image" content="{{ metadata.url }}{{ metadata.titleImage }}" />
+  <meta name="twitter:image" content="{{ metadata.url }}{{ metadata.titleImage }}">
   {%- endif %}
-  <meta property="twitter:image:alt" content="{{ headImageAlt }}" />
+  <meta property="twitter:image:alt" content="{{ headImageAlt }}">
 
   {# NOTE: All common CSS used throughout the site are added here. In dev they are created as links, in prod all CSS is concatenated and inlined for a small performance boost. #}
   {%- set partials %}

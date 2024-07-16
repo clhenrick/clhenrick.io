@@ -6,7 +6,7 @@ module.exports = {
   logoImage: "favicon/apple-touch-icon.png",
   url: "https://clhenrick.io/",
   language: "en",
-  description: "The website and blog of Chris Henrick: Front-end web developer and design engineer specializing in data visualization, web accessibility, and interactive geographic mapping.",
+  description: "The website, blog, and portfolio of Chris L Henrick, front-end web developer and design engineer.",
   environment: process.env.NODE_ENV,
   githubRepository: "https://github.com/clhenrick/portfolio-new",
   author: {
