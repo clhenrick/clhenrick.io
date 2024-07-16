@@ -21,10 +21,12 @@ pre[class*="language-"] {
   font-size: 1rem;
 }
 
-dl > div.publish-date {
-  gap: var(--spacing-xxs);
+dl.post-metadata dd {
+  font-weight: bold;
 }
 
+dl > div.publish-date,
+dl > div.updated-date,
 dl > div.tags {
   gap: var(--spacing-xs);
   flex-wrap: wrap;
@@ -42,6 +44,8 @@ main p:has(picture) {
   max-width: 100%;
 }
 
-main p:first-of-type {
+/* Description paragraph at the start of the post */
+p.post-teaser {
   font-size: var(--text-size-h4);
+  font-style: italic;
 }
