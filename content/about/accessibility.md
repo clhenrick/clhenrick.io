@@ -6,7 +6,7 @@ description: "How this website adheres to web accessibility conformance and incl
 
 # {{title}}
 
-This website strives to achieve level AA compliance for the [Web Content Accessibility Guidelines (WCAG) version 2.2](https://www.w3.org/TR/WCAG22/). WCAG is widely acknowledged by accessibility professionals as well as local, state, and federal government (including the [Americans with Disabilities Act](https://www.ada.gov/resources/small-entity-compliance-guide/)) within the United States as a standard for ensuring and evaluating whether websites are considered digitally accessibile. However, WCAG _compliance_ does not equate with _usability_ (something could technically be WCAG compliant but not usable by someone with a disability), which is why this website attempts to make sure all of its features and funcionality follow usability and [inclusive design](https://en.wikipedia.org/wiki/Inclusive_design) best practices.
+This website strives to achieve level AA compliance for the [Web Content Accessibility Guidelines (WCAG) version 2.2](https://www.w3.org/TR/WCAG22/). WCAG is widely acknowledged by accessibility professionals as well as local, state, and federal government (including the [Americans with Disabilities Act](https://www.ada.gov/resources/small-entity-compliance-guide/)) within the United States as a standard for evaluating whether websites are considered digitally accessibile. However, WCAG _compliance_ does not equate with _usability_ (something could technically be WCAG compliant but not usable by someone with a disability), which is why this website attempts to make sure all of its features and funcionality follow usability and [inclusive design](https://en.wikipedia.org/wiki/Inclusive_design) best practices.
 
 ## Technical specifications
 
@@ -20,7 +20,7 @@ The accessibility of this site relies on the following technologies to work with
 
 These technologies are relied upon for conformance with the accessibility standards used.
 
-## Technical details describing WCAG conformance
+## Technical details describing WCAG conformance and Inclusive Design practices
 
 The following list describes techniques used and decisions made to help make this site accessible and inclusive to users of all abilities:
 
@@ -35,21 +35,24 @@ The following list describes techniques used and decisions made to help make thi
 - Ensuring that the site is keyboard navigable and usable by non-mouse users
 - Performing regular accessibility auditing using the [WAVE accessibility browser extension](https://wave.webaim.org/)
 - Manual accessibility testing with the following screen reader software:
-  - VoiceOver on MacOS
-  - VoiceOver on iOS
-  - *TODO: NVDA, JAWS on Windows*
+  - VoiceOver with Safari on MacOS
+  - VoiceOver with Safari on iOS
+  - NVDA with Firefox on Windows
+  - JAWS with Chrome on Windows
 
 ## Known Limitations
 
-Unintentional gaps in access may still exist in parts of this site. Like many others who design and build stuff for the web, I began my journey into learning web design and development being largely ignorant of the importance of web accessiblity and how not addressing it in the design and development processes results in barriers to access for people with disabilities. When this site was first created in 2015, accessibility was not prioritized or well thought out. Since then during my career as a web developer and design engineer I've become more knowledgable of accessibility and inclusion in regards to the web and digital technology. I now consider it a priority and guiding principle in my work. This was a motivating factor for me when redesigning and refactoring this site in mid 2024. Despite this endeavor, there were some accessibility issues leftover from the original site that I did not have time to immediately address.
+Unintentional gaps in access may still exist in parts of this site. Like many others who design and build for the web, I began my journey into learning web design and development being largely ignorant of the importance of web accessibility, and how not addressing it in the web design and development processes results in barriers to access for people with disabilities. When this site was first created in 2015, accessibility was not prioritized or well thought out. Since then and during my career as a web developer and design engineer I've become more knowledgable of accessibility and inclusion in regards to the web and digital technology. I now consider accessibility and inclusive design a priority and guiding principle in my work. This was a motivating factor for me when [redesigning and refactoring this site in mid 2024](/blog/eleventy-migration-and-redesign/). Despite this endeavor, there were some accessibility issues leftover from the original site that I did not have time to immediately address.
 
 Known gaps in accessibility in this site which I plan on remediating are as follows:
 
-- The top level sitewide navigation can be improved in terms of its sub-navigation usability on desktop devices.
+- The top level site wide navigation can be improved in terms of its sub-navigation usability on desktop devices.
 
 - Animated GIFs that autoplay exist in some blog posts. I plan on replacing these with videos that will not autoplay as well as to reduce their file size.
 
 - Some images have missing or sub-par alternative text, particularly in the portfolio project pages and some blog post pages. I plan on improving existing sub-par and addressing missing alt text in all images over time.
+
+- Code blocks in blog posts have low contrast text. I plan on updating the theme used to style code blocks in order to improve their color contrast.
 
 ## Legacy Browser Support
 
