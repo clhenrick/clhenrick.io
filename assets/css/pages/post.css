@@ -21,10 +21,12 @@ pre[class*="language-"] {
   font-size: 1rem;
 }
 
-dl > div.publish-date {
-  gap: var(--spacing-xxs);
+dl.post-metadata dd {
+  font-weight: bold;
 }
 
+dl > div.publish-date,
+dl > div.updated-date,
 dl > div.tags {
   gap: var(--spacing-xs);
   flex-wrap: wrap;
@@ -38,6 +40,12 @@ ul.links-nextprev {
 }
 
 /* NOTE: ensures the picture / img max-width is respected when the image shortcode renders the <picture> element inside a <p> tag, a result of using the shortcode in Markdown files. */
-p:has(picture) {
+main p:has(picture) {
   max-width: 100%;
+}
+
+/* Description paragraph at the start of the post */
+p.post-teaser {
+  font-size: var(--text-size-h4);
+  font-style: italic;
 }
