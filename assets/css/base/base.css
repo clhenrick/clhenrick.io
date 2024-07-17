@@ -140,7 +140,7 @@ footer {
 
 main {
   max-width: var(--desktop-max-width);
-  padding: var(--spacing-xxl) var(--spacing-mmd);
+  padding: var(--spacing-xxl) var(--spacing-mmd) var(--spacing-xxxl);
 }
 
 main:first-child {
