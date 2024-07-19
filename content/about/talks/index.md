@@ -56,6 +56,13 @@ Agenda for this half-day workshop:
 - How to build a custom visualization with data from the GPU using said libraries
 - How MapD uses the Vega specification standard for declarative server-side rendering
 
+## Maps, Open Data, and The Web
+*Urban Planning & Design / USF, San Francisco, CA / April 9, 2018*
+
+How can maps, open data, and the web be used to advance causes for social justice? In this presentation I reviewed personal projects that have helped advance causes relating to housing and social justice in New York City. Lessons I've learned are discussed as are recommendations for those interested in learning how create projects involving interactive maps for the web. This was a guest lecture for a Urban Planning and Design graduate class at the University of San Francisco, California.
+
+[Maps, Open Data, and The Web presentation slides](https://docs.google.com/presentation/d/15SSaP1gO77wSgAdYqRigmoxOHX6UB4lrq2v6ULl2o90/edit?usp=sharing)
+
 ## NYC Crash Mapper
 *NACIS Annual Meeting / Montreal, Québec, Canada / October 12, 2017*
 
@@ -78,13 +85,6 @@ What separates geo-visualization from other types of data visualization? What ar
 Stamen has been collecting, processing, and experimenting with worldwide digital elevation models (DEMs) for the past year, supported by a grant from the Knight Foundation. The primary output of this is the Open Terrain project, which aims to collect resources on how to process and work with DEMs and their derivatives using open source tools, and cloud-based and scale data pipelines. In this talk we'll demonstrate a few techniques to incorporate these components into your maps as well as discuss how we're using the Open Terrain data to add hillshades to HOT's humanitarian map style and to reboot our OSM-based classic Stamen Terrain style and deploy it worldwide. We'll also explore some impractical uses of DEMs that we've experimented with purely for their aesthetic value.
 
 [Practical and Impractical Uses of Terrain Data presentation slides](https://clhenrick.github.io/presentations-nacis-2016-terrain/)
-
-## Maps, Open Data, and The Web
-*Urban Planning & Design / USF, San Francisco, CA / October 5, 2016*
-
-How can maps, open data, and the web be used to advance causes for social justice? In this presentation I reviewed personal projects that have helped advance causes relating to housing and social justice in New York City. Lessons I've learned are discussed as are recommendations for those interested in learning how create projects involving interactive maps for the web. This was a guest lecture for a Urban Planning and Design graduate class at the University of San Francisco, California.
-
-[Maps, Open Data, and The Web presentation slides](https://docs.google.com/presentation/d/15SSaP1gO77wSgAdYqRigmoxOHX6UB4lrq2v6ULl2o90/edit?usp=sharing)
 
 
 ## Am I Rent Stabilized?
