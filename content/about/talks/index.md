@@ -56,10 +56,17 @@ Agenda for this half-day workshop:
 - How to build a custom visualization with data from the GPU using said libraries
 - How MapD uses the Vega specification standard for declarative server-side rendering
 
+## Maps, Open Data, and The Web
+*Urban Planning & Design / USF, San Francisco, CA / April 9, 2018*
+
+How can maps, open data, and the web be used to advance causes for social justice? In this presentation I reviewed personal projects that have helped advance causes relating to housing and social justice in New York City. Lessons I've learned are discussed as are recommendations for those interested in learning how create projects involving interactive maps for the web. This was a guest lecture for a Urban Planning and Design graduate class at the University of San Francisco, California.
+
+[Maps, Open Data, and The Web presentation slides](https://docs.google.com/presentation/d/15SSaP1gO77wSgAdYqRigmoxOHX6UB4lrq2v6ULl2o90/edit?usp=sharing)
+
 ## NYC Crash Mapper
 *NACIS Annual Meeting / Montreal, Québec, Canada / October 12, 2017*
 
-Open Data is open, but does that make it actionable? Does the "one size fits all" model of Open Data Portals truly serve the civic interests of citizens who stand to benefit from them? In this talk I discuss the short comings of Open Data Portals, often a result of city agencies neglecting to "eat their own dog food" and how the web application I developed, [NYC Crash Mapper]({{site.url}}{{site.baseurl}}/work/nyc-crash-mapper.html), seeks to make Open Data on vehicle collisions actionable for transportation safety advocates within New York City.
+Open Data is open, but does that make it actionable? Does the "one size fits all" model of Open Data Portals truly serve the civic interests of citizens who stand to benefit from them? In this talk I discuss the short comings of Open Data Portals, often a result of city agencies neglecting to "eat their own dog food" and how the web application I developed, [NYC Crash Mapper](/work/nyc-crash-mapper/), seeks to make Open Data on vehicle collisions actionable for transportation safety advocates within New York City.
 
 - [NYC Crash Mapper presentation slides](https://speakerdeck.com/clhenrick/nacis-2017)
 - [NYC Crash Mapper presentation video recording](https://www.youtube.com/watch?v=FbvoYQc19V8&index=16&list=PLcBEhOBZvhcZ2AYb-wHsOcpte7Zd_t4zL)
@@ -79,27 +86,20 @@ Stamen has been collecting, processing, and experimenting with worldwide digital
 
 [Practical and Impractical Uses of Terrain Data presentation slides](https://clhenrick.github.io/presentations-nacis-2016-terrain/)
 
-## Maps, Open Data, and The Web
-*Urban Planning & Design / USF, San Francisco, CA / October 5, 2016*
-
-How can maps, open data, and the web be used to advance causes for social justice? In this presentation I reviewed personal projects that have helped advance causes relating to housing and social justice in New York City. Lessons I've learned are discussed as are recommendations for those interested in learning how create projects involving interactive maps for the web. This was a guest lecture for a Urban Planning and Design graduate class at the University of San Francisco, California.
-
-[Maps, Open Data, and The Web presentation slides]({{site.url}}{{site.baseurl}}/presentations/usf-urban-design/)
-
 
 ## Am I Rent Stabilized?
 *NACIS Annual Meeting / Minneapolis, MN / October 16, 2015*
 
 **Am I Rent Stabilized?** is a web application that encourages New York City tenants to find out if their landlord may be illegally overcharging them for a rent stabilized apartment and if so, motivates them to take action. It is an attempt at using open data acquired through a Freedom of Information Law request as a prompt for civic action, rather than solely for visualization and analysis. The app asks the user to input their address and checks it against a database of properties that are likely to have rent stabilized apartments. From here the app recommends a course of action and informs the user of their nearest tenants rights group so they may receive help. This presentation will discuss my development of the app and the geospatial technologies used to create it.
 
-[Am I Rent Stabilized presentation slides]({{site.url}}{{site.baseurl}}/presentations/am-i-rent-stabilized/)
+[Am I Rent Stabilized presentation slides](https://clhenrick.github.io/presentations/am-i-rent-stabilized/)
 
 ## Mapping for Housing Justice in Bushwick, NYC
 *NACIS Annual Meeting / Minneapolis, MN / October 15, 2015*
 
 **The Bushwick Community Map** is an interactive web-mapping project that provides local residents and community organizers with access to data relating to housing and urban planning of the Bushwick neighborhood in Brooklyn, NY. It's goal is to help track gentrification and prevent the displacement of longterm residents from illegitimate practices by landlords. This talk will provide an overview of the project's history as well as how open government data and open source web-mapping technology can be used to strengthen the tenants rights movement and the work of anti-displacement activists.
 
-[Mapping for Housing Justice in Bushwick, NYC presentation slides]({{site.url}}{{site.baseurl}}/presentations/bcm-nacis-2015/)
+[Mapping for Housing Justice in Bushwick, NYC presentation slides](https://clhenrick.github.io/presentations/bcm-nacis-2015/)
 
 ## Mapping For Social Justice Workshop
 *NACIS Annual Meeting / Minneapolis, MN / October 15, 2015*
