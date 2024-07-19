@@ -1,27 +1,33 @@
 ---
-layout: layouts/work.njk
 eleventyNavigation:
   key: Work
   order: 2
 ---
+
+{%- set partials %}
+  components/project-card,
+  pages/work
+{%- endset %}
+{%- set bucket = "work" %}
+{% include "styles.njk" %}
 
 {% from "components/projectCard.njk" import projectCard %}
 
 <h1>Portfolio</h1>
 
 <p>
-  Below you will find a sampling of projects I've created or contributed to over the years. This work spans the domains of web development and design, data visualization, user interface design, interaction design, and cartographic design.
+  Featured projects I've created or contributed to over the years. This work spans the domains of web development and design, interactive data visualization, user interface design, interaction design, and cartographic design.
 </p>
 
 <p id="filter-projects">
   <strong>Filter Projects</strong>
 </p>
-<div role="group" aria-labelledby="filter-projects">
+<div role="group" class="project-filters" aria-labelledby="filter-projects">
   <button value="all" class="button filter" aria-pressed="true">all</button>
   <button value="web" class="button filter" aria-pressed="false">interactive</button>
   <button value="data-viz" class="button filter" aria-pressed="false">data viz</button>
-  <button value="cartography" class="button filter" aria-pressed="false">cartographic design</button>
-  <button value="shuffle" class="button" aria-pressed="false">shuffle!</button>
+  <button value="cartography" class="button filter" aria-pressed="false">cartography</button>
+  <button class="button shuffle">shuffle!</button>
 </div>
 
 <ul class="cards-container" role="list">
@@ -33,4 +39,10 @@ eleventyNavigation:
   {% endfor %}
 </ul>
 
-<script defer src="/js/work.js"></script>
+<div id="announce" class="visually-hidden" aria-live="polite"></div>
+
+{%- set javascripts -%}
+  work
+{%- endset -%}
+{%- set bucket = "work" -%}
+{%- include "scripts.njk" -%}

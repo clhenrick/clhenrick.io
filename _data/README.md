@@ -1,21 +1,32 @@
 # Eleventy Global Data
 
+## constants
+
+Shared constants used to avoid repeating the same values over and over again. Currently this consists of:
+
+### images
+
+Image widths arrays and sizes strings used with the Eleventy Image Plugin and its corresponding `image` shortcode. See [docs/responsive-images](../docs/responsive-images.md) for more info.
+
 ## metadata
 
-Global site metadata:
+Global site metadata including the site's `title`, `description`, `url`, `language`, etc.
+
+The current NodeJS enivornment may be referenced from here, e.g.:
+
+```nunjucks
+{% if metadata.environment === "production" %}
+  we're in production!
+{% else %}
+  we're in develop!
+{% endif %}
+```
+
+Social media names and their corresponding URLs are available via an ES6 Map which can be iterated via Nunjucks `for` (see `footer.njk`) or used to retrieve a single URL, e.g.
 
 ```js
-{
-  title: "clhenrick.io",
-	url: "",
-	language: "en",
-	description: "Coming soon...",
-	author: {
-		name: "Chris Henrick",
-		email: "chrishenrick@gmail.com",
-		url: ""
-	}
-}
+metadata.social.get("Mastodon");
+// returns "https://indieweb.social/@clhenrick"
 ```
 
 ## work_image_thumbnails/
@@ -32,9 +43,13 @@ These thumbnail image files are used in the portfolio (`/work/`) index page for 
 
 - Referenced as `work` in templates
 
-This data is used for the portfolio (`/work/`) index page to create the project cards (see `content/work/index.njk` and `_includes/components/projectCard.njk`) and for individual project pages (see `project-page.njk`).
+This data is used:
 
-An example project object looks like:
+- in the portfolio index page (`content/work/index.njk`) to create the project cards (see `content/work/index.njk` and `_includes/components/projectCard.njk`)
+- to create individual project pages in `/work/[project-name-page]/` (see `content/work/project-page.njk`).
+- to create part of the sitemap.xml file (see `content/sitemap.xml.njk`)
+
+An example `work` object looks like:
 
 ```json
 {
@@ -71,4 +86,5 @@ An example project object looks like:
   "link": "https://analytics.cal-adapt.org"
 }
 ```
+
 > Note that "size" is deprecated / no longer used.

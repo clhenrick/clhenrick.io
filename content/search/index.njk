@@ -8,17 +8,52 @@ eleventyNavigation:
   order: 6
 ---
 
-<h1> {{title}} </h1>
+{# NOTE: used by search.js, <a>, and <form> below #}
+{%- set websiteName = metadata.url | replace("https://", "") %}
+{%- set searchPrefix = ["site:", websiteName] | join %}
 
-<p>You may use the form below to search the contents of this site.</p>
+{%- set partials %}
+  components/button,
+  components/forms/form-controls,
+  pages/search
+{%- endset %}
+{%- set bucket="search" %}
+{% include "styles.njk" %}
 
+<h1>
+  {{title}}
+</h1>
+
+<p>Search the contents of this site using <a href="https://duckduckgo.com?q={{searchPrefix}}">DuckDuckGo</a>.</p>
+
+{# NOTE: this form is progressively enhanced, it will work without JavaScript! #}
 <form
-  id="search-form"
-  name="search-form"
   accept-charset="utf-8"
-  method="post"
+  method="get"
+  role="search"
+  action="https://duckduckgo.com/"
+  aria-labelledby="search-title"
 >
-  <label for="search">Search</label>
-  <input id="search" type="search">
-  <input class="button" type="submit" value="Submit">
+  <span id="search-title" hidden>Site</span>
+  {# set region for search #}
+  <input type="hidden" name="ki" value="us-en">
+  {# disable ads in search results #}
+  <input type="hidden" name="k1" value="-1">
+  <label for="search-text">Search Query</label>
+  <input
+    id="search-text"
+    name="q"
+    type="text"
+    {# NOTE: tried adding an <input type="hidden"> with the "site:name" value, but DDG seems to only keep the last "q" query param value, so it gets replaced by the users search query. #}
+    value="{{ searchPrefix }} "
+    required=""
+  >
+  <button class="button" type="submit">Search</button>
 </form>
+
+
+{%- set javascripts -%}
+  search
+{%- endset -%}
+{%- set bucket = "search" %}
+{%- include "scripts.njk" %}

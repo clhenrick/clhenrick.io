@@ -1,0 +1,51 @@
+img,
+picture,
+figure,
+pre[class*="language-"],
+color-legend {
+  margin-bottom: var(--spacing-lg);
+}
+
+img,
+picture {
+  height: auto;
+}
+
+figure picture,
+figure img {
+  margin-bottom: var(--spacing-md);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 1rem;
+}
+
+dl.post-metadata dd {
+  font-weight: bold;
+}
+
+dl > div.publish-date,
+dl > div.updated-date,
+dl > div.tags {
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+ul.links-nextprev {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+/* NOTE: ensures the picture / img max-width is respected when the image shortcode renders the <picture> element inside a <p> tag, a result of using the shortcode in Markdown files. */
+main p:has(picture) {
+  max-width: 100%;
+}
+
+/* Description paragraph at the start of the post */
+p.post-teaser {
+  font-size: var(--text-size-h4);
+  font-style: italic;
+}

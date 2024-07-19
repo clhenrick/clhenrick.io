@@ -1,33 +1,49 @@
 ---
 layout: layouts/base.njk
 ---
-{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
-{%- css %}{% include "public/css/post.css" %}{% endcss %}
-
-<style>{% getBundle "css" %}</style>
+{%- set partials %}
+  node_modules/prismjs/themes/prism-okaidia.css,
+  components/forms/form-controls,
+  components/forms/select,
+  pages/post
+{%- endset %}
+{%- set bucket = "post" %}
+{% include "styles.njk" %}
 
 <h1>{{ title }}</h1>
 
 {%- if teaser %}
-<p>{{ teaser }}</p>
+<p class="post-teaser">{{ teaser }}</p>
 {%- endif %}
 
 <dl class="post-metadata">
 	<div class="publish-date">
-    <dt>Published on:<dt>
-    <dd><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></dd>
+    <dt>Published on:</dt>
+    <dd>
+      <time datetime="{{ page.date | htmlDateString }}">
+        {{ page.date | readableDate }}
+      </time>
+    </dd>
   </div>
-{%- if updated %}
+  {%- if updated %}
   <div class="updated-date">
     <dt>Last updated on:</dt>
-    <dd><time datetime="{{ updated  | htmlDateString }}">{{ updated | readableDate }}</time></dd>
+    <dd>
+      <time datetime="{{ updated  | htmlDateString }}">
+        {{ updated | readableDate }}
+      </time>
+    </dd>
   </div>
-{%- endif %}
+  {%- endif %}
   <div class="tags">
     <dt>Tagged in:</dt>
     {%- for tag in tags | filterTagList %}
     {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-    <dd><a href="{{ tagUrl }}" class="post-tag">#{{ tag }}</a></dd>
+    <dd>
+      <a href="{{ tagUrl }}" class="post-tag">
+        #{{ tag }}
+      </a>
+    </dd>
     {%- endfor %}
   </div>
 </dl>

@@ -1,84 +1,26 @@
 <!doctype html>
 <html lang="{{ metadata.language }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or metadata.title }}</title>
-    <meta name="description" content="{{ description or metadata.description }}">
+  {%- include "head.njk" %}
 
-    {#- Atom and JSON feeds included by default #}
-    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-    <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
-
-    {#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-    <meta name="generator" content="{{ eleventy.generator }}">
-
-    {#-
-		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
-		1. You can add to them using `{% css %}`
-		2. You can get from them using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-		3. You can do the same for JS: {% js %}{% endjs %} and <script>{% getBundle "js" %}</script>
-		4. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-		#}
-
-    {#- Add the contents of a file to the bundle #}
-    {%- css %}{% include "public/css/reset.css" %}{% endcss %}
-    {%- css %}{% include "public/css/main.css" %}{% endcss %}
-    {%- css %}{% include "public/css/primary-navigation.css" %}{% endcss %}
-    {%- css %}{% include "public/css/utils.css" %}{% endcss %}
-    {#- Or add from node_modules #}
-    {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
-
-    {#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-    <style>
-      {% getBundle "css" %}
-    </style>
-    {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-    {#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
-  </head>
-  <body>
+  {# NOTE: data-page-size is used to set the max-width of <main> #}
+  {%- set defaultPageSize = 'normal' %}
+  <body data-page-size="{{pageSize or defaultPageSize}}">
     <script>
       document.body.classList.add("js-enabled");
     </script>
-    <header>
-      <div>
-        <a href="#main" class="visually-hidden skip-link">Skip to main content</a>
-        <a href="/" class="home-link">{{ metadata.title }}</a>
-        <button
-          id="nav-menu"
-          class="button nav-button"
-          aria-expanded="false"
-          aria-controls="primary-nav-list"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="currentColor"
-          >
-            <path d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-          </svg>
-          <span>Menu</span>
-        </button>
-      </div>
-      <nav aria-labelledby="nav-title">
-        <h2 id="nav-title" class="visually-hidden">Main navigation</h2>
-        <ul id="primary-nav-list" class="nav-list" role="list">
-          {% from "components/navListItem.njk" import renderNavListItem %}
-          {% for entry in collections.all | eleventyNavigation %}
-            {{ renderNavListItem(entry, page.url) }}
-          {% endfor %}
-        </ul>
-      </nav>
-    </header>
 
-    <main id="main">
+    {%- include "header.njk" %}
+
+    <main id="main" tabindex="-1">
       {{ content | safe }}
     </main>
+
     {%- include "footer.njk" %}
-    <script defer src="/js/primary-navigation.js"></script>
+
+    {# NOTE: JavaScript shared by all pages are added here #}
+    {%- set javascripts -%}
+      primary-navigation
+    {%- endset -%}
+    {%- include "scripts.njk" -%}
   </body>
 </html>

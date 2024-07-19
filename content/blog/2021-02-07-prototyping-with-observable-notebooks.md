@@ -12,7 +12,8 @@ tags:
 ---
 
 <figure>
-  <img loading="lazy" src="/img/observable_prototyping_hero.jpg" width="100%" alt="Abstract decorative image showing various data visualizations">
+  {% image 'observable_prototyping_hero.jpg', 'Abstract map of the United States using various types of data visualization techniques' %}
+
   <figcaption>Shout out to <a href="https://twitter.com/enjalot" target="_blank" rel="noreferrer">Ian Johnson (@enjalot)</a> for making me the swell hero image above!</figcaption>
 </figure>
 
@@ -29,7 +30,7 @@ In this post I will cover:
 ## Observable Notebooks
 
 <figure>
-  <img loading="lazy" src="/img/observable_demo_lowfr.gif" width="100%" alt="animated GIF">
+  <img loading="lazy" src="/img/observable_demo_lowfr.gif" width="100%" alt="Animated GIF of an Observable Notebook being edited showing a globe visualization updating as the author makes edits in real time.">
   <figcaption>A demonstration of live coding in a Observable Notebook</figcaption>
 </figure>
 
@@ -40,7 +41,7 @@ If you are curious about trying Observable Notebooks I strongly encourage you to
 ## Data Intake Notebooks
 
 <figure>
-<img loading="lazy" src="/img/observable_data_intake.png" width="100%" alt="A data intake notebook in Observable">
+{% image 'observable_data_intake.png', "A screenshot of a data intake notebook in Observable for CDC US Chronic Disease Indicators data showing a table of contents, summary, description, and data publisher." %}
 <figcaption>An example <a href="https://observablehq.com/@clhenrick/het-data-intake-u-s-chronic-disease-indicators-cdi-brfss?collection=@clhenrick/msm-fellowship-data-intake" target="_blank" rel="noreferrer">"Data Intake" notebook</a></figcaption>
 </figure>
 
@@ -51,8 +52,8 @@ To facilitate and document exploring a dozen or more potential datasets, I decid
 ## Data Visualization Prototyping Notebooks
 
 <figure>
-  <img loading="lazy" src="/img/beeswarm_plot.jpg" width="100%" alt="An example Beeswarm Plot / Chart">
-  <figcaption>A [“Beeswarm Plot”](https://observablehq.com/@clhenrick/visualizing-racial-ethnic-disparities-in-covid-19-deaths?collection=@clhenrick/msm-fellowship#beeswarm) showing disparities in COVID-19 deaths by race/ethnicity in U.S. counties</figcaption>
+  {% image 'beeswarm_plot.jpg', "A screenshot of a Beeswarm Plot created in Observable using COVID-19 mortality data that conveys a higher mortality rate for non-white persons, particularly those who are Native American and Native Hawaiian or Pacific Islander." %}
+  <figcaption>A <a href="https://observablehq.com/@clhenrick/visualizing-racial-ethnic-disparities-in-covid-19-deaths?collection=@clhenrick/msm-fellowship#beeswarm">Beeswarm Plot</a> showing disparities in COVID-19 deaths by race/ethnicity by county.</figcaption>
 </figure>
 
 This leads me to the second part of the work, prototyping the visualizations using the data I evaluated in the data intake notebooks. An incredibly useful feature in Observable Notebooks is the ability to [import cells from other notebooks](https://observablehq.com/@observablehq/introduction-to-imports). This means you have access to tons of arbitrary code, components, data, etc. from any public notebook in the Observable ecosystem. You may also load 3rd-party JavaScript libraries, using Observable’s own variation of `require`. For example, here is how you might load D3JS:
@@ -69,11 +70,11 @@ viewof myinput = inputType({ /* config options */ });
 
 For example, here’s an example of a view that is a text input with autosuggest:
 
-<img loading="lazy" src="/img/observable_cell.png" width="100%" alt="An example Observable notebooks cell that outputs an html input">
+{% image 'observable_cell.png', 'An example Observable notebook cell that outputs an HTML input which can be used to generate a value used by other notebook cells' %}
 
 Now when I have a chart that uses data for that selected state, e.g. `stateData = data.get(selectedState);`, it will react to any change in the selectedState input and re-render:
 
-<img loading="lazy" src="/img/observable_bar_chart_with_input.gif" width="100%" alt="A bar chart rendered by a Observable cell">
+<img loading="lazy" src="/img/observable_bar_chart_with_input.gif" width="100%" alt="An animated GIF showing a bar chart being from changes in an Observable input cell">
 
 Views can get a lot more complex, for example you can inline multiple views within Markdown or use an HTML `<form>` element that contains multiple inputs. Because [views are mutable](https://observablehq.com/@mbostock/views-are-mutable-values?collection=@observablehq/techniques), you may also [synchronize them with other views](https://observablehq.com/@mbostock/synchronized-views). In addition to views, Observable also has its own [HTML templating library](https://observablehq.com/@observablehq/htl) which borrows from [Lit HTML](https://lit-html.polymer-project.org/) and is globally available in all notebooks.
 
@@ -82,15 +83,17 @@ In the context of my [Data Visualization Notebooks](https://observablehq.com/col
 ## Embedding Notebook Cells For User Testing
 
 <figure>
-  <img loading="lazy" src="/img/observable_mad_lib_embed.gif" width="100%" alt="An example of embedding an Observable Notebook for a user research study">
-  <figcaption>[An example](https://satcherinstitute.github.io/data-visualization/03_madlibs_compare/madlib-disease-states.html) of how I [embedded cells](https://observablehq.com/@observablehq/downloading-and-embedding-notebooks) from an Observable Notebook into an external web page. ([Source Notebook](https://observablehq.com/@clhenrick/compare-chronic-diseases-in-us-states?collection=@clhenrick/msm-fellowship))</figcaption>
+  <img loading="lazy" src="/img/observable_mad_lib_embed.gif" width="100%" alt="An animated GIF showing a dynamic dashboard for a user research study">
+  <figcaption>
+    <a href="https://satcherinstitute.github.io/data-visualization/03_madlibs_compare/madlib-disease-states.html">An example</a> of how I <a href="https://observablehq.com/@observablehq/downloading-and-embedding-notebooks">embedded cells</a> from an Observable Notebook into an external web page. (<a href="https://observablehq.com/@clhenrick/compare-chronic-diseases-in-us-states?collection=@clhenrick/msm-fellowship">Source Notebook</a>).
+  </figcaption>
 </figure>
 
 When it came to user-testing my prototypes with our team’s UX Researcher, it was clear to me that Observable’s UI would be an unhelpful distraction for our testers. Thankfully you can embed cells from your notebook into just about any arbitrary webpage. This allowed me to create a [Github repository](https://github.com/SatcherInstitute/data-visualization) that contained minimal web pages with only the cells for visualizations that we were going to test. It also meant I could utilize CSS to create layouts that were not restricted to a vertical column layout.
 
 <figure>
-  <img loading="lazy" src="/img/observable_embed_example.jpg" width="100%" alt="An example of embedding an Observable Notebook for a user research study">
-  <figcaption>Another example of a non-vertical layout when embedding Observable cells</figcaption>
+  {% image 'observable_embed_example.jpg', 'A screenshot of an embedded Observable Notebook for a user research study' %}
+  <figcaption>Another example of a non-vertical layout using embedded cells from an Observable Notebook.</figcaption>
 </figure>
 
 The process for [embedding cells from an Observable Notebook](https://observablehq.com/@observablehq/downloading-and-embedding-notebooks) is very straightforward, and you have roughly two ways of doing it. Either simply `<iframe>` a single cell, or use the Observable runtime and notebook as a module to render cells into the DOM of the host page. Behind the scenes, notebooks are compiled to ES modules and may be either downloaded as an NPM package or imported directly into a `<script type="module">` in an HTML document. In order to use the downloaded or “hot linked” notebook module, you first load [Observable’s runtime library](https://github.com/observablehq/runtime) and have the runtime’s Standard Inspector inject all of the notebooks cells into the DOM. Alternately, you may [pick and choose which cells you want to render in a page](https://github.com/observablehq/notebook-download-example/blob/master/index.html), which is [what I ended up doing](https://github.com/SatcherInstitute/data-visualization/blob/master/01_observable_test/index.html#L61-L116). A word of caution: with embedding you lose Observable’s UI styling, so you’ll need to roll your own CSS for very basic stuff like typography, colors, etc. Any inline styles defined within a cell that is imported will be kept, though.
@@ -122,7 +125,7 @@ import {chart as chart3} with {my_data3 as data} from "@d3/bar-chart"
 To solve this, I ended up making some reusable chart notebooks (such as a [reusable Choropleth Map](https://observablehq.com/@clhenrick/reusable-choropleth-map?collection=@clhenrick/custom-inputs)) that allow for importing a function that renders the chart. This makes using an approach such as *small multiples*, where you render many small charts of the same chart type showing different aspects of the same data, more feasible (be sure to take a look at [Zan Armstrong](https://www.zanarmstrong.com/)'s work on the [advantageous use of small multiples in data viz](https://www.youtube.com/watch?v=rdZZrrU62sc)).
 
 <figure>
-  <img loading="lazy" src="/img/marshall-project-small-multiples.png" width="100%" alt="">
+  {% image 'marshall-project-small-multiples.png', 'A screenshot of a series of area charts of mortality by race above or below normal in the United States using a technique referred to as small multiples.' %}
   <figcaption>Small multiples example showing COVID-19 mortality by race from <a href="https://www.themarshallproject.org/2020/08/21/covid-19-s-toll-on-people-of-color-is-worse-than-we-knew" target="_blank" rel="noreferrer">The Marshall Project</a></figcaption>
 </figure>
 

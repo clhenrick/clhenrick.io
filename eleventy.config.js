@@ -3,36 +3,66 @@ const {
   EleventyHtmlBasePlugin,
   EleventyRenderPlugin,
 } = require("@11ty/eleventy");
-
+const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdown = require("markdown-it")({
   html: true,
 });
+const postcss = require("postcss");
+const postcssMinify = require("postcss-minify");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const {
   pluginImages,
   pluginDataCascadeImage,
 } = require("./eleventy.config.images.js");
+const { minify } = require("terser");
 
 module.exports = function (eleventyConfig) {
+  // Force 11ty to watch CSS and JS files
+  eleventyConfig.addWatchTarget("assets/css/**/*.css");
+  eleventyConfig.addWatchTarget("assets/js/**/*.js");
+
+  eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
+  eleventyConfig.addWatchTarget("public/**/*.{svg,webp,png,jpeg,ico}");
+
   eleventyConfig.addPassthroughCopy({
-    "./public/css": "/css",
-    "./public/js": "/js",
+    // TODO: eventually remove "./public/img" when all image files are rendered using the 11ty Image Plugin
+    "./public/img": "/img",
+    "./public/favicon": "/favicon",
+    "./public/manifest.webmanifest": "/manifest.webmanifest",
+    "./public/robots.txt": "/robots.txt",
+    "./public/keybase.txt": "/keybase.txt",
   });
+
+  // CSS and JavaScript are inlined in HTML for performance reasons. The problem
+  // with that is that saving a CSS or JavaScript file during development does
+  // not cause HTML files to be recompiled, which makes working on the site
+  // significantly more cumbersome. The problem is addressed by linking external
+  // stylesheets and scripts in development, and inlining their content in style
+  // script tags in production. For the assets to be linked to in development,
+  // they need to be passed through to the `_site` directory.
+  // See: https://kittygiraudel.com/2020/12/03/inlining-scripts-and-styles-in-11ty/
+  if (process.env.NODE_ENV !== "production") {
+    eleventyConfig.addPassthroughCopy("assets/js");
+    eleventyConfig.addPassthroughCopy("assets/css");
+    eleventyConfig.addPassthroughCopy(
+      "node_modules/prismjs/themes/prism-okaidia.css"
+    );
+  }
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
-  eleventyConfig.addPlugin(bundlerPlugin);
+  eleventyConfig.addPlugin(bundlerPlugin, {
+    transforms: [transformMinifyCss, transformMinifyJs],
+  });
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
   });
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginImages);
   eleventyConfig.addPlugin(pluginDataCascadeImage);
-
-  eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
-  eleventyConfig.addWatchTarget("public/css/**/*.css");
+  eleventyConfig.addPlugin(rssPlugin);
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
@@ -59,7 +89,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dateFromISOString", (dateString, format, zone) => {
     // dateString is expected to be an ISO 8601 date string such as "YYYY-MM-DD"
     // full list of options: https://moment.github.io/luxon/#/parsing?id=iso-8601
-    return DateTime.fromISO(dateString, { zone: zone || "utc" }).toFormat(format || "LLLL dd, yyyy");
+    return DateTime.fromISO(dateString, { zone: zone || "utc" }).toFormat(
+      format || "LLLL dd, yyyy"
+    );
   });
 
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
@@ -124,3 +156,37 @@ module.exports = function (eleventyConfig) {
     pathPrefix: "/",
   };
 };
+
+/** minifies inlined CSS in production builds */
+async function transformMinifyCss(content) {
+  // NOTE: `this.type` returns the bundle name
+  if (this.type === "css" && process.env.NODE_ENV === "production") {
+    try {
+      const result = postcss([postcssMinify]).process(content, {
+        from: this.page.inputPath,
+        to: null,
+      });
+      return result.css;
+    } catch (error) {
+      console.error("Problem transforming CSS: ", error);
+      // fallback gracefully
+      return content;
+    }
+  }
+  return content;
+}
+
+/** minifies inlined JavaScript in production builds */
+async function transformMinifyJs(content) {
+  if (this.type === "js" && process.env.NODE_ENV === "production") {
+    try {
+      const minified = await minify(content);
+      return minified.code;
+    } catch (error) {
+      console.error("Problem minifying JS: ", error);
+      // fallback gracefully
+      return content;
+    }
+  }
+  return content;
+}

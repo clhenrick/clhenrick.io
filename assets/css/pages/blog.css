@@ -1,0 +1,17 @@
+nav.pagination {
+  margin-top: var(--spacing-xxxl);
+}
+
+nav.pagination > h2 {
+  margin-top: 0;
+  font-size: var(--text-size-h4);
+}
+
+nav.pagination > ol {
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+nav.pagination li a[href] {
+  padding: 0.75rem var(--spacing-mmd);
+}

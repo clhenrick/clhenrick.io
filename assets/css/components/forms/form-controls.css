@@ -1,0 +1,62 @@
+label {
+  display: block;
+  margin: var(--spacing-xs) 0;
+}
+
+fieldset {
+  padding: 0 var(--spacing-md);
+  margin: 0 var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
+  border: 1px solid currentColor;
+}
+
+textarea,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]) {
+  border: solid .1em currentColor;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-secondary);
+  padding: var(--spacing-xs);
+  margin-bottom: var(--spacing-mmd);
+}
+
+textarea::placeholder,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"])::placeholder {
+  opacity: 0.8;
+  color: inherit;
+}
+
+textarea:focus,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]):focus {
+  outline: 0.15em solid var(--color-accent);
+  box-shadow: var(--focus-style-box-shadow);
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: none;
+}
+
+/* class applied to a div that wraps an input and label */
+.form-control {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-xs);
+  align-items: center;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--border-radius);
+}
+
+.form-control + .form-control {
+  margin-top: var(--spacing-xs);
+}
+
+.form-control:last-child {
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-control:focus-within {
+  box-shadow: var(--focus-style-box-shadow);
+}
+
+.form-control > label {
+  margin: 0;
+}

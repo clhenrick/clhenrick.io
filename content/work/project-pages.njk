@@ -4,8 +4,19 @@ pagination:
   size: 1
   alias: project
 permalink: "work/{{ project.title | slugify }}/"
-layout: layouts/work.njk
+tags: projects
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ project.title }}"
+    parent: "work"
 ---
+
+{%- set partials %}
+  components/embed,
+  pages/project-pages
+{%- endset %}
+{%- set bucket = "project-pages" %}
+{% include "styles.njk" %}
 
 <section>
   <h1>{{project.title}}</h1>
@@ -76,7 +87,7 @@ layout: layouts/work.njk
     <li>
       {%- set altText %}Screenshot {{loop.index}} of {{project.title}}{%- endset %}
       {# NOTE: the code below uses the image shortcode #}
-      {%- image img, altText %}
+      {%- image img, altText, constants.IMAGE_WIDTHS_WIDE_PAGE_LAYOUT, constants.IMAGE_SIZES_WIDE_PAGE_LAYOUT %}
     </li>
     {% endfor %}
   </ul>

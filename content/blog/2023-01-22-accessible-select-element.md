@@ -2,7 +2,7 @@
 redirectFrom: [/accessible-select-element.html, /accessible-select-element/]
 title: "Custom and Accessible Select Menus Aren't Easy: Part One"
 date: 2023-01-22
-updated: 2023-02-05
+updated: 2024-06-18
 teaser: "Trials and tribulations of building a custom and accessible Select menu UI component."
 tags:
   - HTML
@@ -117,56 +117,101 @@ You may view the above demo in [CodeSandbox][react-select-only-tippy-codesandbox
 
 Next, I decided to try testing the code I'd ported to React using the [VoiceOver screen reader](voiceover) on Safari on my MacBook. To my dismay, I discovered that this example did not work with VoiceOver! When opening the list of options, nothing was announced. Ditto when navigating the list of options and making a selection with my keyboard. "Clearly there must be something wrong with my code, so I'll do a test with VoiceOver on the original WAI APG example code" I thought to myself. Unfortunately I encountered the same set of issues. How could it be that this ARIA pattern sanctioned by the W3C's WAI was flawed? Why would such an example be so prominently displayed and documented on the ARIA patterns part of their APG site if it didn't work across commonly used screen reader software? "There must be an explanation" I told myself as I sought to look for answers. I did find answers, but it only made the plot thicken.
 
-Long story short, it turns out that the "Select-Only" `Combobox` pattern from the WAI APG relies on the [aria-activedescendant attribute][mdn-aria-active-descendant], which (at the time of this writing) is not fully supported in VoiceOver on Safari on MacOS due to [a bug in WebKit][webkit-bug]. The `aria-activedescendant` ARIA attribute is used in the `Combobox` to inform assistive technology (AT) such as screen readers which option is active / "visually focused" (different from the "selected" option) when navigating the list of options via the keyboard. This is important as it enables the `Combobox` component to maintain focus while the navigation of its option elements occurs. The native `<select>` HTML element behaves similarly; if you focus it using your keyboard (e.g. by tabbing to it), open its list of options (by pressing the spacebar), and then use your up and down arrow keys to navigate the list of `<options>`, you'll see that after selecting an option focus remains on the `<select>` element:
+Long story short, it turns out that the "Select-Only" `Combobox` pattern from the WAI APG relies on the [aria-activedescendant attribute][mdn-aria-active-descendant], which (at the time of this writing) is not fully supported in VoiceOver on Safari on MacOS due to [a bug in WebKit][webkit-bug]. The `aria-activedescendant` ARIA attribute is used in the `Combobox` to inform assistive technology (AT) such as screen readers which option is active / "visually focused" (different from the "selected" option) when navigating the list of options via the keyboard. This is important as it enables the `Combobox` component to maintain focus while the navigation of its option elements occurs.
+
+Let's take a short detour to look at the behavior of some native interactive HTML elements to see how that might inform the development of a custom Select component.
+
+The native `<select>` HTML element behaves similar to the WAI ARIA ComboBox pattern. If you focus it using your keyboard (e.g. by tabbing to it), open its list of options (by pressing the spacebar), and then use your up and down arrow keys to navigate the list of `<options>`, you'll see that after selecting an option (by pressing the Enter key) focus remains on the `<select>` element. Here's a native select element to try this with if you're on a device that has a keyboard:
 
 <style>
-	.basic-select select,
-	.basic-select label,
-	.basic-radios label {
-		appearance: initial;
-	}
-	.basic-select label,
-	.basic-radios label {
-		color: inherit;
-		margin-bottom: 0.6rem;
-	}
-	.basic-radios input {
-		padding-right: 1rem;
-		margin: 0;
-	}
-	.basic-radios legend {
-		color: inherit;
-		background-color: inherit;
-	}
+  form {
+    margin: var(--spacing-sm) 0 var(--spacing-lg);
+    width: min(100%, 250px);
+  }
 </style>
 
-<fieldset class="basic-select">
-	<label for="fruits-list">Pick a fruit</label>
-	<select id="fruits-list">
-		<option>Apples</option>
-		<option>Oranges</option>
-		<option>Grapes</option>
-		<option>Pears</option>
-		<option>Durians</option>
-	</select>
-</fieldset>
+<form>
+  <label for="fruits-list">Pick a fruit</label>
+  <div class="select-menu">
+    <select id="fruits-list">
+      <option>Apples</option>
+      <option>Oranges</option>
+      <option>Grapes</option>
+      <option>Pears</option>
+      <option>Durians</option>
+    </select>
+  </div>
+</form>
 
-In fact it is recommended for all interactive UI components that contain interactive child elements that the keyboard arrow keys be used to navigate through their children, while the Tab key is reserved for focusing in and out of the component. Another example of this is radio button groupings:
+Generally speaking, for certain user interface components that contain interactive child elements, the keyboard arrow keys may used to navigate their children while the Tab key may be reserved for focusing in and out of the component.
 
-<fieldset class="basic-radios">
-	<legend>Pick a fruit</legend>
-	<input id="apples" type="radio" name="fruits"><label for="apples">Apples</label>
-	<input id="oranges" type="radio" name="fruits"><label for="oranges">Oranges</label>
-	<input id="grapes" type="radio" name="fruits"><label for="grapes">Grapes</label>
-	<input id="pears" type="radio" name="fruits"><label for="pears">Pears</label>
-	<input id="durians" type="radio" name="fruits"><label for="durians">Durians</label>
-</fieldset>
+Another example of this is in native HTML-land are radio button groups where the Tab key navigates to either the first or selected radio button. The keyboard up and down arrow keys then move focus between each radio button. Pressing the Tab key moves focus out of the group to the next focusable element on the page. Notice that using the keyboard arrow keys to move through each radio button also selects it, that is the expected behavior:
+
+<form>
+  <fieldset>
+    <legend>Pick a fruit</legend>
+    <div class="form-control">
+      <input id="apples" type="radio" name="fruits">
+      <label for="apples">Apples</label>
+    </div>
+    <div class="form-control">
+      <input id="oranges" type="radio" name="fruits">
+      <label for="oranges">Oranges</label>
+    </div>
+    <div class="form-control">
+      <input id="grapes" type="radio" name="fruits">
+      <label for="grapes">Grapes</label>
+    </div>
+    <div class="form-control">
+      <input id="pears" type="radio" name="fruits">
+      <label for="pears">Pears</label>
+    </div>
+    <div class="form-control">
+      <input id="durians" type="radio" name="fruits">
+      <label for="durians">Durians</label>
+    </div>
+  </fieldset>
+</form>
+
+Tabs are another user interface component that shares this behavior, typically using the right and left arrow keys to navigate individual tabs, while the Tab key on the keyboard is reserved for moving focus in and out of the entire tab group.
+
+Interestingly for checkboxes, the expected keyboard interaction pattern is to use the Tab key to move focus to each checkbox and to use the Space key to check and uncheck it:
+
+<form>
+  <fieldset>
+    <legend>Pick some fruits</legend>
+    <div class="form-control">
+      <input id="apples-cb" type="checkbox" name="fruits">
+      <label for="apples-cb">Apples</label>
+    </div>
+    <div class="form-control">
+      <input id="oranges-cb" type="checkbox" name="fruits">
+      <label for="oranges-cb">Oranges</label>
+    </div>
+    <div class="form-control">
+      <input id="grapes-cb" type="checkbox" name="fruits">
+      <label for="grapes-cb">Grapes</label>
+    </div>
+    <div class="form-control">
+      <input id="pears-cb" type="checkbox" name="fruits">
+      <label for="pears-cb">Pears</label>
+    </div>
+    <div class="form-control">
+      <input id="durians-cb" type="checkbox" name="fruits">
+      <label for="durians-cb">Durians</label>
+    </div>
+  </fieldset>
+</form>
+
+Perhaps this is because checkboxes are considered an indvidual user interface component (more specifically a single form control) that may live on their own rather than in a group. For example, we might use a single checkbox to "Subscribe to marketing email spam" in our online store when asking for someone's email address. Tabbing to each checkbox is similar to tabbing to a native HTML button where each button has its own tab stop. Conversely, radio buttons and tabs UI don't exist in isolation, they're associated with a group that allows the user to make a single selection from a list whereas checkboxes are often used for making multiple selections.
+
+Now, back to our custom select component problems.
 
 With the legacy Select component in our app, one would have to use the `Tab` and `Shift` + `Tab` keys to navigate between the list of options. The problem with this approach is that it moves focus out of the Select component, to its list of options, and then to the first option in the list. When an option is selected using the keyboard, focus does not return to the Select and is lost which is disorienting for users of assistive tech like screen readers. Furthermore, when using a screen reader, the `Select` component is not announced as a "combobox" as it should be and is instead announced as a "menu", another aspect that is likely to result in confusion of the component's intent or affordance.
 
-In both the native `<select>` and `Combobox`, the `Tab` key will move focus completely out of the element / component to the next focusable element in the DOM. Effectively, the common pattern for components that have children which are navigable is that the keyboard arrow keys should be used to navigate between them and not the `Tab` key. Instead, by using `Tab` to navigate between a component's children, we not only create a disorienting experience for someone using a screen reader but also make using a keyboard to fill out forms more cumbersome for someone who is a keyboard user, even if they do not have a vision impairment.
+In both the native `<select>` and `Combobox`, the `Tab` key will move focus completely out of the element / component to the next focusable element in the DOM. Again, the common pattern for components that have children which are navigable is that the keyboard arrow keys should be used to navigate between them and not the `Tab` key. Instead, by using `Tab` to navigate between a component's children, we not only create a disorienting experience for someone using a screen reader but also make using a keyboard to fill out forms more cumbersome for someone who is a keyboard user, even if they are not using a screen reader.
 
-## On using ARIA vs. semantic HTML
+## On Using ARIA vs. Semantic HTML
 
 As for the Select-Only ComboBox's pitfalls with the VoiceOver screen reader on MacOS; to the WAI APG's credit, they do have a banner on each of their examples warning the visitor of their site that their ARIA patterns are not production ready and should be tested prior to using them. They also make it clear that the first rule of ARIA is "No ARIA is better than bad ARIA." In other words, by using ARIA incorrectly you can actually create a degraded experience for someone using assistive technology like a screen reader. This is because ARIA is powerful; it overrides the default semantics of HTML and modifies the [accessibility tree][accessibility-tree] which is what is used by screen readers to interact with the DOM.
 

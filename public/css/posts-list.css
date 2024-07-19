@@ -1,9 +1,0 @@
-ol[reversed] li {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
-}
-
-ol[reversed] li div {
-  order: -1;
-}

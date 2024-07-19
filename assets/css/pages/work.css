@@ -1,0 +1,56 @@
+main p:first-of-type {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* hide filter buttons and filter button group label when JavaScript is not enabled */
+#filter-projects,
+.project-filters {
+  display: none;
+}
+
+.js-enabled #filter-projects {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.js-enabled .project-filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+
+  /* colors for project filter toggle buttons */
+  --button-bg: var(--color-turquoise);
+  --button-bg-pressed: var(--color-turquoise-dark);
+  --button-text-color: var(--color-white);
+  --button-text-color-pressed: var(--color-white);
+}
+
+@media (prefers-color-scheme: dark) {
+  .js-enabled .project-filters {
+    --button-bg-pressed:var(--color-turquoise);
+    --button-bg: var(--color-turquoise-light);
+    --button-text-color: var(--color-gray-90);
+    --button-text-color-pressed: var(--color-white);
+  }
+}
+
+.project-filters button.button {
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  color: var(--button-text-color);
+  background-color: var(--button-bg);
+}
+
+.project-filters button.button:hover {
+  color: var(--button-bg);
+  background-color: var(--background-color);
+  border-color: var(--button-bg);
+}
+
+.project-filters button[aria-pressed="true"].button {
+  color: var(--button-text-color-pressed);
+  background-color: var(--button-bg-pressed);
+}

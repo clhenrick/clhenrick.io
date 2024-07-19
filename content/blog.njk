@@ -12,9 +12,12 @@ pagination:
   alias: "posts"
   reverse: true
 ---
-{%- css %}{% include "public/css/blog.css" %}{% endcss %}
-
-<style>{% getBundle "css" %}</style>
+{%- set partials %}
+  components/posts-list,
+  pages/blog
+{%- endset -%}
+{%- set bucket = "blog" %}
+{% include "styles.njk" %}
 
 <h1>Blog</h1>
 {%- set pageIndex = pagination.hrefs | findIndex(page.url) %}
@@ -24,7 +27,7 @@ pagination:
 {% include "postslist.njk" %}
 
 <nav class="pagination" aria-labelledby="pagination">
-  <h2 id="pagination">More Blog Posts</h2>
+  <span id="pagination" hidden>Pagination</span>
   <ol role="list" class="inline">
     <li>{% if pagination.href.previous %}<a class="button" rel="prev" href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
 {%- for pageEntry in pagination.pages %}
