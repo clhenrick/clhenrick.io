@@ -183,7 +183,7 @@ Assisted [DVRPC](http://www.dvrpc.org/)'s Office of Transit, Bicycle, and Pedest
 *February, 2020 – July, 2020*<br>
 Remote
 
-Contributed front end web development and cartographic design to the [COVID-19 Emergency Tenants Protections Map]({{site.url}}{{site.baseurl}}/work/aemp-covid-19-tenant-protections-map.html). Worked with a collective of AEMP volunteers to design and develop the project during the start of the COVID-19 pandemic through the summer to map legislation at varying levels of government (and the lack thereof) aimed at protecting tenants from eviction due to pandemic related issues such as loss of employment and illness.
+Contributed front end web development and cartographic design to the [COVID-19 Emergency Tenants Protections Map](/work/aemp-covid-19-tenant-protections-map/). Worked with a collective of AEMP volunteers to design and develop the project during the start of the COVID-19 pandemic through the summer to map legislation at varying levels of government (and the lack thereof) aimed at protecting tenants from eviction due to pandemic related issues such as loss of employment and illness.
 
 ### Maptime NYC
 **Co-Organizer**<br>
@@ -222,7 +222,7 @@ The final project for this course was a ten minute presentation on a topic of th
 New York, NY<br>
 GPA 3.91
 
-MFA Thesis: [Am I Rent Stabilized?]({{site.url}}{{site.baseurl}}/work/am-i-rent-stabilized.html), an interactive web-app about rent-stabilization in New York City.
+MFA Thesis: [Am I Rent Stabilized?](/work/am-i-rent-stabilized/), an interactive web-app about rent-stabilization in New York City.
 
 Areas of focus in [MFA DT](http://www.newschool.edu/parsons/mfa-design-technology/) included interactive web-mapping, data-visualization, web development, User Experience Design, game design, interactive narrative, open-source GIS, and creative coding.
 
