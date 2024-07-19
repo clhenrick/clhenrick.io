@@ -77,3 +77,12 @@ ul.social-links {
   margin-top: -4px;
 }
 
+fieldset.color-scheme-toggle {
+  display: none;
+}
+
+.js-enabled fieldset.color-scheme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
