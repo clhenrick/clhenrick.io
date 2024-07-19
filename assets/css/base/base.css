@@ -29,18 +29,6 @@
   --color-turquoise-dark: #334D5C;
   --color-turquoise-light: #45b29d;
 
-  --color-accent: var(--color-blue);
-  --color-accent-focus: var(--color-blue-3);
-  --color-accent-secondary: var(--color-blue-3);
-  --color-accent-invert: var(--color-white);
-  --color-accent-bg: transparent;
-  --color-accent-bg-hover: #add5fa;
-
-  --background-color: var(--color-off-white);
-  --background-color-secondary: var(--color-off-white-3);
-
-  --text-color: var(--color-gray-90);
-  --text-color-link: var(--color-accent);
   --text-color-link-active: var(--color-accent-secondary);
   --text-color-link-visited: var(--color-accent-secondary);
 
@@ -87,18 +75,46 @@
   }
 }
 
+html,
+html[data-theme="light"] {
+  color-scheme: light;
+  --color-accent: var(--color-blue);
+  --color-accent-focus: var(--color-blue-3);
+  --color-accent-secondary: var(--color-blue-3);
+  --color-accent-invert: var(--color-white);
+  --color-accent-bg: transparent;
+  --color-accent-bg-hover: #add5fa;
+  --background-color: var(--color-off-white);
+  --background-color-secondary: var(--color-off-white-3);
+  --text-color: var(--color-gray-90);
+  --text-color-link: var(--color-accent);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-accent: var(--color-orange);
+  --color-accent-focus: var(--color-orange-2);
+  --color-accent-secondary: var(--color-orange-3);
+  --color-accent-invert: var(--color-blue-3);
+  --color-accent-bg: #3c2a1f;
+  --color-accent-bg-hover: rgba(230, 137, 51, 0.12);
+  --background-color: #222;
+  --background-color-secondary: #1e1810;
+  --text-color: var(--color-gray-10);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  html:not([data-theme]) {
+    /* NOTE: duplicate of code block directly above */
+    color-scheme: dark;
     --color-accent: var(--color-orange);
     --color-accent-focus: var(--color-orange-2);
     --color-accent-secondary: var(--color-orange-3);
     --color-accent-invert: var(--color-blue-3);
     --color-accent-bg: #3c2a1f;
     --color-accent-bg-hover: rgba(230, 137, 51, 0.12);
-
     --background-color: #222;
     --background-color-secondary: #1e1810;
-
     --text-color: var(--color-gray-10);
   }
 }
