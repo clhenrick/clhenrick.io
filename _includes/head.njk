@@ -74,4 +74,12 @@
       layouts/footer
     {% endset %}
   {% include "styles.njk" %}
+
+  <script>
+    {# prevents a flash of un-themed content #}
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      document.documentElement.dataset.theme = theme;
+    }
+  </script>
 </head>

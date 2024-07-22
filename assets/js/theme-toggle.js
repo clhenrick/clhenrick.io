@@ -1,21 +1,28 @@
 (() => {
   const documentEl = document.documentElement;
-  const fieldset = document.querySelector("fieldset.color-scheme-toggle");
-  const radios = Array.from(fieldset.querySelectorAll('input[type="radio"]'));
+  const themePicker = document.querySelector("fieldset.color-scheme-toggle");
 
-  radios.forEach(function(radio) {
-    radio.addEventListener("change", handleChange);
-  });
+  document.addEventListener("DOMContentLoaded", initThemeToggle);
 
-  // TODO: set from localStorage
-  radios[radios.length - 1].setAttribute("checked", true);
+  function initThemeToggle() {
+    themePicker.addEventListener("change", handleChange);
+    setInitialTheme();
+  }
+
+  function setInitialTheme() {
+    const theme = localStorage.getItem("theme") || "auto";
+    // NOTE: theme is set on the <html> element in a separate script in the <head> to avoid a flash of un-themed content, see head.njk
+    themePicker.querySelector(`input[value="${theme}"]`).setAttribute("checked", "");
+  }
 
   function handleChange(event) {
     const theme = event.target.value;
     if (theme === "auto") {
       delete documentEl.dataset.theme;
+      localStorage.removeItem("theme");
     } else {
       documentEl.dataset.theme = theme;
+      localStorage.setItem("theme", theme);
     }
   }
 })();
