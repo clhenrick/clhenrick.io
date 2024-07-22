@@ -1,13 +1,13 @@
 {# site color theme toggle that currently resides in the site's footer #}
 {%- set themes = ["light", "dark", "auto"]  -%}
-<fieldset class="color-scheme-toggle" aria-labelledby="theme-toggle-label">
+<fieldset id="site-theme-toggle" aria-labelledby="site-theme-toggle-label">
   {# NOTE: we use a span here because <legend> doesn't play well with `display: flex` on the fieldset parent #}
-  <span id="theme-toggle-label">Site Theme:</span>
+  <span id="site-theme-toggle-label">Site Theme:</span>
   {%- for theme in themes %}
   <div class="form-control">
-    <label for="color-scheme-{{ theme }}">
+    <label for="site-theme-{{ theme }}">
       <input
-        id="color-scheme-{{ theme }}"
+        id="site-theme-{{ theme }}"
         type="radio"
         name="site-theme"
         value={{ theme }}

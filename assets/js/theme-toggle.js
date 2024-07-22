@@ -1,6 +1,6 @@
 (() => {
   const documentEl = document.documentElement;
-  const themePicker = document.querySelector("fieldset.color-scheme-toggle");
+  const themePicker = document.querySelector("fieldset#site-theme-toggle");
 
   document.addEventListener("DOMContentLoaded", initThemeToggle);
 

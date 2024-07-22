@@ -1,8 +1,8 @@
-fieldset.color-scheme-toggle {
+fieldset#site-theme-toggle {
   display: none;
 }
 
-.js-enabled fieldset.color-scheme-toggle {
+.js-enabled fieldset#site-theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-md);
@@ -12,10 +12,10 @@ fieldset.color-scheme-toggle {
   padding: 0;
 }
 
-fieldset.color-scheme-toggle span {
+fieldset#site-theme-toggle span {
   font-weight: bold;
 }
 
-fieldset.color-scheme-toggle label {
+fieldset#site-theme-toggle label {
   text-transform: capitalize;
 }
