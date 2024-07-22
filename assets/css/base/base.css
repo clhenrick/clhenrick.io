@@ -1,6 +1,4 @@
 :root {
-  color-scheme: light dark;
-
   /* credit: https://modernfontstacks.com/ */
   --font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
     sans-serif;
@@ -75,8 +73,8 @@
   }
 }
 
-html,
-html[data-theme="light"] {
+:root,
+:root[data-theme="light"] {
   color-scheme: light;
   --color-accent: var(--color-blue);
   --color-accent-focus: var(--color-blue-3);
@@ -90,7 +88,7 @@ html[data-theme="light"] {
   --text-color-link: var(--color-accent);
 }
 
-html[data-theme="dark"] {
+:root[data-theme="dark"] {
   color-scheme: dark;
   --color-accent: var(--color-orange);
   --color-accent-focus: var(--color-orange-2);
@@ -104,7 +102,7 @@ html[data-theme="dark"] {
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
+  :root:not([data-theme]) {
     /* NOTE: duplicate of code block directly above */
     color-scheme: dark;
     --color-accent: var(--color-orange);
