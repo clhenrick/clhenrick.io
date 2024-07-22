@@ -35,28 +35,7 @@
           <a href="/sitemap.xml">Sitemap</a>
         </li>
       </ul>
-      <fieldset class="color-scheme-toggle" aria-labelledby="theme-toggle-label">
-        {# NOTE: we use a span here because <legend> doesn't play well with display: flex; on the fieldset parent #}
-        <span id="theme-toggle-label">Site Theme:</span>
-        <div class="form-control">
-          <label for="color-scheme-light">
-            <input id="color-scheme-light" type="radio" name="theme" value="light">
-            Light
-          </label>
-        </div>
-        <div class="form-control">
-          <label for="color-scheme-dark">
-            <input id="color-scheme-dark" type="radio" name="theme" value="dark">
-            Dark
-          </label>
-        </div>
-        <div class="form-control">
-          <label for="color-scheme-auto">
-            <input id="color-scheme-auto" type="radio" name="theme" value="auto">
-            Auto
-          </label>
-        </div>
-      </fieldset>
+      {% include "components/themeToggle.njk" %}
     </section>
     <section>
       <h2>Social Links</h2>

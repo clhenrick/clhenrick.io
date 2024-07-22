@@ -76,21 +76,3 @@ ul.social-links {
   /* horizontally aligns first li and p of each footer section */
   margin-top: -4px;
 }
-
-fieldset.color-scheme-toggle {
-  display: none;
-}
-
-.js-enabled fieldset.color-scheme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  font-size: 1rem;
-  margin-top: var(--spacing-md);
-  border: none;
-  padding: 0;
-}
-
-fieldset.color-scheme-toggle span {
-  font-weight: bold;
-}

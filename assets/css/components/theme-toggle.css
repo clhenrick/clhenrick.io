@@ -1,0 +1,21 @@
+fieldset.color-scheme-toggle {
+  display: none;
+}
+
+.js-enabled fieldset.color-scheme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: 1rem;
+  margin-top: var(--spacing-md);
+  border: none;
+  padding: 0;
+}
+
+fieldset.color-scheme-toggle span {
+  font-weight: bold;
+}
+
+fieldset.color-scheme-toggle label {
+  text-transform: capitalize;
+}
