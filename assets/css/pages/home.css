@@ -70,6 +70,16 @@ main section h2 {
   }
 }
 
+/* NOTE: duplicate code as above media query block */
+:root[data-theme="dark"] .banner-text {
+  color: var(--color-white);
+  text-shadow:
+  -1px -1px 0 var(--color-gray-90),
+   1px -1px 0 var(--color-gray-90),
+   -1px 1px 0 var(--color-gray-90),
+    1px 1px 0 var(--color-gray-90);
+}
+
 .banner-text h1 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
