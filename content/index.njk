@@ -13,8 +13,9 @@ pageSize: fullwidth
 
 <section class="banner full-viewport-width">
   {# NOTE: see `docs/homepage-banner-image-workflow.md` for how this markup and corresponding images were generated #}
-  <picture>
+  <picture id="home-banner-picture">
     <source
+      class="oakland-map-light"
       srcset="
       /img/oakland-map-light-450w.webp 450w,
       /img/oakland-map-light-900w.webp 900w,
@@ -29,6 +30,7 @@ pageSize: fullwidth
       sizes="100vw"
     />
     <source
+      class="oakland-map-light"
       srcset="
       /img/oakland-map-light-450w.jpeg 450w,
       /img/oakland-map-light-900w.jpeg 900w,
@@ -43,6 +45,7 @@ pageSize: fullwidth
       sizes="100vw"
     />
     <source
+      class="oakland-map-dark"
       srcset="
       /img/oakland-map-dark-450w.webp 450w,
       /img/oakland-map-dark-900w.webp 900w,
@@ -57,6 +60,7 @@ pageSize: fullwidth
       sizes="100vw"
     />
     <source
+      class="oakland-map-dark"
       srcset="
       /img/oakland-map-dark-450w.jpeg 450w,
       /img/oakland-map-dark-900w.jpeg 900w,
@@ -71,6 +75,8 @@ pageSize: fullwidth
       sizes="100vw"
     />
     <img
+      loading="eager"
+      decoding="sync"
       src="/img/oakland-map-light-1800w.jpeg"
       alt="{{ metadata.titleImageAlt }}"
       width="1800"
