@@ -1,34 +1,46 @@
-// TODO: respond to matchMedia change for prefers-color-scheme dark & light
-// TODO: consider moving homepage specific JS to separate script
-
+// TODO: consider moving homepage specific JS to separate script?
 /** handles the logic for the theme toggle radio group in themeToggle.njk */
 (() => {
   const documentEl = document.documentElement;
   const themePicker = document.querySelector("fieldset#site-theme-toggle");
   const bannerPicture = document.querySelector("#home-banner-picture");
-  const darkSources = document.querySelectorAll("#home-banner-picture source.oakland-map-dark");
-  const lightSources = document.querySelectorAll("#home-banner-picture source.oakland-map-light");
+  const darkSources = document.querySelectorAll(
+    "#home-banner-picture source.oakland-map-dark"
+  );
+  const lightSources = document.querySelectorAll(
+    "#home-banner-picture source.oakland-map-light"
+  );
   const mediaPrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const mediaPrefersLight = window.matchMedia("(prefers-color-scheme: light)");
 
   document.addEventListener("DOMContentLoaded", initThemeToggle);
 
-  function initThemeToggle() {
-    themePicker.addEventListener("change", handleChange);
-    setInitialTheme();
-  }
+  // handles an edge case where a theme override is selected that matches prefers-color-scheme and then the user updates prefers-color-scheme to the opposite theme. This currently only affects the home page banner image
+  mediaPrefersDark.addEventListener("change", handleMediaQueryChange);
+  mediaPrefersLight.addEventListener("change", handleMediaQueryChange);
 
-  /** handles setting the initial theme radio buttons checked state and home page banner image media override */
-  function setInitialTheme() {
+  function initThemeToggle() {
     const theme = localStorage.getItem("theme") || "auto";
-    // NOTE: theme is set on the <html> element in a separate script in the <head> to avoid a flash of un-themed content, see head.njk
-    themePicker
-      .querySelector(`input[value="${theme}"]`)
-      .setAttribute("checked", "");
+    themePicker.addEventListener("change", handleThemePickerChange);
+    setInitialTheme(theme);
     maybeUpdateHomeBannerImage(theme);
   }
 
+  function handleMediaQueryChange() {
+    const theme = documentEl.dataset.theme;
+    maybeUpdateHomeBannerImage(theme);
+  }
+
+  /** handles setting the initial theme radio buttons checked state and home page banner image media override */
+  function setInitialTheme(theme) {
+    // NOTE: theme is initially set on the <html> element in a separate script in the <head> to avoid a flash of un-themed content, see head.njk
+    themePicker
+      .querySelector(`input[value="${theme}"]`)
+      .setAttribute("checked", "");
+  }
+
   /** handles responding to a theme radio button change event */
-  function handleChange(event) {
+  function handleThemePickerChange(event) {
     const theme = event.target.value;
     if (theme === "auto") {
       delete documentEl.dataset.theme;
@@ -45,7 +57,7 @@
     if (!bannerPicture) return;
     const shouldSwitchSourceMedia =
       (theme === "light" && mediaPrefersDark.matches) ||
-      (theme === "dark" && !mediaPrefersDark.matches);
+      (theme === "dark" && mediaPrefersLight.matches);
     if (shouldSwitchSourceMedia) {
       flipHomepageBannerSourceMedia();
     } else {
