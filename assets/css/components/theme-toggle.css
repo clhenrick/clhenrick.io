@@ -7,7 +7,6 @@ fieldset#site-theme-toggle {
   align-items: center;
   gap: var(--spacing-md);
   font-size: 1rem;
-  margin-top: var(--spacing-md);
   border: none;
   padding: 0;
 }

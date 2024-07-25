@@ -65,7 +65,17 @@ ul.social-links {
 
 ul.meta-links {
   flex-wrap: wrap;
-  --gap: var(--spacing-lg);
+  --gap: var(--spacing-md);
+  line-height: 1;
+  margin-bottom: var(--spacing-md);
+}
+
+/* overrides reduced vertical spacing of wrapped meta-links on mobile / narrow viewports */
+@media screen and (min-width: 792px) {
+  ul.meta-links {
+    --gap: var(--spacing-lg);
+    line-height: inherit;
+  }
 }
 
 ul.meta-links a {
