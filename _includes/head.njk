@@ -77,7 +77,7 @@
   {% include "styles.njk" %}
 
   <script>
-    {# prevents a flash of un-themed content #}
+    {# NOTE: prevents a flash of un-themed content. See theme-toggle.js for related code. #}
     const theme = localStorage.getItem("theme");
     if (theme) {
       document.documentElement.dataset.theme = theme;
