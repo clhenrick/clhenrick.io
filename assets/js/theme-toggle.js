@@ -20,6 +20,7 @@
   mediaPrefersLight.addEventListener("change", handleMediaQueryChange);
 
   function initThemeToggle() {
+    // NOTE: theme is initially set on the <html> element in a separate script in the <head> to avoid a flash of un-themed content. See head.njk
     const theme = localStorage.getItem("theme") || "auto";
     themePicker.addEventListener("change", handleThemePickerChange);
     setInitialTheme(theme);
@@ -33,7 +34,6 @@
 
   /** handles setting the initial theme radio buttons checked state and home page banner image media override */
   function setInitialTheme(theme) {
-    // NOTE: theme is initially set on the <html> element in a separate script in the <head> to avoid a flash of un-themed content, see head.njk
     themePicker
       .querySelector(`input[value="${theme}"]`)
       .setAttribute("checked", "");
