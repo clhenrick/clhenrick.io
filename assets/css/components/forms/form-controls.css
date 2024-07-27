@@ -6,12 +6,12 @@ label {
 fieldset {
   padding: 0 var(--spacing-md);
   margin: 0 var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
-  border: 1px solid currentColor;
+  border: 1px solid currentcolor;
 }
 
 textarea,
-input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]) {
-  border: solid .1em currentColor;
+input:not([type="checkbox"], [type="file"], [type="image"], [type="radio"], [type="range"]) {
+  border: solid .1em currentcolor;
   border-radius: var(--border-radius);
   background-color: var(--background-color-secondary);
   padding: var(--spacing-xs);
@@ -19,13 +19,13 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
 }
 
 textarea::placeholder,
-input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"])::placeholder {
+input:not([type="checkbox"], [type="file"], [type="image"], [type="radio"], [type="range"])::placeholder {
   opacity: 0.8;
   color: inherit;
 }
 
 textarea:focus,
-input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]):focus {
+input:not([type="checkbox"], [type="file"], [type="image"], [type="radio"], [type="range"]):focus {
   outline: 0.15em solid var(--color-accent);
   box-shadow: var(--focus-style-box-shadow);
 }
