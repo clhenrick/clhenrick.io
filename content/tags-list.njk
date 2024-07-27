@@ -1,8 +1,9 @@
 ---
 permalink: /tags/
 layout: layouts/home.njk
+title: "All Blog Tags"
 ---
-<h1>Tags</h1>
+<h1>{{title}}</h1>
 
 <ul>
 {% for tag in collections.all | getAllTags | filterTagList %}
