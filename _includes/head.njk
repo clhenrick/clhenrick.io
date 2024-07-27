@@ -1,6 +1,9 @@
 {# Sitewide head element used in all pages #}
-{%- set headTitleBase = title or metadata.title %}
-{%- set headTitle = [headTitleBase, metadata.author.name].join(" – ") %}
+{%- set headTitleBase = title or metadata.author.name %}
+{%- set headTitle =
+  headTitleBase if headTitleBase.includes(metadata.author.name)
+  else [headTitleBase, metadata.author.name].join(" – ")
+-%}
 {%- set headDescription = teaser or description or metadata.description %}
 {%- set headImageAlt = imageAlt or metadata.titleImageAlt %}
 {%- set headImageType = imageType or metadata.titleImageType %}
