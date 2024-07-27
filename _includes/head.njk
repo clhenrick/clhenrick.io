@@ -70,8 +70,17 @@
       base/base,
       base/utils,
       components/button,
+      components/theme-toggle,
       layouts/header,
       layouts/footer
     {% endset %}
   {% include "styles.njk" %}
+
+  <script>
+    {# NOTE: prevents a flash of un-themed content. See theme-toggle.js for related code. #}
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      document.documentElement.dataset.theme = theme;
+    }
+  </script>
 </head>

@@ -42,11 +42,13 @@ main section h2 {
   object-position: center center;
 }
 
+:root[data-theme="light"] .banner-text,
 .banner-text {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
+  color: var(--text-color);
   text-align: center;
   padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
   margin: auto;
@@ -68,6 +70,16 @@ main section h2 {
      -1px 1px 0 var(--color-gray-90),
       1px 1px 0 var(--color-gray-90);
   }
+}
+
+/* NOTE: duplicate code as above media query block */
+:root[data-theme="dark"] .banner-text {
+  color: var(--color-white);
+  text-shadow:
+  -1px -1px 0 var(--color-gray-90),
+   1px -1px 0 var(--color-gray-90),
+   -1px 1px 0 var(--color-gray-90),
+    1px 1px 0 var(--color-gray-90);
 }
 
 .banner-text h1 {
