@@ -1,0 +1,41 @@
+/* styles for the site wide light / dark theme toggle */
+#site-theme-toggle {
+  display: none;
+}
+
+.js-enabled #site-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: 1rem;
+  border: none;
+  padding: 0;
+}
+
+#site-theme-toggle span {
+  font-weight: bold;
+}
+
+#site-theme-toggle label {
+  text-transform: capitalize;
+}
+
+#site-theme-toggle input[type="radio"]:focus {
+  outline: var(--focus-style-outline);
+}
+
+@supports (selector(:focus-visible)) and (selector(:has(a))) {
+  #site-theme-toggle input[type="radio"]:focus {
+    outline: none;
+  }
+
+  #site-theme-toggle .form-control {
+    border-radius: var(--border-radius);
+  }
+
+  /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */
+  #site-theme-toggle .form-control:has(:focus-visible) {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-outline-offset);
+  }
+}
