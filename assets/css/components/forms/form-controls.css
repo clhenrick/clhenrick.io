@@ -30,11 +30,6 @@ input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="r
   box-shadow: var(--focus-style-box-shadow);
 }
 
-input[type="checkbox"]:focus,
-input[type="radio"]:focus {
-  outline: none;
-}
-
 /* class applied to a div that wraps an input and label */
 .form-control {
   display: flex;
@@ -53,8 +48,22 @@ input[type="radio"]:focus {
   margin-bottom: var(--spacing-xs);
 }
 
-.form-control:focus-within {
-  box-shadow: var(--focus-style-box-shadow);
+.form-control input[type="checkbox"]:focus,
+.form-control input[type="radio"]:focus {
+  outline: var(--focus-style-outline);
+}
+
+@supports (selector(:focus-visible)) and (selector(:has(a))) {
+  .form-control input[type="checkbox"]:focus,
+  .form-control input[type="radio"]:focus {
+    outline: none;
+  }
+
+  /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */
+  .form-control:has(:focus-visible) {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-outline-offset);
+  }
 }
 
 .form-control > label {
