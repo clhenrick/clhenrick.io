@@ -4,10 +4,11 @@
   {# NOTE: we use a span here because <legend> doesn't play well with `display: flex` on the fieldset parent #}
   <span id="site-theme-toggle-label">Site Theme:</span>
   {%- for theme in themes %}
+  {%- set id = ["site-theme", theme] | join("-") %}
   <div class="form-control">
-    <label for="site-theme-{{ theme }}">
+    <label for="{{ id }}">
       <input
-        id="site-theme-{{ theme }}"
+        id="{{ id }}"
         type="radio"
         name="site-theme"
         value={{ theme }}
