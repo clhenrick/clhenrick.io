@@ -6,6 +6,7 @@ pagination:
 permalink: "work/{{ project.title | slugify }}/"
 tags: projects
 eleventyComputed:
+  title: "{{ project.title }}, Portfolio"
   eleventyNavigation:
     key: "{{ project.title }}"
     parent: "work"
