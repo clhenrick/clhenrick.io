@@ -1,8 +1,9 @@
-fieldset#site-theme-toggle {
+/* styles for the site wide light / dark theme toggle */
+#site-theme-toggle {
   display: none;
 }
 
-.js-enabled fieldset#site-theme-toggle {
+.js-enabled #site-theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-md);
@@ -11,24 +12,24 @@ fieldset#site-theme-toggle {
   padding: 0;
 }
 
-fieldset#site-theme-toggle span {
+#site-theme-toggle span {
   font-weight: bold;
 }
 
-fieldset#site-theme-toggle label {
+#site-theme-toggle label {
   text-transform: capitalize;
 }
 
 /* TODO: use existing .form-control styles from form-control.css after refactoring them */
-fieldset#site-theme-toggle input[type="radio"]:focus {
+#site-theme-toggle input[type="radio"]:focus {
   outline: none;
 }
 
-fieldset#site-theme-toggle .form-control {
+#site-theme-toggle .form-control {
   border-radius: var(--border-radius);
 }
 
-fieldset#site-theme-toggle .form-control:focus-within {
+#site-theme-toggle .form-control:has(:focus-visible) {
   outline: var(--focus-style-outline);
   outline-offset: var(--focus-style-outline-offset);
 }

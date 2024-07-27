@@ -2,13 +2,13 @@
 /** handles the logic for the theme toggle radio group in themeToggle.njk */
 (() => {
   const documentEl = document.documentElement;
-  const themePicker = document.querySelector("fieldset#site-theme-toggle");
+  const themePicker = document.querySelector("#site-theme-toggle");
   const bannerPicture = document.querySelector("#home-banner-picture");
-  const darkSources = document.querySelectorAll(
-    "#home-banner-picture source.oakland-map-dark"
+  const darkSources = bannerPicture?.querySelectorAll(
+    "source.oakland-map-dark"
   );
-  const lightSources = document.querySelectorAll(
-    "#home-banner-picture source.oakland-map-light"
+  const lightSources = bannerPicture?.querySelectorAll(
+    "source.oakland-map-light"
   );
   const mediaPrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
   const mediaPrefersLight = window.matchMedia("(prefers-color-scheme: light)");
