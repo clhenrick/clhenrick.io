@@ -18,3 +18,17 @@ fieldset#site-theme-toggle span {
 fieldset#site-theme-toggle label {
   text-transform: capitalize;
 }
+
+/* TODO: use existing .form-control styles from form-control.css after refactoring them */
+fieldset#site-theme-toggle input[type="radio"]:focus {
+  outline: none;
+}
+
+fieldset#site-theme-toggle .form-control {
+  border-radius: var(--border-radius);
+}
+
+fieldset#site-theme-toggle .form-control:focus-within {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
+}
