@@ -18,9 +18,11 @@ select {
 
   /* Stack above custom arrow */
   z-index: 1;
+}
 
-  /* NOTE: focus added via .select-menu:focus-within */
-  outline: none;
+select:focus {
+  /* NOTE: overridden further below if :has and :focus-visible selectors are supported */
+  outline: var(--focus-style-outline);
 }
 
 /* Remove dropdown arrow in IE10 & IE11 */
@@ -57,9 +59,15 @@ select::-ms-expand {
   clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
 
-.select-menu:focus-within {
-  outline: 0.15em solid var(--color-accent);
-  box-shadow: var(--focus-style-box-shadow);
+@supports (selector(:focus-visible)) and (selector(:has(a))) {
+  select:focus {
+    outline: transparent;
+  }
+
+  .select-menu:has(:focus-visible) {
+    outline: 0.15em solid var(--color-accent);
+    box-shadow: var(--focus-style-box-shadow);
+  }
 }
 
 .select-menu--disabled {
