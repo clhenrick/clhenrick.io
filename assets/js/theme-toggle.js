@@ -42,6 +42,8 @@
   /** handles responding to a theme radio button change event */
   function handleThemePickerChange(event) {
     const theme = event.target.value;
+    // prevent outline from showing on theme-toggle legend
+    event.stopPropagation();
     if (theme === "auto") {
       delete documentEl.dataset.theme;
       localStorage.removeItem("theme");
