@@ -1,20 +1,24 @@
-{# site color theme toggle that currently resides in the site's footer #}
+{# theme-toggle.css: site wide theme toggle that currently resides in the site's footer #}
 {%- set themes = ["light", "dark", "auto"]  -%}
-<fieldset id="site-theme-toggle" aria-labelledby="site-theme-toggle-label">
+<fieldset
+  id="site-theme-toggle"
+  aria-labelledby="site-theme-toggle-label"
+  tabindex="-1"
+>
   {# NOTE: we use a span here because <legend> doesn't play well with `display: flex` on the fieldset parent #}
   <span id="site-theme-toggle-label">Site Theme:</span>
   {%- for theme in themes %}
-  {%- set id = ["site-theme", theme] | join("-") %}
-  <div class="form-control">
-    <label for="{{ id }}">
-      <input
-        id="{{ id }}"
-        type="radio"
-        name="site-theme"
-        value="{{ theme }}"
-      >
-      {{ theme }}
-    </label>
-  </div>
+    {%- set id = ["site-theme", theme] | join("-") %}
+    <div class="form-control">
+      <label for="{{ id }}">
+        <input
+          id="{{ id }}"
+          type="radio"
+          name="site-theme"
+          value="{{ theme }}"
+        >
+        {{ theme }}
+      </label>
+    </div>
   {%- endfor %}
 </fieldset>

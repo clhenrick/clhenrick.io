@@ -5,11 +5,12 @@
 
 .js-enabled #site-theme-toggle {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--spacing-md);
   font-size: 1rem;
-  border: none;
+  margin: 0;
   padding: 0;
+  border: none;
 }
 
 #site-theme-toggle span {
@@ -24,13 +25,15 @@
   outline: var(--focus-style-outline);
 }
 
+#site-theme-toggle .form-control {
+  border-radius: var(--border-radius);
+  /* undoes margin top / bottom in form-controls.css */
+  margin: 0;
+}
+
 @supports (selector(:focus-visible)) and (selector(:has(a))) {
   #site-theme-toggle input[type="radio"]:focus {
     outline: none;
-  }
-
-  #site-theme-toggle .form-control {
-    border-radius: var(--border-radius);
   }
 
   /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */
