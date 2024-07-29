@@ -13,11 +13,6 @@
   border: none;
 }
 
-.js-enabled #site-theme-toggle:focus {
-  outline: var(--focus-style-outline);
-  outline-offset: var(--focus-style-outline-offset);
-}
-
 #site-theme-toggle span {
   font-weight: bold;
 }
