@@ -98,7 +98,7 @@
 
 .card:focus-within a[href]:focus {
   text-decoration: none;
-  outline: none;
+  outline: transparent;
   box-shadow: none;
 }
 

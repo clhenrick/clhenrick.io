@@ -12,8 +12,8 @@ tags:
 ---
 
 <style>
-  #site-theme-toggle:focus {
-    outline: var(--focus-style-outline);
+  #site-theme-toggle:target {
+    outline: 5px solid var(--color-accent);
     outline-offset: var(--focus-style-outline-offset);
   }
 </style>

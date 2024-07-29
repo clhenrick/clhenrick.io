@@ -252,7 +252,7 @@ small {
 
 :where(a[href]:hover, a[href]:focus) {
   color: var(--color-accent-focus);
-  outline: none;
+  outline: transparent;
   text-decoration-thickness: 0.5rem;
   text-decoration-skip-ink: none;
 }
