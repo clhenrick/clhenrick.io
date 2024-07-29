@@ -2,12 +2,13 @@
 layout: layouts/about.njk
 title: Accessibility Statement
 date: 2024-07-16
+updated: 2024-07-28
 description: "How this website adheres to WCAG conformance and inclusive design best practices."
 ---
 
 # {{title}}
 
-This is an accessibility statement from the owner and creator of this website, {{ metadata.author.name }}. This statement was created on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time> with help from the [W3C Accessibility Statement Generator Tool](https://www.w3.org/WAI/planning/statements/).
+This is an accessibility statement from the owner and creator of this website, {{ metadata.author.name }}. This statement was created on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time> with help from the [W3C Accessibility Statement Generator Tool](https://www.w3.org/WAI/planning/statements/). It was last updated on <time datetime="{{ updated | htmlDateString}}">{{ updated | readableDate }}<time>.
 
 This website achieves partial level AA compliance for the [Web Content Accessibility Guidelines (WCAG) version 2.2](https://www.w3.org/TR/WCAG22/). WCAG is widely acknowledged by accessibility professionals as well as local, state, and federal government (including the [Americans with Disabilities Act](https://www.ada.gov/resources/small-entity-compliance-guide/)) within the United States as a standard for evaluating whether websites are considered digitally accessible. In addition to working towards WCAG level AA conformance, this website's features and functionality strive to follow usability and [inclusive design](https://en.wikipedia.org/wiki/Inclusive_design) best practices.
 
@@ -67,6 +68,8 @@ Known gaps in accessibility in this site which I plan on remediating are as foll
 
 - **Video alternatives:** video embeds may exist in some pages of this site that do not have alternatives such as closed captions or transcripts. I plan on adding closed captions and transcripts for these videos.
 
+All known accessibility bugs have been documented in [this site's Github repository]({{ metadata.githubRepository }}/issues?q=is%3Aopen+is%3Aissue+label%3Aa11y). You may also view [accessibility bugs that have been fixed]({{ metadata.githubRepository }}/issues?q=is%3Aissue+label%3Aa11y+is%3Aclosed).
+
 ## Assessment approaches
 
 {{ metadata.author.name }} assessed the accessibility of {{ metadata.title }} through utilizing the following self-evaluation approaches:
@@ -87,6 +90,7 @@ Lastly, I would like to thank the many web accessibility practitioners who work 
 - [Sara Soueidan](https://www.sarasoueidan.com/)
 - [Adrian Roselli](https://adrianroselli.com/)
 - [Scott O'Hara](https://www.scottohara.me/)
+- [Heydon Pickering](https://heydonworks.com/)
 - [Eric Bailey](https://ericwbailey.design/)
 - Everyone who is active on and helps run the [A11Y Slack Group](https://web-a11y.slack.com/)
 - [Web Accessibility Initiative](https://www.w3.org/WAI/)

@@ -8,7 +8,7 @@ module.exports = {
   language: "en",
   description: "The website, blog, and portfolio of Chris L Henrick, front-end web developer and design engineer.",
   environment: process.env.NODE_ENV,
-  githubRepository: "https://github.com/clhenrick/portfolio-new",
+  githubRepository: "https://github.com/clhenrick/clhenrick.io",
   author: {
     name: "Chris Henrick",
     email: "chrishenrick@gmail.com",
