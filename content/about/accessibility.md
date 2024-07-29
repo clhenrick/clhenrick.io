@@ -68,6 +68,8 @@ Known gaps in accessibility in this site which I plan on remediating are as foll
 
 - **Video alternatives:** video embeds may exist in some pages of this site that do not have alternatives such as closed captions or transcripts. I plan on adding closed captions and transcripts for these videos.
 
+All known accessibility bugs have been documented in [this site's Github repository]({{ metadata.githubRepository }}/issues?q=is%3Aopen+is%3Aissue+label%3Aa11y). You may also view [accessibility bugs that have been fixed]({{ metadata.githubRepository }}/issues?q=is%3Aissue+label%3Aa11y+is%3Aclosed).
+
 ## Assessment approaches
 
 {{ metadata.author.name }} assessed the accessibility of {{ metadata.title }} through utilizing the following self-evaluation approaches:
@@ -88,6 +90,7 @@ Lastly, I would like to thank the many web accessibility practitioners who work 
 - [Sara Soueidan](https://www.sarasoueidan.com/)
 - [Adrian Roselli](https://adrianroselli.com/)
 - [Scott O'Hara](https://www.scottohara.me/)
+- [Heydon Pickering](https://heydonworks.com/)
 - [Eric Bailey](https://ericwbailey.design/)
 - Everyone who is active on and helps run the [A11Y Slack Group](https://web-a11y.slack.com/)
 - [Web Accessibility Initiative](https://www.w3.org/WAI/)
