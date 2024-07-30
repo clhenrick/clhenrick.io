@@ -126,6 +126,12 @@ html {
   overflow-y: scroll;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   font-family: var(--font-family);
   font-size: var(--text-size-md);
