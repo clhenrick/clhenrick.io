@@ -61,9 +61,14 @@
   border: 1px solid;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition:
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    transition:
     border ease-in .2s,
     box-shadow ease-in .2s;
+  }
 }
 
 .card[hidden] {
