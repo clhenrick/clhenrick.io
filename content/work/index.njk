@@ -16,20 +16,23 @@ eleventyNavigation:
 
 <h1>Portfolio</h1>
 
-<p>
+<details open>
+  <summary>About</summary>
+  <p>
   Featured projects I've created or contributed to over the years. This work spans the domains of web development and design, interactive data visualization, user interface design, interaction design, and cartographic design.
 </p>
+</details>
 
-<p id="filter-projects">
-  <strong>Filter Projects</strong>
-</p>
-<div role="group" class="project-filters" aria-labelledby="filter-projects">
-  <button value="all" class="button filter" aria-pressed="true">all</button>
-  <button value="web" class="button filter" aria-pressed="false">interactive</button>
-  <button value="data-viz" class="button filter" aria-pressed="false">data viz</button>
-  <button value="cartography" class="button filter" aria-pressed="false">cartography</button>
-  <button class="button shuffle">shuffle!</button>
-</div>
+<details open data-id="project-filters-disclosure">
+  <summary id="filter-projects-title">Filter Projects</summary>
+  <div role="group" class="project-filters" aria-labelledby="filter-projects-title">
+    <button value="all" class="button filter" aria-pressed="true">all</button>
+    <button value="web" class="button filter" aria-pressed="false">interactive</button>
+    <button value="data-viz" class="button filter" aria-pressed="false">data viz</button>
+    <button value="cartography" class="button filter" aria-pressed="false">cartography</button>
+    <button class="button shuffle">shuffle!</button>
+  </div>
+</details>
 
 <ul class="cards-container" role="list">
   {% for project in work %}
