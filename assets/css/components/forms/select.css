@@ -65,8 +65,8 @@ select::-ms-expand {
   }
 
   .select-menu:has(:focus-visible) {
-    outline: 0.15em solid var(--color-accent);
-    box-shadow: var(--focus-style-box-shadow);
+    outline: 3px solid var(--background-color);
+    box-shadow: var(--focus-style-button-box-shadow);
   }
 }
 
