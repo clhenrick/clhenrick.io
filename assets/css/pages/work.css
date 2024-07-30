@@ -3,14 +3,14 @@ main p:first-of-type {
 }
 
 /* hide filter buttons and filter button group label when JavaScript is not enabled */
-#filter-projects,
+[data-id="project-filters-disclosure"],
 .project-filters {
   display: none;
 }
 
-.js-enabled #filter-projects {
+.js-enabled [data-id="project-filters-disclosure"] {
   display: block;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
 }
 
 .js-enabled .project-filters {

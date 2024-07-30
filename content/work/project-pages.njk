@@ -12,6 +12,7 @@ eleventyComputed:
 ---
 
 {%- set partials %}
+  components/disclosure,
   components/embed,
   pages/project-pages
 {%- endset %}
@@ -63,7 +64,10 @@ eleventyComputed:
 <section>
   <h2>Project Details</h2>
   {% if project.description_long %}
-    {{ project.description_long | markdown | safe }}
+    <details open>
+      <summary>About {{ project.title }}</summary>
+      {{ project.description_long | markdown | safe }}
+    </details>
   {% endif %}
 
   {% if project.video %}
@@ -103,3 +107,9 @@ eleventyComputed:
     <span aria-hidden="true">&#8679;</span>
   </a>
 </nav>
+
+{%- set javascripts -%}
+  disclosure-widgets
+{%- endset -%}
+{%- set bucket = "project-pages" -%}
+{%- include "scripts.njk" -%}
