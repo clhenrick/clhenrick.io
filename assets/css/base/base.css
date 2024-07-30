@@ -188,6 +188,10 @@ h2[id]:target,
 h3[id]:target,
 h4[id]:target,
 h5[id]:target {
+  margin-left: calc(-1 * var(--spacing-md));
+  margin-right: calc(-1 * var(--spacing-md));
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
   color: var(--color-accent-invert);
   background-color: var(--color-accent);
 }
