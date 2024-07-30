@@ -37,7 +37,7 @@ header.page-header {
 
 .page-header a[href]:focus-visible,
 .page-header button.nav-button:focus-visible {
-  outline: none;
+  outline: transparent;
   box-shadow: inset var(--focus-style-box-shadow);
 }
 

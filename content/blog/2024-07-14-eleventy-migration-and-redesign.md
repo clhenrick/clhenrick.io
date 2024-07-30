@@ -11,13 +11,6 @@ tags:
   - Design
 ---
 
-<style>
-  #site-theme-toggle:focus {
-    outline: var(--focus-style-outline);
-    outline-offset: var(--focus-style-outline-offset);
-  }
-</style>
-
 ## Introduction
 
 Earlier this year I began migrating this website, [{{ metadata.title }}]({{ metadata.url }}), from [Jekyll](https://jekyllrb.com/) to [Eleventy (11ty)](https://www.11ty.dev/). There were a bunch of underlying factors that pushed me to do the migration, which I'll discuss in this post. Unlike other posts I've previously written, I won't really dive into the technical aspects of the process (okay let's be real, there will obviously still be some technical details included here), this will be more about the "why" then the "how". The migration presented an opportunity for redesigning some pieces of the site which I'll also touch on here.

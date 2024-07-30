@@ -126,6 +126,12 @@ html {
   overflow-y: scroll;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   font-family: var(--font-family);
   font-size: var(--text-size-md);
@@ -178,13 +184,25 @@ h5 {
 }
 
 /* sets focus style on jump link fragments */
-h2[id]:focus,
-h3[id]:focus,
-h4[id]:focus,
-h5[id]:focus {
-  outline: var(--focus-style-outline);
-  outline-offset: var(--focus-style-outline-offset);
-  border-radius: var(--border-radius);
+h2[id]:target,
+h3[id]:target,
+h4[id]:target,
+h5[id]:target {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  h2[id]:target,
+  h3[id]:target,
+  h4[id]:target,
+  h5[id]:target {
+    transition: background-color 1s ease-in-out;
+
+    @starting-style {
+      background-color: transparent;
+    }
+  }
 }
 
 h1 {
@@ -252,7 +270,7 @@ small {
 
 :where(a[href]:hover, a[href]:focus) {
   color: var(--color-accent-focus);
-  outline: none;
+  outline: transparent;
   text-decoration-thickness: 0.5rem;
   text-decoration-skip-ink: none;
 }

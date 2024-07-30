@@ -53,8 +53,8 @@ footer a[href]:hover {
 }
 
 footer a[href]:focus-visible {
-  box-shadow: var(--focus-style-box-shadow);
   outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
   text-decoration: none;
 }
 
