@@ -80,15 +80,6 @@ A personally important aspect of the initial research to me included ensuring th
 
 What I eventually decided on for the Activity Map's HTML is more or less the following:
 
-<style>
-  figcaption {
-    color: rgb(221, 221, 221);
-    font-size: 1em;
-    font-style: italic;
-    margin-bottom: 1em;
-  }
-</style>
-
 ```html
 <!-- container element for the block -->
 <article
