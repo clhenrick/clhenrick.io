@@ -18,6 +18,15 @@
   outline-offset: var(--focus-style-outline-offset);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  #site-theme-toggle:target {
+    transition: outline 3s ease-in-out;
+    @starting-style {
+      outline: transparent;
+    }
+  }
+}
+
 #site-theme-toggle span {
   font-weight: bold;
 }
