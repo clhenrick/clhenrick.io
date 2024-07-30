@@ -13,6 +13,11 @@
   border: none;
 }
 
+#site-theme-toggle:target {
+  outline: 5px solid var(--color-accent);
+  outline-offset: var(--focus-style-outline-offset);
+}
+
 #site-theme-toggle span {
   font-weight: bold;
 }
