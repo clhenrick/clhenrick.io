@@ -106,3 +106,9 @@ eleventyComputed:
     <span aria-hidden="true">&#8679;</span>
   </a>
 </nav>
+
+{%- set javascripts -%}
+  work-shared
+{%- endset -%}
+{%- set bucket = "project-pages" -%}
+{%- include "scripts.njk" -%}

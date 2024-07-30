@@ -1,3 +1,4 @@
+// handles filtering project cards in /content/work/index.njk
 (() => {
   const cards = Array.from(document.querySelectorAll(".card"));
   const cardsContainer = document.querySelector(".cards-container");
