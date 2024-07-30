@@ -10,7 +10,7 @@ main p:first-of-type {
 
 .js-enabled [data-id="project-filters-disclosure"] {
   display: block;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
 }
 
 .js-enabled .project-filters {
