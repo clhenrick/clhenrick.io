@@ -79,6 +79,10 @@
 .card:focus-within {
   border: 1px solid transparent;
   box-shadow: var(--focus-style-box-shadow);
+  /* fallback for forced colors / high contrast mode */
+  outline-color: transparent;
+  outline-width: 4px;
+  outline-offset: var(--focus-style-outline-offset);
 }
 
 .card h2 {
