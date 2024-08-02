@@ -75,7 +75,11 @@
   display: none;
 }
 
-.card:hover,
+.card:hover {
+  border: 1px solid transparent;
+  box-shadow: var(--focus-style-box-shadow);
+}
+
 .card:focus-within {
   outline: var(--focus-style-outline);
   outline-offset: var(--focus-style-outline-offset);
