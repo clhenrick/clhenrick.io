@@ -1,5 +1,6 @@
 /* header used at the top of all pages, including site primary-navigation */
 header.page-header {
+  --focus-color: transparent;
   background-color: var(--background-color-secondary);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
@@ -37,7 +38,7 @@ header.page-header {
 
 .page-header a[href]:focus-visible,
 .page-header button.nav-button:focus-visible {
-  outline: transparent;
+  outline: var(--focus-style-outline);
   box-shadow: inset var(--focus-style-box-shadow);
 }
 
