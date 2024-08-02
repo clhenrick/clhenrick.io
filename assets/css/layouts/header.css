@@ -68,6 +68,11 @@ header.page-header {
   white-space: initial;
 }
 
+.page-header a[href].skip-link:hover {
+  /* prevents possible situation where text has very low contrast when skip link is visible and hovered on */
+  color: inherit;
+}
+
 @supports not selector(:focus-visible) {
   .page-header a[href].skip-link:focus {
     height: auto;
