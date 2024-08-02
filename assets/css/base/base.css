@@ -61,7 +61,7 @@
   --desktop-max-width: var(--page-size-normal);
   --main-nav-height: 3.375rem;
 
-  --focus-style-outline: 0.15em solid var(--focus-color, --color-accent);
+  --focus-style-outline: 0.15em solid var(--focus-color, var( --color-accent));
   --focus-style-outline-offset: var(--spacing-xxs);
   --focus-style-box-shadow: 0 0 0 4px var(--color-accent);
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
