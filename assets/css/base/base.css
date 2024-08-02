@@ -172,7 +172,14 @@ main:first-child {
 /* handles focus style for header .skip-link */
 main:focus-visible {
   outline: var(--focus-style-outline);
-  outline-offset: calc(-1 * var(--focus-style-outline-offset));
+  outline-offset: calc(-1 * var(--focus-style-width));
+}
+
+@supports not selector(:focus-visible) {
+  main:focus {
+    outline: var(--focus-style-outline);
+    outline-offset: calc(-1 * var(--focus-style-width));
+  }
 }
 
 h1,

@@ -17,3 +17,10 @@
   outline: var(--focus-style-outline);
   outline-offset: var(--focus-style-outline-offset);
 }
+
+@supports not selector(:focus-visible) {
+  :where(summary:focus) {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-outline-offset);
+  }
+}
