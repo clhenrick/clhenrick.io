@@ -46,12 +46,12 @@ module.exports = function (eleventyConfig) {
   if (process.env.NODE_ENV !== "production") {
     eleventyConfig.addPassthroughCopy("assets/js");
     eleventyConfig.addPassthroughCopy("assets/css");
-    eleventyConfig.addPassthroughCopy({
-      "node_modules/a11y-syntax-highlighting/dist/prism/a11y-dark.css":
-        "assets/css/prism/ally-dark.css",
-      "node_modules/a11y-syntax-highlighting/dist/prism/a11y-light.css":
-        "assets/css/prism/a11y-light.css",
-    });
+    eleventyConfig.addPassthroughCopy(
+      "node_modules/a11y-syntax-highlighting/dist/prism/a11y-dark.css"
+    );
+    eleventyConfig.addPassthroughCopy(
+      "node_modules/a11y-syntax-highlighting/dist/prism/a11y-light.css"
+    );
   }
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
