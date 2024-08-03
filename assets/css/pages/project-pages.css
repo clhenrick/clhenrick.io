@@ -22,7 +22,6 @@ ul.screenshots picture {
 }
 
 nav.secondary {
-  --focus-color: transparent;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -41,12 +40,10 @@ nav.secondary a {
 
 nav.secondary a:focus-visible {
   outline: var(--focus-style-outline);
-  box-shadow: var(--focus-style-box-shadow);
 }
 
 @supports not selector(:focus-visible) {
   nav.secondary a:focus {
     outline: var(--focus-style-outline);
-    box-shadow: var(--focus-style-box-shadow);
   }
 }
