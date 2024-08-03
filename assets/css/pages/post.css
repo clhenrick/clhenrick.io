@@ -21,6 +21,18 @@ pre[class*="language-"] {
   font-size: 1rem;
 }
 
+pre[class*="language-"][tabindex="0"]:focus-visible {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-width);
+}
+
+@supports not selector(:focus-visible) {
+  pre[class*="language-"][tabindex="0"]:focus {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-width);
+  }
+}
+
 dl.post-metadata dd {
   font-weight: bold;
 }
