@@ -3,13 +3,14 @@ layout: layouts/base.njk
 ---
 {# TODO: add a11y-light.css and adjust for light & dark themes #}
 {%- set partials %}
-  node_modules/a11y-syntax-highlighting/dist/prism/a11y-dark.css,
+  components/code,
   components/forms/form-controls,
   components/forms/select,
   pages/post
 {%- endset %}
 {%- set bucket = "post" %}
 {% include "styles.njk" %}
+{% include "codeStyles.njk" %}
 
 <h1>{{ title }}</h1>
 
