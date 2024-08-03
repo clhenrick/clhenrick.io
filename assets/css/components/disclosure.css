@@ -5,7 +5,7 @@
 :where(summary) {
   font-weight: bold;
   border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
 }
 
 :where(summary:hover) {
@@ -16,4 +16,11 @@
 :where(summary:focus-visible) {
   outline: var(--focus-style-outline);
   outline-offset: var(--focus-style-outline-offset);
+}
+
+@supports not selector(:focus-visible) {
+  :where(summary:focus) {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-outline-offset);
+  }
 }

@@ -38,6 +38,16 @@ nav.secondary a {
   text-decoration: none;
 }
 
+nav.secondary a:first-child {
+  padding-right: var(--spacing-sm);
+}
+
 nav.secondary a:focus-visible {
-  box-shadow: var(--focus-style-box-shadow);
+  outline: var(--focus-style-outline);
+}
+
+@supports not selector(:focus-visible) {
+  nav.secondary a:focus {
+    outline: var(--focus-style-outline);
+  }
 }

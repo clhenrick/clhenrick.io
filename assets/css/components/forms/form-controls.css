@@ -56,7 +56,7 @@ input:not([type="checkbox"], [type="file"], [type="image"], [type="radio"], [typ
 @supports (selector(:focus-visible)) and (selector(:has(a))) {
   .form-control input[type="checkbox"]:focus,
   .form-control input[type="radio"]:focus {
-    outline: transparent;
+    outline-color: transparent;
   }
 
   /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */

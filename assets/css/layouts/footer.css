@@ -58,6 +58,14 @@ footer a[href]:focus-visible {
   text-decoration: none;
 }
 
+@supports not selector(:focus-visible) {
+  footer a[href]:focus {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-outline-offset);
+    text-decoration: none;
+  }
+}
+
 ul.meta-links,
 ul.social-links {
   margin-bottom: 0;

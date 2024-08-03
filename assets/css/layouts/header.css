@@ -37,8 +37,18 @@ header.page-header {
 
 .page-header a[href]:focus-visible,
 .page-header button.nav-button:focus-visible {
-  outline: transparent;
-  box-shadow: inset var(--focus-style-box-shadow);
+  outline: var(--focus-style-outline);
+  /* NOTE: negative offset used to prevent focus indicator from being obscured */
+  outline-offset: calc(-1 * var(--focus-style-width));
+}
+
+@supports not selector(:focus-visible) {
+  .page-header a[href]:focus,
+  .page-header button.nav-button:focus {
+    outline: var(--focus-style-outline);
+    /* NOTE: negative offset used to prevent focus indicator from being obscured */
+    outline-offset: calc(-1 * var(--focus-style-width));
+  }
 }
 
 .page-header a[href].skip-link {
@@ -56,6 +66,22 @@ header.page-header {
   clip-path: initial;
   overflow: initial;
   white-space: initial;
+}
+
+.page-header a[href].skip-link:hover {
+  /* prevents possible situation where text has very low contrast when skip link is visible and hovered on */
+  color: inherit;
+}
+
+@supports not selector(:focus-visible) {
+  .page-header a[href].skip-link:focus {
+    height: auto;
+    width: auto;
+    clip: initial;
+    clip-path: initial;
+    overflow: initial;
+    white-space: initial;
+  }
 }
 
 @media screen and (min-width: 748px) {
