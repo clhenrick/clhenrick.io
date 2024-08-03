@@ -49,9 +49,6 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy(
       "node_modules/a11y-syntax-highlighting/dist/prism/a11y-dark.css"
     );
-    eleventyConfig.addPassthroughCopy(
-      "node_modules/a11y-syntax-highlighting/dist/prism/a11y-light.css"
-    );
   }
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
