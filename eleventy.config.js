@@ -47,7 +47,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("assets/js");
     eleventyConfig.addPassthroughCopy("assets/css");
     eleventyConfig.addPassthroughCopy(
-      "node_modules/prismjs/themes/prism-okaidia.css"
+      "node_modules/a11y-syntax-highlighting/dist/prism/a11y-dark.css"
     );
   }
 
