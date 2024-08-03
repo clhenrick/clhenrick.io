@@ -61,7 +61,9 @@
   --desktop-max-width: var(--page-size-normal);
   --main-nav-height: 3.375rem;
 
-  --focus-style-outline: 0.15em solid var(--color-accent);
+  --focus-color: var(--color-accent);
+  --focus-style-width: 0.15em;
+  --focus-style-outline: var(--focus-style-width) solid var(--focus-color);
   --focus-style-outline-offset: var(--spacing-xxs);
   --focus-style-box-shadow: 0 0 0 4px var(--color-accent);
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
@@ -170,7 +172,14 @@ main:first-child {
 /* handles focus style for header .skip-link */
 main:focus-visible {
   outline: var(--focus-style-outline);
-  outline-offset: calc(-1 * var(--focus-style-outline-offset));
+  outline-offset: calc(-1 * var(--focus-style-width));
+}
+
+@supports not selector(:focus-visible) {
+  main:focus {
+    outline: var(--focus-style-outline);
+    outline-offset: calc(-1 * var(--focus-style-width));
+  }
 }
 
 h1,
