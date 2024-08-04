@@ -4,22 +4,63 @@
  * @author ericwbailey
  */
 
-/* NOTE: these color variables were extracted from a11y-syntax-highlighting/dist/json/a11y.json */
 :root,
 :root[data-theme="light"] {
-  --code-color-background: var(--color-syntax-white);
-  --code-color-text-base: var(--color-syntax-emperor);
+  --color-syntax-1: #545454;
+  --color-syntax-2: #fefefe;
+  --color-syntax-3: #696969;
+  --color-syntax-4: #545454;
+  --color-syntax-5: #007299;
+  --color-syntax-6: #008000;
+  --color-syntax-7: #aa5d00;
+  --color-syntax-8: #008000;
+  --color-syntax-9: #aa5d00;
+  --color-syntax-10: #d91e18;
+  --color-syntax-11: #d91e18;
+  --color-syntax-12: rgba(183, 134, 11, 0.075);
+  --color-syntax-13: #b8860b;
+  --color-syntax-14: #b8860b;
+  --color-syntax-15: #aa5d00;
+  --color-syntax-16: #696969;
 }
 
 :root[data-theme="dark"] {
-  --code-color-background: var(--color-syntax-mine-shaft);
-  --code-color-text-base: var(--color-syntax-spring-wood);
+  --color-syntax-1: #f8f8f2;
+  --color-syntax-2: #2b2b2b;
+  --color-syntax-3: #d4d0ab;
+  --color-syntax-4: #fefefe;
+  --color-syntax-5: #ffa07a;
+  --color-syntax-6: #00e0e0;
+  --color-syntax-7: #abe338;
+  --color-syntax-8: #00e0e0;
+  --color-syntax-9: #ffd700;
+  --color-syntax-10: #00e0e0;
+  --color-syntax-11: #ffd700;
+  --color-syntax-12: rgba(255, 217, 0, 0.1);
+  --color-syntax-13: rgba(255, 217, 0, 0.55);
+  --color-syntax-14: rgba(255, 217, 0, 0.55);
+  --color-syntax-15: #f8f8f2;
+  --color-syntax-16: #d4d0ab;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --code-color-background: var(--color-syntax-mine-shaft);
-    --code-color-text-base: var(--color-syntax-spring-wood);
+  :root:not([data-theme]) {
+    --color-syntax-1: #f8f8f2;
+    --color-syntax-2: #2b2b2b;
+    --color-syntax-3: #d4d0ab;
+    --color-syntax-4: #fefefe;
+    --color-syntax-5: #ffa07a;
+    --color-syntax-6: #00e0e0;
+    --color-syntax-7: #abe338;
+    --color-syntax-8: #00e0e0;
+    --color-syntax-9: #ffd700;
+    --color-syntax-10: #00e0e0;
+    --color-syntax-11: #ffd700;
+    --color-syntax-12: rgba(255, 217, 0, 0.1);
+    --color-syntax-13: rgba(255, 217, 0, 0.55);
+    --color-syntax-14: rgba(255, 217, 0, 0.55);
+    --color-syntax-15: #f8f8f2;
+    --color-syntax-16: #d4d0ab;
   }
 }
 
@@ -28,7 +69,7 @@
  */
 code[class*="language-"],
 pre[class*="language-"] {
-  color: var(--code-color-text-base);
+  color: var(--color-syntax-1);
   background: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
@@ -58,7 +99,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: var(--code-color-background);
+  background: var(--color-syntax-2);
 }
 
 /* Inline code */
@@ -72,11 +113,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #d4d0ab;
+  color: var(--color-syntax-3);
 }
 
 .token.punctuation {
-  color: #fefefe;
+  color: var(--color-syntax-4);
 }
 
 .token.property,
@@ -84,12 +125,12 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #ffa07a;
+  color: var(--color-syntax-5);
 }
 
 .token.boolean,
 .token.number {
-  color: #00e0e0;
+  color: var(--color-syntax-6);
 }
 
 .token.selector,
@@ -98,7 +139,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #abe338;
+  color: var(--color-syntax-7);
 }
 
 .token.operator,
@@ -107,22 +148,22 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #00e0e0;
+  color: var(--color-syntax-8);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function {
-  color: #ffd700;
+  color: var(--color-syntax-9);
 }
 
 .token.keyword {
-  color: #00e0e0;
+  color: var(--color-syntax-10);
 }
 
 .token.regex,
 .token.important {
-  color: #ffd700;
+  color: var(--color-syntax-11);
 }
 
 .token.important,
@@ -139,27 +180,27 @@ pre[class*="language-"] {
 
 /*
   Plugin support
-  */
+ */
 
 /* Line highlight */
 .line-highlight {
-  background: rgba(255, 217, 0, 0.1);
-  border-top: 1px solid rgba(255, 217, 0, 0.55);
-  border-bottom: 1px solid rgba(255, 217, 0, 0.55);
+  background: var(--color-syntax-12);
+  border-top: 1px solid var(--color-syntax-13);
+  border-bottom: 1px solid var(--color-syntax-14);
 }
 
 /* Line numbers */
 .line-numbers .line-numbers-rows {
-  border-right: 1px solid #f8f8f2;
+  border-right: 1px solid var(--color-syntax-15);
 }
 
 .line-numbers-rows > span:before {
-  color: #d4d0ab;
+  color: var(--color-syntax-16);
 }
 
 /*
-  High contrast mode support
- */
+ High contrast mode support
+*/
 @media screen and (-ms-high-contrast: active) {
   code[class*="language-"],
   pre[class*="language-"] {
