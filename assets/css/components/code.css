@@ -2,6 +2,9 @@
  * Code Credit: PrismJS a11y-dark / a11y-light theme for JavaScript, CSS, and HTML
  * Based on the okaidia theme: https://github.com/PrismJS/prism/blob/gh-pages/themes/prism-okaidia.css
  * @author ericwbailey
+ *
+ * Modified by @author Chris Henrick on 8/4/2024 to use CSS custom properties instead of separate style sheets for light and dark themes
+ * See this Observable Notebook for how modifications were made: https://observablehq.com/@clhenrick/a11y-syntax-highlighting-modifications
  */
 
 :root,
