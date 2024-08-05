@@ -75,6 +75,7 @@ pre[class*="language-"] {
   color: var(--color-syntax-1);
   background: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1rem;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -98,6 +99,18 @@ pre[class*="language-"] {
   margin: 0.5em 0;
   overflow: auto;
   border-radius: 0.3em;
+}
+
+pre[class*="language-"][tabindex]:focus-visible {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-width);
+}
+
+@supports not selector(:focus-visible) {
+  pre[class*="language-"][tabindex]:focus {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-width);
+  }
 }
 
 :not(pre) > code[class*="language-"],
