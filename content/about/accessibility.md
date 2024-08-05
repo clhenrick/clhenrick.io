@@ -64,13 +64,11 @@ Known gaps in accessibility in this site which I plan on remediating are as foll
 
 - **Poor alternative text on some images:** Some images have missing or sub-par alternative text, particularly in the portfolio project pages and some blog post pages. I plan on improving existing sub-par and addressing missing alt text in all images over time.
 
-- **Insufficient color contrast for text formatted as machine readable code:** Text in code blocks may have low contrast due to the code styling theme not being WCAG conformant for color contrast. I plan on updating the theme used to style code blocks in order to improve their color contrast.
-
 - **Video alternatives:** video embeds may exist in some pages of this site that do not have alternatives such as closed captions or transcripts. I plan on adding closed captions and transcripts for these videos.
 
-All known accessibility bugs have been documented in [this site's Github repository]({{ metadata.githubRepository }}/issues?q=is%3Aopen+is%3Aissue+label%3Aa11y). You may also view [accessibility bugs that have been fixed]({{ metadata.githubRepository }}/issues?q=is%3Aissue+label%3Aa11y+is%3Aclosed).
+All known accessibility bugs have been documented in [this site's GitHub repository]({{ metadata.githubRepository }}/issues?q=is%3Aopen+is%3Aissue+label%3Aa11y). You may also view [accessibility bugs that have been fixed]({{ metadata.githubRepository }}/issues?q=is%3Aissue+label%3Aa11y+is%3Aclosed).
 
-## Assessment approaches
+## Assessment Approaches
 
 {{ metadata.author.name }} assessed the accessibility of {{ metadata.title }} through utilizing the following self-evaluation approaches:
 
