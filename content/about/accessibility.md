@@ -72,9 +72,14 @@ All known accessibility bugs have been documented in [this site's GitHub reposit
 
 {{ metadata.author.name }} assessed the accessibility of {{ metadata.title }} through utilizing the following self-evaluation approaches:
 
-- Using web browser developer tools to inspect the accessibility properties of HTML elements.
+- Using web browser developer tools such as [Chrome's accessibility pane](https://developer.chrome.com/docs/devtools/accessibility/reference#pane) to inspect the accessibility properties of HTML elements.
 - Automated testing of the site's web pages using the [WAVE Web Accessibility  Evaluation browser extension](https://wave.webaim.org/).
-- Manual accessibility testing using screen readers such as VoiceOver, NVDA, and JAWS.
+- Manual accessibility testing using only the keyboard to navigate and operate the site.
+- Manual accessibility testing using common screen reader software and web browser pairings:
+  - VoiceOver with Safari on MacOS and iOS
+  - NVDA with Firefox on Windows
+  - JAWS with Chrome on Windows
+- Manual accessibility testing using forced colors mode on Windows.
 
 ## Feedback
 
