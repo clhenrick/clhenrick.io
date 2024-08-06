@@ -326,6 +326,11 @@ dl > div {
   margin-bottom: var(--spacing-mmd);
 }
 
+:where(li > ul),
+:where([role="list"]) {
+  margin-bottom: 0;
+}
+
 :where([role="list"]) {
   padding: 0;
 }
