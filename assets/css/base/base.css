@@ -190,6 +190,7 @@ h5 {
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
   line-height: var(--line-height-heading);
+  text-wrap: balance;
 }
 
 /* sets focus style on jump link fragments */
@@ -244,6 +245,7 @@ h5 {
 p {
   max-width: 77ch;
   margin-bottom: var(--spacing-mmd);
+  text-wrap: pretty;
 }
 
 p:last-child {
