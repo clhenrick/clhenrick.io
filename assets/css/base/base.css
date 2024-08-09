@@ -80,6 +80,9 @@
       --color-blue: oklch(from var(--color-blue) l calc(c + 0.03) h);
       --color-blue-2: oklch(from var(--color-blue-2) l calc(c + 0.02) h);
       --color-blue-3: oklch(from var(--color-blue-3) l calc(c + 0.015) h);
+      --color-turquoise: oklch(from var(--color-turquoise) l 0.13 h);
+      --color-turquoise-dark: oklch(from var(--color-turquoise-dark) l 0.09 h);
+      --color-turquoise-light: oklch(from var(--color-turquoise-light) l 0.09 h);
     }
   }
 }
