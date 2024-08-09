@@ -70,6 +70,19 @@
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
 }
 
+@supports(oklch(from orange)) {
+  @media (color-gamut: p3) {
+    :root {
+      --color-orange: oklch(from var(--color-orange) l calc(c + 0.03) h);
+      --color-orange-2: oklch(from var(--color-orange-2) l calc(c + 0.02) h);
+      --color-orange-3: oklch(from var(--color-orange-3) l calc(c + 0.035) h);
+      --color-blue: oklch(from var(--color-blue) l calc(c + 0.03) h);
+      --color-blue-2: oklch(from var(--color-blue-2) l calc(c + 0.02) h);
+      --color-blue-3: oklch(from var(--color-blue-3) l calc(c + 0.015) h);
+    }
+  }
+}
+
 @media screen and (min-width: 46.75rem) {
   :root {
     --main-nav-height: 4.375rem;
