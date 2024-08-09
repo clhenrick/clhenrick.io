@@ -27,6 +27,7 @@
   --color-turquoise-dark: #334D5C;
   --color-turquoise-light: #45b29d;
 
+  --text-color-link: var(--color-accent);
   --text-color-link-active: var(--color-accent-secondary);
   --text-color-link-visited: var(--color-accent-secondary);
 
@@ -87,7 +88,9 @@
   --background-color: var(--color-off-white);
   --background-color-secondary: var(--color-off-white-3);
   --text-color: var(--color-gray-90);
-  --text-color-link: var(--color-accent);
+  --text-color-link: var(--color-accent-secondary);
+  --text-color-link-active: var(--color-accent);
+  --text-color-link-visited: var(--color-accent);
 }
 
 :root[data-theme="dark"] {
@@ -101,6 +104,9 @@
   --background-color: #222;
   --background-color-secondary: #1e1810;
   --text-color: var(--color-gray-10);
+  --text-color-link: var(--color-accent-secondary);
+  --text-color-link-active: var(--color-accent);
+  --text-color-link-visited: var(--color-accent);
 }
 
 @media (prefers-color-scheme: dark) {
