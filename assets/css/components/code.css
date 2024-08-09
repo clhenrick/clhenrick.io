@@ -67,6 +67,11 @@
   }
 }
 
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+
 /*
  Theme
  */
@@ -74,9 +79,9 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: var(--color-syntax-1);
   background: none;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 1rem;
   text-align: left;
+  direction: ltr;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
