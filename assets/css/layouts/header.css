@@ -132,7 +132,7 @@ button.nav-button {
   gap: 0.25rem;
   padding: 0.5rem 0.75rem;
   font-weight: normal;
-  color: var(--text-color-link);
+  color: var(--color-accent);
   background-color: transparent;
 }
 
