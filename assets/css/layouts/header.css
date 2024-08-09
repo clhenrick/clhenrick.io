@@ -20,14 +20,15 @@ header.page-header {
   }
 }
 
+.page-header a[href],
+.page-header a[href]:visited {
+  color: var(--color-accent);
+}
+
 .page-header a[href] {
   padding: var(--spacing-sm) var(--spacing-mmd);
   display: inline-block;
   text-decoration: none;
-}
-
-.page-header a[href]:visited {
-  color: var(--text-color-link);
 }
 
 .page-header a[href]:hover {
