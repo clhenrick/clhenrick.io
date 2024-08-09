@@ -70,8 +70,9 @@
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
 }
 
-@supports(oklch(from orange)) {
-  @media (color-gamut: p3) {
+/* modify color palette for richer colors when p3 is available */
+@media (dynamic-range: high) {
+  @supports(background: oklch(from orange l c h)) {
     :root {
       --color-orange: oklch(from var(--color-orange) l calc(c + 0.03) h);
       --color-orange-2: oklch(from var(--color-orange-2) l calc(c + 0.02) h);
