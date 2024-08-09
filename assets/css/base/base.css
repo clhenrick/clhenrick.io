@@ -182,6 +182,11 @@ main:focus-visible {
   }
 }
 
+*::selection {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
+}
+
 h1,
 h2,
 h3,
