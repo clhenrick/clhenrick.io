@@ -26,8 +26,8 @@ pagination:
 {% set postslist = posts | reverse %}
 {% include "postslist.njk" %}
 
-<nav class="pagination" aria-labelledby="pagination">
-  <span id="pagination" hidden>Pagination</span>
+<nav class="pagination" aria-labelledby="pagination-title">
+  <span id="pagination-title" hidden>Pagination</span>
   <ol role="list" class="inline">
     {# previous page #}
     <li>
@@ -50,9 +50,15 @@ pagination:
       </a>
     </li>
 {%- for pageEntry in pagination.pages %}
-    <li><a class="button" href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+    <li>
+      <a
+        class="button"
+        href="{{ pagination.hrefs[ loop.index0 ] }}"
+        {% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}
+      >{{ loop.index }}
+      </a>
+    </li>
 {%- endfor %}
-    <li>{% if pagination.href.next %}<a class="button" rel="next" href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
   </ol>
   <a class="button" href="/blog/archive/">Blog Archive</a>
 </nav>
