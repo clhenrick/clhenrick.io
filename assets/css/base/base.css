@@ -23,9 +23,9 @@
   --color-orange-2: #ffa047;
   --color-orange-3: #efc94c;
 
-  --color-turquoise: #008188;
-  --color-turquoise-dark: #006c7d;
-  --color-turquoise-light: #00b9b2;
+  --color-turquoise: #00959c;
+  --color-turquoise-dark: #00606f;
+  --color-turquoise-light: #00cbc3;
 
   --text-color-link: var(--color-accent);
   --text-color-link-active: var(--color-accent-secondary);
@@ -80,9 +80,9 @@
       --color-blue: oklch(from #00529d l calc(c + 0.03) h);
       --color-blue-2: oklch(from #013e76 l calc(c + 0.03) h);
       --color-blue-3: oklch(from #012445 l calc(c + 0.02) h);
-      --color-turquoise: oklch(54% 0.12 200);
-      --color-turquoise-dark: oklch(48% 0.1 210);
-      --color-turquoise-light: oklch(70% 0.16 190);
+      --color-turquoise: oklch(60% 0.12 200);
+      --color-turquoise-dark: oklch(44% 0.1 210);
+      --color-turquoise-light: oklch(75% 0.16 190);
     }
   }
 }
