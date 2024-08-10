@@ -32,7 +32,7 @@ main p:first-of-type {
   :root:not([data-theme]) .js-enabled .project-filters {
     --button-bg-pressed:var(--color-turquoise);
     --button-bg: var(--color-turquoise-light);
-    --button-text-color: var(--color-gray-90);
+    --button-text-color: var(--color-blue-3);
     --button-text-color-pressed: var(--color-white);
   }
 }
@@ -40,7 +40,7 @@ main p:first-of-type {
 :root[data-theme="dark"] .js-enabled .project-filters {
   --button-bg-pressed:var(--color-turquoise);
   --button-bg: var(--color-turquoise-light);
-  --button-text-color: var(--color-gray-90);
+  --button-text-color: var(--color-blue-3);
   --button-text-color-pressed: var(--color-white);
 }
 
