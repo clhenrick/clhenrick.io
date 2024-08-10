@@ -29,7 +29,26 @@ pagination:
 <nav class="pagination" aria-labelledby="pagination">
   <span id="pagination" hidden>Pagination</span>
   <ol role="list" class="inline">
-    <li>{% if pagination.href.previous %}<a class="button" rel="prev" href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
+    {# previous page #}
+    <li>
+      <a
+        class="button previous-next"
+        rel="prev"
+        {%- if pagination.href.previous %}href="{{ pagination.href.previous }}"{% endif %}
+      >
+        Previous
+      </a>
+    </li>
+    {# next page #}
+    <li>
+      <a
+        class="button previous-next"
+        rel="next"
+        {%- if pagination.href.next %}href="{{ pagination.href.next }}"{% endif %}
+      >
+        Next
+      </a>
+    </li>
 {%- for pageEntry in pagination.pages %}
     <li><a class="button" href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
 {%- endfor %}

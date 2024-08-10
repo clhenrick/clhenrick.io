@@ -15,3 +15,15 @@ nav.pagination > ol {
 nav.pagination li a[href] {
   padding: 0.75rem var(--spacing-mmd);
 }
+
+/* disabled previous and next links */
+nav.pagination li a:not([href]) {
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border-color: var(--color-accent);
+  cursor: initial;
+}
+
+nav.pagination li a[href].previous-next {
+  min-width: 140px;
+}
