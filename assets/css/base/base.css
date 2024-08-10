@@ -73,7 +73,7 @@
 
 /* modify color palette for richer colors when p3 is available */
 @media (dynamic-range: high) {
-  @supports(background: oklch(from orange l c h)) {
+  @supports(background: oklch(72% 0.19 58)) {
     :root {
       --color-orange: oklch(72% 0.19 58);
       --color-orange-2: oklch(80% 0.17 58);
