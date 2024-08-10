@@ -19,9 +19,9 @@
   --color-blue-2: #013e76;
   --color-blue-3: #012445;
 
-  --color-orange: #e68933;
-  --color-orange-2: #ffa047;
-  --color-orange-3: #efc94c;
+  --color-orange: #f97f00;
+  --color-orange-2: #ff9f40;
+  --color-orange-3: #f8c800;
 
   --color-turquoise: #00959c;
   --color-turquoise-dark: #00606f;
@@ -74,9 +74,9 @@
 @media (dynamic-range: high) {
   @supports(background: oklch(from orange l c h)) {
     :root {
-      --color-orange: oklch(from #e68933 l calc(c + 0.04) h);
-      --color-orange-2: oklch(from #ffa047 l calc(c + 0.02) h);
-      --color-orange-3: oklch(from #efc94c l 0.18 h);
+      --color-orange: oklch(72% 0.19 58);
+      --color-orange-2: oklch(80% 0.17 58);
+      --color-orange-3: oklch(85% 0.18 92);
       --color-blue: oklch(from #00529d l calc(c + 0.03) h);
       --color-blue-2: oklch(from #013e76 l calc(c + 0.03) h);
       --color-blue-3: oklch(from #012445 l calc(c + 0.02) h);
