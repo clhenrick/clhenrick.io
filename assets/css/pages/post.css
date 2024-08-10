@@ -43,4 +43,5 @@ main p:has(picture) {
 p.post-teaser {
   font-size: var(--text-size-h4);
   font-style: italic;
+  text-wrap: balance;
 }

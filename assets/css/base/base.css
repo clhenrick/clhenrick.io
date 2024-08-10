@@ -27,6 +27,7 @@
   --color-turquoise-dark: #334D5C;
   --color-turquoise-light: #45b29d;
 
+  --text-color-link: var(--color-accent);
   --text-color-link-active: var(--color-accent-secondary);
   --text-color-link-visited: var(--color-accent-secondary);
 
@@ -69,6 +70,23 @@
   --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
 }
 
+/* modify color palette for richer colors when p3 is available */
+@media (dynamic-range: high) {
+  @supports(background: oklch(from orange l c h)) {
+    :root {
+      --color-orange: oklch(from #e68933 l calc(c + 0.04) h);
+      --color-orange-2: oklch(from #ffa047 l calc(c + 0.02) h);
+      --color-orange-3: oklch(from #efc94c l 0.18 h);
+      --color-blue: oklch(from #00529d l calc(c + 0.03) h);
+      --color-blue-2: oklch(from #013e76 l calc(c + 0.03) h);
+      --color-blue-3: oklch(from #012445 l calc(c + 0.02) h);
+      --color-turquoise: oklch(from #307b6c l 0.2 h);
+      --color-turquoise-dark: oklch(from #334D5C l 0.1 h);
+      --color-turquoise-light: oklch(from #45b29d l 0.15 h);
+    }
+  }
+}
+
 @media screen and (min-width: 46.75rem) {
   :root {
     --main-nav-height: 4.375rem;
@@ -87,7 +105,6 @@
   --background-color: var(--color-off-white);
   --background-color-secondary: var(--color-off-white-3);
   --text-color: var(--color-gray-90);
-  --text-color-link: var(--color-accent);
 }
 
 :root[data-theme="dark"] {
@@ -101,6 +118,9 @@
   --background-color: #222;
   --background-color-secondary: #1e1810;
   --text-color: var(--color-gray-10);
+  --text-color-link: var(--color-accent-secondary);
+  --text-color-link-active: var(--color-accent);
+  --text-color-link-visited: var(--color-accent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -116,6 +136,9 @@
     --background-color: #222;
     --background-color-secondary: #1e1810;
     --text-color: var(--color-gray-10);
+    --text-color-link: var(--color-accent-secondary);
+    --text-color-link-active: var(--color-accent);
+    --text-color-link-visited: var(--color-accent);
   }
 }
 
@@ -182,6 +205,11 @@ main:focus-visible {
   }
 }
 
+*::selection {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
+}
+
 h1,
 h2,
 h3,
@@ -190,6 +218,7 @@ h5 {
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
   line-height: var(--line-height-heading);
+  text-wrap: balance;
 }
 
 /* sets focus style on jump link fragments */
@@ -244,6 +273,7 @@ h5 {
 p {
   max-width: 77ch;
   margin-bottom: var(--spacing-mmd);
+  text-wrap: pretty;
 }
 
 p:last-child {
@@ -286,31 +316,6 @@ small {
   outline: transparent;
   text-decoration-thickness: 0.5rem;
   text-decoration-skip-ink: none;
-}
-
-pre,
-code {
-  font-family: var(--font-family-monospace);
-}
-
-pre:not([class*="language-"]) {
-  margin: 0.5em 0;
-  line-height: 1.375; /* 22px /16 */
-  -moz-tab-size: var(--syntax-tab-size);
-  -o-tab-size: var(--syntax-tab-size);
-  tab-size: var(--syntax-tab-size);
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-}
-
-code {
-  word-break: break-word;
 }
 
 dl > div {
