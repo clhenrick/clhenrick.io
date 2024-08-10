@@ -27,3 +27,13 @@ nav.pagination li a:not([href]) {
 nav.pagination li a[href].previous-next {
   min-width: 140px;
 }
+
+nav.pagination li a[href][aria-current="page"] {
+  background-color: var(--color-accent-secondary);
+}
+
+nav.pagination li a[href][aria-current="page"]:hover {
+  background-color: var(--color-accent-secondary);
+  border-color: transparent;
+  color: var(--color-accent-invert);
+}
