@@ -97,7 +97,7 @@
 :root[data-theme="light"] {
   color-scheme: light;
   --color-accent: var(--color-blue);
-  --color-accent-focus: var(--color-blue-3);
+  --color-accent-focus: var(--color-blue-2);
   --color-accent-secondary: var(--color-blue-3);
   --color-accent-invert: var(--color-white);
   --color-accent-bg: transparent;
