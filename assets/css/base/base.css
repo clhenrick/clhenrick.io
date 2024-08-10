@@ -88,6 +88,23 @@
   }
 }
 
+/* modify color palette for richer colors when p3 is available */
+@media (dynamic-range: high) {
+  @supports(background: oklch(from orange l c h)) {
+    :root {
+      --color-orange: oklch(from #e68933 l calc(c + 0.04) h);
+      --color-orange-2: oklch(from #ffa047 l calc(c + 0.02) h);
+      --color-orange-3: oklch(from #efc94c l 0.18 h);
+      --color-blue: oklch(from #00529d l calc(c + 0.03) h);
+      --color-blue-2: oklch(from #013e76 l calc(c + 0.03) h);
+      --color-blue-3: oklch(from #012445 l calc(c + 0.02) h);
+      --color-turquoise: oklch(from #307b6c l 0.2 h);
+      --color-turquoise-dark: oklch(from #334D5C l 0.1 h);
+      --color-turquoise-light: oklch(from #45b29d l 0.15 h);
+    }
+  }
+}
+
 @media screen and (min-width: 46.75rem) {
   :root {
     --main-nav-height: 4.375rem;
