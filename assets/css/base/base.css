@@ -62,12 +62,12 @@
   --desktop-max-width: var(--page-size-normal);
   --main-nav-height: 3.375rem;
 
-  --focus-color: var(--color-accent);
+  --focus-color: var(--color-accent-focus);
   --focus-style-width: 0.15em;
   --focus-style-outline: var(--focus-style-width) solid var(--focus-color);
   --focus-style-outline-offset: var(--spacing-xxs);
-  --focus-style-box-shadow: 0 0 0 4px var(--color-accent);
-  --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
+  --focus-style-box-shadow: 0 0 0 4px var(--focus-color);
+  --focus-style-button-box-shadow: 0 0 0 6px var(--focus-color);
 }
 
 /* modify color palette for richer colors when p3 is available */
