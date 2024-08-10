@@ -15,9 +15,9 @@
   --color-gray-50: #c0c0c0;
   --color-gray-90: #141414;
 
-  --color-blue: #00529d;
-  --color-blue-2: #013e76;
-  --color-blue-3: #012445;
+  --color-blue: #0055a9;
+  --color-blue-2: #003c7e;
+  --color-blue-3: #002252;
 
   --color-orange: #f97f00;
   --color-orange-2: #ff9f40;
@@ -77,9 +77,9 @@
       --color-orange: oklch(72% 0.19 58);
       --color-orange-2: oklch(80% 0.17 58);
       --color-orange-3: oklch(85% 0.18 92);
-      --color-blue: oklch(from #00529d l calc(c + 0.03) h);
-      --color-blue-2: oklch(from #013e76 l calc(c + 0.03) h);
-      --color-blue-3: oklch(from #012445 l calc(c + 0.02) h);
+      --color-blue: oklch(45% 0.16 250);
+      --color-blue-2: oklch(36% 0.13 252);
+      --color-blue-3: oklch(26% 0.1 254);
       --color-turquoise: oklch(60% 0.12 200);
       --color-turquoise-dark: oklch(44% 0.1 210);
       --color-turquoise-light: oklch(75% 0.16 190);
