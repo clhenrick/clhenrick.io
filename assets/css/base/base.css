@@ -15,17 +15,18 @@
   --color-gray-50: #c0c0c0;
   --color-gray-90: #141414;
 
-  --color-blue: #00529d;
-  --color-blue-2: #013e76;
-  --color-blue-3: #012445;
+  /* NOTE: hue colors are altered below if support is available for oklch and hd colors */
+  --color-blue: #0055a9;
+  --color-blue-2: #003c7e;
+  --color-blue-3: #002252;
 
-  --color-orange: #e68933;
-  --color-orange-2: #ffa047;
-  --color-orange-3: #efc94c;
+  --color-orange: #f97f00;
+  --color-orange-2: #ff9f40;
+  --color-orange-3: #f8c800;
 
-  --color-turquoise: #307b6c;
-  --color-turquoise-dark: #334D5C;
-  --color-turquoise-light: #45b29d;
+  --color-turquoise: #00959c;
+  --color-turquoise-dark: #00606f;
+  --color-turquoise-light: #00cbc3;
 
   --text-color-link: var(--color-accent);
   --text-color-link-active: var(--color-accent-secondary);
@@ -62,12 +63,29 @@
   --desktop-max-width: var(--page-size-normal);
   --main-nav-height: 3.375rem;
 
-  --focus-color: var(--color-accent);
+  --focus-color: var(--color-accent-focus);
   --focus-style-width: 0.15em;
   --focus-style-outline: var(--focus-style-width) solid var(--focus-color);
   --focus-style-outline-offset: var(--spacing-xxs);
-  --focus-style-box-shadow: 0 0 0 4px var(--color-accent);
-  --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
+  --focus-style-box-shadow: 0 0 0 4px var(--focus-color);
+  --focus-style-button-box-shadow: 0 0 0 6px var(--focus-color);
+}
+
+/* modify color palette for richer colors when p3 is available */
+@media (dynamic-range: high) {
+  @supports(background: oklch(72% 0.19 58)) {
+    :root {
+      --color-orange: oklch(72% 0.19 58);
+      --color-orange-2: oklch(80% 0.17 58);
+      --color-orange-3: oklch(85% 0.18 92);
+      --color-blue: oklch(45% 0.16 250);
+      --color-blue-2: oklch(36% 0.13 252);
+      --color-blue-3: oklch(26% 0.1 254);
+      --color-turquoise: oklch(60% 0.12 200);
+      --color-turquoise-dark: oklch(44% 0.1 210);
+      --color-turquoise-light: oklch(75% 0.16 190);
+    }
+  }
 }
 
 /* modify color palette for richer colors when p3 is available */
@@ -97,7 +115,7 @@
 :root[data-theme="light"] {
   color-scheme: light;
   --color-accent: var(--color-blue);
-  --color-accent-focus: var(--color-blue-3);
+  --color-accent-focus: var(--color-blue-2);
   --color-accent-secondary: var(--color-blue-3);
   --color-accent-invert: var(--color-white);
   --color-accent-bg: transparent;
