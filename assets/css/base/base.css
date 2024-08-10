@@ -15,6 +15,7 @@
   --color-gray-50: #c0c0c0;
   --color-gray-90: #141414;
 
+  /* NOTE: hue colors are altered below if support is available for oklch and hd colors */
   --color-blue: #0055a9;
   --color-blue-2: #003c7e;
   --color-blue-3: #002252;
