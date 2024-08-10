@@ -30,6 +30,8 @@ nav.pagination li a[href].previous-next {
 
 nav.pagination li a[href][aria-current="page"] {
   background-color: var(--color-accent-secondary);
+  outline: 2.5px dotted var(--background-color);
+  outline-offset: -5px;
 }
 
 nav.pagination li a[href][aria-current="page"]:hover {
