@@ -55,7 +55,8 @@ pagination:
         class="button"
         href="{{ pagination.hrefs[ loop.index0 ] }}"
         {% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}
-      >{{ loop.index }}
+      >
+        <span class="visually-hidden">Page</span> {{ loop.index }}
       </a>
     </li>
 {%- endfor %}
