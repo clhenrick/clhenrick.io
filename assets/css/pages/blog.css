@@ -56,3 +56,16 @@ nav.pagination li a[href][aria-current="page"]:hover {
   border-color: transparent;
   color: var(--color-accent-invert);
 }
+
+/* reset focus outline style */
+nav.pagination li a[href][aria-current="page"]:focus-visible {
+  outline: 3px solid var(--background-color);
+  outline-offset: 0;
+}
+
+@supports not selector(:focus-visible) {
+  nav.pagination li a[href][aria-current="page"]:focus {
+    outline: 3px solid var(--background-color);
+    outline-offset: 0;
+  }
+}
