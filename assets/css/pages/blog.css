@@ -10,9 +10,21 @@ nav.pagination > h2 {
 
 nav.pagination > ol {
   display: grid;
-  grid-template-columns: repeat(auto-fill, [col] minmax(var(--min-list-item-width), 1fr));
+  grid-template-columns: repeat(auto, [col] minmax(var(--min-list-item-width), 1fr));
   grid-gap: 8px;
   margin-bottom: 1.5rem;
+}
+
+@media screen and (width >= 332px) {
+  nav.pagination > ol {
+    grid-template-columns: repeat(4, [col] minmax(var(--min-list-item-width), 1fr));
+  }
+}
+
+@media screen and (width >= 478px) {
+  nav.pagination > ol {
+    grid-template-columns: repeat(auto-fill, [col] minmax(var(--min-list-item-width), 1fr));
+  }
 }
 
 nav.pagination li a {
