@@ -60,7 +60,7 @@ nav.pagination li a[href][aria-current="page"]:hover {
   color: var(--color-accent-invert);
 }
 
-/* reset focus outline style */
+/* reset focus indicator outline style to match that of .button */
 nav.pagination li a[href][aria-current="page"]:focus-visible {
   outline: 3px solid var(--background-color);
   outline-offset: 0;
