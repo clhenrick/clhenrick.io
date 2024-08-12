@@ -50,8 +50,8 @@ nav.pagination li:nth-child(-n+2) {
 
 nav.pagination li a[href][aria-current="page"] {
   background-color: var(--color-accent-secondary);
-  outline: 2.5px dotted var(--background-color);
-  outline-offset: -5px;
+  outline: var(--focus-style-width) dotted var(--background-color);
+  outline-offset: calc(-2 * var(--focus-style-width));
 }
 
 nav.pagination li a[href][aria-current="page"]:hover {
