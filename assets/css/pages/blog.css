@@ -12,18 +12,18 @@ nav.pagination > ol {
   display: grid;
   /* narrow of narrowest viewports: stacks prev, next links on separate rows, numbered links two in a row */
   grid-template-columns: repeat(auto, [col] minmax(var(--min-list-item-width), 1fr));
-  grid-gap: 8px;
+  grid-gap: var(--spacing-sm);
   margin-bottom: 1.5rem;
 }
 
-@media screen and (width >= 332px) {
+@media screen and (width >= 345px) {
   nav.pagination > ol {
     /* moderately narrow viewports: prev, next links side by side same row, numbered links four in a row below */
     grid-template-columns: repeat(4, [col] minmax(var(--min-list-item-width), 1fr));
   }
 }
 
-@media screen and (width >= 478px) {
+@media screen and (width >= 500px) {
   nav.pagination > ol {
     /* everything else / wider viewports: auto-fit all links in one row, overflowing to more rows if needed */
     grid-template-columns: repeat(auto-fit, [col] minmax(var(--min-list-item-width), 1fr));
