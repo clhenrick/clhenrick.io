@@ -1,4 +1,5 @@
 nav.pagination {
+  --min-list-item-width: 65px;
   margin-top: var(--spacing-xxxl);
 }
 
@@ -8,11 +9,14 @@ nav.pagination > h2 {
 }
 
 nav.pagination > ol {
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, [col] minmax(var(--min-list-item-width), 1fr));
+  grid-gap: 8px;
   margin-bottom: 1.5rem;
 }
 
-nav.pagination li a[href] {
+nav.pagination li a {
+  width: 100%;
   padding: 0.75rem var(--spacing-mmd);
 }
 
@@ -24,8 +28,9 @@ nav.pagination li a:not([href]) {
   cursor: initial;
 }
 
-nav.pagination li a[href].previous-next {
-  min-width: 140px;
+/* previous and next links */
+nav.pagination li:nth-child(-n+2) {
+  grid-column: span 2;
 }
 
 nav.pagination li a[href][aria-current="page"] {
