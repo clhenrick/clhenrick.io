@@ -5,58 +5,65 @@ layout: layouts/base.njk
   components/code,
   components/forms/form-controls,
   components/forms/select,
+  components/kofi,
   pages/post
 {%- endset %}
 {%- set bucket = "post" %}
 {% include "styles.njk" %}
 
-<h1>{{ title }}</h1>
+<article aria-describedby="post-title">
 
-{%- if teaser %}
-<p class="post-teaser">{{ teaser }}</p>
-{%- endif %}
+  <h1 id="post-title">{{ title }}</h1>
 
-<dl class="post-metadata">
-	<div class="publish-date">
-    <dt>Published on:</dt>
-    <dd>
-      <time datetime="{{ page.date | htmlDateString }}">
-        {{ page.date | readableDate }}
-      </time>
-    </dd>
-  </div>
-  {%- if updated %}
-  <div class="updated-date">
-    <dt>Last updated on:</dt>
-    <dd>
-      <time datetime="{{ updated  | htmlDateString }}">
-        {{ updated | readableDate }}
-      </time>
-    </dd>
-  </div>
+  {%- if teaser %}
+  <p class="post-teaser">{{ teaser }}</p>
   {%- endif %}
-  <div class="tags">
-    <dt>Tagged in:</dt>
-    {%- for tag in tags | filterTagList %}
-    {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-    <dd>
-      <a href="{{ tagUrl }}" class="post-tag">
-        #{{ tag }}
-      </a>
-    </dd>
-    {%- endfor %}
-  </div>
-</dl>
 
-{{ content | safe }}
+  <dl class="post-metadata">
+    <div class="publish-date">
+      <dt>Published on:</dt>
+      <dd>
+        <time datetime="{{ page.date | htmlDateString }}">
+          {{ page.date | readableDate }}
+        </time>
+      </dd>
+    </div>
+    {%- if updated %}
+    <div class="updated-date">
+      <dt>Last updated on:</dt>
+      <dd>
+        <time datetime="{{ updated  | htmlDateString }}">
+          {{ updated | readableDate }}
+        </time>
+      </dd>
+    </div>
+    {%- endif %}
+    <div class="tags">
+      <dt>Tagged in:</dt>
+      {%- for tag in tags | filterTagList %}
+      {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+      <dd>
+        <a href="{{ tagUrl }}" class="post-tag">
+          #{{ tag }}
+        </a>
+      </dd>
+      {%- endfor %}
+    </div>
+  </dl>
+
+  {{ content | safe }}
+
+  {% include "components/kofi.njk" %}
+
+</article>
 
 {%- if collections.posts %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
 {%- set nextPost = collections.posts | getNextCollectionItem %}
 {%- if nextPost or previousPost %}
 <ul class="links-nextprev" role="list">
-	{%- if previousPost %}<li>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
-	{%- if nextPost %}<li>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
+  {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
+  {%- if nextPost %}<li>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
 </ul>
 {%- endif %}
 {%- endif %}
