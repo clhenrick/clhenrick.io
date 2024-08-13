@@ -15,6 +15,14 @@ article.kofi p {
   width: fit-content;
 }
 
-article.kofi .emoji-coffee {
+article.kofi .emoji {
+  display: inline-block;
   font-size: 2rem;
+  width: 2rem;
+  vertical-align: bottom;
+  margin: 0 var(--spacing-xs);
+}
+
+article.kofi .emoji:last-of-type {
+  margin: 0;
 }

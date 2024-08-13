@@ -1,4 +1,6 @@
 {# Ko-Fi marco #}
+{% from "./svgEmoji.njk" import svgEmoji %}
+
 {# NOTE: AFAIK, metadata is not accessible from here so the Ko-Fi social URL has to be passed in from the parent #}
 {% macro kofi(url, item = "post") %}
 <article class="kofi" aria-labelledby="kofi-title">
@@ -8,9 +10,10 @@
     <a href={{url}}>
       buy me a coffee!
     </a>
+  {{ svgEmoji("☕️") }}
+  ...or two!
+  {{ svgEmoji("☕️") }}
+  {{ svgEmoji("☕️") }}
   </p>
-  <p class="emoji-coffee" aria-hidden="true">☕️</p>
-  <p>...or two!</p>
-  <p class="emoji-coffee" aria-hidden="true">☕️ ☕️</p>
 </article>
 {% endmacro %}
