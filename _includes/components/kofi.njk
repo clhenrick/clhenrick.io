@@ -1,9 +1,13 @@
+{# Ko-Fi marco #}
+{# NOTE: AFAIK, metadata is not accessible from here so the Ko-Fi social URL has to be passed in from the parent #}
+{% macro kofi(url, item = "post") %}
 <article class="kofi">
   <p>
-    If you enjoyed this post feel free to
-    <a href={{metadata.social.get("Ko-Fi")}}>
+    If you enjoyed this {{ item }} feel free to
+    <a href={{url}}>
       buy me a coffee!
     </a>
   </p>
   <p class="emoji-coffee" aria-hidden="true">☕️</p>
 </article>
+{% endmacro %}
