@@ -1,0 +1,13 @@
+article.kofi {
+
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  background-color: var(--color-accent-invert);
+}
+
+article.kofi .emoji-coffee {
+  font-size: 2rem;
+  margin-left: var(--spacing-sm);
+}
