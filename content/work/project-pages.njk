@@ -6,6 +6,7 @@ pagination:
 permalink: "work/{{ project.title | slugify }}/"
 eleventyComputed:
   title: "{{ project.title }}, Portfolio"
+  kofiUrl: metadata.get("Ko-Fi")
   eleventyNavigation:
     key: "{{ project.title }}"
     parent: "work"
@@ -14,10 +15,13 @@ eleventyComputed:
 {%- set partials %}
   components/disclosure,
   components/embed,
+  components/kofi,
   pages/project-pages
 {%- endset %}
 {%- set bucket = "project-pages" %}
 {% include "styles.njk" %}
+
+{% from "components/kofi.njk" import kofi %}
 
 <section>
   <h1>{{project.title}}</h1>
@@ -97,6 +101,8 @@ eleventyComputed:
   </ul>
   {% endif %}
 </section>
+
+{{ kofi(kofiUrl, "work") }}
 
 <nav class="secondary" aria-label="secondary">
   <a href="/work/">
