@@ -1,5 +1,16 @@
 ---
 layout: layouts/base.njk
+eleventyComputed:
+  kofiUrl: metadata.get("Ko-Fi")
 ---
+{% from "components/kofi.njk" import kofi %}
+
+{%- set partials %}
+  components/kofi,
+{%- endset %}
+{%- set bucket = "about" %}
+{% include "styles.njk" %}
 
 {{ content | safe }}
+
+{{ kofi(kofiUrl, "site") }}
