@@ -1,10 +1,15 @@
 article.kofi {
-
+  display: flex;
+  align-items: center;
   padding: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
   border: 2px solid var(--text-color);
   border-radius: var(--border-radius);
   background-color: var(--color-accent-invert);
+}
+
+article.kofi p {
+  margin: 0;
 }
 
 article.kofi .emoji-coffee {
