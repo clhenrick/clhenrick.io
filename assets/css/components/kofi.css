@@ -4,7 +4,7 @@ article.kofi {
   align-items: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-md);
-  margin: var(--spacing-lg) 0;
+  margin: var(--spacing-xl) 0;
   border: 2px solid var(--text-color);
   border-radius: var(--border-radius);
   background-color: var(--color-accent-invert);
