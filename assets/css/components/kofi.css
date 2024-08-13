@@ -1,6 +1,8 @@
 article.kofi {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: var(--spacing-sm);
   padding: var(--spacing-md);
   margin: var(--spacing-lg) 0;
   border: 2px solid var(--text-color);
@@ -10,9 +12,9 @@ article.kofi {
 
 article.kofi p {
   margin: 0;
+  width: fit-content;
 }
 
 article.kofi .emoji-coffee {
   font-size: 2rem;
-  margin-left: var(--spacing-sm);
 }

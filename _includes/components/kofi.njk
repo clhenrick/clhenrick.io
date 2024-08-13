@@ -3,11 +3,13 @@
 {% macro kofi(url, item = "post") %}
 <article class="kofi">
   <p>
-    If you enjoyed this {{ item }} feel free to
+    If you enjoyed this {{ item }}, please feel free to
     <a href={{url}}>
       buy me a coffee!
     </a>
   </p>
   <p class="emoji-coffee" aria-hidden="true">☕️</p>
+  <p>...or two!</p>
+  <p class="emoji-coffee" aria-hidden="true">☕️ ☕️</p>
 </article>
 {% endmacro %}
