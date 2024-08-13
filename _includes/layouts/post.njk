@@ -1,5 +1,7 @@
 ---
 layout: layouts/base.njk
+eleventyComputed:
+  kofiUrl: metadata.get("Ko-Fi")
 ---
 {%- set partials %}
   components/code,
@@ -10,6 +12,8 @@ layout: layouts/base.njk
 {%- endset %}
 {%- set bucket = "post" %}
 {% include "styles.njk" %}
+
+{% from "components/kofi.njk" import kofi %}
 
 <article aria-describedby="post-title">
 
@@ -53,7 +57,7 @@ layout: layouts/base.njk
 
   {{ content | safe }}
 
-  {% include "components/kofi.njk" %}
+  {{ kofi(kofiUrl) }}
 
 </article>
 
