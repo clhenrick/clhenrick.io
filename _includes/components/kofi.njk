@@ -1,7 +1,8 @@
 {# Ko-Fi marco #}
 {# NOTE: AFAIK, metadata is not accessible from here so the Ko-Fi social URL has to be passed in from the parent #}
 {% macro kofi(url, item = "post") %}
-<article class="kofi">
+<article class="kofi" aria-labelledby="kofi-title">
+  <span id="kofi-title" hidden>Donate</span>
   <p>
     If you enjoyed this {{ item }}, please feel free to
     <a href={{url}}>
