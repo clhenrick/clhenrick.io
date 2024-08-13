@@ -12,17 +12,14 @@ article.kofi {
 
 article.kofi p {
   margin: 0;
-  width: fit-content;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
 }
 
 article.kofi .emoji {
   display: inline-block;
   font-size: 2rem;
   width: 2rem;
-  vertical-align: bottom;
-  margin: 0 var(--spacing-xs);
-}
-
-article.kofi .emoji:last-of-type {
-  margin: 0;
+  vertical-align: top;
 }
