@@ -17,9 +17,7 @@ article.kofi p {
   text-align: center;
 }
 
-article.kofi .emoji {
-  display: inline-block;
+article.kofi .kofi-emoji {
   font-size: 2rem;
-  width: 2rem;
-  vertical-align: top;
+  vertical-align: middle;
 }
