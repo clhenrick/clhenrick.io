@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 eleventyComputed:
-  kofiUrl: metadata.get("Ko-Fi")
+  kofiUrl: "{{ metadata.social.get('Ko-Fi') }}"
 ---
 {%- set partials %}
   components/code,
@@ -16,7 +16,6 @@ eleventyComputed:
 {% from "components/kofi.njk" import kofi %}
 
 <article aria-describedby="post-title">
-
   <h1 id="post-title">{{ title }}</h1>
 
   {%- if teaser %}

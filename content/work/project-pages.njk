@@ -6,7 +6,7 @@ pagination:
 permalink: "work/{{ project.title | slugify }}/"
 eleventyComputed:
   title: "{{ project.title }}, Portfolio"
-  kofiUrl: metadata.get("Ko-Fi")
+  kofiUrl: "{{ metadata.social.get('Ko-Fi') }}"
   eleventyNavigation:
     key: "{{ project.title }}"
     parent: "work"
