@@ -41,6 +41,7 @@ header.page-header {
   outline: var(--focus-style-outline);
   /* NOTE: negative offset used to prevent focus indicator from being obscured */
   outline-offset: calc(-1 * var(--focus-style-width));
+  box-shadow: none;
 }
 
 @supports not selector(:focus-visible) {
@@ -49,6 +50,7 @@ header.page-header {
     outline: var(--focus-style-outline);
     /* NOTE: negative offset used to prevent focus indicator from being obscured */
     outline-offset: calc(-1 * var(--focus-style-width));
+    box-shadow: none;
   }
 }
 
