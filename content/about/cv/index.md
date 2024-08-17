@@ -2,6 +2,7 @@
 layout: layouts/about.njk
 title: "Curriculum Vitae"
 description: "Curriculum Vitae of Chris Henrick"
+permalink: "/about/cv/"
 eleventyNavigation:
   parent: About
   key: CV

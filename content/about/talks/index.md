@@ -2,6 +2,7 @@
 layout: layouts/about.njk
 title: Talks
 description: "A list of public lectures and presentations given by Chris Henrick, ordered by date."
+permalink: "/about/talks/"
 eleventyNavigation:
   parent: About
   key: Talks

@@ -3,6 +3,7 @@ layout: layouts/about.njk
 title: Accessibility Statement
 date: 2024-07-16
 updated: 2024-07-28
+permalink: "/about/accessibility/"
 description: "How this website adheres to WCAG conformance and inclusive design best practices."
 ---
 
