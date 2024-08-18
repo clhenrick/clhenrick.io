@@ -1,6 +1,6 @@
-{%- macro secondarySiteNav(items, pageUrl) %}
+{%- macro secondarySiteNav(items, pageUrl, accName) %}
 <nav id="nav-secondary" aria-labelledby="secondary-site-nav-title">
-  <span id="secondary-site-nav-title" hidden>More about Chris Henrick</span>
+  <span id="secondary-site-nav-title" hidden>{{ accName }}</span>
   <ul role="list">
     {%- for item in items %}
       <li>
