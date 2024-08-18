@@ -17,6 +17,7 @@
 
 #nav-secondary ul li::marker {
   content: "✦" / "";
+  font-size: 0.75rem;
   color: var(--color-accent);
 }
 
@@ -24,6 +25,7 @@
   text-decoration: none;
   border: none;
   font-size: 1.15rem;
+  vertical-align: middle;
 }
 
 #nav-secondary a[href]:focus-visible {
