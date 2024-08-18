@@ -30,6 +30,10 @@
   color: var(--color-accent);
 }
 
+#nav-secondary ul li:has([aria-current])::before {
+  font-size: 1.1rem;
+}
+
 #nav-secondary a[href] {
   text-decoration: none;
   border: none;
