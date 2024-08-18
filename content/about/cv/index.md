@@ -1,7 +1,7 @@
 ---
 layout: layouts/about.njk
 title: "Curriculum Vitae"
-description: "Curriculum Vitae of Chris Henrick"
+description: "Professional work experience, education, volunteer positions, and technical skills."
 permalink: "/about/cv/"
 eleventyNavigation:
   parent: About
