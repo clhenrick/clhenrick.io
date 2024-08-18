@@ -1,0 +1,17 @@
+{%- macro secondarySiteNav(items, pageUrl) %}
+<nav id="nav-secondary" aria-labelledby="secondary-site-nav-title">
+  <h2 id="secondary-site-nav-title" hidden>About</h2>
+  <ul role="list">
+    {%- for item in items %}
+      <li>
+        <a
+          href="{{item.path}}"
+          {% if pageUrl == item.path %} aria-current="page" {% endif %}
+        >
+          {{item.title}}
+        </a>
+      </li>
+    {%- endfor %}
+  </ul>
+</nav>
+{% endmacro %}

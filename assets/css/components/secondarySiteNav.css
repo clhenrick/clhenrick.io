@@ -1,0 +1,36 @@
+#nav-secondary ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-mmd);
+  margin: 0 0 var(--spacing-lg);
+  padding: 0;
+  background: inherit;
+  text-align: start;
+}
+
+#nav-secondary ul li {
+  margin: 0;
+  width: fit-content;
+  list-style: circle inside;
+}
+
+#nav-secondary ul li::marker {
+  content: "✦" / "";
+  color: var(--color-accent);
+}
+
+#nav-secondary a[href] {
+  text-decoration: none;
+  border: none;
+  font-size: 1.15rem;
+}
+
+#nav-secondary a[href]:focus-visible {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
+}
+
+#nav-secondary a[href][aria-current] {
+  border-bottom: 2px solid currentColor;
+}
