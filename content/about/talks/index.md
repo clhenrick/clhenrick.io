@@ -1,7 +1,7 @@
 ---
 layout: layouts/about.njk
 title: Talks and Workshops
-description: "A list of public lectures and presentations given by Chris Henrick, ordered by date."
+description: "A list of lectures, presentations, and workshops given by Chris Henrick, ordered by date."
 permalink: "/about/talks/"
 eleventyNavigation:
   parent: About
