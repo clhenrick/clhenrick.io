@@ -8,13 +8,12 @@
   text-align: start;
 }
 
-@media screen and (width > 748px) {
+@media screen and (width >= 748px) {
   #nav-secondary ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--spacing-lg);
-    margin: 0 0 var(--spacing-lg);
   }
 }
 
