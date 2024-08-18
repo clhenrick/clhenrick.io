@@ -11,11 +11,12 @@
 
 #nav-secondary ul li {
   margin: 0;
-  width: fit-content;
-  list-style: circle inside;
+  width: auto;
+  display: inline-block;
+  list-style: none;
 }
 
-#nav-secondary ul li::marker {
+#nav-secondary ul li::before {
   content: "✦" / "";
   font-size: 0.75rem;
   color: var(--color-accent);
