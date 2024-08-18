@@ -9,8 +9,6 @@ eleventyNavigation:
   order: 1
 ---
 
-# {{title}}
-
 My full work and volunteer experience, educational credentials, and technical skills. View a shortened version of this [CV as a Google Doc](https://docs.google.com/document/d/1bEH7hsQuHtCw0xqk-Td5uCxiNpvLxXXGF24Rfxw7EIQ/edit?usp=sharing).
 
 ## Table of Contents

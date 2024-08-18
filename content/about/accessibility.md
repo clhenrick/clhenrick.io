@@ -7,8 +7,6 @@ permalink: "/about/accessibility/"
 description: "How this website adheres to WCAG conformance and inclusive design best practices."
 ---
 
-# {{title}}
-
 This is an accessibility statement from the owner and creator of this website, {{ metadata.author.name }}. This statement was created on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time> with help from the [W3C Accessibility Statement Generator Tool](https://www.w3.org/WAI/planning/statements/). It was last updated on <time datetime="{{ updated | htmlDateString}}">{{ updated | readableDate }}<time>.
 
 This website achieves partial level AA compliance for the [Web Content Accessibility Guidelines (WCAG) version 2.2](https://www.w3.org/TR/WCAG22/). WCAG is widely acknowledged by accessibility professionals as well as local, state, and federal government (including the [Americans with Disabilities Act](https://www.ada.gov/resources/small-entity-compliance-guide/)) within the United States as a standard for evaluating whether websites are considered digitally accessible. In addition to working towards WCAG level AA conformance, this website's features and functionality strive to follow usability and [inclusive design](https://en.wikipedia.org/wiki/Inclusive_design) best practices.
