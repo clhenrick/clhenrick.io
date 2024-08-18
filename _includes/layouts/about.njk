@@ -1,6 +1,21 @@
 ---
 layout: layouts/base.njk
+pages: [
+  { title: "about Chris Henrick", path: "/about/" },
+  { title: "Curriculum Vitae", path: "/about/cv/" },
+  { title: "Talks and Workshops", path: "/about/talks/"},
+  { title: "Accessibility Statement", path: "/about/accessibility/" }
+]
 ---
+
+  {%- set partials %}
+    components/secondarySiteNav
+  {% endset %}
+  {%- set bucket = "about" %}
+  {% include "styles.njk" %}
+
+{% from "components/secondarySiteNav.njk" import secondarySiteNav %}
+{{ secondarySiteNav(pages, page.url) }}
 
 <h1>{{ title }}</h1>
 
