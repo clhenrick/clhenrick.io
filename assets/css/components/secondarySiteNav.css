@@ -1,8 +1,8 @@
 #nav-secondary ul {
   display: grid;
   grid-template-rows: repeat(auto-fill, 2.25rem);
-  gap: var(--spacing-md);
-  margin: 0 0 var(--spacing-lg);
+  gap: var(--spacing-xs);
+  margin: 0 0 var(--spacing-md);
   padding: 0;
   background: inherit;
   text-align: start;
@@ -14,6 +14,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
   }
 }
 
