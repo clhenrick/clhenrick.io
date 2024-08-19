@@ -57,8 +57,6 @@ Unintentional gaps in access may exist in parts of this site. Like many others w
 
 Known gaps in accessibility in this site which I plan on remediating are as follows:
 
-- **Site navigation:** Sub navigation items in the main site navigation display immediately on mouse hover without delay and immediately disappear when the mouse cursor moves away. No mechanism currently exists to delay the revealing and hiding of sub navigation items. I plan on updating the main site navigation to use a more accessible design to reveal and hide sub-navigation items.
-
 - **Animated GIFs:** GIF, a type of image format that has animation capabilities, may autoplay in some blog posts. I plan on replacing these animated GIFs with videos that will not autoplay and may be played and paused.
 
 - **Poor alternative text on some images:** Some images have missing or sub-par alternative text, particularly in the portfolio project pages and some blog post pages. I plan on improving existing sub-par and addressing missing alt text in all images over time.
