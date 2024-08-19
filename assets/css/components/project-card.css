@@ -75,10 +75,14 @@
   display: none;
 }
 
-.card:hover,
-.card:focus-within {
+.card:hover {
   border: 1px solid transparent;
   box-shadow: var(--focus-style-box-shadow);
+}
+
+.card:focus-within {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
 }
 
 .card h2 {
@@ -97,14 +101,17 @@
   color: var(--text-color);
 }
 
-.card a[href]:focus {
-  text-decoration: underline;
-}
-
 .card:focus-within a[href]:focus {
   text-decoration: none;
-  outline: transparent;
+  outline-color: transparent;
   box-shadow: none;
+}
+
+@supports not selector(:focus-within) {
+  .card a[href]:focus {
+    text-decoration: underline;
+    text-decoration-thickness: 0.2rem;
+  }
 }
 
 .card a::after {

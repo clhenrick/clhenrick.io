@@ -1,14 +1,13 @@
 ---
 layout: layouts/about.njk
 title: "Curriculum Vitae"
-description: "Curriculum Vitae of Chris Henrick"
+description: "Professional work experience, education, volunteer positions, and technical skills."
+permalink: "/about/cv/"
 eleventyNavigation:
   parent: About
   key: CV
   order: 1
 ---
-
-# {{title}}
 
 My full work and volunteer experience, educational credentials, and technical skills. View a shortened version of this [CV as a Google Doc](https://docs.google.com/document/d/1bEH7hsQuHtCw0xqk-Td5uCxiNpvLxXXGF24Rfxw7EIQ/edit?usp=sharing).
 

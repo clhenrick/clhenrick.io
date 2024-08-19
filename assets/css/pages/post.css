@@ -16,11 +16,6 @@ figure img {
   margin-bottom: var(--spacing-md);
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-  font-size: 1rem;
-}
-
 dl.post-metadata dd {
   font-weight: bold;
 }
@@ -48,4 +43,5 @@ main p:has(picture) {
 p.post-teaser {
   font-size: var(--text-size-h4);
   font-style: italic;
+  text-wrap: balance;
 }

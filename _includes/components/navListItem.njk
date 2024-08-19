@@ -2,7 +2,6 @@
 {%- macro renderNavListItem(entry, pageUrl) %}
 <li class="nav-item">
   <a
-    {%- if entry.children.length %} class="with-arrow-down" {% endif %}
     href="{{ entry.url }}"
     {%- if entry.url == pageUrl %} aria-current="page"{% endif %}
   >

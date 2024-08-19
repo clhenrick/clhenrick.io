@@ -6,17 +6,22 @@ pagination:
 permalink: "work/{{ project.title | slugify }}/"
 eleventyComputed:
   title: "{{ project.title }}, Portfolio"
+  kofiUrl: "{{ metadata.social.get('Ko-Fi') }}"
   eleventyNavigation:
     key: "{{ project.title }}"
     parent: "work"
 ---
 
 {%- set partials %}
+  components/disclosure,
   components/embed,
+  components/kofi,
   pages/project-pages
 {%- endset %}
 {%- set bucket = "project-pages" %}
 {% include "styles.njk" %}
+
+{% from "components/kofi.njk" import kofi %}
 
 <section>
   <h1>{{project.title}}</h1>
@@ -63,7 +68,10 @@ eleventyComputed:
 <section>
   <h2>Project Details</h2>
   {% if project.description_long %}
-    {{ project.description_long | markdown | safe }}
+    <details open>
+      <summary>About {{ project.title }}</summary>
+      {{ project.description_long | markdown | safe }}
+    </details>
   {% endif %}
 
   {% if project.video %}
@@ -94,6 +102,8 @@ eleventyComputed:
   {% endif %}
 </section>
 
+{{ kofi(kofiUrl, "project") }}
+
 <nav class="secondary" aria-label="secondary">
   <a href="/work/">
     <span aria-hidden="true" class="back-arrow">&#8619;</span> Go back to the Portfolio
@@ -103,3 +113,9 @@ eleventyComputed:
     <span aria-hidden="true">&#8679;</span>
   </a>
 </nav>
+
+{%- set javascripts -%}
+  disclosure-widgets
+{%- endset -%}
+{%- set bucket = "project-pages" -%}
+{%- include "scripts.njk" -%}

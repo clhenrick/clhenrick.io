@@ -35,5 +35,14 @@
 
 .button:focus-visible {
   outline: 3px solid var(--background-color);
+  outline-offset: 0;
   box-shadow: var(--focus-style-button-box-shadow);
+}
+
+@supports not selector(:focus-visible) {
+  .button:focus {
+    outline: 3px solid var(--background-color);
+    outline-offset: 0;
+    box-shadow: var(--focus-style-button-box-shadow);
+  }
 }

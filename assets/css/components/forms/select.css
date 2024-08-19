@@ -61,7 +61,7 @@ select::-ms-expand {
 
 @supports (selector(:focus-visible)) and (selector(:has(a))) {
   select:focus {
-    outline: transparent;
+    outline-color: transparent;
   }
 
   .select-menu:has(:focus-visible) {

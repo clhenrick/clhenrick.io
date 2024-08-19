@@ -26,14 +26,43 @@ pagination:
 {% set postslist = posts | reverse %}
 {% include "postslist.njk" %}
 
-<nav class="pagination" aria-labelledby="pagination">
-  <span id="pagination" hidden>Pagination</span>
+<nav class="pagination" aria-labelledby="pagination-title">
+  <span id="pagination-title" hidden>Pagination</span>
   <ol role="list" class="inline">
-    <li>{% if pagination.href.previous %}<a class="button" rel="prev" href="{{ pagination.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
+    {# NOTE: previous and next links are first to aid keyboard navigation (why tab through all the links to get to "next"?) #}
+    {# previous page #}
+    <li>
+      <a
+        class="button previous-next"
+        rel="prev"
+        {%- if pagination.href.previous %}href="{{ pagination.href.previous }}"{% endif %}
+      >
+        Previous
+      </a>
+    </li>
+    {# next page #}
+    <li>
+      <a
+        class="button previous-next"
+        rel="next"
+        {%- if pagination.href.next %}href="{{ pagination.href.next }}"{% endif %}
+      >
+        Next
+      </a>
+    </li>
 {%- for pageEntry in pagination.pages %}
-    <li><a class="button" href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+    <li>
+      <a
+        class="button"
+        href="{{ pagination.hrefs[ loop.index0 ] }}"
+        {% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}
+      >
+        <span class="visually-hidden">Page</span> {{ loop.index }}
+      </a>
+    </li>
 {%- endfor %}
-    <li>{% if pagination.href.next %}<a class="button" rel="next" href="{{ pagination.href.next }}">Next</a>{% else %}Next{% endif %}</li>
   </ol>
-  <a class="button" href="/blog/archive/">Blog Archive</a>
+  <p>
+    You may view all posts in the <a href="/blog/archive/">Blog Archive</a>.
+  </p>
 </nav>

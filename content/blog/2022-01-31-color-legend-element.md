@@ -29,11 +29,13 @@ I recently [open sourced and launched](https://twitter.com/chrislhenrick/status/
 
 An important part of creating the CLE for me was making it simple to use. You can read more about its usage in the links mentioned above, but the gist of it is:
 
-1. include the script tag
-2. declare the HTML
+1. Include the script tag
+2. Declare the HTML
 
 ```html
-<script src="https://unpkg.com/color-legend-element@1.0.3/build/color-legend-element.umd.js"></script>
+<script
+  src="https://unpkg.com/color-legend-element@1.0.3/build/color-legend-element.umd.js"
+></script>
 
 <color-legend
   titletext="Temperature (°C)"
@@ -179,13 +181,16 @@ One thing that's interesting to note about slotted elements is that they are con
 color-legend p {
   margin: 0.5rem 0;
 }
+
 color-legend small {
   font-size: 0.75rem;
 }
+
 p.no-data {
   display: inline-flex;
   align-items: center;
 }
+
 p.no-data:before {
   content: "";
   width: 0.75rem;

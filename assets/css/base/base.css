@@ -15,18 +15,20 @@
   --color-gray-50: #c0c0c0;
   --color-gray-90: #141414;
 
-  --color-blue: #00529d;
-  --color-blue-2: #013e76;
-  --color-blue-3: #012445;
+  /* NOTE: hue colors are altered below if support is available for oklch and hd colors */
+  --color-blue: #0055a9;
+  --color-blue-2: #003c7e;
+  --color-blue-3: #002252;
 
-  --color-orange: #e68933;
-  --color-orange-2: #ffa047;
-  --color-orange-3: #efc94c;
+  --color-orange: #f97f00;
+  --color-orange-2: #ff9f40;
+  --color-orange-3: #f8c800;
 
-  --color-turquoise: #307b6c;
-  --color-turquoise-dark: #334D5C;
-  --color-turquoise-light: #45b29d;
+  --color-turquoise: #00959c;
+  --color-turquoise-dark: #00606f;
+  --color-turquoise-light: #00cbc3;
 
+  --text-color-link: var(--color-accent);
   --text-color-link-active: var(--color-accent-secondary);
   --text-color-link-visited: var(--color-accent-secondary);
 
@@ -61,10 +63,29 @@
   --desktop-max-width: var(--page-size-normal);
   --main-nav-height: 3.375rem;
 
-  --focus-style-outline: 0.15em solid var(--color-accent);
+  --focus-color: var(--color-accent-focus);
+  --focus-style-width: 0.15em;
+  --focus-style-outline: var(--focus-style-width) solid var(--focus-color);
   --focus-style-outline-offset: var(--spacing-xxs);
-  --focus-style-box-shadow: 0 0 0 4px var(--color-accent);
-  --focus-style-button-box-shadow: 0 0 0 6px var(--color-accent);
+  --focus-style-box-shadow: 0 0 0 4px var(--focus-color);
+  --focus-style-button-box-shadow: 0 0 0 6px var(--focus-color);
+}
+
+/* modify color palette for richer colors when p3 is available */
+@media (dynamic-range: high) {
+  @supports(background: oklch(72% 0.19 58)) {
+    :root {
+      --color-orange: oklch(72% 0.19 58);
+      --color-orange-2: oklch(80% 0.17 58);
+      --color-orange-3: oklch(85% 0.18 92);
+      --color-blue: oklch(45% 0.16 250);
+      --color-blue-2: oklch(36% 0.13 252);
+      --color-blue-3: oklch(26% 0.1 254);
+      --color-turquoise: oklch(60% 0.12 200);
+      --color-turquoise-dark: oklch(44% 0.1 210);
+      --color-turquoise-light: oklch(75% 0.16 190);
+    }
+  }
 }
 
 @media screen and (min-width: 46.75rem) {
@@ -77,7 +98,7 @@
 :root[data-theme="light"] {
   color-scheme: light;
   --color-accent: var(--color-blue);
-  --color-accent-focus: var(--color-blue-3);
+  --color-accent-focus: var(--color-blue-2);
   --color-accent-secondary: var(--color-blue-3);
   --color-accent-invert: var(--color-white);
   --color-accent-bg: transparent;
@@ -85,7 +106,6 @@
   --background-color: var(--color-off-white);
   --background-color-secondary: var(--color-off-white-3);
   --text-color: var(--color-gray-90);
-  --text-color-link: var(--color-accent);
 }
 
 :root[data-theme="dark"] {
@@ -99,6 +119,9 @@
   --background-color: #222;
   --background-color-secondary: #1e1810;
   --text-color: var(--color-gray-10);
+  --text-color-link: var(--color-accent-secondary);
+  --text-color-link-active: var(--color-accent);
+  --text-color-link-visited: var(--color-accent);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -114,6 +137,9 @@
     --background-color: #222;
     --background-color-secondary: #1e1810;
     --text-color: var(--color-gray-10);
+    --text-color-link: var(--color-accent-secondary);
+    --text-color-link-active: var(--color-accent);
+    --text-color-link-visited: var(--color-accent);
   }
 }
 
@@ -160,7 +186,7 @@ footer {
 
 main {
   max-width: var(--desktop-max-width);
-  padding: var(--spacing-xxl) var(--spacing-mmd) var(--spacing-xxxl);
+  padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxxl);
 }
 
 main:first-child {
@@ -170,7 +196,19 @@ main:first-child {
 /* handles focus style for header .skip-link */
 main:focus-visible {
   outline: var(--focus-style-outline);
-  outline-offset: calc(-1 * var(--focus-style-outline-offset));
+  outline-offset: calc(-1 * var(--focus-style-width));
+}
+
+@supports not selector(:focus-visible) {
+  main:focus {
+    outline: var(--focus-style-outline);
+    outline-offset: calc(-1 * var(--focus-style-width));
+  }
+}
+
+*::selection {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent);
 }
 
 h1,
@@ -181,6 +219,7 @@ h5 {
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
   line-height: var(--line-height-heading);
+  text-wrap: balance;
 }
 
 /* sets focus style on jump link fragments */
@@ -188,6 +227,10 @@ h2[id]:target,
 h3[id]:target,
 h4[id]:target,
 h5[id]:target {
+  margin-left: calc(-1 * var(--spacing-md));
+  margin-right: calc(-1 * var(--spacing-md));
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
   color: var(--color-accent-invert);
   background-color: var(--color-accent);
 }
@@ -231,6 +274,7 @@ h5 {
 p {
   max-width: 77ch;
   margin-bottom: var(--spacing-mmd);
+  text-wrap: pretty;
 }
 
 p:last-child {
@@ -275,31 +319,6 @@ small {
   text-decoration-skip-ink: none;
 }
 
-pre,
-code {
-  font-family: var(--font-family-monospace);
-}
-
-pre:not([class*="language-"]) {
-  margin: 0.5em 0;
-  line-height: 1.375; /* 22px /16 */
-  -moz-tab-size: var(--syntax-tab-size);
-  -o-tab-size: var(--syntax-tab-size);
-  tab-size: var(--syntax-tab-size);
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-}
-
-code {
-  word-break: break-word;
-}
-
 dl > div {
   display: flex;
   align-items: baseline;
@@ -311,6 +330,11 @@ dl > div {
 :where(ul),
 :where(ol) {
   margin-bottom: var(--spacing-mmd);
+}
+
+:where(li > ul),
+:where([role="list"]) {
+  margin-bottom: 0;
 }
 
 :where([role="list"]) {

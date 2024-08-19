@@ -3,14 +3,14 @@ main p:first-of-type {
 }
 
 /* hide filter buttons and filter button group label when JavaScript is not enabled */
-#filter-projects,
+[data-id="project-filters-disclosure"],
 .project-filters {
   display: none;
 }
 
-.js-enabled #filter-projects {
+.js-enabled [data-id="project-filters-disclosure"] {
   display: block;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
 }
 
 .js-enabled .project-filters {
@@ -24,17 +24,24 @@ main p:first-of-type {
   /* colors for project filter toggle buttons */
   --button-bg: var(--color-turquoise);
   --button-bg-pressed: var(--color-turquoise-dark);
-  --button-text-color: var(--color-white);
+  --button-text-color: var(--color-gray-90);
   --button-text-color-pressed: var(--color-white);
 }
 
 @media (prefers-color-scheme: dark) {
-  .js-enabled .project-filters {
-    --button-bg-pressed:var(--color-turquoise);
-    --button-bg: var(--color-turquoise-light);
+  :root:not([data-theme]) .js-enabled .project-filters {
+    --button-bg-pressed:var(--color-turquoise-light);
+    --button-bg: var(--color-turquoise);
     --button-text-color: var(--color-gray-90);
-    --button-text-color-pressed: var(--color-white);
+    --button-text-color-pressed: var(--color-blue-3);
   }
+}
+
+:root[data-theme="dark"] .js-enabled .project-filters {
+  --button-bg-pressed:var(--color-turquoise-light);
+  --button-bg: var(--color-turquoise);
+  --button-text-color: var(--color-gray-90);
+  --button-text-color-pressed: var(--color-blue-3);
 }
 
 .project-filters button.button {

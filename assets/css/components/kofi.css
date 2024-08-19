@@ -1,0 +1,23 @@
+article.kofi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  background-color: var(--color-accent-invert);
+}
+
+article.kofi p {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+
+article.kofi .kofi-emoji {
+  font-size: 2rem;
+  vertical-align: middle;
+}
