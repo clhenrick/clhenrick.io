@@ -3,10 +3,9 @@ layout: layouts/about.njk
 title: Accessibility Statement
 date: 2024-07-16
 updated: 2024-07-28
+permalink: "/about/accessibility/"
 description: "How this website adheres to WCAG conformance and inclusive design best practices."
 ---
-
-# {{title}}
 
 This is an accessibility statement from the owner and creator of this website, {{ metadata.author.name }}. This statement was created on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time> with help from the [W3C Accessibility Statement Generator Tool](https://www.w3.org/WAI/planning/statements/). It was last updated on <time datetime="{{ updated | htmlDateString}}">{{ updated | readableDate }}<time>.
 

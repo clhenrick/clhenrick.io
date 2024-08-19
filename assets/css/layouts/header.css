@@ -41,6 +41,7 @@ header.page-header {
   outline: var(--focus-style-outline);
   /* NOTE: negative offset used to prevent focus indicator from being obscured */
   outline-offset: calc(-1 * var(--focus-style-width));
+  box-shadow: none;
 }
 
 @supports not selector(:focus-visible) {
@@ -49,6 +50,7 @@ header.page-header {
     outline: var(--focus-style-outline);
     /* NOTE: negative offset used to prevent focus indicator from being obscured */
     outline-offset: calc(-1 * var(--focus-style-width));
+    box-shadow: none;
   }
 }
 
@@ -69,11 +71,6 @@ header.page-header {
   white-space: initial;
 }
 
-.page-header a[href].skip-link:hover {
-  /* prevents possible situation where text has very low contrast when skip link is visible and hovered on */
-  color: inherit;
-}
-
 @supports not selector(:focus-visible) {
   .page-header a[href].skip-link:focus {
     height: auto;
@@ -85,27 +82,9 @@ header.page-header {
   }
 }
 
-@media screen and (min-width: 748px) {
-  /* down arrow for menu items with nested children */
-  .page-header nav a[href].with-arrow-down {
-    position: relative;
-    padding-right: 2rem;
-  }
-
-  .page-header nav a[href].with-arrow-down::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    position: absolute;
-    right: 0;
-    top: 2rem;
-    margin-top: -5.5px;
-    margin-right: 0.75rem;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid currentColor;
-  }
+.page-header a[href].skip-link:hover {
+  /* prevents possible situation where text has very low contrast when skip link is visible and hovered on */
+  color: inherit;
 }
 
 .page-header nav {
@@ -196,7 +175,7 @@ nav ul li a {
     margin-left: auto;
   }
 
-  nav ul li a {
+  nav ul li a[href] {
     min-width: var(--min-nav-link-width);
     border-bottom: none;
   }
@@ -204,36 +183,18 @@ nav ul li a {
 
 @media screen and (min-width: 748px) {
   nav ul li > ul.with-dropdown {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: var(--horiz-nav-item-gap);
-    background-color: var(--background-color-secondary);
-    padding: 0.25rem;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    clip-path: inset(50%);
-  }
-
-  nav ul li:focus-within > ul.with-dropdown,
-  nav ul li:hover > ul.with-dropdown {
-    overflow: auto;
-    min-width: var(--min-nav-link-width);
-    width: auto;
-    height: auto;
-    clip-path: none;
+    display: none;
   }
 }
 
 nav ul li,
-nav ul li a {
+nav ul li a[href] {
   width: 100%;
 }
 
 @media screen and (min-width: 748px) {
   nav ul li,
-  nav ul li a {
+  nav ul li a[href] {
     width: auto;
   }
 }

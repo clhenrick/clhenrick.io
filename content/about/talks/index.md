@@ -1,14 +1,13 @@
 ---
 layout: layouts/about.njk
-title: Talks
-description: "A list of public lectures and presentations given by Chris Henrick, ordered by date."
+title: Talks and Workshops
+description: "Lectures, presentations, and workshops in reverse chronological order."
+permalink: "/about/talks/"
 eleventyNavigation:
   parent: About
   key: Talks
   order: 2
 ---
-
-# {{title}}
 
 Lectures, presentations, and workshops I've given, listed in reverse chronological order. Most entries contain links to slides, video recordings, and/or workshop materials.
 
