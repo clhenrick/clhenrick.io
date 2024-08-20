@@ -84,17 +84,23 @@ You may have noticed that the second swatch in each example don't appear to be t
 
 When researching LCH I was surprised to learn that the LCH color space is similar to the [Lab color space](#)(TODO: link), which I had used previously when creating multi hue color gradients to avoid the dreaded middle gray dead zone that is common when creating linear gradients using RGB and HSL. LCH and Lab use the same color model, while LCH allows for specifying the desired color using polar color coordinates instead of cartesian (TODO: or is it the other way around?). This makes LCH a little more intuitive to use from a designer's perspective.
 
-Another benefit of using either Lab or LCH is that we optionally gain access to colors that are outside of the RGB color space. This is known as the "P3" color gamut, sometimes lumped in with "High Definition" (HD) colors (TODO: link to web.dev article). Devices with fancy screens, such as retina displays on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in RGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback you prefer. You only need to worry about this if you are intentionally using P3 colors, which from my experimenting is most easily achieved with LCH by increasing the Chroma value of a color. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry.
+Another benefit of using either Lab or LCH is that we optionally gain access to colors that are outside of the RGB color space. This is known as the "P3" color gamut, sometimes lumped in with "High Definition" (HD) colors (TODO: link to web.dev article). Devices with fancy screens, such as retina displays on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in RGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback you prefer.
 
-The [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians makes it easy to detect if you are entering P3 territory, it will display a second color swatch with an RGB fallback once you've crossed over.
+[Here's a simple Codepen][codepen-detect-p3] I made that will tell you if your device supports P3 / HD colors. If the two squares are orange, you have P3 available. The left square should look like a more rich or vivid orange compared to the right square. If the first square is black, then your device does not support P3.
+
+You only need to worry about this if you are intentionally using P3 colors. From my experience this is most easily achieved with LCH by increasing the Chroma value of a color. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry about. Drastically reducing the lightness value in LCH also may get you into P3 territory.
+
+The [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians makes it easy to detect if you are entering P3 territory when adjusting the lightness and chroma values. It will display a second color swatch with an RGB fallback once you've crossed over:
 
 ![TODO: screenshot of OKLCH color picker]()
 
-Google Chrome's color picker in dev tools will also show you when you are using `oklch`.
+![TODO: 2nd screenshot of OKLCH color picker in P3 land]()
+
+Google Chrome's color picker in dev tools will also indicates where the RGB / P3 color gamut boundary is when you are adjusting a color using `oklch`:
 
 ![TODO: screenshot of Google Chrome color picker]()
 
-Now that we've covered the background of OKLCH let's move on to the experiments.
+Now that we've covered the background of OKLCH let's move on to the fun stuff... the experiments!
 
 ## Experiment One: Create a Categorical Color Palette From a Single Hue
 
@@ -138,7 +144,7 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 - example: create a sequential multi hue palette from a single color
 - example: analyzing color palettes from Color Brewer
 
-
+[codepen-detect-p3]: https://codepen.io/clhenrick/pen/LYKjwpE?editors=1100
 [evil-martians]: https://evilmartians.com
 [mdn-oklch]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
 [notebook-color-analysis]: https://observablehq.com/@clhenrick/color-palette-analysis-using-oklch
