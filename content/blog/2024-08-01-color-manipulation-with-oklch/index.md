@@ -11,7 +11,10 @@ tags:
 ---
 
 {% from './colorSwatchFigure.njk' import colorSwatchFigure %}
-{% include "./colorSwatchFigureStyles.njk" %}
+
+<style>
+  {% include "./post-styles.css" %}
+</style>
 
 ## Intro and some background on (OK)LCH
 
