@@ -10,6 +10,8 @@ tags:
   - OKLCH
 ---
 
+{% from './colorSwatchFigure.njk' import colorSwatchFigure %}
+
 <style>
   .swatch-container {
     width: 100%;
@@ -41,40 +43,19 @@ The "TLDR" is that the LCH color space provides a way to manipulate colors while
 
 To quickly demonstrate, here are a couple of different colors defined using HSL with the same lightness value applied to them. Notice how the lightness of the two colors doesn't look quite the same:
 
-<figure class="swatch-container">
-  <div>
-    <svg viewBox="0 0 200 50">
-      <rect x="0" y="0" width="200" height="50" fill="hsl(250 100% 50%)" />
-      <text x="100" y="30" text-anchor="middle" fill="#fff">hsl(250 100% 50%)</text>
-    </svg>
-    <svg viewBox="0 0 200 50">
-      <rect x="0" y="0" width="200" height="50" fill="hsl(300 100% 50%)" />
-      <text x="100" y="30" text-anchor="middle" fill="#222">hsl(300 100% 50%)</text>
-    </svg>
-  </div>
+{% set caption %}
+  Two color swatches, blue and magenta, defined using the HSL color space with a shared saturation value of 100% and lightness value of 50%. The blue is noticeably darker than the magenta despite using the same lightness value.
+{% endset %}
 
-  <figcaption>
-    Two color swatches, blue and magenta, defined using the HSL color space with a shared saturation value of 100% and lightness value of 50%. The blue is noticeably darker than the magenta despite using the same lightness value.
-  </figcaption>
-</figure>
+{{ colorSwatchFigure([{ fill: "hsl(250 100% 50%)", textFill: "#fff" }, { fill: "hsl(300 100% 50%)", textFill: "#333" }], caption) }}
 
 However, when we define the same two colors using the LCH color space we get colors that do in fact appear to have the same perceptual amount of lightness:
 
-<figure class="swatch-container">
-  <div>
-    <svg viewBox="0 0 200 50">
-      <rect x="0" y="0" width="200" height="50" fill="oklch(0.5 0.25 250)" />
-      <text x="100" y="30" text-anchor="middle" fill="#fff">oklch(0.5 0.25 250)</text>
-    </svg>
-    <svg viewBox="0 0 200 50">
-      <rect x="0" y="0" width="200" height="50" fill="oklch(0.5 0.25 300)" />
-      <text x="100" y="30" text-anchor="middle" fill="#fff">oklch(0.5 0.25 300)</text>
-    </svg>
-  </div>
-  <figcaption>
-    Two color swatches, blue and magenta, defined using the OKLCH color space with a shared chroma value of 0.25 and lightness value of 0.5. The two colors appear to be uniform in terms of their lightness and color richness.
-  </figcaption>
-</figure>
+{% set caption %}
+  Two color swatches, blue and magenta, defined using the OKLCH color space with a shared chroma value of 0.25 and lightness value of 0.5. The two colors appear to be uniform in terms of their lightness and color richness.
+{% endset %}
+
+{{ colorSwatchFigure([{ fill: "oklch(0.5 0.25 250)", textFill: "#fff" }, { fill: "oklch(0.5 0.25 300)", textFill: "#fff" }], caption) }}
 
 The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original (TODO: add link to post explaining this?). In CSS Color Modules 4 (TODO: link) we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
 
