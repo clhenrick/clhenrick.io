@@ -1,0 +1,8 @@
+{% macro colorSwatch(color, textColor = "currentColor", showText = true) %}
+  <svg viewBox="0 0 200 50">
+    <rect x="0" y="0" width="200" height="50" fill="{{ color }}" />
+    <text x="100" y="30" text-anchor="middle" fill="{{ textColor }}" {% if not showText %}hidden{% endif %}>
+      {{ color }}
+    </text>
+  </svg>
+{% endmacro %}
