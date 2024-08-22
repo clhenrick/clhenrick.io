@@ -105,9 +105,55 @@ The drawback of this approach is that as the number of hues increase, the palett
 
 ## Experiment Two: Create a Sequential Color Palette From a Single Hue
 
-Sequential color palettes used for data visualization typically start out using a very light color and gradually move towards dark, usually to visually convey less to more of something. Using the LCH color space we can again do something similar programmatically by keeping the same hue and adjusting the lightness, perhaps even the chroma.
+Sequential color palettes used for data visualization typically start out using a very light color and gradually move towards dark, usually to visually convey a range of less to more of something such as population density in a thematic map or incidents per hour in a heat map chart. Using the LCH color space we can again programmatically generate a palette from a starting or input hue. This time by keeping the same hue in each of the palette's colors while adjusting the lightness and chroma.
 
 The following graphics come from the Observable Notebook [Creating sequential color palettes with OKLCH][notebook-sequential-oklch].
+
+This time let's start with a different color, the blue used for this website's theme's accent color in light mode, `#0055a9`.
+
+<!-- NOTE: not using colorSwatchFigure because of the use of <code> in <figcaption> -->
+<figure class="swatch-container">
+  <div>
+    {{ colorSwatch("#0055a9", null, false) }}
+  </div>
+  <figcaption>
+    A color swatch of a blue hue with the CSS hex value of <code>0055a9</code>.
+  </figcaption>
+</figure>
+
+We can create a palette of _N_ colors by adjusting the lightness value of `oklch`. First we decide what the highest amount of lightness we want for the starting color should be, say 95%, and what the lowest amount of lightness we want for the last color should be, say 40%. Then based on the value of _N_ we create the middle colors by incrementally adjusting the lightness value while keeping the hue value the same.
+
+We can also adjust the chroma value to help emphasize the change across the palette. Similar to lightness we start with a minimum level of chroma, perhaps `0.04`, for the lightest color and maximum value, perhaps `0.15` for the darkest color. Then we adjust the middle colors based on our _N_ value.
+
+For adjusting the lightness and chroma values I found it easiest to use [D3JS's linear scales](https://d3js.org/d3-scale/linear) which makes it easy to interpolate between two values.
+
+The result is as follows:
+
+<!-- TODO: replace oklch values with hex values? -->
+<figure>
+  <svg viewBox="0 0 166 38" style="max-height:128px;width:100%">
+    <rect x="0" y="0" width="166" height="38" fill="var(--background-color)"/>
+    <rect fill="oklch(95% 0.04 255.25)" x="3" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(81.25% 0.065 255.25)" x="35" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(67.5% 0.09 255.25)" x="67" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(53.75% 0.115 255.25)" x="99" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(40% 0.14 255.25)" x="131" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/>
+  </svg>
+  <figcaption>
+    TODO: add caption
+  </figcaption>
+</figure>
+
+If instead of using linear interpolation and use exponential interpolation we get a result that looks a little more like a proper sequential color palette:
+
+<!-- TODO: replace oklch values with hex values? -->
+<figure>
+  <svg viewBox="0 0 166 38" style="max-height:128px;width:100%">
+    <rect x="0" y="0" width="166" height="38" fill="var(--background-color)"/>
+    <rect fill="oklch(95% 0.04 255.25)" x="3" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(84.579% 0.05895 255.25)" x="35" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(71.06% 0.08353 255.25)" x="67" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(56.056% 0.11081 255.25)" x="99" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(40% 0.14 255.25)" x="131" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/>
+  </svg>
+  <figcaption>
+    TODO: add caption
+  </figcaption>
+</figure>
+
+If you ask me, these results aren't too shabby considering they were programmatically generated using some simple heuristics. The process could certainly be refined, I'm sure, and we could look to popular color palettes used for data visualization such as those from [Color Brewer](https://colorbrewer2.org/) or [d3-scale-chromatic](https://d3js.org/d3-scale-chromatic) for inspiration and improving our heuristics.
 
 ## Experiment Three: Analyzing Color Brewer Palettes using OKLCH
 
