@@ -66,9 +66,30 @@ Now that we've covered the background of OKLCH let's move on to the fun stuff...
 
 ## Experiment One: Create a Categorical Color Palette From a Single Hue
 
-The first thing I tried was creating a categorical color palette from a single hue. Again, because the LCH color model maintains a perceptual level of lightness across hues, we could theoretically keep the chroma and lightness value from our original hue while shifting the hue value to create new colors. Each of our new colors should look similar to our original color because they share the same chroma and lightness.
+The first thing I tried was creating a categorical color palette from a single hue. Again, because the LCH color model maintains a perceptual level of lightness across hues, my thinking was to keep the chroma and lightness value from our original hue while shifting the hue value to create new colors. Each of our new colors should look similar to our original color because they share the same chroma and lightness.
 
 The following graphics come from the Observable Notebook ["Creating categorical color palettes with OKLCH"][notebook-exploring-oklch].
+
+Starting with a single color, say `#f97f00`, a vibrant orange (which happens to be the accent color for this website's theme in dark mode):
+
+{{ colorSwatchFigure([{ fill: "#f97f00" }], "A color swatch of an orange hue.") }}
+
+We can create _N_ more colors by shifting the `H` value of the color in `oklch` by 360 / _N_, since in `oklch` the hue value ranges from 0 - 360. We also don't need to worry about having a value that is exactly in the range of 0 to 360 since anything over 360 will wrap to the equivalent hue. For example a hue value of 400 will wrap to 40 since 400 - 360 = 40.
+
+To demonstrate, here is a palette of seven colors I created using this technique using the original color of `#f97f00`. The first color swatch is the original or starting hue, the six that follow were programmatically created.
+
+<figure class="swatch-container">
+  <svg viewBox="0 0 230 38" style="max-height: 128px; width: 100%;">
+    <rect x="0" y="0" width="230" height="38" fill="var(--background-color)"/>
+    <rect fill="rgb(249,127,0)" x="3" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(184,169,0)" x="35" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(0,197,115)" x="67" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(0,194,222)" x="99" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(87,164,255)" x="131" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(198,129,250)" x="163" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(252,109,161)" x="195" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/>
+  </svg>
+  <figcaption>
+    A programmatically generated color palette of seven colors. Each color shares the same lightness and chroma value and are equidistant from one another in terms of hue. Such a palette could be suitable for a categorical color scheme for use in data visualization.
+  </figcaption>
+</figure>
+
+What's interesting to me about this is that the color palette that is generated looks consistent with the starting color. None of the other colors feel out of place, e.g. too dark or too light, when considering that this palette could be used for a categorical color scheme in a data visualization or thematic map where the purpose of using color is to differentiate various categories but not emphasize any one category. Since each color shares the same lightness and chroma LCH value, the palette as a whole feels perceptually uniform.
+
 
 ## Experiment Two: Create a Sequential Color Palette From a Single Hue
 
