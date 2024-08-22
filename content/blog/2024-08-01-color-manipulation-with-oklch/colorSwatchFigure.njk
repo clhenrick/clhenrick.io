@@ -1,10 +1,10 @@
 {% from "./colorSwatch.njk" import colorSwatch %}
 
-{%- macro colorSwatchFigure(swatches = [], caption = "") %}
+{%- macro colorSwatchFigure(swatches = [], caption = "", showText = true) %}
 <figure class="swatch-container">
   <div>
     {%- for swatch in swatches %}
-    {{ colorSwatch(swatch.fill, swatch.textFill, swatch.showText, swatch.width, swatch.height) }}
+    {{ colorSwatch(swatch.fill, swatch.textFill, showText, swatch.width, swatch.height) }}
     {%- endfor %}
   </div>
   {% if (caption) %}

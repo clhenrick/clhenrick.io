@@ -76,7 +76,7 @@ Starting with a single color, say `#f97f00`, a vibrant orange (which happens to 
 <!-- NOTE: not using colorSwatchFigure because of the use of <code> in <figcaption> -->
 <figure class="swatch-container">
   <div>
-    {{ colorSwatch("#f97f00", null, false) }}
+    {{ colorSwatch("#f97f00", "transparent", false) }}
   </div>
   <figcaption>
     A color swatch of an orange hue with the CSS hex value of <code>f97f00</code>.
@@ -108,7 +108,7 @@ This time let's start with a different color, the blue used for this website's t
 <!-- NOTE: not using colorSwatchFigure because of the use of <code> in <figcaption> -->
 <figure class="swatch-container">
   <div>
-    {{ colorSwatch("#0055a9", null, false) }}
+    {{ colorSwatch("#0055a9", "transparent", false) }}
   </div>
   <figcaption>
     A color swatch of a blue hue with the CSS hex value of <code>0055a9</code>.
