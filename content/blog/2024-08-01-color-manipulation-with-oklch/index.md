@@ -158,18 +158,6 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 - [Creating sequential color palettes with OKLCH][notebook-sequential-oklch]
 - [Creating more categorical color palettes with OKLCH][notebook-palette-oklch]
 
-## Outline:
-
-- what is a color space?
-- why should you care?
-- pitfalls of HSL
-- perceptual lightness
-- heuristics vs. algorithms
-- example: create a new categorical palette from a single color
-- example: create a sequential single hue palette from a single color
-- example: create a sequential multi hue palette from a single color
-- example: analyzing color palettes from Color Brewer
-
 [codepen-detect-p3]: https://codepen.io/clhenrick/pen/LYKjwpE?editors=1100
 [evil-martians]: https://evilmartians.com
 [mdn-oklch]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
