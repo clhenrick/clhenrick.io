@@ -19,6 +19,10 @@
   width: 50%;
 }
 
+.swatch-container svg {
+  pointer-events: none;
+}
+
 .swatch-container text[hidden] {
   display: none;
 }
