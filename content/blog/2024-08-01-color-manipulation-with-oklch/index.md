@@ -123,29 +123,20 @@ For adjusting the lightness and chroma values I found it easiest to use [D3JS's 
 
 The result is as follows:
 
-<!-- TODO: replace oklch values with hex values? -->
-<figure>
-  <svg viewBox="0 0 166 38" style="max-height:128px;width:100%">
-    <rect x="0" y="0" width="166" height="38" fill="var(--background-color)"/>
-    <rect fill="oklch(95% 0.04 255.25)" x="3" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(81.25% 0.065 255.25)" x="35" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(67.5% 0.09 255.25)" x="67" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(53.75% 0.115 255.25)" x="99" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(40% 0.14 255.25)" x="131" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/>
-  </svg>
-  <figcaption>
-    TODO: add caption
-  </figcaption>
-</figure>
+{% set caption %}
+TODO: add caption
+{% endset %}
 
-If instead of using linear interpolation and use exponential interpolation we get a result that looks a little more like a proper sequential color palette:
+{{ colorSwatchFigure([{"fill":"#ddf0ff","showText":false,"width":32,"height":32},{"fill":"#a6c4ec","showText":false,"width":32,"height":32},{"fill":"#7199ce","showText":false,"width":32,"height":32},{"fill":"#3c6faf","showText":false,"width":32,"height":32},{"fill":"#004590","showText":false,"width":32,"height":32}], caption)}}
 
-<!-- TODO: replace oklch values with hex values? -->
-<figure>
-  <svg viewBox="0 0 166 38" style="max-height:128px;width:100%">
-    <rect x="0" y="0" width="166" height="38" fill="var(--background-color)"/>
-    <rect fill="oklch(95% 0.04 255.25)" x="3" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(84.579% 0.05895 255.25)" x="35" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(71.06% 0.08353 255.25)" x="67" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(56.056% 0.11081 255.25)" x="99" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="oklch(40% 0.14 255.25)" x="131" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/>
-  </svg>
-  <figcaption>
-    TODO: add caption
-  </figcaption>
-</figure>
+If instead of using linear interpolation and use exponential interpolation we get a result that looks a little more like a proper sequential color palette. The result is subtle, but adds a bit of polish that helps. It can be adjusted by changing the exponent value.
+
+{% set caption %}
+TODO: add caption
+{% endset %}
+
+
+{{ colorSwatchFigure([{"fill":"#ddf0ff","showText":false,"width":32,"height":32},{"fill":"#c8e0fe","showText":false,"width":32,"height":32},{"fill":"#9abae5","showText":false,"width":32,"height":32},{"fill":"#5986c0","showText":false,"width":32,"height":32},{"fill":"#004590","showText":false,"width":32,"height":32}], caption) }}
 
 If you ask me, these results aren't too shabby considering they were programmatically generated using some simple heuristics. The process could certainly be refined, I'm sure, and we could look to popular color palettes used for data visualization such as those from [Color Brewer](https://colorbrewer2.org/) or [d3-scale-chromatic](https://d3js.org/d3-scale-chromatic) for inspiration and improving our heuristics.
 
