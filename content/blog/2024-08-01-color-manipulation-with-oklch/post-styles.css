@@ -16,5 +16,9 @@
 }
 
 .swatch-container svg {
-  width: 25%;
+  width: 50%;
+}
+
+.swatch-container text[hidden] {
+  display: none;
 }
