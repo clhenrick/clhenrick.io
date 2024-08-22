@@ -87,17 +87,11 @@ We can create _N_ more colors by shifting the `H` value of the color in `oklch` 
 
 To demonstrate, here is a palette of five colors I created using this technique starting with the original color of `#f97f00`. The first color swatch is the original hue, the four that follow were programmatically created.
 
-<figure class="swatch-container">
-  <div>
-  <svg viewBox="0 0 166 38" style="max-height:128px; width:100%;">
-    <rect x="0" y="0" width="166" height="38" fill="var(--background-color)"/>
-    <rect fill="rgb(249,127,0)" x="3" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(137,184,12)" x="35" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(0,197,206)" x="67" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(122,155,255)" x="99" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/><rect fill="rgb(239,113,197)" x="131" y="3" width="32" height="32" stroke="var(--background-color)" stroke-width="2"/>
-  </svg>
-  </div>
-  <figcaption>
-    A programmatically generated color palette of five colors. Each color shares the same lightness and chroma value, and are equidistant from one another in terms of hue. Such a palette could be suitable for a categorical color scheme for use in data visualization.
-  </figcaption>
-</figure>
+{% set caption %}
+  A programmatically generated color palette of five colors. Each color shares the same lightness and chroma value, and are equidistant from one another in terms of hue. Such a palette could be suitable for a categorical color scheme for use in data visualization.
+{% endset %}
+
+{{ colorSwatchFigure([{"fill":"#f97f00","showText":false,"width":32,"height":32},{"fill":"#89b80c","showText":false,"width":32,"height":32},{"fill":"#00c5ce","showText":false,"width":32,"height":32},{"fill":"#7a9bff","showText":false,"width":32,"height":32},{"fill":"#ef71c5","showText":false,"width":32,"height":32}], caption) }}
 
 What's interesting to me about this is that the color palette that is generated looks consistent with the starting color. None of the other colors feel out of place, e.g. too dark or too light, when keeping in mind that this palette would be used for a categorical color scheme in a data visualization or thematic map, where the purpose of using color is to differentiate various categories but not emphasize any one category. Since each color shares the same lightness and chroma LCH value, the palette as a whole feels perceptually uniform.
 

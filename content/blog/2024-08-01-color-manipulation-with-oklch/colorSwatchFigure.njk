@@ -4,7 +4,7 @@
 <figure class="swatch-container">
   <div>
     {%- for swatch in swatches %}
-    {{ colorSwatch(swatch.fill, swatch.textFill) }}
+    {{ colorSwatch(swatch.fill, swatch.textFill, swatch.showText, swatch.width, swatch.height) }}
     {%- endfor %}
   </div>
   {% if (caption) %}
