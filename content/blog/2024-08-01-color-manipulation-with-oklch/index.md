@@ -69,8 +69,6 @@ Now that we've covered the background of OKLCH let's move on to the fun stuff...
 
 The first thing I tried was creating a categorical color palette from a single hue. Again, because the LCH color model maintains a perceptual level of lightness across hues, my thinking was to keep the chroma and lightness value from our original hue while shifting the hue value to create new colors. Each of our new colors should look similar to our original color because they share the same chroma and lightness.
 
-The following graphics come from the Observable Notebook ["Creating categorical color palettes with OKLCH"][notebook-exploring-oklch].
-
 Starting with a single color, say `#f97f00`, a vibrant orange (which happens to be the accent color for this website's theme in dark mode):
 
 <!-- NOTE: not using colorSwatchFigure because of the use of <code> in <figcaption> -->
@@ -96,6 +94,8 @@ To demonstrate, here is a palette of five colors I created using this technique 
 What's interesting to me about this is that the color palette that is generated looks consistent with the starting color. None of the other colors feel out of place, e.g. too dark or too light, when keeping in mind that this palette would be used for a categorical color scheme in a data visualization or thematic map, where the purpose of using color is to differentiate various categories but not emphasize any one category. Since each color shares the same lightness and chroma LCH value, the palette as a whole feels perceptually uniform.
 
 The drawback of this approach is that as the number of hues increase, the palette's colors may not be different enough from one another, so viewers might have difficulty in distinguishing individual colors. It also by no means accessible in terms of color contrast out of the box. However, this could be a good starting point where a designer could make adjustments to each color as needed depending on the use case of the palette.
+
+Feel free to try out the Observable Notebook ["Exploring OKLCH Color"][notebook-exploring-oklch].
 
 ## Experiment Two: Create a Sequential Color Palette From a Single Hue
 
@@ -142,9 +142,44 @@ If you ask me, these results aren't too shabby considering they were programmati
 
 ## Experiment Three: Analyzing Color Brewer Palettes using OKLCH
 
-What if instead of creating new colors using OKLCH we used it to analyze popular color palettes, such as those used in data visualization? Using a JavaScript library such as ColorJS we can convert the RGB versions of each palette into OKLCH and then read each of the values for lightness, chroma, and hue. This could be an interesting way to "dissect" or analyze different types of color palettes, which could help inform how we create color palettes suitable for data visualization on the fly.
+What if instead of creating new colors using OKLCH we used it to analyze popular color palettes, such as those used in data visualization? Using a JavaScript library such as [ColorJS][colorjs] we can convert the RGB versions of each palette into OKLCH and then read each of the values for lightness, chroma, and hue. This could be an interesting way to "dissect" or analyze different types of color palettes, which could help inform how we create color palettes suitable for data visualization on the fly.
 
-The following graphics come from the Observable Notebook ["Color palette analysis with OKLCH"][notebook-color-analysis].
+Let's take a sequential, single hue color scheme from the [Color Brewer][color-brewer] color scheme library to try this out with. I'm obviously partial to orange, so I've chosen the "oranges" color scheme with seven discrete colors. I chose seven colors to start with since it will show more variation for the color scheme.
+
+{% set caption %}
+Seven color swatches belonging to the "oranges" sequential color scheme from the Color Brewer color scheme library. Color Brewer was developed by Cynthia Brewer and Mark Harrower at Pennsylvania State University.
+{% endset %}
+
+{{ colorSwatchFigure([{"fill":"#feedde","showText":false,"width":32,"height":32},{"fill":"#fdd0a2","showText":false,"width":32,"height":32},{"fill":"#fdae6b","showText":false,"width":32,"height":32},{"fill":"#fd8d3c","showText":false,"width":32,"height":32},{"fill":"#f16913","showText":false,"width":32,"height":32},{"fill":"#d94801","showText":false,"width":32,"height":32},{"fill":"#8c2d04","showText":false,"width":32,"height":32}], caption) }}
+
+Using ColorJS we can convert each swatch from the oranges palette to OKLCH and then plot the lightness, chroma, and hue values on separate line graphs to see how these values change over the seven colors:
+
+<figure aria-labelledby="lightness-plot-title">
+  <span id="lightness-plot-title">Change in Lightness for the oranges color scheme</span>
+{% include "./lightnessPlot.njk" %}
+  <figcaption>
+    Lightness decreases linearly from swatches one to six, then decreases sharply by 20% at swatch seven.
+  </figcaption>
+</figure>
+
+<!-- TODO: chroma chart -->
+
+<!-- TODO: hue chart -->
+
+What's interesting to me about the above charts is that it shows the following about the oranges color scheme:
+
+- Lightness steadily declines by about 5-8% until the last swatch where it declines significantly by about 20%.
+
+- Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7.
+
+- Hue doesn't remain static, it changes slightly for each of color scheme's swatches with the exception of the last two swatches.
+
+What about a multi-hue color scheme? How might that type of color scheme's heuristics differ from a single hue?
+
+The following graphics come from the Observable Notebook ["Color palette analysis using OKLCH"][notebook-color-analysis].
+
+
+
 
 ## Wrapping Up
 
@@ -159,6 +194,8 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 - [Creating more categorical color palettes with OKLCH][notebook-palette-oklch]
 
 [codepen-detect-p3]: https://codepen.io/clhenrick/pen/LYKjwpE?editors=1100
+[color-brewer]: https://colorbrewer2.org/
+[colorjs]: https://colorjs.io/
 [evil-martians]: https://evilmartians.com
 [mdn-oklch]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
 [notebook-color-analysis]: https://observablehq.com/@clhenrick/color-palette-analysis-using-oklch
