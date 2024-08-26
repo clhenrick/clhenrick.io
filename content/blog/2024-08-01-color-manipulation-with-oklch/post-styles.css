@@ -7,6 +7,11 @@
   padding: var(--spacing-md);
 }
 
+.plot-container {
+  width: fit-content;
+  max-width: 100%;
+}
+
 .swatch-container + .swatch-container,
 .plot-container + .plot-container {
   margin-top: var(--spacing-lg);
