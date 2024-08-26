@@ -1,6 +1,6 @@
 {% macro lineChartFigure(chart, title, caption) %}
 <figure class="plot-container" aria-labelledby="plot-title-{{ title | slugify }}">
-  <span id="plot-title-{{ title | slugify }}">{{ title }}</span>
+  <p class="plot-title" id="plot-title-{{ title | slugify }}">{{ title }}</p>
   {% include chart %}
   <figcaption>
     {{ caption }}

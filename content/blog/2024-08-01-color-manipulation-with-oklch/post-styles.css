@@ -43,6 +43,10 @@
   display: none;
 }
 
+.plot-container .plot-title {
+  margin-bottom: var(--spacing-sm);
+}
+
 .plot-container g[aria-label="y-grid"] {
   stroke-opacity: 0.3;
 }
