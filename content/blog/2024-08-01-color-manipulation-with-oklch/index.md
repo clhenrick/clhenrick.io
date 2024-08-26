@@ -229,8 +229,11 @@ Other questions I'm curious to answer:
 
 The following graphics come from the Observable Notebook ["Color palette analysis using OKLCH"][notebook-color-analysis].
 
+## Experiment Four: Improving Color Contrast Using OKLCH
 
+The last experiment's goal was to utilize the OKLCH colorspace for adjusting the color contrast of two colors for accessibility purposes. The Web Content Accessibility Guidelines (WCAG) has success criteria (SC) for color contrast which must be passed to if one is striving to make their website or application conform to WCAG 2.1 or 2.2. The SC states that at a minimum, a text's color must contrast 4.5 to 1 with its background color in order for it to be considered accessible. For graphical objects and user interface components the minimum contrast must be 3 to 1 with the background color. There is also related contrast success criteria for focus indicators (the outline that should appear when using your keyboard to navigate things like forms and links). My thinking was that perhaps the OKLCH colorspace would work better for adjusting color contrast than the HSL or RGB color space since changing lightness in OKLCH is an improvement over HSL.
 
+For this experiment I created an Observable Notebook, [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast], for analyzing the color contrast of two colors using both the WCAG and APCA color contrast algorithms. This was again made possible via ColorJS since it has the algorithms built in. The text and background colors may be entered via form text inputs and then adjusted using sliders for the lightness, chroma, and hue values from OKLCH. As the values are changed the color contrast is re-evaluated.
 
 ## Wrapping Up
 
@@ -243,6 +246,7 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 - [Creating categorical color palettes with OKLCH][notebook-exploring-oklch]
 - [Creating sequential color palettes with OKLCH][notebook-sequential-oklch]
 - [Creating more categorical color palettes with OKLCH][notebook-palette-oklch]
+- [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast]
 
 [codepen-detect-p3]: https://codepen.io/clhenrick/pen/LYKjwpE?editors=1100
 [color-brewer]: https://colorbrewer2.org/
@@ -253,5 +257,6 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 [notebook-exploring-oklch]: https://observablehq.com/@clhenrick/exploring-oklch-color
 [notebook-sequential-oklch]: https://observablehq.com/@clhenrick/sequential-color-palette-genration-using-oklch
 [notebook-palette-oklch]: https://observablehq.com/@clhenrick/accent-color-to-palette-using-oklch
+[notebook-oklch-color-contrast]: https://observablehq.com/@clhenrick/color-contrast-evaluator?collection=@clhenrick/storymaps
 [oklch-in-css]: https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
 [oklch-picker-converter]: https://oklch.com
