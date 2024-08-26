@@ -345,6 +345,11 @@ dl > div {
   list-style: none;
 }
 
+:where(ul:not([role="list"])) li,
+:where(ol:not([role="list"])) li {
+  margin-bottom: var(--spacing-md);
+}
+
 ul.inline,
 ol.inline {
   display: flex;
