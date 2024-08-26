@@ -9,10 +9,16 @@
 .swatch-container div {
   width: 100%;
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--spacing-xxs);
   font-family: var(--font-family-monospace);
   font-size: 1rem;
   margin-bottom: var(--spacing-md);
+}
+
+@media screen and (min-width: 792px) {
+  .swatch-container div {
+    gap: var(--spacing-sm);
+  }
 }
 
 .swatch-container svg {
