@@ -7,6 +7,11 @@
   padding: var(--spacing-md);
 }
 
+.swatch-container + .swatch-container,
+.plot-container + .plot-container {
+  margin-top: var(--spacing-lg);
+}
+
 .swatch-container > div,
 .plot-container > svg {
   margin-bottom: var(--spacing-md);
