@@ -49,6 +49,7 @@
 }
 
 .plot-container .plot-title {
+  font-weight: bold;
   margin-bottom: var(--spacing-sm);
 }
 
