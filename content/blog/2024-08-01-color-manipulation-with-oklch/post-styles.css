@@ -37,3 +37,7 @@
 .swatch-container text[hidden] {
   display: none;
 }
+
+.plot-container g[aria-label="y-grid"] {
+  stroke-opacity: 0.3;
+}

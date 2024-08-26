@@ -161,9 +161,9 @@ Lightness decreases linearly from swatches one to six, then decreases sharply by
 
 {{ lineChartFigure('_includes/components/lineChartLightness.njk', 'Change in Lightness: Oranges', caption)}}
 
-<!-- TODO: chroma chart -->
+{{ lineChartFigure('_includes/components/lineChartChroma.njk', 'Change in Chroma: Oranges', 'TODO: caption') }}
 
-<!-- TODO: hue chart -->
+{{ lineChartFigure('_includes/components/lineChartHue.njk', 'Change in Hue: Oranges', 'TODO: caption') }}
 
 What's interesting to me about the above charts is that it shows the following about the oranges color scheme:
 
