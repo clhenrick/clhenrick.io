@@ -12,6 +12,7 @@ tags:
 
 {% from '_includes/components/colorSwatch.njk' import colorSwatch %}
 {% from '_includes/components/colorSwatchFigure.njk' import colorSwatchFigure %}
+{% from '_includes/components/lineChartFigure.njk' import lineChartFigure %}
 
 <style>
   {% include "./post-styles.css" %}
@@ -154,13 +155,11 @@ Seven color swatches belonging to the "oranges" sequential color scheme from the
 
 Using ColorJS we can convert each swatch from the oranges palette to OKLCH and then plot the lightness, chroma, and hue values on separate line graphs to see how these values change over the seven colors:
 
-<figure aria-labelledby="lightness-plot-title">
-  <span id="lightness-plot-title">Change in Lightness for the oranges color scheme</span>
-{% include "_includes/components/lineChartLightness.njk" %}
-  <figcaption>
-    Lightness decreases linearly from swatches one to six, then decreases sharply by 20% at swatch seven.
-  </figcaption>
-</figure>
+{% set caption %}
+Lightness decreases linearly from swatches one to six, then decreases sharply by 20% at swatch seven.
+{% endset %}
+
+{{ lineChartFigure('_includes/components/lineChartLightness.njk', 'Change in Lightness: Oranges', caption)}}
 
 <!-- TODO: chroma chart -->
 

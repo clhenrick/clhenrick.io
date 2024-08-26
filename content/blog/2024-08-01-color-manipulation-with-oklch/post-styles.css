@@ -1,9 +1,15 @@
-.swatch-container {
+.swatch-container,
+.plot-container {
   width: 100%;
   margin-bottom: var(--spacing-mmd);
   border: 1px solid currentColor;
   border-radius: var(--border-radius);
   padding: var(--spacing-md);
+}
+
+.swatch-container > div,
+.plot-container > svg {
+  margin-bottom: var(--spacing-md);
 }
 
 .swatch-container div {
@@ -12,7 +18,6 @@
   gap: var(--spacing-xxs);
   font-family: var(--font-family-monospace);
   font-size: 1rem;
-  margin-bottom: var(--spacing-md);
 }
 
 @media screen and (min-width: 792px) {
