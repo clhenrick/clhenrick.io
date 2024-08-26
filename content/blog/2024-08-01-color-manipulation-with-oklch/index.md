@@ -10,8 +10,8 @@ tags:
   - OKLCH
 ---
 
-{% from './colorSwatch.njk' import colorSwatch %}
-{% from './colorSwatchFigure.njk' import colorSwatchFigure %}
+{% from '_includes/components/colorSwatch.njk' import colorSwatch %}
+{% from '_includes/components/colorSwatchFigure.njk' import colorSwatchFigure %}
 
 <style>
   {% include "./post-styles.css" %}
@@ -156,7 +156,7 @@ Using ColorJS we can convert each swatch from the oranges palette to OKLCH and t
 
 <figure aria-labelledby="lightness-plot-title">
   <span id="lightness-plot-title">Change in Lightness for the oranges color scheme</span>
-{% include "./lightnessPlot.njk" %}
+{% include "_includes/components/lineChartLightness.njk" %}
   <figcaption>
     Lightness decreases linearly from swatches one to six, then decreases sharply by 20% at swatch seven.
   </figcaption>
