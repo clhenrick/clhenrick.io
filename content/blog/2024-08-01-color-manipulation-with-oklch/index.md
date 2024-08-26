@@ -203,15 +203,23 @@ Lightness decreases linearly from swatches one to six, then decreases sharply by
 
 {{ lineChartFigure('_includes/components/lineChartLightness.njk', 'Change in Lightness: Oranges', caption)}}
 
-{{ lineChartFigure('_includes/components/lineChartChroma.njk', 'Change in Chroma: Oranges', 'TODO: caption') }}
+{% set caption %}
+Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7.
+{% endset %}
 
-{{ lineChartFigure('_includes/components/lineChartHue.njk', 'Change in Hue: Oranges', 'TODO: caption') }}
+{{ lineChartFigure('_includes/components/lineChartChroma.njk', 'Change in Chroma: Oranges', caption) }}
+
+{% set caption %}
+Hue starts at a value of 64 degrees, increases to 67, then steadily decreases to a value of 39 degrees. There is roughly 28 degrees of variance for the entire color scheme.
+{% endset %}
+
+{{ lineChartFigure('_includes/components/lineChartHue.njk', 'Change in Hue: Oranges', caption) }}
 
 The three charts convey the following about the Color Brewer oranges color scheme:
 
-- Lightness steadily declines by about 5-8% until the last swatch where it declines significantly by about 20%.
-- Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7.
-- Hue doesn't remain static, it changes slightly for each of color scheme's swatches with the exception of the last two swatches.
+- Lightness steadily declines by about 7% until the last swatch where it declines significantly by about 15%. Decreasing lightness more intensely for the last swatch helps make it stand out as the darkest swatch in the group.
+- Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7. Reducing the chroma for the last swatch helps it appear darker among the rest of the swatches.
+- Hue doesn't remain static, it changes slightly for each of the color scheme's swatches with the exception of the last two swatches. There's roughly 28 degrees of variance for this so-called "single hue" sequential color scheme.
 
 It's almost as if the colors in these swatches had a human touch applied to them... (Sarcasm intended, these color schemes were created by hand AFAIK!)
 
