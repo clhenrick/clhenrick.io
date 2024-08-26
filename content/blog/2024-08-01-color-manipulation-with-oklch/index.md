@@ -159,10 +159,28 @@ Seven color swatches belonging to the "oranges" sequential color scheme from the
 
 {{ colorSwatchFigure([{"fill":"#feedde","showText":false,"width":32,"height":32},{"fill":"#fdd0a2","showText":false,"width":32,"height":32},{"fill":"#fdae6b","showText":false,"width":32,"height":32},{"fill":"#fd8d3c","showText":false,"width":32,"height":32},{"fill":"#f16913","showText":false,"width":32,"height":32},{"fill":"#d94801","showText":false,"width":32,"height":32},{"fill":"#8c2d04","showText":false,"width":32,"height":32}], caption) }}
 
-Using ColorJS we can convert each swatch from the oranges palette to OKLCH:
+Using ColorJS we can convert each sRGB swatch from the oranges palette to OKLCH:
 
 ```js
-const oranges = [
+import Color from 'https://colorjs.io/dist/color.js';
+
+// the oranges color palette from Color Brewer
+const oranges = ['#feedde','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#8c2d04'];
+
+// function that converts a string representation of a color into a ColorJS object
+// and converts the input colorspace to the oklch colorspace
+const toColorOklch = (colorString) => new Color(colorString).to('oklch');
+
+// first convert our color strings to ColorJS Color objects in the oklch colorspace
+const orangesOklch = oranges.map(toColorOklch);
+
+// get oklch string representations of the colors using the Color's display method
+const orangesOklchDisplay = orangesOklch.map((color) => color.display());
+
+// inspect the results
+console.log(orangesOklchDisplay);
+// logs the following:
+[
   'oklch(95.56% 0.0272 63.957)',
   'oklch(88.561% 0.07849 67.145)',
   'oklch(81.351% 0.12475 60.007)',
@@ -175,7 +193,9 @@ const oranges = [
 
 <!-- TODO: use a table in addition to or instead of code block above? -->
 
-...and then plot the lightness, chroma, and hue values on separate line graphs to see how these values change over the course of the seven colors:
+We can then plot the lightness, chroma, and hue values on separate line graphs to get a sense of how these values change over the oranges color scheme.
+
+<!-- TODO: update charts: add circles for each data point & incorporate theme accent color -->
 
 {% set caption %}
 Lightness decreases linearly from swatches one to six, then decreases sharply by 20% at swatch seven.
@@ -187,21 +207,25 @@ Lightness decreases linearly from swatches one to six, then decreases sharply by
 
 {{ lineChartFigure('_includes/components/lineChartHue.njk', 'Change in Hue: Oranges', 'TODO: caption') }}
 
-What's interesting to me about the above charts is that it shows the following about the oranges color scheme:
+The three charts convey the following about the Color Brewer oranges color scheme:
 
 - Lightness steadily declines by about 5-8% until the last swatch where it declines significantly by about 20%.
-
 - Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7.
-
 - Hue doesn't remain static, it changes slightly for each of color scheme's swatches with the exception of the last two swatches.
 
-It's almost as if the colors in these swatches had a human touch applied to them...
+It's almost as if the colors in these swatches had a human touch applied to them... (Sarcasm intended, these color schemes were created by hand AFAIK!)
 
-To get a better idea of how the lightness, chroma, and hue values change for commonly used data visualization color palettes it would be useful to run this analysis on every palette we could get our hands on. That's a bit beyond the scope of this particular blog post, but I think it would be an worthwhile endeavor if we are serious about coming up with an automated method for creating color palettes. If doing this I might start with doing a gridded or faceted, small multiples plot of each color, and then maybe looking at some statistics on the data. Someone smarter then me might even be able to use machine learning with the input data.
+To get a better idea of how the lightness, chroma, and hue values change for commonly used data visualization color palettes it would be useful to run this analysis on every palette we could get our hands on. That's a bit beyond the scope of this particular blog post, but I think it would be an worthwhile endeavor if we are serious about coming up with an automated method for creating sequential color scheme palettes for use in data visualization.
+
+If doing this I might start with doing a gridded or faceted, small multiples plot of each color as well as running some statistics on the data. Someone smarter then me might even be able to use machine learning with the data to come up with a way to predict what additional colors would be ideal given an input or starting color.
 
 That being said, my goal here is more or less to see if we can get "good enough" results using heuristics in a programmatic way. Doing this analysis certainly helps refine the approach from naively increasing lightness and chroma while keeping the hue a static value.
 
-What about a multi-hue color scheme? How might that type of color scheme's heuristics differ from a single hue?
+Other questions I'm curious to answer:
+
+- What about multi-hue color schemes? How might that type of color scheme's heuristics differ from a single hue?
+- Ditto for diverging color schemes where a neutral middle color is used and two opposing colors such as red and blue gradually get darker and more saturated when moving away from the middle color
+- Could we use the "cool" and "warm" properties of hues in the color wheel to get a sense of how to shift our colors when making them darker?
 
 The following graphics come from the Observable Notebook ["Color palette analysis using OKLCH"][notebook-color-analysis].
 
