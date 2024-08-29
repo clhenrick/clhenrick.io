@@ -265,10 +265,12 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 - [Creating more categorical color palettes with OKLCH][notebook-palette-oklch]
 - [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast]
 
+[avoid-equidistant-hsv-colors]: https://www.vis4.net/blog/avoid-equidistant-hsv-colors/
 [codepen-detect-p3]: https://codepen.io/clhenrick/pen/LYKjwpE?editors=1100
 [color-brewer]: https://colorbrewer2.org/
 [colorjs]: https://colorjs.io/
 [evil-martians]: https://evilmartians.com
+[mastering-multi-hued-color-scales]: https://www.vis4.net/blog/mastering-multi-hued-color-scales/
 [mdn-oklch]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
 [notebook-color-analysis]: https://observablehq.com/@clhenrick/color-palette-analysis-using-oklch
 [notebook-exploring-oklch]: https://observablehq.com/@clhenrick/exploring-oklch-color
