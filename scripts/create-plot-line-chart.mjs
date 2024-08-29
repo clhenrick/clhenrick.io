@@ -3,15 +3,12 @@
 /**
  * create-plot-line-chart.mjs
  * used for creating line charts for the blog post "Color manipulation experiments with OKLCH"
- * usage: npx zx scripts/create-plot-line-chart.mjs --property="hue"
- * where --property is one of "lighness", "chroma", or "hue"
+ * usage: npx zx scripts/create-plot-line-chart.mjs
  */
 
-import { argv } from "zx";
+import { readFile } from "node:fs/promises";
 import * as Plot from "@observablehq/plot";
 import { JSDOM } from "jsdom";
-
-const property = argv.property || "lightness";
 
 const properties = new Map([
   [
@@ -42,15 +39,73 @@ const properties = new Map([
 const yAxisLabels = new Map([
   ["lightness", "lightness (%)"],
   ["chroma", "chroma"],
-  ["hue", "hue"]
+  ["hue", "hue"],
 ]);
 
-const dataToPlot = property === "lightness" ? properties.get(property).map((d) => d * 100) : properties.get(property);
-const yAxisLabel = yAxisLabels.get(property);
-const chart = createLineChart(dataToPlot, yAxisLabel);
-console.log(chart);
-process.exit(0);
+main();
 
+function main() {
+  for (let [property, values] of properties) {
+    const yLabel = yAxisLabels.get(property);
+    const data =
+      properties === "lightness" ? convertValuesToPercentages(values) : values;
+    const chartMarkup = createLineChart(data, yLabel);
+    writeNjkPartialFile(property, chartMarkup);
+  }
+  process.exit(0);
+}
+
+/**
+ * writes a Nunjucks partial file to the desired directory
+ * @param {string} chartName
+ * @param {string} contents
+ */
+function writeNjkPartialFile(chartName, contents) {
+  const outPath = getOutFilePath(chartName);
+  fs.writeFileSync(outPath, contents, { encoding: "utf-8" });
+}
+
+/**
+ * returns the file path for the file to write to
+ * @param {string} property
+ * @returns {string}
+ */
+function getOutFilePath(property) {
+  const propertyTitleCase = titleCaseString(property);
+  const fileName = `lineChart${propertyTitleCase}.njk`;
+  const filePath = `${process.cwd()}/_includes/components/${fileName}`;
+  return filePath;
+}
+
+/**
+ * converts a string to title case: "foo" => "Foo"
+ * @param {string} string
+ * @returns {string}
+ */
+function titleCaseString(string) {
+  return string
+    .split("")
+    .map((character, index) =>
+      index === 0 ? character.toUpperCase() : character
+    )
+    .join("");
+}
+
+/**
+ * converts a series of numbers to percentages
+ * @param {number[]} values
+ * @returns {number[]}
+ */
+function convertValuesToPercentages(values) {
+  return values.map((d) => d * 100);
+}
+
+/**
+ * Returns the outerHTML result from calling Plot.plot(options)
+ * @param {number[]} data
+ * @param {string} yAxisLabel
+ * @returns {string} SVG markup
+ */
 function createLineChart(data, yAxisLabel) {
   const plot = Plot.plot({
     document: new JSDOM("").window.document,
