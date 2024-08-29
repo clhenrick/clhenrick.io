@@ -22,9 +22,15 @@ tags:
 
 Recently at work I've spent some time getting to know the Lightness, Chroma, and Hue (LCH) color space by experimenting with using it for programmatically generating color palettes. Much has already been said about the LCH color space ([OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by [Evil Martians][evil-martians] comes to mind and is recommended reading) so I won't go into too much depth about it here.
 
-The "TLDR" is that the LCH color space provides a way to manipulate colors while maintaining lightness that is perceptually similar across hues. That might not sound like a big deal, but it is drastically different than the HSL or HSV color spaces where the same lightness value used with different hues can result in colors that look drastically different in terms of lightness.
+The "TLDR" is that the LCH color space provides a way to manipulate colors while maintaining lightness that is perceptually similar across different hues. That might not sound like a big deal, but when you consider the implications it has for working with color programmatically, I think it's pretty huge, and it's why I decided to write about it here.
 
-To quickly demonstrate, here are a couple of different colors defined using HSL with the same lightness value applied to them. Notice how the lightness of the two colors doesn't look quite the same:
+- **Quick fact**: the LCH color space is really the "Lab" color space with different channels (lightness, chroma, and hue) that are more intuitive for specifying a color than Lab's "a" and "b" channels.
+
+- **Important context**: the "maintains perceptual lightness across hues" part of the LCH color space is drastically different than the HSL or HSV color spaces where the same lightness value used with different hues can result in colors that look drastically different in terms of lightness.
+
+To quickly demonstrate the difference between HSL and LCH here are a couple of different colors defined using HSL and then LCH with the same lightness value applied to them.
+
+Here are the HSL colors:
 
 {% set caption %}
   Two color swatches, blue and magenta, defined using the HSL color space with a shared saturation value of 100% and lightness value of 50%. The blue is noticeably darker than the magenta despite using the same lightness value.
@@ -32,7 +38,7 @@ To quickly demonstrate, here are a couple of different colors defined using HSL 
 
 {{ colorSwatchFigure([{ fill: "hsl(250 100% 50%)", textFill: "#fff" }, { fill: "hsl(300 100% 50%)", textFill: "#333" }], caption) }}
 
-However, when we define the same two colors using the LCH color space we get colors that do in fact appear to have the same perceptual amount of lightness:
+And here are the LCH colors with the same lightness values:
 
 {% set caption %}
   Two color swatches, blue and magenta, defined using the OKLCH color space with a shared chroma value of 0.25 and lightness value of 0.5. The two colors appear to be uniform in terms of their lightness and color richness.
@@ -40,13 +46,16 @@ However, when we define the same two colors using the LCH color space we get col
 
 {{ colorSwatchFigure([{ fill: "oklch(0.5 0.25 250)", textFill: "#fff" }, { fill: "oklch(0.5 0.25 300)", textFill: "#fff" }], caption) }}
 
-The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original (TODO: add link to post explaining this?). In CSS Color Modules 4 (TODO: link) we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
-
-The `oklch` function in CSS has a baseline of "newly available", meaning that it is available in all up to date browsers. Even so, it's probably worth using the CSS `@supports` to detect that it's available before using it, especially if you know people viewing your site might be on an older device or browser that isn't up to date.
+The lightness of the two colors doesn't look quite the same in HSL, magenta is clearly brighter than blue with the same lightness value of 50%. However, when we define the same two colors using the LCH color space we get colors that do have the same perceptual amount of lightness.
 
 You may have noticed that the second swatch in each example don't appear to be the same hue. Hues don't directly map evenly between HSL and LCH, so a hue of 300 degrees in HSL will produce a vivid magenta while in LCH 300 is a little more on the red side.
 
-When researching LCH I was surprised to learn that the LCH color space is similar to the [Lab color space](#)(TODO: link), which I had used previously when creating multi hue color gradients to avoid the dreaded middle gray dead zone that is common when creating linear gradients using RGB and HSL. LCH and Lab use the same color model, while LCH allows for specifying the desired color using polar color coordinates instead of cartesian (TODO: or is it the other way around?). This makes LCH a little more intuitive to use from a designer's perspective.
+- **Minor detail**: The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original (TODO: add link to post explaining this?). In CSS Color Modules 4 (TODO: link) we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
+
+- **Quick FYI**: The `oklch` function in CSS has a baseline of "newly available", meaning that it is available in all up to date browsers. Even so, it's probably worth using the CSS `@supports` to detect that it's available before using it, especially if you know people viewing your site might be on an older device or browser that isn't up to date.
+
+<!-- TODO: keep this paragraph? It's saying the same thing that was previously mentioned -->
+<!-- When researching LCH I was surprised to learn that the LCH color space is similar to the [Lab color space](#)(TODO: link), which I had used previously when creating multi hue color gradients to avoid the dreaded middle gray dead zone that is common when creating linear gradients using RGB and HSL. LCH and Lab use the same color model, while LCH allows for specifying the desired color using polar color coordinates instead of cartesian (TODO: or is it the other way around?). This makes LCH a little more intuitive to use from a designer's perspective. -->
 
 Another benefit of using either Lab or LCH is that we optionally gain access to colors that are outside of the RGB color space. This is known as the "P3" color gamut, sometimes lumped in with "High Definition" (HD) colors (TODO: link to web.dev article). Devices with fancy screens, such as retina displays on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in RGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback you prefer.
 
