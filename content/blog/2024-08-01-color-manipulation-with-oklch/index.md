@@ -20,7 +20,7 @@ tags:
 
 ## Intro and some background on (OK)LCH
 
-Recently at work I've spent some time getting to know the Lightness, Chroma, and Hue (LCH) color space by experimenting with using it for programmatically generating color palettes. Much has already been said about the LCH color space ([OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by [Evil Martians][evil-martians] comes to mind and is recommended reading) so I won't go into too much depth about it here.
+Recently at work I've spent some time getting to know the Lightness, Chroma, and Hue (abbreviated as LCH or HCL) color space by experimenting with using it for programmatically generating color palettes. Much has already been said about the LCH color space (recommended reading: Lea Verou's [LCH colors in CSS][lch-colors-in-css] and [OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by [Evil Martians][evil-martians]) so I won't go into too much depth about it here.
 
 The "TLDR" is that the LCH color space provides a way to manipulate colors while maintaining lightness that is perceptually similar across different hues. That might not sound like a big deal, but when you consider the implications it has for working with color programmatically, I think it's pretty huge, and it's why I decided to write about it here.
 
@@ -275,6 +275,7 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 [color-brewer]: https://colorbrewer2.org/
 [colorjs]: https://colorjs.io/
 [evil-martians]: https://evilmartians.com
+[lch-colors-in-css]: https://lea.verou.me/blog/2020/04/lch-colors-in-css-what-why-and-how/
 [mastering-multi-hued-color-scales]: https://www.vis4.net/blog/mastering-multi-hued-color-scales/
 [mdn-oklch]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
 [notebook-color-analysis]: https://observablehq.com/@clhenrick/color-palette-analysis-using-oklch
@@ -285,3 +286,4 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 [oklch-in-css]: https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
 [oklch-picker-converter]: https://oklch.com
 [wikipedia-cielab]: https://en.wikipedia.org/wiki/CIELAB_color_space
+[wikipedia-hcl]: https://en.wikipedia.org/wiki/HCL_color_space
