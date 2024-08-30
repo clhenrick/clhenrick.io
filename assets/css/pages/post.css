@@ -16,6 +16,15 @@ figure img {
   margin-bottom: var(--spacing-md);
 }
 
+blockquote {
+  border-left: 10px solid var(--color-gray-50);
+  padding: 0.5em 10px;
+  margin: 1.5em 10px;
+  background-color: var(--background-color-secondary);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
 dl.post-metadata dd {
   font-weight: bold;
 }
