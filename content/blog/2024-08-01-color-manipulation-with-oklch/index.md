@@ -59,6 +59,12 @@ You may have noticed that the hue values in the LCH swatches were adjusted sligh
 
 Another benefit of using either the Lab or LCH color space is that we optionally gain access to colors that are outside of the RGB color space. This is known as the "P3" color gamut, sometimes lumped in with "High Definition" (HD) colors (TODO: link to web.dev article). Devices with fancy screens, such as retina displays on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in RGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback you prefer.
 
+{% set caption %}
+Two color swatches for the color orange. The first swatch is in the "P3" color gamut and will appear as a more vibrant orange if your device and browser supports P3. The second swatch is a fallback orange in the sRGB gamut that is compatible with all browsers and devices.
+{% endset %}
+
+{{ colorSwatchFigure([{ fill: "oklch(78% 0.2 61)", textFill: "#333" }, { fill: "#ff9500", textFill: "#333" }], caption) }}
+
 [Here's a simple Codepen][codepen-detect-p3] I made that will tell you if your device supports P3 / HD colors. If the two squares are orange, you have P3 available. The left square should look like a more rich or vivid orange compared to the right square. If the first square is black, then your device does not support P3.
 
 <!-- You only need to worry about this if you are intentionally using P3 colors. From my experience this is most easily achieved with LCH by increasing the Chroma value of a color, but it is also affected by changing the color's lightness value. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry about it. Drastically reducing the lightness value in LCH also may get you into P3 territory. -->
