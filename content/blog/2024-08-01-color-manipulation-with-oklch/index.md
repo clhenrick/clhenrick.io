@@ -20,15 +20,15 @@ tags:
 
 ## Intro and some background on (OK)LCH
 
-Recently at work I've spent some time getting to know the Lightness, Chroma, and Hue (abbreviated as LCH or HCL) color space by experimenting with using it for programmatically generating color palettes. Much has already been said about the LCH color space (recommended reading: Lea Verou's [LCH colors in CSS][lch-colors-in-css] and [OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by [Evil Martians][evil-martians]) so I won't go into too much depth about it here.
+Recently I've been getting to know the *Lightness, Chroma, and Hue* (typically abbreviated as *LCH* or *HCL*) color space by experimenting with using it for programmatically generating custom color palettes for use in data visualization. There is a lot of existing writing on the web about the LCH color space and using it in web design (recommended reading: Lea Verou's [LCH colors in CSS][lch-colors-in-css] and [OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by Evil Martians) so I'll try to be brief and only touch on the basics of LCH in this post's introduction.
 
 The "TLDR" is that the LCH color space provides a way to manipulate colors while maintaining lightness that is perceptually similar across different hues. That might not sound like a big deal, but when you consider the implications it has for working with color programmatically, I think it's pretty huge, and it's why I decided to write about it here.
 
-- **Quick fact**: the LCH color space is really the [(CIE)LAB][wikipedia-cielab] color space with different channels (lightness, chroma, and hue) that are more intuitive for specifying a color than Lab's "a" and "b" channels. Chroma (similar to saturation) and hue are "polar coordinates" of the Lab color space, while "a" and "b" are cartesian coordinates for specifying green - red and blue - yellow respectively.
+- **Quick fact**: the LCH color space is really the [(CIE)LAB][wikipedia-cielab] color space with two different channels, chroma and hue, that are more intuitive for specifying a color than LAB's "a" and "b" channels. Chroma (which is similar to saturation) and hue are "polar coordinates" of the LAB color space, while "a" and "b" are cartesian coordinates for specifying green - red and blue - yellow respectively. The LCH color space was created to make working with LAB more intuitive and user friendly.
 
-The "maintains perceptual lightness across hues" part of the LCH color space is drastically different than the HSL or HSV color spaces where the same lightness value used with different hues can result in colors that look drastically different in terms of lightness.
+The *"maintains perceptual lightness across hues"* part of the LCH color space makes it conceptually and technically different than the more commonly used HSL and HSV color spaces. In HSL or HSV when the same lightness value is used with different hues, the resulting colors may look noticeably different in terms of their perceived lightness. In other words, the colors will look lighter or darker depending on their hue even though they share the same lightness value. This is a problem that the LAB and LCH color spaces attempt to solve.
 
-To quickly demonstrate the difference between HSL and LCH here are a couple of different colors defined using HSL and then LCH with the same lightness value applied to them.
+To quickly demonstrate the difference between HSL and LCH here are a couple of different colors defined using HSL and then LCH with the same lightness value applied to them in both color spaces.
 
 Here are the HSL colors:
 
@@ -44,11 +44,11 @@ And here are the LCH colors with the same lightness values:
   Two color swatches, blue and magenta, defined using the OKLCH color space with a shared chroma value of 0.25 and lightness value of 0.5. The two colors appear to be uniform in terms of their lightness and color richness.
 {% endset %}
 
-{{ colorSwatchFigure([{ fill: "oklch(0.5 0.25 250)", textFill: "#fff" }, { fill: "oklch(0.5 0.25 300)", textFill: "#fff" }], caption) }}
+{{ colorSwatchFigure([{ fill: "oklch(0.5 0.3 270)", textFill: "#fff" }, { fill: "oklch(0.5 0.3 328)", textFill: "#fff" }], caption) }}
 
 The lightness of the two colors doesn't look quite the same in HSL, magenta is clearly brighter than blue with the same lightness value of 50%. However, when we define the same two colors using the LCH color space we get colors that do have the same perceptual amount of lightness.
 
-You may have noticed that the second swatch in each example don't appear to be the same hue. Hues don't directly map evenly between HSL and LCH, so a hue of 300 degrees in HSL will produce a vivid magenta while in LCH 300 is a little more on the red side.
+You may have noticed that the hue values in the LCH swatches were adjusted slightly. Hues don't map evenly between HSL and LCH, so a hue of 300 degrees in HSL will produce a vivid magenta while in LCH 300 is a little more on the violet side.
 
 - **Minor detail**: The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original (TODO: add link to post explaining this?). In CSS Color Modules 4 (TODO: link) we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
 
