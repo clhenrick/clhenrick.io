@@ -63,15 +63,20 @@ Another benefit of using either Lab or LCH is that we optionally gain access to 
 
 You only need to worry about this if you are intentionally using P3 colors. From my experience this is most easily achieved with LCH by increasing the Chroma value of a color. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry about. Drastically reducing the lightness value in LCH also may get you into P3 territory.
 
-The [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians makes it easy to detect if you are entering P3 territory when adjusting the lightness and chroma values. It will display a second color swatch with an RGB fallback once you've crossed over:
+The [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians makes it easy to detect if you are entering P3 territory when adjusting the lightness and chroma values.
 
-![TODO: screenshot of OKLCH color picker]()
+{% image 'oklch-color-picker-01.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians' %}
 
-![TODO: 2nd screenshot of OKLCH color picker in P3 land]()
+It will display a second color swatch with an RGB fallback once you've crossed over into the P3 gamut:
+
+{% image 'oklch-color-picker-02.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians showing two color swatches; one in RGB and one in the P3 gamut' %}
 
 Google Chrome's color picker in dev tools will also indicates where the RGB / P3 color gamut boundary is when you are adjusting a color using `oklch`:
 
-![TODO: screenshot of Google Chrome color picker]()
+<figure style="max-width:400px">
+{% image 'chrome-color-picker-oklch.png', 'Screenshot of Google Chrome\'s developer tools color picker in OKLCH mode', [400, 800, 1200], '(max-width: 400px), calc(100vw - 48px)' %}
+<figcaption>Chrome's color picker now features an OKLCH input and visualizes the boundary between sRGB and P3</figcaption>
+</figure>
 
 Now that we've covered the background of OKLCH let's move on to the fun stuff... the experiments!
 
