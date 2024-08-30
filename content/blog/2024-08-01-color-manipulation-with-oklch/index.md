@@ -24,9 +24,9 @@ Recently at work I've spent some time getting to know the Lightness, Chroma, and
 
 The "TLDR" is that the LCH color space provides a way to manipulate colors while maintaining lightness that is perceptually similar across different hues. That might not sound like a big deal, but when you consider the implications it has for working with color programmatically, I think it's pretty huge, and it's why I decided to write about it here.
 
-- **Quick fact**: the LCH color space is really the "Lab" color space with different channels (lightness, chroma, and hue) that are more intuitive for specifying a color than Lab's "a" and "b" channels.
+- **Quick fact**: the LCH color space is really the [(CIE)LAB][wikipedia-cielab] color space with different channels (lightness, chroma, and hue) that are more intuitive for specifying a color than Lab's "a" and "b" channels. Chroma (similar to saturation) and hue are "polar coordinates" of the Lab color space, while "a" and "b" are cartesian coordinates for specifying green - red and blue - yellow respectively.
 
-- **Important context**: the "maintains perceptual lightness across hues" part of the LCH color space is drastically different than the HSL or HSV color spaces where the same lightness value used with different hues can result in colors that look drastically different in terms of lightness.
+The "maintains perceptual lightness across hues" part of the LCH color space is drastically different than the HSL or HSV color spaces where the same lightness value used with different hues can result in colors that look drastically different in terms of lightness.
 
 To quickly demonstrate the difference between HSL and LCH here are a couple of different colors defined using HSL and then LCH with the same lightness value applied to them.
 
@@ -284,3 +284,4 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 [notebook-oklch-color-contrast]: https://observablehq.com/@clhenrick/color-contrast-evaluator?collection=@clhenrick/storymaps
 [oklch-in-css]: https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
 [oklch-picker-converter]: https://oklch.com
+[wikipedia-cielab]: https://en.wikipedia.org/wiki/CIELAB_color_space
