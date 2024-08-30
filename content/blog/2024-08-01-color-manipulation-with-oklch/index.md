@@ -50,25 +50,27 @@ The lightness of the two colors doesn't look quite the same in HSL, magenta is c
 
 You may have noticed that the hue values in the LCH swatches were adjusted slightly. Hues don't map evenly between HSL and LCH, so a hue of 300 degrees in HSL will produce a vivid magenta while in LCH 300 is a little more on the violet side.
 
-- **Minor detail**: The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original (TODO: add link to post explaining this?). In CSS Color Modules 4 (TODO: link) we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
+- **Minor detail**: The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original. In CSS Color Modules 4 we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
 
 - **Quick FYI**: The `oklch` function in CSS has a baseline of "newly available", meaning that it is available in all up to date browsers. Even so, it's probably worth using the CSS `@supports` to detect that it's available before using it, especially if you know people viewing your site might be on an older device or browser that isn't up to date.
 
 <!-- TODO: keep this paragraph? It's saying the same thing that was previously mentioned -->
 <!-- When researching LCH I was surprised to learn that the LCH color space is similar to the [Lab color space](#)(TODO: link), which I had used previously when creating multi hue color gradients to avoid the dreaded middle gray dead zone that is common when creating linear gradients using RGB and HSL. LCH and Lab use the same color model, while LCH allows for specifying the desired color using polar color coordinates instead of cartesian (TODO: or is it the other way around?). This makes LCH a little more intuitive to use from a designer's perspective. -->
 
-Another benefit of using either Lab or LCH is that we optionally gain access to colors that are outside of the RGB color space. This is known as the "P3" color gamut, sometimes lumped in with "High Definition" (HD) colors (TODO: link to web.dev article). Devices with fancy screens, such as retina displays on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in RGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback you prefer.
+Another benefit of using either the Lab or LCH color space is that we optionally gain access to colors that are outside of the RGB color space. This is known as the "P3" color gamut, sometimes lumped in with "High Definition" (HD) colors (TODO: link to web.dev article). Devices with fancy screens, such as retina displays on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in RGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback you prefer.
 
 [Here's a simple Codepen][codepen-detect-p3] I made that will tell you if your device supports P3 / HD colors. If the two squares are orange, you have P3 available. The left square should look like a more rich or vivid orange compared to the right square. If the first square is black, then your device does not support P3.
 
-You only need to worry about this if you are intentionally using P3 colors. From my experience this is most easily achieved with LCH by increasing the Chroma value of a color. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry about. Drastically reducing the lightness value in LCH also may get you into P3 territory.
+<!-- You only need to worry about this if you are intentionally using P3 colors. From my experience this is most easily achieved with LCH by increasing the Chroma value of a color, but it is also affected by changing the color's lightness value. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry about it. Drastically reducing the lightness value in LCH also may get you into P3 territory. -->
 
-The [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians makes it easy to detect if you are entering P3 territory when adjusting the lightness and chroma values.
+When converting an existing color to LCH, the [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians informs you if you are entering P3 territory when adjusting the LCH's lightness and chroma channels values. It will helpfully display a second color swatch with an RGB fallback once you've crossed over into the P3 gamut.
 
+<!-- TODO: create a figure shortcode or macro for images -->
+<!-- TODO: add a caption -->
 {% image 'oklch-color-picker-01.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians' %}
 
-It will display a second color swatch with an RGB fallback once you've crossed over into the P3 gamut:
-
+<!-- TODO: highlight changed areas on this image -->
+<!-- TODO: add a caption -->
 {% image 'oklch-color-picker-02.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians showing two color swatches; one in RGB and one in the P3 gamut' %}
 
 Google Chrome's color picker in dev tools will also indicates where the RGB / P3 color gamut boundary is when you are adjusting a color using `oklch`:
@@ -78,7 +80,9 @@ Google Chrome's color picker in dev tools will also indicates where the RGB / P3
 <figcaption>Chrome's color picker now features an OKLCH input and visualizes the boundary between sRGB and P3</figcaption>
 </figure>
 
-Now that we've covered the background of OKLCH let's move on to the fun stuff... the experiments!
+Using a color picker or 3rd party library such as [ColorJS][colorjs] that detects whether an LCH color is in or out of the RGB gamut are useful tools to have at your disposal when working with LCH and P3 colors. Remember that leaving gamut correction up to the browser may not give you a desirable result, so intentionally choosing an fallback color is a good practice when reaching for P3 colors.
+
+Phew! So much for a short intro. Now that we've covered the background of OKLCH let's move on to the fun stuff... the experiments!
 
 ## Experiment One: Create a Categorical Color Palette From a Single Hue
 
