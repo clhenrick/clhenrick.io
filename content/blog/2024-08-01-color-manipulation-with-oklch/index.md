@@ -145,11 +145,9 @@ Try interacting with the [Observable Notebook "Exploring OKLCH Color"][notebook-
 
 ## Experiment Two: Create a Sequential Color Palette From a Single Hue
 
-Sequential color palettes used for data visualization typically start out using a very light color and gradually move towards dark, usually to visually convey a range of less to more of something such as population density in a thematic map or incidents per hour in a heat map chart. Using the LCH color space we can again programmatically generate a palette from a starting or input hue. This time by keeping the same hue in each of the palette's colors while adjusting the lightness and chroma.
+Sequential color palettes used for data visualization typically start out using a very light and desaturated color and gradually move towards a dark and more saturated ending color. These types of color palettes are typically used to visually convey quantitative data such as population density in a thematic map. Using the LCH color space we can again programmatically generate a palette from a starting or input hue. This time, we'll keep the same hue in each of the palette's color swatches while adjusting the lightness and chroma.
 
-The following graphics come from the Observable Notebook [Creating sequential color palettes with OKLCH][notebook-sequential-oklch].
-
-This time let's start with a different color, the blue used for this website's theme's accent color in light mode, `#0055a9`.
+This time let's start with a different color, the blue that is used for this website's theme accent color in light mode, `#0055a9`.
 
 <!-- NOTE: not using colorSwatchFigure because of the use of <code> in <figcaption> -->
 <figure class="swatch-container">
@@ -161,30 +159,31 @@ This time let's start with a different color, the blue used for this website's t
   </figcaption>
 </figure>
 
-We can create a palette of _N_ colors by adjusting the lightness value of `oklch`. First we decide what the highest amount of lightness we want for the starting color should be, say 95%, and what the lowest amount of lightness we want for the last color should be, say 40%. Then based on the value of _N_ we create the middle colors by incrementally adjusting the lightness value while keeping the hue value the same.
+We can create a palette of _n_ colors by adjusting the lightness value of `oklch`. First we decide what the highest amount of lightness we want for the starting color should be, say 95%, and what the lowest amount of lightness we want for the last color should be, say 40%. Then based on the value of _n_ we create the middle colors by incrementally adjusting the lightness value while keeping the hue value the same.
 
-We can also adjust the chroma value to help emphasize the change across the palette. Similar to lightness we start with a minimum level of chroma, perhaps `0.04`, for the lightest color and maximum value, perhaps `0.15` for the darkest color. Then we adjust the middle colors based on our _N_ value.
+We also adjust the chroma value to help emphasize the change across the palette. Conversely to lightness we start with a *minimum level* of chroma, perhaps `0.04`, for the lightest color and determine the *maximum value* for the darkest color, perhaps `0.15`. We adjust the middle colors based on our _n_ value.
 
-For adjusting the lightness and chroma values I found it easiest to use [D3JS's linear scales](https://d3js.org/d3-scale/linear) which makes it easy to interpolate between two values.
+For computing the lightness and chroma values between the starting and ending color swatches I found it helpful to use [D3JS's linear scales](https://d3js.org/d3-scale/linear) which makes it easy to interpolate between two values.
 
 The result is as follows:
 
 {% set caption %}
-TODO: add caption
+A five color sequential, single hue color palette generated from a single input color. Hue remains static while lightness decreases and chroma increases linearly from the lightest to darkest color.
 {% endset %}
 
 {{ colorSwatchFigure([{"fill":"#ddf0ff","showText":false,"width":32,"height":32},{"fill":"#a6c4ec","showText":false,"width":32,"height":32},{"fill":"#7199ce","showText":false,"width":32,"height":32},{"fill":"#3c6faf","showText":false,"width":32,"height":32},{"fill":"#004590","showText":false,"width":32,"height":32}], caption)}}
 
-If instead of using linear interpolation and use exponential interpolation we get a result that looks a little more like a proper sequential color palette. The result is subtle, but adds a bit of polish that helps. It can be adjusted by changing the exponent value.
+If instead of using linear interpolation we use exponential interpolation we get a result that looks a little more like a proper sequential color palette. The result is subtle, but adds a bit of polish that helps.
 
 {% set caption %}
-TODO: add caption
+A five color sequential, single hue color palette generated from a single input color. Hue remains static while lightness decreases and chroma increases exponentially from the lightest to darkest color.
 {% endset %}
-
 
 {{ colorSwatchFigure([{"fill":"#ddf0ff","showText":false,"width":32,"height":32},{"fill":"#c8e0fe","showText":false,"width":32,"height":32},{"fill":"#9abae5","showText":false,"width":32,"height":32},{"fill":"#5986c0","showText":false,"width":32,"height":32},{"fill":"#004590","showText":false,"width":32,"height":32}], caption) }}
 
-If you ask me, these results aren't too shabby considering they were programmatically generated using some simple heuristics. The process could certainly be refined, I'm sure, and we could look to popular color palettes used for data visualization such as those from [Color Brewer](https://colorbrewer2.org/) or [d3-scale-chromatic](https://d3js.org/d3-scale-chromatic) for inspiration and improving our heuristics.
+If you ask me, these results aren't too shabby considering they were programmatically generated using some simple heuristics. The process could certainly be refined and we could even look to popular color palettes used for data visualization such as those from [Color Brewer](https://colorbrewer2.org/) or [d3-scale-chromatic](https://d3js.org/d3-scale-chromatic) for inspiration and improving our heuristics.
+
+Try experimenting with the Observable Notebook [Creating sequential color palettes with OKLCH][notebook-sequential-oklch] to get a better sense of this approach.
 
 ## Experiment Three: Analyzing Color Brewer Palettes using OKLCH
 
