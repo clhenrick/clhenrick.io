@@ -303,11 +303,11 @@ The last experiment's goal was to utilize the OKLCH colorspace for adjusting the
 For this experiment I created an Observable Notebook, [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast], for analyzing the color contrast of two colors using both the WCAG and APCA color contrast algorithms. This was again made possible via ColorJS since it has the two color contrast algorithms built in (plus a few others). The text and background colors may be entered via form text inputs and then adjusted using sliders for the lightness, chroma, and hue values from OKLCH. As the values are changed the color contrast is re-evaluated.
 
 {% set caption %}
-Screenshot of the OKLCH color contrast evaluator notebook showing color contrast results for two colors. Each color has lightness, chroma, and hue sliders for adjusting the color. The colors are previewed using the text "The Quick Brown Fox Jumps Over the Lazy Dog". The notebook indicates whether the color contrast value for the two colors passes WCAG and APCA minimum contrast requirements.
+Screenshot of the OKLCH color contrast evaluator Observable notebook showing color contrast results for two colors. Each color has lightness, chroma, and hue sliders for adjusting the color. The colors are previewed using the text "The Quick Brown Fox Jumps Over the Lazy Dog". The notebook indicates whether the color contrast value for the two colors passes WCAG and APCA minimum contrast requirements.
 {% endset %}
 
 {% figure caption %}
-{% image 'oklch-color-contrast-evaluator.png', caption %}
+{% image 'oklch-color-contrast-evaluator.png', 'Screenshot of the OKLCH color contrast evaluator Observable notebook' %}
 {% endfigure %}
 
 Fixing color contrast using this approach is very straightforward: use either of the input color's lightness slider to modify the lightness variance between the two colors. From my experience with this approach a difference in 40% lightness between two colors of any hue is enough to reach the minimum color contrast requirements for WCAG. The other benefit, since we are using the LCH color space, is that the adjusted color(s) won't look too different from their original color(s) if lightness is only modified slightly.
