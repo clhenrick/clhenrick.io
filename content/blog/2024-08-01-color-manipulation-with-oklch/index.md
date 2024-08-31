@@ -273,43 +273,69 @@ Hue starts at a value of 64 degrees, increases to 67, then steadily decreases to
 The three charts convey the following about the Color Brewer oranges color scheme:
 
 - Lightness steadily declines by about 7% until the last swatch where it declines significantly by about 15%. Decreasing lightness more intensely for the last swatch helps make it stand out as the darkest swatch in the group.
+
 - Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7. Reducing the chroma for the last swatch helps it appear darker among the rest of the swatches.
-- Hue doesn't remain static, it changes slightly for each of the color scheme's swatches with the exception of the last two swatches. There's roughly 28 degrees of variance for this so-called "single hue" sequential color scheme.
 
-It's almost as if the colors in these swatches had a human touch applied to them... (Sarcasm intended, these color schemes were created by hand AFAIK!)
+- Although this is a "single hue" sequential color scheme hue doesn't remain static! It changes slightly for each of the color scheme's swatches with the exception of the last two swatches. There's roughly 28 degrees of variance across the palette.
 
-To get a better idea of how the lightness, chroma, and hue values change for commonly used data visualization color palettes it would be useful to run this analysis on every palette we could get our hands on. That's a bit beyond the scope of this particular blog post, but I think it would be an worthwhile endeavor if we are serious about coming up with an automated method for creating sequential color scheme palettes for use in data visualization.
+It's almost as if the colors in these swatches had a human touch applied to them... (Sarcasm intended).
 
-If doing this I might start with doing a gridded or faceted, small multiples plot of each color as well as running some statistics on the data. Someone smarter then me might even be able to use machine learning with the data to come up with a way to predict what additional colors would be ideal given an input or starting color.
+To get a better idea of how the lightness, chroma, and hue values change for commonly used data visualization color palettes it would be useful to run this analysis on every palette we could get our hands on. That's a bit beyond the scope of this blog post, but I think it would be an worthwhile endeavor if we are serious about coming up with an automated method for creating sequential color scheme palettes for use in data visualization.
+
+If doing this sort of broad analysis I might start with doing a gridded / faceted, small multiples plot of each color as well as running some statistics on the data. Someone smarter then me might even be able to use machine learning with the data to come up with a way to predict what lightness, chroma, and hue values would be ideal given an input color.
 
 That being said, my goal here is more or less to see if we can get "good enough" results using heuristics in a programmatic way. Doing this analysis certainly helps refine the approach from naively increasing lightness and chroma while keeping the hue a static value.
 
 Other questions I'm curious to answer:
 
 - What about multi-hue color schemes? How might that type of color scheme's heuristics differ from a single hue?
+
 - Ditto for diverging color schemes where a neutral middle color is used and two opposing colors such as red and blue gradually get darker and more saturated when moving away from the middle color
+
 - Could we use the "cool" and "warm" properties of hues in the color wheel to get a sense of how to shift our colors when making them darker?
 
-The following graphics come from the Observable Notebook ["Color palette analysis using OKLCH"][notebook-color-analysis].
+If you'd like to play around with this experiment, you may try interacting with the Observable Notebook ["Color palette analysis using OKLCH"][notebook-color-analysis]. You can copy and paste a color palette of your choosing and view its corresponding lightness, chroma, and hue line charts.
 
 ## Experiment Four: Improving Color Contrast Using OKLCH
 
-The last experiment's goal was to utilize the OKLCH colorspace for adjusting the color contrast of two colors for accessibility purposes. The Web Content Accessibility Guidelines (WCAG) has success criteria (SC) for color contrast which must be passed to if one is striving to make their website or application conform to WCAG 2.1 or 2.2. The SC states that at a minimum, a text's color must contrast 4.5 to 1 with its background color in order for it to be considered accessible. For graphical objects and user interface components the minimum contrast must be 3 to 1 with the background color. There is also related contrast success criteria for focus indicators (the outline that should appear when using your keyboard to navigate things like forms and links). My thinking was that perhaps the OKLCH colorspace would work better for adjusting color contrast than the HSL or RGB color space since changing lightness in OKLCH is an improvement over HSL.
+The last experiment's goal was to utilize the OKLCH colorspace for adjusting the color contrast of two colors for accessibility purposes. The Web Content Accessibility Guidelines (WCAG) has Success Criteria (SC) for color contrast which must be passed if one is striving to make their website or application conform to WCAG. The SC states that at a minimum, a text's color must contrast 4.5 to 1 with its background color in order for it to be considered accessible. For graphical objects and user interface components the minimum contrast must be 3 to 1 with the background color. There is also related contrast success criteria for focus indicators (e.g. the outline appears when using your keyboard to navigate things like buttons, form fields, and links). My thinking was that perhaps the OKLCH color space would work better for adjusting color contrast than the HSL color space since changing lightness in OKLCH is an improvement over HSL.
 
-For this experiment I created an Observable Notebook, [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast], for analyzing the color contrast of two colors using both the WCAG and APCA color contrast algorithms. This was again made possible via ColorJS since it has the algorithms built in. The text and background colors may be entered via form text inputs and then adjusted using sliders for the lightness, chroma, and hue values from OKLCH. As the values are changed the color contrast is re-evaluated.
+For this experiment I created an Observable Notebook, [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast], for analyzing the color contrast of two colors using both the WCAG and APCA color contrast algorithms. This was again made possible via ColorJS since it has the two color contrast algorithms built in (plus a few others). The text and background colors may be entered via form text inputs and then adjusted using sliders for the lightness, chroma, and hue values from OKLCH. As the values are changed the color contrast is re-evaluated.
+
+{% set caption %}
+Screenshot of the OKLCH color contrast evaluator notebook showing color contrast results for two colors. Each color has lightness, chroma, and hue sliders for adjusting the color. The colors are previewed using the text "The Quick Brown Fox Jumps Over the Lazy Dog". The notebook indicates whether the color contrast value for the two colors passes WCAG and APCA minimum contrast requirements.
+{% endset %}
+
+{% figure caption %}
+{% image 'oklch-color-contrast-evaluator.png', caption %}
+{% endfigure %}
+
+Fixing color contrast using this approach is very straightforward: use either of the input color's lightness slider to modify the lightness variance between the two colors. From my experience with this approach a difference in 40% lightness between two colors of any hue is enough to reach the minimum color contrast requirements for WCAG. The other benefit, since we are using the LCH color space, is that the adjusted color(s) won't look too different from their original color(s) if lightness is only modified slightly.
+
+Here is an example of a before an after of fixing a color swatch pair, where increasing the first color's lightness by 6 to 7% fixes the color contrast issue.
+
+{{ colorSwatchFigure([{"fill":"#F58069"},{"fill":"#144C70", textFill: "#fff"}], 'Two color swatches, a light red (#f58069) and dark blue (#144C70), with a WCAG color contrast ratio of 3.56 to 1.') }}
+
+{{ colorSwatchFigure([{"fill":"#ffa08b"},{"fill":"#144C70", textFill: "#fff"}], 'Two color swatches, a light red (#ffa08b) and dark blue (#144C70), with a WCAG color contrast ratio of 4.64 to 1.') }}
+
+It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is *the bare minimum* color contrast considered by WCAG to be considered accessible. A ratio of 7 to 1 is required for triple A conformance and will make text more accessible to a wider segment of the population. Remember that *conformance* doesn't necessarily mean *usable* when it comes to WCAG and accessibility!
+
+I'm considering porting the Observable notebook code into a stand alone Svelte web app to make this a more user friendly and easy to find tool. The other color contrast tools I've come across on the web don't use the LCH color space for adjusting color contrast, so it seems like an opportunity for an improved color contrast evaluator and fixer tool.
 
 ## Wrapping Up
 
-I don't know about you but I think using OKLCH for these purposes is pretty friggin cool. While they are simple experiments that stemmed from solving a practical problem, I do think they are promising. I hope that they can help you when it comes to utilizing color in your projects, whether that's for data visualization or other purposes.
+I don't know about you but I think using OKLCH for these purposes is pretty friggin cool! While they are simple experiments that don't go too in depth, I do think they are promising for solving some practical problems relating to color, data visualization, and accessibility. I hope that they can help you when it comes to utilizing color in your projects, whether that's for data visualization or other purposes.
 
 In fact, I've used OKLCH here in my website to adjust the theme accent colors in both the light and dark themes for the site. If you're viewing this site on a device that supports HD colors you will be getting a more rich version of these accent colors. I've also used OKLCH to refine the accent color variants so that they are a little more harmonious. Places this shows up in this site are the link colors where visited links have a slightly darker color, and also in the [portfolio page](/work/) for the filter buttons.
 
 For reference, here is the full list of Observable Notebooks of the experiments I mentioned in this article:
-- [Color palette analysis with OKLCH][notebook-color-analysis]
+
 - [Creating categorical color palettes with OKLCH][notebook-exploring-oklch]
 - [Creating sequential color palettes with OKLCH][notebook-sequential-oklch]
-- [Creating more categorical color palettes with OKLCH][notebook-palette-oklch]
+- [Color palette analysis with OKLCH][notebook-color-analysis]
 - [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast]
+
+Please don't hesitate to reach out to me if you have any questions or comments, and thanks for reading!
 
 [avoid-equidistant-hsv-colors]: https://www.vis4.net/blog/avoid-equidistant-hsv-colors/
 [codepen-detect-p3]: https://codepen.io/clhenrick/pen/LYKjwpE?editors=1100
