@@ -6,6 +6,7 @@ const {
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const eleventyTocPlugin = require("eleventy-plugin-toc");
 const markdown = require("markdown-it")({
   html: true,
 });
@@ -63,6 +64,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginImages);
   eleventyConfig.addPlugin(pluginDataCascadeImage);
   eleventyConfig.addPlugin(rssPlugin);
+  eleventyConfig.addPlugin(eleventyTocPlugin, { tags: ["h2", "h3"], wrapperLabel: "Table of contents" });
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
