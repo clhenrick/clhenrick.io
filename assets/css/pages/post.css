@@ -1,3 +1,25 @@
+.permalink-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+.permalink-wrapper a[href] {
+  text-decoration: none;
+}
+
+.permalink-wrapper h2 + a[href] {
+  font-size: var(--text-size-h2);
+}
+
+.permalink-wrapper h3 + a[href] {
+  font-size: var(--text-size-h3);
+}
+
+.permalink-wrapper h4 + a[href] {
+  font-size: var(--text-size-h4);
+}
+
 img,
 picture,
 figure,
