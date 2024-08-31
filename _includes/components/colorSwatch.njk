@@ -3,7 +3,7 @@
   {% set width = width or 200 %}
   {% set height = height or 50 %}
   <svg viewBox="0 0 {{ width }} {{ height }}">
-    <title>The color {{ color }} in CSS hexadecimal notation</title>
+    <title>The color swatch {{ color }} in CSS notation</title>
     <rect x="0" y="0" width="{{ width }}" height="{{ height }}" fill="{{ color }}" />
     <text x="100" y="30" text-anchor="middle" fill="{{ textColor }}" {% if not showText %}hidden{% endif %}>
       {{ color }}
