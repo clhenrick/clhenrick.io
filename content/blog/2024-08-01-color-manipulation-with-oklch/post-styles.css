@@ -1,3 +1,4 @@
+
 .swatch-container,
 .plot-container {
   width: 100%;
@@ -46,6 +47,10 @@
 
 .swatch-container text[hidden] {
   display: none;
+}
+
+.figure-narrow {
+  max-width: 400px;
 }
 
 .plot-container .plot-title {

@@ -65,26 +65,37 @@ Two color swatches for the color orange. The first swatch is in the "P3" color g
 
 {{ colorSwatchFigure([{ fill: "oklch(78% 0.2 61)", textFill: "#333" }, { fill: "#ff9500", textFill: "#333" }], caption) }}
 
-[Here's a simple Codepen][codepen-detect-p3] I made that will tell you if your device supports P3 / HD colors. If the two squares are orange, you have P3 available. The left square should look like a more rich or vivid orange compared to the right square. If the first square is black, then your device does not support P3.
+[Here's a simple Codepen][codepen-detect-p3] I made that will tell you if your device and browser supports P3 / HD colors. If the two squares are orange, you have P3 available. The left square should look like a more rich or vivid orange compared to the right square. If the first square is black, then your device does not support P3.
 
 <!-- You only need to worry about this if you are intentionally using P3 colors. From my experience this is most easily achieved with LCH by increasing the Chroma value of a color, but it is also affected by changing the color's lightness value. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry about it. Drastically reducing the lightness value in LCH also may get you into P3 territory. -->
 
-When converting an existing color to LCH, the [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians informs you if you are entering P3 territory when adjusting the LCH's lightness and chroma channels values. It will helpfully display a second color swatch with an RGB fallback once you've crossed over into the P3 gamut.
+When converting an existing color to LCH, the [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians informs you if you are entering P3 territory when adjusting the LCH's channel values. It will helpfully display a second color swatch in a sRGB fallback once you've crossed over into the P3 gamut.
 
-<!-- TODO: create a figure shortcode or macro for images -->
-<!-- TODO: add a caption -->
+{% set caption %}
+The fancy pants OKLCH color picker and converter created by Evil Martians converts various CSS color notation to OKLCH notation and allows for adjusting each of the LCH channels. Each channel contains a graph that helps visualize available options when making adjustments.
+{% endset %}
+
+{% figure caption %}
 {% image 'oklch-color-picker-01.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians' %}
+{% endfigure %}
 
-<!-- TODO: highlight changed areas on this image -->
-<!-- TODO: add a caption -->
-{% image 'oklch-color-picker-02.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians showing two color swatches; one in RGB and one in the P3 gamut' %}
+{% set caption %}
+When a color crosses from sRGB to the P3 color gamut, the Evil Martians OKLCH color picker will show two swatches, one in P3 and a fallback in sRGB that is close to the P3 color in terms of chroma.
+{% endset %}
 
-Google Chrome's color picker in dev tools will also indicates where the RGB / P3 color gamut boundary is when you are adjusting a color using `oklch`:
+{% figure caption %}
+{% image 'oklch-color-picker-02.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians showing two color swatches; one in sRGB and one in the P3 gamut' %}
+{% endfigure %}
 
-<figure style="max-width:400px">
+Google Chrome's color picker in dev tools also indicates where the sRGB / P3 color gamut boundary is when you are adjusting a color using `oklch`:
+
+{% set caption %}
+Chrome's color picker now features an OKLCH input and visualizes the boundary between sRGB and P3.
+{% endset %}
+
+{% figure caption, 'figure-narrow' %}
 {% image 'chrome-color-picker-oklch.png', 'Screenshot of Google Chrome\'s developer tools color picker in OKLCH mode', [400, 800, 1200], '(max-width: 400px), calc(100vw - 48px)' %}
-<figcaption>Chrome's color picker now features an OKLCH input and visualizes the boundary between sRGB and P3</figcaption>
-</figure>
+{% endfigure %}
 
 Using a color picker or 3rd party library such as [ColorJS][colorjs] that detects whether an LCH color is in or out of the RGB gamut are useful tools to have at your disposal when working with LCH and P3 colors. Remember that leaving gamut correction up to the browser may not give you a desirable result, so intentionally choosing an fallback color is a good practice when reaching for P3 colors.
 
