@@ -9,6 +9,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdown = require("markdown-it")({
   html: true,
 });
+const anchor = require("markdown-it-anchor");
 const postcss = require("postcss");
 const postcssMinify = require("postcss-minify");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -47,6 +48,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("assets/js");
     eleventyConfig.addPassthroughCopy("assets/css");
   }
+
+  eleventyConfig.setLibrary("md", markdown.use(anchor));
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
