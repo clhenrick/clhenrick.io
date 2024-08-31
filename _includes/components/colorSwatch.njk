@@ -2,7 +2,7 @@
 {% macro colorSwatch(color, textColor = "currentColor", showText = true, width = 200, height = 50) %}
   {% set width = width or 200 %}
   {% set height = height or 50 %}
-  <svg viewBox="0 0 {{ width }} {{ height }}">
+  <svg viewBox="0 0 {{ width }} {{ height }}" role="img">
     <title>The color swatch {{ color }} in CSS notation</title>
     <rect x="0" y="0" width="{{ width }}" height="{{ height }}" fill="{{ color }}" />
     <text x="100" y="30" text-anchor="middle" fill="{{ textColor }}" {% if not showText %}hidden{% endif %}>
