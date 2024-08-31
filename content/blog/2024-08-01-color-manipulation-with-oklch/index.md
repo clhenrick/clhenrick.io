@@ -187,9 +187,9 @@ Try experimenting with the Observable Notebook [Creating sequential color palett
 
 ## Experiment Three: Analyzing Color Brewer Palettes using OKLCH
 
-What if instead of creating new colors using OKLCH we used it to analyze popular color palettes, such as those used in data visualization? Using a JavaScript library such as [ColorJS][colorjs] we can convert the RGB versions of each palette into OKLCH and then read each of the values for lightness, chroma, and hue. This could be an interesting way to "dissect" or analyze different types of color palettes, which could help inform how we create color palettes suitable for data visualization on the fly.
+What if instead of creating new colors using OKLCH we used it to analyze popular color palettes, such as those used in data visualization? Using a JavaScript library such as [ColorJS][colorjs] we can convert the RGB versions of each palette into OKLCH and then analyze each of the values for lightness, chroma, and hue. This could be an interesting way to "dissect" different types of color palettes, which could help inform how we create color palettes suitable for data visualization on the fly.
 
-Let's take a sequential, single hue color scheme from the [Color Brewer][color-brewer] color scheme library to try this out with. I'm obviously partial to orange, so I've chosen the "oranges" color scheme with seven discrete colors. I chose seven colors to start with since it will show more variation for the color scheme.
+Let's take a sequential, single hue color scheme from the [Color Brewer][color-brewer] color scheme library to try this out with. I'm obviously partial to orange, so I've chosen the "oranges" color scheme with seven discrete colors. I chose seven colors to start with since it will give us more granular data for the color scheme.
 
 ```js
 const oranges = ['#feedde','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#8c2d04'];
@@ -233,7 +233,20 @@ console.log(orangesOklchDisplay);
 ];
 ```
 
-<!-- TODO: use a table in addition to or instead of code block above? -->
+<!-- Here are the oranges color palette's LCH values formatted as a table: -->
+
+<!-- TODO: add table styles -->
+<!-- | Lightness | Chroma | Hue |
+| --- | --- | --- |
+|0.99 | 0.04 | 107.11|
+|0.92 | 0.08 | 81.68|
+|0.85 | 0.11 | 62.40|
+|0.78 | 0.14 | 43.06|
+|0.70 | 0.16 | 29.80|
+|0.63 | 0.18 | 21.71|
+|0.56 | 0.19 | 19.18|
+|0.48 | 0.18 | 21.64|
+|0.40 | 0.16 | 29.23| -->
 
 We can then plot the lightness, chroma, and hue values on separate line graphs to get a sense of how these values change over the oranges color scheme.
 
