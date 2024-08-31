@@ -103,7 +103,7 @@ Phew! So much for a short intro. Now that we've covered the background of OKLCH 
 
 ## Experiment One: Create a Categorical Color Palette From a Single Hue
 
-The first thing I tried was creating a categorical color palette from a single hue. Again, because the LCH color model maintains a perceptual level of lightness across hues, my thinking was to keep the chroma and lightness value from our original hue while shifting the hue value to create new colors. Each of our new colors should look similar to our original color because they share the same chroma and lightness.
+The first thing I tried was creating a categorical color palette from a single hue. Again, because the LCH color model maintains a perceptual level of lightness across hues, my thinking was to keep the chroma and lightness value from our original color swatch while shifting the hue value by a consistent value to create new colors. Each of our new colors should look similar to our original color because they share the same chroma and lightness.
 
 Starting with a single color, say `#f97f00`, a vibrant orange (which happens to be the accent color for this website's theme in dark mode):
 
@@ -117,7 +117,7 @@ Starting with a single color, say `#f97f00`, a vibrant orange (which happens to 
   </figcaption>
 </figure>
 
-We can create _N_ more colors by shifting the `H` value of the color in `oklch` by 360 / _N_, since in `oklch` the hue value ranges from 0 - 360. We also don't need to worry about having a value that is exactly in the range of 0 to 360 since anything over 360 will wrap to the equivalent hue. For example a hue value of 400 will wrap to 40 since 400 - 360 = 40.
+We can create _n_ more colors by shifting the hue value of the color in `oklch` by 360 / _n_, since in `oklch` the hue value ranges from 0 - 360 degrees. We don't need to worry about our new hue value being exactly in the range of 0 to 360 since anything over 360 will wrap to the equivalent hue. For example a hue value of 400 will wrap to 40 since 400 - 360 = 40.
 
 To demonstrate, here is a palette of five colors I created using this technique starting with the original color of `#f97f00`. The first color swatch is the original hue, the four that follow were programmatically created.
 
@@ -127,13 +127,21 @@ To demonstrate, here is a palette of five colors I created using this technique 
 
 {{ colorSwatchFigure([{"fill":"#f97f00","showText":false,"width":32,"height":32},{"fill":"#89b80c","showText":false,"width":32,"height":32},{"fill":"#00c5ce","showText":false,"width":32,"height":32},{"fill":"#7a9bff","showText":false,"width":32,"height":32},{"fill":"#ef71c5","showText":false,"width":32,"height":32}], caption) }}
 
-What's interesting to me about this is that the color palette that is generated looks consistent with the starting color. None of the other colors feel out of place, e.g. too dark or too light, when keeping in mind that this palette would be used for a categorical color scheme in a data visualization or thematic map, where the purpose of using color is to differentiate various categories but not emphasize any one category. Since each color shares the same lightness and chroma LCH value, the palette as a whole feels perceptually uniform.
+What's interesting to me about this is that the end result looks consistent with our starting color. None of the new colors feel out of place, e.g. too dark or too light, when keeping in mind that this palette would be used for a categorical color scheme in a data visualization or thematic map, where the purpose of using color is to differentiate various categories but not emphasize any one category. Since each color shares the same lightness and chroma LCH value, the palette as a whole feels perceptually uniform.
 
-If you're reading this and you've previously studied color theory and/or are familiar with different types of common color schemes such as complementary, triadic, or analogous you're probably getting some ideas on how OKLCH could be used to programmatically create other types of color schemes just by shifting the hue value.
+We could also reduce the lightness of all colors but one if we did want to use one color as an accent color among the group:
 
-The drawback of this approach is that as the number of hues increase, the palette's colors may not be different enough from one another, so viewers might have difficulty in distinguishing individual colors. It also by no means accessible in terms of color contrast out of the box. However, this could be a good starting point where a designer could make adjustments to each color as needed depending on the use case of the palette.
+{% set caption %}
+  The same five color palette as previously shown in terms of hue and chroma, but with all colors reduced to 35% lightness except the second to last swatch. This could be a useful technique for creating a categorical palette where one category is meant to stand out.
+{% endset %}
 
-Feel free to try out the Observable Notebook ["Exploring OKLCH Color"][notebook-exploring-oklch].
+{{ colorSwatchFigure([{"fill":"oklch(35% 0.18116 53.923)","showText":false,"width":32,"height":32},{"fill":"oklch(35% 0.18116 125.92)","showText":false,"width":32,"height":32},{"fill":"oklch(35% 0.18116 197.92)","showText":false,"width":32,"height":32},{"fill":"oklch(75% 0.18116 269.92)","showText":false,"width":32,"height":32},{"fill":"oklch(35% 0.18116 341.92)","showText":false,"width":32,"height":32}], caption, false) }}
+
+If you're reading this and you've previously studied color theory and/or are familiar with different types of common color schemes such as complementary, triadic, or analogous, then you're probably getting some ideas on how OKLCH could be used to programmatically create other types of color schemes by keeping the same chroma and lightness values while shifting the hue value for a single color.
+
+The drawback of this approach is that as the number of hues increase, the palette's colors may not be different enough from one another, so viewers might have difficulty in distinguishing individual colors. It also by no means accessible in terms of being color blind friendly. However, this could be a good starting point where a designer could make adjustments to each color as needed depending on the use case of the palette.
+
+Try interacting with the [Observable Notebook "Exploring OKLCH Color"][notebook-exploring-oklch] to experiment with this approach on your own.
 
 ## Experiment Two: Create a Sequential Color Palette From a Single Hue
 
