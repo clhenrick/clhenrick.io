@@ -2,10 +2,19 @@
   display: flex;
   align-items: baseline;
   gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.permalink-wrapper > * {
+  margin: 0;
 }
 
 .permalink-wrapper a[href] {
   text-decoration: none;
+  padding: 0;
+  line-height: var(--line-height-heading);
+  padding-right: var(--spacing-md);
 }
 
 .permalink-wrapper h2 + a[href] {
@@ -18,6 +27,27 @@
 
 .permalink-wrapper h4 + a[href] {
   font-size: var(--text-size-h4);
+}
+
+.permalink-wrapper:has(:target) {
+  color: var(--color-accent-invert);
+  background: var(--color-accent);
+}
+
+.permalink-wrapper:has(:target) a[href] {
+  color: var(--color-accent-invert);
+}
+
+/* TODO: undo transition on h1-h4 elements so both don't transition at once */
+@media (prefers-reduced-motion: no-preference) {
+  .permalink-wrapper,
+  .permalink-wrapper a[href] {
+    transition: background-color 1s ease-in-out;
+
+    @starting-style {
+      background-color: transparent;
+    }
+  }
 }
 
 img,
