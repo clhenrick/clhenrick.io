@@ -27,6 +27,7 @@
     "a11y-syntax-highlighting": "^0.2.0",
     "luxon": "^3.4.4",
     "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.1.0",
     "netlify-plugin-cache": "^1.0.3",
     "postcss": "^8.4.38",
     "postcss-minify": "^1.1.0",
