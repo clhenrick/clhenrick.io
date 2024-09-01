@@ -50,17 +50,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("assets/css");
   }
 
-  eleventyConfig.setLibrary(
-    "md",
-    markdown.use(anchor, {
-      permalink: anchor.permalink.linkAfterHeader({
-        style: "visually-hidden",
-        assistiveText: (title) => `Permalink to “${title}”`,
-        visuallyHiddenClass: "visually-hidden",
-        wrapper: ['<div class="permalink-wrapper">', "</div>"],
-      }),
-    })
-  );
+  eleventyConfig.setLibrary("md", markdown.use(anchor));
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
@@ -74,10 +64,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginImages);
   eleventyConfig.addPlugin(pluginDataCascadeImage);
   eleventyConfig.addPlugin(rssPlugin);
-  eleventyConfig.addPlugin(eleventyTocPlugin, {
-    tags: ["h2", "h3"],
-    wrapperLabel: "Table of contents",
-  });
+  eleventyConfig.addPlugin(eleventyTocPlugin, { tags: ["h2", "h3"], wrapperLabel: "Table of contents" });
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
