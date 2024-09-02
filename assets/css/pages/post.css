@@ -16,6 +16,15 @@ figure img {
   margin-bottom: var(--spacing-md);
 }
 
+blockquote {
+  border-left: 10px solid var(--color-gray-50);
+  padding: 0.5em 10px;
+  margin: 1.5em 10px;
+  background-color: var(--background-color-secondary);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
 dl.post-metadata dd {
   font-weight: bold;
 }
@@ -25,6 +34,16 @@ dl > div.updated-date,
 dl > div.tags {
   gap: var(--spacing-xs);
   flex-wrap: wrap;
+}
+
+dl div.tags a:not(:focus-visible),
+nav.toc a:not(:focus-visible) {
+  text-decoration-color: transparent;
+}
+
+/* Table of Contents navigation list items (initially hidden in disclosure widget) */
+nav.toc li {
+  margin-bottom: var(--spacing-xs);
 }
 
 ul.links-nextprev {

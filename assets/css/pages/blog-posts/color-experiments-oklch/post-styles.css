@@ -1,0 +1,63 @@
+
+.swatch-container,
+.plot-container {
+  width: 100%;
+  margin-bottom: var(--spacing-mmd);
+  border: 2px solid currentColor;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+}
+
+.plot-container {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.swatch-container + .swatch-container,
+.plot-container + .plot-container {
+  margin-top: var(--spacing-lg);
+}
+
+.swatch-container > div,
+.plot-container > svg {
+  margin-bottom: var(--spacing-md);
+}
+
+.swatch-container div {
+  width: 100%;
+  display: flex;
+  gap: var(--spacing-xxs);
+  font-family: var(--font-family-monospace);
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 792px) {
+  .swatch-container div {
+    gap: var(--spacing-sm);
+  }
+}
+
+.swatch-container svg {
+  width: 50%;
+}
+
+.swatch-container svg {
+  pointer-events: none;
+}
+
+.swatch-container text[hidden] {
+  display: none;
+}
+
+.figure-narrow {
+  max-width: 400px;
+}
+
+.plot-container .plot-title {
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+}
+
+.plot-container g[aria-label="y-grid"] {
+  stroke-opacity: 0.3;
+}

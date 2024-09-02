@@ -141,6 +141,10 @@ module.exports = function (eleventyConfig) {
     return array.findIndex((item) => item === target);
   });
 
+  eleventyConfig.addPairedShortcode("figure", (content, caption, className = "figure") => {
+    return `<figure class="${className}">${content}<figcaption>${caption}</figcaption></figure>`;
+  })
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
