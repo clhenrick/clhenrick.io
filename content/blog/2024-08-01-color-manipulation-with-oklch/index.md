@@ -325,13 +325,15 @@ Screenshot of the OKLCH color contrast evaluator Observable notebook showing col
 
 Fixing color contrast using this approach is very straightforward: use either of the input color's lightness slider to modify the lightness variance between the two colors. From my experience with this approach a difference in 40% lightness between two colors of any hue is enough to reach the minimum color contrast requirements for WCAG. The other benefit, since we are using the LCH color space, is that the adjusted color(s) won't look too different from their original color(s) if lightness is only modified slightly.
 
-Here is an example of a before an after of fixing a color swatch pair, where increasing the first color's lightness by 6 to 7% fixes the color contrast issue.
+Here is an example of a color swatch pair that fails the WCAG SC for minimum text and background color contrast:
 
 {{ colorSwatchFigure([{"fill":"#F58069"},{"fill":"#144C70", textFill: "#fff"}], 'Two color swatches, a light red (#f58069) and dark blue (#144C70), with a WCAG color contrast ratio of 3.56 to 1.') }}
 
-{{ colorSwatchFigure([{"fill":"#ffa08b"},{"fill":"#144C70", textFill: "#fff"}], 'Two color swatches, a light red (#ffa08b) and dark blue (#144C70), with a WCAG color contrast ratio of 4.64 to 1.') }}
+By increasing the first color's lightness and decreasing the second color's lightness, we fix the color contrast issue:
 
-Using this method the lighter red color still looks similar to the original color.
+{{ colorSwatchFigure([{"fill":"#ff8a72"},{"fill":"#094163", textFill: "#fff"}], 'Two color swatches, a light red (#ff8a72) and dark blue (#094163), with a WCAG color contrast ratio of 4.69 to 1.') }}
+
+Adjusting the colors using OKCLH results in our new colors looking fairly similar to the original colors. To be honest, when making very small adjustments like this I'm not entirely sure that the LCH color space has a huge advantage over HSL, so you might want to try using either color space to see which result you prefer. I'll also admit that I'm not the first to think of using LCH for this purpose, Eugene Fedorenko wrote about it back in 2021 in the post [Accessible Palette: stop using HSL for color systems][accessible-color-palette-stop-using-hsl].
 
 > It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is *the bare minimum* color contrast ratio for text to be considered accessible according to WCAG. A ratio of 7 to 1 is required for "triple A" (AAA) conformance and will make text more accessible to a wider segment of the population. Remember that *conformance* doesn't necessarily mean *usable* when it comes to WCAG and accessibility, and that we should always strive to make things as usable to the widest range of people as possible.
 
@@ -352,6 +354,7 @@ For reference, here is the full list of Observable Notebooks of the experiments 
 
 Please don't hesitate to reach out to me if you have any questions or comments, and thanks for reading!
 
+[accessible-color-palette-stop-using-hsl]: https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems
 [avoid-equidistant-hsv-colors]: https://www.vis4.net/blog/avoid-equidistant-hsv-colors/
 [codepen-detect-p3]: https://codepen.io/clhenrick/pen/LYKjwpE?editors=1100
 [color-brewer]: https://colorbrewer2.org/
