@@ -10,9 +10,9 @@ tags:
   - OKLCH
 ---
 
-{% from '_includes/components/colorSwatch.njk' import colorSwatch %}
-{% from '_includes/components/colorSwatchFigure.njk' import colorSwatchFigure %}
-{% from '_includes/components/lineChartFigure.njk' import lineChartFigure %}
+{% from '_includes/components/blog-posts/color-experiments-oklch/colorSwatch.njk' import colorSwatch %}
+{% from '_includes/components/blog-posts/color-experiments-oklch/colorSwatchFigure.njk' import colorSwatchFigure %}
+{% from '_includes/components/blog-posts/color-experiments-oklch/lineChartFigure.njk' import lineChartFigure %}
 
 <style>
   {% include "./post-styles.css" %}
@@ -265,19 +265,19 @@ We can then plot the lightness, chroma, and hue values on separate line graphs t
 Lightness decreases linearly from swatches one to six, then decreases sharply by 20% at swatch seven.
 {% endset %}
 
-{{ lineChartFigure('_includes/components/lineChartLightness.njk', 'Change in Lightness: Oranges', caption)}}
+{{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartLightness.njk', 'Change in Lightness: Oranges', caption)}}
 
 {% set caption %}
 Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7.
 {% endset %}
 
-{{ lineChartFigure('_includes/components/lineChartChroma.njk', 'Change in Chroma: Oranges', caption) }}
+{{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartChroma.njk', 'Change in Chroma: Oranges', caption) }}
 
 {% set caption %}
 Hue starts at a value of 64 degrees, increases to 67, then steadily decreases to a value of 39 degrees. There is approximately 28 degrees of hue variance for the entire color scheme.
 {% endset %}
 
-{{ lineChartFigure('_includes/components/lineChartHue.njk', 'Change in Hue: Oranges', caption) }}
+{{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartHue.njk', 'Change in Hue: Oranges', caption) }}
 
 The three charts convey the following about the Color Brewer oranges color scheme:
 
