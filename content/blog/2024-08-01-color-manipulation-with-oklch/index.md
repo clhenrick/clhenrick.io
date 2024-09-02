@@ -14,10 +14,6 @@ tags:
 {% from '_includes/components/blog-posts/color-experiments-oklch/colorSwatchFigure.njk' import colorSwatchFigure %}
 {% from '_includes/components/blog-posts/color-experiments-oklch/lineChartFigure.njk' import lineChartFigure %}
 
-<style>
-  {% include "./post-styles.css" %}
-</style>
-
 ## Intro and some background on (OK)LCH
 
 Recently I've been getting to know the *Lightness, Chroma, and Hue* (typically abbreviated as *LCH* or *HCL*) color space by experimenting with using it for programmatically generating custom color palettes for use in data visualization. There is a lot of existing writing on the web about the LCH color space and using it in web design (recommended reading: Lea Verou's [LCH colors in CSS][lch-colors-in-css] and [OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by Evil Martians) so I'll try to be brief and only touch on the basics of LCH in this post's introduction.
