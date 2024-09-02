@@ -10,6 +10,11 @@ eleventyComputed:
   components/kofi,
   pages/post
 {%- endset %}
+
+{% if page.fileSlug.includes("oklch") %}
+  {% set partials = partials.concat(',', 'pages/blog-posts/color-experiments-oklch/post-styles') %}
+{% endif %}
+
 {%- set bucket = "post" %}
 {% include "styles.njk" %}
 
