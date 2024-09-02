@@ -1,12 +1,11 @@
 #!/usr/bin/env zx
 
 /**
- * create-plot-line-chart.mjs
+ * create-plot-line-charts.mjs
  * used for creating line charts for the blog post "Color manipulation experiments with OKLCH"
  * usage: npx zx scripts/create-plot-line-chart.mjs
  */
 
-import { readFile } from "node:fs/promises";
 import * as Plot from "@observablehq/plot";
 import { JSDOM } from "jsdom";
 
@@ -39,8 +38,10 @@ const properties = new Map([
 const yAxisLabels = new Map([
   ["lightness", "lightness (%)"],
   ["chroma", "chroma"],
-  ["hue", "hue"],
+  ["hue", "hue (degrees)"],
 ]);
+
+const codeComment = `{# Note: this chart was programmatically generated using PlotJS. See scripts/create-plot-line-charts.mjs #}`
 
 main();
 
@@ -50,7 +51,8 @@ function main() {
     const data =
       properties === "lightness" ? convertValuesToPercentages(values) : values;
     const chartMarkup = createLineChart(data, yLabel);
-    writeNjkPartialFile(property, chartMarkup);
+    const contents = codeComment + "\n" + chartMarkup;
+    writeNjkPartialFile(property, contents);
   }
   process.exit(0);
 }
@@ -73,7 +75,7 @@ function writeNjkPartialFile(chartName, contents) {
 function getOutFilePath(property) {
   const propertyTitleCase = titleCaseString(property);
   const fileName = `lineChart${propertyTitleCase}.njk`;
-  const filePath = `${process.cwd()}/_includes/components/${fileName}`;
+  const filePath = `${process.cwd()}/_includes/components/blog-posts/color-experiments-oklch/${fileName}`;
   return filePath;
 }
 
@@ -143,5 +145,3 @@ function createLineChart(data, yAxisLabel) {
 
   return plot.outerHTML;
 }
-
-// process.stdout.write(plot.outerHTML);

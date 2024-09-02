@@ -2,12 +2,12 @@
 
 Node.js scripts that are useful for automating tasks related to the development of this website. The following scripts make use of the [`zx`](https://google.github.io/zx/) library for simplifying the process of shell scripting with Node.js.
 
-## create-plot-line-chart
+## create-plot-line-charts
 
 Example usage:
 
 ```bash
-npx zx ./scripts/create-plot-line-chart.mjs
+npx zx ./scripts/create-plot-line-charts.mjs
 ```
 
 Generates line charts for the blog post ["Color Experiments with OKLCH"](../content/blog/2024-09-01-color-experiments-with-oklch.md) as Nunjucks partials using PlotJS. These partials are included in the post via the [`lineChartFigure.njk` macro](../_includes/components/blog-posts/color-experiments-oklch/lineChartFigure.njk) to wrap them in a figure element and give them a title and caption.
