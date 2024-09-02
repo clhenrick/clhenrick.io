@@ -36,6 +36,11 @@ dl > div.tags {
   flex-wrap: wrap;
 }
 
+/* Table of Contents navigation list items (hidden in disclosure widget) */
+nav.toc ol li {
+  margin-bottom: var(--spacing-xs);
+}
+
 ul.links-nextprev {
   display: flex;
   align-items: baseline;
