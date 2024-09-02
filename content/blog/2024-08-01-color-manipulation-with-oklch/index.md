@@ -341,9 +341,9 @@ I'm considering porting the Observable notebook code into a stand alone Svelte w
 
 ## Wrapping Up
 
-I don't know about you but I think using OKLCH for these purposes is pretty friggin cool! While they are simple experiments that don't go too in depth, I do think they are promising for solving some practical problems relating to color, data visualization, and accessibility. I hope that they can help you when it comes to utilizing color in your projects, whether that's for data visualization or other purposes.
+I don't know about you but I think using OKLCH for these purposes is pretty neat, if not at least nerdy. While they are simple experiments that don't go too in depth, I do think they are promising for solving some practical problems relating to color in data visualization and web accessibility. I hope that these experiments help you when it comes to utilizing color in your projects, whether that's for data visualization or other purposes.
 
-In fact, I've used OKLCH here in my website to adjust the theme accent colors in both the light and dark themes for the site. If you're viewing this site on a device that supports HD colors you will be getting a more rich version of these accent colors. I've also used OKLCH to refine the accent color variants so that they are a little more harmonious. Places this shows up in this site are the link colors where visited links have a slightly darker color, and also in the [portfolio page](/work/) for the filter buttons.
+In fact, I've used OKLCH here in my website to adjust the theme accent colors in both the light and dark themes for the site. If you're viewing this site on a device that supports HD colors you will be getting a more rich version of these accent colors in the P3 color gamut. I've also used OKLCH to refine the accent color variants so that they are a little more harmonious. Places this shows up in this site are the link colors where visited links have a slightly darker color, and also in the [portfolio page](/work/) for the projects filter buttons.
 
 For reference, here is the full list of Observable Notebooks of the experiments I mentioned in this article:
 
