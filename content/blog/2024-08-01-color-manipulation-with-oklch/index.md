@@ -26,7 +26,7 @@ The "TLDR" is that the LCH color space provides a way to manipulate colors while
 
 > **Quick fact**: the LCH color space is really the [(CIE)LAB][wikipedia-cielab] color space with two different channels, chroma and hue, that are more intuitive for specifying a color than LAB's "a" and "b" channels. Chroma (which is similar to saturation) and hue are "polar coordinates" of the LAB color space, while "a" and "b" are cartesian coordinates for specifying green - red and blue - yellow respectively. The LCH color space was created to make working with LAB more intuitive and user friendly.
 
-The *"maintains perceptual lightness across hues"* part of the LCH color space makes it conceptually and technically different than the more commonly used HSL and HSV color spaces. In HSL or HSV when the same lightness value is used with different hues, the resulting colors may look noticeably different in terms of their perceived lightness. In other words, the colors will look lighter or darker depending on their hue even though they share the same lightness value. This is a problem that the LAB and LCH color spaces attempt to solve.
+The *"maintains perceptual lightness across hues"* part of the LCH color space is what makes it different than the more commonly used HSL and HSV color spaces. In HSL or HSV when the same lightness value is used with different hues, the resulting colors may look noticeably different in terms of their perceived lightness. In other words, the colors will look lighter or darker depending on their hue even though they share the same lightness value. This is a problem that the LAB and LCH color spaces attempt to solve.
 
 To quickly demonstrate the difference between HSL and LCH here are a couple of different colors defined using HSL and then LCH with the same lightness value applied to them in both color spaces.
 
@@ -57,7 +57,7 @@ You may have noticed that the hue values in the LCH swatches were adjusted sligh
 <!-- TODO: keep this paragraph? It's saying the same thing that was previously mentioned -->
 <!-- When researching LCH I was surprised to learn that the LCH color space is similar to the [Lab color space](#)(TODO: link), which I had used previously when creating multi hue color gradients to avoid the dreaded middle gray dead zone that is common when creating linear gradients using RGB and HSL. LCH and Lab use the same color model, while LCH allows for specifying the desired color using polar color coordinates instead of cartesian (TODO: or is it the other way around?). This makes LCH a little more intuitive to use from a designer's perspective. -->
 
-Another benefit of using either the Lab or LCH color space is that we optionally gain access to colors that are outside of the RGB color space. This is known as the "P3" color gamut, sometimes lumped in with "High Definition" (HD) colors (TODO: link to web.dev article). Devices with fancy screens, such as retina displays on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in RGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback you prefer.
+Another benefit of using either the Lab and LCH color spaces is that we gain access additional, "high definition" colors that are outside of the standard Red, Green, and Blue (sRGB) color space. Color gamuts at are new to CSS such as "Display-P3" give us access to twice as many colors as sRGB.
 
 {% set caption %}
 Two color swatches for the color orange. The first swatch is in the "P3" color gamut and will appear as a more vibrant orange if your device and browser supports P3. The second swatch is a fallback orange in the sRGB gamut that is compatible with all browsers and devices.
@@ -65,9 +65,9 @@ Two color swatches for the color orange. The first swatch is in the "P3" color g
 
 {{ colorSwatchFigure([{ fill: "oklch(78% 0.2 61)", textFill: "#333" }, { fill: "#ff9500", textFill: "#333" }], caption) }}
 
-[Here's a simple Codepen][codepen-detect-p3] I made that will tell you if your device and browser supports P3 / HD colors. If the two squares are orange, you have P3 available. The left square should look like a more rich or vivid orange compared to the right square. If the first square is black, then your device does not support P3.
+Devices with high definition displays, such as retina screens on Apple devices, have support for these colors while older monitors and displays do not. Therefore, it's best to use CSS feature queries to detect if the device supports HD colors and if not provide a fallback color in sRGB. If you don't provide a fallback the browser will do its best to provide one, but it may not be a fallback color you prefer.
 
-<!-- You only need to worry about this if you are intentionally using P3 colors. From my experience this is most easily achieved with LCH by increasing the Chroma value of a color, but it is also affected by changing the color's lightness value. If you are converting RGB colors to LCH and not adjusting their chroma value then you won't need to worry about it. Drastically reducing the lightness value in LCH also may get you into P3 territory. -->
+[Here's a simple Codepen][codepen-detect-p3] I made that will tell you if your device and browser supports P3 / HD colors. If the two squares are orange, you have P3 available. The left square should look like a more rich or vivid orange compared to the right square. If the first square is black, then your device does not support P3. See the article [Migrate to HD Color Support][migrate-to-hd-color-support] by Chrome for Developers for more on how to support different color spaces in CSS.
 
 When converting an existing color to LCH, the [OKLCH Color Picker and Converter][oklch-picker-converter] by Evil Martians informs you if you are entering P3 territory when adjusting the LCH's channel values. It will helpfully display a second color swatch in a sRGB fallback once you've crossed over into the P3 gamut.
 
@@ -87,7 +87,7 @@ When a color crosses from sRGB to the P3 color gamut, the Evil Martians OKLCH co
 {% image 'oklch-color-picker-02.png', 'Screenshot of the OKLCH color picker tool UI developed by Evil Martians showing two color swatches; one in sRGB and one in the P3 gamut' %}
 {% endfigure %}
 
-Google Chrome's color picker in dev tools also indicates where the sRGB / P3 color gamut boundary is when you are adjusting a color using `oklch`:
+Google Chrome's developer tools' color picker also indicates where the sRGB / P3 color gamut boundary is when you are adjusting a color using `oklch`:
 
 {% set caption %}
 Chrome's color picker now features an OKLCH input and visualizes the boundary between sRGB and P3.
@@ -103,9 +103,9 @@ Phew! So much for a short intro. Now that we've covered the background of OKLCH 
 
 ## Experiment One: Create a Categorical Color Palette From a Single Hue
 
-The first thing I tried was creating a categorical color palette from a single hue. Again, because the LCH color model maintains a perceptual level of lightness across hues, my thinking was to keep the chroma and lightness value from our original color swatch while shifting the hue value by a consistent value to create new colors. Each of our new colors should look similar to our original color because they share the same chroma and lightness.
+The first thing I tried was creating a categorical color palette from a single hue. Again, because the LCH color model maintains a perceptual level of lightness across hues, my thinking was to keep the chroma and lightness values from our original color swatch while incrementing the hue value by a constant number of degrees to create new colors. When using this method each of our new colors should look similar to our original color because they share the same chroma and lightness.
 
-Starting with a single color, say `#f97f00`, a vibrant orange (which happens to be the accent color for this website's theme in dark mode):
+Starting with a single color, say `#f97f00`, a vibrant orange (which happens to be the accent color for this website's theme in dark mode...
 
 <!-- NOTE: not using colorSwatchFigure because of the use of <code> in <figcaption> -->
 <figure class="swatch-container">
@@ -117,9 +117,9 @@ Starting with a single color, say `#f97f00`, a vibrant orange (which happens to 
   </figcaption>
 </figure>
 
-We can create _n_ more colors by shifting the hue value of the color in `oklch` by 360 / _n_, since in `oklch` the hue value ranges from 0 - 360 degrees. We don't need to worry about our new hue value being exactly in the range of 0 to 360 since anything over 360 will wrap to the equivalent hue. For example a hue value of 400 will wrap to 40 since 400 - 360 = 40.
+...we can create _n_ more colors by shifting the hue value of the color in `oklch` by 360 / _n_, since in `oklch` the hue value ranges from 0 - 360 degrees. We don't need to worry about our new hue value being exactly in the range of 0 to 360 since anything over 360 will wrap to the equivalent hue. For example a hue value of 400 will wrap to 40 since 400 minus 360 equals 40.
 
-To demonstrate, here is a palette of five colors I created using this technique starting with the original color of `#f97f00`. The first color swatch is the original hue, the four that follow were programmatically created.
+To demonstrate, here is a palette of five colors I created using this technique starting with the original color of `#f97f00`:
 
 {% set caption %}
   A programmatically generated color palette of five colors. Each color shares the same lightness and chroma value, and are equidistant from one another in terms of hue. Such a palette could be suitable for a categorical color scheme for use in data visualization.
@@ -129,7 +129,7 @@ To demonstrate, here is a palette of five colors I created using this technique 
 
 What's interesting to me about this is that the end result looks consistent with our starting color. None of the new colors feel out of place, e.g. too dark or too light, when keeping in mind that this palette would be used for a categorical color scheme in a data visualization or thematic map, where the purpose of using color is to differentiate various categories but not emphasize any one category. Since each color shares the same lightness and chroma LCH value, the palette as a whole feels perceptually uniform.
 
-We could also reduce the lightness of all colors but one if we did want to use one color as an accent color among the group:
+We might reduce the lightness of all colors but one if we want to use one of the palette's colors as an accent color among the group to help it stand out:
 
 {% set caption %}
   The same five color palette as previously shown in terms of hue and chroma, but with all colors reduced to 35% lightness except the second to last swatch. This could be a useful technique for creating a categorical palette where one category is meant to stand out.
@@ -139,15 +139,15 @@ We could also reduce the lightness of all colors but one if we did want to use o
 
 If you're reading this and you've previously studied color theory and/or are familiar with different types of common color schemes such as complementary, triadic, or analogous, then you're probably getting some ideas on how OKLCH could be used to programmatically create other types of color schemes by keeping the same chroma and lightness values while shifting the hue value for a single color.
 
-The drawback of this approach is that as the number of hues increase, the palette's colors may not be different enough from one another, so viewers might have difficulty in distinguishing individual colors. It also by no means accessible in terms of being color blind friendly. However, this could be a good starting point where a designer could make adjustments to each color as needed depending on the use case of the palette.
+The drawback of this approach is that as the number of swatches increases, the palette's colors may end up looking too similar in terms of hue. As such viewers might have difficulty in distinguishing individual swatches. This approach is by no means accessible in terms of being color blind friendly. Even with these caveats, this approach could be a good starting point where a designer could make adjustments to each color as needed depending on the use case of the palette.
 
 Try interacting with the [Observable Notebook "Exploring OKLCH Color"][notebook-exploring-oklch] to experiment with this approach on your own.
 
 ## Experiment Two: Create a Sequential Color Palette From a Single Hue
 
-Sequential color palettes used for data visualization typically start out using a very light and desaturated color and gradually move towards a dark and more saturated ending color. These types of color palettes are typically used to visually convey quantitative data such as population density in a thematic map. Using the LCH color space we can again programmatically generate a palette from a starting or input hue. This time, we'll keep the same hue in each of the palette's color swatches while adjusting the lightness and chroma.
+Sequential color palettes used for data visualization start with a very light and desaturated color and gradually move towards a dark and more saturated ending color, or vice versa. These types of color palettes are commonly used to visually convey quantitative data, such as population density in a thematic map. Using the LCH color space we can again programmatically generate a palette from an input hue. For this approach we will keep the same hue in each of the palette's color swatches while adjusting the lightness and chroma.
 
-This time let's start with a different color, the blue that is used for this website's theme accent color in light mode, `#0055a9`.
+We will start with a different color, the blue that is used for this website's theme accent color in light mode, `#0055a9`:
 
 <!-- NOTE: not using colorSwatchFigure because of the use of <code> in <figcaption> -->
 <figure class="swatch-container">
@@ -173,7 +173,7 @@ A five color sequential, single hue color palette generated from a single input 
 
 {{ colorSwatchFigure([{"fill":"#ddf0ff","showText":false,"width":32,"height":32},{"fill":"#a6c4ec","showText":false,"width":32,"height":32},{"fill":"#7199ce","showText":false,"width":32,"height":32},{"fill":"#3c6faf","showText":false,"width":32,"height":32},{"fill":"#004590","showText":false,"width":32,"height":32}], caption)}}
 
-If instead of using linear interpolation we use exponential interpolation we get a result that looks a little more like a proper sequential color palette. The result is subtle, but adds a bit of polish that helps.
+If instead of using linear interpolation we use exponential interpolation we get a slightly different result:
 
 {% set caption %}
 A five color sequential, single hue color palette generated from a single input color. Hue remains static while lightness decreases and chroma increases exponentially from the lightest to darkest color.
@@ -187,9 +187,9 @@ Try experimenting with the Observable Notebook [Creating sequential color palett
 
 ## Experiment Three: Analyzing Color Brewer Palettes using OKLCH
 
-What if instead of creating new colors using OKLCH we used it to analyze popular color palettes, such as those used in data visualization? Using a JavaScript library such as [ColorJS][colorjs] we can convert the RGB versions of each palette into OKLCH and then analyze each of the values for lightness, chroma, and hue. This could be an interesting way to "dissect" different types of color palettes, which could help inform how we create color palettes suitable for data visualization on the fly.
+What if instead of creating new colors using OKLCH we used it to analyze popular color palettes, such as those used in data visualization? Using a JavaScript library such as [ColorJS][colorjs] we can convert the sRGB version of each swatch to OKLCH and then analyze the lightness, chroma, and hue values of the entire palette. This might be an interesting way to dissect different types of color palettes, which could help inform how we create our own color sequential palettes on the fly.
 
-Let's take a sequential, single hue color scheme from the [Color Brewer][color-brewer] color scheme library to try this out with. I'm obviously partial to orange, so I've chosen the "oranges" color scheme with seven discrete colors. I chose seven colors to start with since it will give us more granular data for the color scheme.
+Let's take a sequential, single hue color scheme from the [Color Brewer][color-brewer] color scheme library to try this out with. I'm obviously partial to orange, so I've chosen the "oranges" color scheme with seven discrete colors. I chose seven colors instead of five like in the previous palettes since it will give us more granular data to analyze.
 
 ```js
 const oranges = ['#feedde','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#8c2d04'];
@@ -201,26 +201,35 @@ Seven color swatches belonging to the "oranges" sequential color scheme from the
 
 {{ colorSwatchFigure([{"fill":"#feedde","showText":false,"width":32,"height":32},{"fill":"#fdd0a2","showText":false,"width":32,"height":32},{"fill":"#fdae6b","showText":false,"width":32,"height":32},{"fill":"#fd8d3c","showText":false,"width":32,"height":32},{"fill":"#f16913","showText":false,"width":32,"height":32},{"fill":"#d94801","showText":false,"width":32,"height":32},{"fill":"#8c2d04","showText":false,"width":32,"height":32}], caption) }}
 
-Using ColorJS we can convert each sRGB swatch from the oranges palette to OKLCH:
+Using ColorJS we convert each sRGB swatch from the Color Brewer oranges palette to OKLCH:
 
 ```js
 import Color from 'https://colorjs.io/dist/color.js';
 
 // the oranges color palette from Color Brewer
-const oranges = ['#feedde','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#8c2d04'];
+const oranges = [
+  '#feedde',
+  '#fdd0a2',
+  '#fdae6b',
+  '#fd8d3c',
+  '#f16913',
+  '#d94801',
+  '#8c2d04'
+];
 
-// function that converts a string representation of a color into a ColorJS object
-// and converts the input colorspace to the oklch colorspace
+// function that 1. converts a string representation of a color into a ColorJS object
+// and 2. converts the input colorspace to the oklch colorspace
 const toColorOklch = (colorString) => new Color(colorString).to('oklch');
 
 // first convert our color strings to ColorJS Color objects in the oklch colorspace
 const orangesOklch = oranges.map(toColorOklch);
 
-// get oklch string representations of the colors using the Color's display method
+// get CSS oklch string representations of the colors
 const orangesOklchDisplay = orangesOklch.map((color) => color.display());
 
 // inspect the results
 console.log(orangesOklchDisplay);
+
 // logs the following:
 [
   'oklch(95.56% 0.0272 63.957)',
@@ -265,7 +274,7 @@ Chroma increases steadily by about 0.04 for each swatch until the last swatch wh
 {{ lineChartFigure('_includes/components/lineChartChroma.njk', 'Change in Chroma: Oranges', caption) }}
 
 {% set caption %}
-Hue starts at a value of 64 degrees, increases to 67, then steadily decreases to a value of 39 degrees. There is roughly 28 degrees of variance for the entire color scheme.
+Hue starts at a value of 64 degrees, increases to 67, then steadily decreases to a value of 39 degrees. There is approximately 28 degrees of hue variance for the entire color scheme.
 {% endset %}
 
 {{ lineChartFigure('_includes/components/lineChartHue.njk', 'Change in Hue: Oranges', caption) }}
@@ -298,7 +307,11 @@ If you'd like to play around with this experiment, you may try interacting with 
 
 ## Experiment Four: Improving Color Contrast Using OKLCH
 
-The last experiment's goal was to utilize the OKLCH colorspace for adjusting the color contrast of two colors for accessibility purposes. The Web Content Accessibility Guidelines (WCAG) has Success Criteria (SC) for color contrast which must be passed if one is striving to make their website or application conform to WCAG. The SC states that at a minimum, a text's color must contrast 4.5 to 1 with its background color in order for it to be considered accessible. For graphical objects and user interface components the minimum contrast must be 3 to 1 with the background color. There is also related contrast success criteria for focus indicators (e.g. the outline appears when using your keyboard to navigate things like buttons, form fields, and links). My thinking was that perhaps the OKLCH color space would work better for adjusting color contrast than the HSL color space since changing lightness in OKLCH is an improvement over HSL.
+The last experiment's goal was to utilize the OKLCH colorspace for adjusting the color contrast of two colors for accessibility purposes. The [Web Content Accessibility Guidelines][wcag-overview] (WCAG) has Success Criteria (SC) for [color contrast][wcag-sc-1-4-3] which must be passed if one is striving to make their website or application conform to WCAG. The SC states that at a minimum, a text's color must contrast 4.5 to 1 with its background color in order for it to be considered accessible. For graphical objects and user interface components the minimum contrast must be 3 to 1 with the background color. There is also related contrast success criteria for focus indicators, [SC 1.4.11][wcag-sc-1-4-11] and [SC 2.4.13][wcag-sc-2-4-13], which require a minimum 3 to 1 color contrast betwen a the focus indicator color and its background color.
+
+> **Jargon explainer**: A "focus indicator" is the visual outline that appears to indicate something has focus, such as when using your keyboard to navigate interactive user interface elements like buttons, form fields, and links. It is a very important part of making a website or application accessible as it helps people interact with the page who cannot use a mouse.
+
+My thinking was that perhaps the OKLCH color space would work better for adjusting color contrast than the HSL color space since changing lightness in OKLCH is an improvement over HSL.
 
 For this experiment I created an Observable Notebook, [OKLCH Color Contrast Evaluator][notebook-oklch-color-contrast], for analyzing the color contrast of two colors using both the WCAG and APCA color contrast algorithms. This was again made possible via ColorJS since it has the two color contrast algorithms built in (plus a few others). The text and background colors may be entered via form text inputs and then adjusted using sliders for the lightness, chroma, and hue values from OKLCH. As the values are changed the color contrast is re-evaluated.
 
@@ -318,7 +331,9 @@ Here is an example of a before an after of fixing a color swatch pair, where inc
 
 {{ colorSwatchFigure([{"fill":"#ffa08b"},{"fill":"#144C70", textFill: "#fff"}], 'Two color swatches, a light red (#ffa08b) and dark blue (#144C70), with a WCAG color contrast ratio of 4.64 to 1.') }}
 
-It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is *the bare minimum* color contrast considered by WCAG to be considered accessible. A ratio of 7 to 1 is required for triple A conformance and will make text more accessible to a wider segment of the population. Remember that *conformance* doesn't necessarily mean *usable* when it comes to WCAG and accessibility!
+Using this method the lighter red color still looks similar to the original color.
+
+> It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is *the bare minimum* color contrast ratio for text to be considered accessible according to WCAG. A ratio of 7 to 1 is required for "triple A" (AAA) conformance and will make text more accessible to a wider segment of the population. Remember that *conformance* doesn't necessarily mean *usable* when it comes to WCAG and accessibility, and that we should always strive to make things as usable to the widest range of people as possible.
 
 I'm considering porting the Observable notebook code into a stand alone Svelte web app to make this a more user friendly and easy to find tool. The other color contrast tools I've come across on the web don't use the LCH color space for adjusting color contrast, so it seems like an opportunity for an improved color contrast evaluator and fixer tool.
 
