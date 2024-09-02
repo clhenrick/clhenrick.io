@@ -264,7 +264,7 @@ Lightness decreases linearly from swatches one to six, then decreases sharply by
 {{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartLightness.njk', 'Change in Lightness: Oranges', caption)}}
 
 {% set caption %}
-Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7.
+Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.06.
 {% endset %}
 
 {{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartChroma.njk', 'Change in Chroma: Oranges', caption) }}
@@ -279,9 +279,9 @@ The three charts convey the following about the Color Brewer oranges color schem
 
 - Lightness steadily declines by about 7% until the last swatch where it declines significantly by about 15%. Decreasing lightness more intensely for the last swatch helps make it stand out as the darkest swatch in the group.
 
-- Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.7. Reducing the chroma for the last swatch helps it appear darker among the rest of the swatches.
+- Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.06. Reducing the chroma for the last swatch helps it appear darker among the rest of the swatches.
 
-- Although this is a "single hue" sequential color scheme hue doesn't remain static! It changes slightly for each of the color scheme's swatches with the exception of the last two swatches. There's roughly 28 degrees of variance across the palette.
+- Although this is a "single hue" sequential color scheme, hue doesn't remain static! It changes slightly for each of the color scheme's swatches with the exception of the last two swatches. There's roughly 28 degrees of variance across the palette which we might not perceive with our eyes.
 
 It's almost as if the colors in these swatches had a human touch applied to them... (Sarcasm intended).
 
