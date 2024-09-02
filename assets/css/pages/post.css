@@ -36,8 +36,13 @@ dl > div.tags {
   flex-wrap: wrap;
 }
 
-/* Table of Contents navigation list items (hidden in disclosure widget) */
-nav.toc ol li {
+dl div.tags a:not(:focus-visible),
+nav.toc a:not(:focus-visible) {
+  text-decoration-color: transparent;
+}
+
+/* Table of Contents navigation list items (initially hidden in disclosure widget) */
+nav.toc li {
   margin-bottom: var(--spacing-xs);
 }
 
