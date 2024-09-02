@@ -344,6 +344,7 @@ Please don't hesitate to reach out to me if you have any questions or comments, 
 [evil-martians]: https://evilmartians.com
 [lch-colors-in-css]: https://lea.verou.me/blog/2020/04/lch-colors-in-css-what-why-and-how/
 [mastering-multi-hued-color-scales]: https://www.vis4.net/blog/mastering-multi-hued-color-scales/
+[migrate-to-hd-color-support]: https://developer.chrome.com/docs/css-ui/migrate-hd-color
 [mdn-oklch]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
 [notebook-color-analysis]: https://observablehq.com/@clhenrick/color-palette-analysis-using-oklch
 [notebook-exploring-oklch]: https://observablehq.com/@clhenrick/exploring-oklch-color
@@ -352,5 +353,9 @@ Please don't hesitate to reach out to me if you have any questions or comments, 
 [notebook-oklch-color-contrast]: https://observablehq.com/@clhenrick/color-contrast-evaluator?collection=@clhenrick/storymaps
 [oklch-in-css]: https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
 [oklch-picker-converter]: https://oklch.com
+[wcag-overview]: https://www.w3.org/WAI/standards-guidelines/wcag/
+[wcag-sc-1-4-3]: https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html
+[wcag-sc-1-4-11]: https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html
+[wcag-sc-2-4-13]: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html
 [wikipedia-cielab]: https://en.wikipedia.org/wiki/CIELAB_color_space
 [wikipedia-hcl]: https://en.wikipedia.org/wiki/HCL_color_space
