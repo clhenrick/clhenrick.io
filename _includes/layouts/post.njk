@@ -8,6 +8,7 @@ eleventyComputed:
   components/forms/form-controls,
   components/forms/select,
   components/kofi,
+  components/disclosure,
   pages/post
 {%- endset %}
 
@@ -58,6 +59,11 @@ eleventyComputed:
       {%- endfor %}
     </div>
   </dl>
+
+  <details class="toc">
+    <summary>Table of Contents</summary>
+    {{ content | toc | safe }}
+  </details>
 
   {{ content | safe }}
 
