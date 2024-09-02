@@ -6,9 +6,11 @@ const {
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const eleventyTocPlugin = require("eleventy-plugin-toc");
 const markdown = require("markdown-it")({
   html: true,
 });
+const anchor = require("markdown-it-anchor");
 const postcss = require("postcss");
 const postcssMinify = require("postcss-minify");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -48,6 +50,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("assets/css");
   }
 
+  eleventyConfig.setLibrary("md", markdown.use(anchor));
+
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(bundlerPlugin, {
@@ -60,6 +64,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginImages);
   eleventyConfig.addPlugin(pluginDataCascadeImage);
   eleventyConfig.addPlugin(rssPlugin);
+  eleventyConfig.addPlugin(eleventyTocPlugin, { tags: ["h2", "h3"], wrapperLabel: "Table of contents" });
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
