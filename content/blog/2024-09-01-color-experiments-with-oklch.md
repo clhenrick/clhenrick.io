@@ -285,7 +285,7 @@ The three charts convey the following about the Color Brewer oranges color schem
 
 It's almost as if the colors in these swatches had a human touch applied to them... (Sarcasm intended).
 
-To get a better idea of how the lightness, chroma, and hue values change for commonly used data visualization color palettes it would be useful to run this analysis on every palette we could get our hands on. That's a bit beyond the scope of this blog post, but I think it would be an worthwhile endeavor if we are serious about coming up with an automated method for creating sequential color scheme palettes for use in data visualization.
+To get a better idea of how the lightness, chroma, and hue values change for commonly used data visualization color palettes it would be useful to run this analysis on every palette we could get our hands on. That's a bit beyond the scope of this blog post, but I think it would be a worthwhile endeavor if we are serious about coming up with an automated method for creating sequential color scheme palettes for use in data visualization.
 
 If doing this sort of broad analysis I might start with doing a gridded / faceted, small multiples plot of each color as well as running some statistics on the data. Someone smarter then me might even be able to use machine learning with the data to come up with a way to predict what lightness, chroma, and hue values would be ideal given an input color.
 
