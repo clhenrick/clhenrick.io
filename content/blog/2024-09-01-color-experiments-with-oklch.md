@@ -270,7 +270,7 @@ Chroma increases steadily from a starting value of 0.03 by about 0.04 for each s
 {{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartChroma.njk', 'Change in Chroma: Oranges', caption) }}
 
 {% set caption %}
-Hue starts at a value of 64 degrees, increases to 67 degrees at swatch two, then steadily decreases to a value of 39 degrees for the last two swatches. There is approximately 28 degrees of hue variance for the entire color scheme.
+Hue starts at a value of 64 degrees, increases to 67 degrees at swatch two, then steadily decreases to a value of 39 degrees for the last two swatches.
 {% endset %}
 
 {{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartHue.njk', 'Change in Hue: Oranges', caption) }}
