@@ -63,7 +63,8 @@ eleventyNavigation:
     value="Contact Form Submission"
   >
 
-  {# TODO: add honey pot spam filtering: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering #}
+  {# NOTE: for honey pot spam filtering. See: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering #}
+  <input id="s-h-p" type="text" name="_gotcha" value="" />
 
   <button class="button" type="submit">Submit</button>
 </form>

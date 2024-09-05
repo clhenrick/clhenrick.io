@@ -3,3 +3,9 @@ form {
   flex-direction: column;
   margin-bottom: var(--spacing-xxxl);
 }
+
+/* spam honey pot */
+/* see: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering */
+#s-h-p {
+  display: none;
+}
