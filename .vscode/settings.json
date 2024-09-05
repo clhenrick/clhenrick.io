@@ -1,0 +1,56 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "search.exclude": {
+    "**/.git": true,
+    "**/_site": true,
+    "**/node_modules": true,
+    "**/*.code-search": true
+  },
+  "todohighlight.keywords": [
+    {
+      "backgroundColor": "#1db26b",
+      "color": "#fff",
+      "text": "DONE:"
+    },
+    {
+      "backgroundColor": "#209be0",
+      "color": "#fff",
+      "text": "NOTE:"
+    },
+    {
+      "color": "#000",
+      "isWholeLine": false,
+      "text": "HACK:"
+    },
+    {
+      "backgroundColor": "#f70",
+      "color": "#fff",
+      "text": "????:"
+    },
+    {
+      "backgroundColor": "#000",
+      "color": "#d00",
+      "text": "HARD-CODED:"
+    },
+    {
+      "backgroundColor": "#d00",
+      "color": "#fff",
+      "text": "IMPORTANT:"
+    }
+  ],
+  "workbench.editor.customLabels.patterns": {
+    "**/_data/**/*": "${filename} - Global Data",
+    "**/_includes/**/*.njk": "${filename} — Partials",
+    "**/_includes/components/**/*.njk": "${filename} — Components",
+    "**/_includes/layouts/**/*.njk": "${filename} — Layouts",
+    "**/_site/**/*": "${filename} - ${dirname} (${extname}) — !COMPILED!",
+    "**/assets/css/**/*": "${filename} - ${dirname} — Assets/CSS",
+    "**/assets/js/**/*": "${filename} — Assets/JS",
+    "**/content/**/*": "${filename} - ${dirname} (${extname}) — Content",
+    "**/docs/**/*": "${filename} — Docs",
+    "**/public/**/*": "${filename} — Public",
+    "**/scripts/**/*": "${filename} — Scripts"
+  }
+}
