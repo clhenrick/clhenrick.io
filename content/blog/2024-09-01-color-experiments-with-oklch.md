@@ -93,7 +93,7 @@ Chrome's color picker now features an OKLCH input and visualizes the boundary be
 {% image 'chrome-color-picker-oklch.png', 'Screenshot of Google Chrome\'s developer tools color picker in OKLCH mode', [400, 800, 1200], '(max-width: 400px), calc(100vw - 48px)' %}
 {% endfigure %}
 
-Using a color picker or 3rd party library such as [ColorJS][colorjs] that detects whether an LCH color is in or out of the RGB gamut are useful tools to have at your disposal when working with LCH and P3 colors. Remember that leaving gamut correction up to the browser may not give you a desirable result, so intentionally choosing an fallback color is a good practice when reaching for P3 colors.
+Using a color picker or third party library (I highly recommend [ColorJS][colorjs] developed by [Lea Verou](https://lea.verou.me/) and [Chris Lilley](https://svgees.us/)) that detects whether an LCH color is in or out of the RGB gamut are useful tools to have at your disposal when working with LCH and P3 colors. Remember that leaving gamut correction up to the browser may not give you a desirable result, so intentionally choosing an fallback color is a good practice when reaching for P3 colors.
 
 Phew! So much for a short intro. Now that we've covered the background of OKLCH let's move on to the fun stuff... the experiments!
 
