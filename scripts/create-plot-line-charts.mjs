@@ -41,6 +41,12 @@ const yAxisLabels = new Map([
   ["hue", "hue (degrees)"],
 ]);
 
+const accNames = new Map([
+  ["lightness", "Line chart of lightness values for the Color Brewer oranges color scheme"],
+  ["chroma", "Line chart of chroma values for the Color Brewer oranges color scheme"],
+  ["hue", "Line chart of hue values for the Color Brewer oranges color scheme"],
+])
+
 const codeComment = `{# Note: this chart was programmatically generated using PlotJS. See scripts/create-plot-line-charts.mjs #}`
 
 main();
@@ -48,9 +54,10 @@ main();
 function main() {
   for (let [property, values] of properties) {
     const yLabel = yAxisLabels.get(property);
+    const ariaLabel = accNames.get(property);
     const data =
       properties === "lightness" ? convertValuesToPercentages(values) : values;
-    const chartMarkup = createLineChart(data, yLabel);
+    const chartMarkup = createLineChart(data, yLabel, ariaLabel);
     const contents = codeComment + "\n" + chartMarkup;
     writeNjkPartialFile(property, contents);
   }
@@ -108,9 +115,10 @@ function convertValuesToPercentages(values) {
  * @param {string} yAxisLabel
  * @returns {string} SVG markup
  */
-function createLineChart(data, yAxisLabel) {
+function createLineChart(data, yAxisLabel, accName) {
   const plot = Plot.plot({
     document: new JSDOM("").window.document,
+    ariaLabel: accName,
     x: { label: "swatch step" },
     y: { label: yAxisLabel },
     marks: [
@@ -131,6 +139,8 @@ function createLineChart(data, yAxisLabel) {
       ),
     ],
   });
+
+  plot.setAttribute("role", "img");
 
   plot.setAttributeNS(
     "http://www.w3.org/2000/xmlns/",

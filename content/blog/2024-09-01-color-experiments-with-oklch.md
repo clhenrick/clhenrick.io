@@ -1,6 +1,7 @@
 ---
 title: "Color experiments with OKLCH"
 date: 2024-09-01
+updated: 2024-09-04
 teaser: "Creating color palettes programmatically and fixing color contrast issues using the OKLCH color space in CSS."
 tags:
   - Color
@@ -93,7 +94,7 @@ Chrome's color picker now features an OKLCH input and visualizes the boundary be
 {% image 'chrome-color-picker-oklch.png', 'Screenshot of Google Chrome\'s developer tools color picker in OKLCH mode', [400, 800, 1200], '(max-width: 400px), calc(100vw - 48px)' %}
 {% endfigure %}
 
-Using a color picker or 3rd party library such as [ColorJS][colorjs] that detects whether an LCH color is in or out of the RGB gamut are useful tools to have at your disposal when working with LCH and P3 colors. Remember that leaving gamut correction up to the browser may not give you a desirable result, so intentionally choosing an fallback color is a good practice when reaching for P3 colors.
+Using a color picker or third party library (I highly recommend [ColorJS][colorjs] developed by [Lea Verou](https://lea.verou.me/) and [Chris Lilley](https://svgees.us/)) that detects whether an LCH color is in or out of the RGB gamut are useful tools to have at your disposal when working with LCH and P3 colors. Remember that leaving gamut correction up to the browser may not give you a desirable result, so intentionally choosing an fallback color is a good practice when reaching for P3 colors.
 
 Phew! So much for a short intro. Now that we've covered the background of OKLCH let's move on to the fun stuff... the experiments!
 
@@ -253,35 +254,35 @@ console.log(orangesOklchDisplay);
 |0.48 | 0.18 | 21.64|
 |0.40 | 0.16 | 29.23| -->
 
-We can then plot the lightness, chroma, and hue values on separate line graphs to get a sense of how these values change over the oranges color scheme.
+We can then plot the lightness, chroma, and hue values on separate line charts to get a sense of how these values change over the oranges color scheme.
 
 <!-- TODO: update charts: add circles for each data point & incorporate theme accent color -->
 
 {% set caption %}
-Lightness decreases linearly from swatches one to six, then decreases sharply by 20% at swatch seven.
+Lightness decreases relatively consistently from a value of 96% in swatch one to 60% in swatch six, then decreases sharply to 44% at swatch seven.
 {% endset %}
 
 {{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartLightness.njk', 'Change in Lightness: Oranges', caption)}}
 
 {% set caption %}
-Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.06.
+Chroma increases steadily from a starting value of 0.03 by about 0.04 for each swatch to 0.19 until the last swatch where it takes a significant dive to 0.14.
 {% endset %}
 
 {{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartChroma.njk', 'Change in Chroma: Oranges', caption) }}
 
 {% set caption %}
-Hue starts at a value of 64 degrees, increases to 67, then steadily decreases to a value of 39 degrees. There is approximately 28 degrees of hue variance for the entire color scheme.
+Hue starts at a value of 64 degrees, increases to 67 degrees at swatch two, then steadily decreases to a value of 39 degrees for the last two swatches.
 {% endset %}
 
 {{ lineChartFigure('_includes/components/blog-posts/color-experiments-oklch/lineChartHue.njk', 'Change in Hue: Oranges', caption) }}
 
 The three charts convey the following about the Color Brewer oranges color scheme:
 
-- Lightness steadily declines by about 7% until the last swatch where it declines significantly by about 15%. Decreasing lightness more intensely for the last swatch helps make it stand out as the darkest swatch in the group.
+- Lightness steadily declines by about 7% until the last swatch where it declines significantly by about 16%. Decreasing lightness more intensely for the last swatch helps make it stand out as the darkest swatch in the group.
 
 - Chroma increases steadily by about 0.04 for each swatch until the last swatch where it takes a significant dive by roughly 0.06. Reducing the chroma for the last swatch helps it appear darker among the rest of the swatches.
 
-- Although this is a "single hue" sequential color scheme, hue doesn't remain static! It changes slightly for each of the color scheme's swatches with the exception of the last two swatches. There's roughly 28 degrees of variance across the palette which we might not perceive with our eyes.
+- Although the Color Brewer oranges color scheme is referred to as a "single hue" sequential color scheme, hue doesn't remain static! It changes slightly for each of the color scheme's swatches with the exception of the last two swatches. There's roughly 28 degrees of variance across the palette which we might not immediately perceive with our eyes only.
 
 It's almost as if the colors in these swatches had a human touch applied to them... (Sarcasm intended).
 
