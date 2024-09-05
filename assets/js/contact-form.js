@@ -1,14 +1,18 @@
-/** script for custom form validation in the /contact/ page */
 // TODO: "In order to submit via AJAX, you need to set a custom key or reCAPTCHA must be disabled in this form's settings page."
+/** script for custom form validation in the /contact/ page */
 (() => {
   /** @type { HTMLFormElement} */
   const form = document.querySelector("form[action*='formspree.io']");
+
   /** @type { HTMLDivElement} */
   const formStatus = document.querySelector("#form-status");
+
   /** @type { HTMLInputElement} */
   const inputName = document.querySelector("#full-name");
+
   /** @type { HTMLInputElement} */
   const inputEmail = document.querySelector("#email-address");
+
   /** @type { HTMLTextAreaElement} */
   const textAreaMessage = document.querySelector("#message");
 
@@ -18,7 +22,7 @@
     element.setAttribute("aria-required", true);
   });
 
-  /** @param {Event} event */
+  /** @param {SubmitEvent} event */
   function handleFormSubmit(event) {
     event.preventDefault();
     console.log("submit!");
