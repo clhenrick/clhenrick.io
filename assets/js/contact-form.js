@@ -1,6 +1,10 @@
+/** script for custom form validation in the /contact/ page */
+// TODO: "In order to submit via AJAX, you need to set a custom key or reCAPTCHA must be disabled in this form's settings page."
 (() => {
   /** @type { HTMLFormElement} */
   const form = document.querySelector("form[action*='formspree.io']");
+  /** @type { HTMLDivElement} */
+  const formStatus = document.querySelector("#form-status");
   /** @type { HTMLInputElement} */
   const inputName = document.querySelector("#full-name");
   /** @type { HTMLInputElement} */
@@ -25,19 +29,26 @@
       method: form.method,
       body: data,
       headers: {
-        'Accept': 'application/json'
-      }
+        Accept: "application/json",
+      },
     })
-    .then((response) => {
-      if (response.ok) {
-        // form submit success
-      } else {
+      .then((response) => {
+        if (response.ok) {
+          // form submit success
+          formStatus.innerText = "Thanks for your submission!";
+          form.reset();
+          // TODO: move focus to #form-status
+        } else {
+          // TODO: handle errors
+          formStatus.innerText = "There was an error";
+          // TODO: move focus to #form-status
+        }
+      })
+      .catch((error) => {
         // TODO: handle errors
-      }
-    })
-    .catch((error) => {
-      // TODO: handle errors
-    });
+        formStatus.innerText = "There was an error";
+        // TODO: move focus to #form-status
+      });
   }
 
   form.addEventListener("submit", handleFormSubmit);

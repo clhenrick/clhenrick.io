@@ -30,6 +30,8 @@ eleventyNavigation:
 >
   <span id="form-title" hidden>Contact Chris Henrick</span>
 
+  <div id="form-status" tabindex="-1"></div>
+
   <label for="full-name">Your Name (required)</label>
   <input
     type="text"
@@ -60,6 +62,8 @@ eleventyNavigation:
     id="email-subject"
     value="Contact Form Submission"
   >
+
+  {# TODO: add honey pot spam filtering: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering #}
 
   <button class="button" type="submit">Submit</button>
 </form>
