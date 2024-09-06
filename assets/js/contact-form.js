@@ -25,7 +25,7 @@
   /** @type { HTMLParagraphElement } */
   const errorMsgNote = document.querySelector("#note-error-msg");
 
-  // prefer `aria-required` over `required` for enhanced accessibility and custom form validation
+  // prefer `aria-required` over `required` for enhanced accessibility and to prevent the browser's default form validation
   [inputName, inputEmail, textAreaMessage].forEach((element) => {
     element.removeAttribute("required");
     element.setAttribute("aria-required", true);
@@ -35,43 +35,68 @@
   form.addEventListener("submit", handleFormSubmit);
 
   /**
+   * shows an error message for a form field and relates it to the field using aria-describedby
+   * @param {HTMLInputElement | HTMLTextAreaElement} formField
+   * @param {HTMLElement} msgContainer
+   * @param {string} errorMsg
+   */
+  function showErrorMessage(formField, msgContainer, errorMsg) {
+    msgContainer.innerText = errorMsg;
+    msgContainer.removeAttribute("hidden");
+    formField.setAttribute("aria-invalid", "true");
+    formField.setAttribute("aria-describedby", msgContainer.getAttribute("id"));
+  }
+
+  /**
+   * hides an error message and removes the aria-describedby on the field
+   * @param {HTMLInputElement | HTMLTextAreaElement} formField
+   * @param {HTMLElement} msgContainer
+   */
+  function hideErrorMessage(formField, msgContainer) {
+    formField.removeAttribute("aria-invalid");
+    formField.removeAttribute("aria-describedby");
+    msgContainer.innerText = "";
+    msgContainer.setAttribute("hidden", "");
+  }
+
+  /**
    * @param {FormData} data
    * @returns {boolean}
    * */
   function validateForm(data) {
     let isValid = true;
 
-    if (!data.name) {
-      // require name
+    const name = data.get("name");
+    const message = data.get("message");
+    const email = data.get("_replyto");
+
+    if (!name) {
       isValid = false;
-      errorMsgName.innerText = "Please provide your name.";
-      errorMsgName.removeAttribute("hidden");
-      inputName.setAttribute(
-        "aria-describedby",
-        errorMsgName.getAttribute("id")
-      );
+      showErrorMessage(inputName, errorMsgName, "Please provide your name.");
+    } else {
+      hideErrorMessage(inputName, errorMsgName);
     }
 
-    if (!data.message) {
-      // require message
+    if (!message) {
       isValid = false;
-      errorMsgNote.innerText = "Please tell me what you're writing me about.";
-      errorMsgNote.removeAttribute("hidden");
-      textAreaMessage.setAttribute(
-        "aria-describedby",
-        errorMsgNote.getAttribute("id")
+      showErrorMessage(
+        textAreaMessage,
+        errorMsgNote,
+        "Please tell me what you're writing me about."
       );
+    } else {
+      hideErrorMessage(textAreaMessage, errorMsgNote);
     }
 
-    if (!data["_replyto"]) {
-      // require email
+    if (!email) {
       isValid = false;
-      errorMsgEmail.innerText = "Please provide a valid email address.";
-      errorMsgEmail.removeAttribute("hidden");
-      inputEmail.setAttribute(
-        "aria-describedby",
-        errorMsgEmail.getAttribute("id")
+      showErrorMessage(
+        inputEmail,
+        errorMsgEmail,
+        "Please provide a valid email address."
       );
+    } else {
+      hideErrorMessage(inputEmail, errorMsgEmail);
     }
 
     return isValid;
@@ -91,6 +116,8 @@
     if (!isValid) {
       return;
     }
+
+    return;
 
     fetch(event.target.action, {
       method: form.method,
