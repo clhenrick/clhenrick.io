@@ -27,14 +27,24 @@
 
   const emailRegEx = /^\S+@\S+\.\S+$/;
 
-  // prefer `aria-required` over `required` for enhanced accessibility and to prevent the browser's default form validation
-  [inputName, inputEmail, textAreaMessage].forEach((element) => {
-    element.removeAttribute("required");
-    element.setAttribute("aria-required", true);
-    element.setAttribute("aria-invalid", "false");
-  });
+  // NOTE: matches <textarea> minlength attribute in /contact/index.njk
+  const minMessageLengthChars = 120;
 
-  form.addEventListener("submit", handleFormSubmit);
+  init();
+
+  function init() {
+    // disable browser built-in form control validation messages
+    form.setAttribute("novalidate", "");
+
+    // prefer `aria-required` over `required` for enhanced accessibility and to prevent the browser's default form validation
+    [inputName, inputEmail, textAreaMessage].forEach((element) => {
+      element.removeAttribute("required");
+      element.setAttribute("aria-required", true);
+      element.setAttribute("aria-invalid", "false");
+    });
+
+    form.addEventListener("submit", handleFormSubmit);
+  }
 
   /**
    * shows an error message for a form field and relates it to the field using aria-describedby
@@ -68,36 +78,46 @@
   function validateForm(data) {
     let isValid = true;
 
-    const name = data.get("name");
-    const message = data.get("message");
-    const email = data.get("_replyto");
+    const nameValue = data.get("name");
+    const messageValue = data.get("message");
+    const emailValue = data.get("_replyto");
 
-    if (!name) {
+    if (!nameValue) {
       isValid = false;
       showErrorMessage(inputName, errorMsgName, "Please provide your name.");
     } else {
       hideErrorMessage(inputName, errorMsgName);
     }
 
-    if (!message) {
+    if (!messageValue) {
       isValid = false;
       showErrorMessage(
         textAreaMessage,
         errorMsgNote,
         "Please tell me what you're writing me about."
       );
+    } else if (
+      textAreaMessage.validity.tooShort ||
+      messageValue < minMessageLengthChars
+    ) {
+      isValid = false;
+      showErrorMessage(
+        textAreaMessage,
+        errorMsgNote,
+        "That's an awfully short message, you better not be spamming me!"
+      );
     } else {
       hideErrorMessage(textAreaMessage, errorMsgNote);
     }
 
-    if (!email) {
+    if (!emailValue) {
       isValid = false;
       showErrorMessage(
         inputEmail,
         errorMsgEmail,
         "Please provide a valid email address."
       );
-    } else if (email && !emailRegEx.test(email)) {
+    } else if (!emailRegEx.test(emailValue)) {
       isValid = false;
       showErrorMessage(
         inputEmail,
