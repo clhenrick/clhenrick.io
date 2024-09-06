@@ -9,6 +9,21 @@ button[type="submit"] {
   margin-top: var(--spacing-sm);
 }
 
+#form-status {
+  font-weight: bold;
+  padding: var(--spacing-md);
+  border: 2px solid currentColor;
+}
+
+#form-status.success {
+  background: var(--color-accent-invert);
+}
+
+#form-status.error {
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent-secondary);
+}
+
 #form-status:focus {
   outline: var(--focus-style-outline);
   outline-offset: var(--focus-style-outline-offset);

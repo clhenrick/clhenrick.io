@@ -139,12 +139,14 @@
     } else {
       formStatus.innerText =
         "Something went wrong when submitting the form. Please try submitting the form again or alternatively you may send me an email. Thanks!";
+      formStatus.classList.add("error");
       formStatus.removeAttribute("hidden");
       formStatus.focus();
     }
   }
 
   function handleFormSubmitSuccess() {
+    formStatus.classList.add("success");
     formStatus.removeAttribute("hidden");
     formStatus.innerText =
       "Thanks for reaching out! I'll get back to you as soon as I can.";
@@ -152,10 +154,15 @@
     form.reset();
   }
 
+  function clearFormStatus() {
+    formStatus.classList.value = "";
+    formStatus.setAttribute("hidden", "");
+  }
+
   /** @param {SubmitEvent} event */
   function handleFormSubmit(event) {
     event.preventDefault();
-    formStatus.setAttribute("hidden", "");
+    clearFormStatus();
     const data = new FormData(event.target);
     const isValid = validateForm(data);
 
