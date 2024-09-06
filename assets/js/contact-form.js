@@ -25,6 +25,8 @@
   /** @type { HTMLParagraphElement } */
   const errorMsgNote = document.querySelector("#note-error-msg");
 
+  const emailRegEx = /^\S+@\S+\.\S+$/;
+
   // prefer `aria-required` over `required` for enhanced accessibility and to prevent the browser's default form validation
   [inputName, inputEmail, textAreaMessage].forEach((element) => {
     element.removeAttribute("required");
@@ -94,6 +96,13 @@
         inputEmail,
         errorMsgEmail,
         "Please provide a valid email address."
+      );
+    } else if (email && !emailRegEx.test(email)) {
+      isValid = false;
+      showErrorMessage(
+        inputEmail,
+        errorMsgEmail,
+        "Is your email spelled correctly?"
       );
     } else {
       hideErrorMessage(inputEmail, errorMsgEmail);
