@@ -1,9 +1,21 @@
 form[action*="formspree.io"] {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   margin-bottom: var(--spacing-xxxl);
 }
+
+button[type="submit"] {
+  margin-top: var(--spacing-sm);
+}
+
+.form-control-group input,
+.form-control-group textarea {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* TODO: :invalid styles for form controls */
 
 .form-error-msg {
   font-style: italic;

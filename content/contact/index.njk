@@ -32,33 +32,39 @@ eleventyNavigation:
 
   <div id="form-status" tabindex="-1"></div>
 
-  <label for="full-name">Your Name (required)</label>
-  <input
-    type="text"
-    name="name"
-    id="full-name"
-    required=""
-  >
-  <p class="form-error-msg" id="full-name-error-msg" hidden></p>
+  <div class="form-control-group">
+    <label for="full-name">Your Name (required)</label>
+    <input
+      type="text"
+      name="name"
+      id="full-name"
+      required=""
+    >
+    <p class="form-error-msg" id="full-name-error-msg" hidden></p>
+  </div>
 
-  <label for="email-address">Your Email Address (required)</label>
-  <input
-    type="email"
-    name="_replyto"
-    id="email-address"
-    required=""
-  >
-  <p class="form-error-msg" id="email-address-error-msg" hidden></p>
+  <div class="form-control-group">
+    <label for="email-address">Your Email Address (required)</label>
+    <input
+      type="email"
+      name="_replyto"
+      id="email-address"
+      required=""
+    >
+    <p class="form-error-msg" id="email-address-error-msg" hidden></p>
+  </div>
 
-  <label for="message">Your Message (required)</label>
-  <textarea
-    rows="5"
-    name="message"
-    id="message"
-    required=""
-    minlength="120"
-  ></textarea>
-  <p class="form-error-msg" id="note-error-msg" hidden></p>
+  <div class="form-control-group">
+    <label for="message">Your Message (required)</label>
+    <textarea
+      rows="5"
+      name="message"
+      id="message"
+      required=""
+      minlength="120"
+    ></textarea>
+    <p class="form-error-msg" id="note-error-msg" hidden></p>
+  </div>
 
   <input
     type="hidden"
