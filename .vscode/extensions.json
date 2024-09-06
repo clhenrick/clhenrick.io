@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ronnidc.nunjucks",
+    "dbaeumer.vscode-eslint",
+    "streetsidesoftware.code-spell-checker",
+    "wayou.vscode-todo-highlight",
+    "yzhang.markdown-all-in-one"
+  ]
+}
