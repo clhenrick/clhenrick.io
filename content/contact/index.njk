@@ -39,6 +39,7 @@ eleventyNavigation:
     id="full-name"
     required=""
   >
+  <p class="form-error-msg" id="full-name-error-msg" hidden></p>
 
   <label for="email-address">Your Email Address (required)</label>
   <input
@@ -47,6 +48,7 @@ eleventyNavigation:
     id="email-address"
     required=""
   >
+  <p class="form-error-msg" id="email-address-error-msg" hidden></p>
 
   <label for="message">Your Message (required)</label>
   <textarea
@@ -55,6 +57,7 @@ eleventyNavigation:
     id="message"
     required=""
   ></textarea>
+  <p class="form-error-msg" id="note-error-msg" hidden></p>
 
   <input
     type="hidden"

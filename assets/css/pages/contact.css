@@ -1,7 +1,11 @@
-form {
+form[action*="formspree.io"] {
   display: flex;
   flex-direction: column;
   margin-bottom: var(--spacing-xxxl);
+}
+
+.form-error-msg {
+  font-style: italic;
 }
 
 /* spam honey pot */
