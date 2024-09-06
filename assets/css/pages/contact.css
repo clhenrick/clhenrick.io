@@ -9,6 +9,11 @@ button[type="submit"] {
   margin-top: var(--spacing-sm);
 }
 
+#form-status:focus {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
+}
+
 .form-control-group input,
 .form-control-group textarea {
   width: 100%;

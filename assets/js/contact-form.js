@@ -1,5 +1,4 @@
-// TODO: "In order to submit via AJAX, you need to set a custom key or reCAPTCHA must be disabled in this form's settings page."
-/** script for custom form validation in the /contact/ page */
+/** script for progressively enhancing the /contact/ page form using custom form validation */
 (() => {
   /** @type { HTMLFormElement} */
   const form = document.querySelector("form[action*='formspree.io']");
@@ -131,22 +130,39 @@
     return isValid;
   }
 
+  function handleInvalidFormState() {
+    const invalidFormFields = document.querySelectorAll(
+      "[aria-invalid='true']"
+    );
+    if (invalidFormFields.length) {
+      invalidFormFields[0].focus();
+    } else {
+      formStatus.innerText =
+        "Something went wrong when submitting the form. Please try submitting the form again or alternatively you may send me an email. Thanks!";
+      formStatus.removeAttribute("hidden");
+      formStatus.focus();
+    }
+  }
+
+  function handleFormSubmitSuccess() {
+    formStatus.removeAttribute("hidden");
+    formStatus.innerText =
+      "Thanks for reaching out! I'll get back to you as soon as I can.";
+    formStatus.focus();
+    form.reset();
+  }
+
   /** @param {SubmitEvent} event */
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("submit!");
-
+    formStatus.setAttribute("hidden", "");
     const data = new FormData(event.target);
-    console.log(data);
-
     const isValid = validateForm(data);
-    console.log(isValid);
 
     if (!isValid) {
+      handleInvalidFormState();
       return;
     }
-
-    return;
 
     fetch(event.target.action, {
       method: form.method,
@@ -157,20 +173,13 @@
     })
       .then((response) => {
         if (response.ok) {
-          // form submit success
-          formStatus.innerText = "Thanks for your submission!";
-          form.reset();
-          // TODO: move focus to #form-status
+          handleFormSubmitSuccess();
         } else {
-          // TODO: handle errors
-          formStatus.innerText = "There was an error";
-          // TODO: move focus to #form-status
+          handleInvalidFormState();
         }
       })
-      .catch((error) => {
-        // TODO: handle errors
-        formStatus.innerText = "There was an error";
-        // TODO: move focus to #form-status
+      .catch(() => {
+        handleInvalidFormState();
       });
   }
 })();
