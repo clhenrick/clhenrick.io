@@ -18,7 +18,13 @@ button[type="submit"] {
 /* TODO: :invalid styles for form controls */
 
 .form-error-msg {
+  width: fit-content;
   font-style: italic;
+  font-weight: bold;
+  color: var(--color-accent-invert);
+  background-color: var(--color-accent-secondary);
+  padding: var(--spacing-xxs) var(--spacing-sm);
+  border-radius: var(--border-radius);
 }
 
 /* spam honey pot */
