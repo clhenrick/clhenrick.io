@@ -24,10 +24,11 @@
   /** @type { HTMLParagraphElement } */
   const errorMsgNote = document.querySelector("#note-error-msg");
 
+  // fairly non-restrictive regex for validating email address
   const emailRegEx = /^\S+@\S+\.\S+$/;
 
   // NOTE: matches <textarea> minlength attribute in /contact/index.njk
-  const minMessageLengthChars = 120;
+  const MIN_MSG_LENGTH_CHARS = 120;
 
   init();
 
@@ -35,7 +36,7 @@
     // disable browser built-in form control validation messages
     form.setAttribute("novalidate", "");
 
-    // prefer `aria-required` over `required` for enhanced accessibility and to prevent the browser's default form validation
+    // prefer `aria-required` over `required` for improved accessibility UX (won't announce input as invalid when first focused which may happen with `required`)
     [inputName, inputEmail, textAreaMessage].forEach((element) => {
       element.removeAttribute("required");
       element.setAttribute("aria-required", true);
@@ -70,54 +71,24 @@
     msgContainer.setAttribute("hidden", "");
   }
 
-  /**
-   * @param {FormData} data
-   * @returns {boolean}
-   * */
-  function validateForm(data) {
-    let isValid = true;
-
-    const nameValue = data.get("name");
-    const messageValue = data.get("message");
-    const emailValue = data.get("_replyto");
-
-    if (!nameValue) {
-      isValid = false;
+  /** @param {string} value */
+  function validateName(value) {
+    if (!value) {
       showErrorMessage(inputName, errorMsgName, "Please provide your name.");
     } else {
       hideErrorMessage(inputName, errorMsgName);
     }
+  }
 
-    if (!messageValue) {
-      isValid = false;
-      showErrorMessage(
-        textAreaMessage,
-        errorMsgNote,
-        "Please tell me what you're writing me about."
-      );
-    } else if (
-      textAreaMessage.validity.tooShort ||
-      messageValue < minMessageLengthChars
-    ) {
-      isValid = false;
-      showErrorMessage(
-        textAreaMessage,
-        errorMsgNote,
-        "That's an awfully short message, you better not be spamming me!"
-      );
-    } else {
-      hideErrorMessage(textAreaMessage, errorMsgNote);
-    }
-
-    if (!emailValue) {
-      isValid = false;
+  /** @param {string} value */
+  function validateEmail(value) {
+    if (!value) {
       showErrorMessage(
         inputEmail,
         errorMsgEmail,
         "Please provide a valid email address."
       );
-    } else if (!emailRegEx.test(emailValue)) {
-      isValid = false;
+    } else if (!emailRegEx.test(value)) {
       showErrorMessage(
         inputEmail,
         errorMsgEmail,
@@ -126,15 +97,52 @@
     } else {
       hideErrorMessage(inputEmail, errorMsgEmail);
     }
+  }
 
-    return isValid;
+  /** @param {string} value */
+  function validateNote(value) {
+    if (!value) {
+      showErrorMessage(
+        textAreaMessage,
+        errorMsgNote,
+        "Please tell me what you're writing me about."
+      );
+    } else if (
+      textAreaMessage.validity.tooShort ||
+      value < MIN_MSG_LENGTH_CHARS
+    ) {
+      showErrorMessage(
+        textAreaMessage,
+        errorMsgNote,
+        "That's an awfully short message, you better not be spamming me!"
+      );
+    } else {
+      hideErrorMessage(textAreaMessage, errorMsgNote);
+    }
+  }
+
+  /**
+   * @param {FormData} data
+   * */
+  function validateForm(data) {
+    const nameValue = data.get("name");
+    const noteValue = data.get("message");
+    const emailValue = data.get("_replyto");
+    validateName(nameValue);
+    validateNote(noteValue);
+    validateEmail(emailValue);
+  }
+
+  /** @returns {boolean} */
+  function isFormStateInValid() {
+    const inValidFormFields = document.querySelectorAll(
+      "[aria-invalid='true']"
+    );
+    return inValidFormFields.length > 0;
   }
 
   function handleInvalidFormState() {
-    const invalidFormFields = document.querySelectorAll(
-      "[aria-invalid='true']"
-    );
-    if (invalidFormFields.length) {
+    if (isFormStateInValid()) {
       invalidFormFields[0].focus();
     } else {
       formStatus.innerText =
@@ -163,10 +171,11 @@
   function handleFormSubmit(event) {
     event.preventDefault();
     clearFormStatus();
-    const data = new FormData(event.target);
-    const isValid = validateForm(data);
 
-    if (!isValid) {
+    const data = new FormData(event.target);
+    validateForm(data);
+
+    if (isFormStateInValid()) {
       handleInvalidFormState();
       return;
     }
