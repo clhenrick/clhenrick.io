@@ -15,15 +15,6 @@
   /** @type { HTMLTextAreaElement} */
   const textAreaMessage = document.querySelector("#message");
 
-  /** @type { HTMLParagraphElement } */
-  const errorMsgName = document.querySelector("#full-name-error-msg");
-
-  /** @type { HTMLParagraphElement} */
-  const errorMsgEmail = document.querySelector("#email-address-error-msg");
-
-  /** @type { HTMLParagraphElement } */
-  const errorMsgNote = document.querySelector("#note-error-msg");
-
   // fairly non-restrictive regex for validating email address
   const emailRegEx = /^\S+@\S+\.\S+$/;
 
@@ -49,53 +40,50 @@
   /**
    * shows an error message for a form field and relates it to the field using aria-describedby
    * @param {HTMLInputElement | HTMLTextAreaElement} formField
-   * @param {HTMLElement} msgContainer
    * @param {string} errorMsg
    */
-  function showErrorMessage(formField, msgContainer, errorMsg) {
-    msgContainer.innerText = errorMsg;
-    msgContainer.removeAttribute("hidden");
+  function showErrorMessage(formField, errorMsg) {
+    const errorMsgContainer =
+      formField.parentElement.querySelector(".form-error-msg");
+    errorMsgContainer.innerText = errorMsg;
+    errorMsgContainer.removeAttribute("hidden");
     formField.setAttribute("aria-invalid", "true");
-    formField.setAttribute("aria-describedby", msgContainer.getAttribute("id"));
+    formField.setAttribute(
+      "aria-describedby",
+      errorMsgContainer.getAttribute("id")
+    );
   }
 
   /**
    * hides an error message and removes the aria-describedby on the field
    * @param {HTMLInputElement | HTMLTextAreaElement} formField
-   * @param {HTMLElement} msgContainer
    */
-  function hideErrorMessage(formField, msgContainer) {
+  function hideErrorMessage(formField) {
+    const errorMsgContainer =
+      formField.parentElement.querySelector(".form-error-msg");
+    errorMsgContainer.innerText = "";
+    errorMsgContainer.setAttribute("hidden", "");
     formField.removeAttribute("aria-invalid");
     formField.removeAttribute("aria-describedby");
-    msgContainer.innerText = "";
-    msgContainer.setAttribute("hidden", "");
   }
 
   /** @param {string} value */
   function validateName(value) {
     if (!value) {
-      showErrorMessage(inputName, errorMsgName, "Please provide your name.");
+      showErrorMessage(inputName, "Please provide your name.");
     } else {
-      hideErrorMessage(inputName, errorMsgName);
+      hideErrorMessage(inputName);
     }
   }
 
   /** @param {string} value */
   function validateEmail(value) {
     if (!value) {
-      showErrorMessage(
-        inputEmail,
-        errorMsgEmail,
-        "Please provide a valid email address."
-      );
+      showErrorMessage(inputEmail, "Please provide a valid email address.");
     } else if (!emailRegEx.test(value)) {
-      showErrorMessage(
-        inputEmail,
-        errorMsgEmail,
-        "Is your email spelled correctly?"
-      );
+      showErrorMessage(inputEmail, "Is your email spelled correctly?");
     } else {
-      hideErrorMessage(inputEmail, errorMsgEmail);
+      hideErrorMessage(inputEmail);
     }
   }
 
@@ -104,7 +92,6 @@
     if (!value) {
       showErrorMessage(
         textAreaMessage,
-        errorMsgNote,
         "Please tell me what you're writing me about."
       );
     } else if (
@@ -113,11 +100,10 @@
     ) {
       showErrorMessage(
         textAreaMessage,
-        errorMsgNote,
         "That's an awfully short message, you better not be spamming me!"
       );
     } else {
-      hideErrorMessage(textAreaMessage, errorMsgNote);
+      hideErrorMessage(textAreaMessage);
     }
   }
 
@@ -134,15 +120,16 @@
   }
 
   /** @returns {boolean} */
-  function isFormStateInValid() {
-    const inValidFormFields = document.querySelectorAll(
-      "[aria-invalid='true']"
-    );
-    return inValidFormFields.length > 0;
+  function getInvalidFormFields() {
+    return form.querySelectorAll("[aria-invalid='true']");
   }
 
-  function handleInvalidFormState() {
-    if (isFormStateInValid()) {
+  /**
+   *
+   * @param {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} invalidFormFields
+   */
+  function handleInvalidFormState(invalidFormFields) {
+    if (invalidFormFields.length) {
       invalidFormFields[0].focus();
     } else {
       formStatus.innerText =
@@ -175,8 +162,10 @@
     const data = new FormData(event.target);
     validateForm(data);
 
-    if (isFormStateInValid()) {
-      handleInvalidFormState();
+    const invalidFormFields = getInvalidFormFields();
+    handleInvalidFormState(invalidFormFields);
+
+    if (invalidFormFields.length) {
       return;
     }
 
