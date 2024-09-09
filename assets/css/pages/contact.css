@@ -37,8 +37,8 @@ button[type="submit"] {
   margin-bottom: var(--spacing-sm);
 }
 
-form[action*="formspree.io"] input[aria-invalid="true"],
-form[action*="formspree.io"] textarea[aria-invalid="true"] {
+.form-control-group input[aria-invalid="true"],
+.form-control-group textarea[aria-invalid="true"] {
   border-color: var(--color-error);
 }
 
