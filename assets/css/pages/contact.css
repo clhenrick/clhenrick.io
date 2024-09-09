@@ -35,14 +35,17 @@ button[type="submit"] {
   margin-bottom: var(--spacing-sm);
 }
 
-/* TODO: :invalid styles for form controls */
+form[action*="formspree.io"] input[aria-invalid="true"],
+form[action*="formspree.io"] textarea[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
 
 .form-error-msg {
   width: fit-content;
   font-style: italic;
   font-weight: bold;
-  color: var(--color-accent-invert);
-  background-color: var(--color-accent-secondary);
+  color: var(--background-color-secondary);
+  background-color: var(--color-error);
   padding: var(--spacing-xxs) var(--spacing-sm);
   border-radius: var(--border-radius);
 }
