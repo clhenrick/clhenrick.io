@@ -128,10 +128,10 @@
 
   /**
    *
-   * @param {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} invalidFormFields
+   * @param {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} [invalidFormFields]
    */
   function handleInvalidFormState(invalidFormFields) {
-    if (invalidFormFields.length) {
+    if (invalidFormFields?.length) {
       invalidFormFields[0].focus();
     } else {
       formStatus.innerText =
@@ -165,9 +165,9 @@
     validateForm(data);
 
     const invalidFormFields = getInvalidFormFields();
-    handleInvalidFormState(invalidFormFields);
 
     if (invalidFormFields.length) {
+      handleInvalidFormState(invalidFormFields);
       return;
     }
 
