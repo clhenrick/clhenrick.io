@@ -24,6 +24,9 @@
   --color-orange-2: #ff9f40;
   --color-orange-3: #f8c800;
 
+  --color-red: #990000;
+  --color-red-2: #ff5843;
+
   --color-turquoise: #00959c;
   --color-turquoise-dark: #00606f;
   --color-turquoise-light: #00cbc3;
@@ -73,11 +76,13 @@
 
 /* modify color palette for richer colors when p3 is available */
 @media (dynamic-range: high) {
-  @supports(background: oklch(72% 0.19 58)) {
+  @supports (background: oklch(72% 0.19 58)) {
     :root {
       --color-orange: oklch(72% 0.19 58);
       --color-orange-2: oklch(80% 0.17 58);
       --color-orange-3: oklch(85% 0.18 92);
+      --color-red: oklch(42.5% 0.18 30);
+      --color-red-2: oklch(70% 0.24 30);
       --color-blue: oklch(45% 0.16 250);
       --color-blue-2: oklch(36% 0.13 252);
       --color-blue-3: oklch(26% 0.1 254);
@@ -106,6 +111,7 @@
   --background-color: var(--color-off-white);
   --background-color-secondary: var(--color-off-white-3);
   --text-color: var(--color-gray-90);
+  --color-error: var(--color-red);
 }
 
 :root[data-theme="dark"] {
@@ -122,6 +128,7 @@
   --text-color-link: var(--color-accent-secondary);
   --text-color-link-active: var(--color-accent);
   --text-color-link-visited: var(--color-accent);
+  --color-error: var(--color-red-2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -140,6 +147,7 @@
     --text-color-link: var(--color-accent-secondary);
     --text-color-link-active: var(--color-accent);
     --text-color-link-visited: var(--color-accent);
+    --color-error: var(--color-red-2);
   }
 }
 
