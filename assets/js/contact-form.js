@@ -127,19 +127,33 @@
   }
 
   /**
-   *
-   * @param {NodeListOf<HTMLInputElement | HTMLTextAreaElement>} [invalidFormFields]
+   * - handles a client or server side form validation error
+   * @param {(HTMLInputElement | HTMLTextAreaElement)[] | string} [errors] either a string of error text that should be shown or an array of form fields that are in an invalid state.
    */
-  function handleInvalidFormState(invalidFormFields) {
-    if (invalidFormFields?.length) {
-      invalidFormFields[0].focus();
-    } else {
-      formStatus.innerText =
-        "Something went wrong when submitting the form. Please try submitting the form again or alternatively you may send me an email. Thanks!";
-      formStatus.classList = "error";
-      formStatus.removeAttribute("hidden");
-      formStatus.focus();
+  function handleInvalidFormState(errors) {
+    // default error message
+    let errorMessage =
+      "Something went wrong when submitting the form. Please try submitting the form again or alternatively you may send me an email. Thanks!";
+
+    // errors from Formspree server validation
+    if (typeof errors === "string") {
+      errorMessage = errors;
     }
+
+    // client side form validation errors
+    if (Array.isArray(errors) && errors.length) {
+      const pluralHandler = errors.length > 1 ? "s" : "";
+      const fieldTypes = errors
+        .map((element) => (element.type === "email" ? "email" : element.name))
+        .join(" and ");
+      errorMessage = `Please correct the error${pluralHandler} in the ${fieldTypes} form field${pluralHandler}.`;
+    }
+
+    // for any error situation
+    formStatus.innerText = errorMessage;
+    formStatus.classList = "error";
+    formStatus.removeAttribute("hidden");
+    formStatus.focus();
   }
 
   function handleFormSubmitSuccess() {
@@ -156,6 +170,32 @@
     formStatus.setAttribute("hidden", "");
   }
 
+  /**
+   * an single server side validation error JSON datum returned by Formspree
+   * @typedef {{ code: string; field: string; message: string; }} FormspreeErrorDatum
+   */
+
+  /**
+   * the full error JSON data returned by Formspree when a server validation error occurs
+   * @typedef {{ error: string; errors: FormspreeErrorDatum[] }} FormspreeErrorData
+   */
+
+  /**
+   * attempts to handle errors returned by Formspree from server side validation.
+   * @param {FormspreeErrorData} data
+   */
+  function handleFormspreeErrors(data) {
+    if (Object.hasOwn(data, "errors")) {
+      const errorMessages = data.errors
+        .map(({ field, message }) => `${field}: ${message}`)
+        .join(".\n");
+      const errorMessageFinal = `There were one or more problems in your form submission: \n ${errorMessages}`;
+      handleInvalidFormState(errorMessageFinal);
+    } else {
+      handleInvalidFormState();
+    }
+  }
+
   /** @param {SubmitEvent} event */
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -167,7 +207,7 @@
     const invalidFormFields = getInvalidFormFields();
 
     if (invalidFormFields.length) {
-      handleInvalidFormState(invalidFormFields);
+      handleInvalidFormState(Array.from(invalidFormFields));
       return;
     }
 
@@ -178,11 +218,12 @@
         Accept: "application/json",
       },
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
           handleFormSubmitSuccess();
         } else {
-          handleInvalidFormState();
+          const data = await response.json();
+          handleFormspreeErrors(data);
         }
       })
       .catch(() => {
