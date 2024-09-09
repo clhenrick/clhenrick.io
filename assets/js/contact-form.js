@@ -27,7 +27,7 @@
     // disable browser built-in form control validation messages
     form.setAttribute("novalidate", "");
 
-    // prefer `aria-required` over `required` for improved accessibility UX (won't announce input as invalid when first focused which may happen with `required`)
+    // prefer `aria-required` over `required` for improved accessibility UX. With `required` screen readers may announce an input as being invalid when first focused. Using `aria-required` avoids this.
     [inputName, inputEmail, textAreaMessage].forEach((element) => {
       element.removeAttribute("required");
       element.setAttribute("aria-required", true);
