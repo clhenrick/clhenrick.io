@@ -3,6 +3,8 @@ form[action*="formspree.io"] {
   flex-direction: column;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-xxxl);
+  --error-text-color: var(--background-color-secondary);
+  --error-bg-color: var(--color-error);
 }
 
 button[type="submit"] {
@@ -20,8 +22,8 @@ button[type="submit"] {
 }
 
 #form-status.error {
-  color: var(--color-accent-invert);
-  background-color: var(--color-accent-secondary);
+  color: var(--error-text-color);
+  background-color: var(--error-bg-color);
 }
 
 #form-status:focus {
@@ -44,8 +46,8 @@ form[action*="formspree.io"] textarea[aria-invalid="true"] {
   width: fit-content;
   font-style: italic;
   font-weight: bold;
-  color: var(--background-color-secondary);
-  background-color: var(--color-error);
+  color: var(--error-text-color);
+  background-color: var(--error-bg-color);
   padding: var(--spacing-xxs) var(--spacing-sm);
   border-radius: var(--border-radius);
 }
