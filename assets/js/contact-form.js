@@ -35,6 +35,8 @@
     });
 
     form.addEventListener("submit", handleFormSubmit);
+
+    form.addEventListener("blur", handleFormBlur, true);
   }
 
   /**
@@ -186,5 +188,32 @@
       .catch(() => {
         handleInvalidFormState();
       });
+  }
+
+  /**
+   * when a form field is invalid and a user corrects the error, remove the invalid state and hide the error message
+   * @param {FocusEvent} event
+   */
+  function handleFormBlur(event) {
+    /** @type {HTMLInputElement | HTMLTextAreaElement | HTMLButtonElement} */
+    const element = event.target;
+    const value = element.value;
+    const isInvalid = element.getAttribute("aria-invalid") === "true";
+
+    if (!isInvalid) {
+      return;
+    }
+
+    switch (element.type) {
+      case "text":
+        validateName(value);
+        break;
+      case "email":
+        validateEmail(value);
+        break;
+      case "textarea":
+        validateNote(value);
+        break;
+    }
   }
 })();
