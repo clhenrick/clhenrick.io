@@ -136,14 +136,14 @@
     } else {
       formStatus.innerText =
         "Something went wrong when submitting the form. Please try submitting the form again or alternatively you may send me an email. Thanks!";
-      formStatus.classList.add("error");
+      formStatus.classList = "error";
       formStatus.removeAttribute("hidden");
       formStatus.focus();
     }
   }
 
   function handleFormSubmitSuccess() {
-    formStatus.classList.add("success");
+    formStatus.classList = "success";
     formStatus.removeAttribute("hidden");
     formStatus.innerText =
       "Thanks for reaching out! I'll get back to you as soon as I can.";
@@ -152,7 +152,7 @@
   }
 
   function clearFormStatus() {
-    formStatus.classList.value = "";
+    formStatus.classList = "";
     formStatus.setAttribute("hidden", "");
   }
 
