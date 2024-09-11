@@ -50,6 +50,7 @@
     errorMsgContainer.innerText = errorMsg;
     errorMsgContainer.removeAttribute("hidden");
     formField.setAttribute("aria-invalid", "true");
+    formField.removeAttribute("aria-describedby");
     formField.setAttribute(
       "aria-describedby",
       errorMsgContainer.getAttribute("id")
