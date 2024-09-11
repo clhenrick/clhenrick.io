@@ -171,13 +171,17 @@
   }
 
   /**
+   * {% raw %}
    * an single server side validation error JSON datum returned by Formspree
    * @typedef {{ code: string; field: string; message: string; }} FormspreeErrorDatum
+   * {% endraw %}
    */
 
   /**
+   * {% raw %}
    * the full error JSON data returned by Formspree when a server validation error occurs
    * @typedef {{ error: string; errors: FormspreeErrorDatum[] }} FormspreeErrorData
+   * {% endraw %}
    */
 
   /**
