@@ -1,5 +1,59 @@
-form {
+form[action*="formspree.io"] {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-md);
   margin-bottom: var(--spacing-xxxl);
+  --error-text-color: var(--background-color-secondary);
+  --error-bg-color: var(--color-error);
+}
+
+button[type="submit"] {
+  margin-top: var(--spacing-sm);
+}
+
+#form-status {
+  font-weight: bold;
+  padding: var(--spacing-md);
+  border: 2px solid currentColor;
+}
+
+#form-status.success {
+  background: var(--color-accent-invert);
+}
+
+#form-status.error {
+  color: var(--error-text-color);
+  background-color: var(--error-bg-color);
+}
+
+#form-status:focus {
+  outline: var(--focus-style-outline);
+  outline-offset: var(--focus-style-outline-offset);
+}
+
+.form-control-group input,
+.form-control-group textarea {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-control-group input[aria-invalid="true"],
+.form-control-group textarea[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.form-error-msg {
+  width: fit-content;
+  font-style: italic;
+  font-weight: bold;
+  color: var(--error-text-color);
+  background-color: var(--error-bg-color);
+  padding: var(--spacing-xxs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+}
+
+/* spam honey pot */
+/* see: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering */
+#s-h-p {
+  display: none;
 }

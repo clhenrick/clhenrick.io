@@ -30,32 +30,41 @@ eleventyNavigation:
 >
   <span id="form-title" hidden>Contact Chris Henrick</span>
 
-  <label for="full-name">Name</label>
-  <input
-    type="text"
-    name="name"
-    id="full-name"
-    placeholder="What do I call you?"
-    required=""
-  >
+  <div id="form-status" tabindex="-1" hidden></div>
 
-  <label for="email-address">Email Address</label>
-  <input
-    type="email"
-    name="_replyto"
-    id="email-address"
-    placeholder="email@example.com"
-    required=""
-  >
+  <div class="form-control-group">
+    <label for="full-name">Your Name (required)</label>
+    <input
+      type="text"
+      name="name"
+      id="full-name"
+      required=""
+    >
+    <p class="form-error-msg" id="full-name-error-msg" hidden></p>
+  </div>
 
-  <label for="message">Message</label>
-  <textarea
-    rows="5"
-    name="message"
-    id="message"
-    placeholder="Please, no spam here!"
-    required=""
-  ></textarea>
+  <div class="form-control-group">
+    <label for="email-address">Your Email Address (required)</label>
+    <input
+      type="email"
+      name="_replyto"
+      id="email-address"
+      required=""
+    >
+    <p class="form-error-msg" id="email-address-error-msg" hidden></p>
+  </div>
+
+  <div class="form-control-group">
+    <label for="message">Your Message (required)</label>
+    <textarea
+      rows="5"
+      name="message"
+      id="message"
+      required=""
+      minlength="120"
+    ></textarea>
+    <p class="form-error-msg" id="note-error-msg" hidden></p>
+  </div>
 
   <input
     type="hidden"
@@ -64,5 +73,11 @@ eleventyNavigation:
     value="Contact Form Submission"
   >
 
+  {# NOTE: for honey pot spam filtering. See: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering #}
+  <input id="s-h-p" type="text" name="_gotcha" value=""/>
+
   <button class="button" type="submit">Submit</button>
 </form>
+
+{%- set javascripts = 'contact-form' %}
+{%- include "scripts.njk" %}
