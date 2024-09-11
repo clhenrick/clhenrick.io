@@ -122,7 +122,7 @@
     validateEmail(emailValue);
   }
 
-  /** @returns {boolean} */
+  /** @returns {NodeListOf<HTMLElement>} */
   function getInvalidFormFields() {
     return form.querySelectorAll("[aria-invalid='true']");
   }
