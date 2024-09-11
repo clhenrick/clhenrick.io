@@ -183,10 +183,10 @@
 
   /**
    * attempts to handle errors returned by Formspree from server side validation.
-   * @param {FormspreeErrorData} data
+   * @param {FormspreeErrorData} [data]
    */
   function handleFormspreeErrors(data) {
-    if (Object.hasOwn(data, "errors")) {
+    if (data && Object.hasOwn(data, "errors") && Array.isArray(data.errors)) {
       const errorMessages = data.errors
         .map(({ field, message }) => `${field}: ${message}`)
         .join(".\n");
