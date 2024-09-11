@@ -256,6 +256,12 @@
       case "textarea":
         validateNote(value);
         break;
+      default:
+      // NOTE: else, do nothing.
+      // The only other interactive form element a blur event would come from
+      // is the submit button, which we don't need to validate, nor disable,
+      // since disabled buttons aren't the best for a11y (poor color contrast,
+      // removed from tab order, etc).
     }
   }
 })();
