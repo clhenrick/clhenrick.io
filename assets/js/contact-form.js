@@ -35,7 +35,6 @@
     });
 
     form.addEventListener("submit", handleFormSubmit);
-
     form.addEventListener("blur", handleFormBlur, true);
   }
 
@@ -66,7 +65,7 @@
       formField.parentElement.querySelector(".form-error-msg");
     errorMsgContainer.innerText = "";
     errorMsgContainer.setAttribute("hidden", "");
-    formField.removeAttribute("aria-invalid");
+    formField.setAttribute("aria-invalid", "false");
     formField.removeAttribute("aria-describedby");
   }
 
