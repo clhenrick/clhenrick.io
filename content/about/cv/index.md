@@ -202,6 +202,15 @@ Consulted with GreenInfo Network on best practices for GIS analysis and data vis
 
 <h2 id="education" tabindex="-1">Education</h2>
 
+### Practical Accessibility
+Online Course
+
+Completed [Practical Accessibility](https://practical-accessibility.today/) taught by [Sara Soueidan](https://www.sarasoueidan.com/) in the summer of 2024. The course covered a wide range of topics and techniques geared towards developing proficiency in digital accessibility for the web, totaling fifteen hours of video content plus numerous supplementary reading for each of the course's nineteen chapters.
+
+**Topics included**: navigating and interpreting the W3C WAI's Web Content Accessibility Guidelines (WCAG), manual accessibility testing using common screen reader software, semantic HTML, Accessible Rich Internet Applications (ARIA), accessible widget patterns such as disclosure widgets and website navigation, accessible names and descriptions, providing effective alt text for images, accessible forms and form validation, accessible notifications using ARIA live regions, keyboard accessibility, focus indicators, and forced colors mode.
+
+In addition to taking the Practical Accessibility course, I led a bi-weekly discussion group with ten of my co-workers who took the course after I had completed it. In this group we discussed content in the course chapters, what new insights people gained, and how the knowledge and techniques we learned could be applied to the products on the Esri StoryMaps team.
+
 ### Storytelling With Data
 **SWD Ten Week Course Certificate**<br>
 Remote
