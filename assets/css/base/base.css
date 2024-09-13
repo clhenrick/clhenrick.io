@@ -18,7 +18,7 @@
   /* NOTE: hue colors are altered below if support is available for oklch and hd colors */
   --color-blue: #0055a9;
   --color-blue-2: #003c7e;
-  --color-blue-3: #002252;
+  --color-blue-3: #00204d;
 
   --color-orange: #ff931f;
   --color-orange-2: #ff9f40;
@@ -85,7 +85,7 @@
       --color-red-2: oklch(70% 0.24 30);
       --color-blue: oklch(45% 0.16 250);
       --color-blue-2: oklch(36% 0.13 252);
-      --color-blue-3: oklch(26% 0.1 254);
+      --color-blue-3: oklch(25% 0.1 254);
       --color-turquoise: oklch(60% 0.12 200);
       --color-turquoise-dark: oklch(44% 0.1 210);
       --color-turquoise-light: oklch(75% 0.16 190);
