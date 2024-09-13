@@ -20,7 +20,7 @@
   --color-blue-2: #003c7e;
   --color-blue-3: #002252;
 
-  --color-orange: #f97f00;
+  --color-orange: #ff931f;
   --color-orange-2: #ff9f40;
   --color-orange-3: #f8c800;
 
@@ -78,7 +78,7 @@
 @media (dynamic-range: high) {
   @supports (background: oklch(72% 0.19 58)) {
     :root {
-      --color-orange: oklch(72% 0.19 58);
+      --color-orange: oklch(77% 0.19 58);
       --color-orange-2: oklch(80% 0.17 58);
       --color-orange-3: oklch(85% 0.18 92);
       --color-red: oklch(42.5% 0.18 30);
