@@ -1,7 +1,7 @@
 ---
 title: "Color experiments with OKLCH"
 date: 2024-09-01
-updated: 2024-09-04
+updated: 2024-09-14
 teaser: "Creating color palettes programmatically and fixing color contrast issues using the OKLCH color space in CSS."
 tags:
   - Color
