@@ -205,7 +205,7 @@ Consulted with GreenInfo Network on best practices for GIS analysis and data vis
 ### Practical Accessibility
 Online Course
 
-Completed [Practical Accessibility](https://practical-accessibility.today/) taught by [Sara Soueidan](https://www.sarasoueidan.com/) in the summer of 2024. The course covered a wide range of topics and techniques geared towards developing proficiency in digital accessibility for the web, totaling fifteen hours of video content plus numerous supplementary reading for each of the course's nineteen chapters.
+Completed [Practical Accessibility](https://practical-accessibility.today/) taught by [Sara Soueidan](https://www.sarasoueidan.com/) in the summer of 2024. The course covered a wide range of topics and techniques geared towards developing proficiency in digital accessibility for the web. It included fifteen hours of video content, dozens of code examples, and a wide variety of supplementary reading for each of the course's nineteen chapters and sub-chapters.
 
 **Topics included**: understanding disabilities and how accessibility reduces barriers to using digital products, inclusive design principles, navigating and interpreting the W3C WAI's Web Content Accessibility Guidelines (WCAG), accessibility testing using screen reader software, semantic HTML, Accessible Rich Internet Applications (ARIA), accessible widget user interface patterns such as disclosure widgets and website navigation patterns, accessible names and descriptions, providing effective alt text for images, accessible forms and form validation, accessible notifications using ARIA live regions, keyboard accessibility, accessible focus indicators, and Windows high contrast / forced colors mode.
 
