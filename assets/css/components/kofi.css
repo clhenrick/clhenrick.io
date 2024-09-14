@@ -2,7 +2,7 @@ article.kofi {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
   padding: var(--spacing-md);
   margin: var(--spacing-xl) 0;
   border: 2px solid var(--text-color);
