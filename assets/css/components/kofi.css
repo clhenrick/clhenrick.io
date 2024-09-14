@@ -24,6 +24,11 @@ article.kofi p {
   text-wrap: balance;
 }
 
+article.kofi p:first-of-type {
+  font-style: italic;
+  font-weight: bold;
+}
+
 article.kofi .kofi-emoji {
   font-size: 2rem;
   vertical-align: middle;
