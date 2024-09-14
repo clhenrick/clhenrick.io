@@ -20,7 +20,7 @@ You may skip ahead to a section of this CV using the following jump links:
 - [Education](#education)
 - [Technical Skills](#technical-skills)
 
-<h2 id="professional-experience" tabindex="-1">Professional Experience</h2>
+## Professional Experience
 
 ### ESRI StoryMaps
 **Senior Software Development Engineer**<br>
@@ -175,7 +175,7 @@ Philadelphia, PA
 
 Assisted [DVRPC](http://www.dvrpc.org/)'s Office of Transit, Bicycle, and Pedestrian Planning in implementing projects related to transit, pedestrian, and bicycle planning in the greater metropolitan Philadelphia area. Participated in tasks such as survey field-work, road safety audits, data scrubbing and aggregation, bicycle route mapping, and power point presentations.
 
-<h2 id="volunteer-experience" tabindex="-1">Volunteer Experience:</h2>
+## Volunteer Experience
 
 ### Anti-Eviction Mapping Project
 **Web Developer**<br>
@@ -200,7 +200,16 @@ Performed spatial data analysis and visualization to support [ASIAN Inc](http://
 Consulted with GreenInfo Network on best practices for GIS analysis and data visualization of census and in-house demographic data.
 
 
-<h2 id="education" tabindex="-1">Education</h2>
+## Education
+
+### Practical Accessibility
+Online Course
+
+Completed [Practical Accessibility](https://practical-accessibility.today/) taught by [Sara Soueidan](https://www.sarasoueidan.com/) in the summer of 2024. The course covered a wide range of topics and techniques geared towards developing proficiency in digital accessibility for the web. It included fifteen hours of video content, dozens of code examples, and a wide variety of supplementary reading for each of the course's nineteen chapters and sub-chapters.
+
+**Topics included**: understanding disabilities and how accessibility reduces barriers to using digital products, inclusive design principles, navigating and interpreting the W3C WAI's Web Content Accessibility Guidelines (WCAG), accessibility testing using screen reader software, semantic HTML, Accessible Rich Internet Applications (ARIA), accessible widget user interface patterns such as disclosure widgets and website navigation patterns, accessible names and descriptions, providing effective alt text for images, accessible forms and form validation, accessible notifications using ARIA live regions, keyboard accessibility, accessible focus indicators, and Windows high contrast / forced colors mode.
+
+In addition to taking the Practical Accessibility course, I led a bi-weekly discussion group with ten of my co-workers who took the course after I had completed it. In this group we discussed content in the course chapters, what new insights people gained, and how the knowledge and techniques we learned could be applied to the products on the Esri StoryMaps team.
 
 ### Storytelling With Data
 **SWD Ten Week Course Certificate**<br>
@@ -249,7 +258,7 @@ GPA 3.49
 
 Studies included drawing, print making, painting, mixed media, and graphic design.
 
-<h2 id="technical-skills" tabindex="-1">Technical Skills</h2>
+## Technical Skills
 
 - JavaScript (ES6+)
 - TypeScript
