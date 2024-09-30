@@ -1,7 +1,7 @@
 ---
 title: "Color experiments with OKLCH"
 date: 2024-09-01
-updated: 2024-09-04
+updated: 2024-09-14
 teaser: "Creating color palettes programmatically and fixing color contrast issues using the OKLCH color space in CSS."
 tags:
   - Color
@@ -332,7 +332,9 @@ By increasing the first color's lightness and decreasing the second color's ligh
 
 Adjusting the colors using OKCLH results in our new colors looking fairly similar to the original colors. To be honest, when making very small adjustments like this I'm not entirely sure that the LCH color space has a huge advantage over HSL, so you might want to try using either color space to see which result you prefer. I'll also admit that I'm not the first to think of using LCH for this purpose, Eugene Fedorenko wrote about it back in 2021 in the post [Accessible Palette: stop using HSL for color systems][accessible-color-palette-stop-using-hsl].
 
-> It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is *the bare minimum* color contrast ratio for text to be considered accessible according to WCAG. A ratio of 7 to 1 is required for "triple A" (AAA) conformance and will make text more accessible to a wider segment of the population. Remember that *conformance* doesn't necessarily mean *usable* when it comes to WCAG and accessibility, and that we should always strive to make things as usable to the widest range of people as possible.
+It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is *the bare minimum* color contrast ratio for text to be considered accessible according to WCAG. A ratio of 7 to 1 is required for "triple A" (AAA) conformance and will make text more accessible to a wider segment of the population. Remember that *conformance* doesn't necessarily mean *usable* when it comes to WCAG and accessibility, and that we should always strive to make things as usable to the widest range of people as possible.
+
+> **A word of caution:** when using this approach keep in mind that adjusting the OKLCH's lightness value may result in creating a color with a gamut outside of sRGB and that browsers will auto-correct such a color if the user's device does not support HD color gamuts such as P3 and Rec2020. This auto gamut correction could result in a color contrast different from the HD color contrast, which might mean the sRGB color contrast fails WCAG. For this reason make sure to always provide a intentional sRGB fallback color when using and adjusting a OKLCH CSS color to fix color contrast issues.
 
 I'm considering porting the Observable notebook code into a stand alone Svelte web app to make this a more user friendly and easy to find tool. The other color contrast tools I've come across on the web don't use the LCH color space for adjusting color contrast, so it seems like an opportunity for an improved color contrast evaluator and fixer tool.
 
