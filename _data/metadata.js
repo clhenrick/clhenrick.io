@@ -32,7 +32,7 @@ module.exports = {
     ["LinkedIn", "https://www.linkedin.com/in/chrishenrick/"],
     ["Ko-Fi", "https://ko-fi.com/chrislhenrick"],
   ]),
-  metaThemeColorDark: "#1e1810",
-  metaThemeColorLight: "#0052a6",
+  metaThemeColorDark: "#00204d",
+  metaThemeColorLight: "#ff931f",
   metaThemeColor: "#ff931f",
 };
