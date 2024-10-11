@@ -33,6 +33,6 @@ module.exports = {
     ["Ko-Fi", "https://ko-fi.com/chrislhenrick"],
   ]),
   metaThemeColorDark: "#00204d",
-  metaThemeColorLight: "#ff931f",
-  metaThemeColor: "#ff931f",
+  metaThemeColorLight: "#0052a6",
+  metaThemeColor: "#0052a6",
 };
