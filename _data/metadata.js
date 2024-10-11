@@ -24,7 +24,7 @@ module.exports = {
     ["LinkedIn", "@chrishenrick"],
     ["Ko-Fi", "@chrislhenrick"],
   ]),
-  social: new Map([
+  socialLinks: new Map([
     ["GitHub", "https://github.com/clhenrick"],
     ["Mastodon", "https://indieweb.social/@clhenrick"],
     ["X (Twitter)", "https://twitter.com/chrislhenrick"],

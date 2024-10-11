@@ -25,7 +25,7 @@ The current NodeJS enivornment may be referenced from here, e.g.:
 Social media names and their corresponding URLs are available via an ES6 Map which can be iterated via Nunjucks `for` (see `footer.njk`) or used to retrieve a single URL, e.g.
 
 ```js
-metadata.social.get("Mastodon");
+metadata.socialLinks.get("Mastodon");
 // returns "https://indieweb.social/@clhenrick"
 ```
 
