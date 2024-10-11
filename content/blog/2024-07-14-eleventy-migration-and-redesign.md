@@ -55,4 +55,4 @@ One deliberate decision that relates to this was to throw out Google Fonts and i
 
 ## Phew!
 
-So there you have it. This site is now built with Eleventy. It aims to be more inclusive and accessible, to use fewer digital resources, yet still be a unique place that represents who I am (professionally at least) online. I hope you appreciate it. If you have any thoughts, questions, suggestions, or comments please don't hesitate to [contact me](/contact/). I'm also active on [Mastodon]({{metadata.social.get("Mastodon")}}) if you would like to reach or follow me there. Thanks for reading!
+So there you have it. This site is now built with Eleventy. It aims to be more inclusive and accessible, to use fewer digital resources, yet still be a unique place that represents who I am (professionally at least) online. I hope you appreciate it. If you have any thoughts, questions, suggestions, or comments please don't hesitate to [contact me](/contact/). I'm also active on [Mastodon](<{{metadata.socialLinks.get("Mastodon")}}>) if you would like to reach or follow me there. Thanks for reading!

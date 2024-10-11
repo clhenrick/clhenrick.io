@@ -12,7 +12,7 @@ Image widths arrays and sizes strings used with the Eleventy Image Plugin and it
 
 Global site metadata including the site's `title`, `description`, `url`, `language`, etc.
 
-The current NodeJS enivornment may be referenced from here, e.g.:
+The current NodeJS environment may be referenced from here, e.g.:
 
 ```nunjucks
 {% if metadata.environment === "production" %}
@@ -22,11 +22,18 @@ The current NodeJS enivornment may be referenced from here, e.g.:
 {% endif %}
 ```
 
-Social media names and their corresponding URLs are available via an ES6 Map which can be iterated via Nunjucks `for` (see `footer.njk`) or used to retrieve a single URL, e.g.
+Various social media and their corresponding URLs are available via `socialLinks`, an ES6 Map which can be iterated via Nunjucks `for` (see `footer.njk`) or used to retrieve a single URL, e.g.
 
 ```js
-metadata.social.get("Mastodon");
+metadata.socialLinks.get("Mastodon");
 // returns "https://indieweb.social/@clhenrick"
+```
+
+The `socialHandles` Map is similar but returns just the handle for a social media:
+
+```js
+metadata.socialHandles.get("Mastodon");
+// returns "@clhenrick@indieweb.social
 ```
 
 ## work_image_thumbnails/
