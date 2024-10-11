@@ -22,7 +22,7 @@ The current NodeJS environment may be referenced from here, e.g.:
 {% endif %}
 ```
 
-Various media and their corresponding URLs are available via `socialLinks`, an ES6 Map which can be iterated via Nunjucks `for` (see `footer.njk`) or used to retrieve a single URL, e.g.
+Various social media and their corresponding URLs are available via `socialLinks`, an ES6 Map which can be iterated via Nunjucks `for` (see `footer.njk`) or used to retrieve a single URL, e.g.
 
 ```js
 metadata.socialLinks.get("Mastodon");
