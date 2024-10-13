@@ -34,5 +34,4 @@ module.exports = {
   ]),
   metaThemeColorDark: "#00204d",
   metaThemeColorLight: "#0052a6",
-  metaThemeColor: "#0052a6",
 };
