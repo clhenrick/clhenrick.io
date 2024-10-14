@@ -14,6 +14,9 @@
 
   <title>{{ headTitle }}</title>
   <meta name="description" content="{{ headDescription }}">
+  <meta name="theme-color" content="{{ metadata.metaThemeColorDark }}" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="{{ metadata.metaThemeColorLight }}" media="(prefers-color-scheme: light)">
+
 
   {# Favicons, credit: https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs #}
   {%- if metadata.environment === "production" %}
