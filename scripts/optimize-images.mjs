@@ -88,6 +88,7 @@ async function processImage(
     widths,
     formats,
     dryRun: !!isDryRun,
+    useCache: false,
     ...(useFileName && { filenameFormat }),
   });
   console.log(stats);
