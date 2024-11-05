@@ -26,8 +26,12 @@ main section h2 {
   min-height: 30vh;
   position: relative;
   overflow: hidden;
-  /* prevents .banner-text from overlapping with primary-nav dropdown on wide viewport widts */
+  /* prevents .banner-text from overlapping with primary-nav dropdown on wide viewport widths */
   isolation: isolate;
+  --title-max-font-size: 5rem;
+  --title-min-font-size: var(--text-size-h1);
+  --subtitle-max-font-size: 2.6rem;
+  --subtitle-min-font-size: 1.6rem;
 }
 
 .banner picture {
@@ -54,21 +58,16 @@ main section h2 {
   padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
   margin: auto;
   line-height: 1.1;
-  text-shadow:
-  -1px -1px 0 var(--color-white),
-   1px -1px 0 var(--color-white),
-   -1px 1px 0 var(--color-white),
-    1px 1px 0 var(--color-white);
+  text-shadow: -1px -1px 0 var(--color-white), 1px -1px 0 var(--color-white),
+    -1px 1px 0 var(--color-white), 1px 1px 0 var(--color-white);
   z-index: 1;
 }
 
 @media (prefers-color-scheme: dark) {
   .banner-text {
     color: var(--color-white);
-    text-shadow:
-    -1px -1px 0 var(--color-gray-90),
-     1px -1px 0 var(--color-gray-90),
-     -1px 1px 0 var(--color-gray-90),
+    text-shadow: -1px -1px 0 var(--color-gray-90),
+      1px -1px 0 var(--color-gray-90), -1px 1px 0 var(--color-gray-90),
       1px 1px 0 var(--color-gray-90);
   }
 }
@@ -76,14 +75,17 @@ main section h2 {
 /* NOTE: duplicate code as above media query block */
 :root[data-theme="dark"] .banner-text {
   color: var(--color-white);
-  text-shadow:
-  -1px -1px 0 var(--color-gray-90),
-   1px -1px 0 var(--color-gray-90),
-   -1px 1px 0 var(--color-gray-90),
-    1px 1px 0 var(--color-gray-90);
+  text-shadow: -1px -1px 0 var(--color-gray-90), 1px -1px 0 var(--color-gray-90),
+    -1px 1px 0 var(--color-gray-90), 1px 1px 0 var(--color-gray-90);
 }
 
 .banner-text h1 {
+  /* credit: https://fluid.style/type */
+  font-size: clamp(
+    var(--title-min-font-size),
+    3.276rem + 1.915vw,
+    var(--title-max-font-size)
+  );
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: bold;
@@ -91,7 +93,12 @@ main section h2 {
 }
 
 .banner-text p {
-  font-size: var(--text-size-h5);
+  /* credit: https://fluid.style/type */
+  font-size: clamp(
+    var(--subtitle-min-font-size),
+    1.148rem + 1.613vw,
+    var(--subtitle-max-font-size)
+  );
   font-weight: bold;
   max-width: 22ch;
 }
