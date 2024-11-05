@@ -28,7 +28,7 @@ main section h2 {
   overflow: hidden;
   /* prevents .banner-text from overlapping with primary-nav dropdown on wide viewport widths */
   isolation: isolate;
-  --title-max-font-size: 5rem;
+  --title-max-font-size: 6rem;
   --title-min-font-size: var(--text-size-h1);
   --subtitle-max-font-size: 2.6rem;
   --subtitle-min-font-size: 1.6rem;
@@ -80,10 +80,10 @@ main section h2 {
 }
 
 .banner-text h1 {
-  /* credit: https://fluid.style/type */
+  /* credit: https://fluid.style/type?min=3.8125&max=6&min-bp=28&max-bp=137.5&unit=%22rem%22 */
   font-size: clamp(
     var(--title-min-font-size),
-    3.276rem + 1.915vw,
+    3.253rem + 1.998vw,
     var(--title-max-font-size)
   );
   text-transform: uppercase;
@@ -93,10 +93,10 @@ main section h2 {
 }
 
 .banner-text p {
-  /* credit: https://fluid.style/type */
+  /* credit: https://fluid.style/type?min=1.6&max=2.6&min-bp=28&max-bp=137.5&unit=%22rem%22 */
   font-size: clamp(
     var(--subtitle-min-font-size),
-    1.148rem + 1.613vw,
+    1.344rem + 0.913vw,
     var(--subtitle-max-font-size)
   );
   font-weight: bold;
