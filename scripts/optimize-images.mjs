@@ -3,6 +3,8 @@ import { argv, echo, glob } from "zx";
 import Image from "@11ty/eleventy-img";
 import fs from "node:fs";
 
+const DEFAULT_IMG_QUALITY = 80; // matches defaults for Sharp image processor used by eleventy-img plugin
+
 const inputFile = argv["file-path"];
 const inputDir = argv["dir-path"];
 const pattern = argv.pattern;
@@ -11,6 +13,8 @@ let formats = argv.formats;
 const help = argv.help;
 const isDryRun = argv["dry-run"];
 const useFileName = argv["use-file-name"];
+const jpegQuality = parseInt(argv["jpeg-quality"] ?? DEFAULT_IMG_QUALITY);
+const webpQuality = parseInt(argv["webp-quality"] ?? DEFAULT_IMG_QUALITY);
 
 const isMissingRequiredArgs = !inputFile && !inputDir && !pattern;
 
@@ -88,6 +92,13 @@ async function processImage(
     widths,
     formats,
     dryRun: !!isDryRun,
+    useCache: false,
+    sharpWebpOptions: {
+      quality: webpQuality,
+    },
+    sharpJpegOptions: {
+      quality: jpegQuality,
+    },
     ...(useFileName && { filenameFormat }),
   });
   console.log(stats);
