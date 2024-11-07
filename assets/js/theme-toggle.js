@@ -3,7 +3,9 @@
 (() => {
   const documentEl = document.documentElement;
   const themePicker = document.querySelector("#site-theme-toggle");
-  const bannerPicture = document.querySelector("#home-banner-picture");
+  const bannerPicture = document.querySelector(
+    "[data-id='home-banner-picture']"
+  );
   const darkSources = bannerPicture?.querySelectorAll(
     "source.oakland-map-dark"
   );
