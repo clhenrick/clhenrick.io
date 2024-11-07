@@ -8,12 +8,12 @@ eleventyNavigation:
   order: 3
 ---
 
-<figure aria-labelledby="oakland-map-label" aria-describedby="oakland-map-copyright" class="full-viewport-width" style="min-height: 40vh; margin-top: var(--spacing-lg);">
+<figure aria-labelledby="oakland-map-label" aria-describedby="oakland-map-copyright" class="full-viewport-width oakland-map">
   <span id="oakland-map-label" hidden>Oakland, California</span>
   {% include "components/oaklandMap.njk" %}
 </figure>
 
-<small id="oakland-map-copyright" style="display: block; margin-top: var(--spacing-sm); margin-bottom: var(--spacing-lg);">
+<small class="oakland-map-copyright" id="oakland-map-copyright">
   Map design © Chris Henrick 2024 - present. Map data © OpenStreetMap contributors.
 </small>
 
