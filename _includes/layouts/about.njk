@@ -8,15 +8,16 @@ pages: [
 ]
 ---
 
-  {%- set partials %}
-    components/secondarySiteNav
-  {% endset %}
-  {%- set bucket = "about" %}
-  {% include "styles.njk" %}
+{%- set partials %}
+  components/secondarySiteNav,
+  components/oakland-map
+{% endset %}
+{%- set bucket = "about" %}
+{% include "styles.njk" %}
+
+<h1>{{ title }}</h1>
 
 {% from "components/secondarySiteNav.njk" import secondarySiteNav %}
 {{ secondarySiteNav(pages, page.url, "More about Chris Henrick") }}
-
-<h1>{{ title }}</h1>
 
 {{ content | safe }}
