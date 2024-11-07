@@ -2,7 +2,7 @@ module.exports = {
   title: "clhenrick.io",
   titleImage: "img/oakland-map-dark-1800w.webp",
   titleImageAlt:
-    "A geographic map of the city of Oakland, California, centered on Lake Merritt.",
+    "A geographic map of the city of Oakland, California, centered on downtown. The map's extent spans the San Francisco Bay to the west, the cities of Berkeley and Emeryville to the north, the Oakland hills to the east, and the city of Alameda to the south. The map depicts the road networks and names of various cities and neighborhoods, predominantly in the East Bay area. It includes a topographic shaded relief rendering of the rugged Oakland hills.",
   titleImageType: "image/webp",
   logoImage: "favicon/apple-touch-icon.png",
   url: "https://clhenrick.io/",
