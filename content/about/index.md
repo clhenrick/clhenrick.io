@@ -8,9 +8,14 @@ eleventyNavigation:
   order: 3
 ---
 
-<div class="full-viewport-width" style="min-height: 40vh; margin-bottom: var(--spacing-lg);">
+<figure aria-labelledby="oakland-map-label" aria-describedby="oakland-map-copyright" class="full-viewport-width" style="min-height: 40vh; margin-top: var(--spacing-lg);">
+  <span id="oakland-map-label" hidden>Oakland, California</span>
   {% include "components/oaklandMap.njk" %}
-</div>
+</figure>
+
+<small id="oakland-map-copyright" style="display: block; margin-top: var(--spacing-sm); margin-bottom: var(--spacing-lg);">
+  Map design © Chris Henrick 2024 - present. Map data © OpenStreetMap contributors.
+</small>
 
 Chris Henrick is an [Oakland, California](https://en.wikipedia.org/wiki/Oakland,_California) based Senior Front-End Web Developer and Design Engineer who's work spans the domains of interactive (Geo) Data Visualization, Geographic Information Systems, and Cartographic Design. Chris currently works at [Environmental Systems Research Inc (Esri)](https://esri.com) on [StoryMaps.com](https://storymaps.com) and [ArcGIS StoryMaps](https://storymaps.arcgis.com/), web authoring tools that enable authors to create both long and short form interactive content, with or without maps. Prior to working at Esri he was a team member of the University of California's [Geospatial Innovation Facility](http://gif.berkeley.edu) where he worked on web applications such as [Cal-Adapt](https://cal-adapt.org) that help make climate data more accessible to the public and private sectors for the mitigation of climate change in California. Previously Chris has worked for [Google Cloud](https://cloud.google.com/) as a UX Engineer, [GreenInfo Network](http://greeninfo.org) as a full-stack Web Developer, and for [Stamen Design](http://stamen.com/about/) as a Design Technologist.
 
