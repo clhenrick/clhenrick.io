@@ -1,0 +1,15 @@
+figure.oakland-map {
+  min-height: 225px;
+  margin-top: var(--spacing-lg);
+}
+
+@media screen and (width >= 748px) {
+  figure.oakland-map {
+    min-height: 40vh;
+  }
+}
+
+small.oakland-map-copyright {
+  display: block;
+  margin: var(--spacing-sm) 0 var(--spacing-lg) 0;
+}

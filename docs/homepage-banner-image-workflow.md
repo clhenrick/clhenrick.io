@@ -22,15 +22,15 @@ npm run optimize-images -- --file-path='./oakland-map-dark.png' --formats="webp,
 
 2. Used [Observable Notebook](https://observablehq.com/d/7b09eeca0f2b415e) to turn metadata into HTML markup for loading the images.
 
-  - first you must remove the `<Buffer...` code from the JS output by the script
-  - then copy and paste that code into the notebook
+- first you must remove the `<Buffer...` code from the JS output by the script
+- then copy and paste that code into the notebook
 
 3. Re-ran the `optimize-images` script to create the actual images which are output in `./img`:
 
 ```bash
-npm run optimize-images -- --file-path='oakland-map-light.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true" --webp-quality=40 --jpeg-quality=40
+npm run optimize-images -- --file-path='oakland-map-light.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true" --webp-quality=75 --jpeg-quality=75
 
-npm run optimize-images -- --file-path='oakland-map-dark.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true" --webp-quality=70 --jpeg-quality=70
+npm run optimize-images -- --file-path='oakland-map-dark.png' --formats="webp,jpg" --widths="450,900,1300,1800,2600,3600,null" --use-file-name="true" --webp-quality=75 --jpeg-quality=75
 ```
 
 4. Copied the output images to `public/img`

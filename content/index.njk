@@ -8,85 +8,14 @@ eleventyComputed:
 
 {%- set partials %}
   components/posts-list,
+  components/oakland-map,
   pages/home
 {%- endset %}
 {%- set bucket = "home" %}
 {% include "styles.njk" %}
 
 <section class="banner full-viewport-width">
-  {# NOTE: see `docs/homepage-banner-image-workflow.md` for how this markup and corresponding images were generated #}
-  <picture id="home-banner-picture">
-    <source
-      class="oakland-map-light"
-      srcset="
-      /img/oakland-map-light-450w.webp 450w,
-      /img/oakland-map-light-900w.webp 900w,
-      /img/oakland-map-light-1300w.webp 1300w,
-      /img/oakland-map-light-1800w.webp 1800w,
-      /img/oakland-map-light-2600w.webp 2600w,
-      /img/oakland-map-light-3600w.webp 3600w,
-      /img/oakland-map-light-6016w.webp 6016w
-      "
-      type="image/webp"
-      media="(prefers-color-scheme: light)"
-      sizes="100vw"
-    />
-    <source
-      class="oakland-map-light"
-      srcset="
-      /img/oakland-map-light-450w.jpeg 450w,
-      /img/oakland-map-light-900w.jpeg 900w,
-      /img/oakland-map-light-1300w.jpeg 1300w,
-      /img/oakland-map-light-1800w.jpeg 1800w,
-      /img/oakland-map-light-2600w.jpeg 2600w,
-      /img/oakland-map-light-3600w.jpeg 3600w,
-      /img/oakland-map-light-6016w.jpeg 6016w
-      "
-      type="image/jpeg"
-      media="(prefers-color-scheme: light)"
-      sizes="100vw"
-    />
-    <source
-      class="oakland-map-dark"
-      srcset="
-      /img/oakland-map-dark-450w.webp 450w,
-      /img/oakland-map-dark-900w.webp 900w,
-      /img/oakland-map-dark-1300w.webp 1300w,
-      /img/oakland-map-dark-1800w.webp 1800w,
-      /img/oakland-map-dark-2600w.webp 2600w,
-      /img/oakland-map-dark-3600w.webp 3600w,
-      /img/oakland-map-dark-6016w.webp 6016w
-      "
-      type="image/webp"
-      media="(prefers-color-scheme: dark)"
-      sizes="100vw"
-    />
-    <source
-      class="oakland-map-dark"
-      srcset="
-      /img/oakland-map-dark-450w.jpeg 450w,
-      /img/oakland-map-dark-900w.jpeg 900w,
-      /img/oakland-map-dark-1300w.jpeg 1300w,
-      /img/oakland-map-dark-1800w.jpeg 1800w,
-      /img/oakland-map-dark-2600w.jpeg 2600w,
-      /img/oakland-map-dark-3600w.jpeg 3600w,
-      /img/oakland-map-dark-6016w.jpeg 6016w
-      "
-      type="image/jpeg"
-      media="(prefers-color-scheme: dark)"
-      sizes="100vw"
-    />
-    <img
-      loading="eager"
-      decoding="sync"
-      alt="{{ metadata.titleImageAlt }}"
-      src="/img/oakland-map-light-1800w.jpeg"
-      alt="A geographic map of Oakland, California centered on Lake Merritt."
-      width="1800"
-      height="821"
-    />
-  </picture>
-
+  {% include "components/oaklandMap.njk" %}
   <div class="banner-text">
     <h1>Chris Henrick</h1>
     <p>Front-End Web Developer &amp; Design Engineer</p>
