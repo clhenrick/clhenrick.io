@@ -61,19 +61,6 @@
   <meta property="og:image:alt" content="{{ headImageAlt }}">
   <meta property="og:image:type" content="{{ headImageType }}">
 
-  {# Social: Twitter/X #}
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@chrislhenrick">
-  <meta name="twitter:creator" content="@chrislhenrick">
-  <meta name="twitter:title" content="{{ headTitle }}">
-  <meta name="twitter:description" content="{{ headDescription }}">
-  {%- if image %}
-  <meta name="twitter:image" content="{{ metadata.url }}{{ image }}">
-  {%- else %}
-  <meta name="twitter:image" content="{{ metadata.url }}{{ metadata.titleImage }}">
-  {%- endif %}
-  <meta property="twitter:image:alt" content="{{ headImageAlt }}">
-
   {# NOTE: All common CSS used throughout the site are added here. In dev they are created as links, in prod all CSS is concatenated and inlined for a small performance boost. #}
   {%- set partials %}
       base/reset,

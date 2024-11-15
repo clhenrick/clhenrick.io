@@ -224,7 +224,7 @@ Interactive legends can really help make a data visualization shine. For example
 
 ## Feedback
 
-That about sums up Color Legend Element. Please make sure to check out the [CLE website][cle-website] and [Observable Notebook][cle-notebook] for examples on how to use it. To report a bug or make a suggestion, please open an issue in the [Github repository][cle-github] or send me a [Tweet](https://twitter.com/chrislhenrick). Lastly, please do let me know if it's helped you out at all in a project, I would be flattered to see it out in the wild! Thanks for reading 🙏.
+That about sums up Color Legend Element. Please make sure to check out the [CLE website][cle-website] and [Observable Notebook][cle-notebook] for examples on how to use it. To report a bug or make a suggestion, please open an issue in the [Github repository][cle-github]. Lastly, please do let me know if it's helped you out at all in a project, I would be flattered to see it out in the wild! Thanks for reading 🙏.
 
 [cle-github]: https://github.com/clhenrick/color-legend-element
 [cle-website]: https://clhenrick.github.io/color-legend-element/

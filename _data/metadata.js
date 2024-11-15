@@ -19,7 +19,6 @@ module.exports = {
   socialHandles: new Map([
     ["Github", "@clhenrick"],
     ["Mastodon", "@clhenrick@indieweb.social"],
-    ["X (Twitter)", "@chrislhenrick"],
     ["Observable", "@clhenrick"],
     ["LinkedIn", "@chrishenrick"],
     ["Ko-Fi", "@chrislhenrick"],
@@ -27,7 +26,6 @@ module.exports = {
   socialLinks: new Map([
     ["GitHub", "https://github.com/clhenrick"],
     ["Mastodon", "https://indieweb.social/@clhenrick"],
-    ["X (Twitter)", "https://twitter.com/chrislhenrick"],
     ["Observable", "https://observablehq.com/@clhenrick"],
     ["LinkedIn", "https://www.linkedin.com/in/chrishenrick/"],
     ["Ko-Fi", "https://ko-fi.com/chrislhenrick"],
