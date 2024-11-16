@@ -39,6 +39,7 @@ eleventyNavigation:
       name="name"
       id="full-name"
       required=""
+      autocomplete="name"
     >
     <p class="form-error-msg" id="full-name-error-msg" hidden></p>
   </div>
@@ -50,6 +51,8 @@ eleventyNavigation:
       name="_replyto"
       id="email-address"
       required=""
+      autocomplete="on"
+      inputmode="email"
     >
     <p class="form-error-msg" id="email-address-error-msg" hidden></p>
   </div>
@@ -62,6 +65,7 @@ eleventyNavigation:
       id="message"
       required=""
       minlength="120"
+      autocomplete="off"
     ></textarea>
     <p class="form-error-msg" id="note-error-msg" hidden></p>
   </div>
