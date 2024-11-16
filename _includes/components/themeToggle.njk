@@ -2,11 +2,11 @@
 {%- set themes = ["light", "dark", "auto"]  -%}
 <fieldset
   id="site-theme-toggle"
-  aria-labelledby="site-theme-toggle-label"
   tabindex="-1"
 >
   {# NOTE: we use a span here because <legend> doesn't play well with `display: flex` on the fieldset parent #}
-  <span id="site-theme-toggle-label">Site Theme:</span>
+  <legend class="visually-hidden">Site Theme:</legend>
+  <span aria-hidden="true">Site Theme:</span>
   {%- for theme in themes %}
     {%- set id = ["site-theme", theme] | join("-") %}
     <div class="form-control">
