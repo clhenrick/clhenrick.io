@@ -34,6 +34,7 @@ eleventyNavigation:
 
   <div class="form-control-group">
     <label for="full-name">Your Name (required)</label>
+    <p class="form-error-msg" id="full-name-error-msg" hidden></p>
     <input
       type="text"
       name="name"
@@ -41,11 +42,11 @@ eleventyNavigation:
       required=""
       autocomplete="name"
     >
-    <p class="form-error-msg" id="full-name-error-msg" hidden></p>
   </div>
 
   <div class="form-control-group">
     <label for="email-address">Your Email Address (required)</label>
+    <p class="form-error-msg" id="email-address-error-msg" hidden></p>
     <input
       type="email"
       name="_replyto"
@@ -54,11 +55,11 @@ eleventyNavigation:
       autocomplete="on"
       inputmode="email"
     >
-    <p class="form-error-msg" id="email-address-error-msg" hidden></p>
   </div>
 
   <div class="form-control-group">
     <label for="message">Your Message (required)</label>
+    <p class="form-error-msg" id="note-error-msg" hidden></p>
     <textarea
       rows="5"
       name="message"
@@ -67,7 +68,6 @@ eleventyNavigation:
       minlength="120"
       autocomplete="off"
     ></textarea>
-    <p class="form-error-msg" id="note-error-msg" hidden></p>
   </div>
 
   <input
