@@ -142,17 +142,18 @@
     }
 
     // client side form validation errors
-    if (Array.isArray(errors) && errors.length) {
-      const pluralHandler = errors.length > 1 ? "s" : "";
-      const fieldTypes = errors
-        .map((element) => (element.type === "email" ? "email" : element.name))
-        .join(" and ");
-      errorMessage = `Please correct the error${pluralHandler} in the ${fieldTypes} form field${pluralHandler}.`;
-    }
-
-    // if an empty array is passed from a result of no form fields with aria-invalid="true", truncate the errorMessage as to reset the form status to empty
-    if (!errors?.length) {
-      errorMessage = "";
+    if (Array.isArray(errors)) {
+      if (errors.length) {
+        const pluralHandler = errors.length > 1 ? "s" : "";
+        const fieldTypes = errors
+          .map((element) => (element.type === "email" ? "email" : element.name))
+          .join(" and ");
+        errorMessage = `Please correct the error${pluralHandler} in the ${fieldTypes} form field${pluralHandler}.`;
+      } else {
+        // if an empty array is passed from a result of no form fields with `aria-invalid="true"`,
+        // truncate the errorMessage as to reset the form status to empty
+        errorMessage = "";
+      }
     }
 
     if (errorMessage) {
