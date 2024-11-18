@@ -128,7 +128,7 @@
 
   /**
    * - handles a client or server side form validation error
-   * @param {(HTMLInputElement | HTMLTextAreaElement)[] | string} errors either a string of error text that should be shown or an array of form fields that are in an invalid state.
+   * @param {(HTMLInputElement | HTMLTextAreaElement)[] | string} errors either a string of error text that should be shown or an array of form fields that are in an invalid state. Note that the array is permitted to be empty.
    * @param {boolean} shouldFocus whether to focus the form status field after updating its text content; defaults to true
    */
   function handleInvalidFormState(errors, shouldFocus = true) {
@@ -150,12 +150,11 @@
       errorMessage = `Please correct the error${pluralHandler} in the ${fieldTypes} form field${pluralHandler}.`;
     }
 
-    // if an empty array is passed from a result of no [aria-invalid="true"], truncate the errorMessage as to reset the form status to empty
+    // if an empty array is passed from a result of no form fields with aria-invalid="true", truncate the errorMessage as to reset the form status to empty
     if (!errors?.length) {
       errorMessage = "";
     }
 
-    // for any error situation
     if (errorMessage) {
       formStatus.innerText = errorMessage;
       formStatus.classList = "error";
