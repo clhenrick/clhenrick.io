@@ -128,9 +128,10 @@
 
   /**
    * - handles a client or server side form validation error
-   * @param {(HTMLInputElement | HTMLTextAreaElement)[] | string} [errors] either a string of error text that should be shown or an array of form fields that are in an invalid state.
+   * @param {(HTMLInputElement | HTMLTextAreaElement)[] | string} errors either a string of error text that should be shown or an array of form fields that are in an invalid state. Note that the array is permitted to be empty.
+   * @param {boolean} shouldFocus whether to focus the form status field after updating its text content; defaults to true
    */
-  function handleInvalidFormState(errors) {
+  function handleInvalidFormState(errors, shouldFocus = true) {
     // default error message
     let errorMessage =
       "Something went wrong when submitting the form. Please try submitting the form again or alternatively you may send me an email. Thanks!";
@@ -141,19 +142,30 @@
     }
 
     // client side form validation errors
-    if (Array.isArray(errors) && errors.length) {
-      const pluralHandler = errors.length > 1 ? "s" : "";
-      const fieldTypes = errors
-        .map((element) => (element.type === "email" ? "email" : element.name))
-        .join(" and ");
-      errorMessage = `Please correct the error${pluralHandler} in the ${fieldTypes} form field${pluralHandler}.`;
+    if (Array.isArray(errors)) {
+      if (errors.length) {
+        const pluralHandler = errors.length > 1 ? "s" : "";
+        const fieldTypes = errors
+          .map((element) => (element.type === "email" ? "email" : element.name))
+          .join(" and ");
+        errorMessage = `Please correct the error${pluralHandler} in the ${fieldTypes} form field${pluralHandler}.`;
+      } else {
+        // if an empty array is passed from a result of no form fields with `aria-invalid="true"`,
+        // truncate the errorMessage as to reset the form status to empty
+        errorMessage = "";
+      }
     }
 
-    // for any error situation
-    formStatus.innerText = errorMessage;
-    formStatus.classList = "error";
-    formStatus.removeAttribute("hidden");
-    formStatus.focus();
+    if (errorMessage) {
+      formStatus.innerText = errorMessage;
+      formStatus.classList = "error";
+      formStatus.removeAttribute("hidden");
+      shouldFocus && formStatus.focus();
+    } else {
+      formStatus.innerText = "";
+      formStatus.classList = "";
+      formStatus.setAttribute("hidden", "");
+    }
   }
 
   function handleFormSubmitSuccess() {
@@ -266,5 +278,9 @@
       // since disabled buttons aren't the best for a11y (poor color contrast,
       // removed from tab order, etc).
     }
+
+    // update the form status message
+    const invalidFormFields = getInvalidFormFields();
+    handleInvalidFormState(Array.from(invalidFormFields), false);
   }
 })();
