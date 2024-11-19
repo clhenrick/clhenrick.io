@@ -330,6 +330,7 @@ small {
 dl > div {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 1rem;
   line-height: 1.75;
 }
