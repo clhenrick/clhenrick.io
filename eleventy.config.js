@@ -65,7 +65,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginImages);
   eleventyConfig.addPlugin(pluginDataCascadeImage);
   eleventyConfig.addPlugin(rssPlugin);
-  eleventyConfig.addPlugin(eleventyTocPlugin, { tags: ["h2", "h3"], wrapperLabel: "Table of contents" });
+  eleventyConfig.addPlugin(eleventyTocPlugin, {
+    tags: ["h2", "h3"],
+    wrapperLabel: "Table of contents",
+  });
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
@@ -142,9 +145,14 @@ module.exports = function (eleventyConfig) {
     return array.findIndex((item) => item === target);
   });
 
-  eleventyConfig.addPairedShortcode("figure", (content, caption, className = "figure") => {
-    return `<figure class="${className}">${content}<figcaption>${caption}</figcaption></figure>`;
-  })
+  eleventyConfig.addFilter("isArray", (value) => Array.isArray(value));
+
+  eleventyConfig.addPairedShortcode(
+    "figure",
+    (content, caption, className = "figure") => {
+      return `<figure class="${className}">${content}<figcaption>${caption}</figcaption></figure>`;
+    }
+  );
 
   return {
     // Control which files Eleventy will process
