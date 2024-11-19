@@ -27,7 +27,7 @@ eleventyComputed:
   <h1>{{project.title}}</h1>
 
   <dl>
-  {% if project.date %}
+    {% if project.date %}
     <div>
       <dt>Date:</dt>
       <dd>{{project.date | dateFromISOString("LLLL, yyyy")}}</dd>
@@ -43,14 +43,22 @@ eleventyComputed:
     </div>
     {% endif %}
 
-    {%if project.code %}
+    {% if project.code %}
     <div>
       <dt>Code:</dt>
+      {% if project.code | isArray %}
+        {% for link in project.code %}
+        <dd>
+          <a href={{link}} target="_blank">{{link}}</a>
+        </dd>
+        {% endfor %}
+      {% else %}
       <dd>
         <a href={{project.code}} target="_blank">{{project.code}}</a>
       </dd>
+      {% endif %}
     </div>
-  {% endif %}
+    {% endif %}
   </dl>
 </section>
 
