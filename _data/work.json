@@ -1,5 +1,32 @@
 [
   {
+    "title": "Open Source Oakland Map",
+    "tags": ["cartography", "web"],
+    "description": "A minimal reference map of Oakland, California, made with this website in mind.",
+    "description_long": "...",
+    "code": [
+      "https://github.com/clhenrick/oakland-map",
+      "https://github.com/clhenrick/oakland-map-viz"
+    ],
+    "tech": [
+      "GDAL",
+      "Make",
+      "Mapshaper",
+      "D3JS",
+      "HTML Canvas",
+      "SVG",
+      "OpenStreetMap",
+      "JavaScript"
+    ],
+    "thumb": "oakland-map-thumb.jpeg",
+    "imgs": [
+      "public/img/oakland-map-dark-6016w.jpeg",
+      "public/img/oakland-map-light-6016w.jpeg"
+    ],
+    "size": "width3",
+    "date": "2024-11-01"
+  },
+  {
     "title": "Cal-Adapt",
     "tags": ["web", "data-viz", "cartography"],
     "description": "Exploratory climate data visualization and web application design and development.",
