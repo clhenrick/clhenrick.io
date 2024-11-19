@@ -20,6 +20,7 @@ const {
 } = require("./eleventy.config.images.js");
 const { minify } = require("terser");
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 module.exports = function (eleventyConfig) {
   // Force 11ty to watch CSS and JS files
   eleventyConfig.addWatchTarget("assets/css/**/*.css");
