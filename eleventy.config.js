@@ -19,6 +19,7 @@ const {
   pluginDataCascadeImage,
 } = require("./eleventy.config.images.js");
 const { minify } = require("terser");
+const htmlmin = require("html-minifier-terser");
 
 module.exports = function (eleventyConfig) {
   // Force 11ty to watch CSS and JS files
@@ -64,7 +65,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginImages);
   eleventyConfig.addPlugin(pluginDataCascadeImage);
   eleventyConfig.addPlugin(rssPlugin);
-  eleventyConfig.addPlugin(eleventyTocPlugin, { tags: ["h2", "h3"], wrapperLabel: "Table of contents" });
+  eleventyConfig.addPlugin(eleventyTocPlugin, {
+    tags: ["h2", "h3"],
+    wrapperLabel: "Table of contents",
+  });
+
+  if (process.env.NODE_ENV === "production") {
+    eleventyConfig.addTransform("htmlmin", transformMinifyHtml);
+  }
 
   eleventyConfig.addGlobalData("generated", () => {
     const now = new Date();
@@ -141,9 +149,12 @@ module.exports = function (eleventyConfig) {
     return array.findIndex((item) => item === target);
   });
 
-  eleventyConfig.addPairedShortcode("figure", (content, caption, className = "figure") => {
-    return `<figure class="${className}">${content}<figcaption>${caption}</figcaption></figure>`;
-  })
+  eleventyConfig.addPairedShortcode(
+    "figure",
+    (content, caption, className = "figure") => {
+      return `<figure class="${className}">${content}<figcaption>${caption}</figcaption></figure>`;
+    }
+  );
 
   return {
     // Control which files Eleventy will process
@@ -194,5 +205,19 @@ async function transformMinifyJs(content) {
       return content;
     }
   }
+  return content;
+}
+
+function transformMinifyHtml(content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    let minified = htmlmin.minify(content, {
+      useShortDoctype: true,
+      removeComments: true,
+      collapseWhitespace: true,
+    });
+
+    return minified;
+  }
+  // If not an HTML output, return content as-is
   return content;
 }
