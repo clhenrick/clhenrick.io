@@ -4,10 +4,7 @@
     "tags": ["cartography", "web"],
     "description": "A minimal reference map of Oakland, California, made with this website in mind.",
     "description_long": "A minimal reference map of Oakland, California primarily for use as a background image for this website's [home](/) and [about](/about/) pages. The map is available in both light and dark color scheme variants to support the light and dark themes of this website. The map was created using two separate processes: one for sourcing and processing of the geographic data; the second for rendering the map using the data. Geographic data wrangling was accomplished using a Makefile to programmatically run tasks that query data from [OpenStreetMap](https://www.openstreetmap.org/) (OSM) using the OSM [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) and transform and manipulate it using a combination of the [GDAL](https://gdal.org/en/latest/)'s `ogr2ogr` program and the [Mapshaper](https://github.com/mbloch/mapshaper) JavaScript library. The shaded relief portion of the map that is visible to the right / east of the map was created using [NED DEM data](https://www.usgs.gov/publications/national-elevation-dataset) and GDAL's `hillshade` program. Rendering of the map itself was accomplished using a combination of JavaScript, [D3JS](https://d3js.org/) (in particular [d3-geo](#)), SVG, HTML Canvas, and CSS in a web browser. The final map image was created using [headless Chrome](https://developer.chrome.com/docs/chromium/headless) to capture a screenshot the map and [ImageMagick](https://imagemagick.org/) to crop the image.<br /><br />Map data copyright OpenStreetMap contributors, map copyright Chris Henrick 2024 to present.",
-    "code": [
-      "https://github.com/clhenrick/oakland-map",
-      "https://github.com/clhenrick/oakland-map-viz"
-    ],
+    "code": "https://github.com/clhenrick/oakland-map",
     "tech": [
       "GDAL",
       "Make",
