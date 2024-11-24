@@ -21,7 +21,8 @@
     "imgs": [
       "public/img/oakland-map-light-6016w.jpeg",
       "public/img/oakland-map-dark-6016w.jpeg",
-      "public/img/lake-merritt-light.png"
+      "public/img/lake-merritt-light.png",
+      "public/img/oakland-hills-dark.png"
     ],
     "size": "width3",
     "date": "2024-11-01"
