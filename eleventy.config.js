@@ -21,6 +21,7 @@ const {
 const { minify } = require("terser");
 const htmlmin = require("html-minifier-terser");
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 module.exports = function (eleventyConfig) {
   // Force 11ty to watch CSS and JS files
   eleventyConfig.addWatchTarget("assets/css/**/*.css");
@@ -148,6 +149,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("findIndex", (array, target) => {
     return array.findIndex((item) => item === target);
   });
+
+  eleventyConfig.addFilter("isArray", (value) => Array.isArray(value));
 
   eleventyConfig.addPairedShortcode(
     "figure",

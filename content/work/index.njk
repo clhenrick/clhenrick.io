@@ -38,7 +38,7 @@ eleventyNavigation:
 <ul class="cards-container" role="list">
   {% for project in work %}
     {# NOTE: this uses global image thumbnail data and the dataCascadeImage shortcode  #}
-    {%- set basename = project.thumb | replace(".jpg", "") | replace(".png", "") %}
+    {%- set basename = project.thumb | replace(".jpg", "") | replace(".jpeg", "") | replace(".png", "") %}
     {%- set thumb = work_image_thumbnails[basename] %}
     {{ projectCard(project, thumb) }}
   {% endfor %}
