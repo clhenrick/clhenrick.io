@@ -6,9 +6,9 @@
   // reference to the aria-live container
   const announce = document.querySelector("#announce");
 
-  const filterButtons = Array.from(document.querySelectorAll("button.filter")).filter(
-    (button) => button.value !== "shuffle"
-  );
+  const filterButtons = Array.from(
+    document.querySelectorAll("button.filter")
+  ).filter((button) => button.value !== "shuffle");
   const shuffleButton = document.querySelector("button.shuffle");
 
   filterButtons.forEach((button) => {
@@ -40,7 +40,7 @@
       }
     });
 
-    announce.innerText = `Filtered the projects list to show ${value} projects.`
+    announce.innerText = `Filtered the projects list to show ${value} projects.`;
   }
 
   function onShuffleButtonClick() {
@@ -49,7 +49,7 @@
     shuffled.forEach((card) => {
       cardsContainer.appendChild(card);
     });
-    announce.innerText = `Shuffled the order of the projects list.`
+    announce.innerText = `Shuffled the order of the projects list.`;
   }
 
   // code credit: https://bost.ocks.org/mike/shuffle/
