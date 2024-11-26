@@ -28,7 +28,7 @@ function pluginImages(eleventyConfig) {
         outputDir: path.join(eleventyConfig.dir.output, "img"),
         outputPath: "/img/",
         // use the input filename instead of a hash for naming the optimized images
-        filenameFormat: function formatFilename(id, src, width, format, options) {
+        filenameFormat: function formatFilename(id, src, width, format) {
           const extension = path.extname(src);
           const name = path.basename(src, extension);
           return `${name}-${width}w.${format}`;

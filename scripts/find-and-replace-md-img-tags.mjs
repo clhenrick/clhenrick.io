@@ -1,5 +1,6 @@
 #!/usr/bin/env zx
-import "zx/globals";
+
+import { argv, echo, fs } from "zx";
 
 /**
  * find-and-replace-md-img-tags.mjs
@@ -21,7 +22,7 @@ echo("Processing file: " + input);
 
 const data = fs.readFileSync(input, { encoding: "utf8" });
 
-const regex = /\!\[(.*?)\]\((.*)\)$/gm;
+const regex = /!\[(.*?)\]\((.*)\)$/gm;
 
 const matches = data.matchAll(regex);
 const matchesArray = Array.from(matches);

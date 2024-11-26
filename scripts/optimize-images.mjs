@@ -2,6 +2,7 @@
 import { argv, echo, glob } from "zx";
 import Image from "@11ty/eleventy-img";
 import fs from "node:fs";
+import { path } from "zx";
 
 const DEFAULT_IMG_QUALITY = 80; // matches defaults for Sharp image processor used by eleventy-img plugin
 
@@ -104,7 +105,7 @@ async function processImage(
   console.log(stats);
 }
 
-function filenameFormat(id, src, width, format, options) {
+function filenameFormat(id, src, width, format) {
   const extension = path.extname(src);
   const name = path.basename(src, extension);
   return `${name}-${width}w.${format}`;
