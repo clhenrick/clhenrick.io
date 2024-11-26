@@ -16,32 +16,33 @@ tags:
 {% image 'mpg-habitat-01-overview.jpg', 'the MPG Ranch Habitat Restoration Map app' %}
 
 > The MPG Ranch Habitat Restoration Map enables a team of environmental scientists to effectively
-communicate ongoing management plans and actions with their stakeholders and provides
-a venue for discussion of restoration research and practices through an interactive
-web map application.
+> communicate ongoing management plans and actions with their stakeholders and provides
+> a venue for discussion of restoration research and practices through an interactive
+> web map application.
 
 I created the [MPG Ranch Habitat Restoration Map](http://restorationmap.mpgranch.com/)
 while working for the world renowned data visualization, interactive mapping, and design firm
 [Stamen Design](http://stamen.com). The following post describes what the app
-was built with as well as how it's various pieces, companion web app (*The Slide Builder*),
+was built with as well as how it's various pieces, companion web app (_The Slide Builder_),
 and shared React slides-component fit together.
 
 ## About MPG Ranch:
+
 {% image 'mpg-ranch-elk-herd.jpeg', 'photo of mpg-ranch' %}
-*An elk herd roaming over MPG Ranch in the winter, photo credit: Teagan Hayes*
+_An elk herd roaming over MPG Ranch in the winter, photo credit: Teagan Hayes_
 
 > Set in the heart of Montana’s Bitterroot Valley, MPG Ranch lies on over
-14,000 acres of rich undeveloped landscape. Established in 2009
-and privately owned, MPG strives to preserve the natural
-communities that make this area beautiful and focuses on research
-to restore and protect native diversity.
+> 14,000 acres of rich undeveloped landscape. Established in 2009
+> and privately owned, MPG strives to preserve the natural
+> communities that make this area beautiful and focuses on research
+> to restore and protect native diversity.
 
 This web app involved solving a multitude of technical problems, including integrating:
 
 - a Shapefile of 60+ management unit polygons with environmental attribute data
 - High resolution (10cm) aerial imagery of the ranch
 - Raster GIS data representing [NDVI](https://en.wikipedia.org/wiki/Normalized_Difference_Vegetation_Index)
-and [solar insolation](https://en.wikipedia.org/wiki/Solar_irradiance)
+  and [solar insolation](https://en.wikipedia.org/wiki/Solar_irradiance)
 - Qualitative data on activities, management, plans, and research
 - Professional photography of the ranch and activities
 - Report slide decks that document research and restoration work on the ranch
@@ -59,11 +60,11 @@ and the following "backend" web services:
 
 - **Google Forms** for allowing the client to enter qualitative data by management unit
 - **[CARTO](https://carto.com)** for syncing tables generated from Google Forms
-and for hosting vector geospatial data
+  and for hosting vector geospatial data
 - **CARTO's [SQL API](https://carto.com/docs/carto-engine/sql-api)** for
-fetching data to load into the application
+  fetching data to load into the application
 - The **[AWS Lambda Tiler](https://hi.stamen.com/stamen-aws-lambda-tiler-blog-post-76fc1138a145#.n8xuphpze)**
-for serving tiles generated from aerial imagery and raster data
+  for serving tiles generated from aerial imagery and raster data
 
 ## Habitat Restoration Map Features
 
@@ -73,47 +74,48 @@ to bring up a detail pane which displays that unit's photo carousel, environment
 management activities, activities or "actions," and report slide decks.
 
 {% image 'mpg-habitat02.jpg', 'habitat map landing' %}
-*Default application state*
+_Default application state_
 
 {% image 'mpg-habitat13.jpg', 'habitat map mouseover and click on a mu polygon' %}
-*Mousing over a management unit polygon*
+_Mousing over a management unit polygon_
 
 {% image 'mpg-habitat14.jpg', 'habitat map detail pane' %}
-*Management Unit detail pane opens after clicking on a polygon*
+_Management Unit detail pane opens after clicking on a polygon_
 
 #### Alternatively, a user may search for a management unit by typing in a text input field and browsing results in a list.
 
 {% image 'mpg-habitat15.jpg', 'habitat map search by unit name' %}
-*Searching by a management unit name via a text input and dropdown*
+_Searching by a management unit name via a text input and dropdown_
 
 {% image 'mpg-habitat16.jpg', '' %}
-*Clicking a management unit list item brings up the detail pane*
+_Clicking a management unit list item brings up the detail pane_
 
 #### Photo carousels may be opened in a lightbox mode to be viewed at a larger size.
 
 {% image 'mpg-habitat05.jpg', 'habitat map lightbox' %}
-*Photo carousel in lightbox mode*
+_Photo carousel in lightbox mode_
 
 #### Various map layers may be toggled as well, including high resolution satellite imagery, NDVI, solar radiation, and terrain.
 
 {% image 'mpg-habitat06.jpg', 'habitat map ndvi raster layer' %}
-*Toggling the NDVI raster layer*
+_Toggling the NDVI raster layer_
 
 {% image 'mpg-habitat07.jpg', 'habitat map solar insolation raster layer' %}
-*Toggling the solar insolation raster layer*
+_Toggling the solar insolation raster layer_
 
 {% image 'mpg-habitat08.jpg', 'habitat map ndvi zoomed in' %}
-*Zoomed in view of the NDVI raster layer*
+_Zoomed in view of the NDVI raster layer_
 
 #### Clicking on a list item in the Recent Actions pane will zoom the map to the polygon and open the detail pane for that action item's corresponding management unit.
 
 {% image 'mpg-habitat17.jpg', 'habitat map clicking a recent action item' %}
-*Mousing over a list item in the Recent Actions pane in the lower left corner*
+_Mousing over a list item in the Recent Actions pane in the lower left corner_
 
 {% image 'mpg-habitat18.jpg', 'habitat map detail pane opened to recent actions after clicking a recent action item' %}
-*Map pans and zooms, opens the detail pane's Actions section after clicking a Recent Action item*
+_Map pans and zooms, opens the detail pane's Actions section after clicking a Recent Action item_
 
 ## Slide Builder App
+
 In addition to the Habitat Restoration Map, I built a fully separate web app, the
 "Slide Builder App." This web app allows for MPG's habitat restoration team to streamline
 the creation of research and progress reports, without using desktop software such as
@@ -140,22 +142,22 @@ Using my imagination and the React Bootstrap library helped me develop the inter
 fairly quickly without having to consult a wireframe or design mock up.
 
 {% image 'mpg-slide-builder01.jpg', 'slide builder app - landing screen' %}
-*Slide Builder app landing screen*
+_Slide Builder app landing screen_
 
 {% image 'mpg-slide-builder02.jpg', 'slide builder app - creating a new report' %}
-*Creating a new report*
+_Creating a new report_
 
 {% image 'mpg-slide-builder03.jpg', 'slide builder app - filling out report metadata' %}
-*Filling out report metadata*
+_Filling out report metadata_
 
 {% image 'mpg-slide-builder04.jpg', 'slide builder app - editing the title slide' %}
-*Editing the title slide*
+_Editing the title slide_
 
 {% image 'mpg-slide-builder05.jpg', 'slide builder app - publishing a slide deck' %}
-*Publishing a report slide deck*
+_Publishing a report slide deck_
 
 {% image 'mpg-slide-builder06.jpg', 'slide builder app - publishing success!' %}
-*Notifying the user that the deck was successfully published*
+_Notifying the user that the deck was successfully published_
 
 #### When saved, the reports are stored as JSON data in CARTO, then loaded into the Habitat Restoration Map.
 
@@ -192,14 +194,14 @@ Slides Component as a local NPM module.
 
 ```json
 {
-	"id": "e0731c66-104a-4a0f-9e9f-c15e0bbdf1a5",
-	"saved": true,
-	"slideTitle": "TEST REPORT DECK",
-	"slideText": "Lorem ipsum dolor. Sit amet ornare...",
-	"imgToken": "Ae10uZmnq",
-	"slideType": "title",
-	"reportTitle": "Test Report",
-	"authors": "Chuck Norris"
+  "id": "e0731c66-104a-4a0f-9e9f-c15e0bbdf1a5",
+  "saved": true,
+  "slideTitle": "TEST REPORT DECK",
+  "slideText": "Lorem ipsum dolor. Sit amet ornare...",
+  "imgToken": "Ae10uZmnq",
+  "slideType": "title",
+  "reportTitle": "Test Report",
+  "authors": "Chuck Norris"
 }
 ```
 

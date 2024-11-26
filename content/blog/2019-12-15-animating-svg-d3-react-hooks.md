@@ -1,5 +1,6 @@
 ---
-redirectFrom: [/animating-svg-d3-react-hooks.html, /animating-svg-d3-react-hooks/]
+redirectFrom:
+  [/animating-svg-d3-react-hooks.html, /animating-svg-d3-react-hooks/]
 title: "Animating SVG with D3JS and React Hooks"
 date: 2019-12-15
 teaser: "SVG + React Hooks + d3-interpolate + requestAnimationFrame"
@@ -82,7 +83,7 @@ Of course we don't apply this transformation to the SVG element itself, we apply
 
 ```html
 <svg viewBox="-2 -2 264 194" style="max-width: 600px">
-  <g id=view transform="translate(-12.5,-47.5) scale(4.75)">
+  <g id="view" transform="translate(-12.5,-47.5) scale(4.75)">
     <!-- more svg markup here -->
   </g>
 </svg>
@@ -141,12 +142,11 @@ Both the `zoomInterpolator` and `getTransformStr` functions will come in handy l
 Now that we have a function that handles the zoom interpolation for us, we need to apply it to create our animation. To accomplish this we'll be using the browser's [requestAnimationFrameAPI](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). From the Mozilla documentation:
 
 > The `window.requestAnimationFrame()` method tells the browser that you wish to perform an animation and requests that the browser calls a specified function to update an animation before the next repaint. The method takes a callback as an argument to be invoked before the repaint.
-Note: Your callback routine must itself call requestAnimationFrame() if you want to animate another frame at the next repaint.
+> Note: Your callback routine must itself call requestAnimationFrame() if you want to animate another frame at the next repaint.
 
 The general idea is that we'll pass a callback function to `requestAnimationFrame` that invokes our `getTransformStr` on each "tick" of the animation. We'll call this function `ticked` and it will accept a single argument, the current timestamp of the animation which is passed to it by `requestAnimationFrame`. We'll also want some mutable variables outside of the function that store the start time and current frame of the animation, and a constant variable that sets how long the animation should run for.
 
 ```js
-
 let startTime;
 let frame;
 const duration = 1000; // milliseconds
@@ -162,8 +162,7 @@ function ticked(timestamp) {
     const transformStr = getTransformStr(t);
     frame = requestAnimationFrame(ticked);
   }
-};
-
+}
 ```
 
 Notice that within the `ticked()` function if the elapsed time is less than the total duration of the animation we pass the value `t` to `getTransformStr()`. We also update the value of the external variable `frame` which is returned by invoking `requestAnimationFrame()` with our `ticked()` function. We'll need the value of `frame` later in order to cancel the animation, say for instance if we no longer want to run it based on some user action.
@@ -171,10 +170,8 @@ Notice that within the `ticked()` function if the elapsed time is less than the 
 In order to start the animation we must invoke `requestAnimationFrame` with our `ticked` callback:
 
 ```js
-
 // when the animation is ready to begin do:
 requestAnimationFrame(ticked);
-
 ```
 
 If we want to stop the animation before it finishes running we call `cancelAnimationFrame` with the current value of `frame` like so:
@@ -197,7 +194,7 @@ import * as React from "react";
 import * as d3 from "d3";
 
 const ZoomContainer = (props) => {
-  const {width, height, start, end, children} = props;
+  const { width, height, start, end, children } = props;
 
   // we'll update this next line soon
   let transformStr;
@@ -207,10 +204,9 @@ const ZoomContainer = (props) => {
       {children}
     </g>
   );
-}
+};
 
 export default ZoomContainer;
-
 ```
 
 So far we are:
@@ -223,7 +219,6 @@ Simple enough!
 Time for some hooks. First we'll set up a `useState` hook for setting and getting the transform string. This will replace the line with `let transformStr;` in the previous JSX code above. We'll provide `useState` a default value of an "identity transform" which is equivalent to no transform at all.
 
 ```js
-
 // within the body of ZoomContainer
 
 // state that handles setting the svg transform attribute string
@@ -231,7 +226,6 @@ Time for some hooks. First we'll set up a `useState` hook for setting and gettin
 const [transformStr, setTransformStr] = React.useState(
   "translate(0, 0) scale(1)"
 );
-
 ```
 
 We'll create a second `useState` hook to get and set a variable for reversing the animation. We'll be mimicking the original `interpolateZoom` demo from the D3JS docs on ObservableHQ which zooms into one shape, then back the other shape, then back to the first shape, in an endless loop. Thus we'll want a boolean value we can flip to tell the animation to run in reverse once it has finished zooming into a shape.
@@ -251,25 +245,21 @@ const interpolator = d3.interpolateZoom(start, end);
 Now we'll write the `useEffect` hook. This will be a longer block of code, but much of it we have already covered in the previous sections.
 
 ```jsx
-
 React.useEffect(() => {
   let startTime;
   let frame;
   const duration = 3000;
 
   // returns a proper SVG transform attribute string
-  const getTransformStr = t => {
+  const getTransformStr = (t) => {
     const view = interpolator(t);
     const k = Math.min(width, height) / view[2];
-    const translate = [
-      width / 2 - view[0] * k,
-      height / 2 - view[1] * k
-    ];
+    const translate = [width / 2 - view[0] * k, height / 2 - view[1] * k];
     return `translate(${translate}) scale(${k})`;
   };
 
   // the callback function used with requestAnimationFrame
-  const ticked = timestamp => {
+  const ticked = (timestamp) => {
     if (!startTime) startTime = timestamp;
     const elapsed = timestamp - startTime;
     const t = elapsed / duration;
@@ -297,7 +287,6 @@ React.useEffect(() => {
   return () => window.cancelAnimationFrame(frame);
 }, [forward]);
 // ☝️ only fire the effect again when the value of `forward` changes
-
 ```
 
 Notice that within the `useEffect` hook that we are utilizing our `getTransformStr` function which handles the SVG `transform` interpolation and also are using our `ticked` function with `requestAnimationFrame` from earlier.

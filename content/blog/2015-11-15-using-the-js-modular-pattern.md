@@ -1,5 +1,6 @@
 ---
-redirectFrom: [/using-the-js-modular-pattern.html, /using-the-js-modular-pattern/]
+redirectFrom:
+  [/using-the-js-modular-pattern.html, /using-the-js-modular-pattern/]
 title: Using the Module Pattern in JavaScript Programming
 date: 2015-11-15
 updated: 2020-12-10
@@ -24,55 +25,50 @@ I was first exposed to the **revealing module pattern** through my now colleague
 
 After reading the Adequately Good article that my colleague sent me I was eager to try out **loose augmentation** with the module pattern. Prior to this I had used **sub-modules** which worked fairly well, though felt like at times it made my code overly complex. Perhaps **loose augmentation** would be a simpler or easier to implement.
 
-As an example I'll show how using **loose augmentation** has been working well for a data-viz / web-mapping project that I'm current working on with some other folks, [Landscapes of Profit](https://github.com/NYC-REIC/interactive). (*side note: You can learn more about the project's motivation and methodology at [landscapesofprofit.com](http://www.landscapesofprofit.com)*). I'll also show how I used **sub-modules** for a project I created previously, [The Bushwick Community Map](http://www.bushwickcommunitymap.org).
+As an example I'll show how using **loose augmentation** has been working well for a data-viz / web-mapping project that I'm current working on with some other folks, [Landscapes of Profit](https://github.com/NYC-REIC/interactive). (_side note: You can learn more about the project's motivation and methodology at [landscapesofprofit.com](http://www.landscapesofprofit.com)_). I'll also show how I used **sub-modules** for a project I created previously, [The Bushwick Community Map](http://www.bushwickcommunitymap.org).
 
 ## The Module Pattern
+
 I'll start by showing an example of an **Immediately Invoked Function Expression** (IIFE). This creates a **closure** and informs JavaScript to call the function as soon as the script has been loaded. Right now this may seem a little abstract, but the benefit of doing this becomes more apparent as we move to the module pattern in this next example.
 
 ```js
+(function () {
+  // all our code goes in here...
+  // the following won't be accessible
+  // outside of this anonymous function
+  var myPrivateVariable = "hi!";
 
-(function() {
-    // all our code goes in here...
-    // the following won't be accessible
-    // outside of this anonymous function
-    var myPrivateVariable = "hi!";
+  function logVar() {
+    console.log(myPrivateVariable);
+  }
 
-    function logVar() {
-      console.log(myPrivateVariable);
-    }
-
-    logVar();
-
+  logVar();
 })();
 
 // output from the console:
 // "hi!"
-
 ```
 
-The next step involves assigning the IIFE to a variable, what you might decide to call `app` (a naming convention that others reading your code will likely understand). This example, like the previous, uses another IIFE which tells JavaScript to call the function as soon as the script has been loaded. Again, all variables and functions declared inside the `app` are **private** or *not accessible* outside of `the function`, that is unless they are **returned** by the anonymous function within the IIFE.
+The next step involves assigning the IIFE to a variable, what you might decide to call `app` (a naming convention that others reading your code will likely understand). This example, like the previous, uses another IIFE which tells JavaScript to call the function as soon as the script has been loaded. Again, all variables and functions declared inside the `app` are **private** or _not accessible_ outside of `the function`, that is unless they are **returned** by the anonymous function within the IIFE.
 
 ```js
+var app = (function () {
+  // "my" is an object that will contain our public variables
+  // we will add things to this and return it at the end
+  var my = {};
 
-var app = (function() {
+  var myPrivateVariable = "hi!";
 
-    // "my" is an object that will contain our public variables
-    // we will add things to this and return it at the end
-    var my = {};
+  // this next variable will be accessible as we return it
+  my.publicVariable = "waz up???";
 
-    var myPrivateVariable = "hi!";
+  function logPrivate() {
+    console.log(myPrivateVariable);
+  }
 
-    // this next variable will be accessible as we return it
-    my.publicVariable = "waz up???"
+  logPrivate();
 
-    function logPrivate() {
-      console.log(myPrivateVariable);
-    }
-
-    logPrivate();
-
-    return my;
-
+  return my;
 })();
 
 // in the console the following is displayed,
@@ -84,7 +80,6 @@ console.log(app.publicVariable);
 
 console.log(myPrivateVariable);
 // returns: Uncaught ReferenceError: myPrivateVariable is not defined
-
 ```
 
 If we load our code in a browser, bust open our JavaScript console, and type in `app.` we see that we have access to `publicVariable` but not `myPrivateVariable`. This is because we exposed the variable `publicVariable` by attaching it to the object `my` and then returning `my` at the end of the code inside our function. The variable `myPrivateVariable` stays hidden within our `app` and cannot be referenced outside of the `app`.
@@ -94,65 +89,58 @@ This helps accomplish one of the "best practices" of programming in JavaScript f
 We can also import globals into our module as well and act on them:
 
 ```js
+var app = (function (w, d, $) {
+  var my = {};
 
-var app = (function(w,d,$) {
-    var my = {};
+  var myPrivateVariable = "hi!";
 
-    var myPrivateVariable = "hi!";
+  // these next variables will be accessible as
+  // we return them in the `my` object
+  my.$body = $("body");
+  my.hash = w.location.hash;
+  my.divs = d.querySelectorAll("div");
 
-    // these next variables will be accessible as
-    // we return them in the `my` object
-    my.$body = $('body');
-    my.hash = w.location.hash;
-    my.divs = d.querySelectorAll('div');
-
-    return my;
-
+  return my;
 })(window, document, jQuery);
 
 // we can then use the public "$body" variable to create an h1 tag in
 // the DOM's body element that contains the text "Hello World!"
-app.$body.html('<h1>Hello World!</h1>');
-
+app.$body.html("<h1>Hello World!</h1>");
 ```
 
 In the code above, we are importing three **global** objects, **aliasing them**, and using them in our module. This method of organizing code is less prone to bugs than using lots of global variables. It helps with isolating and reusing our code in new contexts. It lets us shorten (or **alias**) names for imported globals if we need to, eg: `window` can be aliased as `w` for short. Another reason I like this pattern is that it lets me keep track of what globals I'm using in each of my modules, kind of like the `require()` method in NodeJS. Not to mention you don't need a third party library to implement it. Though if you are used to using NodeJS then [Browserify](http://browserify.org/) is super helpful for importing Node modules in your client side JavaScript.
 
 ## Loose Augmentation vs. Sub Modules
-Now back to the original point of writing this post! Previously I used the **sub-module** method with the module pattern. In the following example assume each time  `var app = app || {};` is stated that it is referring to a global variable that may or may not already exist.
+
+Now back to the original point of writing this post! Previously I used the **sub-module** method with the module pattern. In the following example assume each time `var app = app || {};` is stated that it is referring to a global variable that may or may not already exist.
 
 ```js
 // app.map.js
 var app = app || {};
 
-app.map = (function($,CDB, L) {
-   // all of our code for the "web map" here
+app.map = (function ($, CDB, L) {
+  // all of our code for the "web map" here
 })(jQuery, cartodb, L);
 
 //------ new file ------
 // app.gui.js
 var app = app || {};
 
-app.gui = (function(w,d,$) {
-   // all of our code for the GUI here
+app.gui = (function (w, d, $) {
+  // all of our code for the GUI here
 })(window, document, jQuery);
-
 ```
 
 In the above example `app.map` and `app.gui` live in two separate JavaScript files and contain the code for the map and user interface respectively. This is helpful when we are creating a more complex app and don't want to end up with a single, insanely long JavaScript file. Instead we split our code into separate **modules**, with each module living in a separate file. The sub-module method works fairly well but I found that I wanted to try **loose augmentation** for my most recent project, [Landscapes of Profit](https://github.com/nyc-reic/interactive/). Here's an example of using loose augmentation:
 
 ```js
+var app = (function (parent, $) {
+  parent.myMethod = function () {
+    // a method that does something related to this module...
+  };
 
-var app = (function(parent, $){
-
-    parent.myMethod = function() {
-      // a method that does something related to this module...
-    };
-
-    return parent;
-
+  return parent;
 })(app || {}, jQuery);
-
 ```
 
 **Loose augmentation** works by declaring the variable `app` when we define our module function, rather than declaring it beforehand with `var app = app || {};`. We also import our app via `app || {}` into our module and alias it as `parent`. Like the earlier examples this allows us to "augment" or add things to our `app`, similar how we did with declaring `var my = {};` and returning it at the end. I've found that the benefit of this approach is that it seems to work a little better with JavaScript's asynchronous nature. I ran into a problem with the sub-module pattern in coding [Am I Rent Stabilized?](https://github.com/clhenrick/am-i-rent-stabilized) where all my modules had to load in a very specific order. The approach demonstrated above seems to be a little more flexible.
@@ -161,42 +149,39 @@ In both approaches (loose augmentation and sub-modules) I've found it useful to 
 
 ```js
 // app.el.js
-var app = (function(parent, w, d, $, L, cartodb) {
-
+var app = (function (parent, w, d, $, L, cartodb) {
   // "el" is just an object we store our "public" variables in
   // so we can pass them between modules
   parent.el = {
-    baselayer : new L.StamenTileLayer("toner-lite"),
-    sql : new cartodb.SQL({ user: 'chenrick' }),
-    taxLots : "nyc_flips_pluto_150712",
-    url : w.location.href,
-    hashurl : null,
-    map : null,
-    layerSource : null,
-    cdbOptions : null,
-    dataLayer : null,
+    baselayer: new L.StamenTileLayer("toner-lite"),
+    sql: new cartodb.SQL({ user: "chenrick" }),
+    taxLots: "nyc_flips_pluto_150712",
+    url: w.location.href,
+    hashurl: null,
+    map: null,
+    layerSource: null,
+    cdbOptions: null,
+    dataLayer: null,
     queriedData: null,
     sum: null,
     tax: null,
-    cartocss : null,
-    featGroup : null,
-    bounds : null,
-    center : null,
-    topPoint : null,
-    centerPoint : null
+    cartocss: null,
+    featGroup: null,
+    bounds: null,
+    center: null,
+    topPoint: null,
+    centerPoint: null,
   };
 
   return parent;
-
 })(app || {}, window, document, jQuery, L, cartodb);
-
 ```
 
 Then we create another module that contains all the logic for creating the map using Leaflet.JS and adding our geospatial data layer with CartoDB.JS.
 
 ```js
 // app.map.js
-var app = (function(parent, $, L, cartodb){
+var app = (function (parent, $, L, cartodb) {
   // sets up the Leaflet Map and loads the data layer from CartoDB
 
   // reassign the name of our "public" variable container
@@ -206,62 +191,62 @@ var app = (function(parent, $, L, cartodb){
   console.log(el);
 
   parent.map = {
-
-    init : function() {
+    init: function () {
       //  map.init() will be called to create our map
       // parameters to pass to Leaflet, such as the map center and zoom
       var params = {
-        center : [40.694631,-73.925028],
-        minZoom : 9,
-        maxZoom : 18,
-        zoom : 15,
-        zoomControl : false,
+        center: [40.694631, -73.925028],
+        minZoom: 9,
+        maxZoom: 18,
+        zoom: 15,
+        zoomControl: false,
         infoControl: false,
-        attributionControl: true
+        attributionControl: true,
       };
 
-      el.map = new L.Map('map', params);
+      el.map = new L.Map("map", params);
       el.baselayer.addTo(el.map);
       el.featureGroup = L.featureGroup().addTo(el.map);
       app.map.getCartoDB(el.map);
 
-      new L.Control.Zoom({ position: 'bottomright' }).addTo(el.map);
+      new L.Control.Zoom({ position: "bottomright" }).addTo(el.map);
     },
 
-    getCartoDB : function(m) {
+    getCartoDB: function (m) {
       // cartodb layer settings for the taxlot data
       el.layerSource = {
-          user_name : "chenrick",
-          type : "cartodb",
-          sublayers : [{
-              sql : "SELECT * FROM " + el.taxLots,
-              cartocss : el.cartocss.taxLots,
-              interactivity: ""
-          }]
+        user_name: "chenrick",
+        type: "cartodb",
+        sublayers: [
+          {
+            sql: "SELECT * FROM " + el.taxLots,
+            cartocss: el.cartocss.taxLots,
+            interactivity: "",
+          },
+        ],
       };
 
       // cartodb layer params
       el.cdbOptions = {
-          cartodb_logo: false,
-          legends: false,
-          https: true,
-          attributionControl: true
+        cartodb_logo: false,
+        legends: false,
+        https: true,
+        attributionControl: true,
       };
 
       // create the cartodb layer and add it to the map
-      cartodb.createLayer(m, el.layerSource, el.cdbOptions)
-          .addTo(m)
-          .on('done',function(layer) {
-              layer.setZIndex(10); // make sure the cartodb layer is on top
-              el.dataLayer = layer.getSubLayer(0);
-          });
-    }
-  }
+      cartodb
+        .createLayer(m, el.layerSource, el.cdbOptions)
+        .addTo(m)
+        .on("done", function (layer) {
+          layer.setZIndex(10); // make sure the cartodb layer is on top
+          el.dataLayer = layer.getSubLayer(0);
+        });
+    },
+  };
 
   return parent;
-
 })(app || {}, jQuery, L, cartodb);
-
 ```
 
 There are some other modules I won't go into at the moment, but once I have all of the code set up and working the way I want I usually have a final module that starts up the app when its function is called.
@@ -269,16 +254,15 @@ There are some other modules I won't go into at the moment, but once I have all 
 ```js
 // app.init.js
 
-var app = (function(parent){
+var app = (function (parent) {
   // start up the app!
-  parent.init = function() {
+  parent.init = function () {
     app.splitHash();
     app.map.init();
     app.eventListeners();
-  }
+  };
 
   return parent;
-
 })(app || {});
 ```
 
@@ -297,7 +281,7 @@ In the bottom of the `<body>` tag in the `.html` file where I am using the code 
 
 <!-- this script starts the app after the DOM is loaded -->
 <script type="text/javascript">
-  jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     app.init();
   });
 </script>

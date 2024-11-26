@@ -17,20 +17,20 @@ tags:
 
 ## Intro and some background on (OK)LCH
 
-Recently I've been getting to know the *Lightness, Chroma, and Hue* (typically abbreviated as *LCH* or *HCL*) color space by experimenting with using it for programmatically generating custom color palettes for use in data visualization. There is a lot of existing writing on the web about the LCH color space and using it in web design (recommended reading: Lea Verou's [LCH colors in CSS][lch-colors-in-css] and [OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by Evil Martians) so I'll try to be brief and only touch on the basics of LCH in this post's introduction.
+Recently I've been getting to know the _Lightness, Chroma, and Hue_ (typically abbreviated as _LCH_ or _HCL_) color space by experimenting with using it for programmatically generating custom color palettes for use in data visualization. There is a lot of existing writing on the web about the LCH color space and using it in web design (recommended reading: Lea Verou's [LCH colors in CSS][lch-colors-in-css] and [OKLCH in CSS: why we moved from RGB and HSL][oklch-in-css] by Evil Martians) so I'll try to be brief and only touch on the basics of LCH in this post's introduction.
 
 The "TLDR" is that the LCH color space provides a way to manipulate colors while maintaining lightness that is perceptually similar across different hues. That might not sound like a big deal, but when you consider the implications it has for working with color programmatically, I think it's pretty huge, and it's why I decided to write about it here.
 
 > **Quick fact**: the LCH color space is really the [(CIE)LAB][wikipedia-cielab] color space with two different channels, chroma and hue, that are more intuitive for specifying a color than LAB's "a" and "b" channels. Chroma (which is similar to saturation) and hue are "polar coordinates" of the LAB color space, while "a" and "b" are cartesian coordinates for specifying green - red and blue - yellow respectively. The LCH color space was created to make working with LAB more intuitive and user friendly.
 
-The *"maintains perceptual lightness across hues"* part of the LCH color space is what makes it different than the more commonly used HSL and HSV color spaces. In HSL or HSV when the same lightness value is used with different hues, the resulting colors may look noticeably different in terms of their perceived lightness. In other words, the colors will look lighter or darker depending on their hue even though they share the same lightness value. This is a problem that the LAB and LCH color spaces attempt to solve.
+The _"maintains perceptual lightness across hues"_ part of the LCH color space is what makes it different than the more commonly used HSL and HSV color spaces. In HSL or HSV when the same lightness value is used with different hues, the resulting colors may look noticeably different in terms of their perceived lightness. In other words, the colors will look lighter or darker depending on their hue even though they share the same lightness value. This is a problem that the LAB and LCH color spaces attempt to solve.
 
 To quickly demonstrate the difference between HSL and LCH here are a couple of different colors defined using HSL and then LCH with the same lightness value applied to them in both color spaces.
 
 Here are the HSL colors:
 
 {% set caption %}
-  Two color swatches, blue and magenta, defined using the HSL color space with a shared saturation value of 100% and lightness value of 50%. The blue is noticeably darker than the magenta despite using the same lightness value.
+Two color swatches, blue and magenta, defined using the HSL color space with a shared saturation value of 100% and lightness value of 50%. The blue is noticeably darker than the magenta despite using the same lightness value.
 {% endset %}
 
 {{ colorSwatchFigure([{ fill: "hsl(250 100% 50%)", textFill: "#fff" }, { fill: "hsl(300 100% 50%)", textFill: "#333" }], caption) }}
@@ -38,7 +38,7 @@ Here are the HSL colors:
 And here are the LCH colors with the same lightness values:
 
 {% set caption %}
-  Two color swatches, blue and magenta, defined using the OKLCH color space with a shared chroma value of 0.25 and lightness value of 0.5. The two colors appear to be uniform in terms of their lightness and color richness.
+Two color swatches, blue and magenta, defined using the OKLCH color space with a shared chroma value of 0.25 and lightness value of 0.5. The two colors appear to be uniform in terms of their lightness and color richness.
 {% endset %}
 
 {{ colorSwatchFigure([{ fill: "oklch(0.5 0.3 270)", textFill: "#fff" }, { fill: "oklch(0.5 0.3 328)", textFill: "#fff" }], caption) }}
@@ -119,7 +119,7 @@ Starting with a single color, say `#f97f00`, a vibrant orange (which happens to 
 To demonstrate, here is a palette of five colors I created using this technique starting with the original color of `#f97f00`:
 
 {% set caption %}
-  A programmatically generated color palette of five colors. Each color shares the same lightness and chroma value, and are equidistant from one another in terms of hue. Such a palette could be suitable for a categorical color scheme for use in data visualization.
+A programmatically generated color palette of five colors. Each color shares the same lightness and chroma value, and are equidistant from one another in terms of hue. Such a palette could be suitable for a categorical color scheme for use in data visualization.
 {% endset %}
 
 {{ colorSwatchFigure([{"fill":"#f97f00","showText":false,"width":32,"height":32},{"fill":"#89b80c","showText":false,"width":32,"height":32},{"fill":"#00c5ce","showText":false,"width":32,"height":32},{"fill":"#7a9bff","showText":false,"width":32,"height":32},{"fill":"#ef71c5","showText":false,"width":32,"height":32}], caption) }}
@@ -129,7 +129,7 @@ What's interesting to me about this is that the end result looks consistent with
 We might reduce the lightness of all colors but one if we want to use one of the palette's colors as an accent color among the group to help it stand out:
 
 {% set caption %}
-  The same five color palette as previously shown in terms of hue and chroma, but with all colors reduced to 35% lightness except the second to last swatch. This could be a useful technique for creating a categorical palette where one category is meant to stand out.
+The same five color palette as previously shown in terms of hue and chroma, but with all colors reduced to 35% lightness except the second to last swatch. This could be a useful technique for creating a categorical palette where one category is meant to stand out.
 {% endset %}
 
 {{ colorSwatchFigure([{"fill":"oklch(35% 0.18116 53.923)","showText":false,"width":32,"height":32},{"fill":"oklch(35% 0.18116 125.92)","showText":false,"width":32,"height":32},{"fill":"oklch(35% 0.18116 197.92)","showText":false,"width":32,"height":32},{"fill":"oklch(75% 0.18116 269.92)","showText":false,"width":32,"height":32},{"fill":"oklch(35% 0.18116 341.92)","showText":false,"width":32,"height":32}], caption, false) }}
@@ -158,7 +158,7 @@ We will start with a different color, the blue that is used for this website's t
 
 We can create a palette of _n_ colors by adjusting the lightness value of `oklch`. First we decide what the highest amount of lightness we want for the starting color should be, say 95%, and what the lowest amount of lightness we want for the last color should be, say 40%. Then based on the value of _n_ we create the middle colors by incrementally adjusting the lightness value while keeping the hue value the same.
 
-We also adjust the chroma value to help emphasize the change across the palette. Conversely to lightness we start with a *minimum level* of chroma, perhaps `0.04`, for the lightest color and determine the *maximum value* for the darkest color, perhaps `0.15`. We adjust the middle colors based on our _n_ value.
+We also adjust the chroma value to help emphasize the change across the palette. Conversely to lightness we start with a _minimum level_ of chroma, perhaps `0.04`, for the lightest color and determine the _maximum value_ for the darkest color, perhaps `0.15`. We adjust the middle colors based on our _n_ value.
 
 For computing the lightness and chroma values between the starting and ending color swatches I found it helpful to use [D3JS's linear scales](https://d3js.org/d3-scale/linear) which makes it easy to interpolate between two values.
 
@@ -189,7 +189,15 @@ What if instead of creating new colors using OKLCH we used it to analyze popular
 Let's take a sequential, single hue color scheme from the [Color Brewer][color-brewer] color scheme library to try this out with. I'm obviously partial to orange, so I've chosen the "oranges" color scheme with seven discrete colors. I chose seven colors instead of five like in the previous palettes since it will give us more granular data to analyze.
 
 ```js
-const oranges = ['#feedde','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#8c2d04'];
+const oranges = [
+  "#feedde",
+  "#fdd0a2",
+  "#fdae6b",
+  "#fd8d3c",
+  "#f16913",
+  "#d94801",
+  "#8c2d04",
+];
 ```
 
 {% set caption %}
@@ -201,22 +209,22 @@ Seven color swatches belonging to the "oranges" sequential color scheme from the
 Using ColorJS we convert each sRGB swatch from the Color Brewer oranges palette to OKLCH:
 
 ```js
-import Color from 'https://colorjs.io/dist/color.js';
+import Color from "https://colorjs.io/dist/color.js";
 
 // the oranges color palette from Color Brewer
 const oranges = [
-  '#feedde',
-  '#fdd0a2',
-  '#fdae6b',
-  '#fd8d3c',
-  '#f16913',
-  '#d94801',
-  '#8c2d04'
+  "#feedde",
+  "#fdd0a2",
+  "#fdae6b",
+  "#fd8d3c",
+  "#f16913",
+  "#d94801",
+  "#8c2d04",
 ];
 
 // function that 1. converts a string representation of a color into a ColorJS object
 // and 2. converts the input colorspace to the oklch colorspace
-const toColorOklch = (colorString) => new Color(colorString).to('oklch');
+const toColorOklch = (colorString) => new Color(colorString).to("oklch");
 
 // first convert our color strings to ColorJS Color objects in the oklch colorspace
 const orangesOklch = oranges.map(toColorOklch);
@@ -229,13 +237,13 @@ console.log(orangesOklchDisplay);
 
 // logs the following:
 [
-  'oklch(95.56% 0.0272 63.957)',
-  'oklch(88.561% 0.07849 67.145)',
-  'oklch(81.351% 0.12475 60.007)',
-  'oklch(75.205% 0.1635 52.742)',
-  'oklch(67.909% 0.18695 45.415)',
-  'oklch(59.95% 0.19166 39.006)',
-  'oklch(43.57% 0.13654 39.012)'
+  "oklch(95.56% 0.0272 63.957)",
+  "oklch(88.561% 0.07849 67.145)",
+  "oklch(81.351% 0.12475 60.007)",
+  "oklch(75.205% 0.1635 52.742)",
+  "oklch(67.909% 0.18695 45.415)",
+  "oklch(59.95% 0.19166 39.006)",
+  "oklch(43.57% 0.13654 39.012)",
 ];
 ```
 
@@ -332,7 +340,7 @@ By increasing the first color's lightness and decreasing the second color's ligh
 
 Adjusting the colors using OKCLH results in our new colors looking fairly similar to the original colors. To be honest, when making very small adjustments like this I'm not entirely sure that the LCH color space has a huge advantage over HSL, so you might want to try using either color space to see which result you prefer. I'll also admit that I'm not the first to think of using LCH for this purpose, Eugene Fedorenko wrote about it back in 2021 in the post [Accessible Palette: stop using HSL for color systems][accessible-color-palette-stop-using-hsl].
 
-It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is *the bare minimum* color contrast ratio for text to be considered accessible according to WCAG. A ratio of 7 to 1 is required for "triple A" (AAA) conformance and will make text more accessible to a wider segment of the population. Remember that *conformance* doesn't necessarily mean *usable* when it comes to WCAG and accessibility, and that we should always strive to make things as usable to the widest range of people as possible.
+It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is _the bare minimum_ color contrast ratio for text to be considered accessible according to WCAG. A ratio of 7 to 1 is required for "triple A" (AAA) conformance and will make text more accessible to a wider segment of the population. Remember that _conformance_ doesn't necessarily mean _usable_ when it comes to WCAG and accessibility, and that we should always strive to make things as usable to the widest range of people as possible.
 
 > **A word of caution:** when using this approach keep in mind that adjusting the OKLCH's lightness value may result in creating a color with a gamut outside of sRGB and that browsers will auto-correct such a color if the user's device does not support HD color gamuts such as P3 and Rec2020. This auto gamut correction could result in a color contrast different from the HD color contrast, which might mean the sRGB color contrast fails WCAG. For this reason make sure to always provide a intentional sRGB fallback color when using and adjusting a OKLCH CSS color to fix color contrast issues.
 

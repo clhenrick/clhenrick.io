@@ -8,6 +8,7 @@ tags:
   - ES6
   - Redux
 ---
+
 If you use the [ES6 Spread Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to clone an object and overwrite that object's properties, be careful of the order operations! This recently tripped me up while working on the [interactive map and trip planner for the East Coast Greenway](https://github.com/EastCoastGreenwayAlliance/ecg-map), specifically implementing a [Redux reducer](http://redux.js.org/docs/basics/Reducers.html) that manages the application state relating to planning a trip along the East Coast Greenway. Here's the issue I ran into:
 
 Say I have an object:
@@ -15,7 +16,7 @@ Say I have an object:
 ```js
 const o1 = {
   a: 1,
-  b: 1
+  b: 1,
 };
 ```
 
@@ -26,7 +27,7 @@ If I did this:
 ```js
 const o2 = {
   b: 5,
-  ...o1
+  ...o1,
 };
 ```
 
@@ -53,7 +54,7 @@ So to fix the above I would need to do:
 ```js
 const o2 = {
   ...o1,
-  b: 5
+  b: 5,
 };
 ```
 
@@ -62,7 +63,7 @@ This is because [Babel](https://babeljs.io/) converts these statements into [Obj
 So in the wrong example, the code would end up being transformed to:
 
 ```js
-Object.assign({ b: 5 }, o1)
+Object.assign({ b: 5 }, o1);
 ```
 
 and thus the property `b` of `o1` overwrites `{ b: 5 }` !
@@ -70,7 +71,7 @@ and thus the property `b` of `o1` overwrites `{ b: 5 }` !
 Where as the correct example would be transformed to:
 
 ```js
-Object.assign({}, o1, { b: 5 })
+Object.assign({}, o1, { b: 5 });
 ```
 
 and we'd end up with the desired output. This is because `Object.assign()` merges properties of objects from left to right, so whatever object to the right will overwrite whatever object is to the left when the two objects have a shared property.
@@ -79,7 +80,7 @@ In the context of using Redux, this is an easy mistake to make inside of reducer
 
 ```js
 const defaultState = {
-  someProp: 'some value'
+  someProp: "some value",
 };
 
 function myReducer(state = defaultState, action) {

@@ -1,5 +1,9 @@
 ---
-redirectFrom: [/prototyping-with-observable-notebooks.html, /prototyping-with-observable-notebooks/]
+redirectFrom:
+  [
+    /prototyping-with-observable-notebooks.html,
+    /prototyping-with-observable-notebooks/,
+  ]
 title: "Observable Notebooks for Data Viz Prototyping"
 date: 2021-02-06
 teaser: "Elaborating on a prototyping process for a fellowship with Google.org"
@@ -18,6 +22,7 @@ tags:
 </figure>
 
 ## Intro
+
 The work discussed in this article stems from a [Google.org](https://www.google.org/) Fellowship that I was recently a part of with [Morehouse School of Medicine](https://www.msm.edu/)’s [Satcher Health Leadership Institute](https://satcherinstitute.org/). The goal of the fellowship was to help SHLI develop a "Health Equity Tracker" website that empowers Health Equity advocates with up to date public health data and data visualization dashboards. In this post I'll discuss the more technical nature of the data visualization prototyping work I did for the project that helped inform what the team built.
 
 In this post I will cover:
@@ -122,7 +127,7 @@ import {chart as chart2} with {my_data2 as data} from "@d3/bar-chart"
 import {chart as chart3} with {my_data3 as data} from "@d3/bar-chart"
 ```
 
-To solve this, I ended up making some reusable chart notebooks (such as a [reusable Choropleth Map](https://observablehq.com/@clhenrick/reusable-choropleth-map?collection=@clhenrick/custom-inputs)) that allow for importing a function that renders the chart. This makes using an approach such as *small multiples*, where you render many small charts of the same chart type showing different aspects of the same data, more feasible (be sure to take a look at [Zan Armstrong](https://www.zanarmstrong.com/)'s work on the [advantageous use of small multiples in data viz](https://www.youtube.com/watch?v=rdZZrrU62sc)).
+To solve this, I ended up making some reusable chart notebooks (such as a [reusable Choropleth Map](https://observablehq.com/@clhenrick/reusable-choropleth-map?collection=@clhenrick/custom-inputs)) that allow for importing a function that renders the chart. This makes using an approach such as _small multiples_, where you render many small charts of the same chart type showing different aspects of the same data, more feasible (be sure to take a look at [Zan Armstrong](https://www.zanarmstrong.com/)'s work on the [advantageous use of small multiples in data viz](https://www.youtube.com/watch?v=rdZZrrU62sc)).
 
 <figure>
   {% image 'marshall-project-small-multiples.png', 'A screenshot of a series of area charts of mortality by race above or below normal in the United States using a technique referred to as small multiples.' %}

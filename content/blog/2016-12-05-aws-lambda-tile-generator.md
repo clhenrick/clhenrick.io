@@ -13,7 +13,7 @@ tags:
 
 {% image 'aws-lambda-tiler.png', 'assortment of map tiles generated using the AWS Lambda Tiler' %}
 
-### _The following is a very small excerpt from the original post, you may read the full post at  [Hi.Stamen.com](https://hi.stamen.com/stamen-aws-lambda-tiler-blog-post-76fc1138a145)_
+### _The following is a very small excerpt from the original post, you may read the full post at [Hi.Stamen.com](https://hi.stamen.com/stamen-aws-lambda-tiler-blog-post-76fc1138a145)_
 
 <br />
 Recently at Stamen and thanks to a grant from the John S. and James L. Knight Foundation, we’ve been experimenting with a new way of generating raster map tiles using AWS Lambda with open source GIS software. If you haven’t heard of, or aren’t familiar with AWS Lambda:

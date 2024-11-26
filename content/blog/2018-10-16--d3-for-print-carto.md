@@ -11,6 +11,7 @@ tags:
 ---
 
 ## Intro
+
 Recently I've been working on a project that attempts to visualize how various job sectors have changed in the San Francisco Bay Area over time. I've chosen to do this through creating a series of maps and charts made with D3JS, the popular data visualization library for the web. These visualizations will eventually be included in the [Anti Eviction Mapping Project](https://www.antievictionmap.com/)'s forthcoming Atlas, to be published by [PM Press](http://www.pmpress.org). The Atlas project seeks to compile many of AEMP's interactive web maps and writings, plus some brand new work. The latter is where I fit in.
 
 Knowing from the outset of the project that the deliverables would be for print, and not the web, forced me to think about the design and development process in a slightly different way. This was partly due to the fact that I no longer had access to one of the necessary pieces of software I've used in the past for creating print maps. Previously I've used a combination of [QGIS](https://www.qgis.org/en/site/), the free and open source desktop GIS software; and [MAPublisher](https://www.avenza.com/mapublisher/), a plugin for Adobe Illustrator that allows for working with geospatial vector data in Illustrator. Unfortunately MAPublisher is not free nor is it open source, and the computer I happen to have a license on has just about bit the dust. Even if I did decide to shell out the [$1,399 for a new license](https://www.avenza.com/mapublisher/pricing/), at the time of this writing I didn't have a computer that I could install it on that fit the system requirements.
@@ -18,6 +19,7 @@ Knowing from the outset of the project that the deliverables would be for print,
 So what to do? I felt that my options were to either try to make the maps entirely in QGIS, using the Print Composer feature, or to explore making the maps using D3JS in the browser and exporting the rendered graphics for print some how. I ended up settling on the second option and I'm happy to say that I'm satisfied with the results. The rest of this blog post will be describing how I went about creating maps using D3JS in a way that was suitable for print. It assumes that you are familiar with a vector graphics editing software such as Adobe Illustrator, but if you aren't you may still find parts of this post helpful.
 
 ## Why D3JS?
+
 When using D3JS one typically thinks of its utility for creating highly customized, dynamic, and _interactive_ visualizations for the web; not for making _static_ graphics for print. However, many news outlets such as the New York Times use D3 for both their interactive and print graphics. In fact, the primary author of D3JS, Mike Bostock, created it while working as a graphics editor at the NY Times!
 
 If you're not familiar with D3JS and its usefulness when it comes to creating geographic maps, here's a short primer. Feel free to skip ahead to the next section otherwise.
@@ -35,9 +37,11 @@ D3's close cousin, `TopoJSON`, allows for convenient cartographic techniques lik
 Lastly I've found that making maps with code allows for quick iteration on ideas, while providing "free" documentation of your process. This is invaluable when you'd like to share how you created a visualization with others, or remind yourself how you managed to create something 6 months, a year, or more from now. I often start out the data viz process by making many prototypes of charts, maps, and ideas, where one prototype builds off another (by "prototype" I mean something that is "quick and dirty", not a final product, contains minimal UI, isn't "pixel perfect"). Using code makes this process fairly straight forward, and once I've arrived at something I'm happy with I can clean up the prototype and port it to whatever format I need (e.g. a React application).
 
 ## Tips and Tricks
+
 Here are the notes on how I worked with SVG and D3 in order to prepare my map for editing in Illustrator.
 
 ### Exporting the SVG
+
 The question that is probably the most important: how to get maps rendered with D3JS out of the web and into vector editing software? I'm glad you asked! Perhaps the most straight forward and easiest method is to use the [SVG Crowbar](https://nytimes.github.io/svg-crowbar/) bookmarklet created by folks at NY Times. Using it is very simple, when you visit a web page that has SVG elements on it and run it, all SVG elements will be downloaded auto-magically as `.svg` files. The caveats to this tool are that it only works in the Chrome web browser, and that you need to be semi-cautious in how you apply CSS to your SVG. For example the authors recommend to not use a descendant selector, `>`, watch out for using fonts that Adobe Illustrator may not recognize, and that some styles that cascade downward to SVG elements won't show up after downloading the SVG.
 
 I ended up using a combination of SVG Crowbar and [Observable's "Saving SVG" technique](https://beta.observablehq.com/@mbostock/saving-svg) for exporting my graphics. This was the result of moving my prototype map to an [Observable Notebook](https://beta.observablehq.com/), which is a new Javascript based notebook that runs in the browser. Similar to Jupyter notebooks that are typically used for data exploration and analysis, Observable let's you work with data analysis and visualization but in a reactive and asynchronous programming environment with Javascript.
@@ -45,24 +49,28 @@ I ended up using a combination of SVG Crowbar and [Observable's "Saving SVG" tec
 Caution! Once you have your map exported as SVG, it's effectively static, meaning that you lose all attributes of your geospatial data. If you decide to make changes to that data at a later point in time, you'll have to go through the export process again. There are some tricks to making this less painful and time consuming however, which I'll mention below.
 
 ### Structuring SVG for Illustrator
+
 Here are some techniques to keep your SVG neat and tidy when opening it in Illustrator, and to make the export/import process go smoother.
 
 First, you will want to group each of your various map layers and apply HTML "id" attributes to them. For example here is code that creates a SVG group for a "places labels" map layer, gives it an "id" attribute of `"place-labels"`, and applies SVG text elements as its children:
 
 ```js
 // places labels
-svg.append("g").attr("id", "place-labels")
+svg
+  .append("g")
+  .attr("id", "place-labels")
   .selectAll(".place-label")
   .data(places.features)
-  .enter().append("text")
+  .enter()
+  .append("text")
   .classed("place-label", true)
-  .attr("x", d => path.centroid(d)[0])
-  .attr("y", d => path.centroid(d)[1] - textOffset.y)
+  .attr("x", (d) => path.centroid(d)[0])
+  .attr("y", (d) => path.centroid(d)[1] - textOffset.y)
   .attr("text-anchor", "end")
   .attr("fill", greys[7])
   .style("font", "7px sans-serif")
   .style("text-shadow", textShadow)
-  .text(d => d.properties.name)
+  .text((d) => d.properties.name);
 ```
 
 Using SVG groups and id attributes will ensure that when you open your exported SVG file in Illustrator all of your layers will be neatly contained and identifiable. This is important as it simplifies the process of moving grouped features into Illustrator layers to make any post-export editing easier (more on this in the next section).
@@ -71,9 +79,10 @@ I made sure that all styling was applied inline instead of using a CSS style tag
 
 If exporting multiple maps of the same geographic area but with different data overlays, I found that creating a simple UI to select different views of your data can be helpful. This could be as simple as a dropdown menu, radio buttons, or checkboxes; and [here's a good example](https://bl.ocks.org/mbostock/5872848) of how to use the `d3-dispatch` module to accomplish this. Doing this can be a little more programming intensive, so if you're new to programming and/or D3 expect to have to put a little more work in.
 
-An alternative to a UI for selecting different views of your data could be to render separate maps  on the same page, similar to [a small multiples visualization](https://bl.ocks.org/mbostock/1157787). The downside to this is that if your maps are very detailed or resource intensive, and you have lots of them, then the browser might become bogged down and sluggish. With programming there's typically not one way or right way to accomplish something, so I encourage you to experiment.
+An alternative to a UI for selecting different views of your data could be to render separate maps on the same page, similar to [a small multiples visualization](https://bl.ocks.org/mbostock/1157787). The downside to this is that if your maps are very detailed or resource intensive, and you have lots of them, then the browser might become bogged down and sluggish. With programming there's typically not one way or right way to accomplish something, so I encourage you to experiment.
 
 ### Sizing and Cropping the Map
+
 One of the trickiest parts I've found in this workflow is the process of sizing and cropping the map's extent, when that extent is arbitrarily determined. This is often the case when making maps for print!
 
 It can be painstaking to have to resize each of your exported maps from the size they were rendered at in the browser to the size they'll be printed at, e.g. 8.5" x 11", so getting the map extent and SVG dimensions correct on the web _before exporting the SVG_ can be a huge time saver.
@@ -97,39 +106,39 @@ Here's the secret to cropping your map area once you have your map frame rectang
 ```js
 var mapFrameCoords = [
   projection.invert([403, 561]),
-  projection.invert([737, 993])
-]
-
-// ends up being:
-[
-  [-122.54644297642132, 37.989209933976475]
-  [-121.74157680240731, 37.19360698897229]
-]
+  projection.invert([737, 993]),
+][
+  // ends up being:
+  [-122.54644297642132, 37.989209933976475][
+    (-121.74157680240731, 37.19360698897229)
+  ]
+];
 ```
 
 Next, we can use those longitude latitude coordinates to create a GeoJSON linestring feature that we can pass to D3's `projection.fitSize()` method. The tricky part is that we can't _both_ invert our pixel coordinates _and_ fit our map extent to the resulting lon lat coordinates at the same time! To get around this, I "hard coded" the GeoJSON:
 
 ```js
 var mapExtent = {
-  "type": "Feature",
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
+  type: "Feature",
+  geometry: {
+    type: "LineString",
+    coordinates: [
       [-122.54644297642132, 37.989209933976475],
-      [-121.74157680240731, 37.19360698897229]
-    ]
-  }
-}
+      [-121.74157680240731, 37.19360698897229],
+    ],
+  },
+};
 ```
 
 Now that we have a GeoJSON feature that represents the desired extent of our map area, we can pass it to `projection.fitSize()` to crop our map area as follows:
 
 ```js
 // california state plane 3 https://github.com/veltman/d3-stateplane
-projection = d3.geoConicConformal()
+projection = d3
+  .geoConicConformal()
   .parallels([37 + 4 / 60, 38 + 26 / 60])
   .rotate([120 + 30 / 60], 0)
-  .fitSize([width, height], mapExtent) // <--- add geojson here
+  .fitSize([width, height], mapExtent); // <--- add geojson here
 ```
 
 Now when the D3 renders our map, it will be cropped to our desired extent.
@@ -137,6 +146,7 @@ Now when the D3 renders our map, it will be cropped to our desired extent.
 Overall the goal in prepping our map SVG is getting things "good enough" knowing that any fine tuning can be done in Illustrator, for example adjusting the placement of labels for cities and counties. The next section will cover what happens in Illustrator.
 
 ## Editing in Adobe Illustrator
+
 Now that we've prepped our SVG with D3 for importing into Illustrator and exported our SVG from the browser to a local file using SVG Crowbar, it's time to open it in Illustrator. Here's what a sample exported SVG looks like when opening it:
 
 {% image 'd3-print-ai-svg-in-ai.png', 'sample svg map opened in illustrator' %}
@@ -161,17 +171,18 @@ Another benefit of using a template to create your maps is that if you need to d
 
 Other adjustments I made with my maps in Illustrator were as follows:
 
-  - Adding a title and legend
+- Adding a title and legend
 
-  - Adjusting of place name labels as needed for each map so that they avoid overlap with areas that have dark fill colors
+- Adjusting of place name labels as needed for each map so that they avoid overlap with areas that have dark fill colors
 
-  - Converting the file to a CMYK color space
+- Converting the file to a CMYK color space
 
-  - Creating an action to automate exporting to PDF
+- Creating an action to automate exporting to PDF
 
 The last part was important as I wanted to deliver the maps as PDF files, not Illustrator files. In the PDF settings I typically choose "Press Quality" for the quality setting. After I have this "save to pdf" action defined I then open all my `.ai` map files and run the action, which will save the file in a directory of my choosing (I typically keep `.pdf` and `.ai` files separate from one another to avoid accidentally editing the `.pdf` files), and then close the file for me so that I'm not tempted to mess with it after it's been saved to a PDF.
 
 ## Caveats
+
 There are some drawbacks to this approach, of course, and I wouldn't recommend it for every project. Here's a short list of things to keep in mind when using this approach.
 
 - Most obviously, you'll need to be somewhat familiar with or comfortable learning D3JS, which initially comes with a steep learning curve, especially if you're not familiar with Javascript, CSS, and web standards such as SVG and asynchronous operations.
