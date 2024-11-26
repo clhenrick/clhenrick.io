@@ -3,7 +3,10 @@
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-min-width, 20rem), 1fr));
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--card-min-width, 20rem), 1fr)
+  );
   gap: 1.5rem;
 }
 
@@ -66,8 +69,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .card {
     transition:
-    border ease-in .2s,
-    box-shadow ease-in .2s;
+      border ease-in 0.2s,
+      box-shadow ease-in 0.2s;
   }
 }
 

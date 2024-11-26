@@ -30,7 +30,7 @@ main p:first-of-type {
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) .js-enabled .project-filters {
-    --button-bg-pressed:var(--color-turquoise-light);
+    --button-bg-pressed: var(--color-turquoise-light);
     --button-bg: var(--color-turquoise);
     --button-text-color: var(--color-gray-90);
     --button-text-color-pressed: var(--color-blue-3);
@@ -38,7 +38,7 @@ main p:first-of-type {
 }
 
 :root[data-theme="dark"] .js-enabled .project-filters {
-  --button-bg-pressed:var(--color-turquoise-light);
+  --button-bg-pressed: var(--color-turquoise-light);
   --button-bg: var(--color-turquoise);
   --button-text-color: var(--color-gray-90);
   --button-text-color-pressed: var(--color-blue-3);
