@@ -38,9 +38,6 @@
 
 .swatch-container svg {
   width: 50%;
-}
-
-.swatch-container svg {
   pointer-events: none;
 }
 
