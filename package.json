@@ -14,7 +14,7 @@
     "find-and-replace-md-img-tags": "zx scripts/find-and-replace-md-img-tags.mjs",
     "optimize-images": "zx scripts/optimize-images.mjs",
     "lint:js": "eslint",
-    "lint:css": "stylelint 'assets/css/**/*.css'",
+    "lint:css": "stylelint --cache 'assets/css/**/*.css'",
     "format": "prettier . --ignore-unknown --write"
   },
   "keywords": [],
