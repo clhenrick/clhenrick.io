@@ -13,6 +13,7 @@ const markdown = require("markdown-it")({
 const anchor = require("markdown-it-anchor");
 const postcss = require("postcss");
 const postcssMinify = require("postcss-minify");
+const autoprefixer = require("autoprefixer");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const {
   pluginImages,
@@ -182,7 +183,7 @@ async function transformMinifyCss(content) {
   // NOTE: `this.type` returns the bundle name
   if (this.type === "css" && process.env.NODE_ENV === "production") {
     try {
-      const result = postcss([postcssMinify]).process(content, {
+      const result = postcss([autoprefixer, postcssMinify]).process(content, {
         from: this.page.inputPath,
         to: null,
       });
