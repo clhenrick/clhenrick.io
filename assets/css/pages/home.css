@@ -35,8 +35,8 @@ main section h2 {
   --subtitle-min-font-size: 1.6rem;
 }
 
-:root[data-theme="light"] .banner-text,
-.banner-text {
+.banner-text,
+:root[data-theme="light"] .banner-text {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,12 +133,12 @@ main section h2 {
   padding: var(--spacing-mmd) 0;
 }
 
-.card .text > *:first-child {
-  margin: 0;
-}
-
 .card .text > * + * {
   margin-top: var(--card-margin);
+}
+
+.card .text > *:first-child {
+  margin: 0;
 }
 
 .card .text > *:last-child {
