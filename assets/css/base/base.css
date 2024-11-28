@@ -24,7 +24,7 @@
   --color-orange-2: #ff9f40;
   --color-orange-3: #f8c800;
 
-  --color-red: #990000;
+  --color-red: #900;
   --color-red-2: #ff5843;
 
   --color-turquoise: #00959c;
@@ -48,6 +48,7 @@
   --line-height-body: 1.65;
   --line-height-heading: 1.15;
 
+  /* spacing variables */
   --spacing-xxs: 4px;
   --spacing-xs: 8px;
   --spacing-sm: 12px;
@@ -66,6 +67,7 @@
   --desktop-max-width: var(--page-size-normal);
   --main-nav-height: 3.375rem;
 
+  /* focus indicator style variables */
   --focus-color: var(--color-accent-focus);
   --focus-style-width: 0.15em;
   --focus-style-outline: var(--focus-style-width) solid var(--focus-color);
@@ -78,22 +80,22 @@
 @media (dynamic-range: high) {
   @supports (background: oklch(72% 0.19 58)) {
     :root {
-      --color-orange: oklch(77% 0.19 58);
-      --color-orange-2: oklch(80% 0.17 58);
-      --color-orange-3: oklch(85% 0.18 92);
-      --color-red: oklch(42.5% 0.18 30);
-      --color-red-2: oklch(70% 0.24 30);
-      --color-blue: oklch(44% 0.16 250);
-      --color-blue-2: oklch(36% 0.13 252);
-      --color-blue-3: oklch(25% 0.1 254);
-      --color-turquoise: oklch(60% 0.12 200);
-      --color-turquoise-dark: oklch(44% 0.1 210);
-      --color-turquoise-light: oklch(75% 0.16 190);
+      --color-orange: oklch(77% 0.19 58deg);
+      --color-orange-2: oklch(80% 0.17 58deg);
+      --color-orange-3: oklch(85% 0.18 92deg);
+      --color-red: oklch(42.5% 0.18 30deg);
+      --color-red-2: oklch(70% 0.24 30deg);
+      --color-blue: oklch(44% 0.16 250deg);
+      --color-blue-2: oklch(36% 0.13 252deg);
+      --color-blue-3: oklch(25% 0.1 254deg);
+      --color-turquoise: oklch(60% 0.12 200deg);
+      --color-turquoise-dark: oklch(44% 0.1 210deg);
+      --color-turquoise-light: oklch(75% 0.16 190deg);
     }
   }
 }
 
-@media screen and (min-width: 46.75rem) {
+@media screen and (width >= 46.75rem) {
   :root {
     --main-nav-height: 4.375rem;
   }
@@ -121,7 +123,7 @@
   --color-accent-secondary: var(--color-orange-3);
   --color-accent-invert: var(--color-blue-3);
   --color-accent-bg: #3c2a1f;
-  --color-accent-bg-hover: rgba(230, 137, 51, 0.12);
+  --color-accent-bg-hover: rgb(230 137 51 / 12%);
   --background-color: #222;
   --background-color-secondary: #1e1810;
   --text-color: var(--color-gray-10);
@@ -140,7 +142,7 @@
     --color-accent-secondary: var(--color-orange-3);
     --color-accent-invert: var(--color-blue-3);
     --color-accent-bg: #3c2a1f;
-    --color-accent-bg-hover: rgba(230, 137, 51, 0.12);
+    --color-accent-bg-hover: rgb(230 137 51 / 12%);
     --background-color: #222;
     --background-color-secondary: #1e1810;
     --text-color: var(--color-gray-10);

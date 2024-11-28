@@ -79,7 +79,7 @@ ul.meta-links {
 }
 
 /* overrides reduced vertical spacing of wrapped meta-links on mobile / narrow viewports */
-@media screen and (min-width: 792px) {
+@media screen and (width >= 792px) {
   ul.meta-links {
     --gap: var(--spacing-lg);
     line-height: inherit;

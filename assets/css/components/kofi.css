@@ -10,7 +10,7 @@ article.kofi {
   background-color: var(--color-accent-invert);
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   article.kofi {
     padding: var(--spacing-md);
   }

@@ -26,6 +26,7 @@ main section h2 {
   min-height: 30vh;
   position: relative;
   overflow: hidden;
+
   /* prevents .banner-text from overlapping with primary-nav dropdown on wide viewport widths */
   isolation: isolate;
   --title-max-font-size: 6rem;
@@ -98,7 +99,7 @@ main section h2 {
   max-width: 22ch;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (width >= 600px) {
   .banner-text p {
     max-width: initial;
   }
@@ -112,7 +113,7 @@ main section h2 {
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (width >= 900px) {
   .cards-container {
     --card-margin: var(--spacing-md);
     flex-direction: row;

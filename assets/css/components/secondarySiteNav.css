@@ -11,8 +11,7 @@
 @media screen and (width >= 748px) {
   #nav-secondary ul {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
   }

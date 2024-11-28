@@ -1,4 +1,5 @@
 /* projectCard macro/component styles */
+
 /* some code borrowed from: https://inclusive-components.design/cards/ */
 
 .cards-container {
@@ -120,10 +121,7 @@
 .card a::after {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
 }
 
 .tags > .tag {

@@ -10,6 +10,7 @@ nav.pagination > h2 {
 
 nav.pagination > ol {
   display: grid;
+
   /* narrow of narrowest viewports: stacks prev, next links on separate rows, numbered links two in a row */
   grid-template-columns: repeat(auto, minmax(var(--min-list-item-width), 1fr));
   grid-gap: var(--spacing-sm);

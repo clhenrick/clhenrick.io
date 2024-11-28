@@ -15,8 +15,7 @@ main p:first-of-type {
 
 .js-enabled .project-filters {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   align-items: baseline;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
