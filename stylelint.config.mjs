@@ -6,5 +6,6 @@ export default {
     "declaration-empty-line-before": null,
     "value-keyword-case": null,
     "number-max-precision": 6,
+    "no-descending-specificity": [true, { ignore: ["selectors-within-list"] }],
   },
 };
