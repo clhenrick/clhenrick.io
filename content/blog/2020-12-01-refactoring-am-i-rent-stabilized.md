@@ -21,17 +21,15 @@ Part of what motivated me to do this refactor was reading [Martin Fowler][5]'s i
 
 I think there's something to be said about the importance of maintaining successful projects, or at least ones you dearly care about, versus sticking with only doing new projects on the side. I have not worked on a side project as the sole contributor in a good number of years, so I saw the appeal in doing things how I saw fit without having to spend time discussing and debating decisions with other contributors or team members. Even though side projects are still work, this can make the work a bit more enjoyable and a relief from the occasional tension and conflict inherent in team work.
 
-## Goals
+## Project Goals
 
-Here are the goals of the refactor I decided upon:
-
-1. Make the code easier to reason about by improving its organization and structure
+Make the code easier to reason about by improving its organization and structure:
 
 - use the common `src/` directory approach with sub directories for related pieces, e.g. `components/`, `utils/`, `actions/`, `reducers/`, etc.
 - reduce code bloat by aiming to keep classes and functions small (say under 300 lines)
 - aim for being DRY but try not to preemptively optimize for this. To me this means waiting to abstract code after it's apparent there's duplication, instead of trying to abstract it right away when writing it.
 
-2. Improve code quality:
+Improve code quality:
 
 - use ES6 syntax
 - use ES modules
@@ -42,23 +40,23 @@ Here are the goals of the refactor I decided upon:
 - write unit tests using Jest
 - achieve good test coverage (>= 75%)
 
-3. Remove unnecessary 3rd party JS dependencies (e.g. jQuery, CartoDB.js, Leaflet, etc.)
+Remove unnecessary 3rd party JS dependencies (e.g. jQuery, CartoDB.js, Leaflet, etc.)
 
 - many of these aren't absolutely needed for what the app does
 - some can be replaced using native browser features (e.g. `fetch`) or smaller 3rd party libraries (e.g. d3-geo)
 - although optimization isn't a goal, by reducing the amount of 3rd party JS the site should load faster for users on mobile and slow internet connections
 
-4. Update the frontend build system
+Update the frontend build system:
 
 - the Gulp file and usage of Browserify was a bit messy and not easy to reason about, but maybe that's just because I've become so used to working with Webpack
 - Use Webpack as a build system with Babel for transpiling ES6+ to ES5, code splitting, code minification, source maps, Sass, etc.
 
-5. Have Continuous Integration and automatic deploys integrated with Github
+Use Continuous Integration and automatic deploys integrated with Github:
 
 - Use [Netlify][29] for deploys and preview deploys for pull requests
 - Set up a Github Action for a CI build on pull requests that also runs the unit tests
 
-## Non-Goals
+## Project Non-Goals
 
 - Port the code to a JavaScript framework. This felt like the refactoring effort would have instead become a complete rewrite of the existing code. Again, the primary goal was to untangle the existing code to make it more easy to reason about, not to use the latest, greatest, shiny tech. Besides, out of the four pages that make up the site, only the main page requires much JavaScript, the other three pages are essentially static content and don't require handling things such as managing application state and data flow.
 
@@ -106,6 +104,7 @@ Ultimately I decided to:
   - One payoff of this effort is that the next time I write unit tests for a project I'll be faster at it.
 
 - Use [Netlify][29]
+
   - The preview deploys that you get for free with Netlify are enormously helpful, e.g. for cross browser testing, CI/CD, code reviews, or when presenting changes to clients and team members who are not developers.
   - Netlify automates building and deploying your app to production (in this case to amirentstabilized.com) when pushing to the main git branch.
   - You get hosting, an SSL certificate (so your site is served over `https`), logging, and other goodies.
@@ -320,15 +319,16 @@ Here are some bits of quantitative information related to the code before and af
 
 ### Total Amount of JavaScript
 
-- Before:
+Before the refactor:
 
-  - 1MB total JS
-  - 48 kB for the `bundle.js`\*
+- 1MB total JS
+- 48 kB for the `bundle.js`\*
 
-- After:
-  - 416 kB total JS
-  - 206 kB for the `vendors.js` bundle
-  - ~50 kB total for multiple source bundles
+After the refactor:
+
+- 416 kB total JS
+- 206 kB for the `vendors.js` bundle
+- ~50 kB total for multiple source bundles
 
 _\*In the original code some 3rd party dependencies were included in the bundle while others, such as jQuery, were loaded over CDNs._
 
@@ -347,6 +347,7 @@ The amounts listed below are total lines of code:
   - Handlebars templates: 848
 
 - After:
+
   - JS, total: 5,839
   - JS, excluding unit tests: 2,122
   - SCSS / Sass: 3,115
@@ -370,6 +371,7 @@ Results from the [Lighthouse auditing tool][28] in the Google Chrome browser.
   - 1.3s LCP
 
 - After:
+
   - 96 Performance
   - 81 Accessibility
   - 79 Best Practices
@@ -381,7 +383,7 @@ Results from the [Lighthouse auditing tool][28] in the Google Chrome browser.
 
 _(FCP: First Contentful Paint, TTI: Time to Interactive, TBT: Total Blocking Time, LCP: Largest Contentful Paint)_
 
-It shouldn't be surprising that the results from before and after the refactor do not differ by that much, as I did not focus on making changes that would drastically affect things such as SEO, accessibility, Time to Interative, etc. I did not aim to improve performance other than reducing the amount of JS sent over the wire, which seems to have not affected the performance score. It's worth noting that the Lighthouse scores are estimates, so re-running the tool may give slightly different results each time. The Lighthouse audits were run on my Mac Mini, circa 2018 with 32 GB of RAM. The scores tended to differ drastically from one run to the next when I ran them on an older laptop.
+It shouldn't be surprising that the results from before and after the refactor do not differ by that much, as I did not focus on making changes that would drastically affect things such as SEO, accessibility, Time to Interactive, etc. I did not aim to improve performance other than reducing the amount of JS sent over the wire, which seems to have not affected the performance score. It's worth noting that the Lighthouse scores are estimates, so re-running the tool may give slightly different results each time. The Lighthouse audits were run on my Mac Mini, circa 2018 with 32 GB of RAM. The scores tended to differ drastically from one run to the next when I ran them on an older laptop.
 
 ## Possible Next Steps
 
