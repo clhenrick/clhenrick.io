@@ -18,22 +18,36 @@ That markup generates the following HTML (usually inlined with whitespace remove
   <picture>
     <source
       type="image/webp"
-      srcset="/img/observable_embed_example-450w.webp 450w, /img/observable_embed_example-900w.webp 900w, /img/observable_embed_example-1282w.webp 1282w, /img/observable_embed_example-1600w.webp 1600w"
-      sizes="100vw">
+      srcset="
+        /img/observable_embed_example-450w.webp   450w,
+        /img/observable_embed_example-900w.webp   900w,
+        /img/observable_embed_example-1282w.webp 1282w,
+        /img/observable_embed_example-1600w.webp 1600w
+      "
+      sizes="100vw"
+    />
     <source
       type="image/jpeg"
-      srcset="/img/observable_embed_example-450w.jpeg 450w, /img/observable_embed_example-900w.jpeg 900w, /img/observable_embed_example-1282w.jpeg 1282w, /img/observable_embed_example-1600w.jpeg 1600w"
-      sizes="100vw">
+      srcset="
+        /img/observable_embed_example-450w.jpeg   450w,
+        /img/observable_embed_example-900w.jpeg   900w,
+        /img/observable_embed_example-1282w.jpeg 1282w,
+        /img/observable_embed_example-1600w.jpeg 1600w
+      "
+      sizes="100vw"
+    />
     <img
       alt="A screenshot of an embedded Observable Notebook for a user research study"
       loading="lazy"
       decoding="async"
       src="/img/observable_embed_example-450w.jpeg"
       width="1600"
-      height="794">
+      height="794"
+    />
   </picture>
   <figcaption>
-    Another example of a non-vertical layout using embedded cells from an Observable Notebook.
+    Another example of a non-vertical layout using embedded cells from an
+    Observable Notebook.
   </figcaption>
 </figure>
 ```
@@ -56,22 +70,22 @@ See [`eleventy.config.images.js`](../eleventy.config.images.js) for how the Elev
 
 The following image widths (in pixels) are used, depending on the page layout ("normal" or "wide").
 
-| width (px) | layout | pixel density |
-| --- | --- | --- |
-| 450 | mobile portrait image | 1x |
-| 900 | mobile portrait image | 2x |
-| 852 | desktop normal layout | 1x |
-| 1704 | desktop normal layout | 2x |
-| 1232 | desktop wide layout | 1x |
-| 2464 | desktop wide layout | 2x |
+| width (px) | layout                | pixel density |
+| ---------- | --------------------- | ------------- |
+| 450        | mobile portrait image | 1x            |
+| 900        | mobile portrait image | 2x            |
+| 852        | desktop normal layout | 1x            |
+| 1704       | desktop normal layout | 2x            |
+| 1232       | desktop wide layout   | 1x            |
+| 2464       | desktop wide layout   | 2x            |
 
 ## Image sizes breakdown:
 
 The following HTML `sizes` attribute values are used, depending on the page layout ("normal" or "wide").
 
-| layout | media query | image size | fallback |
-| --- | --- | --- | --- |
-| normal | min-width: 852px | 852px | calc(100vw - 48px)\* |
-| wide | min-width: 1232px | 1232px | calc(100vw - 48px)\* |
+| layout | media query       | image size | fallback             |
+| ------ | ----------------- | ---------- | -------------------- |
+| normal | min-width: 852px  | 852px      | calc(100vw - 48px)\* |
+| wide   | min-width: 1232px | 1232px     | calc(100vw - 48px)\* |
 
 \* _fallback = 100% viewport width minus right and left padding_

@@ -44,21 +44,24 @@ Next, by using a `<script>` tag in your webpage you may import your notebook. No
 Here's the Javascript code for this embed:
 
 ```js
-  import {Inspector, Runtime} from "https://unpkg.com/@observablehq/notebook-runtime@1.0.1?module";
-  import notebook from "https://api.observablehq.com/@clhenrick/mapping-airline-data-from-a-mapd-database.js?key=a9b1f4cfbf12cc08";
+import {
+  Inspector,
+  Runtime,
+} from "https://unpkg.com/@observablehq/notebook-runtime@1.0.1?module";
+import notebook from "https://api.observablehq.com/@clhenrick/mapping-airline-data-from-a-mapd-database.js?key=a9b1f4cfbf12cc08";
 
-  const renders = {
-    "viewof airline": "#viewof-airline",
-    "legend": "#legend",
-    "chart": "#chart",
-  };
+const renders = {
+  "viewof airline": "#viewof-airline",
+  legend: "#legend",
+  chart: "#chart",
+};
 
-  Runtime.load(notebook, (variable) => {
-    const selector = renders[variable.name];
-    if (selector) {
-      return new Inspector(document.querySelector(selector));
-    }
-  });
+Runtime.load(notebook, (variable) => {
+  const selector = renders[variable.name];
+  if (selector) {
+    return new Inspector(document.querySelector(selector));
+  }
+});
 ```
 
 In the code snippet above I'm rendering cells selectively from my notebook (thanks again Phillipe!), [rather than all of them](https://beta.observablehq.com/@jashkenas/downloading-and-embedding-notebooks), so I also have to add a few DOM elements for the selected cells to mount to:
@@ -121,7 +124,6 @@ text {
     }
   });
 </script>
-
 
 <style>
   /* https://css-tricks.com/full-width-containers-limited-width-parents/ */

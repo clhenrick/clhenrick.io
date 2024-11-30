@@ -8,6 +8,7 @@
 
 import * as Plot from "@observablehq/plot";
 import { JSDOM } from "jsdom";
+import { fs } from "zx";
 
 const properties = new Map([
   [
@@ -42,12 +43,18 @@ const yAxisLabels = new Map([
 ]);
 
 const accNames = new Map([
-  ["lightness", "Line chart of lightness values for the Color Brewer oranges color scheme"],
-  ["chroma", "Line chart of chroma values for the Color Brewer oranges color scheme"],
+  [
+    "lightness",
+    "Line chart of lightness values for the Color Brewer oranges color scheme",
+  ],
+  [
+    "chroma",
+    "Line chart of chroma values for the Color Brewer oranges color scheme",
+  ],
   ["hue", "Line chart of hue values for the Color Brewer oranges color scheme"],
-])
+]);
 
-const codeComment = `{# Note: this chart was programmatically generated using PlotJS. See scripts/create-plot-line-charts.mjs #}`
+const codeComment = `{# Note: this chart was programmatically generated using PlotJS. See scripts/create-plot-line-charts.mjs #}`;
 
 main();
 

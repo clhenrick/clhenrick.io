@@ -15,13 +15,16 @@ I've been lucky to have the opportunity to work with the incredibly talented aut
 As part of the map I'm working on for the NYC Atlas (I can't disclose its name yet!), Rebecca and her publishing partner [Joshua Jelly-Schapiro](http://berkeley.academia.edu/JoshuaJellySchapiro) were very interested in looking into NYC's 311 data. This was an exciting opportunity for me to revisit the data, as it had been several years since I last used it when I made the [NYC Rats, Graffiti, and Wifi Hot Spots Map](/work/graffiti-rat-sightings-and-wifi-hotspots/).
 
 ## Downloading 311 data from the NYC Open Data Portal
+
 Because the 311 dataset is so massive, and Socrata's servers aren't necessarily the fastest, it's not too easy to pull this data down from [NYC Open Data](https://nycopendata.socrata.com/). The solution I came up with was to filter the data on the open data portal so that I only had to download a subset of the data. I grabbed everything from January 1, 2014 to present, made a new "view", then downloaded that data which still ended up being a roughly 1.5 GB CSV file!
 
 ## Importing 311 Data into PostgreSQL
+
 I prefer using **PostgreSQL** (also referred to as **Postgres**) as my go-to database for a bunch of reasons, but probably the main is that the map / GIS geek in me really likes to use the [PostGIS](http://postgis.net/) extension, which allows for wrangling spatial data & geo-processing via SQL queries.
 
 ### Problem: importing a 1.5 GB CSV file into postgresql
-Typically I use **csvkit**'s [csvsql command line tool](http://csvkit.readthedocs.org/en/latest/scripts/csvsql.html) to import CSV data into **Postgres**. This normally works fairly well, but not in the case of a 1.5 GB CSV file. Basically, attempting to do this row by row *is not the answer!*
+
+Typically I use **csvkit**'s [csvsql command line tool](http://csvkit.readthedocs.org/en/latest/scripts/csvsql.html) to import CSV data into **Postgres**. This normally works fairly well, but not in the case of a 1.5 GB CSV file. Basically, attempting to do this row by row _is not the answer!_
 
 The following Allen Iverson poster comes to mind:
 
@@ -120,6 +123,7 @@ LOAD CSV
 ```
 
 ## Data Analysis
+
 After I imported the data to Postgres I had some fun. Prior to getting down to analysis the data was indexed, vacuum analyzed, and clustered. These steps are very helpful to speed up queries:
 
 ```sql
@@ -135,6 +139,7 @@ Thus I was able to accomplish the following:
 - geocode data where latitude & longitude values are not null (see the taxi complaint link above).
 
 ## Next up:
+
 Well mapping subsets of the data is one step of course, but ideas Rebecca and I tossed around were dividing some complaint data categories qualitatively into either public love / civic mindedness (animal abuse, street conditions, scaffold safety) or animosity / lack of empathy (noise - house of worship, noise - parks) to as a total percent of the 311 data set.
 
 All in all, this was a fun time I'd say, and it certainly paid off to import the 311 complaint data in postgres where I can now "get all crazy with it."

@@ -9,7 +9,6 @@ select {
   appearance: none;
   background-color: transparent;
   border: none;
-  padding: 0 1em 0 0;
   margin: 0;
   width: 100%;
   cursor: pointer;
@@ -50,7 +49,7 @@ select::-ms-expand {
 }
 
 /* custom CSS triangle */
-.select-menu:not(.select--multiple)::after {
+.select-menu:not(.select-multiple)::after {
   content: "";
   justify-self: end;
   width: 0.8em;
@@ -70,7 +69,7 @@ select::-ms-expand {
   }
 }
 
-.select-menu--disabled {
+.select-menu-disabled {
   cursor: not-allowed;
 }
 

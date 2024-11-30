@@ -1,5 +1,6 @@
 ---
-redirectFrom: [/refactoring-am-i-rent-stabilized.html, /refactoring-am-i-rent-stabilized/]
+redirectFrom:
+  [/refactoring-am-i-rent-stabilized.html, /refactoring-am-i-rent-stabilized/]
 title: "Refactoring Am I Rent Stabilized"
 date: 2020-12-01
 teaser: "Revisiting the code of a five year old project."
@@ -20,38 +21,42 @@ Part of what motivated me to do this refactor was reading [Martin Fowler][5]'s i
 
 I think there's something to be said about the importance of maintaining successful projects, or at least ones you dearly care about, versus sticking with only doing new projects on the side. I have not worked on a side project as the sole contributor in a good number of years, so I saw the appeal in doing things how I saw fit without having to spend time discussing and debating decisions with other contributors or team members. Even though side projects are still work, this can make the work a bit more enjoyable and a relief from the occasional tension and conflict inherent in team work.
 
-## Goals
-Here are the goals of the refactor I decided upon:
+## Project Goals
 
-1. Make the code easier to reason about by improving its organization and structure
-  - use the common `src/` directory approach with sub directories for related pieces, e.g. `components/`, `utils/`, `actions/`, `reducers/`,  etc.
-  - reduce code bloat by aiming to keep classes and functions small (say under 300 lines)
-  - aim for being DRY but try not to preemptively optimize for this. To me this means waiting to abstract code after it's apparent there's duplication, instead of trying to abstract it right away when writing it.
+Make the code easier to reason about by improving its organization and structure:
 
-2. Improve code quality:
-  - use ES6 syntax
-  - use ES modules
-  - use ESLint for JavaScript linting
-  - use StyleLint for (S)CSS linting
-  - use Prettier for code formatting
-  - add a commit hook that runs both Prettier and ESLint so that these tools run automatically
-  - write unit tests using Jest
-  - achieve good test coverage (>= 75%)
+- use the common `src/` directory approach with sub directories for related pieces, e.g. `components/`, `utils/`, `actions/`, `reducers/`, etc.
+- reduce code bloat by aiming to keep classes and functions small (say under 300 lines)
+- aim for being DRY but try not to preemptively optimize for this. To me this means waiting to abstract code after it's apparent there's duplication, instead of trying to abstract it right away when writing it.
 
-3. Remove unnecessary 3rd party JS dependencies (e.g. jQuery, CartoDB.js, Leaflet, etc.)
-  - many of these aren't absolutely needed for what the app does
-  - some can be replaced using native browser features (e.g. `fetch`) or smaller 3rd party libraries (e.g. d3-geo)
-  - although optimization isn't a goal, by reducing the amount of 3rd party JS the site should load faster for users on mobile and slow internet connections
+Improve code quality:
 
-4. Update the frontend build system
-  - the Gulp file and usage of Browserify was a bit messy and not easy to reason about, but maybe that's just because I've become so used to working with Webpack
-  - Use Webpack as a build system with Babel for transpiling ES6+ to ES5, code splitting, code minification, source maps, Sass, etc.
+- use ES6 syntax
+- use ES modules
+- use ESLint for JavaScript linting
+- use StyleLint for (S)CSS linting
+- use Prettier for code formatting
+- add a commit hook that runs both Prettier and ESLint so that these tools run automatically
+- write unit tests using Jest
+- achieve good test coverage (>= 75%)
 
-5. Have Continuous Integration and automatic deploys integrated with Github
-  - Use [Netlify][29] for deploys and preview deploys for pull requests
-  - Set up a Github Action for a CI build on pull requests that also runs the unit tests
+Remove unnecessary 3rd party JS dependencies (e.g. jQuery, CartoDB.js, Leaflet, etc.)
 
-## Non-Goals
+- many of these aren't absolutely needed for what the app does
+- some can be replaced using native browser features (e.g. `fetch`) or smaller 3rd party libraries (e.g. d3-geo)
+- although optimization isn't a goal, by reducing the amount of 3rd party JS the site should load faster for users on mobile and slow internet connections
+
+Update the frontend build system:
+
+- the Gulp file and usage of Browserify was a bit messy and not easy to reason about, but maybe that's just because I've become so used to working with Webpack
+- Use Webpack as a build system with Babel for transpiling ES6+ to ES5, code splitting, code minification, source maps, Sass, etc.
+
+Use Continuous Integration and automatic deploys integrated with Github:
+
+- Use [Netlify][29] for deploys and preview deploys for pull requests
+- Set up a Github Action for a CI build on pull requests that also runs the unit tests
+
+## Project Non-Goals
 
 - Port the code to a JavaScript framework. This felt like the refactoring effort would have instead become a complete rewrite of the existing code. Again, the primary goal was to untangle the existing code to make it more easy to reason about, not to use the latest, greatest, shiny tech. Besides, out of the four pages that make up the site, only the main page requires much JavaScript, the other three pages are essentially static content and don't require handling things such as managing application state and data flow.
 
@@ -59,13 +64,14 @@ Here are the goals of the refactor I decided upon:
 
 - Solve all the accessibility problems. There are quite a few of them that I intend to fix, and when it wasn't too much effort to fix one while refactoring I went ahead and did it. I intend to file issues for the more significant problems and fix them later after the refactor.
 
-- Optimize for performance. In MF's Refactoring, he talks about how prematurely optimizing for performance can really hurt the readability of code and thus the ability for humans to reason with it. He suggests focusing on the refactoring  first, then finding out where performance bottlenecks may be occurring and to address them when necessary.
+- Optimize for performance. In MF's Refactoring, he talks about how prematurely optimizing for performance can really hurt the readability of code and thus the ability for humans to reason with it. He suggests focusing on the refactoring first, then finding out where performance bottlenecks may be occurring and to address them when necessary.
 
 - Focus on adding new features. I don't really have any new features to add at this point anyway, so not a problem. I did end up adding autosuggest to the address search though, so I guess that counts as a new feature!
 
 - Make it an opportunity to use a new fancy shiny piece of web tech. See my note above for why I didn't port the code to a JavaScript framework like React, Svelte, or Vue.
 
 ## Decisions
+
 Perhaps most importantly, I chose not to use a JavaScript framework. I decided that adding a framework would be overhead that would get in the way of untangling and refactoring the existing code, which was written using a combination of jQuery and the <a href="/blog/using-the-js-modular-pattern/">revealing module pattern in ES5</a>.
 
 Ultimately I decided to:
@@ -89,6 +95,7 @@ Ultimately I decided to:
 - However, in some cases I decided to keep an existing dependency. For example, I retained the [GSAP web animation library][16] for smooth scrolling behavior. Although there's now browser support for [native smooth scrolling][17], it isn't 100% supported by Safari and would require a polyfill for IE. While investigating what seemed like [the recommended polyfill][19], it didn't seem like it would even solve for my use case. Even with the native browser smooth scroll, you can't control the duration of the transition or its easing property like you can with [GSAP's ScrollToPlugin][18]. So instead of removing GSAP I upgraded it from version 1.x to 3.x. This had the additional benefit of using GSAP and the ScrollToPlugin as ES modules, so I could incorporate them into my Webpack build system and not load them from a CDN as globals like I was previously doing.
 
 - Write unit tests
+
   - This is a part of what MF advocates for to make the refactoring process go smoother.
   - Having unit tests can help you feel more confident that you're not breaking anything when making changes to the code and seeing that the tests pass.
   - Writing tests was a new challenge to me, I typically don't ever write tests at all!
@@ -97,12 +104,14 @@ Ultimately I decided to:
   - One payoff of this effort is that the next time I write unit tests for a project I'll be faster at it.
 
 - Use [Netlify][29]
+
   - The preview deploys that you get for free with Netlify are enormously helpful, e.g. for cross browser testing, CI/CD, code reviews, or when presenting changes to clients and team members who are not developers.
   - Netlify automates building and deploying your app to production (in this case to amirentstabilized.com) when pushing to the main git branch.
   - You get hosting, an SSL certificate (so your site is served over `https`), logging, and other goodies.
   - The free personal account plan is fairly generous, you only need to pay if you go over build minutes or want premium features such as having multiple team members on an account.
 
 ## The Refactoring Process
+
 The first step in the refactoring processed involved reviewing the existing JS code to understand how it was structured; I needed to know what each module, code block, and function was doing. Long story short, it was a mess! I had abused the <a target="_blank" rel="noopener" href="/blog/2015-11-15-using-the-js-modular-pattern/">ES5 revealing module pattern</a>, name spaced parts of the code unnecessarily deeply, and used very terse variable names at times which made it difficult to understand what any one part of the code was doing and how it might relate to another. I didn't do a good job modularizing the code either, there were bits of related logic spread throughout various modules which definitely wasn't a good organizational practice.
 
 Even though I was aiming to only use vanilla JS I still had bits of jQuery in a lot of places. I teased out logic that was worth keeping and could be improved while also deciding what was worth throwing away. I mainly focused on the JS, deciding not to refactor the styles which use Sass, but I did make small changes or improvements to the Sass code when I felt it was necessary or not too big of a lift.
@@ -305,17 +314,21 @@ The refactor of _AIRS_ ended up being _**over four hundred commits**_ over a per
 Oh the things you learn as time goes on! Looking back at my original code helped me reflect on how much I've grown as a programmer and web developer, how much the world of browsers and web development has changed, and how my outlook on building websites and UIs has evolved. One example is that the concept of "componentizing" the UI was just beginning to take off around 2013 to 2015, and now in 2020 it's so entrenched in how us developers build UIs it almost seems inconceivable to do otherwise. Browsers have of course changed in the past five years as well; new APIs are being unveiled while more features become standardized across browsers (well, sort of). Webpack was still fairly new in 2015 and not widely used as a frontend build tool; Grunt and Gulp were still the popular choices back then. While I've always valued User Experience above all, I've come to appreciate it even more from my current job as a UX Engineer at Google. This has motivated me to fix the accessibility issues with _AIRS_; for example improper uses of headings or `<div>` elements that function like as buttons but without the proper `ARIA` attributes and keyboard event handling.
 
 ## Metrics:
+
 Here are some bits of quantitative information related to the code before and after the refactor.
 
 ### Total Amount of JavaScript
-- Before:
-  - 1MB total JS
-  - 48 kB for the `bundle.js`\*
 
-- After:
-  - 416 kB total JS
-  - 206 kB for the `vendors.js` bundle
-  - ~50 kB total for multiple source bundles
+Before the refactor:
+
+- 1MB total JS
+- 48 kB for the `bundle.js`\*
+
+After the refactor:
+
+- 416 kB total JS
+- 206 kB for the `vendors.js` bundle
+- ~50 kB total for multiple source bundles
 
 _\*In the original code some 3rd party dependencies were included in the bundle while others, such as jQuery, were loaded over CDNs._
 
@@ -324,14 +337,17 @@ Following the refactor **584 kB (over half a megabyte) of JavaScript was elimina
 In both cases the majority of the JavaScript comes from 3rd party dependencies. Following the refactor almost all 3rd party dependencies moved to a `vendors.js` bundle that can be cached by the browser. This is beneficial, for typically the source code changes more frequently than 3rd party dependencies, and with cache busting file names thanks to Webpack, source code bundles will be received by the browser when they are updated. A few remaining scripts are still loaded via CDNs: the "Add To Calendar" widget, Google Analytics, and the "Add This" social media widget. While this is not ideal, I'm willing to live with it, and may end up using alternatives to some of these in the future anyway.
 
 ### Amount of Source Code
+
 The amounts listed below are total lines of code:
 
 - Before:
+
   - JS: 1,880
   - SCSS / Sass: 3,240
   - Handlebars templates: 848
 
 - After:
+
   - JS, total: 5,839
   - JS, excluding unit tests: 2,122
   - SCSS / Sass: 3,115
@@ -340,9 +356,11 @@ The amounts listed below are total lines of code:
 Although the amount of JavaScript increased by close to 4k lines of code, the majority of that consists of unit tests. When excluding the unit tests, the increase was only 242 lines. This is a point MF brings up in his book Refactoring; a refactor may result in more code than existed previously. However this is not necessarily a bad thing! If a refactoring effort results in code that is better structured and more understandable, that is a boon for humans who work on the code, despite having more lines of code to read over. On the surface this philosophy ignores optimization, however MF argues that the priority of writing software should first be to make the code well structured and understandable. After this goal has been achieved performance bottlenecks should then be identified and fixed. To me this is a more reasonable approach than trying to optimize code prematurely. I'd much rather work on code that is well structured and easy to reason with then work on code that is terse, inconsistently organized, and/or difficult to understand.
 
 ### Lighthouse Score
+
 Results from the [Lighthouse auditing tool][28] in the Google Chrome browser.
 
 - Before:
+
   - 96 Performance
   - 72 Accessibility
   - 71 Best Practices
@@ -353,6 +371,7 @@ Results from the [Lighthouse auditing tool][28] in the Google Chrome browser.
   - 1.3s LCP
 
 - After:
+
   - 96 Performance
   - 81 Accessibility
   - 79 Best Practices
@@ -364,10 +383,10 @@ Results from the [Lighthouse auditing tool][28] in the Google Chrome browser.
 
 _(FCP: First Contentful Paint, TTI: Time to Interactive, TBT: Total Blocking Time, LCP: Largest Contentful Paint)_
 
-It shouldn't be surprising that the results from before and after the refactor do not differ by that much, as I did not focus on making changes that would drastically affect things such as SEO, accessibility, Time to Interative, etc. I did not aim to improve performance other than reducing the amount of JS sent over the wire, which seems to have not affected the performance score. It's worth noting that the Lighthouse scores are estimates, so re-running the tool may give slightly different results each time. The Lighthouse audits were run on my Mac Mini, circa 2018 with 32 GB of RAM. The scores tended to differ drastically from one run to the next when I ran them on an older laptop.
-
+It shouldn't be surprising that the results from before and after the refactor do not differ by that much, as I did not focus on making changes that would drastically affect things such as SEO, accessibility, Time to Interactive, etc. I did not aim to improve performance other than reducing the amount of JS sent over the wire, which seems to have not affected the performance score. It's worth noting that the Lighthouse scores are estimates, so re-running the tool may give slightly different results each time. The Lighthouse audits were run on my Mac Mini, circa 2018 with 32 GB of RAM. The scores tended to differ drastically from one run to the next when I ran them on an older laptop.
 
 ## Possible Next Steps
+
 Here is a short list of tasks that I would like to tackle next, now that the refactor is complete:
 
 - Add integration or end to end tests
@@ -380,8 +399,6 @@ Phew, that was a lot! If you made it this far, then thanks for reading. Hopefull
 
 Happy refactoring!
 
-
-[comment]: # (reference links)
 [1]: https://amirentstabilized.com/ "Am I Rent Stabilized?"
 [2]: https://github.com/reduxjs/redux/issues/303#issuecomment-125184409 "observe store implementation"
 [3]: https://github.com/clhenrick/am-i-rent-stabilized/tree/master/app "AIRS source code"

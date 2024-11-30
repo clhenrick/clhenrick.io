@@ -53,6 +53,7 @@ button[type="submit"] {
 }
 
 /* spam honey pot */
+
 /* see: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering */
 #s-h-p {
   display: none;

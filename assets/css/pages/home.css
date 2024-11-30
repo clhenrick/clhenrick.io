@@ -26,6 +26,7 @@ main section h2 {
   min-height: 30vh;
   position: relative;
   overflow: hidden;
+
   /* prevents .banner-text from overlapping with primary-nav dropdown on wide viewport widths */
   isolation: isolate;
   --title-max-font-size: 6rem;
@@ -34,8 +35,8 @@ main section h2 {
   --subtitle-min-font-size: 1.6rem;
 }
 
-:root[data-theme="light"] .banner-text,
-.banner-text {
+.banner-text,
+:root[data-theme="light"] .banner-text {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,16 +46,21 @@ main section h2 {
   padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxl);
   margin: auto;
   line-height: 1.1;
-  text-shadow: -1px -1px 0 var(--color-white), 1px -1px 0 var(--color-white),
-    -1px 1px 0 var(--color-white), 1px 1px 0 var(--color-white);
+  text-shadow:
+    -1px -1px 0 var(--color-white),
+    1px -1px 0 var(--color-white),
+    -1px 1px 0 var(--color-white),
+    1px 1px 0 var(--color-white);
   z-index: 1;
 }
 
 @media (prefers-color-scheme: dark) {
   .banner-text {
     color: var(--color-white);
-    text-shadow: -1px -1px 0 var(--color-gray-90),
-      1px -1px 0 var(--color-gray-90), -1px 1px 0 var(--color-gray-90),
+    text-shadow:
+      -1px -1px 0 var(--color-gray-90),
+      1px -1px 0 var(--color-gray-90),
+      -1px 1px 0 var(--color-gray-90),
       1px 1px 0 var(--color-gray-90);
   }
 }
@@ -62,8 +68,11 @@ main section h2 {
 /* NOTE: duplicate code as above media query block */
 :root[data-theme="dark"] .banner-text {
   color: var(--color-white);
-  text-shadow: -1px -1px 0 var(--color-gray-90), 1px -1px 0 var(--color-gray-90),
-    -1px 1px 0 var(--color-gray-90), 1px 1px 0 var(--color-gray-90);
+  text-shadow:
+    -1px -1px 0 var(--color-gray-90),
+    1px -1px 0 var(--color-gray-90),
+    -1px 1px 0 var(--color-gray-90),
+    1px 1px 0 var(--color-gray-90);
 }
 
 .banner-text h1 {
@@ -90,7 +99,7 @@ main section h2 {
   max-width: 22ch;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (width >= 600px) {
   .banner-text p {
     max-width: initial;
   }
@@ -104,7 +113,7 @@ main section h2 {
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (width >= 900px) {
   .cards-container {
     --card-margin: var(--spacing-md);
     flex-direction: row;
@@ -124,12 +133,12 @@ main section h2 {
   padding: var(--spacing-mmd) 0;
 }
 
-.card .text > *:first-child {
-  margin: 0;
-}
-
 .card .text > * + * {
   margin-top: var(--card-margin);
+}
+
+.card .text > *:first-child {
+  margin: 0;
 }
 
 .card .text > *:last-child {

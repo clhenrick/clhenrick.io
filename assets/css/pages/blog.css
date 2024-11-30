@@ -10,6 +10,7 @@ nav.pagination > h2 {
 
 nav.pagination > ol {
   display: grid;
+
   /* narrow of narrowest viewports: stacks prev, next links on separate rows, numbered links two in a row */
   grid-template-columns: repeat(auto, minmax(var(--min-list-item-width), 1fr));
   grid-gap: var(--spacing-sm);
@@ -26,7 +27,10 @@ nav.pagination > ol {
 @media screen and (width >= 500px) {
   nav.pagination > ol {
     /* everything else / wider viewports: auto-fit all links in one row, overflowing to more rows as needed */
-    grid-template-columns: repeat(auto-fit, minmax(var(--min-list-item-width), 1fr));
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--min-list-item-width), 1fr)
+    );
   }
 }
 
@@ -44,7 +48,7 @@ nav.pagination li a:not([href]) {
 }
 
 /* previous and next links */
-nav.pagination li:nth-child(-n+2) {
+nav.pagination li:nth-child(-n + 2) {
   grid-column: span 2;
 }
 

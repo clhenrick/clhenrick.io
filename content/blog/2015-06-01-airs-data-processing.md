@@ -13,13 +13,15 @@ tags:
 ---
 
 ## TOC
+
 - [Background](#background)
 - [DHCR & MapPLUTO Data Processing](#dhcr-&-mappluto-data-processing)
 - [Creating Catchment Area Polygons For Local Tenants Rights Organizations](#creating-catchment-area-polygons-for-local-tenants-rights-organizations)
 - [Links to Code &amp; Data](#links-to-code-&-data)
 
 ## Background
-[*Am I Rent Stabilized?*](https://amirentstabilized.com) is a web application I conceptualized and designed that encourages New York City tenants to find out if their landlord may be illegally overcharging them for a rent stabilized apartment and if so, motivates them to take action. The development of the app was motivated by the lack of enforcement of rent regulation laws in NYC by the local and state government. It is an attempt at using open data as a prompt for civic action, rather than solely for visualization and analysis. The app first asks the user to input their address and borough, then checks it against a database of properties that are likely to have rent stabilized apartments. From here the app recommends a course of action and informs the user of their nearest tenants rights group so they can get help. The app features a responsive UI that is mobile friendly, and its content can be toggled to either Spanish or Chinese for non-english speakers.
+
+[_Am I Rent Stabilized?_](https://amirentstabilized.com) is a web application I conceptualized and designed that encourages New York City tenants to find out if their landlord may be illegally overcharging them for a rent stabilized apartment and if so, motivates them to take action. The development of the app was motivated by the lack of enforcement of rent regulation laws in NYC by the local and state government. It is an attempt at using open data as a prompt for civic action, rather than solely for visualization and analysis. The app first asks the user to input their address and borough, then checks it against a database of properties that are likely to have rent stabilized apartments. From here the app recommends a course of action and informs the user of their nearest tenants rights group so they can get help. The app features a responsive UI that is mobile friendly, and its content can be toggled to either Spanish or Chinese for non-english speakers.
 
 The development of the app stems from a [Freedom of Information Law request](https://github.com/clhenrick/dhcr-rent-stabilized-data#foil-request-info) I made in the Fall of 2014 for the [New York Department of Homes and Community Renewal](http://www.nyshcr.org/)'s list of rent-stabilized buildings in a machine readable format. When I obtained the data I was then able to do an analysis on the NYC's taxlot dataset, [MapPLUTO](http://www.nyc.gov/html/dcp/html/bytes/applbyte.shtml#pluto), to determine what properties in NYC likely have rent stabilized apartments, and are either registered or not registered with the DHCR. This is important as registration of rent-regulated apartments is essentially voluntary as it's not enforced by any city or state agency (as far as I'm aware of) so it's easy for landlords in NYC to lie to tenants about their apartment being rent-stabilized.
 
@@ -38,11 +40,13 @@ Here are some screen shots of a few of the slides from the app's landing page:
 {% image 'airs_search_result_yes.png', 'Screen shot of the Am I Rent Stabilized website example search result' %}
 
 ## DHCR & MapPLUTO Data Processing
-*Am I Rent Stabilized?* uses the dataset I created of properties that likely have rent stabilized apartments in NYC. I chose to stash this database on CartoDB so that I could take advantage of CartoDB's SQL API and the CartoDB.JS library with the app. However I did a lot of data processing on my local machine before importing the data into CartoDB. This is mainly because the MapPLUTO dataset is too large to import into CartoDB without a paid plan that gives you more storage space.
+
+_Am I Rent Stabilized?_ uses the dataset I created of properties that likely have rent stabilized apartments in NYC. I chose to stash this database on CartoDB so that I could take advantage of CartoDB's SQL API and the CartoDB.JS library with the app. However I did a lot of data processing on my local machine before importing the data into CartoDB. This is mainly because the MapPLUTO dataset is too large to import into CartoDB without a paid plan that gives you more storage space.
 
 The next part outlines how I got there.
 
 ### 1. Processing the DHCR Rent Stabilized Building List
+
 The Excel workbooks I obtained from the FOIL request were normalized, stacked, and converted to a Comma Separated Value (CSV) file format using a [Node JS script](https://github.com/clhenrick/dhcr-rent-stabilized-data/blob/master/index.js). This allowed the data to be geocoded in one shot and then imported into a PostgreSQL database where it could be analyzed with the [NYC MapPLUTO GIS tax lot data](http://www.nyc.gov/html/dcp/html/bytes/applbyte.shtml#pluto).
 
 ### 2. Geocoding the Processed DHCR data
@@ -307,12 +311,14 @@ UPDATE map_pluto_likely_rs set borough = 'Manhattan' WHERE borough = 'MN';
 In order to inform a user as to whether or not any local tenants rights organizations are operating within their neighborhood, [custom polygon geospatial data](https://github.com/clhenrick/nyc_tenants_rights_orgs_service_areas) was created to respresent each of 94 organization's service areas. This was a necessary step as many housing rights organizations work within specific neighborhoods, zipcodes, community boards, or other boundaries and will not assist people outside of those boundaries. This is a understable decision for these groups to make given the density of NYC and the fact that something like 80% of its residents are renters. Housing orgs are more often than not under staffed and over worked so must limit who they can help to ensure they do their work effectively.
 
 ### Scraping DHCR's Community Based Housing Organizations
+
 First, a list of [Community Based Housing Organizations](http://www.nyshcr.org/Rent/HousingOrgs.htm) was scraped from an HTML table on the DHCR's website using a [Python script](https://github.com/clhenrick/DHCR_Community_Based_Housing_Orgs/blob/master/scraper.py). Organizations that operate in the boroughs / counties that make up NYC were pulled out from the scraped data into a new table.
 
 ### Creating the Catchment Areas
+
 For these 94 organizations, polygon data was manually created representing each organization's service area. Reference polygon geospatial data sources used to create the service areas include [Pediatcities NYC Neighborhood boundaries](http://nyc.pediacities.com/New_York_City_Neighborhoods), [NYC Planning Neighborhood Tabulation Areas](http://www.nyc.gov/html/dcp/html/bytes/applbyte.shtml#other), U.S. Census Zipcode Tabulation Areas, and [NYC Planning Community District boundaries](http://www.nyc.gov/html/dcp/html/bytes/applbyte.shtml#district_political). This data was copied and in some cases aggregated (dissolved) into a new dataset using MAPublisher, a GIS plug-in for Adobe Illustrator. In some cases boundaries had to be drawn by hand, such as for the Cooper Square Committee which operates within a very specific area in the East Village of Manhattan. Once completed, the polygon data was joined to the DHCR Community Housing Based Organizations for NYC and then exported to a shapefile format.
 
-The data was then imported into CartoDB for use with *Am I Rent Stabilized?*. When a user's address is geocoded, a "point in polygon" SQL query is made using PostGIS to the data in CartoDB.
+The data was then imported into CartoDB for use with _Am I Rent Stabilized?_. When a user's address is geocoded, a "point in polygon" SQL query is made using PostGIS to the data in CartoDB.
 
 For example:
 
@@ -333,15 +339,15 @@ If a user's address is within a group's cachment area, then that group's informa
 ```js
 var H = Handlebars;
 
-H.registerHelper('each', function(context, options) {
+H.registerHelper("each", function (context, options) {
   var ret = "";
-  for(var i=0, j=context.length; i<j; i++) {
+  for (var i = 0, j = context.length; i < j; i++) {
     ret = ret + options.fn(context[i]);
   }
   return ret;
 });
 
-H.registerHelper('if', function(conditional, options) {
+H.registerHelper("if", function (conditional, options) {
   if (conditional) {
     return options.fn(this);
   } else {
@@ -357,14 +363,17 @@ The Handlebars HTML template looks like this:
 <div class="org-container">
   <a href="#close" title="Close" class="close">X</a>
   <h1>
-    Here are some groups that help people with housing
-    issues in your neighborhood:
+    Here are some groups that help people with housing issues in your
+    neighborhood:
   </h1>
   {{#each orgs}}
     <div class="tr-org-info">
       <h3>{{name}}</h3>
       {{#if website}}
-        <p class="website-url"><span>Website: </span><a target="_blank" href="{{website}}">{{website}}</a></p>
+        <p class="website-url"><span>Website: </span><a
+            target="_blank"
+            href="{{website}}"
+          >{{website}}</a></p>
       {{/if}}
       {{#if phone}}
         <p class="phone-no"><span>Phone: </span>{{phone}}</p>
@@ -375,9 +384,9 @@ The Handlebars HTML template looks like this:
       {{#if email}}
         <p class="email"><span>Email: </span>{{email}}</p>
       {{/if}}
-        <p class="description"><span>Description: </span><br>
-          {{description}}
-        </p>
+      <p class="description"><span>Description: </span><br />
+        {{description}}
+      </p>
     </div>
   {{/each}}
 </div>
@@ -387,6 +396,7 @@ The Handlebars HTML template looks like this:
 That's about it, thanks for reading and please feel free to [ping me](/contact/) if you have any questions or comments.
 
 ## Links to Code & Data
+
 - [Github Repo for Am I Rent Stabilized](https://github.com/clhenrick/am-i-rent-stabilized)
 - [Visualization of NYC properties that likely have rent-stabilized apartments](http://cdb.io/1bfz09d)
 - [DHCR Rent Stabilized Building List](https://github.com/clhenrick/dhcr-rent-stabilized-data)

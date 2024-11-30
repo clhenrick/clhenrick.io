@@ -1,5 +1,9 @@
 ---
-redirectFrom: [/d3-v4-general-update-pattern-punchcard-chart.html, /d3-v4-general-update-pattern-punchcard-chart/]
+redirectFrom:
+  [
+    /d3-v4-general-update-pattern-punchcard-chart.html,
+    /d3-v4-general-update-pattern-punchcard-chart/,
+  ]
 title: "D3JS v4 General Update Pattern: Punchcard Chart"
 date: 2016-12-12
 teaser: "Going from static to dynamic via the D3 v4 API"
@@ -10,6 +14,7 @@ tags:
 ---
 
 ### TOC
+
 - [Introduction](#introduction)
 - [The Static Barley Punchcard](#the-static-barley-punchcard-chart)
 - [About the Nested Data Structure](#about-the-nested-data-structure)
@@ -20,8 +25,8 @@ tags:
 - [Implementing the General Update Pattern on Nested SVG Elements](#implementing-the-general-update-pattern-on-nested-svg-elements)
 - [Conclusion](#conclusion)
 
-
 ### Introduction
+
 The most recent project I worked on at [Stamen Design](http://stamen.com) involved exploring data for a client using [D3JS](https://d3js.org), which finally gave me a reason to dive into more of version 4 of the API. If you haven't heard of D3JS, it's a very powerful javascript library that allows for precise and elegant control over creating interactive data visualizations for the web. The "D3" part stands for "Data Driven Documents", referring to its ability to bind data to HTML DOM elements, most frequently SVG elements, or through manipulating the HTML Canvas element, then styling and animating said elements computationally. I would encourage you to take a look at the [examples on the D3 homepage](https://github.com/d3/d3/wiki/Gallery), as it will give you an idea of what the possibilities are with D3.
 
 In this blog post I'll demonstrate the [d3 general update pattern](http://bl.ocks.org/mbostock/3808218) through creating a updatable Punchcard chart, while also discussing some of the differences I've noticed between D3 v3 and v4. Beginning with a [static barley punchcard](http://bl.ocks.org/clhenrick/2b6b5360748a06b26bfd50d96998b741) Block that I forked from [Kai Chang](http://bl.ocks.org/syntagmatic), I'll show how to add D3 v4's general update pattern while also throwing in some animations and other goodies. If you're unfamiliar with them, **Blocks** are the D3 community's primary method of sharing D3 code examples. There is even a site called [Blockbuilder.org](http://blockbuilder.org) which is sort of like a simplified version of [Codepen](http://codepen.io/) or [JSFiddle](https://jsfiddle.net/). Blocks are a system originally developed by the creator of D3, Mike Bostock (who has an [amazing gallery of blocks](https://bl.ocks.org/mbostock) by the way), to demonstrate D3's features and concepts. Because Blocks are built on top of [Github Gists](https://gist.github.com/), each Block is version controlled and "forkable", an added bonus.
@@ -29,13 +34,14 @@ In this blog post I'll demonstrate the [d3 general update pattern](http://bl.ock
 I won't walk through how to set up the punchcard chart from scratch, so if you're brand new to D3 I would recommend starting with some of the basics before going through this post. The ["Let's Make a Bar Chart"](https://bost.ocks.org/mike/bar/), and ["How Selections Work"](https://bost.ocks.org/mike/selection/) are two worthy reads for beginners, or if you need a quick refresh on D3.
 
 ### The Static Barley Punchcard Chart
+
 Here's what the Barley Punchcard Chart currently looks like:
 
 {% image 'barley-punchcard-static.png', 'A punchcard chart created using D3JS of data of over a dozen different barley variety yields from 1927 to 1936' %}
 
 The one we'll be making won't look terribly different from this. We'll be adding a simple HTML dropdown (`select` element) that will enable a user to choose from different "sites" which will then dynamically update the chart with some animations, or transitions as they're called in D3.
 
-Punchcard charts work really well for showing change over *temporarily consistent intervals*, in this case each distinct year from 1927 to 1936. When we attempt to show this data in a line chart for example, the overlap between Barley varieties make them hard to distinguish from one another:
+Punchcard charts work really well for showing change over _temporarily consistent intervals_, in this case each distinct year from 1927 to 1936. When we attempt to show this data in a line chart for example, the overlap between Barley varieties make them hard to distinguish from one another:
 
 {% image 'barley-linechart.png', 'A line chart of the same barley yield data created with D3JS showing many overlapping lines and labels which is difficult to read' %}
 
@@ -57,97 +63,126 @@ Previously in v3 almost all of D3's parts were contained in one place. Having se
 Moving on, the meat of the original punchcard chart happens in the callback function of `d3.csv()`, where `data` is an argument received by the callback. This argument contains an array of objects, where each object corresponds to a row in the `barleyfull.csv` file. Here's that code block:
 
 ```js
-d3.csv('barleyfull.csv', function(err, data) {
-  if (err) { throw error; }
+d3.csv("barleyfull.csv", function (err, data) {
+  if (err) {
+    throw error;
+  }
 
-  data.forEach(function(d) {
+  data.forEach(function (d) {
     d.yield = +d.yield;
     d.year = +d.year;
   });
 
-  var nested = d3.nest()
-    .key(function(d) { return d.site; })
-    .key(function(d) { return d.gen; })
+  var nested = d3
+    .nest()
+    .key(function (d) {
+      return d.site;
+    })
+    .key(function (d) {
+      return d.gen;
+    })
     .entries(data);
 
   console.log(nested);
-
 
   var site = nested[4];
 
   yscale
     .range([0, height])
-    .domain(site.values.map(function(d) { return d.key; }))
+    .domain(
+      site.values.map(function (d) {
+        return d.key;
+      })
+    )
     .round(true);
 
-  xscale
-    .range([0, width])
-    .domain([1927, 1936]);
+  xscale.range([0, width]).domain([1927, 1936]);
 
-  radius
-    .range([0, 15])
-    .domain([0, d3.max(data, function(d) { return d.yield; }) ]);
+  radius.range([0, 15]).domain([
+    0,
+    d3.max(data, function (d) {
+      return d.yield;
+    }),
+  ]);
 
-  var yaxis = d3.axisLeft()
-    .scale(yscale);
+  var yaxis = d3.axisLeft().scale(yscale);
 
-  var xaxis = d3.axisBottom()
-    .tickFormat(function(d) { return d; })
+  var xaxis = d3
+    .axisBottom()
+    .tickFormat(function (d) {
+      return d;
+    })
     .scale(xscale);
 
-  var chart = d3.select("body")
-    .append("div")
-    .datum(site);
+  var chart = d3.select("body").append("div").datum(site);
 
-  chart.append("h2")
-    .text(function(d) { return d.key; });
+  chart.append("h2").text(function (d) {
+    return d.key;
+  });
 
-  var svg = chart.append('svg')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-      .attr('transform', 'translate(' + [margin.left, margin.top] + ')');
+  var svg = chart
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + [margin.left, margin.top] + ")");
 
-  svg.append("g")
-    .call(yaxis);
+  svg.append("g").call(yaxis);
 
-  svg.append("g")
+  svg
+    .append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(xaxis);
 
-  var rows = svg.selectAll("g.row")
-    .data(function(d) { return d.values; })
-    .enter().append("g")
-    .attr("class", function(d) { return d.key + " row"; })
-    .attr("transform", function(d) {
-      return "translate(0," + yscale(d.key) + ")"
+  var rows = svg
+    .selectAll("g.row")
+    .data(function (d) {
+      return d.values;
+    })
+    .enter()
+    .append("g")
+    .attr("class", function (d) {
+      return d.key + " row";
+    })
+    .attr("transform", function (d) {
+      return "translate(0," + yscale(d.key) + ")";
     });
 
-  rows.selectAll("circle")
-    .data(function(d) { return d.values; })
-    .enter().append("circle")
-    .attr("r", function(d) { return radius(d.yield); })
+  rows
+    .selectAll("circle")
+    .data(function (d) {
+      return d.values;
+    })
+    .enter()
+    .append("circle")
+    .attr("r", function (d) {
+      return radius(d.yield);
+    })
     .attr("cy", 0)
-    .attr("cx", function(d) { return xscale(d.year); })
-    .attr("fill", function(d) { return color(d.gen); });
-
+    .attr("cx", function (d) {
+      return xscale(d.year);
+    })
+    .attr("fill", function (d) {
+      return color(d.gen);
+    });
 });
 ```
 
 In order to get from this to a place where we can update our chart with a new subset of the barley data, we will need to do some refactoring. How I love refactoring!
 
 ### About the Nested Data Structure
+
 Notice the hardcoded value `var site = nested[4];` towards the top of the above code, this variable references all data associated with the "Morris" site. To make the punchcard chart updatable, we'll be setting the value of `site` from a user interaction with the dropdown.
 
 When the data is first loaded by `d3.csv`, it is formatted as an array of objects where each object contains key value pairs that represent a row in our table. Here's the very first object in that array:
 
 ```json
 {
-  id: "1",
-  yield: "47.5",
-  gen: "Manchuria",
-  year: "1927",
-  site: "StPaul"
+  "id": "1",
+  "yield": "47.5",
+  "gen": "Manchuria",
+  "year": "1927",
+  "site": "StPaul"
 }
 ```
 
@@ -186,13 +221,14 @@ Let's take a look at our nested data:
 ]
 ```
 
-*Note that `[...]` is just a place holder for a non-empty array.*
+_Note that `[...]` is just a place holder for a non-empty array._
 
 We can see that `nested` is an array of six objects, and each object has a `key` and `values` property. Here, each `key` represents a unique "site" in our data such as "StPaul", "Duluth", "Waseca", etc. This is the result of:
 
 ```js
-d3.next()
-  .key(function(d) { return d.site; })
+d3.next().key(function (d) {
+  return d.site;
+});
 ```
 
 In the static chart we are using the 5th object in this array, which is for the site "Morris". The data contained in `values` for each of these objects is another array of objects, so let's check that out too, starting with `values` array for "StPaul":
@@ -236,7 +272,7 @@ In the static chart we are using the 5th object in this array, which is for the 
 ]
 ```
 
-*Note: `...` implies more data, omitted for the sake of brevity.*
+_Note: `...` implies more data, omitted for the sake of brevity._
 
 Again, we have an array of objects, with each object containing the properties `key` and `values`. Each of these object's `key` property represents a barley variety or `gen`. This array of objects is the result of the second invocation of `.key()` in the `var nested` code block:
 
@@ -244,7 +280,7 @@ Again, we have an array of objects, with each object containing the properties `
   .key(function(d) { return d.gen; })
 ```
 
-Notice that the value of each `key` property matches a name in the y axis for our punchcard chart *(hint hint)*.
+Notice that the value of each `key` property matches a name in the y axis for our punchcard chart _(hint hint)_.
 
 If we dig one level deeper and inspect the `values` array of each of these objects, for example `nested[0].values[0].values`, we'll find objects that have the same structure to the objects in `data`:
 
@@ -301,7 +337,7 @@ In our code above leaving the data as a nested data structure works well, but wh
 ```js
 var nextSiteName = "Duluth";
 
-nested.filter(function(d) {
+nested.filter(function (d) {
   return d.key === nextSiteName;
 })[0];
 ```
@@ -309,12 +345,15 @@ nested.filter(function(d) {
 Notice the `[0]` tacked on at the very end. That's because `Array.prototype.filter` returns a new array, and we want the only object within that array. This code isn't bad, but we could make things cleaner by using `d3.map`. This will achieve the same result by simply calling `map.get("Duluth")`, where `map` represents our instance of `d3.map`. We create the map using our nested data structure like so:
 
 ```js
-var map = d3.map(nested, function(d) { return d.key; });
+var map = d3.map(nested, function (d) {
+  return d.key;
+});
 ```
 
 This line of code tells d3 to key our data on the site names, everything else will remain nested as before. This method is similar to creating an object with keys for each site name, but [with some additional benefits](https://github.com/d3/d3-collection#map).
 
 ### Steps Towards a Dynamic Chart Using d3-dispatch
+
 Okay let's get down to refactoring! We'll need a way of communicating from our dropdown to our punchcard chart when the user selects a new site. If you've used jQuery before, you might be familiar with creating custom events that you can emit and subscribe to. D3 has something similar, called [d3-dispatch](https://github.com/d3/d3-dispatch), which let's you register custom events, then emit them and subscribe to them via `dispatch.call` and `dispatch.on`.
 
 First let's create a new instance of `d3.dispatch` with events for when our data finishes loading and when a user selects a new site via the (soon to be) dropdown:
@@ -335,24 +374,33 @@ Now, let's rewrite our `d3.csv` code block with just the code we need to structu
 
 ```js
 // load our data! When done call our dispatch events with corresponding data
-d3.csv('barleyfull.csv', function(err, data) {
-  if (err) { throw error; }
+d3.csv("barleyfull.csv", function (err, data) {
+  if (err) {
+    throw error;
+  }
 
   // coerce values for yield and year to be numeric
-  data.forEach(function(d) {
+  data.forEach(function (d) {
     d.yield = +d.yield;
     d.year = +d.year;
   });
 
   // nest our data on `site` and then on `gen`
-  var nested = d3.nest()
-    .key(function(d) { return d.site; })
-    .key(function(d) { return d.gen; })
+  var nested = d3
+    .nest()
+    .key(function (d) {
+      return d.site;
+    })
+    .key(function (d) {
+      return d.gen;
+    })
     .entries(data);
 
   // construct a new d3 map, not as in geographic map,
   // but more like a "hash"
-  var map = d3.map(nested, function(d) { return d.key; });
+  var map = d3.map(nested, function (d) {
+    return d.key;
+  });
 
   // call our dispatch events with `this` context, and corresponding data
   dispatch.call("load", this, map);
@@ -367,34 +415,38 @@ Notice in this case `dispatch.call` receives three arguments:
 3. any additional arguments, such as data we want to pass along
 
 ### Setting Up the Dropdown
+
 Next, let's create our dropdown or `select` element, once the data has loaded and our `"load"` event has been fired.
 
 ```js
 // register a listener for "load" and create a dropdown / select element
-dispatch.on("load.menu", function(map) {
+dispatch.on("load.menu", function (map) {
   // create select dropdown, attach a native DOM event listener "change"
   // that will invoke dispatch.call with a "statechange" event
-  var select = d3.select("body")
+  var select = d3
+    .select("body")
     .append("div")
     .append("select")
-      .on("change", function() {
-        var site = this.value;
-        dispatch.call(
-          "statechange",
-          this,
-          map.get(site)
-        );
-      });
+    .on("change", function () {
+      var site = this.value;
+      dispatch.call("statechange", this, map.get(site));
+    });
 
   // append options to select dropdown
-  select.selectAll("option")
-      .data(map.keys().sort())
-    .enter().append("option")
-      .attr("value", function(d) { return d; })
-      .text(function(d) { return d; });
+  select
+    .selectAll("option")
+    .data(map.keys().sort())
+    .enter()
+    .append("option")
+    .attr("value", function (d) {
+      return d;
+    })
+    .text(function (d) {
+      return d;
+    });
 
   // set the current dropdown option to the value of the last statechange
-  dispatch.on("statechange.menu", function(site) {
+  dispatch.on("statechange.menu", function (site) {
     select.property("value", site.key);
   });
 });
@@ -409,7 +461,7 @@ After appending a `select` element to the body of the DOM, we register an event 
 In the next code block we create the `option` elements which reside within our `select` element. The data for our `option` elements are the unique site names, which we can retrieve as an array by calling `map.keys()`. We chain `.sort()` on at the end so that the site names appear in alphabetical order. If we logged this data we would see the following:
 
 ```js
-["Crookston", "Duluth", "GrandRapids", "Morris", "StPaul", "Waseca"]
+["Crookston", "Duluth", "GrandRapids", "Morris", "StPaul", "Waseca"];
 ```
 
 In other words, `map.keys()` returns an array of strings for all our map's keys.
@@ -433,57 +485,53 @@ Let's move on to making the punchcard chart. First we'll do the set up: specifyi
 
 ```js
 // set up our punchcard chart after our data loads
-dispatch.on("load.chart", function(map) {
+dispatch.on("load.chart", function (map) {
   // layout properties
-   var margin = { top: 20, right: 30, bottom: 30, left: 120 };
-   var width = 800 - margin.left - margin.right;
-   var height = 600 - margin.top - margin.bottom;
+  var margin = { top: 20, right: 30, bottom: 30, left: 120 };
+  var width = 800 - margin.left - margin.right;
+  var height = 600 - margin.top - margin.bottom;
 
-   // scales for axises & circles
-   var yScale = d3.scalePoint(); // ordinal scale for gen type / category
-   var xScale = d3.scaleLinear(); // since we are just dealing with years, a linear scale will suffice
-   var radius = d3.scaleSqrt(); // circle size would be too large if we used raw values, so we compute their square root
-   var color = d3.scaleOrdinal(d3.schemeCategory20b); // colors used for differentiating "gen" type
+  // scales for axises & circles
+  var yScale = d3.scalePoint(); // ordinal scale for gen type / category
+  var xScale = d3.scaleLinear(); // since we are just dealing with years, a linear scale will suffice
+  var radius = d3.scaleSqrt(); // circle size would be too large if we used raw values, so we compute their square root
+  var color = d3.scaleOrdinal(d3.schemeCategory20b); // colors used for differentiating "gen" type
 
-   // set up yScale, hold off on setting the domain
-   yScale
-     .range([0, height])
-     .round(true);
+  // set up yScale, hold off on setting the domain
+  yScale.range([0, height]).round(true);
 
-   // domain for our x scale is min - 1 & max years of the data set
-   xScale
-     .range([0, width])
-     .domain([1926, 1936]);
+  // domain for our x scale is min - 1 & max years of the data set
+  xScale.range([0, width]).domain([1926, 1936]);
 
-   // domain of circle radius is from 0 to max d.yield
-   radius
-     .range([0, 15])
-     .domain([0, 76]);
+  // domain of circle radius is from 0 to max d.yield
+  radius.range([0, 15]).domain([0, 76]);
 
-   // d3.v4 method of setting up axises: axisLeft, axisBottom, etc.
-   var yAxis = d3.axisLeft()
-     .scale(yScale);
+  // d3.v4 method of setting up axises: axisLeft, axisBottom, etc.
+  var yAxis = d3.axisLeft().scale(yScale);
 
-   var xAxis = d3.axisBottom()
-     .tickFormat(function(d) { return d; })
-     .scale(xScale);
+  var xAxis = d3
+    .axisBottom()
+    .tickFormat(function (d) {
+      return d;
+    })
+    .scale(xScale);
 
-   // create an svg element to hold our chart parts
-   var svg = d3.select("body").append('svg')
-     .attr('width', width + margin.left + margin.right)
-     .attr('height', height + margin.top + margin.bottom)
-     .append('g')
-       .attr('transform', 'translate(' + [margin.left, margin.top] + ')')
+  // create an svg element to hold our chart parts
+  var svg = d3
+    .select("body")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + [margin.left, margin.top] + ")");
 
-   // append svg groups for the axises, then call their corresponding axis function
-   svg.append("g")
-     .attr("class", "y axis")
-     .call(yAxis);
+  // append svg groups for the axises, then call their corresponding axis function
+  svg.append("g").attr("class", "y axis").call(yAxis);
 
-   svg.append("g")
-     .attr("transform", "translate(0," + height + ")")
-     .call(xAxis);
-
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
 });
 ```
 
@@ -497,12 +545,18 @@ Next we'll add the code which utilizes D3's general update pattern to add data t
 
 ```js
 // register a callback to be invoked which updates the chart when "statechange" occurs
-dispatch.on("statechange.chart", function(site) {
+dispatch.on("statechange.chart", function (site) {
   // our transition, will occur over 750 milliseconds
   var t = svg.transition().duration(750);
 
   // update our yScale & transition the yAxis, note the xAxis doesn't change
-  yScale.domain(site.values.map(function(d) { return d.key; }).sort());
+  yScale.domain(
+    site.values
+      .map(function (d) {
+        return d.key;
+      })
+      .sort()
+  );
   yAxis.scale(yScale);
   t.select("g.y.axis").call(yAxis);
 
@@ -511,25 +565,29 @@ dispatch.on("statechange.chart", function(site) {
   svg.datum(site.values);
 
   // tell d3 we want svg groups for each of our gen categories
-  var gens = svg.selectAll("g.gen-row")
-    .data(function(d) { return d; });
+  var gens = svg.selectAll("g.gen-row").data(function (d) {
+    return d;
+  });
 
   // get rid of the old ones we don't need when doing an update
   gens.exit().remove();
 
   // update existing ones left over
-  gens.attr("class", "gen-row")
+  gens
+    .attr("class", "gen-row")
     .transition(t)
-    .attr("transform", function(d) {
-      return "translate(0," + yScale(d.key) + ")"
+    .attr("transform", function (d) {
+      return "translate(0," + yScale(d.key) + ")";
     });
 
   // create new ones if our updated dataset has more then the previous
-  gens.enter().append("g")
+  gens
+    .enter()
+    .append("g")
     .attr("class", "gen-row")
     .transition(t)
-    .attr("transform", function(d) {
-      return "translate(0," + yScale(d.key) + ")"
+    .attr("transform", function (d) {
+      return "translate(0," + yScale(d.key) + ")";
     });
 
   // reselect the gen groups, so that we get any new ones that were made
@@ -537,31 +595,42 @@ dispatch.on("statechange.chart", function(site) {
   gens = svg.selectAll("g.gen-row");
 
   // tell d3 we want some circles!
-  var circles = gens.selectAll("circle")
-    .data(function(d) { return d.values; });
+  var circles = gens.selectAll("circle").data(function (d) {
+    return d.values;
+  });
 
   // get rid of ones we don't need anymore, fade them out
-  circles.exit()
-    .transition(t)
-    .attr("fill", "rgba(255,255,255,0)")
-    .remove();
+  circles.exit().transition(t).attr("fill", "rgba(255,255,255,0)").remove();
 
   // update existing circles, transition size & fill
   circles
     .attr("cy", 0)
-    .attr("cx", function(d) { return xScale(d.year); })
+    .attr("cx", function (d) {
+      return xScale(d.year);
+    })
     .transition(t)
-    .attr("r", function(d) { return radius(d.yield); })
-    .attr("fill", function(d) { return color(d.gen); });
+    .attr("r", function (d) {
+      return radius(d.yield);
+    })
+    .attr("fill", function (d) {
+      return color(d.gen);
+    });
 
   // make new circles
-  circles.enter().append("circle")
+  circles
+    .enter()
+    .append("circle")
     .attr("cy", 0)
-    .attr("cx", function(d) { return xScale(d.year); })
+    .attr("cx", function (d) {
+      return xScale(d.year);
+    })
     .transition(t)
-    .attr("r", function(d) { return radius(d.yield); })
-    .attr("fill", function(d) { return color(d.gen); });
-
+    .attr("r", function (d) {
+      return radius(d.yield);
+    })
+    .attr("fill", function (d) {
+      return color(d.gen);
+    });
 });
 ```
 
@@ -588,6 +657,7 @@ svg.data([site.values]);
 To me using `selection.datum()` more clearly states our intention for this case. We aren't creating multiple SVG elements, just allowing our main SVG group element and its child elements to have access to our data.
 
 ### Implementing the General Update Pattern on Nested SVG Elements
+
 After our main SVG group selection has access to the data we intend to render, we can create a svg group for each barley variety or `gen` as they're referred to in the data. Not all sites have data for every variety, some have more while some have fewer, so this is a good opportunity to perform the general update pattern. The steps are as follows:
 
 1. We "select" all svg group elements with the class `"gen-row"` and chain the `.data(function(d) { return d; })` method to each of them. This will return an object from the top most `values` array of our site data, representing each barley variety, effectively binding that object to the corresponding svg group.
@@ -600,15 +670,16 @@ After our main SVG group selection has access to the data we intend to render, w
 
 A few things to note here, first it's important that in the update and enter steps above we make sure we are adding the class name `"gen-row"` to our svg groups. If we don't do this, when the chart update pattern occurs, our `gens` selection will not contain all of our svg groups, and the update won't work. We use a class to select only the `gen` svg groups so that we don't select our axises and axis labels as well, which is what would happen if we just did `svg.selectAll("g")`.
 
-Second, the `.transition()` method is chained right before the svg group is positioned via the `.attr("transform", "translate")`, and is passed the `t` transition we created earlier. When we want to transition an attribute, say a color, size, or position of an element, we chain `transition()` right before chaining whatever it is we want to change. The process of passing `t` to `.transition()` may seem slightly confusing, as why we would we pass a transition as a parameter to a transition method invocation? The reason is that when `transition()` receives `t` as a name parameter, it will use the `id` of `t` to *synchronize a transition across multiple selections.* This is why when a user selects a new site from the dropdown, the y axis, svg groups, and circles all transition simultaneously over the same time period! Pretty freaking cool, right?
+Second, the `.transition()` method is chained right before the svg group is positioned via the `.attr("transform", "translate")`, and is passed the `t` transition we created earlier. When we want to transition an attribute, say a color, size, or position of an element, we chain `transition()` right before chaining whatever it is we want to change. The process of passing `t` to `.transition()` may seem slightly confusing, as why we would we pass a transition as a parameter to a transition method invocation? The reason is that when `transition()` receives `t` as a name parameter, it will use the `id` of `t` to _synchronize a transition across multiple selections._ This is why when a user selects a new site from the dropdown, the y axis, svg groups, and circles all transition simultaneously over the same time period! Pretty freaking cool, right?
 
-The last part about this that took me a bit to figure out was that upon completing the general update pattern for our svg groups, we need to *reselect them before making the circles.* Why would we do this? Because if we don't reselect them, and there are more svg groups then there were previously, the groups that were added won't end up with circles because they aren't included in the original `gens` selection. If that doesn't make sense, try commenting out the line where we reselect all of the `g.gen-row`s and see what happens when you select a new site via the dropdown.
+The last part about this that took me a bit to figure out was that upon completing the general update pattern for our svg groups, we need to _reselect them before making the circles._ Why would we do this? Because if we don't reselect them, and there are more svg groups then there were previously, the groups that were added won't end up with circles because they aren't included in the original `gens` selection. If that doesn't make sense, try commenting out the line where we reselect all of the `g.gen-row`s and see what happens when you select a new site via the dropdown.
 
 We can use the same select, exit, update, and enter pattern for the circles. Note that here when we bind data to the circles we return `d.values`:
 
 ```js
-var circles = gens.selectAll("circle")
-  .data(function(d) { return d.values; });
+var circles = gens.selectAll("circle").data(function (d) {
+  return d.values;
+});
 ```
 
 This tells d3 to use the array of objects that contain data for each circle, the inner most nested `values` array in our `map` data structure. If this is confusing I'd recommend you take a look again at the data structure section of this post and see if you can match up where each nested part of the data lines up with the code. Try to work backwards from the inner most array where the circles are, all the way back to where the dropdown is.
@@ -616,10 +687,7 @@ This tells d3 to use the array of objects that contain data for each circle, the
 One nice trick to transition out the circles that are not required for new site data is to fade them out. I accomplished this by chaining a `.transition()` and then setting the fill attribute to be transparent and white, so that it appears the dots fade into the background. It also helps prevent smaller dots appearing inside larger dots, when new larger dots overlap with old smaller dots.
 
 ```js
-circles.exit()
-  .transition(t)
-  .attr("fill", "rgba(255,255,255,0)")
-  .remove();
+circles.exit().transition(t).attr("fill", "rgba(255,255,255,0)").remove();
 ```
 
 In both the circles' update and enter code blocks, I add the transition just before the radius and fill are set. You could also add it before the x position is set, but I prefer to not go too overboard with transitions.
@@ -627,6 +695,7 @@ In both the circles' update and enter code blocks, I add the transition just bef
 The complete example can be viewed at the following Block, [Barley Punchcard – Dynamic](http://bl.ocks.org/clhenrick/5394591a62a5e61fb8753c1dca13db47).
 
 ### Conclusion
+
 So this ended up being a much longer blog post than I originally anticipated! But I think it was worth it to cover a lot, including:
 
 - d3-collection: d3.nest, d3.map

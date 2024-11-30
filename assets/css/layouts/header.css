@@ -1,7 +1,7 @@
 /* header used at the top of all pages, including site primary-navigation */
 header.page-header {
   background-color: var(--background-color-secondary);
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 20%);
 }
 
 .page-header-inner {
@@ -14,7 +14,7 @@ header.page-header {
 }
 
 /* NOTE: at 784px width switch to horizontal navigation */
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   .page-header-inner {
     padding: 0.5rem 0;
   }
@@ -39,6 +39,7 @@ header.page-header {
 .page-header a[href]:focus-visible,
 .page-header button.nav-button:focus-visible {
   outline: var(--focus-style-outline);
+
   /* NOTE: negative offset used to prevent focus indicator from being obscured */
   outline-offset: calc(-1 * var(--focus-style-width));
   box-shadow: none;
@@ -48,6 +49,7 @@ header.page-header {
   .page-header a[href]:focus,
   .page-header button.nav-button:focus {
     outline: var(--focus-style-outline);
+
     /* NOTE: negative offset used to prevent focus indicator from being obscured */
     outline-offset: calc(-1 * var(--focus-style-width));
     box-shadow: none;
@@ -97,7 +99,7 @@ header.page-header {
   z-index: 1;
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   .page-header nav {
     grid-template-columns: auto 1fr;
     justify-content: initial;
@@ -120,7 +122,7 @@ button.nav-button:hover {
   background-color: var(--color-accent);
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   button.nav-button {
     display: none;
   }
@@ -135,7 +137,7 @@ nav ul.nav-list {
   grid-column: span 2;
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   nav ul.nav-list {
     grid-column: span 1;
   }
@@ -153,7 +155,7 @@ nav ul.nav-list {
   flex-direction: column;
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   .js-enabled nav > ul,
   nav > ul {
     position: relative;
@@ -170,7 +172,7 @@ nav ul li a {
   border-bottom: 1px solid;
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   nav ul > li:nth-last-child(2) {
     margin-left: auto;
   }
@@ -181,7 +183,7 @@ nav ul li a {
   }
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   nav ul li > ul.with-dropdown {
     display: none;
   }
@@ -192,7 +194,7 @@ nav ul li a[href] {
   width: 100%;
 }
 
-@media screen and (min-width: 748px) {
+@media screen and (width >= 748px) {
   nav ul li,
   nav ul li a[href] {
     width: auto;

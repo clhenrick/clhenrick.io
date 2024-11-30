@@ -21,6 +21,7 @@
 @media (prefers-reduced-motion: no-preference) {
   #site-theme-toggle:target {
     transition: outline 3s ease-in-out;
+
     @starting-style {
       outline: transparent;
     }
@@ -41,6 +42,7 @@
 
 #site-theme-toggle .form-control {
   border-radius: var(--border-radius);
+
   /* undoes margin top / bottom in form-controls.css */
   margin: 0;
 }

@@ -12,7 +12,10 @@
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
     "find-and-replace-md-img-tags": "zx scripts/find-and-replace-md-img-tags.mjs",
-    "optimize-images": "zx scripts/optimize-images.mjs"
+    "optimize-images": "zx scripts/optimize-images.mjs",
+    "lint:js": "eslint --cache --fix",
+    "lint:css": "stylelint --cache 'assets/css/**/*.css' --fix",
+    "format": "prettier . --ignore-unknown --write --cache --cache-strategy metadata"
   },
   "keywords": [],
   "author": "clhenrick <chrishenrick@gmail.com> (https://clhenrick.io/)",
@@ -24,9 +27,14 @@
     "@11ty/eleventy-plugin-bundle": "^1.0.5",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@eslint/js": "^9.15.0",
     "@observablehq/plot": "^0.6.16",
     "a11y-syntax-highlighting": "^0.2.0",
+    "autoprefixer": "^10.4.20",
     "eleventy-plugin-toc": "^1.1.5",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.12.0",
     "html-minifier-terser": "^7.2.0",
     "jsdom": "^25.0.0",
     "luxon": "^3.4.4",
@@ -35,8 +43,25 @@
     "netlify-plugin-cache": "^1.0.3",
     "postcss": "^8.4.38",
     "postcss-minify": "^1.1.0",
+    "prettier": "3.4.1",
     "prismjs": "^1.29.0",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-prettier": "^5.0.2",
     "terser": "^5.31.1",
     "zx": "^8.0.2"
+  },
+  "browserslist": {
+    "production": [
+      "last 5 major versions",
+      "not dead"
+    ],
+    "development": [
+      "last 5 chrome major version",
+      "last 5 firefox major version",
+      "last 5 safari major version",
+      "last 5 edge major version",
+      "not dead"
+    ]
   }
 }

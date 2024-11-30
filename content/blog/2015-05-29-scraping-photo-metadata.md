@@ -15,6 +15,7 @@ tags:
 Now that my time as a grad student at the [Parsons MFA Design and Technology program](http://www.newschool.edu/parsons/mfa-design-technology/) is finished, I've finally had some time to come back to a project I worked on in the fall of last year, the [Bushwick Community Map](http://www.bushwickcommunitymap.org). One important piece that has yet to be added to this project is data that was collected from a participatory mapping survey developed with the [North West Bushwick Community Group](http://www.nwbcommunity.org/) and students from the [Parsons Urban Ecologies program](http://www.newschool.edu/parsons/ms-design-urban-ecology/) last Fall. The survey involved mapping landuse in [Bushwick](http://en.wikipedia.org/wiki/Bushwick,_Brooklyn) (eg: vacant lots and lots being used for informal purposes), abandoned buildings, and new construction. This data was collected as teams walked through the various census tracts in Bushwick, making observations on each block, and then filling out a form describing either a lot or building, recording the address, number of floors, state of distress, etc as well as photographing the site.
 
 ## Data Problems
+
 While each photo was taken with geo location tracking enabled, there was some poor management of the photographs collected by various teams. Granted the photos were logically grouped by census tract in folders on Google Drive, yet no unified naming convention was used to name the photographs.
 
 {% image 'photo-naming.png', 'screen shot of Google Drive showing an assortment of image file names' %}
@@ -56,6 +57,7 @@ SELECT substring(file_name_column, '(.+?)(\.[^.]*$|$)') FROM table_name;
 ```
 
 ### Exif Data Extract
+
 The following is a Node JS script I wrote to grab the latitude and longitude data from a directory images. It reads in a directory of images and writes out a GeoJSON file containing the image name, lat, lon, and other data.
 
 It's used on the command line as follows:
@@ -63,7 +65,6 @@ It's used on the command line as follows:
 ```bash
 node parse_photos.js > photo_data.json
 ```
-
 
 ```js
 var fs = require("graceful-fs");

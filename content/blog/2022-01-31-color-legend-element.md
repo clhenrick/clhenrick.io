@@ -33,9 +33,7 @@ An important part of creating the CLE for me was making it simple to use. You ca
 2. Declare the HTML
 
 ```html
-<script
-  src="https://unpkg.com/color-legend-element@1.0.3/build/color-legend-element.umd.js"
-></script>
+<script src="https://unpkg.com/color-legend-element@1.0.3/build/color-legend-element.umd.js"></script>
 
 <color-legend
   titletext="Temperature (°C)"
@@ -73,7 +71,7 @@ Rather than using JavaScript functions, classes, or method chaining, the CLE wil
 
 ### Why Web Components?
 
-First off let me preface the following text by confessing that I am not a Web Components "expert", but that I've learned a thing or two about them. I see both their inherit value and drawbacks, so am neither really for or against them. When building web applications using JavaScript, I typically reach for JS frameworks like React or Svelte, not Web Components, partly because of the ecosystem that exists around those frameworks (e.g. things like component libraries such as Material UI or Carbon Components, as well as starter kits like Create React App and Svelte Kit). It's worth mentioning that there is [plenty of](https://thenewobjective.com/web-development/a-criticism-of-web-components) * [criticism](https://lea.verou.me/2020/09/the-failed-promise-of-web-components/) of Web Components (but also [some rebuttals](https://medium.com/swlh/the-failed-criticism-of-web-components-ee94380f3552)).
+First off let me preface the following text by confessing that I am not a Web Components "expert", but that I've learned a thing or two about them. I see both their inherit value and drawbacks, so am neither really for or against them. When building web applications using JavaScript, I typically reach for JS frameworks like React or Svelte, not Web Components, partly because of the ecosystem that exists around those frameworks (e.g. things like component libraries such as Material UI or Carbon Components, as well as starter kits like Create React App and Svelte Kit). It's worth mentioning that there is [plenty of](https://thenewobjective.com/web-development/a-criticism-of-web-components) \* [criticism](https://lea.verou.me/2020/09/the-failed-promise-of-web-components/) of Web Components (but also [some rebuttals](https://medium.com/swlh/the-failed-criticism-of-web-components-ee94380f3552)).
 
 The motivation for choosing Web Components as a (non?) "framework" for building the CLE was influenced by my experience working as a UX Engineer at Google. One of the projects I contributed to while working there utilized Custom Elements for its UI, so I had the opportunity to learn the Web Component spec and create some fun and experimental stuff with it. I discovered that the rationale for choosing Web Components as a technology for developing UI is due to it utilizing native Browser APIs such as [Custom Elements][custom-element], [Shadow DOM][shadow-dom], [Slots][slot], and [Templates][template]. One of the core, supporting ideas of choosing Web Components is that by leveraging these native Browser APIs, you are free from relying on JavaScript frameworks that must (well let's face it, should) be kept up date. Frameworks seem to come and go, almost like "fast fashion" these days, so much so it's hard to keep up with them all. Browser APIs on the other hand tend to be a bit more stable and don't go through major breaking changes over the timespan that frameworks such as Angular or React do. For example, think about how many considerable changes those frameworks have been through (like React hooks) since the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) has been around.
 
@@ -140,12 +138,8 @@ I anticipated CLE's markup not suiting every possible legend use case, so I deci
 
 ```html
 <color-legend>
-  <small slot="subtitle">
-    Some subtitle text here perhaps?
-  </small>
-  <p slot="footer" class="no-data">
-     = No data
-  </p>
+  <small slot="subtitle"> Some subtitle text here perhaps? </small>
+  <p slot="footer" class="no-data">= No data</p>
 </color-legend>
 ```
 

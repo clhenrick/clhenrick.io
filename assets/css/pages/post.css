@@ -36,8 +36,8 @@ dl > div.tags {
   flex-wrap: wrap;
 }
 
-dl div.tags a:not(:focus-visible),
-nav.toc a:not(:focus-visible) {
+nav.toc a:not(:focus-visible),
+dl div.tags a:not(:focus-visible) {
   text-decoration-color: transparent;
 }
 

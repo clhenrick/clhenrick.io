@@ -15,8 +15,8 @@
   line-height: 1;
   cursor: pointer;
   transition:
-    color ease-in .2s,
-    background-color ease-in .2s;
+    color ease-in 0.2s,
+    background-color ease-in 0.2s;
 }
 
 .button:visited {

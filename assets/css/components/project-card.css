@@ -1,9 +1,13 @@
 /* projectCard macro/component styles */
+
 /* some code borrowed from: https://inclusive-components.design/cards/ */
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-min-width, 20rem), 1fr));
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--card-min-width, 20rem), 1fr)
+  );
   gap: 1.5rem;
 }
 
@@ -18,6 +22,10 @@
   --card-text-margin: 0.75rem;
   background-color: var(--color-accent-invert);
   overflow: hidden;
+  position: relative;
+  border: 1px solid;
+  border-radius: var(--border-radius);
+  cursor: pointer;
 }
 
 .card,
@@ -56,18 +64,11 @@
   height: auto;
 }
 
-.card {
-  position: relative;
-  border: 1px solid;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .card {
     transition:
-    border ease-in .2s,
-    box-shadow ease-in .2s;
+      border ease-in 0.2s,
+      box-shadow ease-in 0.2s;
   }
 }
 
@@ -117,10 +118,7 @@
 .card a::after {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
 }
 
 .tags > .tag {

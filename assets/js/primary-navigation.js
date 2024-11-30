@@ -118,7 +118,7 @@
     navList.classList.remove("expanded");
   }
 
-  function handleClickOutside(event) {
+  function handleClickOutside() {
     if (isNavigationOpen()) {
       closeNavigation();
     }
