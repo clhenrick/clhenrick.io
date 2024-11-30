@@ -13,9 +13,9 @@
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
     "find-and-replace-md-img-tags": "zx scripts/find-and-replace-md-img-tags.mjs",
     "optimize-images": "zx scripts/optimize-images.mjs",
-    "lint:js": "eslint",
-    "lint:css": "stylelint --cache 'assets/css/**/*.css'",
-    "format": "prettier . --ignore-unknown --write"
+    "lint:js": "eslint --cache --fix",
+    "lint:css": "stylelint --cache 'assets/css/**/*.css' --fix",
+    "format": "prettier . --ignore-unknown --write --cache --cache-strategy metadata"
   },
   "keywords": [],
   "author": "clhenrick <chrishenrick@gmail.com> (https://clhenrick.io/)",
