@@ -178,12 +178,19 @@ module.exports = function (eleventyConfig) {
   };
 };
 
-/** minifies inlined CSS in production builds */
+/** process CSS with PostCSS */
 async function transformMinifyCss(content) {
   // NOTE: `this.type` returns the bundle name
-  if (this.type === "css" && process.env.NODE_ENV === "production") {
+  if (this.type === "css") {
+    const postCssPlugins = [autoprefixer];
+
+    if (process.env.NODE_ENV === "production") {
+      /** minify inlined CSS in production builds */
+      postCssPlugins.push(postcssMinify);
+    }
+
     try {
-      const result = postcss([autoprefixer, postcssMinify]).process(content, {
+      const result = postcss(postCssPlugins).process(content, {
         from: this.page.inputPath,
         to: null,
       });
