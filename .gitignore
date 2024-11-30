@@ -1,6 +1,7 @@
 _site/
 node_modules/
 .stylelintcache
+.eslintcache
 package-lock.json
 .cache
 Portfolio 11ty Migration.md
