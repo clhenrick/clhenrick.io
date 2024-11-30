@@ -53,15 +53,15 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 5 major versions",
+      "not dead"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "last 1 edge version"
+      "last 5 chrome major version",
+      "last 5 firefox major version",
+      "last 5 safari major version",
+      "last 5 edge major version",
+      "not dead"
     ]
   }
 }
