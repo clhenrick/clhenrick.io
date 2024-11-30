@@ -399,7 +399,6 @@ Phew, that was a lot! If you made it this far, then thanks for reading. Hopefull
 
 Happy refactoring!
 
-[comment]: # "reference links"
 [1]: https://amirentstabilized.com/ "Am I Rent Stabilized?"
 [2]: https://github.com/reduxjs/redux/issues/303#issuecomment-125184409 "observe store implementation"
 [3]: https://github.com/clhenrick/am-i-rent-stabilized/tree/master/app "AIRS source code"
