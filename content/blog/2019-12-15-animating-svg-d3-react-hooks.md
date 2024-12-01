@@ -121,7 +121,7 @@ Using this zoom interpolator from D3JS with the math from above, we may create a
 function getTransformStr(t) {
   const view = interpolator(t);
   const k = Math.min(width, height) / view[2]; // scale
-  const translate = [width / 2 - view[0] _ k, height / 2 - view[1] _ k]; // translate
+  const translate = [width / 2 - view[0] * k, height / 2 - view[1] * k]; // translate
   return `translate(${translate}) scale(${k})`;
 }
 ```

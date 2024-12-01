@@ -104,90 +104,114 @@ The output JSON data format I decided on would look something like the following
 
 ```json
 {
-    "country-one" : { // eg: United States
-      "category-one" : { // eg: production
-          "sub-category-one" : { // eg: coal
-              "total" : [  // sample array for total of category-one > sub-category-two
-                {
-                  "year" : 2007,
-                  "val" : 846
-                },
-                {
-                  "year" : 2008,
-                  "val" : 859
-                },
-                {
-                  "year" : 2009,
-                  "val" : 778
-                },
-                {
-                  "year" : 2010,
-                  "val" : 793
-                },
-                {
-                  "year" : 2011,
-                  "val" : 800
-                },
-                {
-                  "year" : 2012,
-                  "val" : 744
-                },
-                {
-                  "year" : 2013,
-                  "val" : 720
-                }
-              ],
-              "per_capita" : [ // sample array for per-capita of category-one > sub-category-two
-                {
-                  "year" : 2007,
-                  "val" : 2.800
-                },
-                {
-                  "year" : 2008,
-                  "val" : 2.825
-                },
-                {
-                  "year" : 2009,
-                  "val" : 2.536
-                },
-                {
-                  "year" : 2010,
-                  "val" : 2.564
-                },
-                {
-                  "year" : 2011,
-                  "val" : 2.568
-                },
-                {
-                  "year" : 2012,
-                  "val" : 2.370
-                },
-                {
-                  "year" : 2013,
-                  "val" : 2.278
-                }
-              ],
-              "source" : ["Energy Information Administration"] // the data's source, this differs country to country
-            },
-          "sub-category-two" : { // eg: gas
-              "total" : [...],
-              "per_capita" : [...],
-              "source" : [...]
-            },
-          // additional sub-categories follow...
+  "country-one": {
+    // eg: United States
+    "category-one": {
+      // eg: production
+      "sub-category-one": {
+        // eg: coal
+        "total": [
+          // sample array for total of category-one > sub-category-two
+          {
+            "year": 2007,
+            "val": 846
           },
-        "category-two" : { // eg: consumption
-          "sub-category-one" : {  // eg: power-sector
-              "total" : [...],
-              "per_capita" : [...],
-              "source" : [...]
-            },
-          // additional sub-categories ...
-        }
-        // additional categories ...
+          {
+            "year": 2008,
+            "val": 859
+          },
+          {
+            "year": 2009,
+            "val": 778
+          },
+          {
+            "year": 2010,
+            "val": 793
+          },
+          {
+            "year": 2011,
+            "val": 800
+          },
+          {
+            "year": 2012,
+            "val": 744
+          },
+          {
+            "year": 2013,
+            "val": 720
+          }
+        ],
+        "per_capita": [
+          // sample array for per-capita of category-one > sub-category-two
+          {
+            "year": 2007,
+            "val": 2.8
+          },
+          {
+            "year": 2008,
+            "val": 2.825
+          },
+          {
+            "year": 2009,
+            "val": 2.536
+          },
+          {
+            "year": 2010,
+            "val": 2.564
+          },
+          {
+            "year": 2011,
+            "val": 2.568
+          },
+          {
+            "year": 2012,
+            "val": 2.37
+          },
+          {
+            "year": 2013,
+            "val": 2.278
+          }
+        ],
+        "source": ["Energy Information Administration"] // the data's source, this differs country to country
       },
-  "country-two" : {...}, // eg: Canada
-  "country-three" : {...} // eg: China
+      "sub-category-two": {
+        // eg: gas
+        "total": [
+          /* ... */
+        ],
+        "per_capita": [
+          /* ... */
+        ],
+        "source": [
+          /* ... */
+        ]
+      }
+      // additional sub-categories follow...
+    },
+    "category-two": {
+      // eg: consumption
+      "sub-category-one": {
+        // eg: power-sector
+        "total": [
+          /* ... */
+        ],
+        "per_capita": [
+          /* ... */
+        ],
+        "source": [
+          /* ... */
+        ]
+      }
+      // additional sub-categories ...
+    }
+    // additional categories ...
+  },
+  "country-two": {
+    /* ... */
+  }, // eg: Canada
+  "country-three": {
+    /* ... */
+  } // eg: China
 }
 ```
 

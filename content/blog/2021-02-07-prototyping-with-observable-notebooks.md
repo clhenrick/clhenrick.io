@@ -69,6 +69,7 @@ d3 = require("d3@6");
 
 One common use case of an import in an Observable Notebook is utilizing HTML inputs that are configured as “views.” A “view” is similar to the concept of data binding. This type of imported component saves you from having to write the equivalent of event handlers in Observable. Instead you only need to write:
 
+<!-- prettier-ignore -->
 ```js
 viewof myinput = inputType({ /* config options */ });
 ```
@@ -111,6 +112,7 @@ One problem that I ran into quickly with prototyping in Observable had to do wit
 
 For example, say you import a cell called `chart` from a notebook that renders a bar chart, but you want to use your own data, not the data from the bar chart’s notebook. To do that you would override the notebook’s `data` cell with your own cell that has your more awesome data. It’s worth noting that for this to work you would need your data’s schema or structure to match that of the imported data. This type of import might look like the following:
 
+<!-- prettier-ignore -->
 ```js
 import {chart as barChart}
 with {my_data as data}
@@ -121,6 +123,7 @@ In the code above, the original cell that renders the bar chart (called `chart`)
 
 The problem with this approach is that if you need to render a chart more than one time, you need to repeat this type of import statement each time you need to render a chart, which is not very D.R.Y. (Do Not Repeat Yourself):
 
+<!-- prettier-ignore -->
 ```js
 import {chart as chart1} with {my_data1 as data} from "@d3/bar-chart"
 import {chart as chart2} with {my_data2 as data} from "@d3/bar-chart"

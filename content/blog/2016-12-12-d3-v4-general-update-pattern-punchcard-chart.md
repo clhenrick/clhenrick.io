@@ -15,8 +15,9 @@ tags:
 
 ### TOC
 
+- [TOC](#toc)
 - [Introduction](#introduction)
-- [The Static Barley Punchcard](#the-static-barley-punchcard-chart)
+- [The Static Barley Punchcard Chart](#the-static-barley-punchcard-chart)
 - [About the Nested Data Structure](#about-the-nested-data-structure)
 - [Steps Towards a Dynamic Chart Using d3-dispatch](#steps-towards-a-dynamic-chart-using-d3-dispatch)
 - [Setting Up the Dropdown](#setting-up-the-dropdown)
@@ -196,32 +197,44 @@ Let's take a look at our nested data:
 [
   {
     "key": "StPaul",
-    "values": [...]
+    "values": [
+      /* ... */
+    ]
   },
   {
     "key": "Duluth",
-    "values": [...]
+    "values": [
+      /* ... */
+    ]
   },
   {
     "key": "Waseca",
-    "values": [...]
+    "values": [
+      /* ... */
+    ]
   },
   {
     "key": "GrandRapids",
-    "values": [...]
+    "values": [
+      /* ... */
+    ]
   },
   {
     "key": "Morris",
-    "values": [...]
+    "values": [
+      /* ... */
+    ]
   },
   {
     "key": "Crookston",
-    "values": [...]
+    "values": [
+      /* ... */
+    ]
   }
 ]
 ```
 
-_Note that `[...]` is just a place holder for a non-empty array._
+_Note that `[/* ... */]` is just a place holder for a non-empty array._
 
 We can see that `nested` is an array of six objects, and each object has a `key` and `values` property. Here, each `key` represents a unique "site" in our data such as "StPaul", "Duluth", "Waseca", etc. This is the result of:
 
@@ -233,101 +246,122 @@ d3.next().key(function (d) {
 
 In the static chart we are using the 5th object in this array, which is for the site "Morris". The data contained in `values` for each of these objects is another array of objects, so let's check that out too, starting with `values` array for "StPaul":
 
-```json
+```js
 [
   {
-    "key": "StPaul",
-    "values": [
+    key: "StPaul",
+    values: [
       {
-        "key": "Manchuria",
-        "values": [...]
+        key: "Manchuria",
+        values: [
+          /* ... */
+        ],
       },
       {
-        "key": "Glabron",
-        "values": [...]
+        key: "Glabron",
+        values: [
+          /* ... */
+        ],
       },
       {
-        "key": "Svansota",
-        "values": [...]
+        key: "Svansota",
+        values: [
+          /* ... */
+        ],
       },
       {
-        "key": "Velvet",
-        "values": [...]
+        key: "Velvet",
+        values: [
+          /* ... */
+        ],
       },
       {
-        "key": "Trebi",
-        "values": [...]
+        key: "Trebi",
+        values: [
+          /* ... */
+        ],
       },
       {
-        "key": "ManxSA",
-        "values": [...]
+        key: "ManxSA",
+        values: [
+          /* ... */
+        ],
       },
       {
-        "key": "SAxMan",
-        "values": [...]
+        key: "SAxMan",
+        values: [
+          /* ... */
+        ],
       },
-      ...
+      /* ... */
+    ],
   },
-  ...
-]
+  /* ... */
+];
 ```
 
-_Note: `...` implies more data, omitted for the sake of brevity._
+_Note: `/* ... */` implies more data, omitted for the sake of brevity._
 
 Again, we have an array of objects, with each object containing the properties `key` and `values`. Each of these object's `key` property represents a barley variety or `gen`. This array of objects is the result of the second invocation of `.key()` in the `var nested` code block:
 
 ```js
-  .key(function(d) { return d.gen; })
+var nested = d3
+  .nest()
+  // ...
+  .key(function (d) {
+    return d.gen;
+  })
+  .entries(data);
 ```
 
 Notice that the value of each `key` property matches a name in the y axis for our punchcard chart _(hint hint)_.
 
 If we dig one level deeper and inspect the `values` array of each of these objects, for example `nested[0].values[0].values`, we'll find objects that have the same structure to the objects in `data`:
 
-```json
+```js
 [
   {
-    "key": "StPaul",
-    "values": [
+    key: "StPaul",
+    values: [
       {
-        "key": "Manchuria",
-        "values": [
+        key: "Manchuria",
+        values: [
           {
-            "id": "1",
-            "yield": 47.5,
-            "gen": "Manchuria",
-            "year": 1927,
-            "site": "StPaul"
+            id: "1",
+            yield: 47.5,
+            gen: "Manchuria",
+            year: 1927,
+            site: "StPaul",
           },
           {
-            "id": "54",
-            "yield": 32.9,
-            "gen": "Manchuria",
-            "year": 1928,
-            "site": "StPaul"
+            id: "54",
+            yield: 32.9,
+            gen: "Manchuria",
+            year: 1928,
+            site: "StPaul",
           },
           {
-            "id": "103",
-            "yield": 48.9,
-            "gen": "Manchuria",
-            "year": 1929,
-            "site": "StPaul"
+            id: "103",
+            yield: 48.9,
+            gen: "Manchuria",
+            year: 1929,
+            site: "StPaul",
           },
           {
-            "id": "171",
-            "yield": 34.1,
-            "gen": "Manchuria",
-            "year": 1930,
-            "site": "StPaul"
+            id: "171",
+            yield: 34.1,
+            gen: "Manchuria",
+            year: 1930,
+            site: "StPaul",
           },
-          ...
+          // ...
         ],
       },
-      ...
-    ]
+      // ...
+    ],
   },
-  ...
-]
+  // ...
+];
 ```
 
 These objects are used to generate each circle in the punchcard. The value of `year` is used to map the circle's x position to a given year in the x axis, while the value of `yield` is mapped to the radius of the circle, with help from `d3.scaleLinear` and `d3.scaleSqrt` respectively. Our y axis value, `gen` isn't used when creating the circles as their parent SVG group elements have already been positioned on the y axis. We can also see that the all values for `gen` are "Manchuria" and all values for `site` are "StPaul", matching the nesting of our data structure. The numbers for each `id` further inform us that `d3.nest` has re-arranged our data, for if you inspect the array in `data` from `d3.csv` you'll see that the values for `id` increase sequentially by a factor of 1 starting at 1, or the equivalent of an object's index + 1.
@@ -472,10 +506,12 @@ Finally we need to make sure that the dropdown stays set on the last option the 
 
 E.g., for the site "Morris" the object looks like:
 
-```js
+```json
 {
-  key: "Morris",
-  values: [...]
+  "key": "Morris",
+  "values": [
+    /* ... */
+  ]
 }
 ```
 
