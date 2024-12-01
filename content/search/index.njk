@@ -13,18 +13,17 @@ eleventyNavigation:
 {%- set searchPrefix = ["site:", websiteName] | join %}
 
 {%- set partials %}
-  components/button,
-  components/forms/form-controls,
-  pages/search
+  components/button, components/forms/form-controls, pages/search
 {%- endset %}
 {%- set bucket="search" %}
 {% include "styles.njk" %}
 
-<h1>
-  {{title}}
-</h1>
+<h1>{{ title }}</h1>
 
-<p>Search the contents of this site using <a href="https://duckduckgo.com?q={{searchPrefix}}">DuckDuckGo</a>.</p>
+<p>
+  Search the contents of this site using
+  <a href="https://duckduckgo.com?q={{ searchPrefix }}">DuckDuckGo</a>.
+</p>
 
 {# NOTE: this form is progressively enhanced, it will work without JavaScript! #}
 <form
@@ -36,9 +35,9 @@ eleventyNavigation:
 >
   <span id="search-title" hidden>Site</span>
   {# set region for search #}
-  <input type="hidden" name="ki" value="us-en">
+  <input type="hidden" name="ki" value="us-en" />
   {# disable ads in search results #}
-  <input type="hidden" name="k1" value="-1">
+  <input type="hidden" name="k1" value="-1" />
   <label for="search-text">Search Query</label>
   <input
     id="search-text"
@@ -48,10 +47,9 @@ eleventyNavigation:
     {# NOTE: tried adding an <input type="hidden"> with the "site:name" value, but DDG seems to only keep the last "q" query param value, so it gets replaced by the users search query. #}
     value="{{ searchPrefix }} "
     required=""
-  >
+  />
   <button class="button" type="submit">Search</button>
 </form>
-
 
 {%- set javascripts -%}
   search

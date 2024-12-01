@@ -1,37 +1,36 @@
 {%- css "default" %}
-.postlist {
-  counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}
-}
-.postlist li.postlist-item {
-  margin-bottom: 3rem;
-}
+  .postlist { counter-reset: start-from
+  {{ (postslistCounter or postslist.length) + 1 }} } .postlist li.postlist-item
+  { margin-bottom: 3rem; }
 {% endcss %}
 {%- set headingLevel = headingLevel if headingLevel else 2 %}
 <ol reversed class="postlist" role="list">
-{% for post in postslist | reverse %}
-	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-    {# prettier-ignore-start #}
+  {% for post in postslist | reverse %}
+    <li
+      class="postlist-item{% if post.url == url %}postlist-item-active{% endif %}"
+    >
+      {# prettier-ignore-start #}
     <h{{ headingLevel }}>
     {# prettier-ignore-end #}
       <a href="{{ post.url }}" class="postlist-link">
-      {%- if post.data.title %}
-        {{ post.data.title }}
-      {%- else %}
-        <code>{{ post.url }}</code>
-      {%- endif %}
+        {%- if post.data.title %}
+          {{ post.data.title }}
+        {%- else %}
+          <code>{{ post.url }}</code>
+        {%- endif %}
       </a>
-    {# prettier-ignore-start #}
+      {# prettier-ignore-start #}
     </h{{ headingLevel }}>
     {# prettier-ignore-end #}
-    <div>
-      <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
-        {{ post.date | readableDate }}
-      </time>
-    </div>
-    {{ ' ' }}
-    {%- if post.data.teaser -%}
-    <p>{{ post.data.teaser }}</p>
-    {%- endif %}
-	</li>
-{% endfor %}
+      <div>
+        <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
+          {{ post.date | readableDate }}
+        </time>
+      </div>
+      {{ ' ' }}
+      {%- if post.data.teaser -%}
+        <p>{{ post.data.teaser }}</p>
+      {%- endif %}
+    </li>
+  {% endfor %}
 </ol>

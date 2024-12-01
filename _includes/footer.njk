@@ -2,21 +2,20 @@
   <div class="footer-inner">
     <section>
       <h2>About This Site</h2>
-      <p>Designed and coded with
+      <p>
+        Designed and coded with
         <span aria-hidden="true">♥</span>
         <span class="visually-hidden">love&nbsp;</span>
         by
         <a href="/about/">Chris Henrick</a>
         using
-        <a href="https://www.11ty.dev/">Eleventy</a>.
-        Hosted on
+        <a href="https://www.11ty.dev/">Eleventy</a>. Hosted on
         <a href="https://netlify.com">Netlify</a>.
       </p>
+      <p><span>©</span> Chris Henrick 2015 – current. All rights reserved.</p>
       <p>
-        <span>©</span> Chris Henrick 2015 – current. All rights reserved.
-      </p>
-      <p>
-        Last built on <time datetime="{{ generated.iso }}">{{ generated.formatted }}</time>
+        Last built on
+        <time datetime="{{ generated.iso }}">{{ generated.formatted }}</time>
       </p>
       <ul class="meta-links inline" role="list">
         <li>
@@ -29,7 +28,7 @@
           <a href="/feed.xml">RSS feed</a>
         </li>
         <li>
-          <a href={{metadata.githubRepository}}>Code</a>
+          <a href="{{ metadata.githubRepository }}">Code</a>
         </li>
         <li>
           <a href="/sitemap.xml">Sitemap</a>
@@ -40,11 +39,13 @@
     <section>
       <h2>Social Links</h2>
       <ul class="social-links" role="list">
-      {%- for name, url in metadata.socialLinks %}
-        <li>
-          <a href={{url}} {% if name == "Mastodon" %} rel="me" {% endif %} >{{name}}</a>
-        </li>
-      {%- endfor %}
+        {%- for name, url in metadata.socialLinks %}
+          <li>
+            <a href="{{ url }}" {% if name == "Mastodon" %}rel="me"{% endif %}
+              >{{ name }}</a
+            >
+          </li>
+        {%- endfor %}
       </ul>
     </section>
   </div>

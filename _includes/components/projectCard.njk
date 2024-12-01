@@ -1,25 +1,25 @@
 {# Card component for use in work/index #}
 {% macro projectCard(project, thumb = "") %}
-<li class="card">
-  <div class="img">
-    {%- if thumb %}
-      {% dataCascadeImage thumb.image.stats, "" %}
-    {%- else %}
-      Missing thumbnail image!
-    {%- endif %}
-  </div>
-  <div class="text">
-    <h2>
-      <a href="./{{ project.title | slugify }}/">{{ project.title }}</a>
-    </h2>
-    <p>{{ project.description }}</p>
-    {% if project.tags %}
-      <ul class="tags" role="list">
-        {% for tag in project.tags %}
-          <li class="tag">{{tag}}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </div>
-</li>
+  <li class="card">
+    <div class="img">
+      {%- if thumb %}
+        {% dataCascadeImage thumb.image.stats, "" %}
+      {%- else %}
+        Missing thumbnail image!
+      {%- endif %}
+    </div>
+    <div class="text">
+      <h2>
+        <a href="./{{ project.title | slugify }}/">{{ project.title }}</a>
+      </h2>
+      <p>{{ project.description }}</p>
+      {% if project.tags %}
+        <ul class="tags" role="list">
+          {% for tag in project.tags %}
+            <li class="tag">{{ tag }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </li>
 {% endmacro %}

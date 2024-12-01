@@ -6,13 +6,10 @@ eleventyNavigation:
 ---
 
 {%- set partials %}
-  components/disclosure,
-  components/project-card,
-  pages/work
+  components/disclosure, components/project-card, pages/work
 {%- endset %}
 {%- set bucket = "work" %}
 {% include "styles.njk" %}
-
 {% from "components/projectCard.njk" import projectCard %}
 
 <h1>Portfolio</h1>
@@ -20,17 +17,30 @@ eleventyNavigation:
 <details open>
   <summary>About</summary>
   <p>
-  Featured projects I've created or contributed to over the years. This work spans the domains of web development and design, interactive data visualization, user interface design, interaction design, and cartographic design.
-</p>
+    Featured projects I've created or contributed to over the years. This work
+    spans the domains of web development and design, interactive data
+    visualization, user interface design, interaction design, and cartographic
+    design.
+  </p>
 </details>
 
 <details open data-id="project-filters-disclosure">
   <summary id="filter-projects-title">Filter Projects</summary>
-  <div role="group" class="project-filters" aria-labelledby="filter-projects-title">
+  <div
+    role="group"
+    class="project-filters"
+    aria-labelledby="filter-projects-title"
+  >
     <button value="all" class="button filter" aria-pressed="true">all</button>
-    <button value="web" class="button filter" aria-pressed="false">interactive</button>
-    <button value="data-viz" class="button filter" aria-pressed="false">data viz</button>
-    <button value="cartography" class="button filter" aria-pressed="false">cartography</button>
+    <button value="web" class="button filter" aria-pressed="false">
+      interactive
+    </button>
+    <button value="data-viz" class="button filter" aria-pressed="false">
+      data viz
+    </button>
+    <button value="cartography" class="button filter" aria-pressed="false">
+      cartography
+    </button>
     <button class="button shuffle">shuffle!</button>
   </div>
 </details>
@@ -47,8 +57,7 @@ eleventyNavigation:
 <div id="announce" class="visually-hidden" aria-live="polite"></div>
 
 {%- set javascripts -%}
-  work,
-  disclosure-widgets
+  work, disclosure-widgets
 {%- endset -%}
 {%- set bucket = "work" -%}
 {%- include "scripts.njk" -%}

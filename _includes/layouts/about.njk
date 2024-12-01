@@ -1,17 +1,16 @@
 ---
 layout: layouts/base.njk
-pages: [
-  { title: "about Chris Henrick", path: "/about/" },
-  { title: "Curriculum Vitae", path: "/about/cv/" },
-  { title: "Talks and Workshops", path: "/about/talks/"},
-  { title: "Accessibility Statement", path: "/about/accessibility/" }
-]
+pages:
+  [
+    { title: "about Chris Henrick", path: "/about/" },
+    { title: "Curriculum Vitae", path: "/about/cv/" },
+    { title: "Talks and Workshops", path: "/about/talks/" },
+    { title: "Accessibility Statement", path: "/about/accessibility/" },
+  ]
 ---
 
 {%- set partials %}
-  components/secondarySiteNav,
-  components/oakland-map,
-  pages/about
+  components/secondarySiteNav, components/oakland-map, pages/about
 {% endset %}
 {%- set bucket = "about" %}
 {% include "styles.njk" %}

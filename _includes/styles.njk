@@ -23,7 +23,7 @@
     <style>{% getBundle "css", bucket %}</style>
     {# prettier-ignore-end #}
 
-  {# in development we load all CSS via a <link> so that changes to our CSS don't require a manual page refresh #}
+    {# in development we load all CSS via a <link> so that changes to our CSS don't require a manual page refresh #}
   {%- else %}
     {%- for path in paths %}
       {%- if regExp.test(path) %}
