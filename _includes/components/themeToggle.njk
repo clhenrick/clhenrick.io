@@ -1,9 +1,6 @@
 {# theme-toggle.css: site wide theme toggle that currently resides in the site's footer #}
-{%- set themes = ["light", "dark", "auto"]  -%}
-<fieldset
-  id="site-theme-toggle"
-  tabindex="-1"
->
+{%- set themes = ["light", "dark", "auto"] -%}
+<fieldset id="site-theme-toggle" tabindex="-1">
   {# NOTE: we use a span here because <legend> doesn't play well with `display: flex` on the fieldset parent #}
   <legend class="visually-hidden">Site Theme:</legend>
   <span aria-hidden="true">Site Theme:</span>
@@ -16,7 +13,7 @@
           type="radio"
           name="site-theme"
           value="{{ theme }}"
-        >
+        />
         {{ theme }}
       </label>
     </div>

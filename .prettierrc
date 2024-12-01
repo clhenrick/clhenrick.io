@@ -1,1 +1,12 @@
-trailingComma: "es5"
+{
+  "trailingComma": "es5",
+  "plugins": ["prettier-plugin-jinja-template"],
+  "overrides": [
+    {
+      "files": ["*.njk"],
+      "options": {
+        "parser": "jinja-template"
+      }
+    }
+  ]
+}

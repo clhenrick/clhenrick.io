@@ -4,23 +4,20 @@
 
   {# NOTE: data-page-size is used to set the max-width of <main> #}
   {%- set defaultPageSize = 'normal' %}
-  <body data-page-size="{{pageSize or defaultPageSize}}">
+  <body data-page-size="{{ pageSize or defaultPageSize }}">
     <script>
       document.body.classList.add("js-enabled");
     </script>
 
     {%- include "header.njk" %}
 
-    <main id="main" tabindex="-1">
-      {{ content | safe }}
-    </main>
+    <main id="main" tabindex="-1">{{ content | safe }}</main>
 
     {%- include "footer.njk" %}
 
     {# NOTE: JavaScript shared by all pages are added here #}
     {%- set javascripts -%}
-      primary-navigation,
-      theme-toggle
+      primary-navigation, theme-toggle
     {%- endset -%}
     {%- include "scripts.njk" -%}
   </body>

@@ -3,11 +3,13 @@
 {% macro kofi(url, item = "post") %}
   <article class="kofi" aria-labelledby="kofi-title">
     <span id="kofi-title" hidden>Donate</span>
-    <p>No generative AI or LLMs were used for creating any part of this website.</p>
     <p>
-    So, if you enjoyed this {{ item }}, please feel free to
-    <a href={{url}}>buy me a coffee</a>!
-    <span class="kofi-emoji" aria-hidden="true">☕️</span>
+      No generative AI or LLMs were used for creating any part of this website.
+    </p>
+    <p>
+      So, if you enjoyed this {{ item }}, please feel free to
+      <a href="{{ url }}">buy me a coffee</a>!
+      <span class="kofi-emoji" aria-hidden="true">☕️</span>
     </p>
   </article>
 {% endmacro %}

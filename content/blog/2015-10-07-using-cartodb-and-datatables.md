@@ -13,10 +13,12 @@ tags:
 
 ## Topics Covered
 
-- [Using CartoDB as a datastore](#what-is-cartodb)
-- [Scripting your data wrangling workflow ](#scripting-your-data-wrangling-workflow)
-- [Using the SQL API to load your data to your website / app](#using-the-cartodb-sql-api)
-- [Using the CartoDB JS library to render data on top of an interactive web map](#using-the-cartodb-js-library)
+- [Topics Covered](#topics-covered)
+- [Background](#background)
+- [What is CartoDB?](#what-is-cartodb)
+- [Scripting Your Data Wrangling Workflow](#scripting-your-data-wrangling-workflow)
+- [Using the CartoDB SQL API](#using-the-cartodb-sql-api)
+- [Using the CartoDB JS Library](#using-the-cartodb-js-library)
 
 ## Background
 
@@ -86,22 +88,44 @@ The Response will be in JSON format and have the following structure:
 
 ```json
 {
-    "rows": [
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        {...},
-        ...
-        ],
-    "time": 0.01,
-    "fields": {...},
-    "total_rows": 1649
+  "rows": [
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    },
+    {
+      /* ... */
+    }
+    /* ... */
+  ],
+  "time": 0.01,
+  "fields": {
+    /* ... */
+  },
+  "total_rows": 1649
 }
 ```
 
@@ -109,17 +133,16 @@ Each row has data stored in an object with the column name as the key and that c
 
 ```json
 {
-    "nameoforganization": "Community Parents, Inc.",
-    "neighborhood": "Bedford-Stuyvesant",
-    "addressline1": "90 Chauncey Street",
-    "addressline2": "Brooklyn, NY",
-    "zipcode": "11233",
-    "communityboardnumber": "3",
-    "phonenumber": "718-771-4002",
-    "alternativecontact": "",
-    "website": "http://www.headstartsbc.org",
-    "category1": "Pre-School & Childcare",
-    ...
+  "nameoforganization": "Community Parents, Inc.",
+  "neighborhood": "Bedford-Stuyvesant",
+  "addressline1": "90 Chauncey Street",
+  "addressline2": "Brooklyn, NY",
+  "zipcode": "11233",
+  "communityboardnumber": "3",
+  "phonenumber": "718-771-4002",
+  "alternativecontact": "",
+  "website": "http://www.headstartsbc.org",
+  "category1": "Pre-School & Childcare"
 }
 ```
 

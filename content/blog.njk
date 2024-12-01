@@ -12,9 +12,9 @@ pagination:
   alias: "posts"
   reverse: true
 ---
+
 {%- set partials %}
-  components/posts-list,
-  pages/blog
+  components/posts-list, pages/blog
 {%- endset -%}
 {%- set bucket = "blog" %}
 {% include "styles.njk" %}
@@ -50,17 +50,17 @@ pagination:
         Next
       </a>
     </li>
-{%- for pageEntry in pagination.pages %}
-    <li>
-      <a
-        class="button"
-        href="{{ pagination.hrefs[ loop.index0 ] }}"
-        {% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}
-      >
-        <span class="visually-hidden">Page</span> {{ loop.index }}
-      </a>
-    </li>
-{%- endfor %}
+    {%- for pageEntry in pagination.pages %}
+      <li>
+        <a
+          class="button"
+          href="{{ pagination.hrefs[ loop.index0 ] }}"
+          {% if page.url == pagination.hrefs[ loop.index0 ] %}aria-current="page"{% endif %}
+        >
+          <span class="visually-hidden">Page</span> {{ loop.index }}
+        </a>
+      </li>
+    {%- endfor %}
   </ol>
   <p>
     You may view all posts in the <a href="/blog/archive/">Blog Archive</a>.

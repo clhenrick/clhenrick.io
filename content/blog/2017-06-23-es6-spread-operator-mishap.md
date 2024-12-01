@@ -33,19 +33,19 @@ const o2 = {
 
 then the value of `o2` would be:
 
-```js
+```json
 {
-  a: 1,
-  b: 1
+  "a": 1,
+  "b": 1
 }
 ```
 
 **Not** what I wanted or expected! The output I wanted was:
 
-```js
+```json
 {
-  a: 1,
-  b: 5
+  "a": 1,
+  "b": 5
 }
 ```
 

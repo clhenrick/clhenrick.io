@@ -7,9 +7,7 @@ eleventyComputed:
 ---
 
 {%- set partials %}
-  components/posts-list,
-  components/oakland-map,
-  pages/home
+  components/posts-list, components/oakland-map, pages/home
 {%- endset %}
 {%- set bucket = "home" %}
 {% include "styles.njk" %}
@@ -28,9 +26,9 @@ eleventyComputed:
     {% for service in services %}
       <li class="card">
         <div class="text">
-          <h3>{{service.title}}</h3>
-          <p>{{service.description}}</p>
-          <a class="button" href="{{service.url}}">{{service.cta}}</a>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <a class="button" href="{{ service.url }}">{{ service.cta }}</a>
         </div>
       </li>
     {% endfor %}
@@ -46,9 +44,11 @@ eleventyComputed:
   {%- set postslistCounter = postsCount %}
   {%- set headingLevel = 3 %}
   {%- include "postslist.njk" %}
-
   {%- set morePosts = postsCount - numberOfLatestPostsToShow %}
   {%- if morePosts > 0 %}
-    <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="/blog/archive/">the archive</a>.</p>
+    <p>
+      {{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found
+      in <a href="/blog/archive/">the archive</a>.
+    </p>
   {%- endif %}
 </section>

@@ -3,29 +3,24 @@ layout: layouts/base.njk
 eleventyComputed:
   kofiUrl: "{{ metadata.socialLinks.get('Ko-Fi') }}"
 ---
+
 {%- set partials %}
-  components/code,
-  components/forms/form-controls,
-  components/forms/select,
-  components/kofi,
-  components/disclosure,
-  pages/post
+  components/code, components/forms/form-controls, components/forms/select,
+  components/kofi, components/disclosure, pages/post
 {%- endset %}
 
 {% if page.fileSlug.includes("oklch") %}
   {% set partials = partials.concat(',', 'pages/blog-posts/color-experiments-oklch/post-styles') %}
 {% endif %}
-
 {%- set bucket = "post" %}
 {% include "styles.njk" %}
-
 {% from "components/kofi.njk" import kofi %}
 
 <article aria-describedby="post-title">
   <h1 id="post-title">{{ title }}</h1>
 
   {%- if teaser %}
-  <p class="post-teaser">{{ teaser }}</p>
+    <p class="post-teaser">{{ teaser }}</p>
   {%- endif %}
 
   <dl class="post-metadata">
@@ -38,24 +33,22 @@ eleventyComputed:
       </dd>
     </div>
     {%- if updated %}
-    <div class="updated-date">
-      <dt>Last updated on:</dt>
-      <dd>
-        <time datetime="{{ updated  | htmlDateString }}">
-          {{ updated | readableDate }}
-        </time>
-      </dd>
-    </div>
+      <div class="updated-date">
+        <dt>Last updated on:</dt>
+        <dd>
+          <time datetime="{{ updated  | htmlDateString }}">
+            {{ updated | readableDate }}
+          </time>
+        </dd>
+      </div>
     {%- endif %}
     <div class="tags">
       <dt>Tagged in:</dt>
       {%- for tag in tags | filterTagList %}
-      {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-      <dd>
-        <a href="{{ tagUrl }}" class="post-tag">
-          #{{ tag }}
-        </a>
-      </dd>
+        {%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+        <dd>
+          <a href="{{ tagUrl }}" class="post-tag"> #{{ tag }} </a>
+        </dd>
       {%- endfor %}
     </div>
   </dl>
@@ -68,16 +61,24 @@ eleventyComputed:
   {{ content | safe }}
 
   {{ kofi(kofiUrl) }}
-
 </article>
 
 {%- if collections.posts %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem %}
-{%- set nextPost = collections.posts | getNextCollectionItem %}
-{%- if nextPost or previousPost %}
-<ul class="links-nextprev" role="list">
-  {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
-  {%- if nextPost %}<li>Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
-</ul>
-{%- endif %}
+  {%- set previousPost = collections.posts | getPreviousCollectionItem %}
+  {%- set nextPost = collections.posts | getNextCollectionItem %}
+  {%- if nextPost or previousPost %}
+    <ul class="links-nextprev" role="list">
+      {%- if previousPost %}
+        <li>
+          Previous:
+          <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+        </li>
+      {% endif %}
+      {%- if nextPost %}
+        <li>
+          Next: <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  {%- endif %}
 {%- endif %}

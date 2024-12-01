@@ -32,14 +32,19 @@ ORDER BY b.display_name, year;
 Previously, if I wanted to keep the SQL human readable in my JS code I would've done something like:
 
 ```js
-var tableOne = 'table_one';
-var tableTwo = 'table_two';
+var tableOne = "table_one";
+var tableTwo = "table_two";
 
-var query = "SELECT a.year, a.season, b.display_name " +
-"FROM " + tableOne + " a," + tableTwo  " b " +
-"WHERE a.id = b.transmitter AND season != 'other' " +
-"GROUP BY a.year, a.season, b.display_name " +
-"ORDER BY b.display_name, year;"
+var query =
+  "SELECT a.year, a.season, b.display_name " +
+  "FROM " +
+  tableOne +
+  " a," +
+  tableTwo +
+  " b " +
+  "WHERE a.id = b.transmitter AND season != 'other' " +
+  "GROUP BY a.year, a.season, b.display_name " +
+  "ORDER BY b.display_name, year;";
 ```
 
 You have to be really careful when doing this and not to mention it's pretty ugly, right? With ES6 template strings the above can simply become:
@@ -60,11 +65,12 @@ let query = `
 That's much easier to write, read, and to avoid syntax errors in your SQL. There's one catch though, if we were to log that template string as it is right now it would look like:
 
 ```js
-"  SELECT a.year, a.season, b.display_name
+`
+  SELECT a.year, a.season, b.display_name
   FROM table_one a, table_two b
   WHERE a.id = b.transmitter AND season != 'other'
   GROUP BY a.year, a.season, b.display_name
-  ORDER BY b.display_name, year;"
+  ORDER BY b.display_name, year;`;
 ```
 
 That's not how we'd want to pass it off as part of the body to a `GET` request to our database. Although CartoDB's API is fairly good a removing extra white space, the newline (`\n`) characters would screw up our query once the API attempts to run it on our database. However, there's an easy way to deal with this problem: use a function that strips out those pesky `\n`'s and indentation space so that the template string becomes a single line string.

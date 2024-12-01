@@ -19,9 +19,11 @@
     {%- endfor %}
     {# NOTE: we "bucket" the CSS so that we can create separate inlined styles for shared / common CSS and page / layout specific CSS #}
     {# See: https://github.com/11ty/eleventy-plugin-bundle/blob/main/README.md#asset-bucketing #}
+    {# prettier-ignore-start #}
     <style>{% getBundle "css", bucket %}</style>
+    {# prettier-ignore-end #}
 
-  {# in development we load all CSS via a <link> so that changes to our CSS don't require a manual page refresh #}
+    {# in development we load all CSS via a <link> so that changes to our CSS don't require a manual page refresh #}
   {%- else %}
     {%- for path in paths %}
       {%- if regExp.test(path) %}

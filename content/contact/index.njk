@@ -9,9 +9,7 @@ eleventyNavigation:
 ---
 
 {%- set partials %}
-  components/forms/form-controls,
-  components/button,
-  pages/contact
+  components/forms/form-controls, components/button, pages/contact
 {%- endset %}
 {%- set bucket = "contact" %}
 {% include "styles.njk" %}
@@ -19,7 +17,8 @@ eleventyNavigation:
 <h1>{{ title }}</h1>
 
 <p>
-  You may contact me using the form on this page. You may also email me at <a href="mailto:chrishenrick@gmail.com">chrishenrick@gmail.com</a>.
+  You may contact me using the form on this page. You may also email me at
+  <a href="mailto:chrishenrick@gmail.com">chrishenrick@gmail.com</a>.
 </p>
 
 <form
@@ -42,7 +41,7 @@ eleventyNavigation:
       id="full-name"
       required=""
       autocomplete="name"
-    >
+    />
   </div>
 
   <div class="form-control-group">
@@ -55,7 +54,7 @@ eleventyNavigation:
       required=""
       autocomplete="on"
       inputmode="email"
-    >
+    />
   </div>
 
   <div class="form-control-group">
@@ -76,10 +75,10 @@ eleventyNavigation:
     name="_subject"
     id="email-subject"
     value="Contact Form Submission"
-  >
+  />
 
   {# NOTE: for honey pot spam filtering. See: https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering #}
-  <input id="s-h-p" type="text" name="_gotcha" value=""/>
+  <input id="s-h-p" type="text" name="_gotcha" value="" />
 
   <button class="button" type="submit">Submit</button>
 </form>

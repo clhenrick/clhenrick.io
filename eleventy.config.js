@@ -219,15 +219,21 @@ async function transformMinifyJs(content) {
   return content;
 }
 
-function transformMinifyHtml(content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    let minified = htmlmin.minify(content, {
-      useShortDoctype: true,
-      removeComments: true,
-      collapseWhitespace: true,
-    });
+const htmlminOptions = {
+  useShortDoctype: true,
+  removeComments: true,
+  collapseWhitespace: true,
+  continueOnParseError: true,
+};
 
-    return minified;
+async function transformMinifyHtml(content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    try {
+      let minified = await htmlmin.minify(content, htmlminOptions);
+      return minified;
+    } catch (error) {
+      console.error("problem minifying html: ", error);
+    }
   }
   // If not an HTML output, return content as-is
   return content;
