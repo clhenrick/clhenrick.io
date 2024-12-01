@@ -1,7 +1,12 @@
 {%- css "default" %}
-  .postlist { counter-reset: start-from
-  {{ (postslistCounter or postslist.length) + 1 }} } .postlist li.postlist-item
-  { margin-bottom: 3rem; }
+  {# prettier-ignore-start #}
+.postlist {
+  counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}
+}
+.postlist li.postlist-item {
+  margin-bottom: 3rem;
+}
+{# prettier-ignore-end #}
 {% endcss %}
 {%- set headingLevel = headingLevel if headingLevel else 2 %}
 <ol reversed class="postlist" role="list">
