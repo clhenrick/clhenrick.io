@@ -19,7 +19,9 @@
 
     {# NOTE: we "bucket" the JS so that we can create separate inlined scripts for shared JS and page / layout specific JS #}
     {# See: https://github.com/11ty/eleventy-plugin-bundle/blob/main/README.md#asset-bucketing #}
+    {# prettier-ignore-start #}
     <script>{% getBundle "js", bucket %}</script>
+    {# prettier-ignore-end #}
 
   {# in development we load all JS via a <script> so that changes to our JS don't require a manual page refresh #}
   {%- else %}
