@@ -109,10 +109,7 @@
   {% include "styles.njk" %}
 
   {# NOTE: prevents a flash of un-themed content. See theme-toggle.js for related code. #}
-  <script>
-    const theme = localStorage.getItem("theme");
-    if (theme) {
-      document.documentElement.dataset.theme = theme;
-    }
-  </script>
+  {# prettier-ignore-start #}
+  <script>const theme=localStorage.getItem("theme");if(theme){document.documentElement.dataset.theme=theme}</script>
+  {# prettier-ignore-end #}
 </head>
