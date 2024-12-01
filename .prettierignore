@@ -2,3 +2,4 @@ _site
 node_modules
 public
 _data/work_image_thumbnails
+_includes/components/blog-posts/color-experiments-oklch/lineChart*.njk
