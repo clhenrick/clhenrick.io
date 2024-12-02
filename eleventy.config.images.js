@@ -1,6 +1,6 @@
 import path from "path";
 import eleventyImage from "@11ty/eleventy-img";
-import constants from "./_data/constants.mjs";
+import constants from "./_data/constants.js";
 
 /**
  * handles creating an 11ty shortcode for images.

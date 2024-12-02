@@ -13,7 +13,7 @@ import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import {
   pluginImages,
   pluginDataCascadeImage,
-} from "./eleventy.config.images.mjs";
+} from "./eleventy.config.images.js";
 import { minify } from "terser";
 import htmlmin from "html-minifier-terser";
 
