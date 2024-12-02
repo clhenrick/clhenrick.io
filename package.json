@@ -4,6 +4,7 @@
   "description": "Portfolio and blog of Chris Henrick",
   "main": "index.js",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "npx @11ty/eleventy",
     "build:prod": "NODE_ENV=production npm run build",
@@ -22,7 +23,7 @@
   "author": "clhenrick <chrishenrick@gmail.com> (https://clhenrick.io/)",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-img": "^3.1.8",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-bundle": "^1.0.5",

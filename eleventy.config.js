@@ -1,29 +1,28 @@
-const { DateTime } = require("luxon");
-const {
-  EleventyHtmlBasePlugin,
-  EleventyRenderPlugin,
-} = require("@11ty/eleventy");
-const rssPlugin = require("@11ty/eleventy-plugin-rss");
-const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const eleventyTocPlugin = require("eleventy-plugin-toc");
-const markdown = require("markdown-it")({
-  html: true,
-});
-const anchor = require("markdown-it-anchor");
-const postcss = require("postcss");
-const postcssMinify = require("postcss-minify");
-const autoprefixer = require("autoprefixer");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const {
+import { DateTime } from "luxon";
+import { EleventyHtmlBasePlugin, EleventyRenderPlugin } from "@11ty/eleventy";
+import rssPlugin from "@11ty/eleventy-plugin-rss";
+import bundlerPlugin from "@11ty/eleventy-plugin-bundle";
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
+import eleventyTocPlugin from "eleventy-plugin-toc";
+import markdownit from "markdown-it";
+import anchor from "markdown-it-anchor";
+import postcss from "postcss";
+import postcssMinify from "postcss-minify";
+import autoprefixer from "autoprefixer";
+import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import {
   pluginImages,
   pluginDataCascadeImage,
-} = require("./eleventy.config.images.js");
-const { minify } = require("terser");
-const htmlmin = require("html-minifier-terser");
+} from "./eleventy.config.images.js";
+import { minify } from "terser";
+import htmlmin from "html-minifier-terser";
+
+const markdown = markdownit({
+  html: true,
+});
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   // Force 11ty to watch CSS and JS files
   eleventyConfig.addWatchTarget("assets/css/**/*.css");
   eleventyConfig.addWatchTarget("assets/js/**/*.js");
@@ -176,7 +175,7 @@ module.exports = function (eleventyConfig) {
     },
     pathPrefix: "/",
   };
-};
+}
 
 /** process CSS with PostCSS */
 async function transformMinifyCss(content) {

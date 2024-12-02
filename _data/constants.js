@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // shared config options used by the 11ty image plugin shortcode
   IMAGE_WIDTHS_WIDE_PAGE_LAYOUT: [450, 900, 1232, 2464],
   IMAGE_WIDTHS_NORMAL_PAGE_LAYOUT: [450, 900, 852, 1704],
