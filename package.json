@@ -15,7 +15,8 @@
     "optimize-images": "zx scripts/optimize-images.mjs",
     "lint:js": "eslint --cache --fix",
     "lint:css": "stylelint --cache 'assets/css/**/*.css' --fix",
-    "format": "prettier . --ignore-unknown --write --cache --cache-strategy metadata"
+    "format": "prettier . --ignore-unknown --write --cache --cache-strategy metadata",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "clhenrick <chrishenrick@gmail.com> (https://clhenrick.io/)",
@@ -36,7 +37,9 @@
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.12.0",
     "html-minifier-terser": "^7.2.0",
+    "husky": "^9.1.7",
     "jsdom": "^25.0.0",
+    "lint-staged": "^15.2.10",
     "luxon": "^3.4.4",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.1.0",
@@ -63,6 +66,19 @@
       "last 5 safari major version",
       "last 5 edge major version",
       "not dead"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --cache",
+      "prettier --write --cache --cache-strategy metadata"
+    ],
+    "*.css": [
+      "stylelint --fix --cache",
+      "prettier --write --cache --cache-strategy metadata"
+    ],
+    "!(*.css|*.js)": [
+      "prettier --ignore-unknown --write --cache --cache-strategy metadata"
     ]
   }
 }
