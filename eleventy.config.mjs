@@ -16,7 +16,6 @@ import {
 } from "./eleventy.config.images.mjs";
 import { minify } from "terser";
 import htmlmin from "html-minifier-terser";
-import UpgradeHelper from "@11ty/eleventy-upgrade-help";
 
 const markdown = markdownit({
   html: true,
@@ -71,7 +70,6 @@ export default function (eleventyConfig) {
     tags: ["h2", "h3"],
     wrapperLabel: "Table of contents",
   });
-  eleventyConfig.addPlugin(UpgradeHelper);
 
   if (process.env.NODE_ENV === "production") {
     eleventyConfig.addTransform("htmlmin", transformMinifyHtml);
