@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   title: "clhenrick.io",
   titleImage: "img/oakland-map-dark-1800w.webp",
   titleImageAlt:

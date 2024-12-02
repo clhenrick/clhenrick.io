@@ -1,12 +1,12 @@
-const path = require("path");
-const eleventyImage = require("@11ty/eleventy-img");
-const constants = require("./_data/constants");
+import path from "path";
+import eleventyImage from "@11ty/eleventy-img";
+import constants from "./_data/constants.mjs";
 
 /**
  * handles creating an 11ty shortcode for images.
  * Outputs image markup as `<picture>` element with child `<source>` and `<img>` elements
  * */
-function pluginImages(eleventyConfig) {
+export function pluginImages(eleventyConfig) {
   // Eleventy Image shortcode
   // https://www.11ty.dev/docs/plugins/image/
   eleventyConfig.addAsyncShortcode(
@@ -19,7 +19,7 @@ function pluginImages(eleventyConfig) {
     ) {
       const formats = ["webp", "jpeg", "svg"];
       const filename = src.split("/").pop();
-      const input = path.join(__dirname, "public", "img", filename);
+      const input = path.join(process.cwd(), "public", "img", filename);
 
       const metadata = await eleventyImage(input, {
         widths,
@@ -55,7 +55,7 @@ function pluginImages(eleventyConfig) {
  * allows for processing images as data files.
  * see: https://www.11ty.dev/docs/plugins/image/#process-images-as-data-files
  */
-function pluginDataCascadeImage(eleventyConfig) {
+export function pluginDataCascadeImage(eleventyConfig) {
   eleventyConfig.addDataExtension("png,jpg,jpeg", {
     read: false, // Don’t read the input file, argument is now a file path
     parser: async (imagePath) => {
@@ -84,8 +84,3 @@ function pluginDataCascadeImage(eleventyConfig) {
     return eleventyImage.generateHTML(stats, imageAttributes);
   });
 }
-
-module.exports = {
-  pluginDataCascadeImage,
-  pluginImages,
-};
