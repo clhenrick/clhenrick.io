@@ -7,7 +7,7 @@ Node.js scripts that are useful for automating tasks related to the development 
 Example usage:
 
 ```bash
-npx zx ./scripts/create-plot-line-charts.mjs
+npx zx ./scripts/create-plot-line-charts.js
 ```
 
 Generates line charts for the blog post ["Color Experiments with OKLCH"](../content/blog/2024-09-01-color-experiments-with-oklch.md) as Nunjucks partials using PlotJS. These partials are included in the post via the [`lineChartFigure.njk` macro](../_includes/components/blog-posts/color-experiments-oklch/lineChartFigure.njk) to wrap them in a figure element and give them a title and caption.
@@ -17,7 +17,7 @@ Generates line charts for the blog post ["Color Experiments with OKLCH"](../cont
 Example usage:
 
 ```bash
-yarn find-and-replace-md-img-tags --file=relative/path/to/file.md
+npx zx ./scripts/find-and-replace-md-img-tags --file=relative/path/to/file.md
 ```
 
 This script may be used to do a find and replace of markdown image syntax with a Nunjucks `image` shortcode.
@@ -40,21 +40,21 @@ Example usage:
 
 ```bash
 # single image
-yarn optimize-images --path=relative/path/to/images/
+npx zx scripts/optimize-images.js --path=relative/path/to/images/
 
 # image directory
-yarn optimize-images --dir-path=relative/path/to/images_directory/
+npx zx scripts/optimize-images.js --dir-path=relative/path/to/images_directory/
 
 # glob pattern matching
-yarn optimize-images --pattern='**/images/*.jpg'
+npx zx scripts/optimize-images.js --pattern='**/images/*.jpg'
 
 # pass desired output widths and image formats
-yarn optimize-images --path=relative/path/to/images/ --widths='[auto, 300]' --formats='[.webp,.jpg,.png]'
+npx zx scripts/optimize-images.js --path=relative/path/to/images/ --widths='[auto, 300]' --formats='[.webp,.jpg,.png]'
 
 # perform a "dry-run" (no write) and use the image's file name instead of a hash
-yarn optimize-images --pattern='**/images/*.jpg' --dry-run --use-file-name
+npx zx scripts/optimize-images --pattern='**/images/*.jpg' --dry-run --use-file-name
 ```
 
-This script may be used to run the [Eleventy Image plugin (`@11ty/eleventy-img`)](https://www.11ty.dev/docs/plugins/image/) on one or more arbitrary image files. The script will log the "stats" data for each image processed which is a result of calling the default function export of the npm `@11ty/eleventy-img` module.
+This script may be used to run the [Eleventy Image plugin (`@11ty/eleventy-img`)](https://www.11ty.dev/docs/plugins/image/) (v3.x) on one or more arbitrary image files. The script will log the "stats" data for each image processed which is a result of calling the default function export of the npm `@11ty/eleventy-img` module.
 
 **NOTE:** Currently this script is not being used for anything related to the Eleventy build process, but it is helpful for testing the plugin prior to using it in the project. To run the script in a "dry run" to avoid writing files mode pass the `--dry-run` flag.
