@@ -4,6 +4,7 @@
   "description": "Portfolio and blog of Chris Henrick",
   "main": "index.js",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "npx @11ty/eleventy",
     "build:prod": "NODE_ENV=production npm run build",
