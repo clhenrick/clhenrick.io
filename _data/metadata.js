@@ -6,6 +6,13 @@ export default {
   titleImageType: "image/webp",
   logoImage: "favicon/apple-touch-icon.png",
   url: "https://clhenrick.io/",
+  getDomainName() {
+    return this.url.replaceAll("/", "").replace("https:", "");
+  },
+  getWebmentionUrl() {
+    const domain = this.getDomainName();
+    return `https://webmention.io/${domain}/webmention`;
+  },
   language: "en",
   description:
     "The website, blog, and portfolio of Chris L Henrick, front-end web developer and design engineer.",
