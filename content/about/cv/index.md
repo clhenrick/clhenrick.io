@@ -170,7 +170,7 @@ Assisted [Avalon Travel](http://avalontravelbooks.com/)'s in-house Cartography S
 _Summer, 2010 and Spring, 2011_<br>
 San Francisco, CA
 
-Assisted [GreenInfo Nework](http://www.greeninfo.org/) with its mission of providing quality and affordable GIS analysis and cartographic products to public interest groups and governmental organizations.
+Assisted [GreenInfo Network](http://www.greeninfo.org/) with its mission of providing quality and affordable GIS analysis and cartographic products to public interest groups and governmental organizations.
 
 - Executed both a current and historic habitat suitability analysis of the Black-Backed Woodpecker for the John Muir Foundation utilizing model builder with USGS Landfire, Land Cover, and Public Lands data sources.
 - Utilized Arc Map 9.x / 10.x to assist in the production of confidential priority acquisition area series maps for Save the Redwoods League.

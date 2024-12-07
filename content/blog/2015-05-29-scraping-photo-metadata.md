@@ -30,7 +30,7 @@ The way in which the Urban Ecologies students then mapped the photos after they 
 
 {% image 'bushwick_photos_qgis.png', 'screen shot of the software QGIS depicting a map of points of photo locations in the Bushwick neighborhood of Brooklyn' %}
 
-To make working with the photos easier I first uploaded all 1008 photos to [Flickr](https://www.flickr.com/) which genorously gives all users a whole terabyte of free storage. I then used the [Flickr API](https://www.flickr.com/services/api/) to [grab the URLs and title for each uploaded photo](#flickr-api-code) and store them in a JSON file. For some reason I wasn't able to see the geo data for the photos using this method which definitely would have helped save some time.
+To make working with the photos easier I first uploaded all 1008 photos to [Flickr](https://www.flickr.com/) which generously gives all users a whole terabyte of free storage. I then used the [Flickr API](https://www.flickr.com/services/api/) to [grab the URLs and title for each uploaded photo](#flickr-api-code) and store them in a JSON file. For some reason I wasn't able to see the geo data for the photos using this method which definitely would have helped save some time.
 
 My original solution was to merge all the layers in the KML file, then convert it to a GeoJSON format and then join it to the Flickr JSON data using the [joiner](https://www.npmjs.com/package/joiner) module for Node JS. Yet I soon realized this was not a good strategy as the KML file was missing locations for ~300 photos.
 
