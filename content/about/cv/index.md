@@ -111,7 +111,7 @@ San Francisco, CA
 One part data wrangler, one part cartographer, and several parts web developer for [Stamen Design](http://stamen.com), a renowned data visualization and design studio.
 
 - Prototyped and built highly customized web applications with a focus on interactive mapping and data visualization.
-- Utiziled web development technologies such as React, Redux, Leaflet, CARTO, D3JS, Git, AWS, Heroku.
+- Utilized web development technologies such as React, Redux, Leaflet, CARTO, D3JS, Git, AWS, Heroku.
 - Designed and created original tiled basemaps using data from OpenStreetMap and Natural Earth, with technologies such as Make, PostGIS, CartoCSS, and Mapnik.
 
 ### Radish Lab
