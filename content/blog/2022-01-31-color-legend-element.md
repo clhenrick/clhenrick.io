@@ -25,7 +25,7 @@ tags:
 
 <img alt="Animation showing the Color Legend Element's many variants." src="/img/color-legend-element-2022-01-22.gif">
 
-I recently [open sourced and launched](https://twitter.com/chrislhenrick/status/1484987005020766208?s=20) version 1.0 of [Color Legend Element][cle-github], a [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) that's intended to be used as a legend with data visualizations. I'm fairly satisified with its current functionality which covers common use cases when visualizing continuous, discrete, or categorical data. It's API (attributes and properties) makes it fairly straight forward to use (IMHO) and it is well documented in the [CLE website][cle-website], [Observable Notebook][cle-notebook], and [Github repository][cle-github].
+I recently [open sourced and launched](https://twitter.com/chrislhenrick/status/1484987005020766208?s=20) version 1.0 of [Color Legend Element][cle-github], a [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) that's intended to be used as a legend with data visualizations. I'm fairly satisfied with its current functionality which covers common use cases when visualizing continuous, discrete, or categorical data. It's API (attributes and properties) makes it fairly straight forward to use (IMHO) and it is well documented in the [CLE website][cle-website], [Observable Notebook][cle-notebook], and [Github repository][cle-github].
 
 An important part of creating the CLE for me was making it simple to use. You can read more about its usage in the links mentioned above, but the gist of it is:
 
@@ -114,7 +114,7 @@ color-legend {
 }
 ```
 
-One simple solution to this problem is to use CSS variables ([Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)). Just about every style property of the CLE may be overriden using a CSS variable. For example, here's how the same style rules above could be applied using CSS variables:
+One simple solution to this problem is to use CSS variables ([Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)). Just about every style property of the CLE may be overridden using a CSS variable. For example, here's how the same style rules above could be applied using CSS variables:
 
 ```css
 color-legend {
@@ -200,7 +200,7 @@ I didn't get around to everything I would have liked to for the v1 release of Co
 
 ### Accessibility:
 
-After announcing CLE on Twitter, [someone quickly pointed out](https://twitter.com/PhilW_SF/status/1485099145077604353?s=20&t=dP6nqI90nRj8YRQwtDBiWA) that relying on color alone does not accomodate users who have color deficiencies with their vision. One way of accommodating this is by using patterns and symbols in addition to or in place of color. This feature would be a helpful A11Y improvement for the CLE's categorical, discrete, and threshold scale types.
+After announcing CLE on Twitter, [someone quickly pointed out](https://twitter.com/PhilW_SF/status/1485099145077604353?s=20&t=dP6nqI90nRj8YRQwtDBiWA) that relying on color alone does not accommodate users who have color deficiencies with their vision. One way of accommodating this is by using patterns and symbols in addition to or in place of color. This feature would be a helpful A11Y improvement for the CLE's categorical, discrete, and threshold scale types.
 
 Another trickier piece of A11Y that I have been anticipating is making the SVG elements accessible, which I elaborate on further in the event handlers idea below. This is not trivial and would require some research and user testing to get right.
 
@@ -210,7 +210,7 @@ At the bare minimum the CLE should have a way of providing "alt" text that descr
 
 Currently the CLE does not support the full range of scales available in the [d3-scale][d3-scale] library. Given that CLE is intended to be simple to use, I'm not sure supporting every type of D3 scale would make sense. I am however interested in adding support for a few more scale types such as [Diverging](https://observablehq.com/@d3/diverging-scales) and [Logarithmic](https://observablehq.com/@d3/continuous-scales#scale_log) scales, which I feel are common enough in data visualizations that they're worth supporting. These would render similarly to the CLE's existing "continuous" scale type, but would utilize D3's diverging and logarithmic scales for placement of the axis ticks.
 
-Another option would be to expose the CLE's internal `colorScale` as a property so that it could be set via JavaScript. This way it could be set to any D3 scale, though its rendering could be a little unpredictable depending on what the desired output is. Again, my goal with this project was to simplify how the legend is used and not require someone to be savy with D3JS in order to use it.
+Another option would be to expose the CLE's internal `colorScale` as a property so that it could be set via JavaScript. This way it could be set to any D3 scale, though its rendering could be a little unpredictable depending on what the desired output is. Again, my goal with this project was to simplify how the legend is used and not require someone to be savvy with D3JS in order to use it.
 
 ### Event Handlers
 
