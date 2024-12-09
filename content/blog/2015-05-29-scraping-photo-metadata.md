@@ -34,7 +34,7 @@ To make working with the photos easier I first uploaded all 1008 photos to [Flic
 
 My original solution was to merge all the layers in the KML file, then convert it to a GeoJSON format and then join it to the Flickr JSON data using the [joiner](https://www.npmjs.com/package/joiner) module for Node JS. Yet I soon realized this was not a good strategy as the KML file was missing locations for ~300 photos.
 
-Thankfully one last solution occured to me; I could scrape the [Exif metadata](http://en.wikipedia.org/wiki/Exchangeable_image_file_format) from the photos which includes latitude and longitude coordinates (only if geolocation was enabled from the camera).
+Thankfully one last solution occurred to me; I could scrape the [Exif metadata](http://en.wikipedia.org/wiki/Exchangeable_image_file_format) from the photos which includes latitude and longitude coordinates (only if geolocation was enabled from the camera).
 
 The question was, how to do this?
 

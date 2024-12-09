@@ -51,8 +51,8 @@ Where as in the punchcard chart the size of each circle allows the user to make 
 Take note of the various D3 Scales being used in the original chart: `scalePoint`, `scaleLinear`, `scaleSqrt`, and `scaleOrdinal`. Each is assigned to a variable which hints at what its purpose will be.
 
 ```js
-var yscale = d3.scalePoint();
-var xscale = d3.scaleLinear();
+var yScale = d3.scalePoint();
+var xScale = d3.scaleLinear();
 var radius = d3.scaleSqrt();
 var color = d3.scaleOrdinal(d3.schemeCategory20b);
 ```
@@ -88,7 +88,7 @@ d3.csv("barleyfull.csv", function (err, data) {
 
   var site = nested[4];
 
-  yscale
+  yScale
     .range([0, height])
     .domain(
       site.values.map(function (d) {
@@ -97,7 +97,7 @@ d3.csv("barleyfull.csv", function (err, data) {
     )
     .round(true);
 
-  xscale.range([0, width]).domain([1927, 1936]);
+  xScale.range([0, width]).domain([1927, 1936]);
 
   radius.range([0, 15]).domain([
     0,
@@ -106,14 +106,14 @@ d3.csv("barleyfull.csv", function (err, data) {
     }),
   ]);
 
-  var yaxis = d3.axisLeft().scale(yscale);
+  var yAxis = d3.axisLeft().scale(yScale);
 
-  var xaxis = d3
+  var xAxis = d3
     .axisBottom()
     .tickFormat(function (d) {
       return d;
     })
-    .scale(xscale);
+    .scale(xScale);
 
   var chart = d3.select("body").append("div").datum(site);
 
@@ -128,12 +128,12 @@ d3.csv("barleyfull.csv", function (err, data) {
     .append("g")
     .attr("transform", "translate(" + [margin.left, margin.top] + ")");
 
-  svg.append("g").call(yaxis);
+  svg.append("g").call(yAxis);
 
   svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(xaxis);
+    .call(xAxis);
 
   var rows = svg
     .selectAll("g.row")
@@ -146,7 +146,7 @@ d3.csv("barleyfull.csv", function (err, data) {
       return d.key + " row";
     })
     .attr("transform", function (d) {
-      return "translate(0," + yscale(d.key) + ")";
+      return "translate(0," + yScale(d.key) + ")";
     });
 
   rows
@@ -161,7 +161,7 @@ d3.csv("barleyfull.csv", function (err, data) {
     })
     .attr("cy", 0)
     .attr("cx", function (d) {
-      return xscale(d.year);
+      return xScale(d.year);
     })
     .attr("fill", function (d) {
       return color(d.gen);
