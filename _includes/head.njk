@@ -50,6 +50,9 @@
   {# Let's others know this site was created using 11ty #}
   <meta name="generator" content="{{ eleventy.generator }}" />
 
+  {# webmentions: https://indieweb.org/Webmention #}
+  <link rel="webmention" href="{{ metadata.webmentionUrl }}" />
+
   {# RSS feeds #}
   <link
     rel="alternate"
