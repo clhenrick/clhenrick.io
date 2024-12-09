@@ -36,7 +36,7 @@ What we need is a way to bulk load the data.
 
 **PGloader** is a tool that allows for programatically bulk loading of data into **PostgreSQL**. Using this method ended up taking just 5 minutes 2.127 seconds, instead of hanging up and eventually crashing my computer. I'd say that's an improvement!
 
-**PGloader** can be used one of two ways; by either writing a script or as a command line utility. Because I had yet to create the table in my `nyc_311` database, I decided to go with using a script. My friend [John Krauss](http://blog.johnkrauss.com/) refered me to a **pgloader** script he used which helped me get going. The syntax for pgloader is **PLpgSQL** which is a bit strange when first encountered, but not too difficult to follow.
+**PGloader** can be used one of two ways; by either writing a script or as a command line utility. Because I had yet to create the table in my `nyc_311` database, I decided to go with using a script. My friend [John Krauss](http://blog.johnkrauss.com/) referred me to a **pgloader** script he used which helped me get going. The syntax for pgloader is **PLpgSQL** which is a bit strange when first encountered, but not too difficult to follow.
 
 Prior to writing the pgloader script a good first step was to pull out the 30 or so complaint field names and rename them to be database friendly. A quick n dirty bash script did the job, it replaces spaces with underscores and converts text to lower case by grabbing the first line of the CSV file using **head** and piping it through **sed** and **tr**, then writing the output to a text file:
 
