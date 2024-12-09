@@ -15,19 +15,19 @@ export default {
     return this.domainName;
   },
 
-  /** banner image used for home page and og meta tag in head */
+  /** banner image used for home page and default og meta tag in head */
   get titleImage() {
     return path.join("img", "oakland-map-dark-1800w.webp");
   },
 
-  /** alt text for home title image */
+  /** alt text for banner image */
   titleImageAlt:
     "A geographic map of the city of Oakland, California, centered on downtown. The map's extent spans the San Francisco Bay to the west, the cities of Berkeley and Emeryville to the north, the Oakland hills to the east, and the city of Alameda to the south. The map depicts the road networks and names of various cities and neighborhoods, predominantly in the East Bay area. It includes a topographic shaded relief rendering of the rugged Oakland hills.",
 
-  /** mime type of title image */
+  /** mime type of banner image */
   titleImageType: "image/webp",
 
-  /** used for open graph logo */
+  /** open graph logo image */
   get logoImage() {
     return path.join("favicon", "apple-touch-icon.png");
   },
@@ -41,24 +41,25 @@ export default {
   /** site language code */
   language: "en",
 
-  /** site description used in head meta data and RSS */
+  /** site description used in head meta tags and RSS */
   description:
     "The website, blog, and portfolio of Chris L Henrick, front-end web developer and design engineer.",
 
-  /** nodejs environment setting */
+  /** @type {"production" | "development"} nodejs env setting */
   environment: process.env.NODE_ENV,
 
   /** site github repository URL */
   githubRepository: "https://github.com/clhenrick/clhenrick.io",
 
-  /** site author metadata */
+  /** @type {{ name: string; email: string; url: string; }} site author metadata */
   author: {
     name: "Chris Henrick",
     email: "chrishenrick@gmail.com",
     url: "https://clhenrick.io/about/",
   },
 
-  /** social media handles */
+  /** @typedef {"Github" | "Mastodon" | "Observable" | "LinkedIn" | "Ko-Fi"} SocialHandles */
+  /** @type {Map<SocialHandles, string>} social media handles */
   socialHandles: new Map([
     ["Github", "@clhenrick"],
     ["Mastodon", "@clhenrick@indieweb.social"],
@@ -67,7 +68,7 @@ export default {
     ["Ko-Fi", "@chrislhenrick"],
   ]),
 
-  /** social media URLs */
+  /** @type {Map<SocialHandles, string>} social media URLs */
   socialLinks: new Map([
     ["GitHub", "https://github.com/clhenrick"],
     ["Mastodon", "https://indieweb.social/@clhenrick"],
