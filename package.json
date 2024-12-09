@@ -17,6 +17,7 @@
     "lint:js": "eslint --cache --fix",
     "lint:css": "stylelint --cache 'assets/css/**/*.css' --fix",
     "format": "prettier . --ignore-unknown --write --cache --cache-strategy metadata",
+    "spellcheck": "npx cspell-cli --gitignore --unique --exclude public .",
     "prepare": "husky install"
   },
   "keywords": [],
