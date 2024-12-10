@@ -15,6 +15,8 @@ tags:
   - JavaScript
 ---
 
+<!-- cSpell:words lowfr myinput -->
+
 <figure>
   {% image 'observable_prototyping_hero.jpg', 'Abstract map of the United States using various types of data visualization techniques' %}
 

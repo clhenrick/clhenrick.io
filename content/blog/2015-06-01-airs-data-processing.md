@@ -12,6 +12,8 @@ tags:
   - SQL
 ---
 
+<!-- cSpell:ignoreRegExp (AUTHR|AUTHORI) -->
+
 ## TOC
 
 - [Background](#background)

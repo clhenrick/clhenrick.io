@@ -11,6 +11,8 @@ tags:
   - SQL
 ---
 
+<!-- cSpell:words dtable -->
+
 ## Topics Covered
 
 - [Topics Covered](#topics-covered)

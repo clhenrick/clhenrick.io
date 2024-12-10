@@ -13,6 +13,8 @@ tags:
   - Data Visualization
 ---
 
+<!-- cSpell:words Waseca Glabron Svansota Trebi -->
+
 ### TOC
 
 - [TOC](#toc)
