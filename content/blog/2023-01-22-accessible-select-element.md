@@ -203,7 +203,7 @@ Interestingly for checkboxes, the expected keyboard interaction pattern is to us
   </fieldset>
 </form>
 
-Perhaps this is because checkboxes are considered an indvidual user interface component (more specifically a single form control) that may live on their own rather than in a group. For example, we might use a single checkbox to "Subscribe to marketing email spam" in our online store when asking for someone's email address. Tabbing to each checkbox is similar to tabbing to a native HTML button where each button has its own tab stop. Conversely, radio buttons and tabs UI don't exist in isolation, they're associated with a group that allows the user to make a single selection from a list whereas checkboxes are often used for making multiple selections.
+Perhaps this is because checkboxes are considered an individual user interface component (more specifically a single form control) that may live on their own rather than in a group. For example, we might use a single checkbox to "Subscribe to marketing email spam" in our online store when asking for someone's email address. Tabbing to each checkbox is similar to tabbing to a native HTML button where each button has its own tab stop. Conversely, radio buttons and tabs UI don't exist in isolation, they're associated with a group that allows the user to make a single selection from a list whereas checkboxes are often used for making multiple selections.
 
 Now, back to our custom select component problems.
 

@@ -17,6 +17,7 @@
     "lint:js": "eslint --cache --fix",
     "lint:css": "stylelint --cache 'assets/css/**/*.css' --fix",
     "format": "prettier . --ignore-unknown --write --cache --cache-strategy metadata",
+    "spellcheck": "npx cspell-cli --gitignore --unique --exclude public .",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -72,14 +73,17 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix --cache",
-      "prettier --write --cache --cache-strategy metadata"
+      "prettier --write --cache --cache-strategy metadata",
+      "npx cspell-cli --gitignore --unique --exclude public"
     ],
     "*.css": [
       "stylelint --fix --cache",
-      "prettier --write --cache --cache-strategy metadata"
+      "prettier --write --cache --cache-strategy metadata",
+      "npx cspell-cli --gitignore --unique --exclude public"
     ],
     "!(*.css|*.js)": [
-      "prettier --ignore-unknown --write --cache --cache-strategy metadata"
+      "prettier --ignore-unknown --write --cache --cache-strategy metadata",
+      "npx cspell-cli --gitignore --unique --exclude public"
     ]
   }
 }

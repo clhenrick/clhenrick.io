@@ -111,7 +111,7 @@ San Francisco, CA
 One part data wrangler, one part cartographer, and several parts web developer for [Stamen Design](http://stamen.com), a renowned data visualization and design studio.
 
 - Prototyped and built highly customized web applications with a focus on interactive mapping and data visualization.
-- Utiziled web development technologies such as React, Redux, Leaflet, CARTO, D3JS, Git, AWS, Heroku.
+- Utilized web development technologies such as React, Redux, Leaflet, CARTO, D3JS, Git, AWS, Heroku.
 - Designed and created original tiled basemaps using data from OpenStreetMap and Natural Earth, with technologies such as Make, PostGIS, CartoCSS, and Mapnik.
 
 ### Radish Lab
@@ -170,7 +170,7 @@ Assisted [Avalon Travel](http://avalontravelbooks.com/)'s in-house Cartography S
 _Summer, 2010 and Spring, 2011_<br>
 San Francisco, CA
 
-Assisted [GreenInfo Nework](http://www.greeninfo.org/) with its mission of providing quality and affordable GIS analysis and cartographic products to public interest groups and governmental organizations.
+Assisted [GreenInfo Network](http://www.greeninfo.org/) with its mission of providing quality and affordable GIS analysis and cartographic products to public interest groups and governmental organizations.
 
 - Executed both a current and historic habitat suitability analysis of the Black-Backed Woodpecker for the John Muir Foundation utilizing model builder with USGS Landfire, Land Cover, and Public Lands data sources.
 - Utilized Arc Map 9.x / 10.x to assist in the production of confidential priority acquisition area series maps for Save the Redwoods League.

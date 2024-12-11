@@ -12,6 +12,8 @@ tags:
   - SQL
 ---
 
+<!-- cSpell:ignoreRegExp (AUTHR|AUTHORI) -->
+
 ## TOC
 
 - [Background](#background)
@@ -51,7 +53,7 @@ The Excel workbooks I obtained from the FOIL request were normalized, stacked, a
 
 ### 2. Geocoding the Processed DHCR data
 
-A [Python script](https://github.com/clhenrick/dhcr-rent-stabilized-data/blob/master/scripts/geocode-dhcr-list.py) was then used to obtain values for each property's Borough - Block - Lot number (BBL), Building Identificaiton Number (BIN), and latitude - longitude coordinates from the [NYC GeoClient API](https://developer.cityofnewyork.us/api/geoclient-api). A propery's street address and borough are passed to the GeoClient API which then returns lots of useful information about the property such as the BBL, BIN, latitude and logitude values.
+A [Python script](https://github.com/clhenrick/dhcr-rent-stabilized-data/blob/master/scripts/geocode-dhcr-list.py) was then used to obtain values for each property's Borough - Block - Lot number (BBL), Building Identification Number (BIN), and latitude - longitude coordinates from the [NYC GeoClient API](https://developer.cityofnewyork.us/api/geoclient-api). A propery's street address and borough are passed to the GeoClient API which then returns lots of useful information about the property such as the BBL, BIN, latitude and longitude values.
 
 ### 3. Determining NYC Properties That Are Likely Rent Stabilized
 
@@ -334,7 +336,7 @@ WHERE
   );
 ```
 
-If a user's address is within a group's cachment area, then that group's information is passed into a modal in the app. This modal displays information such as the group's website url, phone number, contact person, and/or address. As what's present in this data varies from group to group, a Handlebars.js helper function is used to check if the data exists before passing it to the Handlebars HTML template:
+If a user's address is within a group's catchment area, then that group's information is passed into a modal in the app. This modal displays information such as the group's website url, phone number, contact person, and/or address. As what's present in this data varies from group to group, a Handlebars.js helper function is used to check if the data exists before passing it to the Handlebars HTML template:
 
 ```js
 var H = Handlebars;

@@ -63,6 +63,8 @@ Known gaps in accessibility in this site which I plan on remediating are as foll
 
 - **Video alternatives:** video embeds may exist in some pages of this site that do not have alternatives such as closed captions or transcripts. I plan on adding closed captions and transcripts for these videos.
 
+<!-- cSpell:ignoreRegExp a(open|closed) -->
+
 All known accessibility bugs have been documented in [this site's GitHub repository]({{ metadata.githubRepository }}/issues?q=is%3Aopen+is%3Aissue+label%3Aa11y). You may also view [accessibility bugs that have been fixed]({{ metadata.githubRepository }}/issues?q=is%3Aissue+label%3Aa11y+is%3Aclosed).
 
 ## Assessment Approaches

@@ -78,5 +78,6 @@
     "**/docs/**/*": "${filename} — Docs",
     "**/public/**/*": "${filename} — Public",
     "**/scripts/**/*": "${filename} — Scripts"
-  }
+  },
+  "cSpell.allowCompoundWords": true
 }

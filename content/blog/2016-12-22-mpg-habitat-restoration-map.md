@@ -13,6 +13,8 @@ tags:
   - Heroku
 ---
 
+<!-- cSpell:words amet ornare Zmnq Nicolette -->
+
 {% image 'mpg-habitat-01-overview.jpg', 'the MPG Ranch Habitat Restoration Map app' %}
 
 > The MPG Ranch Habitat Restoration Map enables a team of environmental scientists to effectively

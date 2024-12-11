@@ -11,6 +11,8 @@ tags:
   - CSV
 ---
 
+<!-- cSpell:words vimeoid soundcloudid -->
+
 {% image 'canopy-story-map01.jpg', 'canopy story map splashscreen' %}
 
 In this post I’ll describe the workflow and framework I developed for creating an interactive “story map” for [Canopy](http://canopyplanet.org/) while I worked as a web developer for [GreenInfo Network](http://greeninfo.org). I'll describe how it was built in a way that allowed for changes to the story's **content** (copy, photos, and other media assets) as well as **map data layers** to happen in an iterative and timely manner.
