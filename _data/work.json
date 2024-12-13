@@ -16,7 +16,10 @@
       "RideWithGPS API"
     ],
     "thumb": "luckyduck-shop-rides-thumb.png",
-    "imgs": ["public/img/luckyduck-shop-rides-v2_sm.png"],
+    "imgs": [
+      "public/img/luckyduck-shop-rides.png",
+      "public/img/luckyduck-shop-rides-detail.png"
+    ],
     "date": "2024-10-20",
     "size": "width3"
   },
