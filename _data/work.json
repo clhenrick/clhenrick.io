@@ -1,5 +1,24 @@
 [
   {
+    "title": "Every Luckyduck shop bike ride",
+    "tags": ["cartography", "data-viz"],
+    "description": "A \"heatmap\" visualization of (almost) every Luckyduck Bicycle Café shop bicycle ride, created in a single day.",
+    "description_long": "The [Luckyduck Bicycle Café](https://www.facebook.com/LuckyduckOak/) was a much loved café and bike shop located in downtown Oakland, California which closed in April of 2023 after doing business for nearly a decade. Luckyduck held weekly group \"shop\" bike rides that meandered through various parts of the East Bay and sometimes north into Marin County or west into San Francisco. To commemorate the end of an era for many members of Oakland's local cycling community, I created a heat map of every shop bicycle ride that I could source geospatial data on from the cycling planning app [RideWithGPS](https://ridewithgps.com/). I created this project as part of the \"Atlas at a Conference\" project pitched by the swell folks at [Guerrilla Cartography](https://www.guerrillacartography.org) during the North American Cartographic Information Society's annual conference in October of 2024. Over the course of a single day using the [RideWithGPS API](https://ridewithgps.com/api) I downloaded GPX route data for each ride for the [Luckyduck user account](https://ridewithgps.com/users/54142) via a [NodeJS script](https://github.com/clhenrick/luckyduck-shop-rides/tree/main) and then created the visualization in the browser using D3JS. The dark background and shaded relief which depicts the topography of the Bay Area near Oakland was created via repurposed code from the [Open Source Oakland Map](/work/open-source-oakland-map/) project. This map will be included in the forthcoming book by Guerrilla Cartography, *Atlas at a Conference*.",
+    "tech": [
+      "D3JS",
+      "GDAL",
+      "JavaScript",
+      "Make",
+      "MapShaper",
+      "NodeJS",
+      "RideWithGPS API"
+    ],
+    "thumb": "luckyduck-shop-rides-thumb.png",
+    "imgs": ["public/img/luckyduck-shop-rides-v2_sm.png"],
+    "date": "2024-10-20",
+    "size": "width3"
+  },
+  {
     "title": "Open Source Oakland Map",
     "tags": ["cartography", "web"],
     "description": "A minimal reference map of Oakland, California, made with this website in mind.",
