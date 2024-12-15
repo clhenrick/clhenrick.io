@@ -21,6 +21,11 @@
       "public/img/luckyduck-shop-rides.png",
       "public/img/luckyduck-shop-rides-detail.png"
     ],
+    "imgsAlt": [
+      "The print publication version of the heat map graphic of Luckyduck bicycle café group bicycle rides described in the project details section of this page. It includes the Luckyduck business logo, some descriptive text, and a legend to indicate that more frequent bicycle ride routes are the color white, moderately frequent routes are yellow, and least frequent routes are orange",
+      "A heat map graphic of Luckyduck bicycle café group bicycle rides described in the project details section of this page.",
+      "A detail of the heat map graphic of Luckyduck bicycle café group bicycle rides described in the project details section of this page showing where the highest density of bicycle rides occurred in Oakland and Berkeley."
+    ],
     "date": "2024-10-20",
     "size": "width3"
   },
