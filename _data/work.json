@@ -17,6 +17,7 @@
     ],
     "thumb": "luckyduck-shop-rides-thumb.png",
     "imgs": [
+      "public/img/luckyduck-shop-rides-v3.png",
       "public/img/luckyduck-shop-rides.png",
       "public/img/luckyduck-shop-rides-detail.png"
     ],
