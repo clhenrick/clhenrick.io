@@ -3,10 +3,6 @@ div.md-block {
   margin-bottom: 2.5rem;
 }
 
-h1 {
-  margin-bottom: var(--spacing-sm);
-}
-
 ul.screenshots,
 ul.tech-tags {
   display: flex;
