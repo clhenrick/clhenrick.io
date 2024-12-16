@@ -10,12 +10,13 @@ pagination:
     - tagList
   addAllPagesToCollections: true
 layout: layouts/home.njk
+description: "The blog of Chris Henrick"
 eleventyComputed:
-  title: Tagged “{{ tag }}”
+  title: Blog posts tagged “{{ tag }}”
 permalink: /tags/{{ tag | slugify }}/
 ---
 
-<h1>Tagged “{{ tag }}”</h1>
+<h1>{{ title }}</h1>
 
 {% set postslist = collections[ tag ] %}
 {% include "postslist.njk" %}
