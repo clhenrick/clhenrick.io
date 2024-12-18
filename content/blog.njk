@@ -35,7 +35,11 @@ pagination:
       <a
         class="button previous-next"
         rel="prev"
-        {%- if pagination.href.previous %}href="{{ pagination.href.previous }}"{% endif %}
+        {%- if pagination.href.previous %}
+          href="{{ pagination.href.previous }}"
+        {%- else %}
+          role="link" aria-disabled="true"
+        {%- endif %}
       >
         Previous
       </a>
@@ -45,7 +49,11 @@ pagination:
       <a
         class="button previous-next"
         rel="next"
-        {%- if pagination.href.next %}href="{{ pagination.href.next }}"{% endif %}
+        {%- if pagination.href.next %}
+          href="{{ pagination.href.next }}"
+        {%- else %}
+          role="link" aria-disabled="true"
+        {%- endif %}
       >
         Next
       </a>
