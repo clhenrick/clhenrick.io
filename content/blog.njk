@@ -41,7 +41,7 @@ pagination:
           role="link" aria-disabled="true"
         {%- endif %}
       >
-        Previous
+        Previous <span class="visually-hidden">page</span>
       </a>
     </li>
     {# next page #}
@@ -55,7 +55,7 @@ pagination:
           role="link" aria-disabled="true"
         {%- endif %}
       >
-        Next
+        Next <span class="visually-hidden">page</span>
       </a>
     </li>
     {%- for pageEntry in pagination.pages %}
