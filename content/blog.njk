@@ -27,8 +27,8 @@ pagination:
 {% include "postslist.njk" %}
 
 <nav class="pagination" aria-labelledby="pagination-title">
-  <span id="pagination-title" hidden>Pagination</span>
-  <ol role="list" class="inline">
+  <span id="pagination-title" hidden>More blog post pages</span>
+  <ul role="list" class="inline">
     {# NOTE: previous and next links are first to aid keyboard navigation (why tab through all the links to get to "next"?) #}
     {# previous page #}
     <li>
@@ -61,7 +61,7 @@ pagination:
         </a>
       </li>
     {%- endfor %}
-  </ol>
+  </ul>
   <p>
     You may view all posts in the <a href="/blog/archive/">Blog Archive</a>.
   </p>
