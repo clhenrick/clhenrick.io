@@ -26,43 +26,37 @@ pagination:
 {% set postslist = posts | reverse %}
 {% include "postslist.njk" %}
 
+{%- macro previousNextLink(href, isPrev = true) %}
+  <a
+    class="button previous-next"
+    rel="{{ "prev" if isPrev else "next" }}"
+    {%- if href %}
+      href="{{ href }}"
+    {%- else %}
+      role="link" aria-disabled="true"
+    {%- endif %}
+  >
+    {{ "Previous" if isPrev else "Next" }}
+    <span class="visually-hidden">page</span>
+    {%- if not href %}
+      <span class="visually-hidden">(unavailable)</span>
+    {%- endif %}
+  </a>
+{%- endmacro %}
+
 <nav class="pagination" aria-labelledby="pagination-title">
   <h2 id="pagination-title">More blog posts</h2>
   <ul role="list" class="inline">
     {# NOTE: previous and next links are first to aid keyboard navigation (why tab through all the links to get to "next"?) #}
     {# previous page #}
     <li>
-      <a
-        class="button previous-next"
-        rel="prev"
-        {%- if pagination.href.previous %}
-          href="{{ pagination.href.previous }}"
-        {%- else %}
-          role="link" aria-disabled="true"
-        {%- endif %}
-      >
-        Previous <span class="visually-hidden">page</span>
-        {%- if not pagination.href.previous %}
-          <span class="visually-hidden">(unavailable)</span>
-        {%- endif %}
-      </a>
+      {%- set href = pagination.href.previous %}
+      {{ previousNextLink(href) }}
     </li>
     {# next page #}
     <li>
-      <a
-        class="button previous-next"
-        rel="next"
-        {%- if pagination.href.next %}
-          href="{{ pagination.href.next }}"
-        {%- else %}
-          role="link" aria-disabled="true"
-        {%- endif %}
-      >
-        Next <span class="visually-hidden">page</span>
-        {%- if not pagination.href.next %}
-          <span class="visually-hidden">(unavailable)</span>
-        {%- endif %}
-      </a>
+      {%- set href = pagination.href.next %}
+      {{ previousNextLink(href, false) }}
     </li>
     {%- for pageEntry in pagination.pages %}
       <li>
