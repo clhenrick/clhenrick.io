@@ -26,6 +26,7 @@ pagination:
 {% set postslist = posts | reverse %}
 {% include "postslist.njk" %}
 
+{# Macro that creates the "previous" and "next" links markup #}
 {%- macro previousNextLink(href, isPrev = true) %}
   <a
     class="button previous-next"
@@ -48,13 +49,13 @@ pagination:
   <h2 id="pagination-title">More blog posts</h2>
   <ul role="list" class="inline">
     {# NOTE: previous and next links are first to aid keyboard navigation (why tab through all the links to get to "next"?) #}
-    {# previous page #}
     <li>
+      {# previous page #}
       {%- set href = pagination.href.previous %}
       {{ previousNextLink(href) }}
     </li>
-    {# next page #}
     <li>
+      {# next page #}
       {%- set href = pagination.href.next %}
       {{ previousNextLink(href, false) }}
     </li>
