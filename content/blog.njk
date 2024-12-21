@@ -42,6 +42,9 @@ pagination:
         {%- endif %}
       >
         Previous <span class="visually-hidden">page</span>
+        {%- if not pagination.href.previous %}
+          <span class="visually-hidden">(unavailable)</span>
+        {%- endif %}
       </a>
     </li>
     {# next page #}
@@ -56,6 +59,9 @@ pagination:
         {%- endif %}
       >
         Next <span class="visually-hidden">page</span>
+        {%- if not pagination.href.next %}
+          <span class="visually-hidden">(unavailable)</span>
+        {%- endif %}
       </a>
     </li>
     {%- for pageEntry in pagination.pages %}
