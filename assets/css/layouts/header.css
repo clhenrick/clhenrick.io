@@ -5,7 +5,7 @@ header.page-header {
 }
 
 .page-header-inner {
-  /* NOTE: keeps the nav list dropdown a similar width to its corresponding link / list item */
+  /* NOTE: keeps the nav.main-nav list dropdown a similar width to its corresponding link / list item */
   --min-nav-link-width: 6rem;
   --horiz-nav-item-gap: 0.75rem;
   position: relative;
@@ -89,7 +89,7 @@ header.page-header {
   color: inherit;
 }
 
-.page-header nav {
+.page-header nav.main-nav {
   position: relative;
   display: grid;
   grid-template-columns: auto auto;
@@ -100,7 +100,7 @@ header.page-header {
 }
 
 @media screen and (width >= 748px) {
-  .page-header nav {
+  .page-header nav.main-nav {
     grid-template-columns: auto 1fr;
     justify-content: initial;
   }
@@ -128,36 +128,36 @@ button.nav-button:hover {
   }
 }
 
-nav ul.nav-list,
-nav ul.with-dropdown {
+nav.main-nav ul.nav-list,
+nav.main-nav ul.with-dropdown {
   margin: 0;
 }
 
-nav ul.nav-list {
+nav.main-nav ul.nav-list {
   grid-column: span 2;
 }
 
 @media screen and (width >= 748px) {
-  nav ul.nav-list {
+  nav.main-nav ul.nav-list {
     grid-column: span 1;
   }
 }
 
-.js-enabled nav > ul {
+.js-enabled nav.main-nav > ul {
   position: relative;
   display: none;
   text-align: center;
   background-color: var(--background-color-secondary);
 }
 
-.js-enabled nav > ul.expanded {
+.js-enabled nav.main-nav > ul.expanded {
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (width >= 748px) {
-  .js-enabled nav > ul,
-  nav > ul {
+  .js-enabled nav.main-nav > ul,
+  nav.main-nav > ul {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -168,35 +168,35 @@ nav ul.nav-list {
   }
 }
 
-nav ul li a {
+nav.main-nav ul li a {
   border-bottom: 1px solid;
 }
 
 @media screen and (width >= 748px) {
-  nav ul > li:nth-last-child(2) {
+  nav.main-nav ul > li:nth-last-child(2) {
     margin-left: auto;
   }
 
-  nav ul li a[href] {
+  nav.main-nav ul li a[href] {
     min-width: var(--min-nav-link-width);
     border-bottom: none;
   }
 }
 
 @media screen and (width >= 748px) {
-  nav ul li > ul.with-dropdown {
+  nav.main-nav ul li > ul.with-dropdown {
     display: none;
   }
 }
 
-nav ul li,
-nav ul li a[href] {
+nav.main-nav ul li,
+nav.main-nav ul li a[href] {
   width: 100%;
 }
 
 @media screen and (width >= 748px) {
-  nav ul li,
-  nav ul li a[href] {
+  nav.main-nav ul li,
+  nav.main-nav ul li a[href] {
     width: auto;
   }
 }

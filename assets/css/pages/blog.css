@@ -8,7 +8,7 @@ nav.pagination > h2 {
   font-size: var(--text-size-h4);
 }
 
-nav.pagination > ol {
+nav.pagination > ul {
   display: grid;
 
   /* narrow of narrowest viewports: stacks prev, next links on separate rows, numbered links two in a row */
@@ -18,14 +18,14 @@ nav.pagination > ol {
 }
 
 @media screen and (width >= 345px) {
-  nav.pagination > ol {
+  nav.pagination > ul {
     /* moderately narrow viewports: prev, next links side by side on the same row, numbered links four in a row below */
     grid-template-columns: repeat(4, minmax(var(--min-list-item-width), 1fr));
   }
 }
 
 @media screen and (width >= 500px) {
-  nav.pagination > ol {
+  nav.pagination > ul {
     /* everything else / wider viewports: auto-fit all links in one row, overflowing to more rows as needed */
     grid-template-columns: repeat(
       auto-fit,
