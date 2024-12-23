@@ -1014,9 +1014,9 @@
     Historic coastal grassland, bay and shoreline over the current day built up land area of
     Oakland, CA.
   description_long: >-
-    A prototype map design for the Oakland Museum of California. This map shows historic coastal
-    grassland areas, and a historic bay and shoreline over the current day built up land area for an
-    exhibit titled Oakland: Then and Now.
+    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s
+    exhibit titled *Oakland: Then and Now*. This map shows historic coastal
+    grassland areas, and a historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
@@ -1028,9 +1028,9 @@
     - cartography
   description: Historic oak woodland, bay and shoreline over the current day built up land area of Oakland, CA.
   description_long: >-
-    A prototype map design for the Oakland Museum of California. This map shows historic oak
-    woodland areas, and a historic bay and shoreline over the current day built up land area for an
-    exhibit titled Oakland: Then and Now.
+    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s
+    exhibit titled *Oakland: Then and Now*. This map shows historic oak
+    woodland areas, and a historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-oak-thumb.jpg
   imgs:
     - oak-then-now-oak.jpg
@@ -1087,7 +1087,7 @@
 - title: Galapagos Islands
   tags:
     - cartography
-  description: A map showing the Galapagos Islands
+  description: A map of the Galapagos Islands
   description_long: ""
   thumb: galapagos-thumb.jpg
   imgs:
@@ -1098,18 +1098,20 @@
 - title: Afghanistan and Pakistan
   tags:
     - cartography
-  description: Map of Afghanistan and Pakistan for the book Dirty Wars.
+  description: Reference map of Afghanistan and Pakistan for the book Dirty Wars by Jeremy Scahill.
   description_long: >-
-    Map of Afghanistan and Pakistan for the book Dirty Wars: The World is a Battlefield, by Jeremy
+    A reference map of Afghanistan and Pakistan for the book Dirty Wars: The World is a Battlefield, by Jeremy
     Scahill. Published by Nation Books.
   thumb: afg-pak-thumb.jpg
   imgs:
     - afg-pak.jpg
+  imgsAlt:
+    - "A black and white map of the countries Afghanistan and Pakistan depicting their provinces, cities, towns, rivers, and neighboring countries. Two callouts draw attention to the location of Bagram Airforce Base and Forward Operating Base Chapman in eastern Afghanistan."
   tech:
     - Adobe Illustrator
     - MAPublisher
     - QGIS
-    - Natural Earth 1:10m Vector Data
+    - Natural Earth Data
   size: "width2 "
   date: "2013-01-01"
 
@@ -1118,27 +1120,37 @@
     - cartography
   description: A map of Thailand, Laos, and Cambodia.
   description_long: >-
-    Another map for a 9 book series on the backpacking trips taken by globetrotter David Koester.
-    Natural Earth vector and relief data were employed for sound cartographic design.
+    Another map for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. [Natural Earth](https://www.naturalearthdata.com) vector and shaded relief data were employed for sound cartographic design.
   thumb: se-asia-thumb.jpg
   imgs:
     - se-asia.jpg
+  imgsAlt:
+    - "A black and white geographic map of Thailand, Laos, and Cambodia titled Southeast Asia depicting cities, towns, points of interest, rivers, mountains, country borders, and neighboring bodies of water such as the Gulf of Thailand and South China Sea."
+  tech:
+    - Adobe Illustrator
+    - MAPublisher
+    - QGIS
+    - Natural Earth Data
   size: ""
   date: "2013-01-01"
 
 - title: Sikkim
   tags:
     - cartography
-  description: Sikkim, northern India.
-  description_long: A custom hillshade was created from SRTM DEM data using QGIS and Terrain Sculptor.
+  description: A map of the northern Indian state of Sikkim.
+  description_long: >
+    I created this map of [Sikkim](https://en.wikipedia.org/wiki/Sikkim) for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. For depicting Sikkim's mountainous topography, a custom hillshade was created using [Shuttle Radar Topography Mission (SRTM)](https://www.earthdata.nasa.gov/data/instruments/srtm) digital elevation model data with [QGIS](https://qgis.org) and [Terrain Sculptor](https://terraincartography.com/terrainsculptor/).
   tech:
     - Terrain Sculptor
+    - SRTM DEM
     - QGIS
     - MAPublisher
     - Adobe Illustrator
   thumb: sikkim-thumb.jpg
   imgs:
     - sikkim.jpg
+  imgsAlt:
+    - "A geographic map of the Indian state of Sikkim depicting its mountainous topography, mountain peaks and elevations, rivers, lakes, national parks, towns, and the neighboring countries of Nepal, China, and Bhutan."
   size: ""
   date: "2013-01-01"
 
@@ -1146,7 +1158,7 @@
   tags:
     - cartography
   description: "A split frame map I created for Moon: Northern California."
-  description_long: Open data from Cal Atlas and CPAD were used to make this map.
+  description_long: Open data from Cal Atlas and the California Protected Areas Database were used to make this map.
   tech:
     - Adobe Illustrator
     - MAPublisher
@@ -1154,17 +1166,21 @@
   thumb: north-coast-thumb.jpg
   imgs:
     - north-coast.jpg
+  imgsAlt:
+    - "A black and white map of coastal Northern California stretching from the Oregon border to the north to Bodega Bay to the south. It shows the locations of cities, towns, counties, state and national parks, national forests, sights, and natural features such as rivers, mountain ranges, and bays."
   size: ""
   date: "2013-01-01"
 
 - title: Downtown Toronto
   tags:
     - cartography
-  description: A map of downtown Toronto, Canada.
+  description: A map of downtown Toronto, Canada created for the Moon Handbooks travel guide series.
   description_long: ""
   thumb: toronto-dt-thumb.jpg
   imgs:
     - toronto-dt.jpg
+  imgsAlt:
+    - "A black and white map of downtown Toronto, Canada depicting the street network and locations of various sites, neighborhoods, attractions, restuarants, parks, points of interest."
   tech:
     - Adobe Illustrator
   size: width2 height1
@@ -1173,10 +1189,12 @@
 - title: Downtown Guanajuato
   tags:
     - cartography
-  description: A map of downtown Guanajuato, Mexico.
+  description: A map of downtown Guanajuato, Mexico created for the Moon Handbooks travel guide series.
   description_long: ""
   thumb: guanajuato-dt-thumb.jpg
   imgs:
     - guanajuato-dt.jpg
+  imgsAlt:
+    - "A black and white map of downtown Guanajuato, Mexico depicting the street network and locations of various sites, attractions, restuarants, parks, points of interest."
   size: width2 height1
   date: "2012-01-01"
