@@ -16,6 +16,7 @@ import {
 } from "./eleventy.config.images.js";
 import { minify } from "terser";
 import htmlmin from "html-minifier-terser";
+import yaml from "js-yaml";
 
 const markdown = markdownit({
   html: true,
@@ -23,6 +24,9 @@ const markdown = markdownit({
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
+  // instruct 11ty to use YAML as a data source
+  eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
+
   // Force 11ty to watch CSS and JS files
   eleventyConfig.addWatchTarget("assets/css/**/*.css");
   eleventyConfig.addWatchTarget("assets/js/**/*.js");
