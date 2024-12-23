@@ -800,9 +800,17 @@
 - title: WCC Resource Guide
   tags:
     - web
+    - cartography
     - data-viz
   description: An interactive resource guide for NYC residents.
-  description_long: ""
+  description_long: |
+    The [Women Creating Change](https://wccny.org/)'s [Citywide Guide](https://resourceguide.wccny.org) was created in coordination with [Radish Lab](https://www.radishlab.com), a design studio based in Brooklyn, NY and Berlin, Germany. My responsibility was converting an excel table of resources to JSON, coding the user interface, and providing interaction design advice to Radish Lab's designers.
+
+    About the Citywide guide:
+
+    "Women Creating Change (formerly Women's City Club of New York) is proud to provide the online Citywide Guide to Services and Resources in New York. This Guide is designed to help individuals and organizations access needed low- or no-cost social services, programs, and resources available throughout the five boroughs of New York City. Most entries include address, phone number and website, as well as the neighborhood and community board in which the agency is located."
+
+    "Whether searching for jobs or schools, child care or health care, food or transportation, users can initiate custom searches by   typing in key words. It is also possible to narrow searches by selecting a borough and choosing from the drop down list of categories. Search results may be printed for convenience."
   thumb: wcc-resource-guide-thumb.jpg
   imgs:
     - wcc-resource-guide.jpg
