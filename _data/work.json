@@ -54,6 +54,12 @@
       "public/img/lake-merritt-light.png",
       "public/img/oakland-hills-dark.png"
     ],
+    "imgsAlt": [
+      "A geographic map of the city of Oakland, California, centered on downtown using a light grey color scheme. The map's extent spans the San Francisco Bay to the west, the cities of Berkeley and Emeryville to the north, the Oakland hills to the east, and the city of Alameda to the south. The map depicts the road networks and names of various cities and neighborhoods, predominantly in the East Bay area. It includes a topographic shaded relief rendering of the rugged Oakland hills.",
+      "A geographic map of the city of Oakland, California, centered on downtown using a dark grey color scheme. The map's extent spans the San Francisco Bay to the west, the cities of Berkeley and Emeryville to the north, the Oakland hills to the east, and the city of Alameda to the south. The map depicts the road networks and names of various cities and neighborhoods, predominantly in the East Bay area. It includes a topographic shaded relief rendering of the rugged Oakland hills.",
+      "A detail of the light gray version of the Oakland map of Lake Merritt and its surrounding street network and neighborhoods of Uptown, Adams Point, Grand Lake, Trestle Glen, Cleveland Heights, Eastlake, Clinton, San Antonio, Chinatown, and Jack London Square.",
+      "A detail of the dark gray version of the Oakland map of the Oakland Hills depicting the terrain and various neighborhoods of Piedmont Pines and the unincorporated town of Canyon."
+    ],
     "size": "width3",
     "date": "2024-11-01"
   },
