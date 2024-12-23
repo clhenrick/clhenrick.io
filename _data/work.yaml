@@ -801,8 +801,7 @@
   tags:
     - web
     - cartography
-    - data-viz
-  description: An interactive resource guide for NYC residents.
+  description: An interactive resource guide for NYC residents created for Women Creating Change.
   description_long: |
     The [Women Creating Change](https://wccny.org/)'s [Citywide Guide](https://resourceguide.wccny.org) was created in coordination with [Radish Lab](https://www.radishlab.com), a design studio based in Brooklyn, NY and Berlin, Germany. My responsibility was converting an excel table of resources to JSON, coding the user interface, and providing interaction design advice to Radish Lab's designers.
 
