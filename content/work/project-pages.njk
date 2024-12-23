@@ -101,7 +101,7 @@ eleventyComputed:
       {% for img in project.imgs %}
         <li>
           {%- set altText %}Screenshot {{ loop.index }} of {{ project.title }}{%- endset %}
-          {%- if project.imgsAlt -%}
+          {%- if project.imgsAlt and project.imgsAlt[loop.index0] -%}
             {%- set altText = project.imgsAlt[loop.index0] -%}
           {%- endif -%}
           {# NOTE: the code below uses the image shortcode #}
