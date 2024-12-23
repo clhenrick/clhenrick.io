@@ -813,7 +813,11 @@
     "Whether searching for jobs or schools, child care or health care, food or transportation, users can initiate custom searches by   typing in key words. It is also possible to narrow searches by selecting a borough and choosing from the drop down list of categories. Search results may be printed for convenience."
   thumb: wcc-resource-guide-thumb.jpg
   imgs:
-    - wcc-resource-guide.jpg
+    - resourceguide-wccny-org-01-2024-12-23.png
+    - resourceguide-wccny-org-02-2024-12-23.png
+  imgsAlt:
+    - "Screenshot of the interactive WCC Resource Guide depicting buttons to change the pages language, the introductory text included in this project's description, a form that allows for searching resources by zipcode, keyword, borough, language, and category; an interactive map showing locations of search results, and a table with information on the search results such as the organization name and address, phone number, neighborhood, website, category, and languages spoken."
+    - "Screenshot of the interactive WCC Resource Guide showing the filters health, Brooklyn, and Spanish applied and three search results. The interactive map shows a popup with the same information as the table on one of the three locations."
   tech:
     - CartoDB.JS
     - NodeJS
