@@ -802,7 +802,14 @@
     - web
     - data-viz
   description: An interactive resource guide for NYC residents.
-  description_long: ""
+  description_long: |
+    The [Women Creating Change](https://wccny.org/)'s [Citywide Guide](https://resourceguide.wccny.org) was created in coordination with [Radish Lab](https://www.radishlab.com), a design studio based in Brooklyn, NY and Berlin, Germany. I coded the user interface and gave design advice.
+
+    About the Citywide guide:
+
+    "Women Creating Change (formerly Women's City Club of New York) is proud to provide the online Citywide Guide to Services and Resources in New York. This Guide is designed to help individuals and organizations access needed low- or no-cost social services, programs, and resources available throughout the five boroughs of New York City. Most entries include address, phone number and website, as well as the neighborhood and community board in which the agency is located."
+
+    "Whether searching for jobs or schools, child care or health care, food or transportation, users can initiate custom searches by   typing in key words. It is also possible to narrow searches by selecting a borough and choosing from the drop down list of categories. Search results may be printed for convenience."
   thumb: wcc-resource-guide-thumb.jpg
   imgs:
     - wcc-resource-guide.jpg
@@ -820,9 +827,9 @@
     - web
   description: An interactive web documentary about my brother's experience thru-hiking the PCT.
   description_long: >-
-    An attempt at creating an NY Times style interactive. As the user scrolls down a map animates
-    and reveals information relating to the story. There is also a [print
-    version](/work/a-thru-hike-on-the-pacific-crest-trail-print-map/).
+    An attempt at creating an New York Times style "scrolly telling" interactive long form piece.
+    As the user scrolls down a map animates and reveals information relating to the story.
+    There is also a [print version](/work/a-thru-hike-on-the-pacific-crest-trail-print-map/).
   link: http://clhenrick.github.io/Major-Studio-Two/map-story/html/
   thumb: thru-hike-pct01-thumb.jpg
   code: https://github.com/clhenrick/Major-Studio-Two/tree/master/map-story/html
@@ -874,7 +881,7 @@
   description: A data-visualization comparing energy use between the U.S., Canada, and China.
   description_long: >-
     Created for the Woodrow Wilson Center, this interactive data-visualization allows users to
-    compare and contrast various types of energy usage among the three countries.
+    compare and contrast various types of energy usage among the three countries (United States, Canada, and China).
   thumb: tracking-energy-titans-thumb.jpg
   imgs:
     - tracking-energy-titans01.jpg
@@ -895,13 +902,15 @@
   tags:
     - web
     - cartography
-  description: A game that allows users to guess neighborhood names in NYC.
-  description_long: ""
+  description: A web based game that allows users to guess neighborhood names in NYC.
+  description_long: "Created as part of a JavaScript course during the Parsons MFA Design and Technology program in 2014. The front end consisted of HTML, CSS, JQuery, and LeafletJS for rendering the user interface while the backend utilized NodeJS, MongoDB, and ExpressJS."
   link: https://vimeo.com/97669886
   thumb: guess-that-hood-thumb.jpg
   tech:
     - MongoDB
-    - jQuery
+    - NodeJS
+    - Express
+    - JQuery
     - Leaflet.JS
     - GeoJSON
     - HTML5
@@ -941,8 +950,7 @@
     A non-euclidean “map” of Prospect Park, Brooklyn. Created using a GoPro camera mounted to my
     head, iMovie for video editing and Open-Frameworks for combining the video shots into one screen
     space. Inspired by the theory of artist and cartographer Dennis Wood and work by Annette Kim,
-    Associate Professor of Urban Studies and Planning at <a
-    href="http://slab.scripts.mit.edu/wp/maps/narrative-maps/">MIT's SLAB</a>
+    Associate Professor of Urban Studies and Planning at [MIT's SLAB](http://slab.scripts.mit.edu/wp/maps/narrative-maps/).
   thumb: ppnc-thumb.jpg
   tech:
     - Go-Pro
@@ -951,7 +959,7 @@
     url: https://vimeo.com/81728484
     embed: https://player.vimeo.com/video/81728484?autoplay=1
     thumb: ppnc.jpg
-    alt: Screen recording of Prospect Park non euclidean map
+    alt: Screen recording of Prospect Park non-euclidean map
   size: "width2 "
   date: "2013-12-16"
 
@@ -961,9 +969,7 @@
     - cartography
   description: Graffiti, rat sightings, and wi-fi hotspots in NYC.
   description_long: >-
-    Graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's <a target="_blank"
-    href="http://maps.stamen.com/trees-cabs-crime/#13/37.7629/-122.4400">Trees-Cabs-Crime</a>
-    created from NYC 311 data.
+    A random juxtaposition of Graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's [Trees-Cabs-Crime](http://maps.stamen.com/trees-cabs-crime/). Created using open data from New York City's 311 service.
   thumb: graffiti-rats-wifi-thumb.jpg
   imgs:
     - nyc-rats-graffiti-wifi.jpg
@@ -972,7 +978,6 @@
     - CartoCSS
     - QGIS
     - MapBox
-  link: https://bl.ocks.org/clhenrick/raw/f9176fab19e79ff72ec7e6c627080fda/
   size: ""
   date: "2013-11-01"
 
@@ -981,8 +986,9 @@
     - web
     - cartography
     - data-viz
-  description: Visualizing my move from the SF Bay Area to NYC with D3JS.
-  description_long: ""
+  description: Hacking my iPhone to visualize my move from the SF Bay Area to NYC during the summer of 2013.
+  description_long: >-
+    A project I created during the Parsons [MFA Design and Technology](https://www.newschool.edu/parsons/mfa-design-technology/) summer pre-program bootcamp intensive that visualizes my cross country move from the San Francisco Bay Area to New York City as a web based animation on a geographic map. I utilized location data hacked from my own mobile phone using a 3rd party app, and then converted that data to GeoJSON in order to plot it with D3JS. I used this project as a way to raise privacy concerns related to how mobile devices keep a detailed record of our whereabouts at all times they are activated and on our person.
   thumb: coast-2-coast-thumb.jpg
   video:
     url: https://vimeo.com/89143409
@@ -990,9 +996,11 @@
     thumb: coast-2-coast.jpg
     alt: Screen recording of From Coast to Coast
   tech:
-    - D3.JS
+    - iPhone
+    - D3JS
     - JQuery
     - QGIS
+    - GeoJSON
   size: ""
   date: "2013-06-01"
 
@@ -1003,9 +1011,9 @@
     Historic coastal grassland, bay and shoreline over the current day built up land area of
     Oakland, CA.
   description_long: >-
-    A prototype map design for the Oakland Museum of California. This map shows historic coastal
-    grassland areas, and a historic bay and shoreline over the current day built up land area for an
-    exhibit titled Oakland: Then and Now.
+    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s
+    exhibit titled *Oakland: Then and Now*. This map shows historic coastal
+    grassland areas, and a historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
@@ -1017,9 +1025,9 @@
     - cartography
   description: Historic oak woodland, bay and shoreline over the current day built up land area of Oakland, CA.
   description_long: >-
-    A prototype map design for the Oakland Museum of California. This map shows historic oak
-    woodland areas, and a historic bay and shoreline over the current day built up land area for an
-    exhibit titled Oakland: Then and Now.
+    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s
+    exhibit titled *Oakland: Then and Now*. This map shows historic oak
+    woodland areas, and a historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-oak-thumb.jpg
   imgs:
     - oak-then-now-oak.jpg
@@ -1087,7 +1095,7 @@
 - title: Afghanistan and Pakistan
   tags:
     - cartography
-  description: Map of Afghanistan and Pakistan for the book Dirty Wars.
+  description: Map of Afghanistan and Pakistan for the book Dirty Wars by Jeremy Scahill.
   description_long: >-
     Map of Afghanistan and Pakistan for the book Dirty Wars: The World is a Battlefield, by Jeremy
     Scahill. Published by Nation Books.
@@ -1135,7 +1143,7 @@
   tags:
     - cartography
   description: "A split frame map I created for Moon: Northern California."
-  description_long: Open data from Cal Atlas and CPAD were used to make this map.
+  description_long: Open data from Cal Atlas and the California Protected Areas Database were used to make this map.
   tech:
     - Adobe Illustrator
     - MAPublisher
@@ -1149,7 +1157,7 @@
 - title: Downtown Toronto
   tags:
     - cartography
-  description: A map of downtown Toronto, Canada.
+  description: A map of downtown Toronto, Canada created for the Moon Handbooks travel guide series.
   description_long: ""
   thumb: toronto-dt-thumb.jpg
   imgs:
@@ -1162,7 +1170,7 @@
 - title: Downtown Guanajuato
   tags:
     - cartography
-  description: A map of downtown Guanajuato, Mexico.
+  description: A map of downtown Guanajuato, Mexico created for the Moon Handbooks travel guide series.
   description_long: ""
   thumb: guanajuato-dt-thumb.jpg
   imgs:
