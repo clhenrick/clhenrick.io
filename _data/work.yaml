@@ -934,16 +934,22 @@
   description: >-
     An interactive Processing sketch that visualizes data relating to climate change from the World
     Bank's Indicators Data.
-  description_long: ""
+  description_long: |
+    As part of an exercise in creating a multi-dimensional scatterplot, I plotted data sourced from the [World Bank's Indicators](https://data.worldbank.org/indicator) on Gross National Income (GNI) along the x-axis and Carbon Dioxide output on the y-axis for all countries that data was available for using the creative coding software [Processing](https://processing.org).
+
+    Each circle represents a single country, is sized by that country's population, and is colored by the world region the country belongs to (according to the World Bank). Hovering over a circle reveals a tooltip showing the country name, region, and values for GNI and CO2. The scatterplot's x and y axes may be toggled between linear and logarithmical modes. The result shows a strong linear correlation between the x and y variables: as GNI increases so does CO2 output.
+
+    While this project by no means lives up to it, it was inspired by [Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling)'s infamous Ted Talk [*The best statistics you’ve ever seen*](https://www.youtube.com/watch?v=hVimVzgtD6w).
   code: https://github.com/clhenrick/data-viz-projects/tree/master/03_scatterplot
   thumb: co2-gni-viz-thumb.jpg
   imgs:
     - co2-gni-viz.jpg
+  imgsAlt:
+    - Two screenshots of the interactive Processing sketch described in this page. The first shows the x and y axes as linear axes while the second shows them as logarithmic.
   tech:
     - Processing
-    - QGIS
+    - Java
     - SQL
-  size: "width2 "
   date: "2014-04-04"
 
 - title: Prospect Park non euclidean map
