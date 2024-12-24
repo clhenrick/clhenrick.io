@@ -566,7 +566,7 @@
   tags:
     - web
     - cartography
-  description: Global terrain web map tiles
+  description: Global terrain web map tiles for Stamen Design.
   description_long: >-
     [Terrain Classic](http://maps.stamen.com/terrain/) is a set of, free, open-source, global [web
     map tiles](https://en.wikipedia.org/wiki/Tiled_web_map) covering zoom levels 0 to 18 that depict
@@ -606,7 +606,7 @@
 - title: Love and Rage
   tags:
     - cartography
-  description: Map for Rebecca Solnit's Nonstop Metropolis, A New York City Atlas
+  description: "Map for Rebecca Solnit's Nonstop Metropolis: A New York City Atlas."
   description_long: >-
     A print map I created for Rebecca Solnit's latest city atlas: [Nonstop Metropolis, A New York
     City Atlas](https://www.ucpress.edu/book/9780520285958/nonstop-metropolis). I pitched the idea
@@ -712,14 +712,10 @@
     - web
     - data-viz
   description: An analysis of property transaction data to promote a 1% flip tax in NYC.
-  description_long: >-
-    Distribution of a proposed 1% "flip tax" on all real estate transactions in 2014 that occurred
-    within a two year period from 2003 - 2014, per New York City Council District. How much money
-    would your council district have had for community spaces and affordable housing.
+  description_long: |
+    Distribution of a proposed 1% "flip tax" on all real estate transactions that occurred within a two year period from 2003 - 2014, per New York City Council District. How much money would your city council district have had for community spaces and affordable housing?
 
-
-    This project is a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard,
-    Evander Batson, and Ingrid Burrington. Dan Taeyoung created the print map below.
+    This project is a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard, Evander Batson, and Ingrid Burrington. Dan Taeyoung created the print map below.
   code: https://github.com/NYC-REIC/landscapes-of-profit/
   thumb: landscapes-profit-thumb.jpg
   imgs:
