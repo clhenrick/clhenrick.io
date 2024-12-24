@@ -1050,6 +1050,8 @@
   thumb: chinook-thumb.jpg
   imgs:
     - chinook.jpg
+  imgsAlt:
+    - "A color map of the state of California depicting coastal recovery watersheds for Salmon and Steelhead in California on public and private lands. The map's legend shows symbology for Chinook, Coho, and Steelhead priority watersheds in different colors and cross hatching."
   tech:
     - ArcGIS
     - Adobe Illustrator
@@ -1066,6 +1068,8 @@
   thumb: public-private-thumb.jpg
   imgs:
     - public-private.jpg
+  imgsAlt:
+    - "A color map of the state of California depicting privately owned land in light red and pubically owned land in light green. Certain cities are labeled such as Eureka, Redding, Sacramento, San Francisco, etc."
   tech:
     - ArcGIS
     - Adobe Illustrator
@@ -1075,13 +1079,15 @@
 - title: Ontario
   tags:
     - cartography
-  description: The province of Ontario, Canada.
+  description: "A full color reference map for the Moon: Ontario travel guide."
   description_long: >-
     A map of the province of Ontario, Canada created using Natural Earth 1:10m vector GIS data for
-    the *Moon: Ontario* travel guide from Avalon Travel Publishing
+    the *Moon: Ontario* travel guide from Avalon Travel Publishing.
   thumb: ontario-thumb.jpg
   imgs:
     - ontario.jpg
+  imgsAlt:
+    - "A color map highlighting the Canadian province of Ontario depicting the Hudson Bay to the north, the Great Lakes and United States to the south, Quebec to the east, and Manitoba to the west. Included on the map are locations of cities, towns, highways, national parks, and natural features such as rivers, lakes, islands, and land formations."
   size: width2 height1
   date: "2012-01-01"
 
