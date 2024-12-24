@@ -907,7 +907,7 @@
     - web
     - cartography
   description: A web based game that allows users to guess neighborhood names in NYC.
-  description_long: "Created as part of a JavaScript course during the Parsons MFA Design and Technology program in 2014. The front end consisted of HTML, CSS, JQuery, and LeafletJS for rendering the user interface while the backend utilized NodeJS, MongoDB, and ExpressJS."
+  description_long: "Created as part of a JavaScript course during the Parsons MFA Design and Technology program in 2014. The front end consisted of HTML, CSS, JQuery, and LeafletJS for rendering the user interface while the backend utilized NodeJS, MongoDB, and ExpressJS. Geographic neighborhood boundary data for NYC was sourced from PediaCities."
   link: https://vimeo.com/97669886
   thumb: guess-that-hood-thumb.jpg
   tech:
