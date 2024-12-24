@@ -1085,17 +1085,6 @@
   size: width2 height1
   date: "2012-01-01"
 
-- title: Galapagos Islands
-  tags:
-    - cartography
-  description: A map of the Galapagos Islands
-  description_long: ""
-  thumb: galapagos-thumb.jpg
-  imgs:
-    - galapagos.jpg
-  size: width2 height1
-  date: "2013-01-01"
-
 - title: Afghanistan and Pakistan
   tags:
     - cartography
