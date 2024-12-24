@@ -907,7 +907,16 @@
     - web
     - cartography
   description: A web based game that allows users to guess neighborhood names in NYC.
-  description_long: "Created as part of a JavaScript course during the Parsons MFA Design and Technology program in 2014. The front end consisted of HTML, CSS, JQuery, and LeafletJS for rendering the user interface while the backend utilized NodeJS, MongoDB, and ExpressJS. Geographic neighborhood boundary data for NYC was sourced from PediaCities."
+  description_long: |
+    A proof of concept interactive web game created as part of a JavaScript course during the Parsons MFA Design and Technology program in 2014. The front-end consists of HTML, CSS, JQuery, and LeafletJS for rendering the user interface while the backend utilized NodeJS, MongoDB, and ExpressJS. [Geographic neighborhood boundary data for NYC](https://github.com/blackmad/zetashapes/blob/master/samples/nyc-pediacities-neighborhoods-polygon-v2.geojson) was sourced from [PediaCities](https://blog.externetworks.com/empowering-smart-cities-with-open-data-by-pediacities/).
+
+    ### Video embed description:
+
+    The video begins by showing a user interface containing an interactive geographic map of neighborhood boundaries in NYC, color coded by borough, and a sidebar with the title of the game and the text "You haven't played yet. Guess some NYC hoods!". As the user moves their mouse cursor over a neighborhood boundary on the map it is highlighted in yellow. Clicking on a neighborhood boundary on the map reveals a popup where a user may enter the name of that neighborhood in a text input. Pressing the enter key or clicking the "guess" button submits their guess and checks it against the name of the neighborhood in the database. If the user prefers a hint prior to guessing they can click on the "need a hint?" button in the popup which will show them a partially obscured name of the neighborhood.
+
+    As the user submits guesses, their attempts are displayed on a sidebar on the lefthand side of the page and their score is updated. Correct attempts are color coded blue, and incorrect guesses are color coded red. A correct guess results in the neighborhood boundary disappearing from the map. The sidebar is updated to inform the user of their correct guesses against total guesses, and the number of neighborhoods left to guess in the game (there are a total of 309 NYC neighborhoods in the database). A button in the sidebar allows the user to start over and play again.
+
+    At a certain point in the video the Terminal app is displayed showing logs of the user's guesses to the local webserver and data being passed to the local database to store the user's game play.
   link: https://vimeo.com/97669886
   thumb: guess-that-hood-thumb.jpg
   tech:
@@ -915,7 +924,7 @@
     - NodeJS
     - Express
     - JQuery
-    - Leaflet.JS
+    - LeafletJS
     - GeoJSON
     - HTML5
     - CSS3
