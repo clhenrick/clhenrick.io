@@ -973,10 +973,12 @@
     - cartography
   description: Graffiti, rat sightings, and wi-fi hotspots in NYC.
   description_long: >-
-    A random juxtaposition of Graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's [Trees-Cabs-Crime](http://maps.stamen.com/trees-cabs-crime/). Created using open data from New York City's 311 service.
+    A random juxtaposition of graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's [Trees-Cabs-Crime](https://stamen.com/trees-cabs-crime-in-the-venice-biennale-968ea4983177/). Created using public data from New York City's [open data portal](https://opendata.cityofnewyork.us).
   thumb: graffiti-rats-wifi-thumb.jpg
   imgs:
     - nyc-rats-graffiti-wifi.jpg
+  imgsAlt:
+    - A map of New York City showing the locations of public wi-fi hotspots, graffiti, and rat sightings. Each location is represented by a colored circle that when overlapped with one another blend together. Rat sightings appear to be concentrated in central Brooklyn and The Bronx, wifi hotspots in lower Manhattan, and graffiti is dense in Manhattan's Lower East Side.
   tech:
     - TileMill
     - CartoCSS
