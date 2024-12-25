@@ -39,7 +39,6 @@
       the project details section of this page showing where the highest density of bicycle rides
       occurred in Oakland and Berkeley.
   date: "2024-10-20"
-  size: width3
 
 - title: Open Source Oakland Map
   tags:
@@ -68,7 +67,6 @@
     - public/img/oakland-map-dark-6016w.jpeg
     - public/img/lake-merritt-light.png
     - public/img/oakland-hills-dark.png
-  size: width3
   date: "2024-11-01"
 
 - title: Cal-Adapt
@@ -105,7 +103,6 @@
     - cal-adapt-08.jpg
     - cal-adapt-09.jpg
     - cal-adapt-10.jpg
-  size: width3
   date: "2022-07-01"
   link: https://cal-adapt.org
 
@@ -137,7 +134,6 @@
     - cae-website-11.jpg
     - cae-website-12.jpg
     - cae-website-13.jpg
-  size: width3
   date: "2022-04-17"
   link: https://analytics.cal-adapt.org
 
@@ -168,7 +164,6 @@
     - observable-notebooks-10.jpg
     - observable-notebooks-11.jpg
     - observable-notebooks-12.jpg
-  size: width3
   date: "2022-03-12"
   link: https://observablehq.com/collection/@clhenrick/featured
 
@@ -196,7 +191,6 @@
     - Color Legend Element 06.png
     - Color Legend Element 07.png
     - Color Legend Element 08.png
-  size: width3
   date: "2022-02-06"
   link: https://clhenrick.github.io/color-legend-element/
   code: https://github.com/clhenrick/color-legend-element/
@@ -231,7 +225,6 @@
     - msm-fellowship-05.jpg
     - msm-fellowship-06.jpg
     - msm-fellowship-07.jpg
-  size: width3
   date: "2020-12-01"
   link: ""
 
@@ -262,7 +255,6 @@
     - aemp-covid19-protections-07.jpg
     - aemp-covid19-protections-08.jpg
     - aemp-covid19-protections-09.jpg
-  size: width3
   date: "2020-11-01"
   link: https://covid19.antievictionmap.com
   code: https://github.com/antievictionmappingproject/covid-19-map
@@ -306,7 +298,6 @@
     - crashmapper-chart-view14.png
     - crashmapper-chart-view15.png
     - crashmapper-chart-view16.png
-  size: width3
   date: "2017-11-23"
   link: http://vis.crashmapper.org
 
@@ -343,7 +334,6 @@
     - nyc-crash-mapper10.jpg
     - nyc-crash-mapper11.jpg
     - nyc-crash-mapper12.jpg
-  size: width3
   date: "2017-03-03"
   link: http://crashmapper.org
 
@@ -382,7 +372,6 @@
     - mpg-habitat12.jpg
     - mpg-habitat17.jpg
     - mpg-habitat18.jpg
-  size: width3
   date: "2016-12-22"
   link: https://restorationmap.mpgranch.com
 
@@ -422,7 +411,6 @@
     - airs15.jpg
     - airs16.jpg
   link: https://amirentstabilized.com
-  size: width3
   date: "2015-05-01"
 
 - title: Terrain Classic
@@ -450,7 +438,6 @@
     - terrain-classic09.jpg
     - terrain-classic10.jpg
     - terrain-classic11.jpg
-  size: width3
   date: "2016-12-22"
   link: https://maps.stamen.com/terrain/
 
@@ -471,7 +458,6 @@
     - love-and-rage.png
     - love-and-rage-crop01.png
     - love-and-rage-crop02.png
-  size: width3
   date: "2016-10-01"
 
 - title: Bushwick Community Map
@@ -503,7 +489,6 @@
     - bcm07.jpg
     - bcm08.jpg
   link: http://www.bushwickcommunitymap.org
-  size: "width3 "
   date: "2014-12-20"
 
 - title: Greenpoint Williamsburg Toxicity Map
@@ -537,7 +522,6 @@
     - nag-toxicity-map07.jpg
     - nag-toxicity-map08.jpg
   link: http://clhenrick.github.io/greenpoint_williamsburg_toxicity_map/
-  size: "width3 "
   date: "2015-11-01"
 
 - title: Landscapes of Profit
@@ -553,7 +537,6 @@
   thumb: landscapes-profit-thumb.jpg
   imgs:
     - landscapes-profit.jpg
-  size: width2
   date: "2015-01-01"
 
 - title: FOSI GRID
@@ -581,7 +564,6 @@
     - PostGIS
     - Mapshaper
   link: http://fosigrid.org/
-  size: width2
   date: "2016-03-28"
 
 - title: Ten and Taller
@@ -603,7 +585,6 @@
     - GeoJSON
     - MAPublisher
   link: https://old.skyscraper.org/tenandtaller/map/
-  size: width2
   date: "2016-02-01"
 
 - title: WCC Resource Guide
@@ -632,7 +613,6 @@
     - DataTables API
     - Twitter Bootstrap
   link: http://resourceguide.wccny.org/
-  size: width2
   date: "2015-09-01"
 
 - title: A Thru Hike on the Pacific Crest Trail (interactive)
@@ -654,7 +634,6 @@
     - Leaflet
     - jQuery
     - GeoJSON
-  size: width2
   date: "2014-03-01"
 
 - title: A Thru Hike on the Pacific Crest Trail (print map)
@@ -675,7 +654,6 @@
     - PostGIS
     - Adobe Illustrator
     - Adobe Photoshop
-  size: width2
   date: "2013-03-01"
 
 - title: Tracking the Energy Titans
@@ -698,7 +676,6 @@
     - Gulp.JS
     - SCSS
   link: http://www.newsecuritybeat.org/energytitans/
-  size: width2
   date: "2015-06-01"
 
 - title: Guess That Hood NYC!
@@ -733,7 +710,6 @@
     thumb: guess-that-hood.jpg
     alt: Screen recording of Guess That Hood NYC
   code: https://github.com/web3js/cloaked-octo-batman/tree/master/chris-henrick/mid-term
-  size: width2
   date: "2014-04-01"
 
 - title: Visualizing CO2 and GNI
@@ -775,7 +751,6 @@
     embed: https://player.vimeo.com/video/81728484?autoplay=1
     thumb: ppnc.jpg
     alt: Screen recording of Prospect Park non-euclidean map
-  size: "width2 "
   date: "2013-12-16"
 
 - title: Graffiti, Rat Sightings, and Wifi Hotspots
@@ -795,7 +770,6 @@
     - CartoCSS
     - QGIS
     - MapBox
-  size: ""
   date: "2013-11-01"
 
 - title: From Coast to Coast
@@ -818,7 +792,6 @@
     - JQuery
     - QGIS
     - GeoJSON
-  size: ""
   date: "2013-06-01"
 
 - title: "Oakland Then and Now: Coastal Grasslands"
@@ -832,7 +805,6 @@
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
-  size: width2
   date: "2013-01-01"
 
 - title: "Oakland Then and Now: Oak Woodland"
@@ -846,7 +818,6 @@
   thumb: oak-then-now-oak-thumb.jpg
   imgs:
     - oak-then-now-oak.jpg
-  size: width2
   date: "2015-01-01"
 
 - title: Chinook Recovery Priority Watersheds
@@ -866,7 +837,6 @@
   tech:
     - ArcGIS
     - Adobe Illustrator
-  size: ""
   date: "2015-01-01"
 
 - title: CA Private Public Land
@@ -884,7 +854,6 @@
   tech:
     - ArcGIS
     - Adobe Illustrator
-  size: ""
   date: "2010-06-01"
 
 - title: Ontario
@@ -899,7 +868,6 @@
     - ontario.jpg
   imgsAlt:
     - "A color map highlighting the Canadian province of Ontario depicting the Hudson Bay to the north, the Great Lakes and United States to the south, Quebec to the east, and Manitoba to the west. Included on the map are locations of cities, towns, highways, national parks, and natural features such as rivers, lakes, islands, and land formations."
-  size: width2 height1
   date: "2012-01-01"
 
 - title: Afghanistan and Pakistan
@@ -919,7 +887,6 @@
     - MAPublisher
     - QGIS
     - Natural Earth Data
-  size: "width2 "
   date: "2013-01-01"
 
 - title: Southeast Asia
@@ -938,7 +905,6 @@
     - MAPublisher
     - QGIS
     - Natural Earth Data
-  size: ""
   date: "2013-01-01"
 
 - title: Sikkim
@@ -958,7 +924,6 @@
     - sikkim.jpg
   imgsAlt:
     - "A geographic map of the Indian state of Sikkim depicting its mountainous topography, mountain peaks and elevations, rivers, lakes, national parks, towns, and the neighboring countries of Nepal, China, and Bhutan."
-  size: ""
   date: "2013-01-01"
 
 - title: The North Coast
@@ -975,7 +940,6 @@
     - north-coast.jpg
   imgsAlt:
     - "A black and white map of coastal Northern California stretching from the Oregon border to the north to Bodega Bay to the south. It shows the locations of cities, towns, counties, state and national parks, national forests, sights, and natural features such as rivers, mountain ranges, and bays."
-  size: ""
   date: "2013-01-01"
 
 - title: Downtown Toronto
@@ -990,7 +954,6 @@
     - "A black and white map of downtown Toronto, Canada depicting the street network and locations of various sites, neighborhoods, attractions, restuarants, parks, points of interest."
   tech:
     - Adobe Illustrator
-  size: width2 height1
   date: "2012-01-01"
 
 - title: Downtown Guanajuato
@@ -1003,5 +966,4 @@
     - guanajuato-dt.jpg
   imgsAlt:
     - "A black and white map of downtown Guanajuato, Mexico depicting the street network and locations of various sites, attractions, restuarants, parks, points of interest."
-  size: width2 height1
   date: "2012-01-01"
