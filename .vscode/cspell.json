@@ -1,6 +1,17 @@
 {
   "version": "0.2",
   "language": "en",
+  "ignorePaths": [
+    "**/*.jpeg",
+    "**/*.jpg",
+    "**/*.png",
+    "**/*.webp",
+    "**/*.pdf",
+    "**/*.gif",
+    ".vscode/settings.json",
+    ".vscode/extensions.json",
+    "public/*"
+  ],
   "allowCompoundWords": true,
   "words": [
     "AEMP",
