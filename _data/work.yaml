@@ -173,14 +173,16 @@
     - data-viz
   description: A web component suitable for use as a legend in data visualizations
   description_long: |-
-    A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) suitable for use as a legend in data visualizations. Built with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [Observable](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.
+    A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) suitable for use as a legend in data visualizations. Built with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [ObservableHQ](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.
 
-    Check out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) for more on its usage. Read more in a [blog post I wrote about it](/blog/color-legend-element/).
+    Check out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) and/or [documentation](https://clhenrick.github.io/color-legend-element/) for information on its usage. You may read more about the ColorLegend in a [blog post I wrote about it](/blog/color-legend-element/).
   tech:
     - D3JS
     - Lit
     - TypeScript
     - Web Components
+    - Eleventy
+    - RollUp
   thumb: color-legend-element-thumb.png
   imgs:
     - Color Legend Element 01.png
@@ -204,11 +206,11 @@
     Data Visualization prototyping for the Satcher Health Leadership Institute's Health Equity
     Tracker
   description_long: |-
-    During the second half of 2020, I and a cohort of Googlers took part in a [Google.org](https://www.google.org/) fellowship in partnership with [Morehouse School of Medicine](https://msm.edu/)'s [Satcher Health Leadership Institute](https://satcherinstitute.org/) to develop a [Health Equity Tracker web application](https://github.com/SatcherInstitute/health-equity-tracker). My role in the fellowship was to prototype data visualizations that highlighted health disparities using datasets that were identified as relevant to communicating health outcomes and the social determinants of health.
+    During the second half of 2020, I and a cohort of Googlers took part in a [Google.org](https://www.google.org/) fellowship in partnership with [Morehouse School of Medicine](https://msm.edu/)'s [Satcher Health Leadership Institute](https://satcherinstitute.org/) to develop the [Health Equity Tracker web application](https://github.com/SatcherInstitute/health-equity-tracker). My role in the fellowship was to prototype data visualizations that highlighted health disparities using datasets that were identified as relevant to communicating health outcomes and the social determinants of health.
 
-    The result of this work is dozens of [Observable Notebooks](https://observablehq.com/) that are organized into two collections; one for [data analysis and exploration](https://observablehq.com/collection/@clhenrick/msm-fellowship-data-intake) and another for [data visualization prototyping](https://observablehq.com/collection/@clhenrick/msm-fellowship). Some visualizations from these notebooks were embedded as [stand alone web pages](https://satcherinstitute.github.io/data-visualization/) for User Experience Research with health equity advocates who work in various sectors of public health across the U.S. and partner with SHLI. Below are some sample visualizations from the Observable Notebooks and notebook embeds.
+    The results of this work are dozens of [Observable Notebooks](https://observablehq.com/) that are organized into two collections; one for [data analysis and exploration](https://observablehq.com/collection/@clhenrick/msm-fellowship-data-intake) and another for [data visualization prototyping](https://observablehq.com/collection/@clhenrick/msm-fellowship). Some visualizations from these notebooks were embedded as [stand alone web pages](https://satcherinstitute.github.io/data-visualization/) for user experience research with health equity advocates who work in various sectors of public health across the U.S. and partner with SHLI. Below are some sample visualizations from the Observable Notebooks and notebook embeds.
 
-    [Read more about the data viz prototyping process using Observable Notebooks](/blog/prototyping-with-observable-notebooks/).
+    Read more about the [data viz prototyping process using Observable Notebooks](/blog/prototyping-with-observable-notebooks/).
   tech:
     - Observable Notebooks
     - Observable Runtime
@@ -236,7 +238,9 @@
     Mapping tenants rights legislation and housing justice actions in response to the Coronavirus
     pandemic.
   description_long: |-
-    In the wake of the Coronavirus pandemic, the [Anti-Eviction Mapping Project](https://antievictionmap.com/) in collaboration with tenants rights and other activist groups, tirelessly researched and documented emergency tenant protections and housing justice actions in response to the economic crisis from COVID-19. This map is a result of that effort and allows viewers to search for legislation that affects their rights as a renter at the city, county, state/province, and national levels of government in the United States and abroad. The site serves as a crowdsourcing mechanism that allows viewers to submit local updates on emergency tenants rights legislation or housing justice actions they may be involved in. The content of the site has been translated to many different languages and will load based on the language setting of the viewer's browser. I contributed cartographic design and web development to this project on a pro-bono basis during Spring and Summer of 2020. The making of this map was a highly collaborative process involving many members of the AEMP, tenants rights groups, and activist collectives. It is the result of many hours of hard work and dedication from those involved in creating and contributing to the months long, ongoing endeavor.
+    In the wake of the Coronavirus pandemic, the [Anti-Eviction Mapping Project](https://antievictionmap.com/) in collaboration with tenants rights and other activist groups, tirelessly researched and documented emergency tenant protections and housing justice actions in response to the economic and housing crises stemming from COVID-19. This interactive mapping application is a result of that effort. It allowed viewers to search for legislation that affects their rights as a renter at the city, county, state/province, and national levels of government in the United States and abroad. The site also served as a crowdsourcing mechanism that allowed viewers to submit local updates on emergency tenants rights legislation or housing justice actions. The content of the site was translated to a number of different languages and loads based on the language setting of the viewer's browser.
+
+    I contributed cartographic design and web development to this project on a pro-bono basis during Spring and Summer of 2020 in the early part of the pandemic. The making of this map was a highly collaborative process involving many members of AEMP, tenants rights groups, and partnering activist collectives. It is the result of many hours of hard work, coordination, and dedication from those involved in creating and contributing to a many months long endeavor.
   tech:
     - Javascript ES6
     - LeafletJS
@@ -244,6 +248,8 @@
     - PostgreSQL
     - PostGIS
     - Webpack
+    - CSS
+    - HTML
   thumb: aemp-covid19-protections-thumb.jpg
   imgs:
     - aemp-covid19-protections-01.jpg
@@ -267,14 +273,13 @@
     Data exploration tool that allows users to filter, compare, rank, and view trends in vehicle
     collision data reported by the NYPD.
   description_long: |-
-    The NYC Crash Mapper Chart View is a data exploration tool that allows users to filter, compare, rank, and view trends in vehicle collision data reported by the NYPD. Trend allows you to compare two selected areas’ performance against each other and to a citywide or borough-wide reference, while filtering by date range or type of crash. Compare lets you compare two time periods for a given area. Rank shows where one area ranks in terms of safety in the context of all similar areas over the most recent three-year period. Map will show the geo location of the crashes using the first area selected, date range of period A, and crash type filters.
+    The NYC Crash Mapper's chart view is a data exploration tool that allows users to filter, compare, rank, and view trends in vehicle collision data reported by the NYPD. The "Trend" view allows you to compare two selected areas’ performance against each other and to a citywide or borough-wide reference, while filtering by date range or type of crash. "Compare" lets you compare two time periods for a given area. "Rank" shows where one area ranks in terms of safety in the context of all similar areas over the most recent three-year period. "Map" will show the geo location of the crashes using the first area selected, date range of period A, and any applied crash type filters.
 
-    This was phase two of the original NYC Crash Mapper project. NYC Crash Mapper began as a personal project of mine, then was further developed to include interactive chart components during my tenure at [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was featured on the infamous [NYC Streets Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/). I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual conference](/about/talks/).
+    The "chart view" was phase two of the original NYC Crash Mapper project which featured only an interactive map and some basic stats for the map view. NYC Crash Mapper began as a consultant project of mine, then was further developed to include interactive charting components during my tenure at [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was featured on the infamous [NYC Streets Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/). I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual conference](/about/talks/).
   tech:
     - React
     - Redux
-    - Leaflet
-    - D3
+    - D3JS
     - Javascript ES6
     - CARTO
     - PostgreSQL
@@ -308,13 +313,14 @@
   description: >-
     Web application that dynamically maps, analyzes, and filters vehicle collision data reported by
     the NYPD.
-  description_long: >-
-    NYC Crash Mapper is a web application that dynamically maps, analyzes, and filters vehicle collision data reported by the NYPD in New York City from 2011 to present. The web app allows a user to select a date range for when crashes occurred, filter the data by crash type (injury or fatality; pedestrian, cyclist, or motorist), filter by administrative boundary, or filter by a custom area using a draw tool. Specific “views” of the data can be shared with other users via URL query parameters which contain the map's zoom and center, and any applied filters. Data from the app may be downloaded in various formats such as CSV, Shapefile, and GeoJSON. New collision data is updated to the app’s database weekly using an ETL script running on a Heroku Scheduler. [Chekpeds](http://chekpeds.com), a non-profit that advocates for pedestrian safety in Hell’s Kitchen, funded the work on the app through a grant from New York City. In addition to developing the app, I designed the user interface using Adobe Illustrator. NYC Crash Mapper began as a personal project of mine, then was further developed to include interactive chart components during my tenure at [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was featured on the infamous [NYC Streets Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/). I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual conference](/about/talks/).
+  description_long: |-
+    NYC Crash Mapper is a web application that dynamically maps, analyzes, and filters vehicle collision data reported by the NYPD in New York City from 2011 to present. The web app allows a user to select a date range for when crashes occurred, filter the data by crash type (injury or fatality; pedestrian, cyclist, or motorist), filter by administrative boundary, or filter by a custom area using a draw tool. Specific “views” of the data can be shared with other users via URL query parameters which contain the map's zoom and center, and any applied filters. Data from the app may be downloaded in various formats such as CSV, Shapefile, and GeoJSON. New collision data is updated to the app’s database weekly using an ETL script running on a Heroku Scheduler. [Chekpeds](http://chekpeds.com), a non-profit that advocates for pedestrian safety in Hell’s Kitchen, funded the work on the app through a grant from New York City. In addition to developing the app, I designed the user interface using Adobe Illustrator.
+
+    NYC Crash Mapper began as a consultant project of mine, then was further developed to include interactive chart components during my tenure at [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was featured on the infamous [NYC Streets Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/). I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual conference](/about/talks/).
   tech:
     - React
     - Redux
     - Leaflet
-    - D3
     - Javascript ES6
     - CARTO
     - PostgreSQL
@@ -350,7 +356,7 @@
   tech:
     - React
     - Redux
-    - Leaflet
+    - LeafletJS
     - CARTO
     - NodeJS
     - AWS
@@ -380,15 +386,16 @@
     - web
   description: A civic web app to inform NYC renters about rent stabilization.
   description_long: >-
-    Am I Rent Stabilized is a web application that encourages New York City tenants to find out if their landlord may be illegally overcharging them for a rent stabilized apartment and if so, motivates them to take action. It is an attempt at using open data as a prompt for civic action, rather than solely for visualization and analysis. The app asks the user to input their address and checks it against a database of properties that are likely to have rent stabilized apartments. From here the app recommends a course of action and informs the user of their nearest tenants rights group so they can get help. The app features a responsive interface that is mobile friendly, and its content can be toggled to either Spanish or Chinese for non-english speakers.
+    Am I Rent Stabilized is a web application that encourages New York City tenants to find out if their landlord may be illegally overcharging them for a rent stabilized apartment and if so, motivates them to take action. It is an attempt at using open data as a prompt for civic action, rather than solely for visualization and analysis. The app asks the user to input their address and checks it against a database of properties that are likely to have rent stabilized apartments. From here the app recommends a course of action and informs the user of their nearest tenants rights group so they can get help if desired. The app features a responsive interface that is mobile friendly, and its content can be toggled to either Spanish or Chinese for non-english speakers.
   tech:
-    - CartoDB.JS
     - CartoDB SQL API
     - NYC GeoClient API
     - GSAP Animation JS
     - SCSS
-    - Handlebars.JS
-    - Gulp.JS
+    - JavaScript
+    - d3-geo
+    - HandlebarsJS
+    - Webpack
     - AWS S3
     - AWS CloudFront
   thumb: airs01-thumb.jpg
