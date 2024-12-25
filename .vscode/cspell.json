@@ -1,6 +1,17 @@
 {
   "version": "0.2",
   "language": "en",
+  "ignorePaths": [
+    "**/*.jpeg",
+    "**/*.jpg",
+    "**/*.png",
+    "**/*.webp",
+    "**/*.pdf",
+    "**/*.gif",
+    ".vscode/settings.json",
+    ".vscode/extensions.json",
+    "public/*"
+  ],
   "allowCompoundWords": true,
   "words": [
     "AEMP",
@@ -66,7 +77,7 @@
     "OKCLH",
     "OSM",
     "POSM",
-    "Pediatcities",
+    "PediaCities",
     "Phillipe",
     "QGIS",
     "Québec",
@@ -75,6 +86,7 @@
     "Reggio",
     "Rivière",
     "Roselli",
+    "Rosling",
     "SHLI",
     "SRTM",
     "Scahill",

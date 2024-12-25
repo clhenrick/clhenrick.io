@@ -1,4 +1,8 @@
 {
+  "[yaml]": {
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 100
+  },
   "[markdown]": {
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.unicodeHighlight.invisibleCharacters": false,
