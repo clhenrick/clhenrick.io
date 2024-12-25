@@ -82,7 +82,7 @@
       "prettier --write --cache --cache-strategy metadata",
       "npx cspell-cli --gitignore --unique"
     ],
-    "!(*.css|*.js|*.png|*.jpg|*.jpeg|*.webp)": [
+    "!(*.css|*.js|*.png|*.jpg|*.jpeg|*.webp|*.gif|*.pdf)": [
       "prettier --ignore-unknown --write --cache --cache-strategy metadata",
       "npx cspell-cli --gitignore --unique"
     ]
