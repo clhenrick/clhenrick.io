@@ -640,9 +640,7 @@
     - web
   description: An interactive web documentary about my brother's experience thru-hiking the PCT.
   description_long: >-
-    An attempt at creating an New York Times style "scrolly telling" interactive long form piece.
-    As the user scrolls down a map animates and reveals information relating to the story.
-    There is also a [print version](/work/a-thru-hike-on-the-pacific-crest-trail-print-map/).
+    An attempt at creating an NY Times style interactive. As the user scrolls down a map animates and reveals information relating to the story. There is also a [print version](/work/a-thru-hike-on-the-pacific-crest-trail-print-map/).
   link: http://clhenrick.github.io/Major-Studio-Two/map-story/html/
   thumb: thru-hike-pct01-thumb.jpg
   code: https://github.com/clhenrick/Major-Studio-Two/tree/master/map-story/html
@@ -664,14 +662,7 @@
     - cartography
   description: A map commemorating my brother's thru-hike on the PCT.
   description_long: >-
-    I created this original map using my brother's GPS data, GPX tracks from <a
-    href="https://www.pctmap.net/gps/">Halfmile's PCT Maps</a>, Natural Earth's 1:10m vector data,
-    and SRTM DEM data. The hillshade was generated using Natural Scene Designer Pro and colored
-    using Adobe Photoshop following a <a href="http://www.shadedrelief.com/web_relief/">method used
-    by Tom Patterson</a> of the U.S. National Park Service maps team. The geospatial data was
-    processed using QGIS and PostGIS and the final map was assembled in Adobe Illustrator using
-    MAPublisher. The map measures 14" x 17" in print. There is also an [interactive
-    version](/work/a-thru-hike-on-the-pacific-crest-trail-interactive/).
+    I created this original map using my brother's GPS data, GPX tracks from [Halfmile's PCT Maps](https://www.pctmap.net/gps/), Natural Earth's 1:10m vector data, and NASA SRTM DEM data. The hillshade was generated using Natural Scene Designer Pro and colored using Adobe Photoshop following a [method used by Tom Patterson](http://www.shadedrelief.com/web_relief/) of the U.S. National Park Service maps team. The geospatial data was processed using QGIS and PostGIS and the final map was assembled in Adobe Illustrator using MAPublisher. The map measures 14" x 17" in print. There is also an [interactive version](/work/a-thru-hike-on-the-pacific-crest-trail-interactive/).
   thumb: mike-pct-thumb.jpg
   imgs:
     - mike-pct01.jpg
@@ -693,8 +684,7 @@
     - data-viz
   description: A data-visualization comparing energy use between the U.S., Canada, and China.
   description_long: >-
-    Created for the Woodrow Wilson Center, this interactive data-visualization allows users to
-    compare and contrast various types of energy usage among the three countries (United States, Canada, and China).
+    Created for the Woodrow Wilson Center, this interactive data-visualization allows users to compare and contrast various types of energy usage among the three countries (United States, Canada, and China).
   thumb: tracking-energy-titans-thumb.jpg
   imgs:
     - tracking-energy-titans01.jpg
@@ -775,10 +765,7 @@
     - cartography
   description: A "non-euclidean map" of Prospect Park, Brooklyn
   description_long: >-
-    A non-euclidean “map” of Prospect Park, Brooklyn. Created using a GoPro camera mounted to my
-    head, iMovie for video editing and Open-Frameworks for combining the video shots into one screen
-    space. Inspired by the theory of artist and cartographer Dennis Wood and work by Annette Kim,
-    Associate Professor of Urban Studies and Planning at [MIT's SLAB](http://slab.scripts.mit.edu/wp/maps/narrative-maps/).
+    A non-euclidean “map” of Prospect Park, Brooklyn. Created using a GoPro camera mounted to my head, iMovie for video editing and Open-Frameworks for combining the video shots into one screen space. Inspired by the theory of artist and cartographer Dennis Wood and work by Annette Kim, Associate Professor of Urban Studies and Planning at [MIT's SLAB](http://slab.scripts.mit.edu/wp/maps/narrative-maps/).
   thumb: ppnc-thumb.jpg
   tech:
     - Go-Pro
@@ -841,9 +828,7 @@
     Historic coastal grassland, bay and shoreline over the current day built up land area of
     Oakland, CA.
   description_long: >-
-    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s
-    exhibit titled *Oakland: Then and Now*. This map shows historic coastal
-    grassland areas, and a historic bay and shoreline over the current day built up land area.
+    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s exhibit titled *Oakland: Then and Now*. This map shows historic coastal grassland areas, and a historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
