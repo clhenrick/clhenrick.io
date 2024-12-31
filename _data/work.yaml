@@ -3,8 +3,8 @@
     - cartography
     - data-viz
   description: >-
-    Heatmap visualization of (almost) every Luckyduck bicycle café shop ride for Guerilla
-    Cartography's Flow project.
+    Heatmap visualization of (almost) every Luckyduck Bicycle Café shop bicycle ride for Guerilla
+    Cartography's *Flow* project.
   description_long: |-
     [Luckyduck Bicycle Café](https://www.facebook.com/LuckyduckOak/) was a much loved café and bike shop located in downtown Oakland, California which closed in April of 2023 after serving a loyal following for seven years. Part of Luckyduck's allure was holding weekly group shop bike rides that meandered through various parts of the East Bay and sometimes north into Marin County or west into San Francisco.
 
@@ -44,7 +44,7 @@
   tags:
     - cartography
     - web
-  description: Minimal reference map of Oakland, California, made with this website in mind.
+  description: Light and dark themed reference map of Oakland, California made with this website in mind.
   description_long: |-
     A minimal reference map of Oakland, California primarily for use as a background image for this website's [home](/) and [about](/about/) pages. The map is available in both light and dark color scheme variants to support the light and dark themes of this website. The map was created using two separate processes: one for sourcing and processing of the geographic data; the second for rendering the map using the data. Geographic data wrangling was accomplished using a Makefile to programmatically run tasks that query data from [OpenStreetMap](https://www.openstreetmap.org/) (OSM) using the OSM [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) and transform and manipulate it using a combination of the [GDAL](https://gdal.org/en/latest/)'s `ogr2ogr` program and the [Mapshaper](https://github.com/mbloch/mapshaper) JavaScript library. The shaded relief portion of the map that is visible to the right / east of the map was created using [NED DEM data](https://www.usgs.gov/publications/national-elevation-dataset) and GDAL's `hillshade` program. Rendering of the map itself was accomplished using a combination of JavaScript, [D3JS](https://d3js.org/) (in particular [d3-geo](https://d3js.org/d3-geo)), SVG, HTML Canvas, and CSS in a web browser. The final map image was created using [headless Chrome](https://developer.chrome.com/docs/chromium/headless) to capture a screenshot the map and [ImageMagick](https://imagemagick.org/) to crop the image.
 
@@ -74,7 +74,8 @@
     - web
     - data-viz
     - cartography
-  description: Exploratory climate data visualization and web application design and development.
+  description: >-
+    Web application design and development for exploratory climate data visualization and analysis pertaining to the state of California.
   description_long: |-
     Cal-Adapt is both a complex web application and content rich website that enables users to access climate data for California in the form of over a dozen interactive data visualization dashboards, data download formats, and educational content.
 
@@ -109,8 +110,11 @@
 - title: "Cal-Adapt: Analytics Engine"
   tags:
     - web
-  description: Visual design and front-end web development.
-  description_long: >-
+  description: >
+    Visual design and static site development to promote California's next generation climate data analytics software.
+  description_long: |-
+    "The *Cal-Adapt: Analytics Engine* transforms the foundational climate and environmental data that underpins California's Climate Change Assessment into actionable information."
+
     Website design was done using [Figma](https://www.figma.com/), mainly for creating basic mocks and a style guide, while the rest of the design process was done using Markdown, HTML, and CSS. The website was built using the [Astro](https://astro.build/) static site generator, which uses the concept of "partial hydration" to keep client-side JavaScript to a minimum. CAE Jupyter Notebooks were converted to Markdown using Jupyter's [nbconvert](https://pypi.org/project/nbconvert/) utility, allowing for the fast loading and previewing of notebook contents.
   tech:
     - Astro
@@ -171,9 +175,9 @@
   tags:
     - web
     - data-viz
-  description: Open source web component suitable for use as a legend in data visualizations.
+  description: Open source web component suitable for use as a legend with data visualizations.
   description_long: |-
-    A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) suitable for use as a legend in data visualizations. Built with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [ObservableHQ](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.
+    A [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) that eases the pain of creating customized legends for data visualizations and thematic maps. Built with [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color Legend](https://observablehq.com/@d3/color-legend) on [ObservableHQ](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock) 🙏.
 
     Check out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) and/or [documentation](https://clhenrick.github.io/color-legend-element/) for information on its usage. You may read more about the ColorLegend in a [blog post I wrote about it](/blog/color-legend-element/).
   tech:
@@ -203,8 +207,7 @@
     - data-viz
     - cartography
   description: >-
-    Data visualization prototyping for the Satcher Health Leadership Institute's Health Equity
-    Tracker web application.
+    Data visualization prototyping for the development of Satcher Health Leadership Institute's *Health Equity Tracker* web application.
   description_long: |-
     During the second half of 2020, I and a cohort of Googlers took part in a [Google.org](https://www.google.org/) fellowship in partnership with [Morehouse School of Medicine](https://msm.edu/)'s [Satcher Health Leadership Institute](https://satcherinstitute.org/) to develop the [Health Equity Tracker web application](https://github.com/SatcherInstitute/health-equity-tracker). My role in the fellowship was to prototype data visualizations that highlighted health disparities using datasets that were identified as relevant to communicating health outcomes and the social determinants of health.
 
@@ -235,7 +238,7 @@
     - web
     - cartography
   description: >-
-    Mapping emergency tenants rights legislation and housing justice actions in response to the Coronavirus pandemic.
+    Disseminating emergency tenants rights legislation and tracking housing justice actions in response to the Coronavirus pandemic.
   description_long: |-
     In the wake of the Coronavirus pandemic, the [Anti-Eviction Mapping Project](https://antievictionmap.com/) in collaboration with tenants rights and other activist groups, tirelessly researched and documented emergency tenant protections and housing justice actions in response to the economic and housing crises stemming from COVID-19. This interactive mapping application is a result of that effort. It allowed viewers to search for legislation that affects their rights as a renter at the city, county, state/province, and national levels of government in the United States and abroad. The site also served as a crowdsourcing mechanism that allowed viewers to submit local updates on emergency tenants rights legislation or housing justice actions. The content of the site was translated to a number of different languages and loads based on the language setting of the viewer's browser.
 
@@ -449,7 +452,7 @@
 - title: Love and Rage
   tags:
     - cartography
-  description: "An original map for Rebecca Solnit's Nonstop Metropolis: A New York City Atlas."
+  description: "An original map for Rebecca Solnit's *Nonstop Metropolis: A New York City Atlas*."
   description_long: >-
     A print map I created for Rebecca Solnit's city atlas [Nonstop Metropolis: A New York City Atlas](https://www.ucpress.edu/book/9780520285958/nonstop-metropolis). I pitched the map idea to Rebecca while meeting her and atlas co-author Joshua Jelly-Schapiro for coffee at Caffè Reggio near Washington Square one afternoon and a collaborative engagement for bringing the map to life ensued. In order to to create this map open data was utilized from sources such as NYC 311, the NYPD, and OpenStreetMap. Cartography was done using Adobe Illustrator and MAPublisher.
   tech:
@@ -643,7 +646,7 @@
 - title: A Thru Hike on the Pacific Crest Trail (print map)
   tags:
     - cartography
-  description: Map commemorating my brother's thru-hike on the PCT.
+  description: Map commemorating my brother's 2013 thru-hike on the PCT.
   description_long: >-
     I created this original map using my brother's GPS data, GPX tracks from [Halfmile's PCT Maps](https://www.pctmap.net/gps/), Natural Earth's 1:10m vector data, and NASA SRTM DEM data. The hillshade was generated using Natural Scene Designer Pro and colored using Adobe Photoshop following a [method used by Tom Patterson](http://www.shadedrelief.com/web_relief/) of the U.S. National Park Service maps team. The geospatial data was processed using QGIS and PostGIS and the final map was assembled in Adobe Illustrator using MAPublisher. The map measures 14" x 17" in print. There is also an [interactive version](/work/a-thru-hike-on-the-pacific-crest-trail-interactive/).
   thumb: mike-pct-thumb.jpg
@@ -804,7 +807,7 @@
   description: >-
     Historic coastal grassland, bay, and shoreline over the current day built up land area of Oakland, CA.
   description_long: >-
-    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s exhibit titled *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area.
+    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s exhibit *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
@@ -816,7 +819,7 @@
   description: Historic oak woodland, bay, and shoreline over the current day built up land area of Oakland, CA.
   description_long: >-
     A prototype map design for the [Oakland Museum of California](https://museumca.org)'s
-    exhibit titled *Oakland: Then and Now*. This map shows historic oak
+    exhibit *Oakland: Then and Now*. This map shows historic oak
     woodland areas with the historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-oak-thumb.jpg
   imgs:
@@ -862,7 +865,7 @@
 - title: Ontario
   tags:
     - cartography
-  description: "Full color reference map for the Moon: Ontario travel guide."
+  description: "Full color reference map for the *Moon: Ontario* travel guide."
   description_long: >-
     A map of the province of Ontario, Canada created using Natural Earth 1:10m vector GIS data for
     the *Moon: Ontario* travel guide from Avalon Travel Publishing.
@@ -876,10 +879,9 @@
 - title: Afghanistan and Pakistan
   tags:
     - cartography
-  description: Reference map of Afghanistan and Pakistan for the book Dirty Wars by Jeremy Scahill.
+  description: Reference map of Afghanistan and Pakistan for the book *Dirty Wars* by Jeremy Scahill.
   description_long: >-
-    A reference map of Afghanistan and Pakistan for the book Dirty Wars: The World is a Battlefield, by Jeremy
-    Scahill. Published by Nation Books.
+    A reference map of Afghanistan and Pakistan for the book *Dirty Wars: The World is a Battlefield*, by Jeremy Scahill. Published by Nation Books.
   thumb: afg-pak-thumb.jpg
   imgs:
     - afg-pak.jpg
@@ -895,7 +897,7 @@
 - title: Southeast Asia
   tags:
     - cartography
-  description: Reference map of Thailand, Laos, and Cambodia.
+  description: Reference map of Thailand, Laos, and Cambodia for *And There I Was*.
   description_long: >-
     Another map for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. [Natural Earth](https://www.naturalearthdata.com) vector and shaded relief data were employed for sound cartographic design.
   thumb: se-asia-thumb.jpg
@@ -913,7 +915,7 @@
 - title: Sikkim
   tags:
     - cartography
-  description: Reference map of the northern Indian state of Sikkim.
+  description: Reference map of the northern Indian state of Sikkim for *And There I Was*.
   description_long: >
     I created this map of [Sikkim](https://en.wikipedia.org/wiki/Sikkim) for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. For depicting Sikkim's mountainous topography, a custom hillshade was created using [Shuttle Radar Topography Mission (SRTM)](https://www.earthdata.nasa.gov/data/instruments/srtm) digital elevation model data with [QGIS](https://qgis.org) and [Terrain Sculptor](https://terraincartography.com/terrainsculptor/).
   tech:
@@ -932,7 +934,7 @@
 - title: The North Coast
   tags:
     - cartography
-  description: "Split frame map for the Moon: Northern California travel guide."
+  description: "Split frame map for the *Moon: Northern California* travel guide."
   description_long: Open data from Cal Atlas and the California Protected Areas Database were used to make this map.
   tech:
     - Adobe Illustrator
@@ -948,7 +950,7 @@
 - title: Downtown Toronto
   tags:
     - cartography
-  description: Map of downtown Toronto, Canada created for the Moon Handbooks travel guide series.
+  description: Map of downtown Toronto, Canada created for the *Moon Handbooks* travel guide series.
   description_long: ""
   thumb: toronto-dt-thumb.jpg
   imgs:
@@ -962,7 +964,7 @@
 - title: Downtown Guanajuato
   tags:
     - cartography
-  description: Map of downtown Guanajuato, Mexico created for the Moon Handbooks travel guide series.
+  description: Map of downtown Guanajuato, Mexico created for the *Moon Handbooks* travel guide series.
   description_long: ""
   thumb: guanajuato-dt-thumb.jpg
   imgs:
