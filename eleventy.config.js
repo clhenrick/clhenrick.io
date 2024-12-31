@@ -20,6 +20,7 @@ import yaml from "js-yaml";
 
 const markdown = markdownit({
   html: true,
+  typographer: true,
 });
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
