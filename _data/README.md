@@ -75,7 +75,8 @@ An example `work` project entry looks like:
 
   # optional long description for project pages, markdown supported
   description_long: >-
-    A random juxtaposition of graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's [Trees-Cabs-Crime](https://stamen.com/trees-cabs-crime-in-the-venice-biennale-968ea4983177/). Created using public data from New York City's [open data portal](https://opendata.cityofnewyork.us).
+    A random juxtaposition of graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's [Trees-Cabs-Crime](https://stamen.com/trees-cabs-crime-in-the-venice-biennale-968ea4983177/).
+    Created using public data from New York City's [open data portal](https://opendata.cityofnewyork.us).
 
   # required thumbnail image file name, used for project cards
   thumb: graffiti-rats-wifi-thumb.jpg
