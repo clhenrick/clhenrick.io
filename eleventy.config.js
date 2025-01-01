@@ -151,6 +151,10 @@ export default function (eleventyConfig) {
     return `<div class="md-block">${markdown.render(value)}</div>`;
   });
 
+  eleventyConfig.addFilter("markdownInline", (value) => {
+    return markdown.renderInline(value);
+  });
+
   eleventyConfig.addFilter("findIndex", (array, target) => {
     return array.findIndex((item) => item === target);
   });
