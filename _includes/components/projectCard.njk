@@ -12,7 +12,7 @@
       <h2>
         <a href="./{{ project.title | slugify }}/">{{ project.title }}</a>
       </h2>
-      {{ project.description | markdown | safe }}
+      <p>{{ project.description | markdownInline | safe }}</p>
       {% if project.tags %}
         <ul class="tags" role="list">
           {% for tag in project.tags %}
