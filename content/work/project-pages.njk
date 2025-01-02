@@ -82,6 +82,7 @@ eleventyComputed:
   {% endif %}
 
   {% if project.video %}
+    {% set videoDescription = project.video.desc %}
     {# iframe embed technique credit: https://adrianroselli.com/2024/01/embed-slides-youtube-videos-and-more.html #}
     <div style="--aspect-ratio: 16/9;margin-bottom:2.5rem;">
       <iframe
@@ -95,6 +96,11 @@ eleventyComputed:
         title="{{ project.video.title }}"
       ></iframe>
     </div>
+
+    {% if videoDescription %}
+      <h3>Video Description</h3>
+      {{ videoDescription | markdown | safe }}
+    {% endif %}
   {% endif %}
 
   {% if project.imgs %}
