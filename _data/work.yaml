@@ -43,7 +43,6 @@
 - title: Open Source Oakland Map
   tags:
     - cartography
-    - web
   description: Light and dark themed reference map of Oakland, California made with this website in mind.
   description_long: |-
     A minimal reference map of Oakland, California primarily for use as a background image for this website's [home](/) and [about](/about/) pages. The map is available in both light and dark color scheme variants to support the light and dark themes of this website. The map was created using two separate processes: one for sourcing and processing of the geographic data; the second for rendering the map using the data. Geographic data wrangling was accomplished using a Makefile to programmatically run tasks that query data from [OpenStreetMap](https://www.openstreetmap.org/) (OSM) using the OSM [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) and transform and manipulate it using a combination of the [GDAL](https://gdal.org/en/latest/)'s `ogr2ogr` program and the [Mapshaper](https://github.com/mbloch/mapshaper) JavaScript library. The shaded relief portion of the map that is visible to the right / east of the map was created using [NED DEM data](https://www.usgs.gov/publications/national-elevation-dataset) and GDAL's `hillshade` program. Rendering of the map itself was accomplished using a combination of JavaScript, [D3JS](https://d3js.org/) (in particular [d3-geo](https://d3js.org/d3-geo)), SVG, HTML Canvas, and CSS in a web browser. The final map image was created using [headless Chrome](https://developer.chrome.com/docs/chromium/headless) to capture a screenshot the map and [ImageMagick](https://imagemagick.org/) to crop the image.
@@ -646,6 +645,7 @@
 - title: A Thru Hike on the Pacific Crest Trail (interactive)
   tags:
     - web
+    - cartography
   description: Interactive web documentary about my brother's experience thru-hiking the PCT.
   description_long: |-
     A prototype of an NY Times style interactive "scrolly-telling" experience. As the user scrolls down a map animates and reveals information relating to the story. Content was scraped from a blog my brother kept during his thru hike of the Pacific Crest National Scenic Trail. The interactive map uses GPX data from my brother's trip and PCT route data from Halfmile's PCT maps.
@@ -752,7 +752,7 @@
 
     Each circle represents a single country, is sized by that country's population, and is colored by the world region the country belongs to (according to the World Bank). Hovering over a circle reveals a tooltip showing the country name, region, and values for GNI and CO2. The scatterplot's x axis may be toggled between Gross National Income and Per Capita Income. The result shows a strong linear correlation between the x and y variables: as income increases so does CO2 output.
 
-    This project was inspired by [Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling)'s infamous Ted Talk [*The best statistics you’ve ever seen*](https://www.youtube.com/watch?v=hVimVzgtD6w) and [Gap Minder](https://www.gapminder.org) project.
+    This project was inspired by [Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling)'s infamous Ted Talk [*The Best Statistics You've Ever Seen*](https://www.youtube.com/watch?v=hVimVzgtD6w) and his [Gap Minder](https://www.gapminder.org) project.
   code: https://github.com/clhenrick/data-viz-projects/tree/master/03_scatterplot
   thumb: co2-gni-viz-thumb.jpg
   imgs:
@@ -770,7 +770,7 @@
     - cartography
   description: A "non-euclidean map" of Prospect Park, Brooklyn, NY.
   description_long: >-
-    A non-euclidean “map” of Prospect Park, Brooklyn. Created using a GoPro camera mounted to my head, iMovie for video editing and Open-Frameworks for combining the video shots into one screen space. Inspired by the theory of artist and cartographer Dennis Wood and work by Annette Kim, Associate Professor of Urban Studies and Planning at [MIT's SLAB](http://slab.scripts.mit.edu/wp/maps/narrative-maps/).
+    A "non-euclidean map" of Prospect Park, Brooklyn that challenges viewers to consider what traditional maps cannot depict and how we might use other media and techniques to create maps that embody more humanistic qualities of our concepts of place. Created using a GoPro camera mounted to my head, iMovie for video editing and Open-Frameworks for combining the video shots into one screen space. Inspired by the theory of artist and cartographer Dennis Wood and work by Annette Kim, Associate Professor of Urban Studies and Planning at [MIT's SLAB](http://slab.scripts.mit.edu/wp/maps/narrative-maps/).
   thumb: ppnc-thumb.jpg
   tech:
     - Go-Pro
@@ -809,7 +809,7 @@
     - cartography
     - data-viz
   description: >-
-    Hacking my iPhone's location data to visualize my move from the SF Bay Area to NYC.
+    Hacking my phone's location data to visualize my move from the San Francisco Bay Area to New York City.
   description_long: >-
     A project I created during the Parsons [MFA Design and Technology](https://www.newschool.edu/parsons/mfa-design-technology/) summer pre-program bootcamp intensive that visualizes my cross country move from the San Francisco Bay Area to New York City as a web based animation on a geographic map. I utilized location data hacked from my own mobile phone using a 3rd party app, and then converted that data to GeoJSON in order to plot it with D3JS. I used this project as a way to raise privacy concerns related to how mobile devices keep a detailed record of our whereabouts at all times they are activated and on our person.
   thumb: coast-2-coast-thumb.jpg
@@ -832,18 +832,22 @@
   tags:
     - cartography
   description: >-
-    Historic coastal grassland, bay, and shoreline over the current day built up land area of Oakland, CA.
+    Historic coastal grassland, bay, and shoreline over the current day built up land area of Oakland, California.
   description_long: >-
     An original map for the [Oakland Museum of California](https://museumca.org)'s exhibit *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
   date: "2013-01-01"
+  tech:
+    - QGIS
+    - MAPublisher
+    - Adobe Illustrator
 
 - title: "Oakland Then and Now: Oak Woodland"
   tags:
     - cartography
-  description: Historic oak woodland, bay, and shoreline over the current day built up land area of Oakland, CA.
+  description: Historic oak woodland, bay, and shoreline over the current day built up land area of Oakland, California.
   description_long: >-
     An original map for the [Oakland Museum of California](https://museumca.org)'s
     exhibit *Oakland: Then and Now*. This map shows historic oak
@@ -852,13 +856,17 @@
   imgs:
     - oak-then-now-oak.jpg
   date: "2015-01-01"
+  tech:
+    - QGIS
+    - MAPublisher
+    - Adobe Illustrator
 
 - title: Chinook Recovery Priority Watersheds
   tags:
     - cartography
   description: Map of coastal recovery watersheds for Salmon and Steelhead in California.
   description_long: >-
-    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish, and is a working draft showing only the coastal recovery watersheds for Salmon and Steelhead in California. Central valley recovery watersheds are not shown on this version of the map. For the most recent version please visit Sustainable Conservation's Partners in Restoration program.
+    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish, and is a working draft showing only the coastal recovery watersheds for Salmon and Steelhead in California. Central valley recovery watersheds are not shown on this version of the map. For the most recent version please visit Sustainable Conservation's Partners in Restoration program. Initial map design was accomplished using ArcGIS and final touches were done using Adobe Illustrator.
   thumb: chinook-thumb.jpg
   imgs:
     - chinook.jpg
@@ -874,7 +882,7 @@
     - cartography
   description: Map of private and publically owned land in California.
   description_long: >-
-    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish for Sustainable Conservation's Partners in Restoration program.
+    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish for Sustainable Conservation's Partners in Restoration program. Initial map design was accomplished using ArcGIS and final touches were done using Adobe Illustrator.
   thumb: public-private-thumb.jpg
   imgs:
     - public-private.jpg
@@ -890,8 +898,7 @@
     - cartography
   description: "Full color reference map for the *Moon: Ontario* travel guide."
   description_long: >-
-    A map of the province of Ontario, Canada created using Natural Earth 1:10m vector GIS data for
-    the *Moon: Ontario* travel guide from Avalon Travel Publishing.
+    An original map of the province of Ontario, Canada created using [Natural Earth 1:10m vector geospatial data](https://www.naturalearthdata.com/downloads/50m-cultural-vectors/) for the *Moon: Ontario* travel guide, published by Avalon Travel Publishing. Map copyright Avalon Travel Publishing.
   thumb: ontario-thumb.jpg
   imgs:
     - ontario.jpg
@@ -920,7 +927,7 @@
 - title: Southeast Asia
   tags:
     - cartography
-  description: Reference map of Thailand, Laos, and Cambodia for *And There I Was*.
+  description: Reference map of Thailand, Laos, and Cambodia for the book *And There I Was*.
   description_long: >-
     Another map for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. [Natural Earth](https://www.naturalearthdata.com) vector and shaded relief data were employed for sound cartographic design.
   thumb: se-asia-thumb.jpg
@@ -938,7 +945,7 @@
 - title: Sikkim
   tags:
     - cartography
-  description: Reference map of the northern Indian state of Sikkim for *And There I Was*.
+  description: Reference map of the northern Indian state of Sikkim for the book *And There I Was*.
   description_long: >
     I created this map of [Sikkim](https://en.wikipedia.org/wiki/Sikkim) for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. For depicting Sikkim's mountainous topography, a custom hillshade was created using [Shuttle Radar Topography Mission (SRTM)](https://www.earthdata.nasa.gov/data/instruments/srtm) digital elevation model data with [QGIS](https://qgis.org) and [Terrain Sculptor](https://terraincartography.com/terrainsculptor/).
   tech:
@@ -958,7 +965,8 @@
   tags:
     - cartography
   description: "Split frame map for the *Moon: Northern California* travel guide."
-  description_long: Open data from Cal Atlas and the California Protected Areas Database were used to make this map.
+  description_long: >-
+    Open data from Cal Atlas and the California Protected Areas Database were used to make this map. QGIS was used for data querying and processing. Adobe Illustrator and MAPublisher were used to create the map. Map copyright Avalon Travel Publishing.
   tech:
     - Adobe Illustrator
     - MAPublisher
@@ -974,7 +982,7 @@
   tags:
     - cartography
   description: Map of downtown Toronto, Canada created for the *Moon Handbooks* travel guide series.
-  description_long: ""
+  description_long: "Created using Adobe Illustrator. Map copyright Avalon Travel Publishing."
   thumb: toronto-dt-thumb.jpg
   imgs:
     - toronto-dt.jpg
@@ -988,7 +996,7 @@
   tags:
     - cartography
   description: Map of downtown Guanajuato, Mexico created for the *Moon Handbooks* travel guide series.
-  description_long: ""
+  description_long: "Created using Adobe Illustrator. Map copyright Avalon Travel Publishing."
   thumb: guanajuato-dt-thumb.jpg
   imgs:
     - guanajuato-dt.jpg
