@@ -816,6 +816,8 @@
     embed: https://player.vimeo.com/video/89143409?autoplay=1
     thumb: coast-2-coast.jpg
     alt: Screen recording of From Coast to Coast
+    desc: >-
+      A light gray map of the United States is depicted, showing only state boundary lines and no labels. A yellow dot appears in the San Francisco Bay Area on the west coast of the country with the date Thursday May 16, 2013 to its upper right. Slowly the dot moves subtly, almost as if it is being jiggled, while the date shown next to the dot progresses day by day through May into June. Pink areas are shown representing the dot's previous locations. Around mid June the dot moves southward in California and then abruptly appears in the East Coast near the border of New Jersey and New York with the date Saturday June 13, 2013. The dot then quickly moves south through New Jersey into Maryland, then back to the New York area on June 14, 2013. It then continues to move subtly again, this time around the New York City metro area, not straying far from the city. At August 7, 2013 the yellow dot disappears, leaving a trail of pink in its previous locations in California, Maryland, New Jersey, New York, and Connecticut.
   tech:
     - iPhone
     - D3JS
@@ -830,7 +832,7 @@
   description: >-
     Historic coastal grassland, bay, and shoreline over the current day built up land area of Oakland, CA.
   description_long: >-
-    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s exhibit *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area.
+    An original map for the [Oakland Museum of California](https://museumca.org)'s exhibit *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
@@ -841,7 +843,7 @@
     - cartography
   description: Historic oak woodland, bay, and shoreline over the current day built up land area of Oakland, CA.
   description_long: >-
-    A prototype map design for the [Oakland Museum of California](https://museumca.org)'s
+    An original map for the [Oakland Museum of California](https://museumca.org)'s
     exhibit *Oakland: Then and Now*. This map shows historic oak
     woodland areas with the historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-oak-thumb.jpg
@@ -854,10 +856,7 @@
     - cartography
   description: Map of coastal recovery watersheds for Salmon and Steelhead in California.
   description_long: >-
-    This map was created at GreenInfo Network with Alexandra Barnish, and is a working draft showing
-    only the coastal recovery watersheds for Salmon and Steelhead in California. Central valley
-    recovery watersheds are not shown on this version of the map. For the most recent version please
-    visit Sustainable Conservation's Partners in Restoration program.
+    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish, and is a working draft showing only the coastal recovery watersheds for Salmon and Steelhead in California. Central valley recovery watersheds are not shown on this version of the map. For the most recent version please visit Sustainable Conservation's Partners in Restoration program.
   thumb: chinook-thumb.jpg
   imgs:
     - chinook.jpg
@@ -873,8 +872,7 @@
     - cartography
   description: Map of private and publically owned land in California.
   description_long: >-
-    This map was created at GreenInfo Network with Alexandra Barnish for Sustainable Conservation's
-    Partners in Restoration program.
+    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish for Sustainable Conservation's Partners in Restoration program.
   thumb: public-private-thumb.jpg
   imgs:
     - public-private.jpg

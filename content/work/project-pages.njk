@@ -29,7 +29,7 @@ eleventyComputed:
     {% if project.date %}
       <div>
         <dt>Date:</dt>
-        <dd>{{ project.date | dateFromISOString("LLLL, yyyy") }}</dd>
+        <dd>{{ project.date | dateFromISOString("LLLL d, yyyy") }}</dd>
       </div>
     {% endif %}
 
