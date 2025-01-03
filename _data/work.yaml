@@ -273,7 +273,7 @@
   link: https://covid19.antievictionmap.com
   code: https://github.com/antievictionmappingproject/covid-19-map
 
-- title: NYC Crash Mapper 2
+- title: "NYC Crash Mapper: Chart View"
   tags:
     - web
     - data-viz
