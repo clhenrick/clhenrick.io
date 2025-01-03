@@ -313,6 +313,7 @@
     - crashmapper-chart-view16.png
   date: "2017-11-23"
   link: http://vis.crashmapper.org
+  code: https://github.com/GreenInfo-Network/nyc-crash-mapper-chart-view
 
 - title: NYC Crash Mapper
   tags:
@@ -350,6 +351,7 @@
     - nyc-crash-mapper12.jpg
   date: "2017-03-03"
   link: http://crashmapper.org
+  code: https://github.com/GreenInfo-Network/nyc-crash-mapper
 
 - title: MPG Ranch Habitat Restoration Map
   tags:
