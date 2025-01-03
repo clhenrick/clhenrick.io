@@ -60,7 +60,7 @@
     - CSS
     - JavaScript
     - Headless Chrome
-  thumb: oakland-map-thumb.jpeg
+  thumb: oakland-map-thumb.png
   imgs:
     - public/img/oakland-map-light-6016w.jpeg
     - public/img/oakland-map-dark-6016w.jpeg
