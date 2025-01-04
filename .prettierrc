@@ -7,6 +7,12 @@
       "options": {
         "parser": "jinja-template"
       }
+    },
+    {
+      "files": "_data/work.yaml",
+      "options": {
+        "printWidth": 100000
+      }
     }
   ]
 }

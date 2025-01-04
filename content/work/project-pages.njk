@@ -23,13 +23,13 @@ eleventyComputed:
 <section>
   <h1>{{ project.title }}</h1>
 
-  <p>{{ project.description }}</p>
+  <p>{{ project.description | markdownInline | safe }}</p>
 
   <dl>
     {% if project.date %}
       <div>
         <dt>Date:</dt>
-        <dd>{{ project.date | dateFromISOString("LLLL, yyyy") }}</dd>
+        <dd>{{ project.date | dateFromISOString("LLLL d, yyyy") }}</dd>
       </div>
     {% endif %}
 
@@ -37,10 +37,14 @@ eleventyComputed:
       <div>
         <dt>Project link:</dt>
         <dd>
-          <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
+          <a href="{{ project.link }}">{{ project.title }}</a>
         </dd>
       </div>
     {% endif %}
+
+    {% macro formatGitHubLink(text) %}
+      {{ text | replace("https://", "") | replace("github", "GitHub", 1) }}
+    {% endmacro %}
 
     {% if project.code %}
       <div>
@@ -48,12 +52,14 @@ eleventyComputed:
         {% if project.code | isArray %}
           {% for link in project.code %}
             <dd>
-              <a href="{{ link }}" target="_blank">{{ link }}</a>
+              <a href="{{ link }}">{{ formatGitHubLink(link) }}</a>
             </dd>
           {% endfor %}
         {% else %}
           <dd>
-            <a href="{{ project.code }}" target="_blank">{{ project.code }}</a>
+            <a href="{{ project.code }}"
+              >{{ formatGitHubLink(project.code) }}</a
+            >
           </dd>
         {% endif %}
       </div>
@@ -64,7 +70,7 @@ eleventyComputed:
 {% if project.tech %}
   <section>
     <h2>Technologies Used</h2>
-    <ul class="tech-tags" role="list">
+    <ul class="tech-tags" role="list" translate="no">
       {% for tag in project.tech %}
         <li>{{ tag }}</li>
       {% endfor %}
@@ -82,6 +88,7 @@ eleventyComputed:
   {% endif %}
 
   {% if project.video %}
+    {# iframe embed technique credit: https://adrianroselli.com/2024/01/embed-slides-youtube-videos-and-more.html #}
     <div style="--aspect-ratio: 16/9;margin-bottom:2.5rem;">
       <iframe
         width="960"
@@ -94,6 +101,12 @@ eleventyComputed:
         title="{{ project.video.title }}"
       ></iframe>
     </div>
+
+    {% set videoDescription = project.video.desc %}
+    {% if videoDescription %}
+      <h3>Video Description</h3>
+      {{ videoDescription | markdown | safe }}
+    {% endif %}
   {% endif %}
 
   {% if project.imgs %}
