@@ -20,6 +20,7 @@ import yaml from "js-yaml";
 
 const markdown = markdownit({
   html: true,
+  typographer: true,
 });
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
@@ -148,6 +149,10 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("markdown", (value) => {
     return `<div class="md-block">${markdown.render(value)}</div>`;
+  });
+
+  eleventyConfig.addFilter("markdownInline", (value) => {
+    return markdown.renderInline(value);
   });
 
   eleventyConfig.addFilter("findIndex", (array, target) => {

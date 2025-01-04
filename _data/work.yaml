@@ -3,27 +3,13 @@
     - cartography
     - data-viz
   description: >-
-    A heatmap visualization of (almost) every Luckyduck bicycle café shop ride for Guerilla
-    Cartography's Flow project.
-  description_long: >-
-    [Luckyduck Bicycle Café](https://www.facebook.com/LuckyduckOak/) was a much loved café and bike
-    shop located in downtown Oakland, California which closed in April of 2023 after serving a loyal
-    following for seven years. Part of Luckyduck's allure was holding weekly group shop bike rides
-    that meandered through various parts of the East Bay and sometimes north into Marin County or
-    west into San Francisco. <br><br>To commemorate the end of an era for many members of Oakland's
-    local cycling community, I created this heat map of every shop bicycle ride that I could source
-    geospatial data for from [RideWithGPS](https://ridewithgps.com/), a popular cycling planning
-    app. On Saturday, October 19th, 2024 as part of the "Atlas at a Conference" project pitched by
-    [Guerrilla Cartography](https://www.guerrillacartography.org) during the North American
-    Cartographic Information Society's annual conference, I downloaded GPX route data for each shop
-    ride from the [Luckyduck RideWithGPS account](https://ridewithgps.com/users/54142) via a [NodeJS
-    script](https://github.com/clhenrick/luckyduck-shop-rides/tree/main). I then created the heat
-    map visualization in the Chrome web browser using D3JS, HTML Canvas, and CSS. The shaded relief
-    depicting the topography of the Bay Area near Oakland was created via repurposed code from my
-    [Open Source Oakland Map](/work/open-source-oakland-map/) project. Darin Jensen of Guerrilla
-    Cartography contributed some of the final touches such as framing the map, and adding
-    descriptive text and a legend to make it more suitable for print publication. This map will be
-    included in the forthcoming book by Guerrilla Cartography, *Flow*.
+    Heatmap visualization of (almost) every Luckyduck Bicycle Café shop bicycle ride for Guerilla Cartography's *Atlas at a Conference: Flow* project.
+  description_long: |-
+    [Luckyduck Bicycle Café](https://www.facebook.com/LuckyduckOak/) was a much loved café and bike shop located in downtown Oakland, California which closed in April of 2023 after serving a loyal following for seven years. Part of Luckyduck's allure was holding weekly group shop bike rides that meandered through various parts of the East Bay and sometimes north into Marin County or west into San Francisco.
+
+    To commemorate the end of an era for many members of Oakland's local cycling community, I created this heat map of every shop bicycle ride that I could source geospatial data for from [RideWithGPS](https://ridewithgps.com/), a popular cycling planning app. On Saturday, October 19th, 2024 as part of the "Atlas at a Conference" project pitched by [Guerrilla Cartography](https://www.guerrillacartography.org) during the North American Cartographic Information Society's annual conference, I downloaded GPX route data for each shop ride from the [Luckyduck RideWithGPS account](https://ridewithgps.com/users/54142) via a [NodeJS script](https://github.com/clhenrick/luckyduck-shop-rides/tree/main). I then created the heat map visualization in the Chrome web browser using D3JS, HTML Canvas, and CSS. The shaded relief depicting the topography of the Bay Area near Oakland was created via repurposed code from my [Open Source Oakland Map](/work/open-source-oakland-map/) project. Darin Jensen of Guerrilla Cartography contributed some of the final touches such as framing the map, and adding descriptive text and a legend to make it more suitable for print publication.
+
+    The finalized map is included as part of the [*Atlas at a Conference: Flow*](https://drive.google.com/file/d/1AWTltacogHedTPChJ1RfeD7FL5W_cR-E/view) project, by Guerrilla Cartography.
   tech:
     - CSS
     - D3JS
@@ -54,32 +40,15 @@
       the project details section of this page showing where the highest density of bicycle rides
       occurred in Oakland and Berkeley.
   date: "2024-10-20"
-  size: width3
 
 - title: Open Source Oakland Map
   tags:
     - cartography
-    - web
-  description: A minimal reference map of Oakland, California, made with this website in mind.
-  description_long: >-
-    A minimal reference map of Oakland, California primarily for use as a background image for this
-    website's [home](/) and [about](/about/) pages. The map is available in both light and dark
-    color scheme variants to support the light and dark themes of this website. The map was created
-    using two separate processes: one for sourcing and processing of the geographic data; the second
-    for rendering the map using the data. Geographic data wrangling was accomplished using a
-    Makefile to programmatically run tasks that query data from
-    [OpenStreetMap](https://www.openstreetmap.org/) (OSM) using the OSM [Overpass
-    API](https://wiki.openstreetmap.org/wiki/Overpass_API) and transform and manipulate it using a
-    combination of the [GDAL](https://gdal.org/en/latest/)'s `ogr2ogr` program and the
-    [Mapshaper](https://github.com/mbloch/mapshaper) JavaScript library. The shaded relief portion
-    of the map that is visible to the right / east of the map was created using [NED DEM
-    data](https://www.usgs.gov/publications/national-elevation-dataset) and GDAL's `hillshade`
-    program. Rendering of the map itself was accomplished using a combination of JavaScript,
-    [D3JS](https://d3js.org/) (in particular [d3-geo](https://d3js.org/d3-geo)), SVG, HTML Canvas,
-    and CSS in a web browser. The final map image was created using [headless
-    Chrome](https://developer.chrome.com/docs/chromium/headless) to capture a screenshot the map and
-    [ImageMagick](https://imagemagick.org/) to crop the image.<br /><br />Map data copyright
-    OpenStreetMap contributors, map copyright Chris Henrick 2024 to present.
+  description: Light and dark themed reference map of Oakland, California made with this website in mind.
+  description_long: |-
+    A minimal reference map of Oakland, California primarily for use as a background image for this website's [home](/) and [about](/about/) pages. The map is available in both light and dark color scheme variants to support the light and dark themes of this website. The map was created using two separate processes: one for sourcing and processing of the geographic data; the second for rendering the map using the data. Geographic data wrangling was accomplished using a Makefile to programmatically run tasks that query data from [OpenStreetMap](https://www.openstreetmap.org/) (OSM) using the OSM [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) and transform and manipulate it using a combination of the [GDAL](https://gdal.org/en/latest/)'s `ogr2ogr` program and the [Mapshaper](https://github.com/mbloch/mapshaper) JavaScript library. The shaded relief portion of the map that is visible to the right / east of the map was created using [NED DEM data](https://www.usgs.gov/publications/national-elevation-dataset) and GDAL's `hillshade` program. Rendering of the map itself was accomplished using a combination of JavaScript, [D3JS](https://d3js.org/) (in particular [d3-geo](https://d3js.org/d3-geo)), SVG, HTML Canvas, and CSS in a web browser. The final map image was created using [headless Chrome](https://developer.chrome.com/docs/chromium/headless) to capture a screenshot the map and [ImageMagick](https://imagemagick.org/) to crop the image.
+
+    Map data copyright OpenStreetMap contributors, map design copyright Chris Henrick 2024 to present.
   code: https://github.com/clhenrick/oakland-map
   tech:
     - GDAL
@@ -92,13 +61,12 @@
     - CSS
     - JavaScript
     - Headless Chrome
-  thumb: oakland-map-thumb.jpeg
+  thumb: oakland-map-thumb.png
   imgs:
     - public/img/oakland-map-light-6016w.jpeg
     - public/img/oakland-map-dark-6016w.jpeg
     - public/img/lake-merritt-light.png
     - public/img/oakland-hills-dark.png
-  size: width3
   date: "2024-11-01"
 
 - title: Cal-Adapt
@@ -106,36 +74,16 @@
     - web
     - data-viz
     - cartography
-  description: Exploratory climate data visualization and web application design and development.
-  description_long: >-
-    Cal-Adapt is both a complex web application and content rich website that enables users to
-    access climate data for California in the form of over a dozen interactive data visualization
-    dashboards, data download formats, and educational content.
+  description: >-
+    Web application design and development for exploratory climate data visualization and analysis pertaining to the state of California.
+  description_long: |-
+    Cal-Adapt is both a complex web application and content rich website that enables users to access climate data for California in the form of over a dozen interactive data visualization dashboards, data download formats, and educational content.
 
+    Cal-Adapt's frontend is a static site that interfaces with the backend through a RESTful API which is responsible for serving climate data. The majority of the project's content is stored as Markdown files which are rendered to HTML serverside during the build process, making the page load times fast. Deployment is handled using a NodeJS script that enables deploying to various environments (production, development, beta, Netlify) utilizing feature flags to include or disable various features per environment.
 
-    Cal-Adapt's frontend is a static site that interfaces with the backend through a RESTful API
-    which is responsible for serving climate data. The majority of the project's content is stored
-    as Markdown files which are rendered to HTML serverside during the build process, making the
-    page load times fast. Deployment is handled using a NodeJS script that enables deploying to
-    various environments (production, development, beta, Netlify) utilizing feature flags to include
-    or disable various features per environment.
+    From 2021 through 2022, Cal-Adapt underwent both a redesign and code refactor to address usability issues and technical debt. I assisted with this effort, both in the UX design and frontend development. For this process we utilized Figma for designing UI mocks, SvelteJS as the frontend framework, SapperJS for SPA like functionality, D3JS and Layer Cake for interactive charts, MapBoxGLJS for interactive geo-visualizations, and the Carbon Design system and component library for the user interface.
 
-
-    From 2021 through 2022, Cal-Adapt underwent both a redesign and code refactor to address
-    usability issues and technical debt. I assisted with this effort, both in the UX design and
-    frontend development. For this process we utilized Figma for designing UI mocks, SvelteJS as the
-    frontend framework, SapperJS for SPA like functionality, D3JS and Layer Cake for interactive
-    charts, MapBoxGLJS for interactive geo-visualizations, and the Carbon Design system and
-    component library for the user interface.
-
-
-    Cal-Adapt is the result of a collaboration between members of UC Berkeley's [Geospatial
-    Innovation Facility](http://gif.berkeley.edu/), including [Shruti
-    Mukhtyar](https://twitter.com/mapchitra), Brian Galey, Eric Lehmer, Lucy Andrews, and Nancy
-    Thomas and [Eagle Rock Analytics](http://www.eaglerockanalytics.com/) with grant funding and
-    directional support provided by the [California State Energy
-    Commission](https://www.energy.ca.gov/) and the [Governor's Office of Planning and
-    Research](https://www.opr.ca.gov/).
+    Cal-Adapt is the result of a collaboration between members of UC Berkeley's [Geospatial Innovation Facility](http://gif.berkeley.edu/), including [Shruti Mukhtyar](https://twitter.com/mapchitra), Brian Galey, Eric Lehmer, Lucy Andrews, and Nancy Thomas and [Eagle Rock Analytics](http://www.eaglerockanalytics.com/) with grant funding and directional support provided by the [California State Energy Commission](https://www.energy.ca.gov/) and the [Governor's Office of Planning and Research](https://www.opr.ca.gov/).
   code: https://github.com/berkeley-gif/caladapt-website-2021/
   tech:
     - SvelteJS
@@ -156,28 +104,25 @@
     - cal-adapt-08.jpg
     - cal-adapt-09.jpg
     - cal-adapt-10.jpg
-  size: width3
   date: "2022-07-01"
   link: https://cal-adapt.org
 
 - title: "Cal-Adapt: Analytics Engine"
   tags:
     - web
-  description: Website visual design and development.
-  description_long: >-
-    Website design was done using [Figma](https://www.figma.com/), mainly for creating basic mocks
-    and a style guide (scroll down to view), the rest of the design process was done using Markdown,
-    HTML, and Sass. The website was built using the [Astro](https://astro.build/) static site
-    generator, which uses the concept of "partial hydration" to keep client-side JavaScript to a
-    minimum. CAE Jupyter Notebooks were converted to Markdown using Jupyter's
-    [nbconvert](https://pypi.org/project/nbconvert/) utility, allowing for fast loading and
-    previewing of notebook contents.
+  description: >
+    Visual design and website development to promote California's next generation climate data analytics software.
+  description_long: |-
+    "Cal-Adapt: Analytics Engine transforms the foundational climate and environmental data that underpins California's Climate Change Assessment into actionable information."
+
+    Website visual design was done using [Figma](https://www.figma.com/), mainly for creating basic mocks and a style guide, while the rest of the design process, including content design, was accomplished using Markdown, HTML, and CSS in collaboration with the Analytics Engine team. Reusable patterns and UI components were developed to enable the site to grow organically over time with little additional developer effort. The website is built using the [Astro](https://astro.build/) static site generator, which uses the concept of "partial hydration" to keep client-side JavaScript to a minimum. CAE Jupyter Notebooks were converted to Markdown using Jupyter's [nbconvert](https://pypi.org/project/nbconvert/) utility, allowing for the fast loading and previewing of notebook contents in the site's documentation pages.
   tech:
+    - Figma
     - Astro
     - SvelteJS
     - TypeScript
-    - Sass
-    - Jupyter Notebooks
+    - Sass/CSS
+    - Python
     - NodeJS
   thumb: cae-website-thumb.jpg
   imgs:
@@ -194,7 +139,6 @@
     - cae-website-11.jpg
     - cae-website-12.jpg
     - cae-website-13.jpg
-  size: width3
   date: "2022-04-17"
   link: https://analytics.cal-adapt.org
 
@@ -203,12 +147,11 @@
     - web
     - data-viz
     - cartography
-  description: A sampling of Observable notebooks showcasing data viz and related work.
-  description_long: >-
-    For the past few years many of my data visualization explorations and prototypes have been
-    developed on [ObservableHQ](https://observablehq.com). The ["featured"
-    collection](https://observablehq.com/collection/@clhenrick/featured) showcases the notebooks I'm
-    the most fond of. Screen captures below show highlights from them.
+  description: A sampling of interactive notebooks showcasing data visualization and analysis.
+  description_long: |-
+    For the past few years much of my data visualization explorations and prototypes have been developed on [ObservableHQ](https://observablehq.com). Observable Notebooks are similar to other programming notebooks such as [Jupyter Notebooks](https://jupyter.org), but differentiate themselves by running entirely clientside in the browser, using a reactive coding paradigm, enabling access to all of the web platform's native features and functionality, plus lots of other [handy and slick features](https://observablehq.com/documentation/notebooks/) that make exploratory coding efficient, effective, and not to mention a lot of fun.
+
+    My ["featured" notebook collection](https://observablehq.com/collection/@clhenrick/featured) showcases the notebooks on ObservableHQ that I'm the most fond of. Screen captures on this page show a few highlights from the collection.
   tech:
     - D3JS
     - ArqueroJS
@@ -228,7 +171,6 @@
     - observable-notebooks-10.jpg
     - observable-notebooks-11.jpg
     - observable-notebooks-12.jpg
-  size: width3
   date: "2022-03-12"
   link: https://observablehq.com/collection/@clhenrick/featured
 
@@ -236,22 +178,18 @@
   tags:
     - web
     - data-viz
-  description: A web component suitable for use as a legend in data visualizations
-  description_long: >-
-    A [Custom
-    Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
-    suitable for use as a legend in data visualizations. Built with
-    [Lit/Lit-Element](https://lit.dev/) and [D3JS](https://d3js.org/). Inspired by the [Color
-    Legend](https://observablehq.com/@d3/color-legend) on [Observable](https://observablehq.com) by
-    [Mike Bostock](https://observablehq.com/@mbostock) 🙏.
+  description: Open source web component suitable for use as a legend with data visualizations.
+  description_long: |-
+    An original [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) I developed that eases the pain of creating customized legends for data visualizations and thematic maps. Built with [Lit](https://lit.dev/) web component framework and [D3JS](https://d3js.org/) data visualization library. Heavily inspired by the reusable [Color Legend](https://observablehq.com/@d3/color-legend) component on [ObservableHQ](https://observablehq.com) by [Mike Bostock](https://observablehq.com/@mbostock).
 
-    Check out the [Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element)
-    for more on its usage. Read more in a [blog post I wrote about it](/blog/color-legend-element/).
+    Check out the [Color Legend Observable Notebook](https://observablehq.com/@clhenrick/color-legend-element) and [Color Legend documentation page](https://clhenrick.github.io/color-legend-element/) for information on its usage. You may also read more about the Color Legend Element in a [blog post I wrote about it](/blog/color-legend-element/).
   tech:
     - D3JS
     - Lit
     - TypeScript
     - Web Components
+    - Eleventy
+    - RollUp
   thumb: color-legend-element-thumb.png
   imgs:
     - Color Legend Element 01.png
@@ -262,7 +200,6 @@
     - Color Legend Element 06.png
     - Color Legend Element 07.png
     - Color Legend Element 08.png
-  size: width3
   date: "2022-02-06"
   link: https://clhenrick.github.io/color-legend-element/
   code: https://github.com/clhenrick/color-legend-element/
@@ -273,33 +210,13 @@
     - data-viz
     - cartography
   description: >-
-    Data Visualization prototyping for the Satcher Health Leadership Institute's Health Equity
-    Tracker
-  description_long: >-
-    During the second half of 2020, I and a cohort of Googlers took part in a
-    [Google.org](https://www.google.org/) fellowship in partnership with [Morehouse School of
-    Medicine](https://msm.edu/)'s [Satcher Health Leadership
-    Institute](https://satcherinstitute.org/) to develop a [Health Equity Tracker web
-    application](https://github.com/SatcherInstitute/health-equity-tracker). My role in the
-    fellowship was to prototype data visualizations that highlighted health disparities using
-    datasets that were identified as relevant to communicating health outcomes and the social
-    determinants of health.
+    Data visualization prototyping for the development of Satcher Health Leadership Institute's *Health Equity Tracker* web application as part of a Google.org fellowship.
+  description_long: |-
+    During the second half of 2020, I and a cohort of Googlers took part in a [Google.org](https://www.google.org/) fellowship in partnership with [Morehouse School of Medicine](https://msm.edu/)'s [Satcher Health Leadership Institute](https://satcherinstitute.org/) to develop the [Health Equity Tracker web application](https://healthequitytracker.org). My role in the fellowship was to prototype data visualizations that highlighted health disparities using datasets that were identified as relevant to communicating health outcomes and the social determinants of health.
 
+    The results of this work are dozens of [Observable Notebooks](https://observablehq.com/) that are organized into two collections; one for [data analysis and exploration](https://observablehq.com/collection/@clhenrick/msm-fellowship-data-intake) and another for [data visualization prototyping](https://observablehq.com/collection/@clhenrick/msm-fellowship). Some visualizations from these notebooks were embedded as [stand alone web pages](https://satcherinstitute.github.io/data-visualization/) for user experience research with health equity advocates who work in various sectors of public health across the U.S. and partner with SHLI. Below are some sample visualizations from the Observable Notebooks and notebook embeds.
 
-    The result of this work is dozens of [Observable Notebooks](https://observablehq.com/) that are
-    organized into two collections; one for [data analysis and
-    exploration](https://observablehq.com/collection/@clhenrick/msm-fellowship-data-intake) and
-    another for [data visualization
-    prototyping](https://observablehq.com/collection/@clhenrick/msm-fellowship). Some visualizations
-    from these notebooks were embedded as [stand alone web
-    pages](https://satcherinstitute.github.io/data-visualization/) for User Experience Research with
-    health equity advocates who work in various sectors of public health across the U.S. and partner
-    with SHLI. Below are some sample visualizations from the Observable Notebooks and notebook
-    embeds.
-
-
-    [Read more about the data viz prototyping process using Observable
-    Notebooks](/blog/prototyping-with-observable-notebooks/).
+    You may also read more about the [data viz prototyping process using Observable Notebooks](/blog/prototyping-with-observable-notebooks/) for this project.
   tech:
     - Observable Notebooks
     - Observable Runtime
@@ -307,6 +224,9 @@
     - VegaLite
     - Arquero
     - Github Pages
+    - JavaScript
+    - HTML
+    - CSS
   thumb: msm-fellowship-thumb.jpg
   imgs:
     - msm-fellowship-01.jpg
@@ -316,33 +236,19 @@
     - msm-fellowship-05.jpg
     - msm-fellowship-06.jpg
     - msm-fellowship-07.jpg
-  size: width3
   date: "2020-12-01"
-  link: ""
+  link: "https://observablehq.com/collection/@clhenrick/msm-fellowship"
 
 - title: AEMP COVID-19 Tenant Protections Map
   tags:
     - web
     - cartography
   description: >-
-    Mapping tenants rights legislation and housing justice actions in response to the Coronavirus
-    pandemic.
-  description_long: >-
-    In the wake of the Coronavirus pandemic, the <a href="https://antievictionmap.com/"
-    target="_blank" rel="noopener">Anti-Eviction Mapping Project</a> in collaboration with tenants
-    rights and other activist groups, tirelessly researched and documented emergency tenant
-    protections and housing justice actions in response to the economic crisis from COVID-19. This
-    map is a result of that effort and allows viewers to search for legislation that affects their
-    rights as a renter at the city, county, state/province, and national levels of government in the
-    United States and abroad. The site serves as a crowdsourcing mechanism that allows viewers to
-    submit local updates on emergency tenants rights legislation or housing justice actions they may
-    be involved in. The content of the site has been translated to many different languages and will
-    load based on the language setting of the viewer's browser. I contributed cartographic design
-    and web development to this project on a pro-bono basis during Spring and Summer of 2020. The
-    making of this map was a highly collaborative process involving many members of the AEMP,
-    tenants rights groups, and activist collectives. It is the result of many hours of hard work and
-    dedication from those involved in creating and contributing to the months long, ongoing
-    endeavor.
+    Web application to disseminate emergency tenants rights legislation and track housing justice actions in response to the Coronavirus pandemic.
+  description_long: |-
+    In the wake of the Coronavirus pandemic, the [Anti-Eviction Mapping Project](https://antievictionmap.com/) in collaboration with tenants rights and other activist groups tirelessly researched and documented emergency tenant protections and housing justice actions in response to the economic and housing crises stemming from COVID-19. The result of that effort is the COVID-19 Tenant Protections Map, an interactive web mapping and story telling application. It enabled viewers to search for legislation that affects their rights as a renter at the city, county, state/province, and national levels of government in the United States and abroad. The site also served as a crowdsourcing mechanism that encouraged viewers to submit local updates on emergency tenants rights legislation and housing justice actions. The content of the site was translated to a number of different languages and loads based on the language setting of the viewer's browser.
+
+    I contributed cartographic design and web development to this project on a pro-bono basis during Spring and Summer of 2020 in the early days of the Coronavirus pandemic. The making of this map was a highly collaborative process involving many members of AEMP, tenants rights groups, and partnering activist collectives. It is the result of many hours of hard work, coordination, consensus building, and dedication from those involved in creating and contributing to a months long endeavor.
   tech:
     - Javascript ES6
     - LeafletJS
@@ -350,6 +256,8 @@
     - PostgreSQL
     - PostGIS
     - Webpack
+    - CSS
+    - HTML
   thumb: aemp-covid19-protections-thumb.jpg
   imgs:
     - aemp-covid19-protections-01.jpg
@@ -361,38 +269,25 @@
     - aemp-covid19-protections-07.jpg
     - aemp-covid19-protections-08.jpg
     - aemp-covid19-protections-09.jpg
-  size: width3
   date: "2020-11-01"
   link: https://covid19.antievictionmap.com
-  code: https://github.com/antievictionmappingproject/covid-19-map
+  code: https://github.com/AntiEvictionMappingProject/Covid-19-map
 
-- title: NYC Crash Mapper 2
+- title: "NYC Crash Mapper: Chart View"
   tags:
     - web
     - data-viz
   description: >-
     Data exploration tool that allows users to filter, compare, rank, and view trends in vehicle
     collision data reported by the NYPD.
-  description_long: >-
-    The NYC Crash Mapper Chart View is a data exploration tool that allows users to filter, compare,
-    rank, and view trends in vehicle collision data reported by the NYPD. Trend allows you to
-    compare two selected areas’ performance against each other and to a citywide or borough-wide
-    reference, while filtering by date range or type of crash. Compare lets you compare two time
-    periods for a given area. Rank shows where one area ranks in terms of safety in the context of
-    all similar areas over the most recent three-year period. Map will show the geo location of the
-    crashes using the first area selected, date range of period A, and crash type filters. This was
-    phase two of the original NYC Crash Mapper project. NYC Crash Mapper began as a personal project
-    of mine, then was further developed to include interactive chart components during my tenure at
-    [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was featured on the infamous [NYC
-    Streets
-    Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/).
-    I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual
-    conference](/about/talks/).
+  description_long: |-
+    The NYC Crash Mapper's chart view is a data exploration tool that allows users to filter, compare, rank, and view trends in vehicle collision data reported by the NYPD. The "Trend" view allows you to compare two selected areas’ performance against each other and to a citywide or borough-wide reference, while filtering by date range or type of crash. "Compare" lets you compare two time periods for a given area. "Rank" shows where one area ranks in terms of safety in the context of all similar areas over the most recent three-year period. "Map" will show the geo location of the crashes using the first area selected, date range of period A, and any applied crash type filters.
+
+    The "chart view" was phase two of the [original NYC Crash Mapper project](/work/nyc-crash-mapper/) which featured only an interactive map and some basic statistics for the current map view. NYC Crash Mapper began as a consultant project of mine, then was further developed to include interactive charting components during my tenure at [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was featured on the infamous [NYC Streets Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/). I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual conference](/about/talks/#nyc-crash-mapper).
   tech:
     - React
     - Redux
-    - Leaflet
-    - D3
+    - D3JS
     - Javascript ES6
     - CARTO
     - PostgreSQL
@@ -416,45 +311,30 @@
     - crashmapper-chart-view14.png
     - crashmapper-chart-view15.png
     - crashmapper-chart-view16.png
-  size: width3
   date: "2017-11-23"
   link: http://vis.crashmapper.org
+  code: https://github.com/GreenInfo-Network/nyc-crash-mapper-chart-view
 
 - title: NYC Crash Mapper
   tags:
     - web
     - cartography
   description: >-
-    Web application that dynamically maps, analyzes, and filters vehicle collision data reported by
-    the NYPD.
-  description_long: >-
-    NYC Crash Mapper is a web application that dynamically maps, analyzes, and filters vehicle
-    collision data reported by the NYPD in New York City from 2011 to present. The web app allows a
-    user to select a date range for when crashes occurred, filter the data by crash type (injury or
-    fatality; pedestrian, cyclist, or motorist), filter by administrative boundary, or filter by a
-    custom area using a draw tool. Specific “views” of the data can be shared with other users via a
-    stateful URL which contains any applied filters and map zoom and center. Data from the app may
-    be downloaded in various formats such as CSV, Shapefile, and GeoJSON. New collision data is
-    updated to the app’s database weekly using an ETL script running on a Heroku Scheduler.
-    [Chekpeds](http://chekpeds.com), a non-profit that advocates for pedestrian safety in Hell’s
-    Kitchen, funded the work on the app through a grant from New York City. In addition to
-    developing the app, I designed the user interface using Adobe Illustrator. NYC Crash Mapper
-    began as a personal project of mine, then was further developed to include interactive chart
-    components during my tenure at [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was
-    featured on the infamous [NYC Streets
-    Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/).
-    I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual
-    conference](/about/talks/).
+    Web application design and development for mapping and analyzing vehicle collision data reported by the NYPD.
+  description_long: |-
+    NYC Crash Mapper is a web application that dynamically maps, analyzes, and filters vehicle collision data reported by the NYPD in New York City from 2011 to present. The web app allows a user to select a date range for when crashes occurred, filter the data by crash type (injury or fatality; pedestrian, cyclist, or motorist), filter by administrative boundary, or filter by a custom area using a drawing tool. Specific “views” of the data can be shared with other users via URL query parameters which contain the map's zoom and center, and any applied filters. Data from the app may be downloaded in various formats such as CSV, Shapefile, and GeoJSON. New collision data is updated to the app’s database weekly using an ETL script running on a Heroku Scheduler. [Chekpeds](http://chekpeds.com), a non-profit that advocates for pedestrian safety in Hell’s Kitchen, funded the work on the app through a grant from New York City. In addition to developing the app, I designed the user interface using Adobe Illustrator.
+
+    NYC Crash Mapper began as a consultant project of mine, then was further developed to include interactive chart components during my tenure at [GreenInfo Network](http://greeninfo.org). NYC Crash Mapper was featured on the infamous [NYC Streets Blog](https://nyc.streetsblog.org/2017/03/08/map-the-dangerous-streets-in-your-neighborhood-with-this-new-tool/). I gave a talk about the app and the challenges of using open data at the [NACIS 2017 annual conference](/about/talks/#nyc-crash-mapper).
   tech:
     - React
     - Redux
     - Leaflet
-    - D3
     - Javascript ES6
     - CARTO
     - PostgreSQL
     - PostGIS
     - Webpack
+    - Adobe Illustrator
   thumb: nyc-crash-mapper-thumb.png
   imgs:
     - nyc-crash-mapper01.jpg
@@ -469,27 +349,24 @@
     - nyc-crash-mapper10.jpg
     - nyc-crash-mapper11.jpg
     - nyc-crash-mapper12.jpg
-  size: width3
   date: "2017-03-03"
   link: http://crashmapper.org
+  code: https://github.com/GreenInfo-Network/nyc-crash-mapper
 
 - title: MPG Ranch Habitat Restoration Map
   tags:
     - web
     - data-viz
     - cartography
-  description: An interactive web map and report builder to showcase the work of environmental scientists.
-  description_long: >-
-    The MPG Ranch Habitat Restoration Map enables a team of environmental scientists to effectively
-    communicate ongoing management plans and actions with their stakeholders and provides a venue
-    for discussion of restoration research and practices through an interactive web map
-    application.
+  description: Interactive web mapping and report builder web application to showcase the work of environmental scientists.
+  description_long: |-
+    The MPG Ranch Habitat Restoration Map enables a team of environmental scientists to effectively communicate ongoing management plans and actions with their stakeholders and provides a venue for discussion of restoration research and practices through an interactive web map application. I developed the majority of the web application while working for [Stamen Design](https://stamen.com), an award winning data visualization and cartography studio.
 
-     Read more about the project in a [blog post I wrote about it](/blog/mpg-habitat-restoration-map/).
+    Read more about the project in a [blog post I wrote about it](/blog/mpg-habitat-restoration-map/).
   tech:
     - React
     - Redux
-    - Leaflet
+    - LeafletJS
     - CARTO
     - NodeJS
     - AWS
@@ -511,34 +388,34 @@
     - mpg-habitat12.jpg
     - mpg-habitat17.jpg
     - mpg-habitat18.jpg
-  size: width3
   date: "2016-12-22"
   link: https://restorationmap.mpgranch.com
 
 - title: Am I Rent Stabilized?
   tags:
     - web
-  description: A civic web app to inform NYC renters about rent stabilization.
-  description_long: >-
-    Am I Rent Stabilized is a web application that encourages New York City tenants to find out if
-    their landlord may be illegally overcharging them for a rent stabilized apartment and if so,
-    motivates them to take action. It is an attempt at using open data as a prompt for civic action,
-    rather than solely for visualization and analysis. The app asks the user to input their address
-    and checks it against a database of properties that are likely to have rent stabilized
-    apartments. From here the app recommends a course of action and informs the user of their
-    nearest tenants rights group so they can get help. The app features a responsive interface that
-    is mobile friendly, and its content can be toggled to either Spanish or Chinese for non-english
-    speakers.
+  description: A civic web application that informs New York City tenants about rent stabilization in a user friendly, step by step process.
+  description_long: |-
+    *Am I Rent Stabilized?* is a web application that encourages New York City tenants to find out if their landlord may be illegally overcharging them for a rent stabilized apartment and if so, motivates them to take action. It is an attempt at using open data as a prompt for civic action, rather than solely for visualization and analysis. The app asks the user to input their address and checks it against a database of properties that are likely to have rent stabilized apartments. From here the app recommends a course of action and informs the user of their nearest tenants rights group so they can get help if desired. The app features a responsive interface that is mobile friendly, and its content can be toggled to either Spanish or Chinese for non-english speakers.
+
+    I developed *Am I Rent Stabilized?* as my thesis project for the [Parsons Master in Fine Arts Design and Technology](https://www.newschool.edu/parsons/mfa-design-technology/) program at the New School in 2015. The project evolved from quantitative and qualitative research into housing issues in New York City and my own lived experience with New York state's rent-stabilization program.
+
+    I'm gratefully indebted to those who assisted me with the project:
+
+    - [Caroline Woolard](http://carolinewoolard.com/) for suggesting the concept to me.
+    - [Jue Yang](https://github.com/jueyang) designed the graphics which informed the overall redesign of version 2 of the site.
+    - [Eric Brelsford](http://ebrelsford.github.io/portfolio/) and [BetaNYC](http://betanyc.us/) provided motivational and technical support.
+    - [Radish Lab](http://radishlab.com/) contributed the design mockups for version 2.
+    - [John Krauss](http://blog.johnkrauss.com/) provided additional data for NYC properties that should have rent-stabilized apartments due to receiving tax exemptions from state programs such as 421a.
   tech:
-    - CartoDB.JS
-    - CartoDB SQL API
+    - CARTO SQL API
     - NYC GeoClient API
-    - GSAP Animation JS
+    - GSAP
     - SCSS
-    - Handlebars.JS
-    - Gulp.JS
-    - AWS S3
-    - AWS CloudFront
+    - JavaScript
+    - D3JS
+    - HandlebarsJS
+    - Webpack
   thumb: airs01-thumb.jpg
   code: https://github.com/clhenrick/am-i-rent-stabilized
   imgs:
@@ -559,34 +436,24 @@
     - airs15.jpg
     - airs16.jpg
   link: https://amirentstabilized.com
-  size: width3
   date: "2015-05-01"
 
 - title: Terrain Classic
   tags:
     - web
     - cartography
-  description: Global terrain web map tiles
+  description: Open source, global terrain web map tile design and development for Stamen Design.
   description_long: >-
-    [Terrain Classic](http://maps.stamen.com/terrain/) is a set of, free, open-source, global [web
-    map tiles](https://en.wikipedia.org/wiki/Tiled_web_map) covering zoom levels 0 to 18 that depict
-    [topography](https://en.wikipedia.org/wiki/Topography) using a cartography technique called
-    "[shaded relief](http://www.shadedrelief.com/)." These map tiles were created from various open
-    data sources such as [OpenStreetMap](http://openstreetmap.org), [Natural Earth Vector
-    data](http://naturalearthdata.com), [MODIS
-    landcover](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd12q1), and
-    [Digital Elevation Models](https://en.wikipedia.org/wiki/Digital_elevation_model). This style
-    was inspired by the original Stamen Terrain map tiles which previously only covered the United
-    States. The style was ported from Cascadenik to CartoCSS, a CSS like markup language used for
-    styling geographic data to create tiled web maps using a renderer such as Mapnik. I assisted
-    Stamen Design members Alan McConchie and Seth Fitzsimmons with creating the map style, including
-    line work, labeling, color, and the shaded relief.
+    [Terrain Classic](http://maps.stamen.com/terrain/) is a set of free, open-source, global [web map tiles](https://en.wikipedia.org/wiki/Tiled_web_map) covering web map zoom levels 0 to 18 that depict [topography](https://en.wikipedia.org/wiki/Topography) using a cartography technique called "[shaded relief](http://www.shadedrelief.com/)." These map tiles were created from various open data sources such as [OpenStreetMap](http://openstreetmap.org), [Natural Earth Vector data](http://naturalearthdata.com), [MODIS landcover](https://lpdaac.usgs.gov/dataset_discovery/modis/modis_products_table/mcd12q1), and [Digital Elevation Models](https://en.wikipedia.org/wiki/Digital_elevation_model). This style was inspired by the original Stamen Terrain map tiles which previously only covered the United States. The style was ported from Cascadenik to CartoCSS, a CSS like markup language used for styling geographic data to create tiled web maps using a renderer such as Mapnik. I assisted Stamen Design members Alan McConchie and Seth Fitzsimmons with creating the map style, including line work, labeling, color, and the shaded relief.
   tech:
     - CartoCSS
-    - PostGIS
+    - Make
     - Mapnik
     - NodeJS
-    - Python
+    - PostGIS
+    - PostgreSQL
+    - GDAL
+    - Imposm3
   thumb: terrain-classic-thumb.jpg
   imgs:
     - terrain-classic01.jpg
@@ -599,25 +466,20 @@
     - terrain-classic09.jpg
     - terrain-classic10.jpg
     - terrain-classic11.jpg
-  size: width3
   date: "2016-12-22"
+  code: https://github.com/Stamen/Terrain-Classic
   link: https://maps.stamen.com/terrain/
 
 - title: Love and Rage
   tags:
     - cartography
-  description: Map for Rebecca Solnit's Nonstop Metropolis, A New York City Atlas
+  description: "An original map for Rebecca Solnit's *Nonstop Metropolis: A New York City Atlas*."
   description_long: >-
-    A print map I created for Rebecca Solnit's latest city atlas: [Nonstop Metropolis, A New York
-    City Atlas](https://www.ucpress.edu/book/9780520285958/nonstop-metropolis). I pitched the idea
-    to Rebecca while meeting her and atlas co-author Joshua Jelly-Schapiro for coffee at Caffè
-    Reggio near Washington Square one afternoon, and the rest was history. In order to to create
-    this map, open geospatial data was processed from sources such as NYC 311, the NYPD,
-    OpenStreetMap, and the NYC Open Data Portal. Cartography was done using Adobe Illustrator and
-    MAPublisher.
+    A print map I created for Rebecca Solnit's city atlas [Nonstop Metropolis: A New York City Atlas](https://www.ucpress.edu/book/9780520285958/nonstop-metropolis). I pitched the map idea to Rebecca while meeting her and atlas co-author Joshua Jelly-Schapiro for coffee at Caffè Reggio near Washington Square one afternoon and a collaborative engagement for bringing the map to life ensued. In order to to create this map open data was utilized from sources such as NYC's open data portal and OpenStreetMap. Data was queried and transformed using SQL via GDAL, PostgreSQL, and PostGIS. The final cartographic design was accomplished "by hand" using Adobe Illustrator and MAPublisher.
   tech:
     - Adobe Illustrator
     - MAPublisher
+    - SQL
     - PostgreSQL
     - PostGIS
     - GDAL
@@ -626,7 +488,6 @@
     - love-and-rage.png
     - love-and-rage-crop01.png
     - love-and-rage-crop02.png
-  size: width3
   date: "2016-10-01"
 
 - title: Bushwick Community Map
@@ -634,22 +495,20 @@
     - web
     - data-viz
     - cartography
-  description: A map to track issues around urban development in Bushwick, NY
-  description_long: >-
-    The Northwest Bushwick Community Map is meant to be a resource for local community organizations
-    and tenants rights groups to easily access disparate information around land use, housing, and
-    urban development for the neighborhood of Bushwick in Brooklyn, NY. It is also intended to be a
-    tool to inform NYC residents about what kinds of indicators may be used to predict new urban
-    development and help prevent displacement of longterm residents in their own neighborhoods.
+  description: Interactive map to track issues around urban development in the Brooklyn, NY neighborhood of Bushwick.
+  description_long: |-
+    The Northwest Bushwick Community Map is a web based resource for local community organizations and tenants rights groups to easily access disparate information around land use, housing, and urban development for the neighborhood of Bushwick in Brooklyn, New York. It is intended to be a tool to inform residents about what kinds of indicators may be used to predict new urban development and help prevent displacement of longterm residents in their own neighborhoods.
 
-     This project was a collaboration between Michael "Ziggy" Mintz and Brigette Blood of the Northwest Bushwick Community Group and Gabriel Gianordoli, Daniel Mastretta, and Namreta Kumar of MFA DT.
+    The project was originally conceptualized by Michael "Ziggy" Mintz and Brigette Blood of the Northwest Bushwick Community Group. It was later redesigned and further developed by myself, Gabriel Gianordoli, Daniel Mastretta, and Namreta Kumar of the Parsons MFA DT class of 2015 in collaboration with Ziggy and Brigette.
+
+    Read more about the project in an [external blog post I wrote](https://chenrickmfadt.wordpress.com/2014/12/20/the-northwest-bushwick-community-map-redesign/).
   tech:
-    - CartoDB.JS
-    - Odyssey.JS
-    - Leaflet.JS
-    - Mapbox.JS
-    - Underscore.JS
-    - JQuery
+    - CartoDBJS
+    - OdysseyJS
+    - LeafletJS
+    - MapboxJS
+    - UnderscoreJS
+    - jQuery
   thumb: bcm01-thumb.jpg
   code: https://github.com/clhenrick/BushwickCommunityMap
   imgs:
@@ -662,7 +521,6 @@
     - bcm07.jpg
     - bcm08.jpg
   link: http://www.bushwickcommunitymap.org
-  size: "width3 "
   date: "2014-12-20"
 
 - title: Greenpoint Williamsburg Toxicity Map
@@ -670,27 +528,19 @@
     - web
     - data-viz
     - cartography
-  description: A map to inform residents of north Brooklyn about environmental hazards.
-  description_long: >-
-    The NAG Greenpoint-Williamsburg ToxiCity Map is an interactive map of toxic “hot spots” in
-    Greenpoint and Williamsburg. Data used to compile this map came from city, state and federal
-    sources, guided by on-the-ground knowledge from local activists. Click through the data layers
-    on the map to understand some neighborhood trends such as population density and asthma hospital
-    visits, and locate some specific sites such as former NuHart Plastics factory and the Exxon oil
-    spill. Sites that have already been remediated and sites that require future remediation are
-    included on this map.
+  description: Map to inform residents of north Brooklyn, NY about environmental hazards.
+  description_long: |-
+    The NAG Greenpoint-Williamsburg ToxiCity Map is an interactive map of toxic “hot spots” in Greenpoint and Williamsburg. Data used to compile this map came from city, state, and federal sources, guided by on-the-ground knowledge from local activists. Data layers on the map assist in conveying neighborhood trends such as population density and asthma hospital visits, and locating specific sites such as the former NuHart Plastics factory and the Exxon oil spill. Additionally, sites that have already been remediated and sites that require future remediation are included on this map.
 
-
-    This project was created with the help of Bowon Chung and Jessie Braden via Pratt's Spatial
-    Analysis and Visualization Initiative.
+    This project was created in collaboration with Bowon Chung and Jessie Braden at Pratt's [Spatial Analysis and Visualization Initiative](https://www.pratt.edu/research/provosts-centers/spatial-analysis-visualization-initiative/) and with members of [North Brooklyn Neighbors](https://nag-brooklyn.org).
   tech:
-    - CartoDB.JS
-    - Leaflet.JS
+    - CartoDBJS
+    - LeafletJS
     - MapBox Studio Classic
     - CartoCSS
     - NodeJS
     - Pelias Geocoder
-    - Handlebars.JS
+    - HandlebarsJS
     - JQuery
   thumb: nag-toxicity-map01-thumb.jpg
   code: https://github.com/clhenrick/greenpoint_williamsburg_toxicity_map
@@ -703,46 +553,36 @@
     - nag-toxicity-map06.jpg
     - nag-toxicity-map07.jpg
     - nag-toxicity-map08.jpg
-  link: http://clhenrick.github.io/greenpoint_williamsburg_toxicity_map/
-  size: "width3 "
   date: "2015-11-01"
 
 - title: Landscapes of Profit
   tags:
     - web
     - data-viz
-  description: An analysis of property transaction data to promote a 1% flip tax in NYC.
-  description_long: >-
-    Distribution of a proposed 1% "flip tax" on all real estate transactions in 2014 that occurred
-    within a two year period from 2003 - 2014, per New York City Council District. How much money
-    would your council district have had for community spaces and affordable housing.
+  description: Analysis of property transaction data to promote a 1% real estate flip tax in NYC.
+  description_long: |
+    A hypothetical distribution of a proposed one percent "flip tax" on all real estate transactions that occurred within a two year period from 2003 - 2014, per New York City Council District. How much money would your city council district have had for community spaces and affordable housing?
 
-
-    This project is a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard,
-    Evander Batson, and Ingrid Burrington. Dan Taeyoung created the print map below.
+    Landscapes of Profit was a collaboration between myself, John Krauss, Dan Taeyoung, Caroline Woolard, Evander Batson, and Ingrid Burrington. Dan Taeyoung created the print shown on this page while I created an interactive web based version.
   code: https://github.com/NYC-REIC/landscapes-of-profit/
   thumb: landscapes-profit-thumb.jpg
   imgs:
     - landscapes-profit.jpg
-  size: width2
+  tech:
+    - SQL
+    - GDAL
+    - JavaScript
+    - HTML
+    - CartoDBJS
   date: "2015-01-01"
 
 - title: FOSI GRID
   tags:
     - web
     - cartography
-  description: Map navigation UI for the new Family Online Safety Institute website.
+  description: Map navigation based user interface for the Family Online Safety Institute website.
   description_long: >-
-    The redesign of the FOSI GRID website required that users should be able to navigate the site's
-    content and data through an interactive map, side navigation, and search bar. For the
-    interactive map navigation I created custom geospatial data from Natural Earth's 1:50m data and
-    used Leaflet.JS, a popular open-source web mapping library. Region polygon data was made using
-    MAPublisher, and admin0 & admin1 polygons were created using PostGIS. To make data loading fast
-    I used TopoJSON to store 10 different layers: region polygons, countries grouped by region, and
-    states / provinces grouped by country. When data is added to the map it is converted from
-    TopoJSON to GeoJSON. This cut down drastically on AJAX requests and the website's initial load
-    time. Coordination between the project's two Ruby on Rails developers was necessary to link the
-    CMS database with the map's UI interactions.
+    An important requirement of the FOSI GRID website's redesign was enabling users to navigate the site's content via an interactive map. To accomplish this I created custom geospatial data from [Natural Earth's 1:50m resolution vector data](https://www.naturalearthdata.com/downloads/50m-cultural-vectors/) and rendered it using [LeafletJS](https://leafletjs.com), a popular open-source web mapping library. Region polygon data was made using MAPublisher, and admin0 & admin1 polygons were created using PostGIS. To make data loading faster I converted the data to TopoJSON format to store ten different layers consisting of region polygons, countries grouped by region, and states / provinces grouped by country. When data is added to the map it is converted from TopoJSON to GeoJSON. This cut down drastically on AJAX requests and the website's initial load time. Coordination between the project's two Ruby on Rails developers was necessary to link the CMS database with the map's UI interactions.
   thumb: fosi-grid-thumb.png
   imgs:
     - fosi-grid-01.png
@@ -753,35 +593,23 @@
     - fosi-grid-06.png
     - fosi-grid-07.png
   tech:
-    - Leaflet.JS
+    - LeafletJS
     - Natural Earth Data
     - TopoJSON
     - GeoJSON
     - MAPublisher
     - PostGIS
-    - Mapshaper
+    - MapShaper
   link: http://fosigrid.org/
-  size: width2
   date: "2016-03-28"
 
 - title: Ten and Taller
   tags:
     - web
     - cartography
-  description: An interactive web map showing architecturally significant historic buildings in NYC
+  description: Interactive web map showcasing architecturally significant historic buildings in New York City for the Skyscraper Museum.
   description_long: >-
-    *Ten and Taller* is part of an online and gallery exhibition for the [Skyscraper Museum of
-    NYC](http://skyscraper.org). The museum's goal for the project was to honor the work of
-    architect & historian Don Friedman, *Structure in Skyscrapers: History and Preservation*, in the
-    form of an interactive map. The Museum staff digitized tabular data from Friedman's book and
-    traced the corresponding building footprints for each of the 249 structures using a digitized
-    Bromley Atlas map from 1909. My job was to show the footprints on both a historic and modern day
-    map (the latter was designed by the Museum) and to create interactions such as popups that
-    display data from the Friedman book as well as historic photos of the building. To accomplish
-    this I had to create the map tiles for the basemap layers, as well as generate the GeoJSON
-    overlay of the footprint data. Another requirement was for the UI to enable the user to filter
-    which buildings are displayed by their year built via a slider. There is an animation on page
-    load demonstrating this as well. The screenshots below are from a working prototype.
+    *Ten and Taller* is part of an online and gallery exhibition for the [Skyscraper Museum of NYC](http://skyscraper.org). The museum's goal for the project was to honor the work of architect & historian Don Friedman, the author of *Structure in Skyscrapers: History and Preservation*, in the form of an interactive map. The Museum staff digitized tabular data from Friedman's book and traced the corresponding building footprints for each of the 249 structures using a digitized Bromley Atlas map from 1909. My job was to show the footprints on both a historic and modern day map (the latter was designed by the Museum) and to create interactions such as popups that display data from the Friedman book as well as historic photos of the building. To accomplish this I had to create the map tiles for the basemap layers, as well as generate the GeoJSON overlay of the footprint data. Another requirement was for the UI to enable the user to filter which buildings are displayed by their year built via a slider. There is an animation on page load demonstrating this as well. The screenshots below are from a working prototype.
   thumb: ten-taller-thumb.png
   imgs:
     - ten-taller01.png
@@ -789,40 +617,50 @@
     - ten-taller02.png
     - ten-taller03.png
   tech:
-    - Leaflet.JS
-    - D3.JS
+    - LeafletJS
+    - D3JS
     - GeoJSON
     - MAPublisher
   link: https://old.skyscraper.org/tenandtaller/map/
-  size: width2
   date: "2016-02-01"
 
 - title: WCC Resource Guide
   tags:
     - web
-    - data-viz
-  description: An interactive resource guide for NYC residents.
-  description_long: ""
-  thumb: wcc-resource-guide-thumb.jpg
+    - cartography
+  description: Interactive resource guide for NYC residents created for Women Creating Change.
+  description_long: |
+    The [Women Creating Change](https://wccny.org/)'s [Citywide Guide](https://resourceguide.wccny.org) was created in coordination with [Radish Lab](https://www.radishlab.com), a design studio based in Brooklyn, NY and Berlin, Germany. My responsibility was converting an excel table of resources to JSON, coding the user interface, and providing interaction design advice to Radish Lab's designers.
+
+    About the Citywide guide:
+
+    "Women Creating Change (formerly Women's City Club of New York) is proud to provide the online Citywide Guide to Services and Resources in New York. This Guide is designed to help individuals and organizations access needed low- or no-cost social services, programs, and resources available throughout the five boroughs of New York City. Most entries include address, phone number and website, as well as the neighborhood and community board in which the agency is located."
+
+    "Whether searching for jobs or schools, child care or health care, food or transportation, users can initiate custom searches by   typing in key words. It is also possible to narrow searches by selecting a borough and choosing from the drop down list of categories. Search results may be printed for convenience."
+  thumb: wcc-resource-guide-thumb.png
   imgs:
-    - wcc-resource-guide.jpg
+    - resourceguide-wccny-org-01-2024-12-23.png
+    - resourceguide-wccny-org-02-2024-12-23.png
+  imgsAlt:
+    - "Screenshot of the interactive WCC Resource Guide depicting buttons to change the pages language, the introductory text included in this project's description, a form that allows for searching resources by zipcode, keyword, borough, language, and category; an interactive map showing locations of search results, and a table with information on the search results such as the organization name and address, phone number, neighborhood, website, category, and languages spoken."
+    - "Screenshot of the interactive WCC Resource Guide showing the filters health, Brooklyn, and Spanish applied and three search results. The interactive map shows a popup with the same information as the table on one of the three locations."
   tech:
-    - CartoDB.JS
+    - CartoDBJS
     - NodeJS
     - DataTables API
     - Twitter Bootstrap
   link: http://resourceguide.wccny.org/
-  size: width2
   date: "2015-09-01"
 
 - title: A Thru Hike on the Pacific Crest Trail (interactive)
   tags:
     - web
-  description: An interactive web documentary about my brother's experience thru-hiking the PCT.
-  description_long: >-
-    An attempt at creating an NY Times style interactive. As the user scrolls down a map animates
-    and reveals information relating to the story. There is also a [print
-    version](/work/a-thru-hike-on-the-pacific-crest-trail-print-map/).
+    - cartography
+  description: Interactive web documentary about my brother's experience thru-hiking the PCT.
+  description_long: |-
+    A prototype of an NY Times style interactive "scrolly-telling" experience. As the user scrolls down a map animates and reveals information relating to the story. Content was scraped from a blog my brother kept during his thru hike of the Pacific Crest National Scenic Trail. The interactive map uses GPX data from my brother's trip and PCT route data from Halfmile's PCT maps.
+
+    This project stems from the [print version](/work/a-thru-hike-on-the-pacific-crest-trail-print-map/) of the map I made to commerate and congratulate my brother on his accomplishment of hiking the entire PCT in one season.
   link: http://clhenrick.github.io/Major-Studio-Two/map-story/html/
   thumb: thru-hike-pct01-thumb.jpg
   code: https://github.com/clhenrick/Major-Studio-Two/tree/master/map-story/html
@@ -836,22 +674,16 @@
     - Leaflet
     - jQuery
     - GeoJSON
-  size: width2
   date: "2014-03-01"
 
 - title: A Thru Hike on the Pacific Crest Trail (print map)
   tags:
     - cartography
-  description: A map commemorating my brother's thru-hike on the PCT.
-  description_long: >-
-    I created this original map using my brother's GPS data, GPX tracks from <a
-    href="https://www.pctmap.net/gps/">Halfmile's PCT Maps</a>, Natural Earth's 1:10m vector data,
-    and SRTM DEM data. The hillshade was generated using Natural Scene Designer Pro and colored
-    using Adobe Photoshop following a <a href="http://www.shadedrelief.com/web_relief/">method used
-    by Tom Patterson</a> of the U.S. National Park Service maps team. The geospatial data was
-    processed using QGIS and PostGIS and the final map was assembled in Adobe Illustrator using
-    MAPublisher. The map measures 14" x 17" in print. There is also an [interactive
-    version](/work/a-thru-hike-on-the-pacific-crest-trail-interactive/).
+  description: Map commemorating my brother's 2013 thru-hike of the PCT.
+  description_long: |-
+    I created this original map using my brother's GPS data, GPX tracks from [Halfmile's PCT Maps](https://www.pctmap.net/gps/), Natural Earth's 1:10m vector data, and NASA SRTM DEM data. The hillshade was generated using Natural Scene Designer Pro and colored using Adobe Photoshop following a [method used by Tom Patterson](http://www.shadedrelief.com/web_relief/) of the U.S. National Park Service maps team. The geospatial data was processed using QGIS and PostGIS and the final map was assembled in Adobe Illustrator using MAPublisher. The map measures fourteen by seventeen inches in print.
+
+    There is also an [interactive version](/work/a-thru-hike-on-the-pacific-crest-trail-interactive/) of the map.
   thumb: mike-pct-thumb.jpg
   imgs:
     - mike-pct01.jpg
@@ -864,17 +696,15 @@
     - PostGIS
     - Adobe Illustrator
     - Adobe Photoshop
-  size: width2
   date: "2013-03-01"
 
 - title: Tracking the Energy Titans
   tags:
     - web
     - data-viz
-  description: A data-visualization comparing energy use between the U.S., Canada, and China.
+  description: Interactive data-visualization comparing energy use between the United States, Canada, and China.
   description_long: >-
-    Created for the Woodrow Wilson Center, this interactive data-visualization allows users to
-    compare and contrast various types of energy usage among the three countries.
+    Created for the Woodrow Wilson Center, this interactive data-visualization allows users to compare and contrast various types of energy usage among the United States, Canada, and China.
   thumb: tracking-energy-titans-thumb.jpg
   imgs:
     - tracking-energy-titans01.jpg
@@ -882,27 +712,29 @@
     - tracking-energy-titans03.jpg
     - tracking-energy-titans04.jpg
   tech:
-    - D3.JS
+    - D3JS
     - JQuery
-    - Node.JS
-    - Gulp.JS
+    - NodeJS
+    - GulpJS
     - SCSS
   link: http://www.newsecuritybeat.org/energytitans/
-  size: width2
   date: "2015-06-01"
 
 - title: Guess That Hood NYC!
   tags:
     - web
     - cartography
-  description: A game that allows users to guess neighborhood names in NYC.
-  description_long: ""
+  description: Web based game that allows users to guess neighborhood names in NYC.
+  description_long: |
+    A proof of concept interactive web game created as part of a JavaScript course I took during the Parsons MFA Design and Technology program in 2014. The front-end consists of HTML, CSS, JQuery, and LeafletJS for rendering the user interface while the backend utilized NodeJS, MongoDB, and ExpressJS. [Geographic neighborhood boundary data for NYC](https://github.com/blackmad/zetashapes/blob/master/samples/nyc-pediacities-neighborhoods-polygon-v2.geojson) was sourced from [PediaCities](https://blog.externetworks.com/empowering-smart-cities-with-open-data-by-pediacities/).
   link: https://vimeo.com/97669886
   thumb: guess-that-hood-thumb.jpg
   tech:
     - MongoDB
-    - jQuery
-    - Leaflet.JS
+    - NodeJS
+    - Express
+    - JQuery
+    - LeafletJS
     - GeoJSON
     - HTML5
     - CSS3
@@ -911,38 +743,44 @@
     embed: https://player.vimeo.com/video/97669886?autoplay=1
     thumb: guess-that-hood.jpg
     alt: Screen recording of Guess That Hood NYC
+    desc: |-
+      The video begins by showing a user interface containing an interactive geographic map of neighborhood boundaries in NYC, color coded by borough, and a sidebar with the title of the game and the text "You haven't played yet. Guess some NYC hoods!". As the user moves their mouse cursor over a neighborhood boundary on the map it is highlighted in yellow. Clicking on a neighborhood boundary on the map reveals a popup where a user may enter the name of that neighborhood in a text input. Pressing the enter key or clicking the "guess" button submits their guess and checks it against the name of the neighborhood in the database. If the user prefers a hint prior to guessing they can click on the "need a hint?" button in the popup which will show them a partially obscured name of the neighborhood.
+
+      As the user submits guesses, their attempts are displayed on a sidebar on the lefthand side of the page and their score is updated. Correct attempts are color coded blue, and incorrect guesses are color coded red. A correct guess results in the neighborhood boundary disappearing from the map. The sidebar is updated to inform the user of their correct guesses against total guesses, and the number of neighborhoods left to guess in the game (there are a total of 309 NYC neighborhoods in the database). A button in the sidebar allows the user to start over and play again.
+
+      At a certain point in the video the Terminal app is displayed showing logs of the user's guesses to the local webserver and data being passed to the local database to store the user's game play.
   code: https://github.com/web3js/cloaked-octo-batman/tree/master/chris-henrick/mid-term
-  size: width2
   date: "2014-04-01"
 
 - title: Visualizing CO2 and GNI
   tags:
     - data-viz
   description: >-
-    An interactive Processing sketch that visualizes data relating to climate change from the World
-    Bank's Indicators Data.
-  description_long: ""
+    Processing sketch that visualizes data relating to climate change from the World Bank's Indicators project.
+  description_long: |
+    As part of an exercise in creating a multi-dimensional scatterplot, I plotted data sourced from the [World Bank's Indicators](https://data.worldbank.org/indicator) on Gross National Income (GNI) along the x-axis and Carbon Dioxide output on the y-axis for all countries that data was available for using the creative coding software [Processing](https://processing.org).
+
+    Each circle represents a single country, is sized by that country's population, and is colored by the world region the country belongs to (according to the World Bank). Hovering over a circle reveals a tooltip showing the country name, region, and values for GNI and CO2. The scatterplot's x axis may be toggled between Gross National Income and Per Capita Income. The result shows a strong linear correlation between the x and y variables: as income increases so does CO2 output.
+
+    This project was inspired by [Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling)'s infamous Ted Talk [*The Best Statistics You've Ever Seen*](https://www.youtube.com/watch?v=hVimVzgtD6w) and his [Gap Minder](https://www.gapminder.org) project.
   code: https://github.com/clhenrick/data-viz-projects/tree/master/03_scatterplot
   thumb: co2-gni-viz-thumb.jpg
   imgs:
     - co2-gni-viz.jpg
+  imgsAlt:
+    - Two screenshots of the interactive Processing sketch described in this page. The first shows the x and y axes as linear axes while the second shows them as logarithmic.
   tech:
     - Processing
-    - QGIS
+    - Java
     - SQL
-  size: "width2 "
   date: "2014-04-04"
 
 - title: Prospect Park non euclidean map
   tags:
     - cartography
-  description: A "non-euclidean map" of Prospect Park, Brooklyn
+  description: A "non-euclidean map" of Prospect Park, Brooklyn, NY.
   description_long: >-
-    A non-euclidean “map” of Prospect Park, Brooklyn. Created using a GoPro camera mounted to my
-    head, iMovie for video editing and Open-Frameworks for combining the video shots into one screen
-    space. Inspired by the theory of artist and cartographer Dennis Wood and work by Annette Kim,
-    Associate Professor of Urban Studies and Planning at <a
-    href="http://slab.scripts.mit.edu/wp/maps/narrative-maps/">MIT's SLAB</a>
+    A "non-euclidean map" of Prospect Park, Brooklyn that challenges viewers to consider what traditional maps cannot depict and how we might use other media and techniques to create maps that embody more humanistic qualities of our concepts of place. Created using a GoPro camera mounted to my head, iMovie for video editing and Open-Frameworks for combining the video shots into one screen space. Inspired by the theory of artist and cartographer Dennis Wood and work by Annette Kim, Associate Professor of Urban Studies and Planning at [MIT's SLAB](http://slab.scripts.mit.edu/wp/maps/narrative-maps/).
   thumb: ppnc-thumb.jpg
   tech:
     - Go-Pro
@@ -951,29 +789,28 @@
     url: https://vimeo.com/81728484
     embed: https://player.vimeo.com/video/81728484?autoplay=1
     thumb: ppnc.jpg
-    alt: Screen recording of Prospect Park non euclidean map
-  size: "width2 "
+    alt: Screen recording of Prospect Park non-euclidean map
+    desc: |-
+      A four by four grid with each grid cell consisting of a looping video, and all videos are playing simultaneously. Each video shows a different location in Prospect Park, Brooklyn, New York. Videos range from a first person view when riding a bicycle on the main loop road in the park, to walking through a tunnel beneath a bridge, to shopping at the farmers market, to still imagery of the lake, to looking upwards at the sky or downwards at my feet and ground while walking through the park. The overall impression is a depiction of various scenes at the park during an overcast winter day, sometimes full of people doing various activities like walking and bicycling, and other times giving the feeling of solitude and refuge from an otherwise busy urban environment.
   date: "2013-12-16"
 
 - title: Graffiti, Rat Sightings, and Wifi Hotspots
   tags:
     - web
     - cartography
-  description: Graffiti, rat sightings, and wi-fi hotspots in NYC.
+  description: A not so serious map of graffiti, rat sightings, and wi-fi hotspots in NYC.
   description_long: >-
-    Graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's <a target="_blank"
-    href="http://maps.stamen.com/trees-cabs-crime/#13/37.7629/-122.4400">Trees-Cabs-Crime</a>
-    created from NYC 311 data.
+    A playful and random juxtaposition of graffiti, rat sightings, and wi-fi hotspots in New York City. Created using public data from New York City's [open data portal](https://opendata.cityofnewyork.us). Inspired by Stamen Design's [Trees-Cabs-Crime](https://stamen.com/trees-cabs-crime-in-the-venice-biennale-968ea4983177/).
   thumb: graffiti-rats-wifi-thumb.jpg
   imgs:
     - nyc-rats-graffiti-wifi.jpg
+  imgsAlt:
+    - A map of New York City showing the locations of public wi-fi hotspots, graffiti, and rat sightings. Each location is represented by a colored circle that when overlapped with one another blend together. Rat sightings appear to be concentrated in central Brooklyn and The Bronx, wifi hotspots in lower Manhattan, and graffiti is dense in Manhattan's Lower East Side.
   tech:
     - TileMill
     - CartoCSS
     - QGIS
     - MapBox
-  link: https://bl.ocks.org/clhenrick/raw/f9176fab19e79ff72ec7e6c627080fda/
-  size: ""
   date: "2013-11-01"
 
 - title: From Coast to Coast
@@ -981,161 +818,169 @@
     - web
     - cartography
     - data-viz
-  description: Visualizing my move from the SF Bay Area to NYC with D3JS.
-  description_long: ""
+  description: >-
+    Hacking my phone's location data to visualize my move from the San Francisco Bay Area to New York City.
+  description_long: >-
+    A project I created during the Parsons [MFA Design and Technology](https://www.newschool.edu/parsons/mfa-design-technology/) summer pre-program bootcamp intensive that visualizes my cross country move from the San Francisco Bay Area to New York City as a web based animation on a geographic map. I utilized location data hacked from my own mobile phone using a 3rd party app, and then converted that data to GeoJSON in order to plot it with D3JS. I used this project as a way to raise privacy concerns related to how mobile devices keep a detailed record of our whereabouts at all times they are activated and on our person.
   thumb: coast-2-coast-thumb.jpg
   video:
     url: https://vimeo.com/89143409
     embed: https://player.vimeo.com/video/89143409?autoplay=1
     thumb: coast-2-coast.jpg
     alt: Screen recording of From Coast to Coast
+    desc: >-
+      A light gray map of the United States is depicted, showing only state boundary lines and no labels. A yellow dot appears in the San Francisco Bay Area on the west coast of the country with the date Thursday May 16, 2013 to its upper right. Slowly the dot moves subtly, almost as if it is being jiggled, while the date shown next to the dot progresses day by day through May into June. Pink areas are shown representing the dot's previous locations. Around mid June the dot moves southward in California and then abruptly appears in the East Coast near the border of New Jersey and New York with the date Saturday June 13, 2013. The dot then quickly moves south through New Jersey into Maryland, then back to the New York area on June 14, 2013. It then continues to move subtly again, this time around the New York City metro area, not straying far from the city. At August 7, 2013 the yellow dot disappears, leaving a trail of pink in its previous locations in California, Maryland, New Jersey, New York, and Connecticut.
   tech:
-    - D3.JS
+    - iPhone
+    - D3JS
     - JQuery
     - QGIS
-  size: ""
+    - GeoJSON
   date: "2013-06-01"
 
 - title: "Oakland Then and Now: Coastal Grasslands"
   tags:
     - cartography
   description: >-
-    Historic coastal grassland, bay and shoreline over the current day built up land area of
-    Oakland, CA.
+    Historic coastal grassland, bay, and shoreline over the current day built up land area of Oakland, California.
   description_long: >-
-    A prototype map design for the Oakland Museum of California. This map shows historic coastal
-    grassland areas, and a historic bay and shoreline over the current day built up land area for an
-    exhibit titled Oakland: Then and Now.
+    An original map for the [Oakland Museum of California](https://museumca.org)'s exhibit *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
-  size: width2
   date: "2013-01-01"
+  tech:
+    - QGIS
+    - MAPublisher
+    - Adobe Illustrator
 
 - title: "Oakland Then and Now: Oak Woodland"
   tags:
     - cartography
-  description: Historic oak woodland, bay and shoreline over the current day built up land area of Oakland, CA.
+  description: Historic oak woodland, bay, and shoreline over the current day built up land area of Oakland, California.
   description_long: >-
-    A prototype map design for the Oakland Museum of California. This map shows historic oak
-    woodland areas, and a historic bay and shoreline over the current day built up land area for an
-    exhibit titled Oakland: Then and Now.
+    An original map for the [Oakland Museum of California](https://museumca.org)'s
+    exhibit *Oakland: Then and Now*. This map shows historic oak
+    woodland areas with the historic bay and shoreline over the current day built up land area.
   thumb: oak-then-now-oak-thumb.jpg
   imgs:
     - oak-then-now-oak.jpg
-  size: width2
   date: "2015-01-01"
+  tech:
+    - QGIS
+    - MAPublisher
+    - Adobe Illustrator
 
 - title: Chinook Recovery Priority Watersheds
   tags:
     - cartography
-  description: Coastal recovery watersheds for Salmon and Steelhead in California
+  description: Map of coastal recovery watersheds for Salmon and Steelhead in California.
   description_long: >-
-    This map was created at GreenInfo Network with Alexandra Barnish, and is a working draft showing
-    only the coastal recovery watersheds for Salmon and Steelhead in California. Central valley
-    recovery watersheds are not shown on this version of the map. For the most recent version please
-    visit Sustainable Conservation's Partners in Restoration program.
+    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish, and is a working draft showing only the coastal recovery watersheds for Salmon and Steelhead in California. Central valley recovery watersheds are not shown on this version of the map. For the most recent version please visit Sustainable Conservation's Partners in Restoration program. Initial map design was accomplished using ArcGIS and final touches were done using Adobe Illustrator.
   thumb: chinook-thumb.jpg
   imgs:
     - chinook.jpg
+  imgsAlt:
+    - "A color map of the state of California depicting coastal recovery watersheds for Salmon and Steelhead in California on public and private lands. The map's legend shows symbology for Chinook, Coho, and Steelhead priority watersheds in different colors and cross hatching."
   tech:
     - ArcGIS
     - Adobe Illustrator
-  size: ""
   date: "2015-01-01"
 
 - title: CA Private Public Land
   tags:
     - cartography
-  description: Private and publically owned land in California.
+  description: Map of private and publically owned land in California.
   description_long: >-
-    This map was created at GreenInfo Network with Alexandra Barnish for Sustainable Conservation's
-    Partners in Restoration program.
+    This map was created at [GreenInfo Network](https://www.greeninfo.org) with Alexandra Barnish for Sustainable Conservation's Partners in Restoration program. Initial map design was accomplished using ArcGIS and final touches were done using Adobe Illustrator.
   thumb: public-private-thumb.jpg
   imgs:
     - public-private.jpg
+  imgsAlt:
+    - "A color map of the state of California depicting privately owned land in light red and pubically owned land in light green. Certain cities are labeled such as Eureka, Redding, Sacramento, San Francisco, etc."
   tech:
     - ArcGIS
     - Adobe Illustrator
-  size: ""
   date: "2010-06-01"
 
 - title: Ontario
   tags:
     - cartography
-  description: The province of Ontario, Canada.
+  description: "Full color reference map for the *Moon: Ontario* travel guide."
   description_long: >-
-    A map of the province of Ontario, Canada created using Natural Earth 1:10m vector GIS data for
-    the *Moon: Ontario* travel guide from Avalon Travel Publishing
+    An original map of the province of Ontario, Canada created using [Natural Earth 1:10m vector geospatial data](https://www.naturalearthdata.com/downloads/50m-cultural-vectors/) for the *Moon: Ontario* travel guide, published by Avalon Travel Publishing. Map copyright Avalon Travel Publishing.
   thumb: ontario-thumb.jpg
   imgs:
     - ontario.jpg
-  size: width2 height1
+  imgsAlt:
+    - "A color map highlighting the Canadian province of Ontario depicting the Hudson Bay to the north, the Great Lakes and United States to the south, Quebec to the east, and Manitoba to the west. Included on the map are locations of cities, towns, highways, national parks, and natural features such as rivers, lakes, islands, and land formations."
+  tech:
+    - Adobe Illustrator
+    - Natural Earth Data
+    - QGIS
   date: "2012-01-01"
-
-- title: Galapagos Islands
-  tags:
-    - cartography
-  description: A map showing the Galapagos Islands
-  description_long: ""
-  thumb: galapagos-thumb.jpg
-  imgs:
-    - galapagos.jpg
-  size: width2 height1
-  date: "2013-01-01"
 
 - title: Afghanistan and Pakistan
   tags:
     - cartography
-  description: Map of Afghanistan and Pakistan for the book Dirty Wars.
+  description: Reference map of Afghanistan and Pakistan for the book *Dirty Wars* by Jeremy Scahill.
   description_long: >-
-    Map of Afghanistan and Pakistan for the book Dirty Wars: The World is a Battlefield, by Jeremy
-    Scahill. Published by Nation Books.
+    A reference map of Afghanistan and Pakistan for the book *Dirty Wars: The World is a Battlefield*, by Jeremy Scahill. Published by Nation Books.
   thumb: afg-pak-thumb.jpg
   imgs:
     - afg-pak.jpg
+  imgsAlt:
+    - "A black and white map of the countries Afghanistan and Pakistan depicting their provinces, cities, towns, rivers, and neighboring countries. Two callouts draw attention to the location of Bagram Airforce Base and Forward Operating Base Chapman in eastern Afghanistan."
   tech:
     - Adobe Illustrator
     - MAPublisher
     - QGIS
-    - Natural Earth 1:10m Vector Data
-  size: "width2 "
+    - Natural Earth Data
   date: "2013-01-01"
 
-- title: South East Asia
+- title: Southeast Asia
   tags:
     - cartography
-  description: A map of Thailand, Laos, and Cambodia.
+  description: Reference map of Thailand, Laos, and Cambodia for the book *And There I Was*.
   description_long: >-
-    Another map for a 9 book series on the backpacking trips taken by globetrotter David Koester.
-    Natural Earth vector and relief data were employed for sound cartographic design.
+    Another map for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. [Natural Earth](https://www.naturalearthdata.com) vector and shaded relief data were employed for sound cartographic design.
   thumb: se-asia-thumb.jpg
   imgs:
     - se-asia.jpg
-  size: ""
+  imgsAlt:
+    - "A black and white geographic map of Thailand, Laos, and Cambodia titled Southeast Asia depicting cities, towns, points of interest, rivers, mountains, country borders, and neighboring bodies of water such as the Gulf of Thailand and South China Sea."
+  tech:
+    - Adobe Illustrator
+    - MAPublisher
+    - QGIS
+    - Natural Earth Data
   date: "2013-01-01"
 
 - title: Sikkim
   tags:
     - cartography
-  description: Sikkim, northern India.
-  description_long: A custom hillshade was created from SRTM DEM data using QGIS and Terrain Sculptor.
+  description: Reference map of the northern Indian state of Sikkim for the book *And There I Was*.
+  description_long: >
+    I created this map of [Sikkim](https://en.wikipedia.org/wiki/Sikkim) for the book series [*And There I Was*](https://www.goodreads.com/author/show/8009629.D_H_Koester) by D.H. Koester. For depicting Sikkim's mountainous topography, a custom hillshade was created using [Shuttle Radar Topography Mission (SRTM)](https://www.earthdata.nasa.gov/data/instruments/srtm) digital elevation model data with [QGIS](https://qgis.org) and [Terrain Sculptor](https://terraincartography.com/terrainsculptor/).
   tech:
     - Terrain Sculptor
+    - SRTM DEM
     - QGIS
     - MAPublisher
     - Adobe Illustrator
   thumb: sikkim-thumb.jpg
   imgs:
     - sikkim.jpg
-  size: ""
+  imgsAlt:
+    - "A geographic map of the Indian state of Sikkim depicting its mountainous topography, mountain peaks and elevations, rivers, lakes, national parks, towns, and the neighboring countries of Nepal, China, and Bhutan."
   date: "2013-01-01"
 
 - title: The North Coast
   tags:
     - cartography
-  description: "A split frame map I created for Moon: Northern California."
-  description_long: Open data from Cal Atlas and CPAD were used to make this map.
+  description: "Split frame map for the *Moon: Northern California* travel guide."
+  description_long: >-
+    Open geospatial data from Cal Atlas and the California Protected Areas Database were used to make this map. QGIS was used for spatial data analysis and processing. Adobe Illustrator and MAPublisher were utilized for the final cartographic design. Map copyright Avalon Travel Publishing.
   tech:
     - Adobe Illustrator
     - MAPublisher
@@ -1143,29 +988,34 @@
   thumb: north-coast-thumb.jpg
   imgs:
     - north-coast.jpg
-  size: ""
+  imgsAlt:
+    - "A black and white map of coastal Northern California stretching from the Oregon border to the north to Bodega Bay to the south. It shows the locations of cities, towns, counties, state and national parks, national forests, sights, and natural features such as rivers, mountain ranges, and bays."
   date: "2013-01-01"
 
 - title: Downtown Toronto
   tags:
     - cartography
-  description: A map of downtown Toronto, Canada.
-  description_long: ""
+  description: Map of downtown Toronto, Canada created for the *Moon Handbooks* travel guide series.
+  description_long: "Created using Adobe Illustrator. Map copyright Avalon Travel Publishing."
   thumb: toronto-dt-thumb.jpg
   imgs:
     - toronto-dt.jpg
+  imgsAlt:
+    - "A black and white map of downtown Toronto, Canada depicting the street network and locations of various sites, neighborhoods, attractions, restuarants, parks, points of interest."
   tech:
     - Adobe Illustrator
-  size: width2 height1
   date: "2012-01-01"
 
 - title: Downtown Guanajuato
   tags:
     - cartography
-  description: A map of downtown Guanajuato, Mexico.
-  description_long: ""
+  description: Map of downtown Guanajuato, Mexico created for the *Moon Handbooks* travel guide series.
+  description_long: "Created using Adobe Illustrator. Map copyright Avalon Travel Publishing."
   thumb: guanajuato-dt-thumb.jpg
   imgs:
     - guanajuato-dt.jpg
-  size: width2 height1
+  imgsAlt:
+    - "A black and white map of downtown Guanajuato, Mexico depicting the street network and locations of various sites, attractions, restuarants, parks, points of interest."
+  tech:
+    - Adobe Illustrator
   date: "2012-01-01"

@@ -46,52 +46,67 @@ These thumbnail images are treated as data files using the Eleventy config's `ad
 
 These thumbnail image files are used in the portfolio (`/work/`) index page for the project card images. This usage of the Eleventy Image optimization plugin method was chosen as Eleventy's async short codes are not compatible with Nunjuck macros (the `image` short code is used elsewhere in the site for optimizing images). The `dataCascadeImage` short code works in a macro as the data is computed at build time.
 
-## work.json
+## work.yaml
 
-- Referenced as `work` in templates
+Portfolio projects data, referenced as `work` in all templates.
 
 This data is used:
 
-- in the portfolio index page (`content/work/index.njk`) to create the project cards (see `content/work/index.njk` and `_includes/components/projectCard.njk`)
-- to create individual project pages in `/work/[project-name-page]/` (see `content/work/project-page.njk`).
-- to create part of the sitemap.xml file (see `content/sitemap.xml.njk`)
+- in the portfolio index page (`content/work/index.njk`) to create the project cards. See `content/work/index.njk` and `_includes/components/projectCard.njk`
 
-An example `work` object looks like:
+- to create individual project pages (`/work/[project-name-page]/index.html`). See `content/work/project-page.njk`
 
-```json
-{
-  "title": "Cal-Adapt: Analytics Engine",
-  "tags": ["web"],
-  "description": "Website visual design and development.",
-  "description_long": "Website design was done using [Figma](https://www.figma.com/), mainly for creating basic mocks and a style guide (scroll down to view), the rest of the design process was done using Markdown, HTML, and Sass. The website was built using the [Astro](https://astro.build/) static site generator, which uses the concept of \"partial hydration\" to keep client-side JavaScript to a minimum. CAE Jupyter Notebooks were converted to Markdown using Jupyter's [nbconvert](https://pypi.org/project/nbconvert/) utility, allowing for fast loading and previewing of notebook contents.",
-  "tech": [
-    "Astro",
-    "SvelteJS",
-    "TypeScript",
-    "Sass",
-    "Jupyter Notebooks",
-    "NodeJS"
-  ],
-  "thumb": "cae-website-thumb.jpg",
-  "imgs": [
-    "cae-website-01.jpg",
-    "cae-website-2.jpg",
-    "cae-website-3.jpg",
-    "cae-website-4.jpg",
-    "cae-website-5.jpg",
-    "cae-website-6.jpg",
-    "cae-website-7.jpg",
-    "cae-website-8.jpg",
-    "cae-website-9.jpg",
-    "cae-website-10.jpg",
-    "cae-website-11.jpg",
-    "cae-website-12.jpg",
-    "cae-website-13.jpg"
-  ],
-  "size": "width3",
-  "date": "2022-04-17",
-  "link": "https://analytics.cal-adapt.org"
-}
+- to create part of the `sitemap.xml` file, see `content/sitemap.xml.njk`
+
+An example `work` project entry looks like:
+
+```yaml
+# required project title, used to create the slug for the corresponding project page, e.g. `/work/graffiti-rat-sightings-and-wifi-hotspots/index.html`
+- title: Graffiti, Rat Sightings, and Wifi Hotspots
+
+  # required project tags, consisting of one or more of: "web", "cartography", "data-viz"
+  tags:
+    - web
+    - cartography
+
+  # required short description that shows up in project cards and the top of project pages, markdown supported
+  description: >-
+    A not so serious map of graffiti, rat sightings, and wi-fi hotspots in NYC.
+
+  # optional long description for project pages, markdown supported
+  description_long: >-
+    A random juxtaposition of graffiti, rat sightings, and wi-fi hotspots, inspired by Stamen's [Trees-Cabs-Crime](https://stamen.com/trees-cabs-crime-in-the-venice-biennale-968ea4983177/).
+    Created using public data from New York City's [open data portal](https://opendata.cityofnewyork.us).
+
+  # required thumbnail image file name, used for project cards
+  thumb: graffiti-rats-wifi-thumb.jpg
+
+  # optional: one or more screenshot images
+  imgs:
+    - nyc-rats-graffiti-wifi.jpg
+
+  # optional: one or more image alt text, corresponds to same array index as `imgs`
+  imgsAlt:
+    - A map of New York City showing the locations of public wi-fi hotspots, graffiti, and rat sightings. Each location is represented by a colored circle that when overlapped with one another blend together. Rat sightings appear to be concentrated in central Brooklyn and The Bronx, wifi hotspots in lower Manhattan, and graffiti is dense in Manhattan's Lower East Side.
+
+  # optional video properties for projects that have an associated external video, rendered as an iframe
+  video:
+    # url of the video
+    url: https://vimeo.com/89143409
+    # embed url
+    embed: https://player.vimeo.com/video/89143409?autoplay=1
+    # video thumbnail image
+    thumb: coast-2-coast.jpg
+    # alt text for video thumbnail image
+    alt: Screen recording of From Coast to Coast
+
+  # technologies used for creating the project
+  tech:
+    - TileMill
+    - CartoCSS
+    - QGIS
+    - MapBox
+
+  # approximate date of when the project was completed or published
+  date: "2013-11-01"
 ```
-
-> Note that "size" is deprecated / no longer used.

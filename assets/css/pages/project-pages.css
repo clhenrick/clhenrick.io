@@ -7,7 +7,7 @@ ul.screenshots,
 ul.tech-tags {
   display: flex;
   align-items: baseline;
-  gap: 1rem;
+  gap: 0 1rem;
   flex-wrap: wrap;
 }
 
