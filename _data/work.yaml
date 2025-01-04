@@ -3,12 +3,13 @@
     - cartography
     - data-viz
   description: >-
-    Heatmap visualization of (almost) every Luckyduck Bicycle Café shop bicycle ride for Guerilla
-    Cartography's *Flow* project.
+    Heatmap visualization of (almost) every Luckyduck Bicycle Café shop bicycle ride for Guerilla Cartography's *Atlas at a Conference: Flow* project.
   description_long: |-
     [Luckyduck Bicycle Café](https://www.facebook.com/LuckyduckOak/) was a much loved café and bike shop located in downtown Oakland, California which closed in April of 2023 after serving a loyal following for seven years. Part of Luckyduck's allure was holding weekly group shop bike rides that meandered through various parts of the East Bay and sometimes north into Marin County or west into San Francisco.
 
-    To commemorate the end of an era for many members of Oakland's local cycling community, I created this heat map of every shop bicycle ride that I could source geospatial data for from [RideWithGPS](https://ridewithgps.com/), a popular cycling planning app. On Saturday, October 19th, 2024 as part of the "Atlas at a Conference" project pitched by [Guerrilla Cartography](https://www.guerrillacartography.org) during the North American Cartographic Information Society's annual conference, I downloaded GPX route data for each shop ride from the [Luckyduck RideWithGPS account](https://ridewithgps.com/users/54142) via a [NodeJS script](https://github.com/clhenrick/luckyduck-shop-rides/tree/main). I then created the heat map visualization in the Chrome web browser using D3JS, HTML Canvas, and CSS. The shaded relief depicting the topography of the Bay Area near Oakland was created via repurposed code from my [Open Source Oakland Map](/work/open-source-oakland-map/) project. Darin Jensen of Guerrilla Cartography contributed some of the final touches such as framing the map, and adding descriptive text and a legend to make it more suitable for print publication. This map will be included in the forthcoming book by Guerrilla Cartography, *Flow*.
+    To commemorate the end of an era for many members of Oakland's local cycling community, I created this heat map of every shop bicycle ride that I could source geospatial data for from [RideWithGPS](https://ridewithgps.com/), a popular cycling planning app. On Saturday, October 19th, 2024 as part of the "Atlas at a Conference" project pitched by [Guerrilla Cartography](https://www.guerrillacartography.org) during the North American Cartographic Information Society's annual conference, I downloaded GPX route data for each shop ride from the [Luckyduck RideWithGPS account](https://ridewithgps.com/users/54142) via a [NodeJS script](https://github.com/clhenrick/luckyduck-shop-rides/tree/main). I then created the heat map visualization in the Chrome web browser using D3JS, HTML Canvas, and CSS. The shaded relief depicting the topography of the Bay Area near Oakland was created via repurposed code from my [Open Source Oakland Map](/work/open-source-oakland-map/) project. Darin Jensen of Guerrilla Cartography contributed some of the final touches such as framing the map, and adding descriptive text and a legend to make it more suitable for print publication.
+
+    The finalized map is included as part of the [*Atlas at a Conference: Flow*](https://drive.google.com/file/d/1AWTltacogHedTPChJ1RfeD7FL5W_cR-E/view) project, by Guerrilla Cartography.
   tech:
     - CSS
     - D3JS
@@ -270,7 +271,7 @@
     - aemp-covid19-protections-09.jpg
   date: "2020-11-01"
   link: https://covid19.antievictionmap.com
-  code: https://github.com/antievictionmappingproject/covid-19-map
+  code: https://github.com/AntiEvictionMappingProject/Covid-19-map
 
 - title: "NYC Crash Mapper: Chart View"
   tags:
@@ -450,7 +451,9 @@
     - Mapnik
     - NodeJS
     - PostGIS
-    - Python
+    - PostgreSQL
+    - GDAL
+    - Imposm3
   thumb: terrain-classic-thumb.jpg
   imgs:
     - terrain-classic01.jpg
@@ -464,6 +467,7 @@
     - terrain-classic10.jpg
     - terrain-classic11.jpg
   date: "2016-12-22"
+  code: https://github.com/Stamen/Terrain-Classic
   link: https://maps.stamen.com/terrain/
 
 - title: Love and Rage
@@ -564,6 +568,12 @@
   thumb: landscapes-profit-thumb.jpg
   imgs:
     - landscapes-profit.jpg
+  tech:
+    - SQL
+    - GDAL
+    - JavaScript
+    - HTML
+    - CartoDBJS
   date: "2015-01-01"
 
 - title: FOSI GRID
@@ -904,6 +914,10 @@
     - ontario.jpg
   imgsAlt:
     - "A color map highlighting the Canadian province of Ontario depicting the Hudson Bay to the north, the Great Lakes and United States to the south, Quebec to the east, and Manitoba to the west. Included on the map are locations of cities, towns, highways, national parks, and natural features such as rivers, lakes, islands, and land formations."
+  tech:
+    - Adobe Illustrator
+    - Natural Earth Data
+    - QGIS
   date: "2012-01-01"
 
 - title: Afghanistan and Pakistan
@@ -966,7 +980,7 @@
     - cartography
   description: "Split frame map for the *Moon: Northern California* travel guide."
   description_long: >-
-    Open data from Cal Atlas and the California Protected Areas Database were used to make this map. QGIS was used for data querying and processing. Adobe Illustrator and MAPublisher were used to create the map. Map copyright Avalon Travel Publishing.
+    Open geospatial data from Cal Atlas and the California Protected Areas Database were used to make this map. QGIS was used for spatial data analysis and processing. Adobe Illustrator and MAPublisher were utilized for the final cartographic design. Map copyright Avalon Travel Publishing.
   tech:
     - Adobe Illustrator
     - MAPublisher
@@ -1002,4 +1016,6 @@
     - guanajuato-dt.jpg
   imgsAlt:
     - "A black and white map of downtown Guanajuato, Mexico depicting the street network and locations of various sites, attractions, restuarants, parks, points of interest."
+  tech:
+    - Adobe Illustrator
   date: "2012-01-01"
