@@ -37,10 +37,14 @@ eleventyComputed:
       <div>
         <dt>Project link:</dt>
         <dd>
-          <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
+          <a href="{{ project.link }}">{{ project.title }}</a>
         </dd>
       </div>
     {% endif %}
+
+    {% macro githubLink(text) %}
+      {{ text | replace("https://", "") | replace("github", "GitHub", 1) }}
+    {% endmacro %}
 
     {% if project.code %}
       <div>
@@ -48,12 +52,12 @@ eleventyComputed:
         {% if project.code | isArray %}
           {% for link in project.code %}
             <dd>
-              <a href="{{ link }}" target="_blank">{{ link }}</a>
+              <a href="{{ link }}">{{ githubLink(link) }}</a>
             </dd>
           {% endfor %}
         {% else %}
           <dd>
-            <a href="{{ project.code }}" target="_blank">{{ project.code }}</a>
+            <a href="{{ project.code }}">{{ githubLink(project.code) }}</a>
           </dd>
         {% endif %}
       </div>
