@@ -19,6 +19,7 @@ eleventyComputed:
 {%- set bucket = "project-pages" %}
 {% include "styles.njk" %}
 {% from "components/kofi.njk" import kofi %}
+{% from "components/embed.njk" import embed %}
 
 <section>
   <h1>{{ project.title }}</h1>
@@ -88,81 +89,7 @@ eleventyComputed:
   {% endif %}
 
   {% if project.video %}
-    {# iframe embed technique credit: https://adrianroselli.com/2024/01/embed-slides-youtube-videos-and-more.html #}
-    {% set srcdocStyle %}
-      <style>
-        * {
-          padding: 0;
-          margin: 0;
-          overflow: hidden;
-        }
-        html,
-        body {
-          height: 100%;
-        }
-        body {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-image: url(/img/{{ project.video.thumb }});
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center center;
-        }
-        a[href] {
-          display: block;
-          width: 70px;
-          height: 70px;
-          color: rgba(0, 0, 0, 0.75);
-          border-radius: 50%;
-        }
-        a[href]:focus-visible,
-        a[href]:hover {
-          color: orange;
-        }
-        a[href]:focus-visible {
-          outline: 3px solid blue;
-        }
-        svg {
-          fill: currentColor;
-        }
-      </style>
-    {% endset %}
-    {% set svgIcon %}
-      <a href="{{ project.video.embed }}"
-        ><svg
-          role="image"
-          aria-label="play"
-          xmlns="http://www.w3.org/2000/svg"
-          xml:space="preserve"
-          width="70"
-          height="70"
-          viewBox="0 0 60 60"
-        >
-          <path
-            d="M30 0C13.458 0 0 13.458 0 30s13.458 30 30 30 30-13.458 30-30S46.542 0 30 0zm15.563 30.826-22 15a1.002 1.002 0 0 1-1.03.058A.999.999 0 0 1 22 45V15a.999.999 0 0 1 1.564-.826l22 15a1.001 1.001 0 0 1-.001 1.652z"
-          /></svg
-      ></a>
-    {% endset %}
-
-    <div style="--aspect-ratio: 16/9;margin-bottom:2.5rem;">
-      <iframe
-        width="960"
-        height="569"
-        src="{{ project.video.embed }}"
-        srcdoc="{{ srcdocStyle | replace("\n", "") | replace(" ", "") }}{{ svgIcon | replace("\n", "") }}"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        title="{{ project.video.title }}"
-      ></iframe>
-    </div>
-
-    {% set videoDescription = project.video.desc %}
-    {% if videoDescription %}
-      <h3>Video Description</h3>
-      {{ videoDescription | markdown | safe }}
-    {% endif %}
+    {{ embed(project.video.thumb, project.video.embed, project.video.title, project.video.desc) }}
   {% endif %}
 
   {% if project.imgs %}
