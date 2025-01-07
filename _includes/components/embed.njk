@@ -2,14 +2,44 @@
 {% macro embed(thumbnail, embedUrl, title, description) %}
   {# iframe embed technique credit: https://adrianroselli.com/2024/01/embed-slides-youtube-videos-and-more.html #}
   {% set srcdocStyle %}
-    * { padding: 0; margin: 0; overflow: hidden; } body, html, a { height: 100%;
-    } body { background-image: url("/img/{{ thumbnail }}"); background-repeat:
-    no-repeat; background-size: cover; background-position: center; } a[href] {
-    display: block; display: flex; align-items: center; justify-content: center;
-    color: rgba(255, 255, 255, 0.75); } a[href]:focus-visible, a[href]:hover {
-    color: white; } a[href]:focus-visible { outline-width: 3px; outline-offset:
-    -3px; outline-style: solid; outline-color: white; box-shadow: inset 0 0 0
-    7px black; } svg { fill: currentColor; }
+    <!-- prettier-ignore -->
+    * {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    body,
+    html,
+    a {
+      height: 100%;
+    }
+    body {
+      background-image: url("/img/{{ thumbnail }}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    a[href] {
+      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.75);
+    }
+    a[href]:focus-visible,
+    a[href]:hover {
+      color: white;
+    }
+    a[href]:focus-visible {
+      outline-width: 3px;
+      outline-offset: -3px;
+      outline-style: solid;
+      outline-color: white;
+      box-shadow: inset 0 0 0 7px black;
+    }
+    svg {
+      fill: currentColor;
+    }
   {% endset %}
   {% set svgIcon %}
     <!-- prettier-ignore -->
