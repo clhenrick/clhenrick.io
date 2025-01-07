@@ -742,7 +742,6 @@
     url: https://vimeo.com/97669886
     embed: https://player.vimeo.com/video/97669886?autoplay=1
     thumb: guess-that-hood.jpg
-    alt: Play Screen recording of Guess That Hood NYC
     title: Screen recording of Guess That Hood NYC
     desc: |-
       The video begins by showing a user interface containing an interactive geographic map of neighborhood boundaries in NYC, color coded by borough, and a sidebar with the title of the game and the text "You haven't played yet. Guess some NYC hoods!". As the user moves their mouse cursor over a neighborhood boundary on the map it is highlighted in yellow. Clicking on a neighborhood boundary on the map reveals a popup where a user may enter the name of that neighborhood in a text input. Pressing the enter key or clicking the "guess" button submits their guess and checks it against the name of the neighborhood in the database. If the user prefers a hint prior to guessing they can click on the "need a hint?" button in the popup which will show them a partially obscured name of the neighborhood.
@@ -790,7 +789,6 @@
     url: https://vimeo.com/81728484
     embed: https://player.vimeo.com/video/81728484?autoplay=1
     thumb: ppnc.jpg
-    alt: Play Screen recording of Prospect Park non-euclidean map
     title: Screen recording of Prospect Park non-euclidean map
     desc: |-
       A four by four grid with each grid cell consisting of a looping video, and all videos are playing simultaneously. Each video shows a different location in Prospect Park, Brooklyn, New York. Videos range from a first person view when riding a bicycle on the main loop road in the park, to walking through a tunnel beneath a bridge, to shopping at the farmers market, to still imagery of the lake, to looking upwards at the sky or downwards at my feet and ground while walking through the park. The overall impression is a depiction of various scenes at the park during an overcast winter day, sometimes full of people doing various activities like walking and bicycling, and other times giving the feeling of solitude and refuge from an otherwise busy urban environment.
@@ -829,7 +827,6 @@
     url: https://vimeo.com/89143409
     embed: https://player.vimeo.com/video/89143409?autoplay=1
     thumb: coast-2-coast.jpg
-    alt: Play Screen recording of From Coast to Coast
     title: Screen recording of From Coast to Coast
     desc: >-
       A light gray map of the United States is depicted, showing only state boundary lines and no labels. A yellow dot appears in the San Francisco Bay Area on the west coast of the country with the date Thursday May 16, 2013 to its upper right. Slowly the dot moves subtly, almost as if it is being jiggled, while the date shown next to the dot progresses day by day through May into June. Pink areas are shown representing the dot's previous locations. Around mid June the dot moves southward in California and then abruptly appears in the East Coast near the border of New Jersey and New York with the date Saturday June 13, 2013. The dot then quickly moves south through New Jersey into Maryland, then back to the New York area on June 14, 2013. It then continues to move subtly again, this time around the New York City metro area, not straying far from the city. At August 7, 2013 the yellow dot disappears, leaving a trail of pink in its previous locations in California, Maryland, New Jersey, New York, and Connecticut.
