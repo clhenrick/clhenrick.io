@@ -19,6 +19,7 @@ eleventyComputed:
 {%- set bucket = "project-pages" %}
 {% include "styles.njk" %}
 {% from "components/kofi.njk" import kofi %}
+{% from "components/embed.njk" import embed %}
 
 <section>
   <h1>{{ project.title }}</h1>
@@ -88,25 +89,7 @@ eleventyComputed:
   {% endif %}
 
   {% if project.video %}
-    {# iframe embed technique credit: https://adrianroselli.com/2024/01/embed-slides-youtube-videos-and-more.html #}
-    <div style="--aspect-ratio: 16/9;margin-bottom:2.5rem;">
-      <iframe
-        width="960"
-        height="569"
-        src="{{ project.video.embed }}"
-        srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href={{ project.video.embed }}><img src='/img/{{ project.video.thumb }}' alt='{{ project.video.alt }}'><span aria-hidden='true'>▶</span></a>"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        title="{{ project.video.title }}"
-      ></iframe>
-    </div>
-
-    {% set videoDescription = project.video.desc %}
-    {% if videoDescription %}
-      <h3>Video Description</h3>
-      {{ videoDescription | markdown | safe }}
-    {% endif %}
+    {{ embed(project.video.thumb, project.video.embed, project.video.title, project.video.desc) }}
   {% endif %}
 
   {% if project.imgs %}
