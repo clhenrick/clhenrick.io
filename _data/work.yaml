@@ -828,8 +828,10 @@
     embed: https://player.vimeo.com/video/89143409?autoplay=1
     thumb: coast-2-coast.jpg
     title: Screen recording of From Coast to Coast
-    desc: >-
-      A light gray map of the United States is depicted, showing only state boundary lines and no labels. A yellow dot appears in the San Francisco Bay Area on the west coast of the country with the date Thursday May 16, 2013 to its upper right. Slowly the dot moves subtly, almost as if it is being jiggled, while the date shown next to the dot progresses day by day through May into June. Pink areas are shown representing the dot's previous locations. Around mid June the dot moves southward in California and then abruptly appears in the East Coast near the border of New Jersey and New York with the date Saturday June 13, 2013. The dot then quickly moves south through New Jersey into Maryland, then back to the New York area on June 14, 2013. It then continues to move subtly again, this time around the New York City metro area, not straying far from the city. At August 7, 2013 the yellow dot disappears, leaving a trail of pink in its previous locations in California, Maryland, New Jersey, New York, and Connecticut.
+    desc: |-
+      A minimal reference map of the United States is depicted, showing only state boundaries with no labels. Text above the map reads the title "From Coast to Coast" and subtitle "Visualizing my mobile device's location data during my move from Oakland, CA to Brooklyn, NY 2013."
+
+      A yellow dot appears in the San Francisco Bay Area with the date Thursday May 16, 2013 positioned relative to the dots upper right. The dot begins to move subtly, almost as if it is being jiggled, while the date shown next to the dot progresses day by day through May into June. As the dot changes position pink areas are shown representing the dot's cumulative previous locations. Around mid June the dot moves southward in California and then abruptly appears in the East Coast near the border of New Jersey and New York with the date Saturday June 13, 2013. The dot then quickly moves south through New Jersey into Maryland, then back to the New York area on June 14, 2013. It then continues to move subtly again, this time around the New York City metro area, not straying far from the city. On August 7, 2013 the yellow dot disappears, leaving a trail of pink in its previous locations in California, Maryland, New Jersey, New York, and Connecticut.
   tech:
     - iPhone
     - D3JS
