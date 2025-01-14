@@ -283,7 +283,7 @@ h5 {
 
 p {
   max-width: 77ch;
-  margin-bottom: var(--spacing-mmd);
+  margin-bottom: 1lh;
   text-wrap: pretty;
 }
 
