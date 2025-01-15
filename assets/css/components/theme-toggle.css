@@ -36,6 +36,11 @@
   text-transform: capitalize;
 }
 
+#site-theme-toggle input[type="radio"] {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
 #site-theme-toggle input[type="radio"]:focus {
   outline: var(--focus-style-outline);
 }
