@@ -122,6 +122,11 @@ button.nav-button:hover {
   background-color: var(--color-accent);
 }
 
+button.nav-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 @media screen and (width >= 748px) {
   button.nav-button {
     display: none;
