@@ -81,7 +81,7 @@
     My role in creating the Activity Map block was:
     1. Prototyping it based on original UI/UX design concepts to see how it would hold up to real world data, responsive design, and accessibility. I used web tech such as JavaScript, HTML, CSS, the [ArcGIS JS SDK](https://developers.arcgis.com/javascript/latest/), and GPX data from various sources as prototyping tools to determine any technical limitations and give feedback to the design team to refine the concept prior to it being implemented in production.
     2. Drafting a software design doc to plan for the implementation in production code and incorporating feedback from lead software engineers.
-    3. Implementing the finalized design concept in the StoryMaps web application production code using React, TypeScript, CSS in JS, and the ArcGIS JS SDK through incremental pull requests and code reviews in GitHub.
+    3. Implementing the refined design concept in the StoryMaps web application production code using React, TypeScript, CSS in JS, and the ArcGIS JS SDK through incremental pull requests and code reviews in GitHub.
     4. Doing manual accessibility testing with screen reader software such as VoiceOver, NVDA, and JAWS to see what needed to be fixed in order to conform to the [Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/) level AA success criteria.
   tech:
     - React
@@ -96,7 +96,10 @@
     embed: https://player.vimeo.com/video/1049769252?autoplay=1
     thumb: activity-map-block.png
     title: Screen recording of Activity Map block
-    desc: "TODO"
+    desc: |-
+      The video begins by showing the StoryMaps editor user interface with a mostly empty story. There is a title that reads "My Awesome Bicycle Ride" and a subtitle "Showing off the Activity Map block in StoryMaps" with "Chris Henrick" as the author and the word "draft".
+
+      The page scrolls down a bit and a round, blue button with a plus sign is clicked which reveals a dialog menu. Inside the dialog menu are different types of "blocks", which are units of content a author may insert into their story. The Activity Map block is selected which opens a modal dialog prompting the author to add their GPX file.
   date: "2023-08-01"
 
 - title: Cal-Adapt
