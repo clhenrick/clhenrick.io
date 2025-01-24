@@ -74,13 +74,20 @@
     - web
     - data-viz
   description: >-
-    A preconfigured dashboard that enables StoryMaps authors to show off their activities such as hikes, runs, and bicycle rides.
+    A preconfigured dashboard that enables StoryMaps authors to show off athletic activities such as hikes, runs, and bicycle rides.
   description_long: |-
-    The Activity Map block enables StoryMaps authors to easily create a preconfigured dashboard of an athletic activity using author provided GPX data. The block contains an interactive map of the activity's route, summary statistics such as duration, distance, and elevation gain, and an interactive elevation profile chart showing the elevation change over the course of the activity. The block is themeable, allowing authors to customize its appearance, and is translatable to over thirty different languages.
+    The [Activity Map block](https://www.storymaps.com/learn/activity-maps) enables [StoryMaps](https://www.storymaps.com) authors to easily create a preconfigured dashboard of an athletic activity using author provided [GPX data](https://en.wikipedia.org/wiki/GPS_Exchange_Format). The block contains an interactive map of the activity's route, summary statistics such as duration, distance, and elevation gain, and an interactive elevation profile chart showing the elevation change over the course of the activity. The block is themeable, allowing authors to customize its appearance, and is translatable to over thirty different languages.
+
+    My role in creating the Activity Map block was:
+    1. Prototyping it based on original UI/UX design concepts to see how it would hold up to real world data, responsive design, and accessibility. I used web tech such as JavaScript, HTML, CSS, the [ArcGIS JS SDK](https://developers.arcgis.com/javascript/latest/), and GPX data from various sources to determine any technical limitations and give feedback to the design team to refine the concept prior to it being implemented in production.
+    2. Drafting a software design doc to plan for the implementation in production code and incorporating feedback from lead software engineers.
+    3. Implementing the finalized design concept in the StoryMaps web application production code using React, TypeScript, CSS in JS, and the ArcGIS JS SDK through incremental pull requests and code reviews in GitHub.
+    4. Doing manual accessibility testing with screen reader software such as VoiceOver, NVDA, and JAWS to see what needed to be fixed in order to conform to the [Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/) level AA success criteria.
   tech:
     - React
     - TypeScript
     - ArcGIS JavaScript SDK
+    - GPX data
     - D3JS
     - CSS in JS
   thumb: activity-map-block-thumb.png
