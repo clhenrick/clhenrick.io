@@ -69,6 +69,29 @@
     - public/img/oakland-hills-dark.png
   date: "2024-11-01"
 
+- title: "StoryMaps: Activity Map Block"
+  tags:
+    - web
+    - data-viz
+  description: >-
+    A preconfigured dashboard that enables StoryMaps authors to show off their activities such as hikes, runs, and bicycle rides.
+  description_long: |-
+    The Activity Map block enables StoryMaps authors to easily create a preconfigured dashboard of an athletic activity using author provided GPX data. The block contains an interactive map of the activity's route, summary statistics such as duration, distance, and elevation gain, and an interactive elevation profile chart showing the elevation change over the course of the activity. The block is themeable, allowing authors to customize its appearance, and is translatable to over thirty different languages.
+  tech:
+    - React
+    - TypeScript
+    - ArcGIS JavaScript SDK
+    - D3JS
+    - CSS in JS
+  thumb: activity-map-block-thumb.png
+  video:
+    url: https://vimeo.com/1049769252
+    embed: https://player.vimeo.com/video/1049769252?autoplay=1
+    thumb: activity-map-block.png
+    title: Screen recording of Activity Map block
+    desc: "TODO"
+  date: "2023-08-01"
+
 - title: Cal-Adapt
   tags:
     - web
