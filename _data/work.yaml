@@ -83,6 +83,8 @@
     2. Drafting a software design doc to plan for the implementation in production code and incorporating feedback from lead software engineers.
     3. Implementing the refined design concept in the StoryMaps web application production code using React, TypeScript, CSS in JS, and the ArcGIS JS SDK through incremental pull requests and code reviews in GitHub.
     4. Doing manual accessibility testing with screen reader software such as VoiceOver, NVDA, and JAWS to see what needed to be fixed in order to conform to the [Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/) level AA success criteria.
+
+    The following screen recording demonstrates adding an Activity Map block to a story using a local GPX file and customizing its settings to give it a touch of personalization.
   tech:
     - React
     - TypeScript
