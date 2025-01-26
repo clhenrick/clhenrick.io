@@ -65,7 +65,9 @@
   </div>
 
   {% if description %}
-    <h3>Video Description</h3>
-    {{ description | markdown | safe }}
+    <details>
+      <summary>Video Description</summary>
+      {{ description | markdown | safe }}
+    </details>
   {% endif %}
 {% endmacro %}
