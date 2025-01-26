@@ -2,10 +2,14 @@
   margin-bottom: var(--spacing-md);
 }
 
+:where(details > *:nth-child(2)) {
+  margin-top: var(--spacing-sm);
+}
+
 :where(summary) {
   font-weight: bold;
   border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-xs) 0;
 }
 
 :where(summary:hover) {
@@ -16,6 +20,11 @@
 :where(summary:focus-visible) {
   outline: var(--focus-style-outline);
   outline-offset: var(--focus-style-outline-offset);
+}
+
+/* keeps any block level child element on the same baseline as the disclosure widget triangle */
+:where(summary > *) {
+  display: inline;
 }
 
 @supports not selector(:focus-visible) {
