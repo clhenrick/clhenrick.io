@@ -281,10 +281,14 @@ h5 {
   font-size: var(--text-size-h5);
 }
 
-p {
+p,
+:is(ul, ol):not([role="list"]) li {
   max-width: 77ch;
-  margin-bottom: var(--spacing-mmd);
   text-wrap: pretty;
+}
+
+p {
+  margin-bottom: var(--spacing-mmd);
 }
 
 p:last-child {

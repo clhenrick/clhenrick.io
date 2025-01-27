@@ -28,15 +28,3 @@
     height: 100%;
   }
 }
-
-iframe:focus-visible {
-  outline: var(--focus-style-outline);
-  outline-offset: var(--focus-style-outline-offset);
-}
-
-@supports not selector(:focus-visible) {
-  iframe:focus {
-    outline: var(--focus-style-outline);
-    outline-offset: var(--focus-style-outline-offset);
-  }
-}

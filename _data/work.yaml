@@ -69,6 +69,51 @@
     - public/img/oakland-hills-dark.png
   date: "2024-11-01"
 
+- title: "StoryMaps: Activity Map Block"
+  tags:
+    - web
+    - data-viz
+  description: >-
+    Preconfigured dashboard that enables StoryMaps authors to show off athletic activities such as hikes, runs, and bicycle rides.
+  description_long: |-
+    The [Activity Map block](https://www.storymaps.com/learn/activity-maps) enables [StoryMaps](https://www.storymaps.com) authors to easily create a preconfigured dashboard of an athletic activity using author provided [GPX data](https://en.wikipedia.org/wiki/GPS_Exchange_Format). The block contains an interactive map of the activity's route, summary statistics consisting of duration, distance, and elevation gain, and an interactive elevation profile chart. An optional photo may be added to the block to give it a touch of personalization. The block is themeable, allowing authors to customize its appearance. It is translatable to over thirty different languages to support localization and internationalization.
+
+    My role in creating the Activity Map block was:
+    1. Prototyping it based on original UI/UX design concepts to see how it would hold up to real world data, responsive design, and accessibility. I used web tech such as JavaScript, HTML, CSS, the [ArcGIS JS SDK](https://developers.arcgis.com/javascript/latest/), and GPX data from various sources as prototyping tools to determine any technical limitations and collaborate with the design team to refine the concept prior to it being implemented in production.
+    2. Drafting a software design doc to plan for the implementation in production code and incorporating technical feedback from lead software engineers.
+    3. Implementing the final design concept in the StoryMaps web application production code using React, TypeScript, CSS in JS, and the ArcGIS JS SDK through incremental pull requests and code reviews in GitHub.
+    4. Doing manual accessibility testing with screen reader software such as VoiceOver, NVDA, and JAWS in order to conform to the [Web Content Accessibility Guidelines 2.2](https://www.w3.org/TR/WCAG22/) level AA success criteria.
+
+    The following screen recording demonstrates adding an Activity Map block to a story using a local GPX file and customizing its settings to give it a touch of personalization.
+  tech:
+    - React
+    - TypeScript
+    - ArcGIS JavaScript SDK
+    - GPX data
+    - D3JS
+    - CSS in JS
+  thumb: activity-map-block-thumb.png
+  video:
+    url: https://vimeo.com/1049769252
+    embed: https://player.vimeo.com/video/1049769252?autoplay=1
+    thumb: activity-map-block-embed.jpg
+    title: Screen recording of Activity Map block
+    desc: |-
+      The video begins by showing the Story Maps story editor user interface with a mostly empty story taking up the majority of the space on the web page. At the top of the story is a title that reads "My Awesome Bicycle Ride" and a subtitle "Showing off the Activity Map block in Story Maps" with "Chris Henrick" as the author and the word "Draft" indicating that the story has not yet been published or updated if previously published.
+
+      The page scrolls down a little bit. As the mouse hovers over the story, a round, blue button with a plus sign is clicked which reveals a dialog menu. Inside the dialog menu are different types of "blocks" (discrete units of story content) such as text, image, embed, chart, map, etc. that a author may insert into their story. The Activity Map block is selected which then opens a "import data" modal dialog prompting the author to add a GPX file of their activity. After clicking on the modal's "browse your files" button, the Apple Finder app shows a list of GPX data files available for selection. The file named "afternoon_gravel_ride.gpx" is selected and the Finder's "open" button is clicked. The file name then appears in the modal dialog with an icon that represents a map. A "delete" button is shown just below the file name. "Cancel" and "Add" buttons are shown in the bottom right corner of the modal.
+
+      The modal's "Add" button is clicked, the modal closes, and a large loading indicator appears in the story content taking up most of the page's area. After a few seconds a dashboard for the bicycle ride appears consisting of a map of the route in the top row. On the bottom row are three summary statistics reading: 13.2 miles for distance, 1:20:25 for time, and 1,569.9 feet for elevation gain. Next to the statistics is a elevation profile chart of the bicycle ride showing the change in elevation on the y-axis and distance on the x-axis. Elevation values range from roughly 250 feet at the start to 1,500 feet in the middle, and mileage values range from zero miles at the start to thirteen miles at the end of the bicycle ride.
+
+      Some basic interaction is demonstrated with the dashboard. The map's zoom button is clicked several times showing that the map is interactive and capable of being zoomed and panned. The elevation chart is hovered on with the mouse revealing a tooltip that displays the elevation and distance at any given point along the chart. As the mouse hovers the elevation chart the corresponding location on the map is shown as a dot. The dot moves along the bicycle ride's route with the chart hover interaction to convey the chart's x-axis distance value syncing with the route's location at that distance. A caption is then added to the dashboard reading "Another afternoon gravel ride in the books!".
+
+      The video goes on to demonstrate other capabilities of the Activity Map block. A settings modal dialog is opened and alternative text of "a dashboard showing the stats and map of an afternoon gravel ride in the Oakland hills" is added to describe the dashboard for users of assistive technology. The layout of the dashboard is changed to include an image of a person riding a bicycle outdoors along a rugged, dirt path with mountains in the distance on a sunny afternoon. The map is modified to change the style of the "base map" (the reference map layer) and the color of the route of the bicycle ride (the data layer). The size of the dashboard is changed to a "small" or compact size that takes up roughly half the width of the page and is shorter in height, back to its original or "medium" size at about 80% of the page's width, and then to a "large" size that consumes the entire width of the page and is much taller in height. The style of the dashboard is changed using preconfigured themes available in a "design" panel with names like "Glacier", "Charcoal", and "Dune" which alter the background colors of the page and dashboard, the typographic styles, and primary accent color used in the statistics and elevation chart. The "Charcoal" theme is selected, and the page and Activity Map take on a dark color scheme with a near black background color and a fluorescent green accent color.
+
+      The "Publish" button is then clicked in the story editor's header menu bar. A new page appears titled "Publish Options" showing a preview of the story's details, its visibility setting which is set to "just me", and story topics which includes the single topic of "outdoors". The "publish" button is clicked and a new page then displays the text "checking for issues", then "optimizing content", and finally "publishing". A new page shows the preview story card on the lefthand side containing the image of the cyclist, title "my awesome bicycle ride", and subtitle "Showing off the activity map block in story maps", with "StoryMaps.com" below. On the righthand side is the text "You've published your story. Nice work!", along with a "copy link" button, QR code, "view published story" button, and "edit story" button.
+
+      After clicking the "view published story" button the story is shown in the Story Maps "viewer". The Activity Map dashboard is displayed, similar to how it previously was in the Story Maps "editor", but without any of the buttons that enable for changing its layout, map style, theme, caption, or alternative text. The elevation chart mouse hover interaction is demonstrated once more and the video ends shortly after.
+  date: "2023-08-01"
+
 - title: Cal-Adapt
   tags:
     - web
