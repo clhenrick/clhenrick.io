@@ -96,7 +96,7 @@
   video:
     url: https://vimeo.com/1049769252
     embed: https://player.vimeo.com/video/1049769252?autoplay=1
-    thumb: activity-map-block.png
+    thumb: activity-map-block-embed.jpg
     title: Screen recording of Activity Map block
     desc: |-
       The video begins by showing the Story Maps story editor user interface with a mostly empty story taking up the majority of the space on the web page. At the top of the story is a title that reads "My Awesome Bicycle Ride" and a subtitle "Showing off the Activity Map block in Story Maps" with "Chris Henrick" as the author and the word "Draft" indicating that the story has not yet been published or updated if previously published.
