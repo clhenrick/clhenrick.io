@@ -64,3 +64,13 @@ p.post-teaser {
   font-style: italic;
   text-wrap: balance;
 }
+
+p > code {
+  /* HACK: custom font-size attempts to match non-mono font typeface but this may not work well for all system fonts */
+  font-size: 1.15rem;
+
+  /* NOTE: --color-syntax-2 is inherited from code.css */
+  background-color: var(--color-syntax-2);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xxs) var(--spacing-xs);
+}
