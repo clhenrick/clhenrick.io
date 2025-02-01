@@ -201,12 +201,15 @@ type ModalProps = PropsWithChildren & {
 };
 ```
 
-1. We need access to the state setter function that changes the `isOpen` prop's value so we've added a prop called `setIsOpen` for it.
-2. We also added an optional `shouldLightDismiss` prop that allows our Modal to respond to a "light dismiss" by the user.
+We added the two new props for the following reasons:
 
-The code for our second effect might look as follows:
+1. We need access to the state setter function that changes the `isOpen` prop's value, so we've added a required prop called `setIsOpen` for it. We'll call `setIsOpen` with a value of `false` when we need to close the Modal from an Escape key press or light dismiss.
 
-```tsx
+2. The optional `shouldLightDismiss` prop determines whether our Modal should respond to a "light dismiss" by the user or not. There might be instances where we don't want to use a light dismiss so we've made it an optional feature of our Modal.
+
+The code for our second effect is as follows:
+
+```ts
 useEffect(() => {
   const dialog = dialogRef.current;
 
@@ -252,23 +255,21 @@ useEffect(() => {
 
 _TODO: add full code up to this point or link to it externally?_
 
-After making these updates our Modal should now correctly respond to close events via the Escape key or when clicking outside of it from a light dismiss. It should also not have any problems being re-opened after it has been closed from either of these types of close events.
+After making these updates our Modal will now correctly respond to close events triggered by either the Escape key or light dismiss by the user. It should not have any problems being re-opened after it has been closed from either of these types of close events as well.
 
 ### Enabling the component to be controlled or uncontrolled
 
-In React, there is the concept of "controlled" or "uncontrolled" components which typically applies to form controls such as text inputs. The same concept can be applied to our Modal component.
+In React, there is the concept of ["controlled" and "uncontrolled" components](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) which typically applies to form controls such as inputs. A component that is "controlled" has its behavior handled by its parent while a component that is "uncontrolled" has behavior that the parent has no influence over. This concept can be applied to our Modal component.
 
 Depending on where in our application we use our Modal component, we may want it to be controlled or uncontrolled by a parent component. If we want the Modal to be a controlled component, then we need to maintain some state outside the Modal component and pass it to the component as an `isOpen` prop to control opening and closing it, which we've already accomplished.
 
-Other times we may want to open the Modal component once at a specific point in time and allow for it to be closed on its own without having to create and manage any additional state. The Modal component should be capable of handling either case for flexibility without any loss of functionality.
+Other times we may want to open the Modal component once at a specific point in time and allow for it to be closed on its own without having to create and manage any additional state. Our Modal component should be capable of handling either case for flexibility without any loss of functionality.
 
 #### Solving for the Controlled and UnControlled Modal
 
-To make our Modal flexible enough to be controlled or uncontrolled, we start by giving it its own `isOpen` state and `setIsOpen` state setter via React's `useState` hook. We will update the props for `isOpen` and `setIsOpen` to be optional. Within the component we prefer `props.isOpen` and `props.setIsOpen` if they exist. If they do not exist then we fall back to our own local `isOpen` state and `setIsOpen` state setter.
+To make our Modal flexible enough to be controlled or uncontrolled, we start by giving it its own `isOpen` state and `setIsOpen` state setter via React's `useState` hook. We will also update the existing component props for `isOpen` and `setIsOpen` to be optional. Within the component we prefer `props.isOpen` and `props.setIsOpen` if they exist. If they do not exist then we fall back to our own local `isOpen` state and `setIsOpen` state setter.
 
-To avoid confusion with the similarly named props and state, we alias `props.isOpen` as `controlledIsOpen` and `props.setIsOpen` as `controlledSetIsOpen`. We'll also name our local `isOpen` as `uncontrolledIsOpen` and our local `setIsOpen` as `uncontrolledSetIsOpen`. Finally, we reconcile the `controlled` and `uncontrolled` props and state using the `??` operator. We then refer to `isOpen` and `setIsOpen` in the rest of our Modal's internal code.
-
-Lastly, we'll add a new boolean prop called `initialOpen` that determines if the Modal should be open by default when it is being used as a uncontrolled component.
+To avoid confusion with the similarly named props and state, we alias `props.isOpen` as `controlledIsOpen` and `props.setIsOpen` as `controlledSetIsOpen`. We'll also name our local `isOpen` as `uncontrolledIsOpen` and our local `setIsOpen` as `uncontrolledSetIsOpen`. Finally, we reconcile the `controlled` and `uncontrolled` props and local state using the [nullish coalescing operator (`??`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing). We then refer to `isOpen` and `setIsOpen` in the rest of our Modal's internal code to further avoid referencing props and states by their aliased names. Lastly, we'll add a new boolean prop called `initialOpen` that determines if the Modal should be open by default when it is being used as a uncontrolled component.
 
 The following code demonstrates how we rectify the `isOpen` state and state setter in a controlled or uncontrolled setting:
 
@@ -278,20 +279,27 @@ type ModalDialogProps = React.PropsWithChildren & {
   isOpen?: boolean;
   /** state setter for our `isOpen` value */
   setIsOpen?: (value: boolean) => void;
-  /** is the Modal open by default, only when uncontrolled */
+  /** is the Modal open by default (only when uncontrolled) */
   initialOpen?: boolean;
-  /** */
+  /** whether the user should be able to close the modal by clicking outside of it */
   shouldLightDismiss?: boolean;
 };
 
-export const ModalDialog = ({
+export const Modal = ({
   initialOpen = false,
-  isOpen: controlledOpen,
+  isOpen: controlledIsOpen,
   setIsOpen: controlledSetIsOpen,
 }: ModalDialogProps) => {
+  /* Local isOpen state and state setter.
+   * Used when the Modal is operating as an "uncontrolled" component. */
   const [uncontrolledIsOpen, uncontrolledSetIsOpen] = useState(initialOpen);
 
+  /* Rectified isOpen state.
+   * Prefer props.isOpen if provided, otherwise use local isOpen state */
   const isOpen = controlledIsOpen ?? uncontrolledIsOpen;
+
+  /* Rectified setIsOpen state setter.
+   * Prefer is props.setIsOpen is provided, otherwise use local setIsOpen state setter */
   const setIsOpen = controlledSetIsOpen ?? uncontrolledSetIsOpen;
 
   // NOTE: previous code omitted for brevity
@@ -300,12 +308,12 @@ export const ModalDialog = ({
 };
 ```
 
-One issue with this approach is if the consumer of our `Modal` component passes only `props.isOpen` and not `props.setIsOpen`, or vice versa, which could will result in state getting out of sync. To prevent this we could either:
+One issue with this approach is if the consumer of our `Modal` component passes only `props.isOpen` and not `props.setIsOpen`, or vice versa. This could result in the `isOpen` state getting out of sync. To prevent this we could either:
 
 1. Throw an `Error` when one is defined and the other is not. We can do this only when the component is in a development environment (e.g. when `process.env.NODE_ENV === "development"`) .
 2. Update our `ModalProps` typings so that the `isOpen` and `setIsOpen` props have to both be set or not set at all.
 
-I personally decided to go with option two. Updating the props means they could be written as follows:
+I chose to go with option two. Updating the props means they could be written as follows:
 
 ```ts
 type ModalDialogIsOpenProps =
@@ -324,7 +332,7 @@ type ModalDialogProps = React.PropsWithChildren &
   ModalDialogIsOpenProps & {
     /** should a user be able to dismiss the dialog by clicking outside of it? */
     shouldLightDismiss?: boolean;
-    /** should the dialog be open by default? */
+    /** is the Modal open by default (only when uncontrolled) */
     initialOpen?: boolean;
   };
 ```
@@ -335,23 +343,46 @@ _TODO: add screenshot of TS error in VS Code_
 
 ### Preventing misuse of the dialog when forwarding a ref to it
 
-There may be a time where some component further up the component tree needs to access the actual HTML dialog node, perhaps to add an event listener to it. If we're not careful, someone could misuse a ref to the dialog node and cause it to be opened as a _non-modal_ dialog by doing either `dialogRef.open = true` or `dialogRef.show()` . Needless to say, this isn't what we want our `Modal` component to do. Additionally this would cause our `isOpen` React state to become out of sync with the `dialog`'s own `open` property which would cause our `Modal` component to be annoyingly buggy.
+There may be a time where some component further up the component tree needs to access the Modal's HTML dialog node, perhaps to add an event listener to it. If we're not careful, someone could misuse a ref to the dialog node and cause it to be opened as a _non-modal_ dialog by doing either `dialogRef.open = true` or `dialogRef.show()` . Needless to say, this isn't what we want our `Modal` component to do. Additionally this would cause our `isOpen` React state to become out of sync with the `dialog`'s own `open` property which would cause our `Modal` component to be annoyingly buggy. It would be helpful for consumers of the Modal component to not be able to make such mistakes when passing a `ref` to it.
 
 #### Solving the Modal's forwarded ref
 
-We use React's `useImperativeHandle` to accept the _forwarded ref_ to our `Modal` component as well as safely provide access to the `Modal`'s private dialog element ref. This allows for limiting access to the dialog's behavior only to what we deem acceptable for its intended use. The functionality we expose will call our Modal's `setIsOpen` state setter when needed. We prevent manipulating the `dialog.open` property by using a method that returns the value of our Modal's `isOpen` React state since that is the source of truth of whether our Modal is visible or hidden.
+First we wrap our component in React's [`forwardRef` utility function](https://react.dev/reference/react/forwardRef) which allows for the parent component to pass a `ref` to our Modal component:
 
-The following code demonstrates one way of accomplishing these requirements using React's `useImperativeHandle`.
+```tsx
+export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
+  function ModalDialogInner(
+    {
+      shouldLightDismiss = true,
+      initialOpen = false,
+      isOpen: controlledOpen,
+      setIsOpen: setControlledOpen,
+      onClose,
+      children,
+    },
+    forwardedRef
+  ) {
+    // NOTE: existing code omitted for brevity
+  }
+);
+```
+
+> A quick note on `forwardRef`: in React version 19 we will no longer need to use `forwardRef` to pass a `ref` to a functional component in React. We will instead be able to pass a `ref` as a prop to the component. Keep this mind if you are now using React 19.
+
+Next we use React's `useImperativeHandle` hook to accept the _forwarded ref_ to our `Modal` component as well as safely provide access to the `Modal`'s internal HTML dialog element `ref`. This allows for limiting access to the dialog's behavior only to what we deem acceptable for its intended use. The functionality we expose will call our Modal's reconciled `setIsOpen` state setter when needed. We prevent manipulating the `dialog.open` property by using a method that returns the value of our Modal's `isOpen` React state since that is the source of truth of whether our Modal is visible or hidden.
+
+The following code demonstrates one way of accomplishing these requirements using React's `useImperativeHandle` hook within our Modal component.
 
 ```ts
-// the internal ref that references the actual dialog DOM node
+// the Modal's internal ref that provides access to the HTML dialog DOM node
 const dialogRef = useRef<HTMLDialogElement>(null);
 
 // handles giving the ref forwarded from the parent specific properties
 useImperativeHandle(
   // the ref passed in from a parent component
   forwardedRef,
-  // the object returned by this anonymous function contains methods that are available to the forwarded ref
+  // the object returned by this anonymous function provides
+  // methods that are available to the forwarded ref
   () => {
     return {
       close() {
@@ -422,17 +453,21 @@ const App = () => {
     };
   }, []);
 
-  return <Modal ref={modalRef}>{/* markup omitted for brevity */}</Modal>;
+  return (
+    <ModalDialog ref={modalRef}>
+      {/* additional markup omitted for brevity */}
+    </ModalDialog>
+  );
 };
 ```
 
-### Preventing the dialog from holding onto stale state in its children when closed
+### Performance Consideration: Preventing Stale State and Props
 
-In complex web applications we may use modals for enabling a user to complete arbitrary and sometimes complex tasks such as filling out a long form, uploading and maybe editing an image, adding pins to a map, etc. After completing such a task (or abandoning it) our Modal component will be closed and the dialog's `open` property is set to `false`. However, only the dialog's `display` property is updated; it is set to `none`. Setting the CSS `display` property to `none` does not unmount our Modal component from React's component tree. Nor does it remove the dialog element from the DOM. The risk here is that React will hold onto any local state, effects, etc. that our `Modal`'s children are using.
+In complex web applications we may use modal dialogs for enabling a user to complete arbitrary and sometimes complex tasks such as filling out a long form, uploading and maybe editing an image, adding pins to a map, etc. After completing such a task (or abandoning it) our Modal component will be closed and the dialog's `open` property is set to `false`. When this happens only the dialog's CSS `display` property is updated to `none`. This does not unmount our Modal component from React's component tree, nor does it remove the dialog element from the DOM. The risk here is that React will hold onto any local state, effects, etc. that our `Modal`'s children are using when the Modal is closed.
 
-If we're not careful, when re-opened, the dialog could present the user interface in a state that isn't accurately reflecting what the user should see, due to the stale state. Additionally, our app could end up unnecessarily using device memory when it doesn't need to if the `Modal` children are doing something complex or CPU heavy.
+If we're not careful, when re-opened, our Modal component could present the user interface in a state that isn't accurately reflecting what the user should see, due to the stale state or props. Additionally, our app could end up unnecessarily using device memory when it doesn't need to if the `Modal`'s children components are doing something complex or CPU heavy.
 
-It would be very helpful for the consumers of our `Modal` component to ensure the Modal component is capable of cleaning up after itself when it is hidden. Or at least give the consumer a clear way to handle the clean up issue.
+It would be very helpful for the consumers of our `Modal` component to ensure the Modal component is capable of cleaning up after itself when it is hidden. Or at least provide the consumer with a clear method of handling any clean up.
 
 #### Solving preventing the Modal from holding onto stale state
 
@@ -440,13 +475,13 @@ There are a few different ways to handle preventing the Modal component's childr
 
 1. We could add an optional prop that is a callback function to run on the dialog's "close" event. This would allow the consumer of our `Modal` component to run any clean up tasks like resetting state or pausing or quitting operations that may be memory intensive. One potential downside of this approach requires the consumer of our Modal component to remember to do their clean-up work in the Modal's `props.onClose` callback function.
 
-2. We could wrap the `Modal` in a helper component, and pass it a `key` prop of a different value when opened and closed to force it to unmount and remount each time it is opened (see the React docs (_TODO_) if you're not familiar with the special `key` prop). This might not be desirable to do all the time though, as generally it is considered more performant to let React reconcile DOM changes rather than forcing the remounting of parts of our component tree.
+2. We could wrap the `Modal` in a helper component, and pass it a [special `key` prop](https://react.dev/learn/rendering-lists#why-does-react-need-keys) of a different value when opened and closed to force it to unmount and remount each time it is opened and closed. When a component is unmounted any internal state is reset and effect clean ups are run. However, this might not be desirable to do all the time though, as generally it is considered more performant to let React reconcile DOM changes rather than forcing the remounting of parts of our component tree.
 
-3. Another way to unmount the Modal from the React component tree (and the dialog from the DOM) when it is closed would be by wrapping the Modal in a helper component, and adding a conditional that returns the Modal when `isOpen` is `true` and returns `undefined` when `isOpen` is `false`. This approach would have the same pitfalls as the previous one.
+3. Another way to remount the Modal from the React component tree (and the dialog from the DOM) when it is closed would be by wrapping the Modal in a helper component, and adding a conditional that returns the Modal when `isOpen` is `true` and `undefined` when `isOpen` is `false`. This approach would have the same pitfalls as the previous method using the `key` prop.
 
-Which method you choose depends on the context you are using the `Modal` in as well as other factors such as whether you would like to animate the Modal's transitioning between its visible and hidden states. In this post I will demonstrate using the `onClose` event to run any clean-up tasks when the modal is closed. I feel that this gives the most flexibility to consumers of the Modal component and is simple to implement.
+Which method you choose depends on the context you are using the `Modal` in as well as other factors such as whether you would like to animate the Modal's transition between its visible and hidden states. In this post I will demonstrate using the `onClose` event to run any clean-up tasks when the modal is closed. I feel that this gives the most flexibility to consumers of the Modal component and is simple to implement.
 
-_TODO: show both approaches?_
+<!-- TODO: show both approaches? -->
 
 Our Modal component props will now look as follows:
 
@@ -458,7 +493,7 @@ export type ModalDialogProps = PropsWithChildren &
     /** should the dialog be open by default? */
     initialOpen?: boolean;
     /** NEW: callback function to run when the dialog is closed */
-    onClose?: () => void;
+    onClose?: (event?: SyntheticEvent) => void;
   };
 ```
 
@@ -488,9 +523,7 @@ export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 );
 ```
 
-One thing to note about this solution is that we need to take care with when we call the `onClose` callback prop. If we are animating the dialog's close event, then we probably don't want to update the Modal component's children until it is hidden.
-
-how we unmount the Modal and its children if we are animating the Modal when showing and hiding it. If we unmount it too soon, it could break the animation.
+One thing to note about this solution is that we need to take care with when we call the Modal's `onClose` callback prop. If we are animating the dialog's close event, then we probably don't want to update the Modal component's children until it is hidden, otherwise we might suddenly show the Modal's contents in an unexpected state prior to it being hidden.
 
 ### Dialog Animation challenges
 
@@ -663,13 +696,14 @@ You may also view as well as run this code by downloading the corresponding [rea
 
 ## Further Reading
 
-Thanks for reading this blog post, I know it was a long one. I hope that it gives you a "good enough" starting point for creating an accessible Modal Dialog with React. Perhaps you even learned a thing or two about web accessibility, whether specific to modal dialogs or more generally speaking. If so please feel free to let me know by dropping me a short message either via the [contact form](/contact/) on this website or a mention on [Mastodon](#) (_TODO_).
+<!-- prettier-ignore -->
+Thanks for reading this blog post, I know it was a long one. I hope that it gives you a "good enough" starting point for creating an accessible Modal Dialog with React. Perhaps you even learned a thing or two about web accessibility, whether specific to modal dialogs or more generally speaking. If so please feel free to let me know by dropping me a short message either via the [contact form](/contact/) on this website or a mention on [Mastodon]({{ metadata.socialLinks.get('Mastodon') }}).
 
 If you're interested in digging in deeper, here are some articles to browse to learn more about the HTML `<dialog>` element and the accessibility of the modal dialog pattern.
 
 - [The Dialog element - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 - [MDN Dialog Accessibility notes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility")
-- https://web.dev/articles/building/a-dialog-component
+- [Web.dev Building a dialog component](https://web.dev/articles/building/a-dialog-component)
 - [Animating the Dialog Element](https://frontendmasters.com/blog/animating-dialog/)
 - [Modal Dialog Example](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/) (ARIA APG modal dialog pattern)
 - [Use the dialog element (reasonably) | scottohara.me](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html)
@@ -678,4 +712,4 @@ If you're interested in digging in deeper, here are some articles to browse to l
 - [GitHub - scottaohara/accessible_modal_window: Accessible modal dialogs](https://github.com/scottaohara/accessible_modal_window)
 - [Having an open dialog (archival post) | scottohara.me](https://www.scottohara.me/blog/2019/03/05/open-dialog.html)
 - [Dialog Focus in Screen Readers](https://adrianroselli.com/2020/10/dialog-focus-in-screen-readers.html)
-- [https://blog.mayank.co/is-dialog-enough](https://blog.mayank.co/is-dialog-enough "https://blog.mayank.co/is-dialog-enough")
+- [Is Dialog Enough?](https://blog.mayank.co/is-dialog-enough)
