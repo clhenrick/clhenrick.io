@@ -1,0 +1,681 @@
+---
+title: "Building an Accessible Modal Dialog in React"
+date: 2025-02-01
+teaser: "Using the HTML dialog element with React to create an accessible modal dialog."
+tags:
+  - React
+  - Accessibility
+  - Dialog
+---
+
+## Introduction
+
+Much has already been written about using the HTML `<dialog>` element as the preferred method for creating an accessible _modal dialog_, now that it has a Baseline support of "widely available" (it is available and generally well supported in all major browsers since March, 2022). However, using the `dialog` element with React presents some technical challenges to ensure users of web products built with React will reap its accessibility benefits. This post will discuss these challenges and offer suggestions for how to solve them.
+
+The goal of this post is to walk through creating a re-usable `Modal` React component that wraps the HTML `dialog` element for use as an accessible modal dialog.
+
+From a high level, a consumer of our `Modal` component should be able to:
+
+- control opening and closing it
+- optionally not control it (uncontrolled)
+- render arbitrary content within it
+- assign it an accessible name and description
+- perform any necessary clean up tasks when the Modal is closed
+
+We won't go into depth on how to style the `Modal` component as the intention of this component is that it serves as a wrapper around the HTML `dialog` element and that the consumer of the component will be responsible for applying styles to it. We will however give it some default styling for its `::backdrop` pseudo element as well as reset any undesirable User Agent (default browser) styles.
+
+## Benefits of using the HTML dialog element as a modal dialog
+
+Using the HTML `dialog` element gives us a lot of accessibility features for free:
+
+- **Focus management**: moves focus to the dialog when opened and back to the dialog's opening trigger (typically a button) when closed for keyboard interactions.
+- **Traps keyboard focus** within the modal and prevents keyboard interaction with the DOM outside of the `dialog` when it is open.
+- **Prevents content outside of the `dialog` from being accessed** by assistive technology such as screen reader software when it is opened.
+- **Closes the dialog** when the **escape key** is pressed
+- Implicitly applies the **ARIA "dialog" role**
+- Implicitly sets the **ARIA `aria-modal` property to "true"**
+
+Additionally, using the `dialog` element:
+
+- Provides us with a **`::backdrop` pseudo element** we can style to dim the area outside of the `dialog` when it is opened.
+- Uses the browser's [top-layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) so that we don't have to worry about competing z-index issues between the `dialog` and other UI components. The dialog will always be on top of other elements in the stacking order.
+
+What this boils down to is that it saves us from having to implement these features on our own. It means there is less room for things to go wrong compared to when we implement these features on our own using JavaScript. That's a real time saver and a huge weight off of our shoulders if you ask me.
+
+It removes the need of a 3rd party library like `react-modal` and removes the need to rely on using a [React Portal](https://react.dev/reference/react-dom/createPortal). It also presents an opportunity to educate the rest of our team about accessibility features of modal dialogs and could open the door to introducing other types of accessible UI patterns.
+
+With that all being said, there may be times when you can't use the HTML dialog element for your modal dialog needs. If this is the case I recommend looking at the ARIA Authoring Practices Guide's [Modal Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/). This pattern has been in use for quite some time now and is generally well supported by modern browsers and assistive technology. Regardless, it's always a good idea to test the implementation before releasing it into the wild. The same could be said for what we're about to do here.
+
+## Starter Boilerplate
+
+The start of the component we will be writing is as follows:
+
+```tsx
+type ModalDialogProps = React.PropsWithChildren & {};
+
+export const ModalDialog = (props: ModalDialogProps) => {
+  return <dialog>{props.children}</dialog>;
+};
+```
+
+I'm using TypeScript here to make it explicit what props will be passed to our `ModalDialog`. If you're not familiar with TypeScript and/or prefer vanilla JavaScript do not fret. I will do my best to explain what the code is doing. TypeScript and React are a common enough pairing at the time of this writing I felt it made sense to use TypeScript in the code examples.
+
+## Technical Design Challenges
+
+Let's now dive into the technical design challenges of using the HTML dialog element with React to create an accessible modal dialog. We'll cover these challenges one at a time, breaking down and building off each one. Afterward, we'll be sure to show the complete code.
+
+If you're in a rush or feeling lazy, feel free to [skip ahead to the final code](#all-together-now).
+
+### Syncing state between React and the dialog's open property
+
+Modal dialogs have a very simple UI component state: they're either visible or they're hidden. As such we will leverage React's `useState` hook to control the visibility of the `Modal` component. When the state change occurs React will re-render our component to either show it or hide it. If you're not familiar with how React decides when to render and re-render components then I strongly suggest you stop right here and read [Render and Commit in the official React docs](https://react.dev/learn/render-and-commit) before continuing along with this post.
+
+Initially, we will have this state live outside of our component and pass it to it as a prop.
+
+```tsx
+import { useState, type PropsWithChildren } from "react";
+import { Modal } from "./modal";
+
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <Modal isOpen={isOpen}>
+        <h2>I'm a modal dialog</h2>
+        <button onClick={() => setIsOpen(false)}>Close Me</button>
+      </Modal>
+    </>
+  );
+};
+
+type ModalProps = PropsWithChildren & {
+  isOpen: boolean;
+};
+
+const Modal = (props: ModalProps) => {
+  // TODO: handle props.isOpen
+  return <dialog>{props.children}</dialog>;
+};
+```
+
+Right now this code won't actually cause the Modal to be visible. We need to think about how we want to make our Modal visible when reacting to its `isOpen` prop change. According to the [HTML dialog spec](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element), to have the dialog behave as a true _modal dialog_ we need to call its `showModal()`. Note that the dialog element also has a `show()` method which will cause it to behave as a _non-modal dialog_, which is **_not_** what we want, since it will not utilize the accessibility features previously discussed in this post.
+
+The HTML `dialog` element also has an `open` property that determines whether it is visible or not. The dialog element will set its own `open` property to `true` when opened and `false` when closed. The challenge here is that we need to sync our React `isOpen` state with the `dialog`'s own `open` state to ensure our `Modal` component is not buggy and works as expected.
+
+The dialog's `open` property can be changed in a few different ways. Some of them may happen without us having to write any code at all. For example:
+
+- when the user presses the escape key when the dialog is open
+- when the user hits submit on a form with `method="dialog"` within the dialog
+- calling `dialog.showModal()`
+- calling `dialog.show()`
+- calling `dialog.close()`
+- setting `dialog.open = true / false`
+
+Problems can occur if our React state gets out of sync with the dialog's `open` property, so we need to take some steps to make sure that these two are always synced with one another, and that we are always opening the dialog as a modal dialog and not as a non-modal dialog.
+
+#### Solving syncing state
+
+When working with the concept of component "state" in React, it's a best practice to treat React's state as the source of truth. Meaning, we do not want our React state competing with the dialog element's `open` property in our application logic. We only want to check the React state to determine when the dialog is visible or not.
+
+When syncing things that are external from React we often will use an "effect", and to create an effect we reach for the `useEffect` hook. An effect to sync our React state with our dialog's `open` property could be written as follows:
+
+```tsx
+import { useRef } from "react";
+
+const Modal = ({ isOpen }: ModalProps) => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  // syncs the dialog's `open` property with our React `isOpen` state
+  useEffect(() => {
+    const dialog = dialogRef.current;
+
+    if (isOpen) {
+      dialog.showModal();
+    } else {
+      dialog.close();
+    }
+
+    return () => {
+      dialog.close();
+    };
+  }, [isOpen]);
+
+  return <dialog ref={dialogRef}>{props.children}</dialog>;
+};
+```
+
+The clean-up function that the effect returns makes sure to close the dialog when the effect is re-run. This is important when running React in "strict mode" since the effect will be run twice when the component is rendered for the first time in a development environment. [React's own docs give an example of this](https://react.dev/learn/synchronizing-with-effects#controlling-non-react-widgets).
+
+There's one improvement we can make here. We should check that the Modal isn't already open before calling `dialog.showModal()`, as doing so [will throw a error](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal#exceptions) which could crash our React app. To prevent this error from being thrown, we will create a function called `safelyOpenModal()` that checks to make sure `dialog.open` is `false` before calling `dialog.showModal()`.
+
+```ts
+function safelyShowModal(dialog: HTMLDialogElement | null) {
+  if (dialog && !dialog.open) {
+    dialog.showModal();
+  }
+}
+```
+
+We then update our `Modal`'s effect to be as follows:
+
+```js
+useEffect(() => {
+  const dialog = dialogRef.current;
+
+  if (isOpen) {
+    safelyShowModal(dialog);
+  } else {
+    dialog.close();
+  }
+
+  return () => {
+    dialog.close();
+  };
+}, [isOpen]);
+```
+
+Note that the `safelyShowModal` function should be defined outside of our `Modal` component so that it won't need to be listed as a dependency of our effect.
+
+### Handling close events
+
+As mentioned previously, there are other ways our Modal can be closed when we use the dialog element with it. One way is when the user presses the Escape key on their keyboard. With our code as it currently exists, the `dialog`'s `open` property will be set to `false` but our React state won't be updated. This means our React state and dialog's `open` state will get out of sync, leading to bugs.
+
+We also might want to add a "light dismiss" to our Modal where mouse users may click outside of it to close it. This means a user should be able to click on the `::backdrop` pseudo element to close the Modal.
+
+Lastly, we will want to prevent the close event from propagating if our dialog is nested within another dialog. Otherwise when the nested Modal is open, closing it will close the inner Modal. Aside: I realize that nested Modals might not be the best in terms of usability, however this can happen in the wild and we want to make sure we cover all of our bases here.
+
+#### Solving handling close events
+
+To cover the technical requirements for handling other ways of closing our Modal we will use a second effect. First, we'll add a couple of new props to our Modal component:
+
+```tsx
+type ModalProps = PropsWithChildren & {
+  /** whether the Modal is visible or hidden */
+  isOpen: boolean;
+  /** 1. NEW: state setting function that updates the value of `isOpen` */
+  setIsOpen: (value: boolean) => void;
+  /** 2. NEW: should a user be able to "light dismiss" the Modal by clicking on the backdrop? */
+  shouldLightDismiss?: boolean;
+};
+```
+
+1. We need access to the state setter function that changes the `isOpen` prop's value so we've added a prop called `setIsOpen` for it.
+2. We also added an optional `shouldLightDismiss` prop that allows our Modal to respond to a "light dismiss" by the user.
+
+The code for our second effect might look as follows:
+
+```tsx
+useEffect(() => {
+  const dialog = dialogRef.current;
+
+  /** function that runs when we intercept a close event */
+  function handleClose(event: Event | KeyboardEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    setIsOpen(false);
+  }
+
+  /** Handles dismissing the modal when clicking outside of it / on the ::backdrop */
+  function lightDismiss(event: Event) {
+    const { target } = event;
+    if (target instanceof Element && target.nodeName === "DIALOG") {
+      handleClose(event);
+    }
+  }
+
+  /** function that runs when the user presses the Escape key when the Modal is open */
+  function closeOnEscape(event: KeyboardEvent) {
+    if (event.code === "Escape") {
+      handleClose(event);
+    }
+  }
+
+  // we add a click event listener to handle the Modal light dismiss
+  if (shouldLightDismiss) {
+    dialog?.addEventListener("click", lightDismiss);
+  }
+
+  // we add a keydown event listener to intercept the Escape key press
+  dialog?.addEventListener("keydown", closeOnEscape);
+
+  // our clean up function removes the event listeners to prevent memory leaks
+  return () => {
+    if (shouldLightDismiss) {
+      dialog?.removeEventListener("click", lightDismiss);
+    }
+    dialog?.removeEventListener("keydown", closeOnEscape);
+  };
+}, [setIsOpen, shouldLightDismiss]);
+```
+
+_TODO: add full code up to this point or link to it externally?_
+
+After making these updates our Modal should now correctly respond to close events via the Escape key or when clicking outside of it from a light dismiss. It should also not have any problems being re-opened after it has been closed from either of these types of close events.
+
+### Enabling the component to be controlled or uncontrolled
+
+In React, there is the concept of "controlled" or "uncontrolled" components which typically applies to form controls such as text inputs. The same concept can be applied to our Modal component.
+
+Depending on where in our application we use our Modal component, we may want it to be controlled or uncontrolled by a parent component. If we want the Modal to be a controlled component, then we need to maintain some state outside the Modal component and pass it to the component as an `isOpen` prop to control opening and closing it, which we've already accomplished.
+
+Other times we may want to open the Modal component once at a specific point in time and allow for it to be closed on its own without having to create and manage any additional state. The Modal component should be capable of handling either case for flexibility without any loss of functionality.
+
+#### Solving for the Controlled and UnControlled Modal
+
+To make our Modal flexible enough to be controlled or uncontrolled, we start by giving it its own `isOpen` state and `setIsOpen` state setter via React's `useState` hook. We will update the props for `isOpen` and `setIsOpen` to be optional. Within the component we prefer `props.isOpen` and `props.setIsOpen` if they exist. If they do not exist then we fall back to our own local `isOpen` state and `setIsOpen` state setter.
+
+To avoid confusion with the similarly named props and state, we alias `props.isOpen` as `controlledIsOpen` and `props.setIsOpen` as `controlledSetIsOpen`. We'll also name our local `isOpen` as `uncontrolledIsOpen` and our local `setIsOpen` as `uncontrolledSetIsOpen`. Finally, we reconcile the `controlled` and `uncontrolled` props and state using the `??` operator. We then refer to `isOpen` and `setIsOpen` in the rest of our Modal's internal code.
+
+Lastly, we'll add a new boolean prop called `initialOpen` that determines if the Modal should be open by default when it is being used as a uncontrolled component.
+
+The following code demonstrates how we rectify the `isOpen` state and state setter in a controlled or uncontrolled setting:
+
+```tsx
+type ModalDialogProps = React.PropsWithChildren & {
+  /** whether the modal is open or not */
+  isOpen?: boolean;
+  /** state setter for our `isOpen` value */
+  setIsOpen?: (value: boolean) => void;
+  /** is the Modal open by default, only when uncontrolled */
+  initialOpen?: boolean;
+  /** */
+  shouldLightDismiss?: boolean;
+};
+
+export const ModalDialog = ({
+  initialOpen = false,
+  isOpen: controlledOpen,
+  setIsOpen: controlledSetIsOpen,
+}: ModalDialogProps) => {
+  const [uncontrolledIsOpen, uncontrolledSetIsOpen] = useState(initialOpen);
+
+  const isOpen = controlledIsOpen ?? uncontrolledIsOpen;
+  const setIsOpen = controlledSetIsOpen ?? uncontrolledSetIsOpen;
+
+  // NOTE: previous code omitted for brevity
+
+  return <dialog ref={dialogRef}>{props.children}</dialog>;
+};
+```
+
+One issue with this approach is if the consumer of our `Modal` component passes only `props.isOpen` and not `props.setIsOpen`, or vice versa, which could will result in state getting out of sync. To prevent this we could either:
+
+1. Throw an `Error` when one is defined and the other is not. We can do this only when the component is in a development environment (e.g. when `process.env.NODE_ENV === "development"`) .
+2. Update our `ModalProps` typings so that the `isOpen` and `setIsOpen` props have to both be set or not set at all.
+
+I personally decided to go with option two. Updating the props means they could be written as follows:
+
+```ts
+type ModalDialogIsOpenProps =
+  | {
+      /** is the Modal open / visible. */
+      isOpen: boolean;
+      /** state setter function that changes the isOpen prop value. */
+      setIsOpen: (value: boolean) => void;
+    }
+  | {
+      isOpen?: never;
+      setIsOpen?: never;
+    };
+
+type ModalDialogProps = React.PropsWithChildren &
+  ModalDialogIsOpenProps & {
+    /** should a user be able to dismiss the dialog by clicking outside of it? */
+    shouldLightDismiss?: boolean;
+    /** should the dialog be open by default? */
+    initialOpen?: boolean;
+  };
+```
+
+Now if we pass in either `isOpen` or `setIsOpen` to our Modal component, TypeScript will complain at us. If you have a TypeScript plug-in for your editor or IDE you should also get a warning on the Modal declaration:
+
+_TODO: add screenshot of TS error in VS Code_
+
+### Preventing misuse of the dialog when forwarding a ref to it
+
+There may be a time where some component further up the component tree needs to access the actual HTML dialog node, perhaps to add an event listener to it. If we're not careful, someone could misuse a ref to the dialog node and cause it to be opened as a _non-modal_ dialog by doing either `dialogRef.open = true` or `dialogRef.show()` . Needless to say, this isn't what we want our `Modal` component to do. Additionally this would cause our `isOpen` React state to become out of sync with the `dialog`'s own `open` property which would cause our `Modal` component to be annoyingly buggy.
+
+#### Solving the Modal's forwarded ref
+
+We use React's `useImperativeHandle` to accept the _forwarded ref_ to our `Modal` component as well as safely provide access to the `Modal`'s private dialog element ref. This allows for limiting access to the dialog's behavior only to what we deem acceptable for its intended use. The functionality we expose will call our Modal's `setIsOpen` state setter when needed. We prevent manipulating the `dialog.open` property by using a method that returns the value of our Modal's `isOpen` React state since that is the source of truth of whether our Modal is visible or hidden.
+
+The following code demonstrates one way of accomplishing these requirements using React's `useImperativeHandle`.
+
+```ts
+// the internal ref that references the actual dialog DOM node
+const dialogRef = useRef<HTMLDialogElement>(null);
+
+// handles giving the ref forwarded from the parent specific properties
+useImperativeHandle(
+  // the ref passed in from a parent component
+  forwardedRef,
+  // the object returned by this anonymous function contains methods that are available to the forwarded ref
+  () => {
+    return {
+      close() {
+        setIsOpen(false);
+      },
+      showModal() {
+        setIsOpen(true);
+      },
+      isOpen() {
+        return isOpen;
+      },
+      addEventListener(
+        name: string,
+        callback: EventListenerOrEventListenerObject,
+        options?: boolean | AddEventListenerOptions
+      ) {
+        dialogRef.current?.addEventListener(name, callback, options);
+      },
+      removeEventListener(
+        name: string,
+        callback: EventListenerOrEventListenerObject,
+        options?: boolean | AddEventListenerOptions
+      ) {
+        dialogRef.current?.removeEventListener(name, callback, options);
+      },
+    };
+  },
+  [isOpen, setIsOpen]
+);
+```
+
+We may type the forwarded ref as follows:
+
+```ts
+export interface ModalDialogRef
+  extends Pick<
+    HTMLDialogElement,
+    "addEventListener" | "removeEventListener" | "close" | "showModal"
+  > {
+  isOpen: () => boolean;
+}
+```
+
+Using the forwarded ref from a parent component is then fairly straight forward. For example, if we want to add event listeners for the dialog element's open and close events:
+
+```tsx
+import { useEffect, useRef } from "react";
+import { type ModalDialogRef, Modal } from "./Modal";
+
+const App = () => {
+  const modalRef = useRef<ModalDialogRef>(null);
+
+  useEffect(() => {
+    function handleOpen() {
+      console.log("I'm open!");
+    }
+
+    function handleClose() {
+      console.log("I'm closed!");
+    }
+
+    modalRef.current?.addEventListener("open", handleOpen);
+    modalRef.current?.addEventListener("close", handleClose);
+
+    return () => {
+      modalRef.current?.removeEventListener("open", handleOpen);
+      modalRef.current?.removeEventListener("close", handleClose);
+    };
+  }, []);
+
+  return <Modal ref={modalRef}>{/* markup omitted for brevity */}</Modal>;
+};
+```
+
+### Preventing the dialog from holding onto stale state in its children when closed
+
+In complex web applications we may use modals for enabling a user to complete arbitrary and sometimes complex tasks such as filling out a long form, uploading and maybe editing an image, adding pins to a map, etc. After completing such a task (or abandoning it) our Modal component will be closed and the dialog's `open` property is set to `false`. However, only the dialog's `display` property is updated; it is set to `none`. Setting the CSS `display` property to `none` does not unmount our Modal component from React's component tree. Nor does it remove the dialog element from the DOM. The risk here is that React will hold onto any local state, effects, etc. that our `Modal`'s children are using.
+
+If we're not careful, when re-opened, the dialog could present the user interface in a state that isn't accurately reflecting what the user should see, due to the stale state. Additionally, our app could end up unnecessarily using device memory when it doesn't need to if the `Modal` children are doing something complex or CPU heavy.
+
+It would be very helpful for the consumers of our `Modal` component to ensure the Modal component is capable of cleaning up after itself when it is hidden. Or at least give the consumer a clear way to handle the clean up issue.
+
+#### Solving preventing the Modal from holding onto stale state
+
+There are a few different ways to handle preventing the Modal component's children from holding onto stale state:
+
+1. We could add an optional prop that is a callback function to run on the dialog's "close" event. This would allow the consumer of our `Modal` component to run any clean up tasks like resetting state or pausing or quitting operations that may be memory intensive. One potential downside of this approach requires the consumer of our Modal component to remember to do their clean-up work in the Modal's `props.onClose` callback function.
+
+2. We could wrap the `Modal` in a helper component, and pass it a `key` prop of a different value when opened and closed to force it to unmount and remount each time it is opened (see the React docs (_TODO_) if you're not familiar with the special `key` prop). This might not be desirable to do all the time though, as generally it is considered more performant to let React reconcile DOM changes rather than forcing the remounting of parts of our component tree.
+
+3. Another way to unmount the Modal from the React component tree (and the dialog from the DOM) when it is closed would be by wrapping the Modal in a helper component, and adding a conditional that returns the Modal when `isOpen` is `true` and returns `undefined` when `isOpen` is `false`. This approach would have the same pitfalls as the previous one.
+
+Which method you choose depends on the context you are using the `Modal` in as well as other factors such as whether you would like to animate the Modal's transitioning between its visible and hidden states. In this post I will demonstrate using the `onClose` event to run any clean-up tasks when the modal is closed. I feel that this gives the most flexibility to consumers of the Modal component and is simple to implement.
+
+_TODO: show both approaches?_
+
+Our Modal component props will now look as follows:
+
+```ts
+export type ModalDialogProps = PropsWithChildren &
+  ModalDialogIsOpenProps & {
+    /** should a user be able to dismiss the dialog by clicking outside of it? */
+    shouldLightDismiss?: boolean;
+    /** should the dialog be open by default? */
+    initialOpen?: boolean;
+    /** NEW: callback function to run when the dialog is closed */
+    onClose?: () => void;
+  };
+```
+
+To implement the on close solution, we simply pass the `props.onClose` function to the `<dialog>` element:
+
+```tsx
+export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
+  function ModalDialog(
+    {
+      shouldLightDismiss = true,
+      initialOpen = false,
+      isOpen: controlledOpen,
+      setIsOpen: setControlledOpen,
+      onClose,
+      children,
+    },
+    forwardedRef
+  ) {
+    /* previous code omitted for brevity */
+
+    return (
+      <dialog ref={dialogRef} onClose={onClose}>
+        {children}
+      </dialog>
+    );
+  }
+);
+```
+
+One thing to note about this solution is that we need to take care with when we call the `onClose` callback prop. If we are animating the dialog's close event, then we probably don't want to update the Modal component's children until it is hidden.
+
+how we unmount the Modal and its children if we are animating the Modal when showing and hiding it. If we unmount it too soon, it could break the animation.
+
+### Dialog Animation challenges
+
+Animating the modal dialog on its open and close events can add a nice bit of polish that helps signify a change of context to the user. An animation could be as simple as a fade in and out, or be more complex such as a slide in from one side of the screen. That being said, it's important to keep in mind that for accessibility reasons we should disable the animation if a user has reduced motion enabled in their browser or device.
+
+We can animate the dialog using CSS via:
+
+1. `animation` and `keyframes`
+2. `transition`
+
+However, animating the dialog element is currently not fully supported or without bugs across all the major browsers.
+
+_TODO: verify these statements before publishing_
+
+- Animating the dialog using `transition` currently lacks support on Firefox.
+
+- Animating or transitioning the dialog close event is buggy on webkit based browsers (see [webkit bug 275184](https://bugs.webkit.org/show_bug.cgi?id=275184). On Safari for example the position of the dialog appears to jump when transitioning the dialog which doesn't look great.
+
+- Animating the dialog using the `keyframes` and `animation` CSS is not yet supported on Firefox.
+
+If animating the dialog is a requirement, I prefer using the `transition` method of fading in the dialog during its open event and to avoid transitioning the dialog close event as to avoid the position jump bug in Safari. The CSS for using `transition` with the dialog element is also a bit less verbose than it is for using `animation` and `keyframes`.
+
+It's also worth noting that if we want to clean up stale state in the Modal's children then we may want to use a callback function for the dialog's `onTransitionEnd` or `onAnimationEnd` events.
+
+#### Solving animating the Modal
+
+_TODO: add CSS_
+
+### Providing an Accessible Name and Description to the dialog
+
+When creating modal dialogs it's generally considered a best practice to give them at the very least an accessible name and optionally an accessible description. This helps inform users of assistive technology, such as screen readers, what the purpose of the dialog is when they open it and focus is moved to it or within it. Without an accessible name the word "dialog" may just be announced with no other helpful information. It's important to note that when giving the dialog an accessible name, we don't need to include the word "dialog" or "modal" since screen readers will already announce the word "dialog" when focus is moved to it or within it.
+
+#### Accessible Name? Accessible Description? What are you talking about?
+
+Generally speaking, an _accessible name_ is a property computed by the browser using the browser's [accessibility tree](#) and operating system's [accessibility API](#) which assigns a machine readable name to elements in the DOM. These elements are typically interactive controls such as buttons, links, and inputs, but can apply to content areas at times as well (such as our Modal component's dialog element). Making sure that all interactive elements have a clear, and preferably unique, accessible name is one of the most important things you can do to make your product more accessible for users of assistive technology such as screen readers, so I strongly encourage doing so. If you don't do this you will fail the Web Content Accessibility Guidelines (WCAG) Success Criteria [4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html), so it is also a requirement for conforming to WCAG.
+
+An _accessible description_ is similar in that it is also a computed property, but it is secondary to the accessible name in that it adds more information about an element. Generally speaking, accessible names should be kept short and succinct so that screen reader users do not have to listen to a lot of descriptive text when first focusing a control or arriving in an area of the page. More descriptive information is often better added as the accessible description. One example of accessible descriptions are help or error messages that are associated with form fields. These text are programmatically associated with the input so that screen reader users know that a form field has an error and what that error is, or contains a hint for how to fill it out, such as password requirements.
+
+To go deeper on these topics I recommend reading the following articles:
+_TODO..._
+
+#### Solving adding an accessible name and description:
+
+There are several ARIA attributes we can utilize to provide the Modal component's dialog element with an accessible name and description.
+
+For the dialog's accessible name we can use either `aria-labelledby` or `aria-label`. Most accessibility experts will implore you to use `aria-labelledby` as it references a text node in the DOM. This is important because many users of assistive tech are sighted, and being able to see the name as well as hear it announced will create a better user experience for them. On the other hand, the `aria-label` attribute's value is a string (text) that becomes the accessible name and is not visible to sighted users.
+
+An additional benefit of using `aria-labelledby` is that it will be translated to different languages by auto translate services such as in Google Chrome. The `aria-label` attribute may not be, so if localization and internationalization are important to you and/or your team prefer to reach for `aria-labelledby`.
+
+The same criteria goes for `aria-describedby` (will be visible to sighted users and get auto-translated) and `aria-description` (will not be visible to sighted users and will not be auto-translated).
+
+So the "Too Long, Don't Read" (TL;DR, aka summary) of this is:
+
+- For a dialog's _accessible name_ prefer `aria-labelledby` when possible and then reach for `aria-label` as a last resort.
+
+- For a dialog's _accessible description_ prefer `aria-describedby` when possible and reach for `aria-description` as a last resort.
+
+We add these ARIA attributes to our ModalDialog's dialog element by passing them as props:
+
+<!-- TODO: fix prettier error in following code block -->
+<!-- prettier-ignore -->
+```tsx
+import { type AriaAttributes, forwardRef } from "react";
+
+export type ModalDialogProps = PropsWithChildren &
+  ModalDialogIsOpenProps &
+  // NEW: add optional ARIA attributes for accessible name and description
+  Pick<
+    AriaAttributes,
+    "aria-labelledby" | "aria-label" | "aria-describedby" | "aria-description"
+  > & {
+    shouldLightDismiss?: boolean;
+    initialOpen?: boolean;
+    onClose?: () => void;
+  };
+
+export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
+	function(
+	    {
+	      shouldLightDismiss = true,
+	      initialOpen = false,
+	      isOpen: controlledOpen,
+	      setIsOpen: setControlledOpen,
+	      onClose,
+	      children,
+	      ...props
+	    },
+	    forwardedRef
+	}) {
+	    return (
+	      <dialog
+	        ref={dialogRef}
+	        onClose={onClose}
+	        aria-labelledby={props["aria-labelledby"]}
+	        aria-label={props["aria-label"]}
+	        aria-describedby={props["aria-describedby"]}
+	        aria-description={props["aria-description"]}
+	      >
+	        {children}
+	      </dialog>
+	    );
+	}
+)
+```
+
+We provide the `aria-labelledby` prop an `id` value of an element that acts as the Modal's title. Be sure to not include the words "modal" or "dialog" in the text, since AT will typically already announce that it is a dialog and users will understand the meaning. We also provide the `aria-describedby` an `id` value of the element that adds descriptive text to the Modal.
+
+```tsx
+import { useId } from "react";
+import { Modal } from "./Modal";
+
+const App = () => {
+  const accNameId = useId();
+  const accDescId = useId();
+
+  /* other code and Modal props omitted for brevity */
+
+  return (
+    <Modal aria-labelledby={accNameId} aria-describedby={accDescId}>
+      <div>
+        <h2 id={accNameId}>Modal Title</h2>
+        <p id={accDescId}>Some descriptive text here perhaps</p>
+      </div>
+    </Modal>
+  );
+};
+```
+
+To verify that our accessible name and description are being applied to our Modal component's dialog element, we can use our browser's dev tools to inspect the dialog's accessibility properties.
+
+**Pro accessibility tip**: it's a good practice to inspect the accessibility panel for an element to verify its accessibility properties are being correctly implemented, especially when using frameworks like React that abstract HTML or when using JavaScript to manipulate the DOM.
+
+I've included a screenshot of the Chrome web browser's accessibility panel showing that the accessible name and description have been correctly added to the dialog.
+
+_TODO: add screenshot of a11y panel showing dialog_
+
+#### A note on focus indicators and focus management
+
+Note that it's important to not prevent or remove focus on the dialog when its opened, for example by removing the dialog's focus indicator using CSS (e.g. `outline: none;`) or by calling the dialog's `blur` method, or calling an interactive child's `blur` method after opening it. If the dialog _does not_ contain any interactive children (buttons, links, inputs, etc.) then focus should go to the dialog itself when opened. If the dialog _does_ contain at least one focusable child element, such as a close button, then focus should go to that element when the dialog is opened. When the dialog is closed, focus should return to the element that triggered its open event, for example a button element.
+
+This type of behavior is referred to as "focus management" among web accessibility professionals and in the WCAG. It is an expected behavior for the dialog element and important to not disrupt or change in order to keep the Modal component accessible. Doing so can violate various WCAG Success Criteria, such as [SC 3.2.1 On Focus (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html), so if you are conforming to WCAG you should keep this in mind.
+
+_TODO:_ cite SO post where this is explained?
+
+If desired, we can use the CSS `:focus-visible` pseudo class to prevent the focus indicator from displaying when a user opens the dialog by clicking its trigger with a mouse. This will still show the focus indicator when using the keyboard to open it which is important for users who do not use a mouse and for example may rely on using their keyboard to navigate and interact with their computer.
+
+Speaking of focus indicators, if you want to dig deeper on how to design them to be more accessible I suggest reading the excellent article [A guide to designing accessible, WCAG-conformant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/) by Sara Soueidan.
+
+## Caveats
+
+### Using the autofocus attribute
+
+In my testing (see [codepen demo](https://codepen.io/clhenrick/full/yLmOmGe "https://codepen.io/clhenrick/full/yLmOmGe")) I found that using the `autofocus` attribute on the dialog element does not always result in it being focused when opened using the keyboard, depending on the browser being used. This is likely a bug in browser vendors since the dialog spec states that when the `autofocus` attribute is on the `dialog` element it should receive focus when opened rather than one of its interactive children. There is also [an open issue in the React Github repository](https://github.com/facebook/react/issues/23301 "https://github.com/facebook/react/issues/23301") on `autoFocus` not working on the `<dialog>` element.
+
+_For this reason I recommend **avoiding using** the_ `autofocus` _attribute on the **dialog element** for the time being_.
+
+Similarly, I've found when testing usage of the `autofocus` attribute on a dialog’s child element, it does not appear to work as expected in React. Perhaps with the browser implementation / does not follow the spec for the dialog. In order to place focus on a specific child element in the Modal component you must manually do so using a combination of the dialog's `transitionend` event and a React `ref` on the child element to call `ref.current.focus()`.
+
+_For this reason I recommend **avoiding using** the_ `autofocus` _attribute on the dialog’s **child elements** for the time being_.
+
+### All together now
+
+Here is the final code for our ModalDialog component:
+
+```tsx
+// TODO...
+```
+
+You may also view as well as run this code by downloading the corresponding [react-a11y-modal-dialog Github repository](#) (TODO).
+
+## Further Reading
+
+Thanks for reading this blog post, I know it was a long one. I hope that it gives you a "good enough" starting point for creating an accessible Modal Dialog with React. Perhaps you even learned a thing or two about web accessibility, whether specific to modal dialogs or more generally speaking. If so please feel free to let me know by dropping me a short message either via the [contact form](/contact/) on this website or a mention on [Mastodon](#) (_TODO_).
+
+If you're interested in digging in deeper, here are some articles to browse to learn more about the HTML `<dialog>` element and the accessibility of the modal dialog pattern.
+
+- [The Dialog element - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+- [MDN Dialog Accessibility notes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility")
+- https://web.dev/articles/building/a-dialog-component
+- [Animating the Dialog Element](https://frontendmasters.com/blog/animating-dialog/)
+- [Modal Dialog Example](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/) (ARIA APG modal dialog pattern)
+- [Use the dialog element (reasonably) | scottohara.me](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html)
+- [HTML Standard](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element) (dialog element spec from whatwg.org)
+- [Top layer - MDN Web Docs Glossary: Definitions of Web-related terms | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer)
+- [GitHub - scottaohara/accessible_modal_window: Accessible modal dialogs](https://github.com/scottaohara/accessible_modal_window)
+- [Having an open dialog (archival post) | scottohara.me](https://www.scottohara.me/blog/2019/03/05/open-dialog.html)
+- [Dialog Focus in Screen Readers](https://adrianroselli.com/2020/10/dialog-focus-in-screen-readers.html)
+- [https://blog.mayank.co/is-dialog-enough](https://blog.mayank.co/is-dialog-enough "https://blog.mayank.co/is-dialog-enough")
