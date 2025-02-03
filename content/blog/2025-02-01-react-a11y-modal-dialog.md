@@ -558,9 +558,9 @@ When creating modal dialogs it's generally considered a best practice to give th
 
 #### Accessible Name? Accessible Description? What are you talking about?
 
-Generally speaking, an _accessible name_ is a property computed by the browser using the browser's [accessibility tree](#) and operating system's [accessibility API](#) which assigns a machine readable name to elements in the DOM. These elements are typically interactive controls such as buttons, links, and inputs, but can apply to content areas at times as well (such as our Modal component's dialog element). Making sure that all interactive elements have a clear, and preferably unique, accessible name is one of the most important things you can do to make your product more accessible for users of assistive technology such as screen readers, so I strongly encourage doing so. If you don't do this you will fail the Web Content Accessibility Guidelines (WCAG) Success Criteria [4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html), so it is also a requirement for conforming to WCAG.
+Generally speaking, an _accessible name_ is a property computed by the browser using the browser's [accessibility tree](#) and operating system's [accessibility API](#) which assigns a machine readable name to elements in the DOM. These elements are typically interactive controls such as buttons, links, and inputs, but can apply to content areas at times as well (such as our Modal component's dialog element). Making sure that all interactive elements have a clear, and preferably unique, accessible name is one of the most important things you can do to make your product more accessible for users of assistive technology such as screen readers, so I strongly encourage doing so. If you don't do this you may fail the Web Content Accessibility Guidelines (WCAG) Success Criteria [4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html), so it is also a requirement for conforming to WCAG.
 
-An _accessible description_ is similar in that it is also a computed property, but it is secondary to the accessible name in that it adds more information about an element. Generally speaking, accessible names should be kept short and succinct so that screen reader users do not have to listen to a lot of descriptive text when first focusing a control or arriving in an area of the page. More descriptive information is often better added as the accessible description. One example of accessible descriptions are help or error messages that are associated with form fields. These text are programmatically associated with the input so that screen reader users know that a form field has an error and what that error is, or contains a hint for how to fill it out, such as password requirements.
+An _accessible description_ is similar in that it is also a computed property, but it is secondary to the accessible name in that it adds more information about an element. Generally speaking, accessible names should be kept short and succinct so that screen reader users do not have to listen to a lot of descriptive text when first focusing a control or arriving in an area of the page such as our Modal. Additional and/or lengthier descriptive information is often better added as the accessible description. One example of accessible descriptions are help or error messages that are associated with form fields. These text are programmatically associated with the input so that screen reader users know that a form field has an error and what that error is, or that it contains a hint for how to fill it out, such as password requirements.
 
 To go deeper on these topics I recommend reading the following articles:
 _TODO..._
@@ -569,13 +569,13 @@ _TODO..._
 
 There are several ARIA attributes we can utilize to provide the Modal component's dialog element with an accessible name and description.
 
-For the dialog's accessible name we can use either `aria-labelledby` or `aria-label`. Most accessibility experts will implore you to use `aria-labelledby` as it references a text node in the DOM. This is important because many users of assistive tech are sighted, and being able to see the name as well as hear it announced will create a better user experience for them. On the other hand, the `aria-label` attribute's value is a string (text) that becomes the accessible name and is not visible to sighted users.
+For the dialog's accessible name we can use either the `aria-labelledby` or `aria-label` ARIA attributes. Most accessibility experts will implore you to use `aria-labelledby` as it has some advantages over `aria-label`. Since `aria-labelledby` references an existing text node in the DOM, it benefits sighted screen reader users who can see the name as well as hear it announced, creating a better user experience for them. On the other hand, the `aria-label` attribute's value is a string (text) that becomes the accessible name and is not visible to sighted users.
 
-An additional benefit of using `aria-labelledby` is that it will be translated to different languages by auto translate services such as in Google Chrome. The `aria-label` attribute may not be, so if localization and internationalization are important to you and/or your team prefer to reach for `aria-labelledby`.
+An additional benefit of using `aria-labelledby` is that it will be translated to different languages by auto translate services such as with Google Chrome. The `aria-label` attribute will not be, so a screen reader user who is using a different language will not hear accessible names announced in their preferred language.
 
-The same criteria goes for `aria-describedby` (will be visible to sighted users and get auto-translated) and `aria-description` (will not be visible to sighted users and will not be auto-translated).
+The same criteria goes for `aria-describedby`, the description is be visible to sighted users and will be auto-translated whereas `aria-description` will not be visible to sighted users and will not be auto-translated.
 
-So the "Too Long, Don't Read" (TL;DR, aka summary) of this is:
+So the "Too Long; Don't Read" (TL;DR, aka summary) of this is:
 
 - For a dialog's _accessible name_ prefer `aria-labelledby` when possible and then reach for `aria-label` as a last resort.
 
@@ -586,11 +586,15 @@ We add these ARIA attributes to our ModalDialog's dialog element by passing them
 <!-- TODO: fix prettier error in following code block -->
 <!-- prettier-ignore -->
 ```tsx
-import { type AriaAttributes, forwardRef } from "react";
+import {
+  type AriaAttributes,
+  type PropsWithChildren,
+  forwardRef
+} from "react";
 
-export type ModalDialogProps = PropsWithChildren &
+type ModalDialogProps = PropsWithChildren &
   ModalDialogIsOpenProps &
-  // NEW: add optional ARIA attributes for accessible name and description
+  // NEW: add optional ARIA attributes for the accessible name and description
   Pick<
     AriaAttributes,
     "aria-labelledby" | "aria-label" | "aria-describedby" | "aria-description"
@@ -600,7 +604,7 @@ export type ModalDialogProps = PropsWithChildren &
     onClose?: () => void;
   };
 
-export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
+const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 	function(
 	    {
 	      shouldLightDismiss = true,
@@ -629,7 +633,9 @@ export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 )
 ```
 
-We provide the `aria-labelledby` prop an `id` value of an element that acts as the Modal's title. Be sure to not include the words "modal" or "dialog" in the text, since AT will typically already announce that it is a dialog and users will understand the meaning. We also provide the `aria-describedby` an `id` value of the element that adds descriptive text to the Modal.
+We provide the `aria-labelledby` prop an `id` value of an element that acts as the Modal's title. We can leverage React's [`useId` hook](https://react.dev/reference/react/useId) to generate unique `id` attribute values for the `aria-labelledby` and `aria-describedby` attributes. This prevents accidentally using the same `id` attribute value elsewhere in our component tree. We also provide the `aria-describedby` an `id` value of the element that adds descriptive text to the Modal.
+
+**Content Writing Tip:** Be sure to not include the words "modal" or "dialog" in the accessible name or description text, since assistive tech will already announce to users that they are now within a dialog when focus moves to it after it is revealed.
 
 ```tsx
 import { useId } from "react";
@@ -644,8 +650,8 @@ const App = () => {
   return (
     <Modal aria-labelledby={accNameId} aria-describedby={accDescId}>
       <div>
-        <h2 id={accNameId}>Modal Title</h2>
-        <p id={accDescId}>Some descriptive text here perhaps</p>
+        <h2 id={accNameId}>Title Here</h2>
+        <p id={accDescId}>Some more descriptive text here perhaps?</p>
       </div>
     </Modal>
   );
@@ -660,15 +666,15 @@ I've included a screenshot of the Chrome web browser's accessibility panel showi
 
 _TODO: add screenshot of a11y panel showing dialog_
 
-#### A note on focus indicators and focus management
+### A brief note on focus indicators and focus management
 
-Note that it's important to not prevent or remove focus on the dialog when its opened, for example by removing the dialog's focus indicator using CSS (e.g. `outline: none;`) or by calling the dialog's `blur` method, or calling an interactive child's `blur` method after opening it. If the dialog _does not_ contain any interactive children (buttons, links, inputs, etc.) then focus should go to the dialog itself when opened. If the dialog _does_ contain at least one focusable child element, such as a close button, then focus should go to that element when the dialog is opened. When the dialog is closed, focus should return to the element that triggered its open event, for example a button element.
+Note that it's important to not prevent or remove focus on the dialog when its opened, for example by removing the dialog's focus indicator using CSS (e.g. via the despicable `outline: none;`) or by calling the dialog's or a dialog's child's `blur` method after opening the dialog. If the dialog _does not_ contain any interactive children (buttons, links, inputs, etc.) then focus should go to the dialog itself when opened. If the dialog _does_ contain at least one focusable child element, such as a close button, then focus should go to that element when the dialog is opened. When the dialog is closed, focus should return to the element that triggered its open event, for example a button element.
 
-This type of behavior is referred to as "focus management" among web accessibility professionals and in the WCAG. It is an expected behavior for the dialog element and important to not disrupt or change in order to keep the Modal component accessible. Doing so can violate various WCAG Success Criteria, such as [SC 3.2.1 On Focus (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html), so if you are conforming to WCAG you should keep this in mind.
+This type of behavior is referred to as "focus management" among web accessibility professionals and in the WCAG. It is an expected behavior for the dialog element and important to not disrupt or change in order to keep our Modal component accessible. Doing so can violate various WCAG Success Criteria, such as [SC 3.2.1 On Focus (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html), so if you are conforming to WCAG you should keep this in mind.
 
 _TODO:_ cite SO post where this is explained?
 
-If desired, we can use the CSS `:focus-visible` pseudo class to prevent the focus indicator from displaying when a user opens the dialog by clicking its trigger with a mouse. This will still show the focus indicator when using the keyboard to open it which is important for users who do not use a mouse and for example may rely on using their keyboard to navigate and interact with their computer.
+We can use the CSS `:focus-visible` pseudo class to prevent the focus indicator from displaying when a user opens the dialog by clicking its trigger with a mouse. This will still show the focus indicator when using the keyboard to open it which is important for users who solely rely on using their keyboard to navigate and interact with their computer.
 
 Speaking of focus indicators, if you want to dig deeper on how to design them to be more accessible I suggest reading the excellent article [A guide to designing accessible, WCAG-conformant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/) by Sara Soueidan.
 
@@ -686,18 +692,17 @@ _For this reason I recommend **avoiding using** the_ `autofocus` _attribute on t
 
 ### All together now
 
-Here is the final code for our ModalDialog component:
+We made it! Here is the final code for our ModalDialog component:
 
 ```tsx
 // TODO...
 ```
 
-You may also view as well as run this code by downloading the corresponding [react-a11y-modal-dialog Github repository](#) (TODO).
+You may also view and run this code by downloading the corresponding [react-a11y-modal-dialog-demo Github repository](https://github.com/clhenrick/react-a11y-modal-dialog-demo).
 
 ## Further Reading
 
-<!-- prettier-ignore -->
-Thanks for reading this blog post, I know it was a long one. I hope that it gives you a "good enough" starting point for creating an accessible Modal Dialog with React. Perhaps you even learned a thing or two about web accessibility, whether specific to modal dialogs or more generally speaking. If so please feel free to let me know by dropping me a short message either via the [contact form](/contact/) on this website or a mention on [Mastodon]({{ metadata.socialLinks.get('Mastodon') }}).
+Thanks for reading this blog post, it was a long one! I sincerely hope that it gives you a "good enough" starting point for creating an accessible and reusable modal dialog component with React. Perhaps you even learned a thing or two about web accessibility, whether specific to modal dialogs or more generally speaking. If so please feel free to let me know by dropping me a short message either via the [contact form](/contact/) on this website or a mention on [Mastodon]({{ metadata.socialLinks.get('Mastodon') }}).
 
 If you're interested in digging in deeper, here are some articles to browse to learn more about the HTML `<dialog>` element and the accessibility of the modal dialog pattern.
 
