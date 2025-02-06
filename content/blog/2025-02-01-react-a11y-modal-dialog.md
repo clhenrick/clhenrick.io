@@ -529,28 +529,87 @@ One thing to note about this solution is that we need to take care with when we 
 
 Animating the modal dialog on its open and close events can add a nice bit of polish that helps signify a change of context to the user. An animation could be as simple as a fade in and out, or be more complex such as a slide in from one side of the screen. That being said, it's important to keep in mind that for accessibility reasons we should disable the animation if a user has reduced motion enabled in their browser or device.
 
-We can animate the dialog using CSS via:
+We can animate the dialog using CSS using either:
 
 1. `animation` and `keyframes`
 2. `transition`
 
-However, animating the dialog element is currently not fully supported or without bugs across all the major browsers.
+However, animating the dialog element is currently not fully supported, nor is it without bugs across all the major browsers.
 
-_TODO: verify these statements before publishing_
+- Animating the dialog using `transition` currently lacks support on Firefox as it requires using the CSS [`@starting-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style) at-rule which Firefox does not yet support.
 
-- Animating the dialog using `transition` currently lacks support on Firefox.
+- Animating or transitioning the dialog close event is buggy on webkit based browsers (see [webkit bug 275184](https://bugs.webkit.org/show_bug.cgi?id=275184)). On Safari for example, the position of the dialog appears to jump when transitioning the dialog's close event which doesn't look great.
 
-- Animating or transitioning the dialog close event is buggy on webkit based browsers (see [webkit bug 275184](https://bugs.webkit.org/show_bug.cgi?id=275184). On Safari for example the position of the dialog appears to jump when transitioning the dialog which doesn't look great.
+- Animating the dialog using `keyframes` and `animation` is not yet supported on Firefox either.
 
-- Animating the dialog using the `keyframes` and `animation` CSS is not yet supported on Firefox.
-
-If animating the dialog is a requirement, I prefer using the `transition` method of fading in the dialog during its open event and to avoid transitioning the dialog close event as to avoid the position jump bug in Safari. The CSS for using `transition` with the dialog element is also a bit less verbose than it is for using `animation` and `keyframes`.
+If animating the dialog is a requirement, I prefer using the `transition` method of fading in the dialog during its open event. I avoid transitioning the dialog's close event to avoid the position jump bug in Safari. The CSS for using `transition` with the dialog element is also a bit less verbose than it is for using `animation` and `keyframes`.
 
 It's also worth noting that if we want to clean up stale state in the Modal's children then we may want to use a callback function for the dialog's `onTransitionEnd` or `onAnimationEnd` events.
 
 #### Solving animating the Modal
 
-_TODO: add CSS_
+We can animate the Modal using the following CSS. I'll leave it up to you how you choose to add this CSS to your code, e.g. scoping it or not, using a CSS preprocessor such as Sass or PostCSS, etc.
+
+```css
+dialog {
+  --backdrop-bg-color-open: rgb(0 0 0 / 75%);
+  --backdrop-bg-color-closed: rgb(0 0 0 / 0%);
+  --animation-duration: 150ms;
+  --animation-easing: ease-in-out;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog {
+    opacity: 0;
+    transition:
+      position 0,
+      overlay var(--animation-duration) var(--animation-easing) allow-discrete,
+      opacity var(--animation-duration) var(--animation-easing),
+      display var(--animation-duration) var(--animation-easing) allow-discrete;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog::backdrop {
+    background-color: var(--backdrop-bg-color-closed);
+    transition:
+      display var(--animation-duration) allow-discrete,
+      overlay var(--animation-duration) allow-discrete,
+      background-color var(--animation-duration);
+  }
+
+  dialog[open]::backdrop {
+    background-color: var(--backdrop-bg-color-open);
+  }
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+  }
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    background-color: var(--backdrop-bg-color-closed);
+  }
+}
+```
+
+Some notes on the CSS:
+
+- We use the CSS `prefers-reduced-motion` feature query to apply the transition only when the user has not specified a reduced motion setting on their browser or device. This way we respect the user's preference to not animate the dialog's open event if they prefer to not see animations. (_TODO: add something about how this relates to the specific disability I'm forgetting the name of_)
+
+- It's important that no padding exists on the dialog element so that a user cannot accidentally click on it to dismiss it; they should only be able to click the :backdrop area to do a "light dismiss". Instead, padding should be applied to one of the dialog's child elements, e.g. a content / wrapper div element.
+
+- Use of `transition: position 0` fixes a [bug in Safari](https://bugs.webkit.org/show_bug.cgi?id=275184) where then dialog position jumps on close / fade out. However, this comes at the expense of disabling the close / fade out transition. This could be undone once the bug in Safari has been fixed.
 
 ### Providing an Accessible Name and Description to the dialog
 
