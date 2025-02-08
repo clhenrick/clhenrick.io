@@ -13,50 +13,55 @@ eleventyNavigation:
 {% include "styles.njk" %}
 {% from "components/projectCard.njk" import projectCard %}
 
-<h1>Portfolio</h1>
+<section>
+  <h1>Portfolio</h1>
 
-<details open>
-  <summary>About</summary>
-  <p>{{ description }}</p>
-</details>
+  <details open>
+    <summary>About</summary>
+    <p>{{ description }}</p>
+  </details>
+</section>
 
-<details open data-id="project-filters-disclosure">
-  <summary id="filter-projects-title">Filter Projects</summary>
-  <p id="filter-projects-desc">
-    Projects are shown in reverse chronological order by default. Use these
-    buttons to view projects by a single category and/or shuffle the projects to
-    view them in a random order.
-  </p>
-  <div
-    role="group"
-    class="project-filters"
-    aria-labelledby="filter-projects-title"
-    aria-describedby="filter-projects-desc"
-  >
-    <button value="all" class="button filter" aria-pressed="true">all</button>
-    <button value="web" class="button filter" aria-pressed="false">
-      interactive
-    </button>
-    <button value="data-viz" class="button filter" aria-pressed="false">
-      data viz
-    </button>
-    <button value="cartography" class="button filter" aria-pressed="false">
-      cartography
-    </button>
-    <button class="button shuffle">shuffle!</button>
-  </div>
-</details>
+<section>
+  <details open data-id="project-filters-disclosure">
+    <summary id="filter-projects-title">Filter Projects</summary>
+    <p id="filter-projects-desc">
+      Projects are shown in reverse chronological order by default. Use these
+      buttons to view projects by a single category and/or shuffle the projects
+      to view them in a random order.
+    </p>
+    <div
+      role="group"
+      class="project-filters"
+      aria-labelledby="filter-projects-title"
+      aria-describedby="filter-projects-desc"
+    >
+      <button value="all" class="button filter" aria-pressed="true">all</button>
+      <button value="web" class="button filter" aria-pressed="false">
+        interactive
+      </button>
+      <button value="data-viz" class="button filter" aria-pressed="false">
+        data viz
+      </button>
+      <button value="cartography" class="button filter" aria-pressed="false">
+        cartography
+      </button>
+      <button class="button shuffle">shuffle!</button>
+    </div>
+  </details>
 
-<ul class="cards-container" role="list">
-  {% for project in work %}
-    {# NOTE: this uses global image thumbnail data and the dataCascadeImage shortcode  #}
-    {%- set basename = project.thumb | replace(".jpg", "") | replace(".jpeg", "") | replace(".png", "") %}
-    {%- set thumb = work_image_thumbnails[basename] %}
-    {{ projectCard(project, thumb) }}
-  {% endfor %}
-</ul>
+  <section class="cards-container" aria-labelledby="projects-label">
+    <span id="projects-label" hidden>Projects</span>
+    {% for project in work %}
+      {# NOTE: this uses global image thumbnail data and the dataCascadeImage shortcode  #}
+      {%- set basename = project.thumb | replace(".jpg", "") | replace(".jpeg", "") | replace(".png", "") %}
+      {%- set thumb = work_image_thumbnails[basename] %}
+      {{ projectCard(project, thumb) }}
+    {% endfor %}
+  </section>
 
-<div id="announce" class="visually-hidden" aria-live="polite"></div>
+  <div id="announce" class="visually-hidden" aria-live="polite"></div>
+</section>
 
 {%- set javascripts -%}
   work, disclosure-widgets
