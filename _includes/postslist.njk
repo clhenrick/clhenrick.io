@@ -9,9 +9,9 @@
 {# prettier-ignore-end #}
 {% endcss %}
 {%- set headingLevel = headingLevel if headingLevel else 2 %}
-<ol reversed class="postlist" role="list">
+<div class="postlist">
   {% for post in postslist | reverse %}
-    <li
+    <article
       class="postlist-item{% if post.url == url %}postlist-item-active{% endif %}"
     >
       {# prettier-ignore-start #}
@@ -36,6 +36,6 @@
       {%- if post.data.teaser -%}
         <p>{{ post.data.teaser }}</p>
       {%- endif %}
-    </li>
+    </article>
   {% endfor %}
-</ol>
+</div>

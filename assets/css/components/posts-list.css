@@ -1,16 +1,16 @@
-ol.postlist li {
+.postlist article {
   display: flex;
   flex-direction: column;
   margin-bottom: var(--spacing-xl);
 }
 
 /* postlist title, usually an h2 or h3 */
-ol.postlist li > *:first-child {
+.postlist article > *:first-child {
   margin-top: var(--spacing-xs);
   margin-bottom: var(--spacing-md);
   max-width: 34ch;
 }
 
-ol.postlist li div {
+.postlist article div {
   order: -1;
 }
