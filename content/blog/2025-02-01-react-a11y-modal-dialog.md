@@ -366,7 +366,7 @@ export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 );
 ```
 
-> A quick note on `forwardRef`: in React version 19 we will no longer need to use `forwardRef` to pass a `ref` to a functional component in React. We will instead be able to pass a `ref` as a prop to the component. Keep this mind if you are now using React 19.
+**A quick note on `forwardRef`**: in React version 19 we will no longer need to use `forwardRef` to pass a `ref` to a functional component in React. We will instead be able to pass a `ref` as a prop to the component. Keep this mind if you are now using React 19.
 
 Next we use React's `useImperativeHandle` hook to accept the _forwarded ref_ to our `Modal` component as well as safely provide access to the `Modal`'s internal HTML dialog element `ref`. This allows for limiting access to the dialog's behavior only to what we deem acceptable for its intended use. The functionality we expose will call our Modal's reconciled `setIsOpen` state setter when needed. We prevent manipulating the `dialog.open` property by using a method that returns the value of our Modal's `isOpen` React state since that is the source of truth of whether our Modal is visible or hidden.
 
@@ -478,9 +478,9 @@ There are a few different ways to handle preventing the Modal component's childr
 
 3. Another way to remount the Modal from the React component tree (and the dialog from the DOM) when it is closed would be by wrapping the Modal in a helper component, and adding a conditional that returns the Modal when `isOpen` is `true` and `undefined` when `isOpen` is `false`. This approach would have the same pitfalls as the previous method using the `key` prop.
 
-Which method you choose depends on the context you are using the `Modal` in as well as other factors such as whether you would like to animate the Modal's transition between its visible and hidden states. In this post I will demonstrate using the `onClose` event to run any clean-up tasks when the modal is closed. I feel that this gives the most flexibility to consumers of the Modal component and is simple to implement.
+Which method you choose depends on the context you are using the `Modal` in as well as other factors such as whether you would like to animate the Modal's transition between its visible and hidden states.
 
-<!-- TODO: show both approaches? -->
+First we'll add a function prop for the `onClose` event to run any desired clean-up tasks when the modal is closed. This is fairly straightforward to implement and could help consumers of our Modal in certain situations.
 
 Our Modal component props will now look as follows:
 
@@ -522,7 +522,41 @@ export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 );
 ```
 
-One thing to note about this solution is that we need to take care with when we call the Modal's `onClose` callback prop. If we are animating the dialog's close event, then we probably don't want to update the Modal component's children until it is hidden, otherwise we might suddenly show the Modal's contents in an unexpected state prior to it being hidden.
+Next we will create a wrapper component for our Modal component called `ModalOptimized` that will unmount the Modal when the `isOpen` prop is `false`. It takes the same props as our `Modal` component and forwards them to it when it is rendered.
+
+```tsx
+type ModalOptimizedProps = ModalDialogProps;
+
+const ModalOptimized = (props: ModalOptimizedProps) => {
+  if (props.isOpen) {
+    return <Modal {...props}>{props.children}</Modal>;
+  }
+  return undefined;
+};
+```
+
+We then use the `ModalOptimized` component as follows:
+
+```tsx
+import { useState } from "react";
+import { ModalOptimized } from "./ModalOptimized";
+
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <ModalOptimized {...{ isOpen, setIsOpen }}>
+      {/* child content omitted for brevity */}
+    </ModalOptimized>
+  );
+};
+```
+
+Remember that we may not need to use the `ModalOptimized` component since generally its best to let React manage making updates to the component tree and DOM rather than forcing a component to unmount and remount. We should only reach for this enhancement if we notice the Modal's children are holding onto stale state or causing a performance problem that could be remedied by unmounting and remounting it.
+
+Another important caveat to note about either of these enhancements is if we decide to animate the dialog's close event. We probably don't want to update the Modal component's children or their state until the Modal is completely hidden, otherwise we might suddenly show the Modal's contents in an unexpected state prior to it being hidden which could look odd or confuse the user. I haven't had to addres this issue yet, but one possible way to do so would be to use the [`transitionEnd` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/transitionend_event) to handle the clean up rather than `onClose`.
+
+<!-- TODO: do a quick demo of when onClose fires compared to onTransitionEnd fires -->
 
 ### Dialog Animation challenges
 
