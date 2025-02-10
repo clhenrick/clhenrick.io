@@ -311,7 +311,8 @@ export const Modal = ({
 One issue with this approach is if the consumer of our `Modal` component passes only `props.isOpen` and not `props.setIsOpen`, or vice versa. This could result in the `isOpen` state getting out of sync. To prevent this we could either:
 
 1. Throw an `Error` when one is defined and the other is not. We can do this only when the component is in a development environment (e.g. when `process.env.NODE_ENV === "development"`) .
-2. Update our `ModalProps` typings so that the `isOpen` and `setIsOpen` props have to both be set or not set at all.
+
+2. Update our `ModalProps` typings so that the `isOpen` and `setIsOpen` props have to both be passed or not passed at all.
 
 I chose to go with option two. Updating the props means they could be written as follows:
 
@@ -337,9 +338,7 @@ type ModalDialogProps = React.PropsWithChildren &
   };
 ```
 
-Now if we pass in either `isOpen` or `setIsOpen` to our Modal component, TypeScript will complain at us. If you have a TypeScript plug-in for your editor or IDE you should also get a warning on the Modal declaration:
-
-_TODO: add screenshot of TS error in VS Code_
+Now if we pass in only `isOpen` or only `setIsOpen` to our Modal component TypeScript will complain at us. This is a helpful feature for other people on our team who will be using our component to make sure they're using it correctly.
 
 ### Preventing misuse of the dialog when forwarding a ref to it
 
@@ -717,13 +716,13 @@ const App = () => {
 };
 ```
 
-To verify that our accessible name and description are being applied to our Modal component's dialog element, we can use our browser's dev tools to inspect the dialog's accessibility properties.
+To verify that our accessible name and description are being applied to our Modal component's dialog element, we can use the browser's developer tools to inspect the dialog's accessibility properties.
 
-**Pro accessibility tip**: it's a good practice to inspect the accessibility panel for an element to verify its accessibility properties are being correctly implemented, especially when using frameworks like React that abstract HTML or when using JavaScript to manipulate the DOM.
+**Pro accessibility tip**: it's a good practice to inspect the accessibility panel for an element to verify its accessibility properties are being correctly implemented, especially when using frameworks like React that abstract HTML or even when just using vanilla JavaScript to manipulate the DOM.
 
-I've included a screenshot of the Chrome web browser's accessibility panel showing that the accessible name and description have been correctly added to the dialog.
+I've included a screenshot of the [Vivaldi web browser](https://vivaldi.com)'s accessibility panel showing that the accessible name and description have been correctly applied to the dialog:
 
-_TODO: add screenshot of a11y panel showing dialog_
+![A screenshot of the Modal component showing the browser developer tools accessibility panel. In the accessibility panel fields for the accessible name and description indicate that they are populated with the appropriate text content.](/img/react-a11y-modal-dialog-accname-accdesc.png)
 
 ### A brief note on focus indicators and focus management
 
