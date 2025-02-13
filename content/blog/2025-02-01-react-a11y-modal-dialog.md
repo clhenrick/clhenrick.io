@@ -713,6 +713,9 @@ const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
       },
       forwardedRef
   }) {
+
+      // previous code omitted for brevity
+
       return (
         <dialog
           ref={dialogRef}
@@ -727,6 +730,29 @@ const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
       );
   }
 )
+```
+
+If we prefer to be strict about making sure the `Modal` component is given an accessible name, we can check the related ARIA props to assert that one (either `aria-labelledby` or `aria-label`) has a value.
+
+Outside of the `Modal` component we can create a utility function to assert that a condition is `true`, and if not throw an error with an optional message.
+
+```ts
+function assert(condition: unknown, msg?: string): asserts condition {
+  if (!condition) {
+    throw new Error(msg);
+  }
+}
+```
+
+We can use this `assert` utility function within our `Modal` component to check that either the `aria-label` or `aria-labelledby` prop have a value. This way, if another developer is using our component and does not provide an accessible name, an error will be thrown to not so gently remind them to give it one.
+
+```ts
+// at the top of the body of our Modal component,
+// check that one ARIA prop for an accessible name has been provided:
+assert(
+  !(!props["aria-label"] && !props["aria-describedby"]),
+  "Modal requires an accessible name provided by either the aria-labelledby or aria-label prop"
+);
 ```
 
 We provide the `aria-labelledby` prop an `id` value of an element that acts as the Modal's title. We can leverage React's [`useId` hook](https://react.dev/reference/react/useId) to generate unique `id` attribute values for the `aria-labelledby` and `aria-describedby` attributes. This prevents accidentally using the same `id` attribute value elsewhere in our component tree. We also provide the `aria-describedby` an `id` value of the element that adds descriptive text to the Modal.
