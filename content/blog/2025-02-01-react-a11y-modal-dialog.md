@@ -667,9 +667,9 @@ There are several ARIA attributes we can utilize to provide the Modal component'
 
 For the dialog's accessible name we can use either the `aria-labelledby` or `aria-label` ARIA attributes. Most accessibility experts will implore you to use `aria-labelledby` as it has some advantages over `aria-label`. Since `aria-labelledby` references an existing text node in the DOM, it benefits sighted screen reader users who can see the name as well as hear it announced, creating a better user experience for them. On the other hand, the `aria-label` attribute's value is a string (text) that becomes the accessible name and is not visible to sighted users.
 
-An additional benefit of using `aria-labelledby` is that it will be translated to different languages by auto translate services such as with Google Chrome. The `aria-label` attribute will not be, so a screen reader user who is using a different language will not hear accessible names announced in their preferred language.
+An additional benefit of using `aria-labelledby` is that it is more likely to be translated to different languages by auto translate services such as in Google Chrome. The `aria-label` attribute will not be, so a screen reader user who is using a different language will not hear accessible names announced in their preferred language. However, auto-translate cannot be consistently relied upon. If localization and internationalization are requirements for your product, always keep in mind that ARIA text strings must be localized just the same as visible text.
 
-The same criteria goes for `aria-describedby`, the description is be visible to sighted users and will be auto-translated whereas `aria-description` will not be visible to sighted users and will not be auto-translated.
+The same criteria goes for `aria-describedby`, the description is be visible to sighted users and may be auto-translated, whereas `aria-description` will not be visible to sighted users and will not be auto-translated. Additionally, the `aria-description` attribute is not as well supported across various assistive technology and devices as `aria-describedby`, so be discerning with its usage and prefer `aria-describedby` whenever possible.
 
 So the "Too Long; Don't Read" (TL;DR, aka summary) of this is:
 
