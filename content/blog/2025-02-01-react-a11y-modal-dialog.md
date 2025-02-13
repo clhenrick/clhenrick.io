@@ -655,12 +655,11 @@ When creating modal dialogs it's generally considered a best practice to give th
 
 #### Accessible Name? Accessible Description? What are you talking about?
 
-Generally speaking, an _accessible name_ is a property computed by the browser using the browser's [accessibility tree](#) and operating system's [accessibility API](#) which assigns a machine readable name to elements in the DOM. These elements are typically interactive controls such as buttons, links, and inputs, but can apply to content areas at times as well (such as our Modal component's dialog element). Making sure that all interactive elements have a clear, and preferably unique, accessible name is one of the most important things you can do to make your product more accessible for users of assistive technology such as screen readers, so I strongly encourage doing so. If you don't do this you may fail the Web Content Accessibility Guidelines (WCAG) Success Criteria [4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html), so it is also a requirement for conforming to WCAG.
+Generally speaking, an _accessible name_ is a property computed by the browser using the browser's [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree) and operating system's [Accessibility API](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) which assigns a machine readable name to elements in the DOM. These elements are typically interactive controls such as buttons, links, and inputs, but can apply to content areas at times as well (such as our Modal component's dialog element). Making sure that all interactive elements have a clear, and preferably unique, accessible name is one of the most important things you can do to make your product more accessible for users of assistive technology such as screen readers, so I strongly encourage doing so. If you don't do this you may fail the Web Content Accessibility Guidelines (WCAG) Success Criteria [4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html), so it is also a requirement for conforming to WCAG.
 
 An _accessible description_ is similar in that it is also a computed property, but it is secondary to the accessible name in that it adds more information about an element. Generally speaking, accessible names should be kept short and succinct so that screen reader users do not have to listen to a lot of descriptive text when first focusing a control or arriving in an area of the page such as our Modal. Additional and/or lengthier descriptive information is often better added as the accessible description. One example of accessible descriptions are help or error messages that are associated with form fields. These text are programmatically associated with the input so that screen reader users know that a form field has an error and what that error is, or that it contains a hint for how to fill it out, such as password requirements.
 
-To go deeper on these topics I recommend reading the following articles:
-_TODO..._
+To dig deeper on this topic have a look at [Providing Accessible Names and Descriptions](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/) by the W3C Web Accessibility Initiative.
 
 #### Solving adding an accessible name and description:
 
@@ -815,3 +814,4 @@ If you're interested in digging in deeper, here are some articles to browse to l
 - [Having an open dialog (archival post) | scottohara.me](https://www.scottohara.me/blog/2019/03/05/open-dialog.html)
 - [Dialog Focus in Screen Readers](https://adrianroselli.com/2020/10/dialog-focus-in-screen-readers.html)
 - [Is Dialog Enough?](https://blog.mayank.co/is-dialog-enough)
+- [Providing Accessible Names and Descriptions](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/)
