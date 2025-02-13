@@ -651,7 +651,7 @@ Some notes on the CSS:
 
 ### Providing an Accessible Name and Description to the dialog
 
-When creating modal dialogs it's generally considered a best practice to give them at the very least an accessible name and optionally an accessible description. This helps inform users of assistive technology, such as screen readers, what the purpose of the dialog is when they open it and focus is moved to it or within it. Without an accessible name the word "dialog" may just be announced with no other helpful information. It's important to note that when giving the dialog an accessible name, we don't need to include the word "dialog" or "modal" since screen readers will already announce the word "dialog" when focus is moved to it or within it.
+When creating modal dialogs it's generally considered a best practice to give them at the very least an accessible name and optionally an accessible description. This helps inform users of assistive technology, such as screen readers, what the purpose of the dialog is when they open it and focus is moved to it or within it. Without an accessible name the word "dialog" may just be announced with no other helpful information, which can be confusing to such users.
 
 #### Accessible Name? Accessible Description? What are you talking about?
 
@@ -744,7 +744,7 @@ function assert(condition: unknown, msg?: string): asserts condition {
 }
 ```
 
-We can use this `assert` utility function within our `Modal` component to check that either the `aria-label` or `aria-labelledby` prop have a value. This way, if another developer is using our component and does not provide an accessible name, an error will be thrown to not so gently remind them to give it one.
+We can use this `assert` utility function within our `Modal` component to check that either the `aria-label` or `aria-labelledby` prop have a value. This way, if another developer is using our component and does not provide an accessible name, an error will be thrown to not so gently remind them to give it one. Of course this type of check could still be intentionally bypassed, for example by providing a placeholder string or nonsense, but it at least serves as a reminder to our colleagues that they should be adhereing to accessibility best practices.
 
 ```ts
 // at the top of the body of our Modal component,
@@ -755,7 +755,18 @@ assert(
 );
 ```
 
-We provide the `aria-labelledby` prop an `id` value of an element that acts as the Modal's title. We can leverage React's [`useId` hook](https://react.dev/reference/react/useId) to generate unique `id` attribute values for the `aria-labelledby` and `aria-describedby` attributes. This prevents accidentally using the same `id` attribute value elsewhere in our component tree. We also provide the `aria-describedby` an `id` value of the element that adds descriptive text to the Modal.
+To avoid crashing our application in production, we may also wish to wrap the assertion in an `if` statement so that we only throw an error when running the app locally in a development environment. A common way of handling this is checking the `NODE_ENV` environment variable to make sure it has not been set to "production", which front-end build tools will typically do when creating a "production build" of source code as well as to remove React's development specific related library code and features.
+
+```ts
+if (process.env.NODE_ENV !== "production") {
+  assert(
+    !(!props["aria-label"] && !props["aria-describedby"]),
+    "Modal requires an accessible name provided by either the aria-labelledby or aria-label prop"
+  );
+}
+```
+
+Back to giving our Modal an accessible name and description. We provide the `aria-labelledby` prop an `id` value of an element that acts as the Modal's title. We can leverage React's [`useId` hook](https://react.dev/reference/react/useId) to generate unique `id` attribute values for the `aria-labelledby` and `aria-describedby` attributes. This prevents accidentally using the same `id` attribute value elsewhere in our component tree. We also provide the `aria-describedby` an `id` value of the element that adds descriptive text to the Modal.
 
 **Content Writing Tip:** Be sure to not include the words "modal" or "dialog" in the accessible name or description text, since assistive tech will already announce to users that they are now within a dialog when focus moves to it after it is revealed.
 
@@ -767,7 +778,7 @@ const App = () => {
   const accNameId = useId();
   const accDescId = useId();
 
-  /* other code and Modal props omitted for brevity */
+  /* previous code and Modal props omitted for brevity */
 
   return (
     <Modal aria-labelledby={accNameId} aria-describedby={accDescId}>
@@ -780,11 +791,11 @@ const App = () => {
 };
 ```
 
-To verify that our accessible name and description are being applied to our Modal component's dialog element, we can use the browser's developer tools to inspect the dialog's accessibility properties.
+To verify that our accessible name and description are being applied to our Modal component's dialog element, we can use the browser's developer tools to inspect the dialog's accessibility properties. All popular browsers' developer tools have such a feature (Chrome, Safari, Firefox, etc.). Here is the documentation for [Google Chrome's Accessibility tab](https://developer.chrome.com/docs/devtools/accessibility/reference#tab). I encourage you to become familiar with this part of the developer tools and to learn how to use it for accessibility related front-end work, if this is new to you.
 
-**Pro accessibility tip**: it's a good practice to inspect the accessibility panel for an element to verify its accessibility properties are being correctly implemented, especially when using frameworks like React that abstract HTML or even when just using vanilla JavaScript to manipulate the DOM.
+**Pro accessibility tip**: it's good make a habit of inspecting the accessibility panel for an element to verify its accessibility properties are being correctly implemented. This is especially true when using front-end frameworks like React that abstract HTML, or when using vanilla JavaScript to manipulate the DOM. React Components are not HTML, and in my experience many React developers do not look at the DOM they are generating with React which leads to many accessibility related bugs. Making a habit of this will save you a lot of time and headache when it comes to making sure component code is accessible. It is a good first step to take prior to performing manual accessibility testing.
 
-I've included a screenshot of the [Vivaldi web browser](https://vivaldi.com)'s accessibility panel showing that the accessible name and description have been correctly applied to the dialog:
+I've included a screenshot of the [Vivaldi web browser](https://vivaldi.com)'s accessibility panel showing that the accessible name and description have been correctly applied to the dialog. If you Since Vivaldi is a Chromium based browser
 
 ![A screenshot of the Modal component showing the browser developer tools accessibility panel. In the accessibility panel fields for the accessible name and description indicate that they are populated with the appropriate text content.](/img/react-a11y-modal-dialog-accname-accdesc.png)
 
