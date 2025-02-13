@@ -12,21 +12,22 @@ tags:
 
 Much has already been written about using the HTML `<dialog>` element as the preferred method for creating an accessible _modal dialog_ (see [further reading](#further-reading) at the end of this post). Since the `<dialog>` now has a [Baseline compatibility](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) of "widely available" (it is available and generally well supported in all major browsers since March, 2022) we should be using it (whenever possible) to improve the accessibility of modals on the web. However, when using the `<dialog>` element with React, there are technical challenges to overcome in order to ensure users reap its accessibility benefits. This post will discuss these challenges and offer suggestions for how to solve them.
 
-The goal of this post is to walk through creating a re-usable `Modal` React component that wraps the HTML `dialog` element for use as an accessible modal dialog.
+The goal of this post is to walk through creating a re-usable `Modal` React component that wraps the HTML `<dialog>` element for use as an accessible modal dialog.
 
 From a high level, a consumer of our `Modal` component should be able to:
 
+- render arbitrary content (children) within it
 - control opening and closing it
 - optionally not control it (uncontrolled)
-- render arbitrary content within it
+- have focus management handled when opening and closing the modal
 - assign it an accessible name and description
 - perform any necessary clean up tasks when the Modal is closed
 
-We won't go into depth on how to style the `Modal` component as the intention of this component is that it serves as a wrapper around the HTML `dialog` element and that the consumer of the component will be responsible for applying styles to it. We will however give it some default styling for its `::backdrop` pseudo element as well as reset any undesirable User Agent (default browser) styles.
+We won't go into depth on how to style the `Modal` component as the intended purpose of this component is that it serves as a wrapper around the HTML `<dialog>` element. It is assumed that the consumer of the `Modal` component will be responsible for applying styles to it. We will however apply default styling for its `::backdrop` pseudo element so that the surrounding page will appeared dimmed when the `Modal` is shown.
 
 ## Benefits of using the HTML dialog element as a modal dialog
 
-Using the HTML `dialog` element gives us a lot of accessibility features for free:
+Using the HTML `<dialog>` element gives us a lot of accessibility features for free:
 
 - **Focus management**: moves focus to the dialog when opened and back to the dialog's opening trigger (typically a button) when closed for keyboard interactions.
 - **Traps keyboard focus** within the modal and prevents keyboard interaction with the DOM outside of the `dialog` when it is open.
@@ -40,11 +41,13 @@ Additionally, using the `dialog` element:
 - Provides us with a **`::backdrop` pseudo element** we can style to dim the area outside of the `dialog` when it is opened.
 - Uses the browser's [top-layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) so that we don't have to worry about competing z-index issues between the `dialog` and other UI components. The dialog will always be on top of other elements in the stacking order.
 
-What this boils down to is that it saves us from having to implement these features on our own. It means there is less room for things to go wrong compared to when we implement these features on our own using JavaScript. That's a real time saver and a huge weight off of our shoulders if you ask me.
+What this boils down to is that it saves us from having to implement these features on our own. It means there is less room for things to go wrong compared to when we implement these features on our own using JavaScript and CSS. If you've ever experienced `z-index` or focus management issues when writing a modal dialog component from scratch, fret no more! That's a real time saver and a huge weight off of our shoulders if you ask me.
 
 It removes the need of a 3rd party library like `react-modal` and removes the need to rely on using a [React Portal](https://react.dev/reference/react-dom/createPortal). It also presents an opportunity to educate the rest of our team about accessibility features of modal dialogs and could open the door to introducing other types of accessible UI patterns.
 
-With that all being said, there may be times when you can't use the HTML dialog element for your modal dialog needs. If this is the case I recommend looking at the ARIA Authoring Practices Guide's [Modal Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/). This pattern has been in use for quite some time now and is generally well supported by modern browsers and assistive technology. Regardless, it's always a good idea to test the implementation before releasing it into the wild. The same could be said for what we're about to do here.
+With that all being said, there may be times when you can't use the HTML `<dialog>` element for your modal dialog needs. An example of this could be if you are remediating an existing codebase for accessibility issues and are not able to change the underlying HTML element of a modal dialog component. If this is the case I recommend looking at the ARIA Authoring Practices Guide's [Modal Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/). This pattern has been in use for quite some time now and is generally well supported by modern browsers and assistive technology. It's important to note that the native HTML `<dialog>` element's behavior can and should be used as a model to the greatest extent possible when creating custom analogs, even to the extent of deriving baseline acceptance/test criteria from native behaviors when they are being replicated.
+
+Regardless of how you go about creating a modal dialog, it's always a good idea to test the implementation before releasing it into the wild. Manual accessibility testing using only the keyboard, various screen reader software on different devices, speech recognition software, and screen magnification are necessary to ensure what is being built meets the minimum criteria for being accessible. Ideally manual testing should be followed up with (and run in tandem with) user testing with people who use these assistive technologies daily due to their disabilities.
 
 ## Starter Boilerplate
 
@@ -62,7 +65,7 @@ I'm using TypeScript here to make it explicit what props will be passed to our `
 
 ## Technical Design Challenges
 
-Let's now dive into the technical design challenges of using the HTML dialog element with React to create an accessible modal dialog. We'll cover these challenges one at a time, breaking down and building off each one. Afterward, we'll be sure to show the complete code.
+Let's now dive into the technical design challenges of using the HTML `<dialog>` element with React to create an accessible modal dialog. We'll cover these challenges one at a time, breaking down and building off each one. Afterward, we'll be sure to show the complete code.
 
 If you're in a rush or feeling lazy, feel free to [skip ahead to the final code](#all-together-now).
 
@@ -102,7 +105,9 @@ const Modal = (props: ModalProps) => {
 
 Right now this code won't actually cause the Modal to be visible. We need to think about how we want to make our Modal visible when reacting to its `isOpen` prop change. According to the [HTML dialog spec](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element), to have the dialog behave as a true _modal dialog_ we need to call its `showModal()`. Note that the dialog element also has a `show()` method which will cause it to behave as a _non-modal dialog_, which is **_not_** what we want, since it will not utilize the accessibility features previously discussed in this post.
 
-The HTML `dialog` element also has an `open` property that determines whether it is visible or not. The dialog element will set its own `open` property to `true` when opened and `false` when closed. The challenge here is that we need to sync our React `isOpen` state with the `dialog`'s own `open` state to ensure our `Modal` component is not buggy and works as expected.
+**Clarification**: a _non-modal dialog_, when opened, allows users to interact with the rest of the page and does not trap keyboard focus within it. A real world example of a _non-modal dialog_ is a cookies consent dialog that appears at the top or bottom of a web page when first visited. While it annoyingly obscures part of the page, it doesn't prevent users from interacting with content outside of the dialog. A true _modal dialog_ on the otherhand prevents users from interacting with any page content outside of the modal until it is closed, assuming it has been implemented correctly. And yes, some consent cookies dialogs use the _modal dialog_ pattern. Deciding whether to use a _modal_ or _non-modal_ dialog is an intentional design decision that depends on a number of factors that are outside the scope of this post. Many UX Designers will implore you to [avoid using _modal_ dialogs altogether](https://modalzmodalzmodalz.com/), whenever possible.
+
+Note that the HTML `<dialog>` element has an `open` property that determines whether it is visible or not. The dialog element will set its own `open` property to `true` when opened and `false` when closed. The challenge here is that we need to sync our React `isOpen` state with the `dialog`'s own `open` state to ensure our `Modal` component is not buggy and works as expected.
 
 The dialog's `open` property can be changed in a few different ways. Some of them may happen without us having to write any code at all. For example:
 
@@ -342,7 +347,7 @@ Now if we pass in only `isOpen` or only `setIsOpen` to our Modal component TypeS
 
 ### Preventing misuse of the dialog when forwarding a ref to it
 
-There may be a time where some component further up the component tree needs to access the Modal's HTML dialog node, perhaps to add an event listener to it. If we're not careful, someone could misuse a ref to the dialog node and cause it to be opened as a _non-modal_ dialog by doing either `dialogRef.open = true` or `dialogRef.show()` . Needless to say, this isn't what we want our `Modal` component to do. Additionally this would cause our `isOpen` React state to become out of sync with the `dialog`'s own `open` property which would cause our `Modal` component to be annoyingly buggy. It would be helpful for consumers of the Modal component to not be able to make such mistakes when passing a `ref` to it.
+There may be a time where some component further up the component tree needs to access the Modal's HTML `<dialog>` node, perhaps to add an event listener to it. If we're not careful, someone could misuse a ref to the dialog node and cause it to be opened as a _non-modal_ dialog by doing either `dialogRef.open = true` or `dialogRef.show()` . Needless to say, this isn't what we want our `Modal` component to do. Additionally this would cause our `isOpen` React state to become out of sync with the `dialog`'s own `open` property which would cause our `Modal` component to be annoyingly buggy. It would be helpful for consumers of the Modal component to not be able to make such mistakes when passing a `ref` to it.
 
 #### Solving the Modal's forwarded ref
 
@@ -368,7 +373,7 @@ export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 
 **A quick note on `forwardRef`**: in React version 19 we will no longer need to use `forwardRef` to pass a `ref` to a functional component in React. We will instead be able to pass a `ref` as a prop to the component. Keep this mind if you are now using React 19.
 
-Next we use React's `useImperativeHandle` hook to accept the _forwarded ref_ to our `Modal` component as well as safely provide access to the `Modal`'s internal HTML dialog element `ref`. This allows for limiting access to the dialog's behavior only to what we deem acceptable for its intended use. The functionality we expose will call our Modal's reconciled `setIsOpen` state setter when needed. We prevent manipulating the `dialog.open` property by using a method that returns the value of our Modal's `isOpen` React state since that is the source of truth of whether our Modal is visible or hidden.
+Next we use React's `useImperativeHandle` hook to accept the _forwarded ref_ to our `Modal` component as well as safely provide access to the `Modal`'s internal HTML `<dialog>` element `ref`. This allows for limiting access to the dialog's behavior only to what we deem acceptable for its intended use. The functionality we expose will call our Modal's reconciled `setIsOpen` state setter when needed. We prevent manipulating the `dialog.open` property by using a method that returns the value of our Modal's `isOpen` React state since that is the source of truth of whether our Modal is visible or hidden.
 
 The following code demonstrates one way of accomplishing these requirements using React's `useImperativeHandle` hook within our Modal component.
 
