@@ -701,31 +701,31 @@ type ModalDialogProps = PropsWithChildren &
   };
 
 const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
-	function(
-	    {
-	      shouldLightDismiss = true,
-	      initialOpen = false,
-	      isOpen: controlledOpen,
-	      setIsOpen: setControlledOpen,
-	      onClose,
-	      children,
-	      ...props
-	    },
-	    forwardedRef
-	}) {
-	    return (
-	      <dialog
-	        ref={dialogRef}
-	        onClose={onClose}
-	        aria-labelledby={props["aria-labelledby"]}
-	        aria-label={props["aria-label"]}
-	        aria-describedby={props["aria-describedby"]}
-	        aria-description={props["aria-description"]}
-	      >
-	        {children}
-	      </dialog>
-	    );
-	}
+  function(
+      {
+        shouldLightDismiss = true,
+        initialOpen = false,
+        isOpen: controlledOpen,
+        setIsOpen: setControlledOpen,
+        onClose,
+        children,
+        ...props
+      },
+      forwardedRef
+  }) {
+      return (
+        <dialog
+          ref={dialogRef}
+          onClose={onClose}
+          aria-labelledby={props["aria-labelledby"]}
+          aria-label={props["aria-label"]}
+          aria-describedby={props["aria-describedby"]}
+          aria-description={props["aria-description"]}
+        >
+          {children}
+        </dialog>
+      );
+  }
 )
 ```
 
