@@ -10,7 +10,7 @@ tags:
 
 ## Introduction
 
-Much has already been written about using the HTML `<dialog>` element as the preferred method for creating an accessible _modal dialog_, now that it has a Baseline support of "widely available" (it is available and generally well supported in all major browsers since March, 2022). However, using the `dialog` element with React presents some technical challenges to ensure users of web products built with React will reap its accessibility benefits. This post will discuss these challenges and offer suggestions for how to solve them.
+Much has already been written about using the HTML `<dialog>` element as the preferred method for creating an accessible _modal dialog_ (see [further reading](#further-reading) at the end of this post). Since the `<dialog>` now has a [Baseline compatibility](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) of "widely available" (it is available and generally well supported in all major browsers since March, 2022) we should be using it (whenever possible) to improve the accessibility of modals on the web. However, when using the `<dialog>` element with React, there are technical challenges to overcome in order to ensure users reap its accessibility benefits. This post will discuss these challenges and offer suggestions for how to solve them.
 
 The goal of this post is to walk through creating a re-usable `Modal` React component that wraps the HTML `dialog` element for use as an accessible modal dialog.
 
