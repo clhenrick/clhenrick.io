@@ -799,15 +799,23 @@ I've included a screenshot of the [Vivaldi web browser](https://vivaldi.com)'s a
 
 ![A screenshot of the Modal component showing the browser developer tools accessibility panel. In the accessibility panel fields for the accessible name and description indicate that they are populated with the appropriate text content.](/img/react-a11y-modal-dialog-accname-accdesc.png)
 
-### A brief note on focus indicators and focus management
+### A brief note on the dialog's focus behavior
 
-Note that it's important to not prevent or remove focus on the dialog when its opened, for example by removing the dialog's focus indicator using CSS (e.g. via the despicable `outline: none;`) or by calling the dialog's or a dialog's child's `blur` method after opening the dialog. If the dialog _does not_ contain any interactive children (buttons, links, inputs, etc.) then focus should go to the dialog itself when opened. If the dialog _does_ contain at least one focusable child element, such as a close button, then focus should go to that element when the dialog is opened. When the dialog is closed, focus should return to the element that triggered its open event, for example a button element.
+I'm going into a little more detail on the topic of focus management with the dialog since I've seen it come up in at least two Stack Overflow questions, both of which I responded to:
+
+- [HTML dialog focusing button element when opened](https://stackoverflow.com/questions/61797931/html-dialog-focusing-button-element-when-opened/79028606#79028606)
+
+- [Prevent HTML dialog from grabbing focus](https://stackoverflow.com/questions/72466624/prevent-html-dialog-from-grabbing-focus/79048146#79048146)
+
+As you can probably infer from the titles of these questions on Stack Overflow, there is some confusion around focus behavior of the HTML `<dialog>` element. This is leading people to suggest doing things that are detrimental for accessibility such as removing focus on the dialog or its children when opened.
+
+I want to stress that it's very important to not prevent or remove focus on the dialog when it is opened. Examples of _what not to do_ include removing the dialog's focus indicator using CSS (e.g. via the despicable `outline: none;`) or by calling the dialog's or one of its child element's `blur` method after opening the dialog. If the dialog _does not_ contain any interactive children (e.g. buttons, links, inputs, etc.) then focus should go to the dialog itself when opened. If the dialog _does_ contain focusable child elements, such as a close button, then focus should go to the first focusable element in the tab order when the dialog is opened. When the dialog is closed, focus should return to the element that triggered its open event, for example a button element.
 
 This type of behavior is referred to as "focus management" among web accessibility professionals and in the WCAG. It is an expected behavior for the dialog element and important to not disrupt or change in order to keep our Modal component accessible. Doing so can violate various WCAG Success Criteria, such as [SC 3.2.1 On Focus (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html), so if you are conforming to WCAG you should keep this in mind.
 
-_TODO:_ cite SO post where this is explained?
+If we want to appease those minimalists whom dislike the presence of focus indicators, we can use the CSS `:focus-visible` pseudo class. This will prevent the focus indicator from displaying when a user opens the dialog by clicking its trigger with a mouse or other pointer device. The `:focus-visible` pseudo class will still show the focus indicator when using the keyboard to open it which is important for users who solely rely on using their keyboard to use their computer and can't use a mouse.
 
-We can use the CSS `:focus-visible` pseudo class to prevent the focus indicator from displaying when a user opens the dialog by clicking its trigger with a mouse. This will still show the focus indicator when using the keyboard to open it which is important for users who solely rely on using their keyboard to navigate and interact with their computer.
+So please, don't mess with the dialog's focus behavior, unless it's to actually improve the usability and accessibility of the dialog in a particular context. One way of doing this is by using the `autofocus` attribute, which I'll touch on next.
 
 Speaking of focus indicators, if you want to dig deeper on how to design them to be more accessible I suggest reading the excellent article [A guide to designing accessible, WCAG-conformant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/) by Sara Soueidan.
 
