@@ -823,15 +823,19 @@ Speaking of focus indicators, if you want to dig deeper on how to design them to
 
 ### Using the autofocus attribute
 
-In my testing (see [codepen demo](https://codepen.io/clhenrick/full/yLmOmGe "https://codepen.io/clhenrick/full/yLmOmGe")) I found that using the `autofocus` attribute on the dialog element does not always result in it being focused when opened using the keyboard, depending on the browser being used. This is likely a bug in browser vendors since the dialog spec states that when the `autofocus` attribute is on the `dialog` element it should receive focus when opened rather than one of its interactive children. There is also [an open issue in the React Github repository](https://github.com/facebook/react/issues/23301 "https://github.com/facebook/react/issues/23301") on `autoFocus` not working on the `<dialog>` element.
+In my testing (see [codepen demo](https://codepen.io/clhenrick/full/yLmOmGe "https://codepen.io/clhenrick/full/yLmOmGe")) I found that using the `autofocus` attribute on the dialog element does not always result in it being focused when opened using the keyboard, depending on the browser being used. This is likely a bug in browser vendors since the dialog spec states that when the `autofocus` attribute is on the `dialog` element it should receive focus when opened rather than one of its interactive children. There is also [an open issue in the React Github repository](https://github.com/facebook/react/issues/23301 "https://github.com/facebook/react/issues/23301") on `autoFocus` not working on the `<dialog>` element when used in React.
 
 _For this reason I recommend **avoiding using** the_ `autofocus` _attribute on the **dialog element** for the time being_.
 
-Similarly, I've found when testing usage of the `autofocus` attribute on a dialog’s child element, it does not appear to work as expected in React. Perhaps with the browser implementation / does not follow the spec for the dialog. In order to place focus on a specific child element in the Modal component you must manually do so using a combination of the dialog's `transitionend` event and a React `ref` on the child element to call `ref.current.focus()`.
+Similarly, I've found when testing usage of the `autofocus` attribute on a dialog’s child element, it does not appear to work as expected in React. Perhaps with certain browser vendors not following the spec for the dialog. In order to place focus on a specific child element in the Modal component you must use a `ref` on the desired child element and call `ref.current.focus()` after the Modal is shown.
 
 _For this reason I recommend **avoiding using** the_ `autofocus` _attribute on the dialog’s **child elements** for the time being_.
 
-### All together now
+### Conflicts with other UI components that use z-index
+
+Because the HTML `<dialog>` element uses the browser's `top-layer` to be the top most element when shown, any other component that uses the CSS `z-index` outside of the dialog will be hidden underneath of it. This holds true for UI components that use React portals. An example component that might conflict with the dialog is a toast message. If the toast message is created using a React portal and relies on a high CSS `z-index` value, it will always be hidden by the dialog when both are shown at the same time. However, elements rendered within the dialog that have a `z-index` value, such as tooltips, will still be visible within the dialog.
+
+## All together now
 
 We made it! Here is the final code for our ModalDialog component:
 
