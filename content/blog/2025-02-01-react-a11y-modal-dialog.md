@@ -489,7 +489,7 @@ There are a few different ways to handle preventing the Modal component's childr
 
 1. We could add an optional prop that is a callback function to run on the dialog's "close" event. This would allow the consumer of our `Modal` component to run any clean up tasks like resetting state or pausing or quitting operations that may be memory intensive. One potential downside of this approach requires the consumer of our Modal component to remember to do their clean-up work in the Modal's `props.onClose` callback function.
 
-2. We could wrap the `Modal` in a helper component, and pass it a [special `key` prop](https://react.dev/learn/rendering-lists#why-does-react-need-keys) of a different value when opened and closed to force it to unmount and remount each time it is opened and closed. When a component is unmounted any internal state is reset and effect clean ups are run. However, this might not be desirable to do all the time though, as generally it is considered more performant to let React reconcile DOM changes rather than forcing the remounting of parts of our component tree.
+2. We could wrap the `Modal` in a helper component, and pass it a [special `key` prop](https://react.dev/learn/rendering-lists#why-does-react-need-keys) of a different value when opened and closed to force it to unmount and remount each time it is closed and opened. When a component is unmounted, React will remove any state that is local to that component. However, force unmounting the Modal might not be desirable to do all the time. Generally it is considered more performant to let React reconcile DOM changes rather than forcing the remounting of parts of the component tree.
 
 3. Another way to remount the Modal from the React component tree (and the dialog from the DOM) when it is closed would be by wrapping the Modal in a helper component, and adding a conditional that returns the Modal when `isOpen` is `true` and `undefined` when `isOpen` is `false`. This approach would have the same pitfalls as the previous method using the `key` prop.
 
@@ -569,7 +569,7 @@ const App = () => {
 
 Remember that we may not need to use the `ModalOptimized` component since generally its best to let React manage making updates to the component tree and DOM rather than forcing a component to unmount and remount. We should only reach for this enhancement if we notice the Modal's children are holding onto stale state or causing a performance problem that could be remedied by unmounting and remounting it.
 
-Another important caveat to note about either of these enhancements is if we decide to animate the dialog's close event. We probably don't want to update the Modal component's children or their state until the Modal is completely hidden, otherwise we might suddenly show the Modal's contents in an unexpected state prior to it being hidden which could look odd or confuse the user. I haven't had to addres this issue yet, but one possible way to do so would be to use the [`transitionEnd` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/transitionend_event) to handle the clean up rather than `onClose`.
+Another important caveat to note about either of these enhancements is if we decide to animate the dialog's close event. We probably don't want to update the Modal component's children or their state until the Modal is completely hidden, otherwise we might suddenly show the Modal's contents in an unexpected state prior to it being hidden which could look odd or confuse the user. I haven't had to address this issue yet, but one possible way to do so would be to use the [`transitionEnd` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/transitionend_event) to handle the clean up rather than `onClose`.
 
 <!-- TODO: do a quick demo of when onClose fires compared to onTransitionEnd fires -->
 
@@ -590,7 +590,7 @@ However, animating the dialog element is currently not fully supported, nor is i
 
 - Animating the dialog using `keyframes` and `animation` is not yet supported on Firefox either.
 
-If animating the dialog is a requirement, I prefer using the `transition` method of fading in the dialog during its open event. I avoid transitioning the dialog's close event to avoid the position jump bug in Safari. The CSS for using `transition` with the dialog element is also a bit less verbose than it is for using `animation` and `keyframes`.
+If animating the dialog is a requirement, I prefer using the `transition` method of fading in the dialog during its open event. I do not transition the dialog's close event to avoid the position jump bug in Safari. The CSS for using `transition` with the dialog element is also a bit less verbose than it is for using `animation` and `keyframes`.
 
 It's also worth noting that if we want to clean up stale state in the Modal's children then we may want to use a callback function for the dialog's `onTransitionEnd` or `onAnimationEnd` events.
 
@@ -653,7 +653,7 @@ dialog {
 
 Some notes on the CSS:
 
-- We use the CSS `prefers-reduced-motion` feature query to apply the transition only when the user has not specified a reduced motion setting on their browser or device. This way we respect the user's preference to not animate the dialog's open event if they prefer to not see animations. (_TODO: add something about how this relates to the specific disability I'm forgetting the name of_)
+- We use the CSS [`prefers-reduced-motion` feature query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) to apply the transition only when the user has not specified a reduced motion setting on their browser or device. This way we respect the user's preference to not animate the dialog's open event if they prefer to not experience animations. Animations can trigger vestibular disorders for some people such as dizziness, nausea and headaches. By respecting the user's reduced motion settting we adhere to [WCAG SC 2.3.3 Animation from Interactions (Level AAA)](https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html).
 
 - It's important that no padding exists on the dialog element so that a user cannot accidentally click on it to dismiss it; they should only be able to click the :backdrop area to do a "light dismiss". Instead, padding should be applied to one of the dialog's child elements, e.g. a content / wrapper div element.
 
@@ -661,11 +661,11 @@ Some notes on the CSS:
 
 ### Providing an Accessible Name and Description to the dialog
 
-When creating modal dialogs it's generally considered a best practice to give them at the very least an accessible name and optionally an accessible description. This helps inform users of assistive technology, such as screen readers, what the purpose of the dialog is when they open it and focus is moved to it or within it. Without an accessible name the word "dialog" may just be announced with no other helpful information, which can be confusing to such users.
+When creating modal dialogs it's generally considered a best practice to give them at the very least an accessible name and optionally an accessible description. This helps inform users of assistive technology, such as screen readers, what the purpose of the dialog is when they open it and focus is moved to it or within it. Without an accessible name the word "dialog" may just be announced with no other helpful information.
 
 #### Accessible Name? Accessible Description? What are you talking about?
 
-Generally speaking, an _accessible name_ is a property computed by the browser using the browser's [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree) and operating system's [Accessibility API](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) which assigns a machine readable name to elements in the DOM. These elements are typically interactive controls such as buttons, links, and inputs, but can apply to content areas at times as well (such as our Modal component's dialog element). Making sure that all interactive elements have a clear, and preferably unique, accessible name is one of the most important things you can do to make your product more accessible for users of assistive technology such as screen readers, so I strongly encourage doing so. If you don't do this you may fail the Web Content Accessibility Guidelines (WCAG) Success Criteria [4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html), so it is also a requirement for conforming to WCAG.
+An _accessible name_ is a property computed by the browser using the browser's [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree) and operating system's [Accessibility API](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) which assigns a machine readable name to certain elements in the DOM. These elements are typically interactive controls such as buttons, links, and inputs, but can also apply to content areas at times as well (such as our Modal component's dialog element). Making sure that all relevant elements have a clear, and preferably unique, accessible name is one of the most important things you can do to make your product more accessible for users of assistive technology such as screen readers, so I strongly encourage doing so. If you don't do this for certain elements like form controls then you may fail the Web Content Accessibility Guidelines (WCAG) Success Criteria [4.1.2 Name, Role, Value (Level A)](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html), so it is also a requirement for conforming to WCAG.
 
 An _accessible description_ is similar in that it is also a computed property, but it is secondary to the accessible name in that it adds more information about an element. Generally speaking, accessible names should be kept short and succinct so that screen reader users do not have to listen to a lot of descriptive text when first focusing a control or arriving in an area of the page such as our Modal. Additional and/or lengthier descriptive information is often better added as the accessible description. One example of accessible descriptions are help or error messages that are associated with form fields. These text are programmatically associated with the input so that screen reader users know that a form field has an error and what that error is, or that it contains a hint for how to fill it out, such as password requirements.
 
@@ -673,13 +673,13 @@ To dig deeper on this topic have a look at [Providing Accessible Names and Descr
 
 #### Solving adding an accessible name and description:
 
-There are several ARIA attributes we can utilize to provide the Modal component's dialog element with an accessible name and description.
+There are several [ARIA attributes](https://www.w3.org/WAI/standards-guidelines/aria/) we can utilize to provide the Modal component's dialog element with an accessible name and description.
 
 For the dialog's accessible name we can use either the `aria-labelledby` or `aria-label` ARIA attributes. Most accessibility experts will implore you to use `aria-labelledby` as it has some advantages over `aria-label`. Since `aria-labelledby` references an existing text node in the DOM, it benefits sighted screen reader users who can see the name as well as hear it announced, creating a better user experience for them. On the other hand, the `aria-label` attribute's value is a string (text) that becomes the accessible name and is not visible to sighted users.
 
 An additional benefit of using `aria-labelledby` is that it is more likely to be translated to different languages by auto translate services such as in Google Chrome. The `aria-label` attribute will not be, so a screen reader user who is using a different language will not hear accessible names announced in their preferred language. However, auto-translate cannot be consistently relied upon. If localization and internationalization are requirements for your product, always keep in mind that ARIA text strings must be localized just the same as visible text.
 
-The same criteria goes for `aria-describedby`, the description is be visible to sighted users and may be auto-translated, whereas `aria-description` will not be visible to sighted users and will not be auto-translated. Additionally, the `aria-description` attribute is not as well supported across various assistive technology and devices as `aria-describedby`, so be discerning with its usage and prefer `aria-describedby` whenever possible.
+The same criteria goes for `aria-describedby`: the description is visible to sighted users and may be auto-translated, whereas `aria-description` will not be visible to sighted users and will not be auto-translated. Additionally, the `aria-description` attribute is not as well supported across various assistive technology and devices as `aria-describedby`, so be discerning with its usage and prefer `aria-describedby` whenever possible.
 
 So the "Too Long; Don't Read" (TL;DR, aka summary) of this is:
 
