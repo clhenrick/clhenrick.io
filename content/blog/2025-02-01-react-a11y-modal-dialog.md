@@ -1040,18 +1040,18 @@ You may also view and run this code by downloading or cloning the corresponding 
 
 Thanks for reading this blog post, it was a long one! I sincerely hope that it gives you a "good enough" starting point for creating an accessible and reusable modal dialog component with React. Perhaps you even learned a thing or two about web accessibility, whether specific to modal dialogs or more generally speaking. If so please feel free to let me know by dropping me a short message either via the [contact form](/contact/) on this website or a mention on [Mastodon]({{ metadata.socialLinks.get('Mastodon') }}).
 
-If you're interested in digging in deeper, here are some articles to browse to learn more about the HTML `<dialog>` element and the accessibility of the modal dialog pattern.
+If you're interested in digging in deeper, here are some articles to browse to learn more about the HTML `<dialog>` element, including its history, and accessibility related features of the modal dialog pattern.
 
-- [The Dialog element - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
-- [MDN Dialog Accessibility notes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility")
-- [Web.dev Building a dialog component](https://web.dev/articles/building/a-dialog-component)
-- [Animating the Dialog Element](https://frontendmasters.com/blog/animating-dialog/)
-- [Modal Dialog Example](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/) (ARIA APG modal dialog pattern)
-- [Use the dialog element (reasonably) | scottohara.me](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html)
-- [HTML Standard](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element) (dialog element spec from whatwg.org)
-- [Top layer - MDN Web Docs Glossary: Definitions of Web-related terms | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer)
-- [GitHub - scottaohara/accessible_modal_window: Accessible modal dialogs](https://github.com/scottaohara/accessible_modal_window)
-- [Having an open dialog (archival post) | scottohara.me](https://www.scottohara.me/blog/2019/03/05/open-dialog.html)
-- [Dialog Focus in Screen Readers](https://adrianroselli.com/2020/10/dialog-focus-in-screen-readers.html)
-- [Is Dialog Enough?](https://blog.mayank.co/is-dialog-enough)
-- [Providing Accessible Names and Descriptions](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/)
+- [The Dialog element (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+- [Dialog Accessibility (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility")
+- [Building a dialog component (Web.dev)](https://web.dev/articles/building/a-dialog-component)
+- [Animating the Dialog Element (Frontend Masters)](https://frontendmasters.com/blog/animating-dialog/)
+- [Modal Dialog pattern (WAI APG)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/)
+- [Dialog element spec (WHATWG)](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element)
+- [Top layer (MDN)](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer)
+- [Use the dialog element (reasonably) by Scott O'Hara](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html)
+- [Accessible Modal Dialog (Github repository) by Scott O'Hara](https://github.com/scottaohara/accessible_modal_window)
+- [Having an open dialog (archival post) by Scott O'Hara](https://www.scottohara.me/blog/2019/03/05/open-dialog.html)
+- [Dialog Focus in Screen Readers by Adrian Roselli](https://adrianroselli.com/2020/10/dialog-focus-in-screen-readers.html)
+- [Is Dialog Enough? by Mayank](https://blog.mayank.co/is-dialog-enough)
+- [Providing Accessible Names and Descriptions (WAI ARIA docs)](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/)
