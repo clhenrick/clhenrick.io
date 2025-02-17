@@ -1,11 +1,14 @@
 ---
 title: "Building an Accessible Modal Dialog in React"
-date: 2025-02-01
-teaser: "Using the HTML dialog element with React to create an accessible modal dialog."
+date: 2025-02-17
+teaser: "Using the HTML dialog element with React to create a reusable and accessible modal dialog."
 tags:
   - React
   - Accessibility
   - Dialog
+  - HTML
+  - CSS
+  - ARIA
 ---
 
 ## Introduction
