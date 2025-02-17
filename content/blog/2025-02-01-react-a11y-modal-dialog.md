@@ -1052,6 +1052,18 @@ export const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 
 You may also view and run this code by downloading or cloning the corresponding [react-a11y-modal-dialog-demo repository on Github](https://github.com/clhenrick/react-a11y-modal-dialog-demo).
 
+## Credits
+
+The following folks helped inform this blog post, either directly or indirectly, so I would like to thank them here.
+
+I would like to give a special thanks and shout out to [Aaron Mendez](#) for peer reviewing this blog post prior to publishing it. He clarified some crucial bits about the dialog's accessibility features and suggested using an assertion for checking the React props relating to the dialog's accessible name. Thank you Aaron!
+
+A big thank you to [Praise Agbabiaka](https://www.linkedin.com/in/praise-agbabiaka/) from the A11Y Slack on sharing her feedback relating to focus management when cleaning up the dialog's child state in React by unmounting the dialog when not shown.
+
+Another big thank you to my coworker [Ri Le](https://riledigital.com) about using `position 0` to prevent the Safari position jump bug when closing the dialog.
+
+I would also like to thank [Scott O'Hara](https://www.scottohara.me), [Adrian Rosseli](https://adrianroselli.com), and [Mayank](https://mayank.co/blog) for their previous writings about the HTML dialog element which helped informed this post.
+
 ## Further Reading
 
 Thanks for reading this blog post, it was a long one! I sincerely hope that it gives you a "good enough" starting point for creating an accessible and reusable modal dialog component with React. Perhaps you even learned a thing or two about web accessibility, whether specific to modal dialogs or more generally speaking. If so please feel free to let me know by dropping me a short message either via the [contact form](/contact/) on this website or a mention on [Mastodon]({{ metadata.socialLinks.get('Mastodon') }}).
