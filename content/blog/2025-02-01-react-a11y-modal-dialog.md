@@ -814,7 +814,7 @@ To verify that our accessible name and description are being applied to our Moda
 
 I've included a screenshot of the [Vivaldi web browser](https://vivaldi.com)'s accessibility panel showing that the accessible name and description have been correctly applied to the dialog. Note that Vivaldi is a Chromium based browser so the dev tools will looks similar to Chrome's.
 
-![A screenshot of the Modal component showing the browser developer tools accessibility panel. In the accessibility panel fields for the accessible name and description indicate that they are populated with the appropriate text content.](/img/react-a11y-modal-dialog-accname-accdesc.png)
+{% image 'react-a11y-modal-dialog-accname-accdesc.png', 'A screenshot of the Modal component rendered in the browser with the browser developer tools accessibility panel visible to the side. Within the accessibility panel fields for the accessible name and description indicate that they are populated with the appropriate text content from the Modal\'s heading and paragraph child elements.' %}
 
 ### A brief note on the dialog's focus behavior
 
