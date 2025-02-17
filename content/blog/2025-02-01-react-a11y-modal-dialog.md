@@ -604,6 +604,7 @@ dialog {
   --backdrop-bg-color-closed: rgb(0 0 0 / 0%);
   --animation-duration: 150ms;
   --animation-easing: ease-in-out;
+  /* NOTE: it's important that no padding exists on the dialog element so that a user cannot accidentally click on it to dismiss it; they should only be able to click the :backdrop area to do a "light dismiss". Instead, padding should be applied to one of the dialog's child elements. */
   padding: 0;
 }
 
@@ -611,6 +612,7 @@ dialog {
   dialog {
     opacity: 0;
     transition:
+      /* NOTE: use of position 0 fixes a bug in Safari where then dialog position jumps on close / fade out. However, this comes at the expense of disabling the close / fade out transition. This could be undone once the bug in Safari has been fixed. See: https://bugs.webkit.org/show_bug.cgi?id=275184 */
       position 0,
       overlay var(--animation-duration) var(--animation-easing) allow-discrete,
       opacity var(--animation-duration) var(--animation-easing),
@@ -624,17 +626,20 @@ dialog {
   }
 }
 
+dialog::backdrop {
+  background-color: var(--backdrop-bg-color-closed);
+}
+
+dialog[open]::backdrop {
+  background-color: var(--backdrop-bg-color-open);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   dialog::backdrop {
-    background-color: var(--backdrop-bg-color-closed);
     transition:
       display var(--animation-duration) allow-discrete,
       overlay var(--animation-duration) allow-discrete,
       background-color var(--animation-duration);
-  }
-
-  dialog[open]::backdrop {
-    background-color: var(--backdrop-bg-color-open);
   }
 }
 
