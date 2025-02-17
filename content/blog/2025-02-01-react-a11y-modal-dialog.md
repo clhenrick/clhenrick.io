@@ -669,7 +669,7 @@ For the dialog's accessible name we can use either the `aria-labelledby` or `ari
 
 An additional benefit of using `aria-labelledby` is that it is more likely to be translated to different languages by auto translate services such as in Google Chrome. The `aria-label` attribute will not be, so a screen reader user who is using a different language will not hear accessible names announced in their preferred language. However, auto-translate cannot be consistently relied upon. If localization and internationalization are requirements for your product, always keep in mind that ARIA text strings must be localized just the same as visible text.
 
-The same criteria goes for `aria-describedby`, the description is be visible to sighted users and may be auto-translated, whereas `aria-description` will not be visible to sighted users and will not be auto-translated. Additionally, the `aria-description` attribute is not as well supported across various assistive technology and devices as `aria-describedby`, so be discerning with its usage and prefer `aria-describedby` whenever possible.
+The same criteria goes for `aria-describedby`, the description is be visible to sighted screen reader users and may be auto-translated, whereas `aria-description` will not be visible to sighted users and will not be auto-translated. Additionally, the `aria-description` attribute is not as well supported across various assistive technology and devices as `aria-describedby`, so be discerning with its usage and prefer `aria-describedby` whenever possible.
 
 So the "Too Long; Don't Read" (TL;DR, aka summary) of this is:
 
@@ -734,7 +734,7 @@ const ModalDialog = forwardRef<ModalDialogRef, ModalDialogProps>(
 
 If we prefer to be strict about making sure the `Modal` component is given an accessible name, we can check the related ARIA props to assert that one (either `aria-labelledby` or `aria-label`) has a value.
 
-Outside of the `Modal` component we can create a utility function to assert that a condition is `true`, and if not throw an error with an optional message.
+Outside of the `Modal` component we can create an [assertion function](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions) to check that a condition is truthy, and if not throw an error with an optional message.
 
 ```ts
 function assert(condition: unknown, msg?: string): asserts condition {
@@ -744,7 +744,7 @@ function assert(condition: unknown, msg?: string): asserts condition {
 }
 ```
 
-We can use this `assert` utility function within our `Modal` component to check that either the `aria-label` or `aria-labelledby` prop have a value. This way, if another developer is using our component and does not provide an accessible name, an error will be thrown to not so gently remind them to give it one. Of course this type of check could still be intentionally bypassed, for example by providing a placeholder string or nonsense, but it at least serves as a reminder to our colleagues that they should be adhereing to accessibility best practices.
+We can use this type assertion utility function within our `Modal` component to check that either the `aria-label` or `aria-labelledby` prop have a value. This way, if another developer is using our component and does not provide an accessible name, an error will be thrown to not-so-gently remind them to give it one. Of course this assertion could still be intentionally bypassed, for example by providing a placeholder string or nonsense, but it at least serves as a reminder to our colleagues that they should be adhereing to accessibility best practices when using the `Modal` component.
 
 ```ts
 // at the top of the body of our Modal component,
@@ -755,7 +755,7 @@ assert(
 );
 ```
 
-To avoid crashing our application in production, we may also wish to wrap the assertion in an `if` statement so that we only throw an error when running the app locally in a development environment. A common way of handling this is checking the `NODE_ENV` environment variable to make sure it has not been set to "production", which front-end build tools will typically do when creating a "production build" of source code as well as to remove React's development specific related library code and features.
+To avoid crashing our application in production, we wrap the assertion in an `if` statement so that we only throw an error when running the app locally in a development environment. A common way of handling this is checking the `NODE_ENV` environment variable to make sure it has not been set to `"production"`, which front-end build tools will typically do when creating a production build of source code.
 
 ```ts
 if (process.env.NODE_ENV !== "production") {
@@ -766,7 +766,9 @@ if (process.env.NODE_ENV !== "production") {
 }
 ```
 
-Back to giving our Modal an accessible name and description. We provide the `aria-labelledby` prop an `id` value of an element that acts as the Modal's title. We can leverage React's [`useId` hook](https://react.dev/reference/react/useId) to generate unique `id` attribute values for the `aria-labelledby` and `aria-describedby` attributes. This prevents accidentally using the same `id` attribute value elsewhere in our component tree. We also provide the `aria-describedby` an `id` value of the element that adds descriptive text to the Modal.
+Back to giving our Modal an accessible name and description.
+
+We will provide the `aria-labelledby` prop a string that is the `id` value of a heading element that serves as the Modal's title. Similarly, for the `aria-describedby` prop we provide a string that is the `id` value of a paragraph element describing the Modal's purpose. We leverage React's [`useId` hook](https://react.dev/reference/react/useId) to generate unique `id` attribute values for the `aria-labelledby` and `aria-describedby` attributes. This prevents accidentally using the same `id` attribute value elsewhere in our component tree (remember that HTML `id` attribute values need to be unique in order to function correctly).
 
 **Content Writing Tip:** Be sure to not include the words "modal" or "dialog" in the accessible name or description text, since assistive tech will already announce to users that they are now within a dialog when focus moves to it after it is revealed.
 
@@ -795,7 +797,7 @@ To verify that our accessible name and description are being applied to our Moda
 
 **Pro accessibility tip**: it's good make a habit of inspecting the accessibility panel for an element to verify its accessibility properties are being correctly implemented. This is especially true when using front-end frameworks like React that abstract HTML, or when using vanilla JavaScript to manipulate the DOM. React Components are not HTML, and in my experience many React developers do not look at the DOM they are generating with React which leads to many accessibility related bugs. Making a habit of this will save you a lot of time and headache when it comes to making sure component code is accessible. It is a good first step to take prior to performing manual accessibility testing.
 
-I've included a screenshot of the [Vivaldi web browser](https://vivaldi.com)'s accessibility panel showing that the accessible name and description have been correctly applied to the dialog. If you Since Vivaldi is a Chromium based browser
+I've included a screenshot of the [Vivaldi web browser](https://vivaldi.com)'s accessibility panel showing that the accessible name and description have been correctly applied to the dialog. Note that Vivaldi is a Chromium based browser so the dev tools will looks similar to Chrome's.
 
 ![A screenshot of the Modal component showing the browser developer tools accessibility panel. In the accessibility panel fields for the accessible name and description indicate that they are populated with the appropriate text content.](/img/react-a11y-modal-dialog-accname-accdesc.png)
 
@@ -827,13 +829,13 @@ In my testing (see [codepen demo](https://codepen.io/clhenrick/full/yLmOmGe "htt
 
 _For this reason I recommend **avoiding using** the_ `autofocus` _attribute on the **dialog element** for the time being_.
 
-Similarly, I've found when testing usage of the `autofocus` attribute on a dialog’s child element, it does not appear to work as expected in React. Perhaps with certain browser vendors not following the spec for the dialog. In order to place focus on a specific child element in the Modal component you must use a `ref` on the desired child element and call `ref.current.focus()` after the Modal is shown.
+Similarly, I've found when testing usage of the `autofocus` attribute on a dialog’s child element, it does not appear to work as expected in React. In order to place focus on a specific child element in the Modal component, you must use a `ref` on the desired child element and call `ref.current.focus()` after the Modal is shown.
 
 _For this reason I recommend **avoiding using** the_ `autofocus` _attribute on the dialog’s **child elements** for the time being_.
 
 ### Conflicts with other UI components that use z-index
 
-Because the HTML `<dialog>` element uses the browser's `top-layer` to be the top most element when shown, any other component that uses the CSS `z-index` outside of the dialog will be hidden underneath of it. This holds true for UI components that use React portals. An example component that might conflict with the dialog is a toast message. If the toast message is created using a React portal and relies on a high CSS `z-index` value, it will always be hidden by the dialog when both are shown at the same time. However, elements rendered within the dialog that have a `z-index` value, such as tooltips, will still be visible within the dialog.
+Because the HTML `<dialog>` element uses the browser's `top-layer` to be the top most element when shown, any other component that uses the CSS `z-index` outside of the dialog will be hidden underneath of it. This holds true for UI components that use React portals. An example component that might conflict with the dialog is a toast message (which typically have their own accessibility issues, see: [A toast to an accessible toast](https://www.scottohara.me/blog/2019/07/08/a-toast-to-a11y-toasts.html)). If the toast message is created using a React portal and relies on a high CSS `z-index` value, it will always be hidden by the dialog when both are shown at the same time. However, elements rendered within the dialog that have a `z-index` value, such as tooltips, will still be visible within the dialog.
 
 ## All together now
 
@@ -843,7 +845,7 @@ We made it! Here is the final code for our ModalDialog component:
 // TODO...
 ```
 
-You may also view and run this code by downloading the corresponding [react-a11y-modal-dialog-demo Github repository](https://github.com/clhenrick/react-a11y-modal-dialog-demo).
+You may also view and run this code by downloading or cloning the corresponding [react-a11y-modal-dialog-demo repository on Github](https://github.com/clhenrick/react-a11y-modal-dialog-demo).
 
 ## Further Reading
 
