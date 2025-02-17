@@ -494,7 +494,7 @@ There are a few different ways to handle preventing the Modal component's childr
 
 3. Another way to remount the Modal from the React component tree (and the dialog from the DOM) when it is closed would be by wrapping the Modal in a helper component, and adding a conditional that returns the Modal when `isOpen` is `true` and `undefined` when `isOpen` is `false`. This approach would have the same pitfalls as the previous method using the `key` prop.
 
-Which method you choose depends on the context you are using the `Modal` in as well as other factors such as whether you would like to animate the Modal's transition between its visible and hidden states.
+Which method you choose depends on the context you are using the `Modal` in as well as other factors such as whether you would like to animate the Modal's transition between its visible and hidden states. No matter how we solve this issue, **_it's extremely important to take care that we do not break focus management._** When the `Modal` is closed using the keyboard, focus should return to the trigger that opened it, if one exists, or to a sensible part of the page as to not disorient or frustrate user's who are operating our page or app using the keyboard and/or assistive technology.
 
 First we'll add a function prop for the `onClose` event to run any desired clean-up tasks when the modal is closed. This is fairly straightforward to implement and could help consumers of our Modal in certain situations.
 
