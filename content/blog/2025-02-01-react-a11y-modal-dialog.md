@@ -266,8 +266,6 @@ useEffect(() => {
 }, [setIsOpen, shouldLightDismiss]);
 ```
 
-_TODO: add full code up to this point or link to it externally?_
-
 After making these updates our Modal will now correctly respond to close events triggered by either the Escape key or light dismiss by the user. It should not have any problems being re-opened after it has been closed from either of these types of close events as well.
 
 ### Enabling the component to be controlled or uncontrolled
