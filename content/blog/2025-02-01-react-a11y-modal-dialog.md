@@ -572,8 +572,6 @@ Remember that we may not need to use the `ModalDialogOptimized` component since 
 
 Another important caveat to note about either of these enhancements is if we decide to animate the dialog's close event. We probably don't want to update the `ModalDialog` component's children or their state until the Modal is completely hidden, otherwise we might suddenly show the Modal's contents in an unexpected state prior to it being hidden which could look odd or confuse the user. I haven't had to address this issue yet, but one possible way to do so would be to use the [`transitionEnd` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/transitionend_event) to handle the clean up rather than `onClose`.
 
-<!-- TODO: do a quick demo of when onClose fires compared to onTransitionEnd fires -->
-
 ### Dialog Animation challenges
 
 Animating the modal dialog on its open and close events can add a nice bit of polish that helps signify a change of context to the user. An animation could be as simple as a fade in and out, or be more complex such as a slide in from one side of the screen. That being said, it's important to keep in mind that for accessibility reasons we should disable the animation if a user has reduced motion enabled in their browser or device.
@@ -695,7 +693,6 @@ So the "Too Long; Don't Read" (TL;DR, aka summary) of this is:
 
 We add these ARIA attributes to our ModalDialog's dialog element by passing them as props:
 
-<!-- TODO: fix prettier error in following code block -->
 <!-- prettier-ignore -->
 ```tsx
 import {
