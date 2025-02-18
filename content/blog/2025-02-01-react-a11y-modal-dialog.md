@@ -1056,13 +1056,15 @@ You may also view and run this code by downloading or cloning the corresponding 
 
 The following folks helped inform this blog post, either directly or indirectly, so I would like to thank them here.
 
-I would like to give a special thanks and shout out to [Aaron Mendez](#) for peer reviewing this blog post prior to publishing it. He clarified some crucial bits about the dialog's accessibility features and suggested using an assertion for checking the React props relating to the dialog's accessible name. Thank you Aaron!
+I would like to give a special thanks and shout out to [Aaron Mendez](https://www.linkedin.com/in/amui) for peer reviewing this blog post prior to publishing it. He clarified some crucial bits about the dialog's accessibility features and suggested using an assertion for checking the React props relating to the dialog's accessible name. Thank you Aaron!
 
 A big thank you to [Praise Agbabiaka](https://www.linkedin.com/in/praise-agbabiaka/) from the A11Y Slack on sharing her feedback relating to focus management when cleaning up the dialog's child state in React by unmounting the dialog when not shown.
 
 Another big thank you to my coworker [Ri Le](https://riledigital.com) about using `position 0` to prevent the Safari position jump bug when closing the dialog.
 
-I would also like to thank [Scott O'Hara](https://www.scottohara.me), [Adrian Rosseli](https://adrianroselli.com), and [Mayank](https://mayank.co/blog) for their previous writings about the HTML dialog element which helped informed this post.
+Anytime I write about something accessibility related I also need to give a shout out to the wonderful [Sara Soueidan](https://www.sarasoueidan.com) for her [Practical Accessibility course](https://practical-accessibility.today) which has taught me a ton about web accessibility and has influenced this post.
+
+I would also like to thank [Scott O'Hara](https://www.scottohara.me), [Adrian Rosseli](https://adrianroselli.com), and [Mayank](https://mayank.co/blog) for their previous writings about the HTML dialog element which helped informed and inspired writing this post.
 
 ## Further Reading
 
