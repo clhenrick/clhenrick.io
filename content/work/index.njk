@@ -60,7 +60,12 @@ eleventyNavigation:
     {% endfor %}
   </section>
 
-  <div id="announce" class="visually-hidden" aria-live="polite"></div>
+  <div
+    id="announce"
+    class="visually-hidden"
+    role="status"
+    aria-labelledby="projects-label"
+  ></div>
 </section>
 
 {%- set javascripts -%}
