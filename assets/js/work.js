@@ -40,10 +40,12 @@
       }
     });
 
+    const numberShownCards = cards.filter((d) => !d.hidden)?.length;
+
     announce.innerText =
       value === "all"
-        ? "Showing all project types."
-        : `Showing only ${value} project types.`;
+        ? `Showing all ${numberShownCards} projects.`
+        : `Showing ${numberShownCards} ${value} projects.`;
   }
 
   function onShuffleButtonClick() {
