@@ -40,7 +40,10 @@
       }
     });
 
-    announce.innerText = `Filtered the projects list to show ${value} projects.`;
+    announce.innerText =
+      value === "all"
+        ? "Showing all project types."
+        : `Showing only ${value} project types.`;
   }
 
   function onShuffleButtonClick() {
@@ -49,7 +52,7 @@
     shuffled.forEach((card) => {
       cardsContainer.appendChild(card);
     });
-    announce.innerText = `Shuffled the order of the projects list.`;
+    announce.innerText = `Shuffled the order of the projects.`;
   }
 
   // code credit: https://bost.ocks.org/mike/shuffle/
