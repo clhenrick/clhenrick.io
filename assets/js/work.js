@@ -1,5 +1,6 @@
 // handles filtering project cards in /content/work/index.njk
 (() => {
+  let numberShuffles = 0;
   const cards = Array.from(document.querySelectorAll(".card"));
   const cardsContainer = document.querySelector(".cards-container");
 
@@ -16,6 +17,7 @@
   });
 
   shuffleButton.addEventListener("click", onShuffleButtonClick);
+  updateOutputText("all");
 
   function onFilterButtonClick(event) {
     const value = event.target.value;
@@ -40,12 +42,25 @@
       }
     });
 
-    const numberShownCards = cards.filter((d) => !d.hidden)?.length;
+    numberShuffles = 0;
+    updateOutputText(value);
+  }
 
-    announce.innerText =
-      value === "all"
-        ? `Showing all ${numberShownCards} projects.`
-        : `Showing ${numberShownCards} ${value} projects.`;
+  function updateOutputText(value) {
+    const numberShownCards = cards.filter((d) => !d.hidden)?.length;
+    if (value === "all") {
+      announce.innerText = `Showing all ${numberShownCards} projects.`;
+    } else if (value === "shuffle") {
+      const value = filterButtons.find(
+        (el) => el.getAttribute("aria-pressed") === "true"
+      )?.value;
+      announce.innerText = `Shuffled the order of ${value} projects.`;
+      if (numberShuffles) {
+        announce.innerText += ` (${numberShuffles + 1}x).`;
+      }
+    } else {
+      announce.innerText = `Showing ${numberShownCards} ${value} projects.`;
+    }
   }
 
   function onShuffleButtonClick() {
@@ -54,7 +69,8 @@
     shuffled.forEach((card) => {
       cardsContainer.appendChild(card);
     });
-    announce.innerText = `Shuffled the order of the projects.`;
+    updateOutputText("shuffle");
+    numberShuffles += 1;
   }
 
   // code credit: https://bost.ocks.org/mike/shuffle/
