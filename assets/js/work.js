@@ -54,7 +54,7 @@
       const value = filterButtons.find(
         (el) => el.getAttribute("aria-pressed") === "true"
       )?.value;
-      announce.innerText = `Shuffled the order of ${value} projects.`;
+      announce.innerText = `Shuffled the order of ${numberShownCards} ${value} projects.`;
       if (numberShuffles) {
         announce.innerText += ` (${numberShuffles + 1}x).`;
       }
