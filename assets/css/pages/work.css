@@ -15,7 +15,7 @@ main p:first-of-type {
 
 .js-enabled .project-filters {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   align-items: baseline;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
@@ -25,6 +25,12 @@ main p:first-of-type {
   --button-bg-pressed: var(--color-turquoise-dark);
   --button-text-color: var(--color-gray-90);
   --button-text-color-pressed: var(--color-white);
+}
+
+@media screen and (width >= 415px) {
+  .js-enabled .project-filters {
+    flex-direction: row;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
