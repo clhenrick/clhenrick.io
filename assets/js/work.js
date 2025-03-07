@@ -7,9 +7,7 @@
   // reference to the aria-live container
   const announce = document.querySelector("#announce");
 
-  const filterButtons = Array.from(
-    document.querySelectorAll("button.filter")
-  ).filter((button) => button.value !== "shuffle");
+  const filterButtons = Array.from(document.querySelectorAll("button.filter"));
   const shuffleButton = document.querySelector("button.shuffle");
 
   filterButtons.forEach((button) => {
@@ -46,20 +44,20 @@
     updateOutputText(value);
   }
 
-  function updateOutputText(value) {
+  function updateOutputText(projectTypeOrAction) {
     const numberShownCards = cards.filter((d) => !d.hidden)?.length;
-    if (value === "all") {
+    if (projectTypeOrAction === "all") {
       announce.innerText = `Showing all ${numberShownCards} projects.`;
-    } else if (value === "shuffle") {
-      const value = filterButtons.find(
+    } else if (projectTypeOrAction === "shuffle") {
+      const projectType = filterButtons.find(
         (el) => el.getAttribute("aria-pressed") === "true"
       )?.value;
-      announce.innerText = `Shuffled the order of ${numberShownCards} ${value} projects.`;
+      announce.innerText = `Shuffled the order of ${numberShownCards} ${projectType} projects.`;
       if (numberShuffles) {
         announce.innerText += ` (${numberShuffles + 1}x).`;
       }
     } else {
-      announce.innerText = `Showing ${numberShownCards} ${value} projects.`;
+      announce.innerText = `Showing ${numberShownCards} ${projectTypeOrAction} projects.`;
     }
   }
 
