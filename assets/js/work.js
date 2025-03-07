@@ -1,14 +1,13 @@
 // handles filtering project cards in /content/work/index.njk
 (() => {
+  let numberShuffles = 0;
   const cards = Array.from(document.querySelectorAll(".card"));
   const cardsContainer = document.querySelector(".cards-container");
 
   // reference to the aria-live container
   const announce = document.querySelector("#announce");
 
-  const filterButtons = Array.from(
-    document.querySelectorAll("button.filter")
-  ).filter((button) => button.value !== "shuffle");
+  const filterButtons = Array.from(document.querySelectorAll("button.filter"));
   const shuffleButton = document.querySelector("button.shuffle");
 
   filterButtons.forEach((button) => {
@@ -16,6 +15,7 @@
   });
 
   shuffleButton.addEventListener("click", onShuffleButtonClick);
+  updateOutputText("all");
 
   function onFilterButtonClick(event) {
     const value = event.target.value;
@@ -40,7 +40,25 @@
       }
     });
 
-    announce.innerText = `Filtered the projects list to show ${value} projects.`;
+    numberShuffles = 0;
+    updateOutputText(value);
+  }
+
+  function updateOutputText(projectTypeOrAction) {
+    const numberShownCards = cards.filter((d) => !d.hidden)?.length;
+    if (projectTypeOrAction === "all") {
+      announce.innerText = `Showing all ${numberShownCards} projects.`;
+    } else if (projectTypeOrAction === "shuffle") {
+      const projectType = filterButtons.find(
+        (el) => el.getAttribute("aria-pressed") === "true"
+      )?.value;
+      announce.innerText = `Shuffled the order of ${numberShownCards} ${projectType} projects.`;
+      if (numberShuffles) {
+        announce.innerText += ` (${numberShuffles + 1}x).`;
+      }
+    } else {
+      announce.innerText = `Showing ${numberShownCards} ${projectTypeOrAction} projects.`;
+    }
   }
 
   function onShuffleButtonClick() {
@@ -49,7 +67,8 @@
     shuffled.forEach((card) => {
       cardsContainer.appendChild(card);
     });
-    announce.innerText = `Shuffled the order of the projects list.`;
+    updateOutputText("shuffle");
+    numberShuffles += 1;
   }
 
   // code credit: https://bost.ocks.org/mike/shuffle/

@@ -36,17 +36,43 @@ eleventyNavigation:
       aria-labelledby="filter-projects-title"
       aria-describedby="filter-projects-desc"
     >
-      <button value="all" class="button filter" aria-pressed="true">all</button>
-      <button value="web" class="button filter" aria-pressed="false">
+      <button
+        type="button"
+        value="all"
+        class="button filter"
+        aria-pressed="true"
+      >
+        all
+      </button>
+      <button
+        type="button"
+        value="web"
+        class="button filter"
+        aria-pressed="false"
+      >
         interactive
       </button>
-      <button value="data-viz" class="button filter" aria-pressed="false">
+      <button
+        type="button"
+        value="data-viz"
+        class="button filter"
+        aria-pressed="false"
+      >
         data viz
       </button>
-      <button value="cartography" class="button filter" aria-pressed="false">
+      <button
+        type="button"
+        value="cartography"
+        class="button filter"
+        aria-pressed="false"
+      >
         cartography
       </button>
-      <button class="button shuffle">shuffle!</button>
+      <button type="button" class="button shuffle">shuffle!</button>
+    </div>
+    <div>
+      <label for="announce" class="visually-hidden">Filter results</label>
+      <output id="announce" role="status"></output>
     </div>
   </details>
 
@@ -59,8 +85,6 @@ eleventyNavigation:
       {{ projectCard(project, thumb) }}
     {% endfor %}
   </section>
-
-  <div id="announce" class="visually-hidden" aria-live="polite"></div>
 </section>
 
 {%- set javascripts -%}
