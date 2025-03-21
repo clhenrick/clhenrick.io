@@ -82,9 +82,10 @@ main section h2 {
     3.253rem + 1.998vw,
     var(--title-max-font-size)
   );
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-weight: bold;
+  overflow-wrap: anywhere;
   margin-bottom: 0;
 }
 
