@@ -12,10 +12,6 @@ footer {
   padding: 0 var(--spacing-mmd) 2rem;
 }
 
-footer section {
-  flex: content;
-}
-
 footer section:first-of-type {
   margin-top: var(--spacing-xxxl);
   margin-bottom: 0;
