@@ -124,7 +124,7 @@ main section h2 {
 
 .card {
   flex-grow: 1;
-  flex-basis: content;
+  flex-basis: auto;
 }
 
 .card .text {
