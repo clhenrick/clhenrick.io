@@ -8,14 +8,33 @@ tags:
   - Design
 ---
 
-- what do we mean by the words "prototype" and "prototyping"?
+## What do we mean by the words "prototype" and "prototyping"?
 
-  - not so much technical prototyping, which focuses on figuring out how to implement a feature, although this may still be a benefit of going through the UX prototyping process
-  - not "vibe coding" or having AI tools make it for you (more on that later)
-  - not "rapid prototyping", which is more of an industrial process (research this?), we're still writing software here
-  - not "click through prototypes" made with design software like Figma, they have value for certain use cases beyond static mocks, for example conveying steps in a workflow or a website map, but can fall short in others such as data driven layouts (dashboards, geographic maps, etc.)
-  - more like prototyping for the user experience, to make sure what we're thinking about building makes sense, is what people expect or will want to use (e.g. from usability testing), and/or to get various interested parties on board on what is being built ("a prototype is worth a thousand meetings")
-  - "build the thing right" vs "build the right thing" was a phrase thrown around at Google's UX division a lot when I was working there.
+Let's start by defining the words "prototype" and "prototyping" and clarifying the context in which I'm using them in this post.
+
+Here's what [Wikipedia has to say about the word prototype](https://en.wikipedia.org/wiki/Prototype):
+
+> A prototype is an early sample, model, or release of a product built to test a concept or process. It is a term used in a variety of contexts, including semantics, design, electronics, and software programming. A prototype is generally used to evaluate a new design to enhance precision by system analysts and users. Prototyping serves to provide specifications for a real, working system rather than a theoretical one. Physical prototyping has a long history, and paper prototyping and virtual prototyping now extensively complement it. In some design workflow models, creating a prototype (a process sometimes called materialization) is the step between the formalization and the evaluation of an idea.
+
+For this blog post I'm referring to the "software programming" and UI/UX "design" aspects of prototype and prototyping.
+
+In the context of software development and UI/UX design, a prototype most often takes the form of a digital artifact that designers and/or developers (or a hybrid designer - developer, aka design engineer, UX engineer, design technologist, etc.) will create, often for user testing and/or to get various interested parties on the same page about what is being proposed to be built and how it is intended to function.
+
+There is also "technical prototyping", which specifically focuses on figuring out _how_ to do or implement a thing. In software development technical prototyping is all about the code you write. There may not even be a UI or UX design aspect to it. Gaining technical insights is often one benefit of going through the UX design focused prototyping process, as when prototyping using code we still are solving UI related problem with code, which is a technical process. I can't say with certainty the converse is true, when focusing on a technical implementation prototype, how the thing looks may not be a concern at all, or at most an after thought.
+
+To distinguish between these two types of prototypes, I often say "UX prototyping" when refering to the UI/UX design focused type of prototype and "technical prototyping" when referring to the "code you write" focused type of prototype.
+
+To be even more clear about the type of prototyping I'm talking about, I'll elaborate on what it is not.
+
+- It's not "vibe coding" or having generative AI tools make it for you (more on that later).
+
+- It's not "rapid prototyping", which is more of an industrial process (_TODO research this?_), we're still writing software here and writing software, even a prototype takes thought and time.
+
+- It's not a "click through prototype" made with design software like Figma. Click through prototypes have value for certain use cases beyond static mocks, for example conveying the steps in a task completion workflow or a site map. They tend to fall short in other areas such as data driven layouts (e.g. dashboards, geographic maps, etc.) that require using real data to evaluate whether a design holds up.
+
+UX prototyping's purpose is solving for the _user experience_, to make sure what we're thinking about building makes sense, is what people expect or will want to use (e.g. from usability testing), and/or to get various interested parties on the same page on what is being built. The phrase "build the right thing" vs "build the thing right" was a phrase thrown around at Google's UX division a lot when I was working there that gets the point across. Only focusing on how to build the thing is moot if what you're building isn't what your target audience wants to use and frustrates them since they may end up abandoning your product, service, etc.
+
+## Types of UX Prototypes
 
 - some different types of UX prototype focus areas:
 
@@ -55,7 +74,7 @@ tags:
     - the tech didn't matter so much as the output is a design artifact; SWEs would build out the real world feature how they saw fit
   - used real data to evaluate design concepts
   - 311 data when real data couldn't be acquired due to privacy concerns (have this as a separate topic?)
-  - prototyping novel data visualization types not available in most charting libraries (gant charts, network diagrams)
+  - prototyping novel data visualization types not available in most charting libraries (Gantt charts, network diagrams)
   - user testing for accessibility
 
 - experience at Esri:
@@ -87,7 +106,7 @@ questions:
   - e.g. a backend feature that requires a UI component, but it's not clear what that UI component should look like
   - backend dev is costly, so having a prototype showing what the UX should be can be helpful
 
--
+- "a prototype is worth a thousand meetings"
 
 - https://blog.adobe.com/en/publish/2017/11/29/prototyping-difference-low-fidelity-high-fidelity-prototypes-use
 - https://www.youtube.com/watch?v=su6WA0kUUJE
