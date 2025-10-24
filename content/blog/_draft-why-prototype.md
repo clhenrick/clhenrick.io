@@ -30,14 +30,17 @@ To be even more clear about the type of prototyping I'm talking about, I'll elab
 
 - It's not "rapid prototyping", which is more of an industrial process (_TODO research this?_), we're still writing software here and writing software, even a prototype takes thought and time.
 
-- It's not a "click through prototype" made with design software like Figma. Click through prototypes have value for certain use cases beyond static mocks, for example conveying the steps in a task completion workflow or a site map. They tend to fall short in other areas such as data driven layouts (e.g. dashboards, geographic maps, etc.) that require using real data to evaluate whether a design holds up.
+- It's not a "click through prototype" made with design software like Figma. Click through prototypes have value for certain use cases beyond static mocks, for example conveying the proposed steps in a task completion workflow or how a website navigation might work. They tend to fall short in other areas such as data driven layouts (e.g. dashboards, geographic maps, etc.) that require using real data to evaluate whether a design holds up.
+
+This last point exemplifies why we prefer using web materials (at a minimum this is HTML and CSS) and technologies (JavaScript, web browser APIs, the browser itself, etc.) for web prototyping. It allows us to get "closer to the metal" and uncover pitfalls we might not have thought of or discovered using design software when investigating a problem space or new feature. It's extremely helpful to uncover problems with a proposed design concept in a prototype than in production code as it's typically more costly to iterate on production code than with "throw away" prototype code.
+
+Production code bases come with a lot of checks and balances to enforce things like code quality and logistical processes. These things (e.g. automated code linting, formatting, testing; manual code reviews; CI/CD pipelines; etc.) are great for preventing breaking changes from being introduced into the production codebase and for giving your team an opportunity to give feedback on the work. However, this all comes at a cost: making changes to production code takes more time, and as the saying goes, "time is money". By discovering unforeseen technical or UX issues in a prototype you can address them quickly, by working on a technical solution and/or proposing a UX/UI pattern the team can evaluate before the production code is ever written. This is invaluable for saving time and resources, especially within larger orgs.
 
 UX prototyping's purpose is solving for the _user experience_, to make sure what we're thinking about building makes sense, is what people expect or will want to use (e.g. from usability testing), and/or to get various interested parties on the same page on what is being built. The phrase "build the right thing" vs "build the thing right" was a phrase thrown around at Google's UX division a lot when I was working there that gets the point across. Only focusing on how to build the thing is moot if what you're building isn't what your target audience wants to use and frustrates them since they may end up abandoning your product, service, etc.
 
 ## Types of UX Prototypes
 
 - some different types of UX prototype focus areas:
-
   - animation & motion
   - data focused / driven (e.g. an interactive dashboard or mapping application, does the design concept work with the data we'll be using or expecting to use?)
   - visual fidelity (responsive design falls in this category, but also making things look pretty)
@@ -45,14 +48,12 @@ UX prototyping's purpose is solving for the _user experience_, to make sure what
   - the "kitchen sink" (many of the above focus areas in a single prototype, should generally be avoided but could have its value)
 
 - why it's best to avoid the kitchen sink but also why it can be useful in certain times:
-
   - the prototype ends up too closely mirroring the production code
   - becomes unwieldy to maintain
   - most likely a sign that the scope of research a prototype is seeking to address needs to be narrowed
   - there is a place and time for the kitchen sink, perhaps it's mimicing part of a desktop software and it becomes useful for aligning people on what new features are being built out as well as user testing
 
 - benefits of UX prototyping:
-
   - saving engineering (writing production code) time by bringing clarity and certainty prior to building
   - avoiding having to redo prod code work later
   - risk mitigation
@@ -67,7 +68,6 @@ UX prototyping's purpose is solving for the _user experience_, to make sure what
 - "build the thing right" vs "build the right thing"
 
 - experience as a UXE at Google
-
   - collaborating with designers, product managers, and researchers
   - role was unique: full time prototyping!
   - used actual web tech: html, css, js, frameworks like React, Vue, Svelte
@@ -96,13 +96,11 @@ questions:
 - when unsure whether your org will buy into ux prototyping, ask if there is room for more design thinking & product thinking. It's definitely an investment and requires additional time in software production lifecycle
 
 - does prototyping work make sense for a human to do now that we can use generative AI for it?
-
   - to me prototyping is one of those fun things, almost like making art or music, that I enjoy doing and get a lot of value out of. It's meaningful work to me, not something that I want to automate with gen AI.
   - I learn from prototyping as well; even if it's UX focused there are still technical learnings I gain from the process that I can relay to whomever is building the finished product (including myself)
   - some things that AI may and will likely fall short on such as accessibility, given that much of the code LLMs have been trained on has accessibility issues
 
 - trade off of shipping quickly vs longer investment and shipping later:
-
   - e.g. a backend feature that requires a UI component, but it's not clear what that UI component should look like
   - backend dev is costly, so having a prototype showing what the UX should be can be helpful
 
