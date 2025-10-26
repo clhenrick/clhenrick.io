@@ -100,9 +100,7 @@ Some benefits of UX prototyping have already been covered in this post but I fee
   - prototyping novel data visualization types not available in most charting libraries (Gantt charts, network diagrams)
   - user testing for accessibility
 
-## My personal experience with prototyping
-
-- prototyping the Activity Map block for StoryMaps.com
+- prototyping the Activity Map block for StoryMaps.com (RIP)
 - uncovered design blind spots such as
   - making sure that things had enough room on mobile,
   - too little or too much data,
@@ -117,21 +115,27 @@ Some benefits of UX prototyping have already been covered in this post but I fee
 
 ## Frequently Asked Questions on Prototyping
 
-- when unsure whether your org will buy into ux prototyping, ask if there is room for more design thinking & product thinking. It's definitely an investment and requires additional time in software production lifecycle
+### How do I get my organization to green light prototyping?
 
-- does prototyping work make sense for a human to do now that we can use generative AI for it?
-  - to me prototyping is one of those fun things, almost like making art or music, that I enjoy doing and get a lot of value out of. It's meaningful work to me, not something that I want to automate with gen AI.
-  - I learn from prototyping as well; even if it's UX focused there are still technical learnings I gain from the process that I can relay to whomever is building the finished product (including myself)
-  - some things that AI may and will likely fall short on such as accessibility, given that much of the code LLMs have been trained on has accessibility issues
+When unsure whether your organization will buy into UX prototyping, ask if there is room for more design thinking & product thinking. It's definitely an investment and requires additional time in the software production lifecycle. It can also be helpful to identify a clear set of pain points that prototyping is meant to address and to reiterate that addressing them outside of the production codebase will likely save time and money.
+
 - trade off of shipping quickly vs longer investment and shipping later:
   - e.g. a backend feature that requires a UI component, but it's not clear what that UI component should look like
   - backend dev is costly, so having a prototype showing what the UX should be can be helpful
 
-### Why you might choose to not use AI tools for creating UX prototypes
+### Does manual prototyping make sense now that we can use Generative AI for it?
 
-- "a prototype is worth a thousand meetings"
+To me prototyping is one of those fun things, almost like making art or music, that I enjoy doing and get a lot of value out of. It's meaningful work to me and is not something that I want to automate with Generative AI.
+
+I always learn from the prototyping process. Even if it's UX focused there are still technical learnings I gain from that I can relay to whomever is building the finished product (including myself!). Automating the prototype may still result in technical learnings, but I find that I learn more by writing code than reading or reviewing it.
+
+It's important to be aware of things that AI may fall short on. One is accessibility, given that much of the code LLMs have been trained on has accessibility issues or is out right inaccessible. Being knowledgable of accessibility can help you course correct here, but why not write the code to be accessible from the start, especially if it's a requirement of building the final product or if you are user testing with people with disabilities (which you [really should be doing btw](#))?
+
+### What types of tools should I use for UX Prototyping?
 
 ## Further Reading
+
+Thanks for reading! Be sure to remember that "a prototype is worth a thousand meetings" (a bit of wisdom thrown around at Google).
 
 - https://blog.adobe.com/en/publish/2017/11/29/prototyping-difference-low-fidelity-high-fidelity-prototypes-use
 - https://www.youtube.com/watch?v=su6WA0kUUJE
