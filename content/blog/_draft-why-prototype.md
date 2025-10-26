@@ -1,7 +1,7 @@
 ---
 title: "Why Prototype?"
 date: 2025-08-11
-teaser: "Why prototyping using web tech still matters in the era of Generative AI"
+teaser: "Why UX prototyping still matters in the era of Generative AI"
 tags:
   - Prototyping
   - User Experience
