@@ -71,24 +71,25 @@ That being said, there is a place and time for the kitchen sink prototyping appr
 
 Some benefits of UX prototyping have already been covered in this post but I feel that it's worth mentioning them their own section for easy reference.
 
-- Saving engineering (writing production code) time by bringing clarity and certainty prior to building the feature.
+- Saving engineering time by bringing clarity and certainty prior to building the feature in the production code.
 
-- Avoiding having to redo prod code work later
+- Avoiding having to redo production code work later after determining a feature needs to be reworked because of a less than desirable user experience.
 
-- Risk mitigation by identifying if something isn't working before shipping it.
+- Risk mitigation by identifying if something is or isn't working before shipping it.
 
-- Aligning interested parties on what is being built to reduce ambiguity.
+- Aligning interested parties on what is being built to reduce ambiguity and get buy in.
 
-- Addressing the rift between design and engineering: for example, prototyping can be an effect means to advocate for user experience to engineering and help designers better understand technical constraints.
+- Addressing the rift between design and engineering. For example, prototyping can be an effective means to advocate for user experience to engineering and/or better convey technical constraints to designers.
 
-- Utilizing both of one's design and dev skills: too often we are siloed into a strict role (developer or designer) and don't get to flex our other skills. UX prototyping is an opportunity to do that.
+- Utilizing both of one's design and development skills. Too often we are siloed into a strict role (developer or designer) and don't get to flex our complimentary skills. UX prototyping is an opportunity to do just that.
 
-- Allows for iterating quickly without being slowed down by code reviews, tests, type checking, code linting, etc. This can often feel like a breath of fresh air when you are primarily working in production codebases. Aside: while code quality isn't a primary focus of prototyping, it doesn't mean you can't or shouldn't have good code quality when prototyping, especially if the prototype becomes more elaborate and complex.
-
-- helpful to identify a clear set of pain points that prototyping is meant to address
+- Allows for iterating quickly without being slowed down by code reviews, writing tests, type safety, code linting, etc. This can often feel like a breath of fresh air when you are primarily working in production codebases that have established patterns and processes for integrating new code. Aside: while code quality isn't a primary focus of prototyping, it doesn't mean you can't or shouldn't have good code quality when prototyping, especially if the prototype becomes more elaborate and complex.
 
 - difference between prototyping to figure out a technical issue vs a UX one
 - "build the thing right" vs "build the right thing"
+
+## My personal experience with prototyping
+
 - experience as a UXE at Google
   - collaborating with designers, product managers, and researchers
   - role was unique: full time prototyping!
