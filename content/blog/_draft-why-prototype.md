@@ -11,7 +11,7 @@ tags:
 
 ## What do we mean by "prototype" and "prototyping"?
 
-First things first. Before getting into the weeds too deeply let's start by clarifying the usage of the words "prototype" and "prototyping" and the context in which they are being used in this post.
+First things first; before getting into the weeds too deeply let's start by clarifying the usage of the words "prototype" and "prototyping" and the context in which they are being used in this post.
 
 Here's what [Wikipedia has to say about the word prototype](https://en.wikipedia.org/wiki/Prototype):
 
@@ -67,15 +67,23 @@ A bit more on why it's best to avoid the kitchen sink, but also why it can be us
 
 That being said, there is a place and time for the kitchen sink prototyping approach. It might be useful for aligning interested parties on the future product features being propsoed as well as for user testing purposes while keeping the prototype closely mirrored to the actual product. After all, updating prototype code is less costly then production code churn.
 
-## The benefits of UX prototyping
+## Benefits of UX prototyping
 
-- saving engineering (writing production code) time by bringing clarity and certainty prior to building
-- avoiding having to redo prod code work later
-- risk mitigation
-- aligning people on what is being built
-- addressing rift in design & eng
-- use both design and dev skills
-- can work outside of the production codebase and iterate much more quickly without things like code reviews, tests, type checking, linting, etc. Code quality isn't a primary focus of prototyping, but that doesn't mean you can't or shouldn't write "clean code" when prototyping
+Some benefits of UX prototyping have already been covered in this post but I feel that it's worth mentioning them their own section for easy reference.
+
+- Saving engineering (writing production code) time by bringing clarity and certainty prior to building the feature.
+
+- Avoiding having to redo prod code work later
+
+- Risk mitigation by identifying if something isn't working before shipping it.
+
+- Aligning interested parties on what is being built to reduce ambiguity.
+
+- Addressing the rift between design and engineering: for example, prototyping can be an effect means to advocate for user experience to engineering and help designers better understand technical constraints.
+
+- Utilizing both of one's design and dev skills: too often we are siloed into a strict role (developer or designer) and don't get to flex our other skills. UX prototyping is an opportunity to do that.
+
+- Allows for iterating quickly without being slowed down by code reviews, tests, type checking, code linting, etc. This can often feel like a breath of fresh air when you are primarily working in production codebases. Aside: while code quality isn't a primary focus of prototyping, it doesn't mean you can't or shouldn't have good code quality when prototyping, especially if the prototype becomes more elaborate and complex.
 
 - helpful to identify a clear set of pain points that prototyping is meant to address
 
@@ -117,6 +125,8 @@ That being said, there is a place and time for the kitchen sink prototyping appr
 - trade off of shipping quickly vs longer investment and shipping later:
   - e.g. a backend feature that requires a UI component, but it's not clear what that UI component should look like
   - backend dev is costly, so having a prototype showing what the UX should be can be helpful
+
+### Why you might choose to not use AI tools for creating UX prototypes
 
 - "a prototype is worth a thousand meetings"
 
