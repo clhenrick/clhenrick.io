@@ -99,17 +99,22 @@ Some benefits of UX prototyping have already been covered in this post but I fee
 
 Again, the largest benefit of UX prototyping is improving the design and usability of the product you are working on. UX prototyping provides an opportunity to have deeper conversations and be more nuanced about what is being built and why.
 
-## My personal experience with prototyping
+## My personal experience with UX prototyping
 
-- experience as a UXE at Google
-  - collaborating with designers, product managers, and researchers
-  - role was unique: full time prototyping!
-  - used actual web tech: html, css, js, frameworks like React, Vue, Svelte
-    - the tech didn't matter so much as the output is a design artifact; SWEs would build out the real world feature how they saw fit
-  - used real data to evaluate design concepts
-  - 311 data when real data couldn't be acquired due to privacy concerns (have this as a separate topic?)
-  - prototyping novel data visualization types not available in most charting libraries (Gantt charts, network diagrams)
-  - user testing for accessibility
+My previous experience working in the tech industry, especially as a UX Engineer at Google, has helped me appreciate and understand the value of UX prototyping.
+
+Working as a UX Engineer at Google was a very unique experience and I feel privileged for having been able to do it. In a nutshell, my entire day was centered around prototyping and not writing any production code! I'm sure this is surprising to some people reading this, but yes this type of role actually exists, usually in larger companies that have the resources to dedicate to it. This was strictly UX prototyping using HTML, CSS, JavaScript or TypeScript, and various frontend frameworks such as React, Angular, Vue, and Lit / Web Components. The choice of tech used to prototype wasn't so important as the finished prototypes were viewed as design artifacts and the code as "throw away" code that would never see the light of day (other than a usability test). The software engineers building out the final product and would write the production code as they saw fit with the tech they felt was best. This often didn't cause problems as I could effectively communicate my tech decisions to the software engineers if they had questions or concerns.
+
+I worked closely with UX designers and visual designers, UX researchers (both quantitative and qualitative), product managers, content writers, and software engineers. It was a very collaborative environment to say the least! I've found that I thrive in a healthy and open collaborative environment, it's much more enjoyable to me than being siloed as a software engineer or frontend engineer working only on production code related tasks.
+
+- used real data to evaluate design concepts
+- 311 data when real data couldn't be acquired due to privacy concerns (have this as a separate topic?)
+- prototyping novel data visualization types not available in most charting libraries (Gantt charts, network diagrams)
+- user testing for accessibility
+
+In my current role as a Senior Software Engineer at Esri, my role hasn't strictly focused on UX prototyping, but I frequently leverage it whenever I feel that a problem space or design concept would benefit from it.
+
+One example of this was when I worked on a feature for Story Maps called the "Activity Map".
 
 - prototyping the Activity Map block for StoryMaps.com (RIP)
 - uncovered design blind spots such as
@@ -128,25 +133,29 @@ Again, the largest benefit of UX prototyping is improving the design and usabili
 
 ### How do I get my organization to green light prototyping?
 
-When unsure whether your organization will buy into UX prototyping, ask if there is room for more design thinking & product thinking. It's definitely an investment and requires additional time in the software production lifecycle. It can also be helpful to identify a clear set of pain points that prototyping is meant to address and to reiterate that addressing them outside of the production codebase will likely save time and money.
+When unsure whether your organization will buy into UX prototyping, ask if there is room for more design and product thinking. Although it has the potential to save time down the road and improve the usability of a product, UX prototyping is an investment and requires additional time in the product lifecycle. It can be helpful to identify a clear set of pain points that prototyping is meant to address and to reiterate that addressing them outside of the production codebase will likely save time and money by avoiding churn.
+
+In my own work I've experienced a correlation between ambiguity and risk in design and opportunity for reducing risk and uncertainty with UX prototyping. In other words, the more ambiguity and risk there is in a proposed design, it's more likely that UX prototyping will be a beneficial part of the design process and lead to a better outcome in the finished product.
 
 - trade off of shipping quickly vs longer investment and shipping later:
   - e.g. a backend feature that requires a UI component, but it's not clear what that UI component should look like
   - backend dev is costly, so having a prototype showing what the UX should be can be helpful
 
+There's always the business case to be made for UX prototyping as you'll likely be saving your company money in the long run. This is not only from avoiding production code churn and reworking design concepts after shipping a feature, but also by delivering an improved and accessible user experience which will win over and retain more customers. You can always propose a trial run or pilot UX prototyping process and then evaluate the outcome of it to see how it saved your organization time and money while delivering an improved and more accessible user experience.
+
 ### Does manual prototyping make sense now that we can use Generative AI for it?
 
 To me prototyping is one of those fun things, almost like making art or music, that I enjoy doing and get a lot of value out of. It's meaningful work to me and is not something that I want to automate with Generative AI.
 
-I always learn from the prototyping process. Even if it's UX focused there are still technical learnings I gain from that I can relay to whomever is building the finished product (including myself!). Automating the prototype may still result in technical learnings, but I find that I learn more by writing code than reading or reviewing it.
+I always learn from the prototyping process. Although it's UX focused, there are always technical learnings I gain that I can relay to the engineer building the finished product (including myself!). Automating the creation of prototypes may still result in technical learnings, but I find that I learn best when writing code than reading or reviewing it.
 
-It's important to be aware of things that AI may fall short on. One is accessibility, given that much of the code LLMs have been trained on has accessibility issues or is out right inaccessible. Being knowledgable of accessibility can help you course correct here, but why not write the code to be accessible from the start, especially if it's a requirement of building the final product or if you are user testing with people with disabilities (which you [really should be doing btw](#))?
+It's important to be aware of things that AI may fall short on. One is accessibility, given that much of the code LLMs have been trained on has accessibility issues or is out right inaccessible. Being knowledgable of accessibility can help you course correct here, but why not write the code to be accessible from the start, especially if it's a requirement of building the final product or if you are user testing with people with disabilities (which you [really should be doing](#))?
 
 ### What types of tools should I use for UX Prototyping?
 
 ## Further Reading
 
-Thanks for reading! Be sure to remember that "a prototype is worth a thousand meetings" (a bit of wisdom thrown around at Google).
+Thanks for reading! Be sure to remember that "a prototype is worth a thousand meetings" (another bit of wisdom thrown around by Google's UX Engineers).
 
 - https://blog.adobe.com/en/publish/2017/11/29/prototyping-difference-low-fidelity-high-fidelity-prototypes-use
 - https://www.youtube.com/watch?v=su6WA0kUUJE
