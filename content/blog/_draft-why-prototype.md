@@ -7,6 +7,7 @@ tags:
   - User Experience
   - Design
   - Web
+  - AI
 ---
 
 ## Intro
@@ -152,6 +153,12 @@ I always learn from the prototyping process. Although it's UX focused, there are
 It's important to be aware of things that AI may fall short on. One is accessibility, given that much of the code LLMs have been trained on has accessibility issues or is out right inaccessible. Being knowledgable of accessibility can help you course correct here, but why not write the code to be accessible from the start, especially if it's a requirement of building the final product or if you are user testing with people with disabilities (which you [really should be doing](#))?
 
 ### What types of tools should I use for UX Prototyping?
+
+The answer to this question is simple and straightforward: the ones you're comfortable with. This could be a simple [Codepen](#) using only HTML and CSS. Maybe that gets augmented using a component library from your organization's design system to keep things looking polished and to avoid rewriting your own UI components. If you're more comfortable with modern frontend tooling, I've found [Vite starter projects](#) to a be perfect way to get going with a framework of your choice. In the past I've reached for [Observable Notebooks](#) for prototypes that rely on data transformation and manipulation and/or data visualization, I've found the reactive programming nature of these notebooks to be helpful and a productivity boost.
+
+Lately I've been pretty happy using Vite, TypeScript, and Svelte for UX prototyping. For my day to day protoyping work at Esri I use a [template I've created](#) that incorporates these tools as well as the Esri JS SDK, map components, and Calcite (design system) components. The template includes a git pre-commit hook for linting and formatting code using ESLint and Prettier, which helps me keep my code neat from the start. It also has some boilerplate features I tend to use across different prototypes such as reading URL query params or hash to load the prototype in a specific state.
+
+I tend to deploy my prototypes as static websites (meaning no backend APIs that require a separate server as part of the prototype) to free website hosting services like [Netlify](#) or [Github Pages](#) when I need to share them with others. Usually the prototyping work I'm doing doesn't contain any sensitive data or intellectual property so it isn't a concern for these sites to be public. When that is a concern I'll deploy in a way that is only accessible internally to folks at Esri.
 
 ## Further Reading
 
