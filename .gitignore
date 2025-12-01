@@ -4,3 +4,4 @@ node_modules/
 .eslintcache
 .cache
 .DS_Store
+.netlify/
