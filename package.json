@@ -56,7 +56,7 @@
     "stylelint-config-standard": "^36.0.1",
     "stylelint-prettier": "^5.0.2",
     "terser": "^5.31.1",
-    "zx": "^8.0.2"
+    "zx": "^8.8.5"
   },
   "browserslist": {
     "production": [
