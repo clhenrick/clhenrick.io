@@ -12,9 +12,9 @@ tags:
 
 ## Intro
 
-This is a post that I have been meaning to write for quite a while now about a topic I'm pretty passionate about. Much of it comes out of my personal experience doing "UX prototyping" work in the tech industry over the past decade or so, and before that while attending the MFA Design and Technology program at Parsons School of Design in New York City. Some of the content here comes from a conversation I had with my former manager at Google, Ryan Kuykendall, a vetern UX Engineer who managed a team of UX Engineers on Google Cloud. I've experienced a lot of misconceptions around prototyping for the web which has also motivated me to write this post. I hope what follows is useful for folks out there who work on creating things for the web, particularly those with a design, UX research, and/or front-end programming background.
+This is a post that I have been meaning to write for quite a while about a topic I'm honestly damn passionate about. Much of it comes out of my personal experience doing "UX prototyping" work in the tech industry over the past decade or so, and before that while attending the MFA Design and Technology program at Parsons School of Design in New York City. Some of the content here comes from a conversation I had with my former manager at Google, Ryan Kuykendall, a vetern UX Engineer who managed a team of UX Engineers on Google Cloud. Additionally I've experienced some misconceptions around prototyping for the web, which has also motivated me to write this post. I hope what follows is useful for folks out there who work on creating things for the web, particularly those with a design and/or front-end programming background.
 
-## What do we mean by "prototype" and "prototyping"?
+## What do I mean by "prototype" and "prototyping"?
 
 First things first; before getting into the weeds too deeply I would like to clarify the usage of the words "prototype" and "prototyping" in the context of this blog post.
 
@@ -102,33 +102,41 @@ Again, the largest benefit of UX prototyping is improving the design and usabili
 
 ## My personal experience with UX prototyping
 
-My previous experience working in the tech industry, especially as a UX Engineer at Google, has helped me appreciate and understand the value of UX prototyping.
+Working as a UX Engineer (UXE) at Google was a very unique experience and I feel privileged for having been able to do it. In a nutshell, my entire day was centered around prototyping and not writing any production code! I'm sure this is surprising to some people reading this, but yes I assure you that this type of role actually exists. It usually resides in larger companies that have the resources to dedicate to it. This doesn't mean you have to have a dedicated prototyping role to do this type of work, as I'll demonstrate in a bit.
 
-Working as a UX Engineer at Google was a very unique experience and I feel privileged for having been able to do it. In a nutshell, my entire day was centered around prototyping and not writing any production code! I'm sure this is surprising to some people reading this, but yes this type of role actually exists, usually in larger companies that have the resources to dedicate to it. This was strictly UX prototyping using HTML, CSS, JavaScript or TypeScript, and various frontend frameworks such as React, Angular, Vue, and Lit / Web Components. The choice of tech used to prototype wasn't so important as the finished prototypes were viewed as design artifacts and the code as "throw away" code that would never see the light of day (other than a usability test). The software engineers building out the final product and would write the production code as they saw fit with the tech they felt was best. This often didn't cause problems as I could effectively communicate my tech decisions to the software engineers if they had questions or concerns.
+My prototyping work at Google as a UXE ninety-five percent of the time involved using HTML, CSS, JavaScript or TypeScript, as well as various frontend frameworks such as React, Angular, Vue, and Lit / Web Components, plus build tools like Webpack or Google's internal ones. Occassionally I would reach for Collab (Jupyter) Notebooks for data analysis and transformation when a project was data heavy. Using code and frontend tech didn't preclude me from using design software such as Figma or Sketch, it was there if we felt it was helpful to use.
 
-I worked closely with UX designers and visual designers, UX researchers (both quantitative and qualitative), product managers, content writers, and software engineers. It was a very collaborative environment to say the least! I've found that I thrive in a healthy and open collaborative environment, it's much more enjoyable to me than being siloed as a software engineer or frontend engineer working only on production code related tasks.
+The choice of tech used to prototype wasn't so important as finished prototypes were viewed as design artifacts and the code written to create them was viewed as "throw away code" that would never see the light of day (other than a usability test). Software engineers building the final product would write production code as they saw fit with the tech they felt was best suited using Google's various frontend tech stacks. From my experience and from what I heard from other UXEs at Google, this mismatch between prototyping tech and production tech didn't typically cause problems as UXEs were expected to effectively communicate any technical details to software engineers if waranted. Again, the primary purpose of a prototype was to help everyone involved in the product lifecycle better understand what was to be made before making it and iron out design ambiguities, so writing code purely for creating design artifacts wasn't seen as problematic or a waste of resources.
 
-- used real data to evaluate design concepts
-- 311 data when real data couldn't be acquired due to privacy concerns (have this as a separate topic?)
-- prototyping novel data visualization types not available in most charting libraries (Gantt charts, network diagrams)
-- user testing for accessibility
+While working as a UXE I worked closely with folks in different types of roles, mostly in the UX realm. This included UX designers and visual designers, UX researchers (both quantitative and qualitative), product managers, content writers, and occassionally software engineers. It was a very collaborative environment to say the least! I've found that I thrive in a healthy and open collaborative environment; it's much more enjoyable to me than being siloed as a software engineer or frontend engineer working only on production code related tasks and not being able to give input into the design process.
 
-In my current role as a Senior Software Engineer at Esri, my role hasn't strictly focused on UX prototyping, but I frequently leverage it whenever I feel that a problem space or design concept would benefit from it.
+In my current role as a Senior Software Engineer at [Esri](https://www.esri.com/) my role hasn't strictly focused on UX prototyping, but I leverage it whenever I feel that a problem space or design concept would benefit from it. At this point I feel I have a fairly good intuition for this and can justify it to others, such as my manager.
 
-One example of this was when I worked on a feature for Story Maps called the "Activity Map".
+A particularly successful example from my tenure at Esri is when I prototyped the "Activity Map" for [StoryMaps.com](https://storymaps.com), a web and mobile application for, ahem, telling stories with (or without) maps. Unfortunately StoryMaps.com was sunsetted in July of 2025, so this feature is no longer available to view live. However, you may [view a screen recording of the Activity Map block](<(/work/storymaps-activity-map-block/)>) in my portfolio.
 
-- prototyping the Activity Map block for StoryMaps.com (RIP)
-- uncovered design blind spots such as
-  - making sure that things had enough room on mobile,
-  - too little or too much data,
-  - improving the elevation profile chart design,
-  - using an intrinsic layout rather than strict pixel based breakpoints for responsive layout
-  - making sure the feature was accessible (semantic HTML for structure, accessible names, focus order, etc.)
-  - partly technical
-    - determining how to utilize the JS SDK (both map and elev profile view model)
-    - addressing data processing & storage (reducing the amount of data stored for the elev profile and GPX tracks)
-- created three separate prototypes before building out the production code
-- also built the production code, prototyping ahead of time made the process go much more quickly with fewer unknowns / less uncertainty
+The concept of a "block" in StoryMaps is akin to a building block for a larger structure. When creating a story, authors may choose from various block types such as rich text, image galleries, video embeds, interactive geographic maps, and map tours to make their story media rich and immersive (think Medium.com but with more media capabilities). The Activity Map block was a new block type that would allow an author to upload activity data (in the form of a [GPX file](https://en.wikipedia.org/wiki/GPS_Exchange_Format)) from apps such as [Strava](https://www.strava.com) or [Ride With GPS](https://ridewithgps.com) to create a preconfigured dashboard showing a map of an activity (like a bicycle ride, hike, or run) along with some summary statistics and an elevation profile chart.
+
+_TODO: include screenshot of activity map_
+
+In the prototyping process for the Activity Map block I uncovered some blind spots in the preliminary design concept such as:
+
+- Making sure that the dashboard's pieces had enough room to breath on mobile, such as not making the map or chart too squished. By leveraging intrinsic design patterns using CSS flexbox, I could allow the various parts of the dashboard to stack vertically when the ideal amount horizontal space was not available in the browser viewport. This allowed the design to be responsive without the use of CSS media queries or breakpoints.
+
+- Adjusting the design when there was too little or too much data. By testing a prototype using real world GPX data, I could see how well the design concept held up when the input data wasn't the ideal or expected amount of data (e.g. too little or too much data, or perhaps corrupted data).
+
+- Making design improvements to the block's elevation profile chart. The original design of the chart was quite minimal, so I suggested minor design adjustments to help make the chart more readable which the designer incorporated into the final design.
+
+- Making sure the feature was accessible. Prototyping with code meant I could reach for semantic HTML for the block's structure, determine what parts required accessible names, ensure that the focus order made sense, test interacting with it via keyboard only and screen reader software such as NVDA, Voice Over, and JAWS. These are important parts of designing for the web to meet the Web Content Accessibility Guidelines that design software (currently) cannot assist with.
+
+Some technical learnings from prototyping the Activity Map included:
+
+- Determining how to utilize the ArcGIS JS SDK's [ElevationProfileViewModel](#) with D3JS to create a customized elevation profile chart.
+
+- Addressing data transformation and storage, including reducing the amount of data stored for the elevation profile and GPX data for improving performance when the Activity Map loads.
+
+- Determining whether to use CSS Grid or Flexbox for the responsive layout as well as other CSS features such as custom properties to make the block themeable.
+
+In total I created three separate prototypes before building out the production code. Putting in the time to prototype ahead of writing production code made the software development process go much more quickly with fewer unknowns and less uncertainty. It also helped get everyone involved with the project (designers, product engineers, myself, tech lead, and CTO) on the same page about what we were building and how it intended to function.
 
 ## Frequently Asked Questions on Prototyping
 
