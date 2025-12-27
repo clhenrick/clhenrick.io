@@ -10,25 +10,9 @@ tags:
   - AI
 ---
 
-## Prelude
+## Intro
 
 This is a post that I have been meaning to write for quite a while about a topic I'm pretty passionate about. Much of it comes out of my personal experience from working in the tech industry over the past decade or so, and before that while attending the MFA Design and Technology program at Parsons School of Design in New York City. Some of the ideas here were inspired by a conversation I had with my former manager at Google, Ryan Kuykendall, a vetern UX Engineer who managed a team of UX Engineers on Google Cloud. Additionally I've experienced some misconceptions around prototyping for the web, which has also motivated me to write this post. I hope what follows is useful for folks out there who work on creating things for the web, particularly those with a UI design and/or front-end web development background.
-
-### Who is finishing the design?
-
-When we think about the design process for creating digital products like web sites, web apps, mobile apps, etc., we (generally speaking) tend to think of rigid roles and a linear start to end process. To be comically reductionist about this (but not too far off from how this really happens) you could break these down into two steps:
-
-1. The designer designs or creates a set of static mocks using design software such as [Figma](https://www.figma.com) to give a general to specific idea of how "the thing" works.
-
-2. The developer then uses the design mocks as a basis for what to shoot for and builds "the thing" with code.
-
-Ideally there is some sort of "design review" and "feedback" that happens between steps one and two, as well as iteration on the original concept to incorporate any feedback viewed as valid by those in decision making positions. However, the process is still roughly the same. The designer designs, the developer develops. I personally abhor this dichotomy and rigidity and think it does teams a disfavor when upheld to such strict formalities.
-
-What I think tends to happen in step two, more often than not, is that the developer makes design decisions that were not forseen or made in the "design" phase (step one). This could be something to do with accessibility that might also effect the design visually, for example focus states. It could be a layout implementation that influences how the design looks at different browser viewport sizes using CSS flexbox and grid. In this way, the developer is actually **_finishing the design_**, since these types of design decisions are accomplished using the technology they are building with at development, not with design software.
-
-In my experience a valuable way to disrupt this dichotomy and vastly improve the product design process is via _prototyping_ using the same or similar tech that is being used to build "the thing." I like to think of this type of protoyping as different from a "proof of concept" prototype or a technical prototype. I think of it as being more about influencing the overall user experience and visual design of "the thing" for the better, whether that's usability, accessibility, and/or bringing clarity to what "the thing" actually is and how it works.
-
-End prelude.
 
 ## What do I mean by "prototype" and "prototyping"?
 
