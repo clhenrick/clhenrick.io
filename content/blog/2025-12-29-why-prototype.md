@@ -1,7 +1,7 @@
 ---
 title: "Why Prototype?"
 date: 2025-12-29
-teaser: "Why UX prototyping still matters in the era of Generative AI"
+teaser: "Why UX prototyping still matters in the era of Generative AI."
 tags:
   - Prototyping
   - User Experience
@@ -178,9 +178,11 @@ While going through the UX protoyping process with the Activity Map, there were 
 
 In total I created _three separate prototypes_ before building out the production code to address various levels of uncertainty in the original design concept. Putting in the extra bit of time to prototype ahead of writing production code made the software development process go much more quickly with fewer unknowns and less uncertainty. It also helped get everyone involved with the project (designers, product engineers, myself, tech lead, and CTO) on the same page about what we were building and how it intended to function, _before we released it into the wild_. We had very few issues after releasing the feature and did not have to rewrite or redesign any part of it. I think that's proof enough of demonstrating the value of UX prototyping and prototyping in general!
 
-## Frequently Asked Questions on Prototyping
+## Questions about UX Prototyping
 
-### How do I get my organization to green light prototyping?
+These aren't questions I've been asked by anyone, they're more questions I would anticipate someone asking me about this topic if given the chance to. If you have a question related to UX prototyping that isn't answered by this post, by all means please [reach out to me](/contact/) and ask away!
+
+### How do I get my organization to green light UX prototyping?
 
 When unsure whether your organization will buy into UX prototyping, ask if there is room for more design and product thinking. Although it has the potential to save time down the road and improve the usability of a product, UX prototyping is an investment and requires additional time in the product lifecycle. It can be helpful to identify a clear set of pain points that prototyping is meant to address and to reiterate that addressing them outside of the production codebase will likely save time and money by avoiding churn.
 
