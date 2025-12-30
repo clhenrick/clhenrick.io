@@ -1,6 +1,6 @@
 ---
 title: "Why Prototype?"
-date: 2025-08-11
+date: 2025-12-29
 teaser: "Why UX prototyping still matters in the era of Generative AI"
 tags:
   - Prototyping
@@ -12,11 +12,11 @@ tags:
 
 ## Introduction
 
-This is a topic that I have been meaning to write for quite a while and one I'm pretty passionate about. Much of it comes out of my personal experience from working in the tech industry over the past decade or so, and before that while attending the MFA Design and Technology program at Parsons School of Design in New York City. Some of the ideas here were inspired by a conversation I had with my former manager at Google, Ryan Kuykendall, a vetern UX Engineer who managed a team of UX Engineers on Google Cloud. Additionally, I've experienced some misconceptions around prototyping for the web, which has also motivated me to write this post. I hope what follows is useful for folks out there who work on creating things for the web, particularly those with a design and/or front-end web development background.
+This is a topic that I have been meaning to write about for quite a while now. It also happens to be one I'm fairly passionate about. Much of what follows stems from my professional experience working in the tech industry over the past decade or so, and before that while attending the MFA Design and Technology program at Parsons School of Design in New York City. Some of what I've written here was inspired by a conversation I had with my former manager at Google, Ryan Kuykendall, a vetern UX Engineer who managed a team of UX Engineers on Google Cloud. Additionally, I've experienced some misconceptions of what UX prototyping for the web is, which has further motivated me to write this post. I sincerely hope what follows is useful advice and information for folks out there who work on creating things for the web, particularly those with a design and/or front-end web development background.
 
 ## What do I mean by "prototype" and "prototyping"?
 
-Before getting into the weeds too deeply I would like to clarify the usage of the words "prototype" and "prototyping" in the context of this blog post.
+Before getting into the weeds I would like to clarify the usage of the words "prototype" and "prototyping" in the context of this blog post.
 
 Here's what [Wikipedia has to say about the word prototype](https://en.wikipedia.org/wiki/Prototype):
 
@@ -24,13 +24,13 @@ Here's what [Wikipedia has to say about the word prototype](https://en.wikipedia
 
 Through out this post I will be referring to the "software programming" and UI/UX "design" aspects of prototype and prototyping, specifically in the realm of web application development.
 
-From my personal experience, within the context of software development and UI/UX design, a prototype most often takes the form of a digital artifact that designers and/or developers (or a hybrid designer - developer, AKA Design Engineer, UX Engineer, Design Technologist, etc.) will create. The purpose of the prototype might be for user testing, to get various interested parties on the same page about what is being proposed, and/or ironing out how well a design concept holds up or not beyond static mocks and wireframes. I'll refer to prototyping for these purposes as **_UX prototyping_**.
+From my experience, within the context of software development and UI/UX design, a prototype most often takes the form of a digital artifact that designers and/or developers (or a hybrid designer - developer, AKA Design Engineer, UX Engineer, Design Technologist, etc.) will create. The purpose of the prototype might be for user testing, to get various interested parties on the same page about what is being proposed, and/or ironing out how well a design concept holds up beyond static mocks and wireframes. I'll refer to prototyping for these purposes as **_UX prototyping_**.
 
-In the world of software development and closely related to UX prototyping is the concept of "technical prototyping", which specifically focuses on figuring out **_how_** to solve a problem. This may also be referred to as creating a "proof of concept." In software development, technical prototyping is all about the code you write. There may not even be a UI or UX design aspect to it, although there often is, at least when user interfaces are involved. Technical prototypes often, but not always, reside in a branch of the production codebase that gets scrutinized during code reviews while UX prototypes are more often created outside the production codebase with their code quality being less of a concern since they are viewed as design artifacts and research.
+In the world of software development and closely related to UX prototyping is the concept of "technical prototyping", which specifically focuses on figuring out **_how_** to solve a problem. This may also be referred to as creating a "proof of concept." In software development, technical prototyping is all about the code you write. There may not even be a UI or UX design aspect to it, although there often is, at least when user interfaces are involved. Technical prototypes often, but not always, reside in a branch of the production codebase that gets scrutinized during code reviews while UX prototypes are more often created outside the production codebase with their code quality being less of a concern since they are viewed as design artifacts and part of the research process.
 
-It's worth noting however that gaining technical insights is often one benefit of going through the UX prototyping process, _when prototyping with code_. When prototyping with HTML, CSS, and JavaScript we still are solving technical problem and arguably still writing software. For example, this may include figuring out an adaptive / responsive layout using CSS Grid and/or Flexbox, evaluating whether a design concept will provide a good user experience for users of screen reader software, or if a data visualization or dashboard will respond well to the actual data it is intended to represent.
+It's worth noting however that gaining technical insights is often one benefit of going through the UX prototyping process, _when prototyping with code_. When prototyping with HTML, CSS, and JavaScript we still are solving technical problems and still writing software. For example, this may include figuring out an adaptive / responsive layout using CSS Grid and/or Flexbox, evaluating whether a design concept will provide a good user experience for users of screen reader software, or if a data visualization or dashboard will respond well to the actual data it is intended to represent.
 
-To distinguish between these two types of prototypes, I often will use the term **UX prototyping** when refering to the UI/UX design focused prototype and **technical prototyping** when referring to the "code you write" and "proof of concept" type of prototype.
+To distinguish between these two types of prototypes, I often will use the term **UX prototyping** when refering to the UI/UX design focused prototype and **technical prototyping** when referring to the code oriented and proof of concept type of prototype.
 
 To be even more clear about what UX prototyping is, I'll elaborate on **_what it is not:_**
 
