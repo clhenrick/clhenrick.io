@@ -1,7 +1,7 @@
 ---
-title: "Why Prototype?"
+title: 'What is "UX prototyping" and why you need it'
 date: 2025-12-29
-teaser: "Why UX prototyping still matters in the era of Generative AI."
+teaser: 'A plea for organizations to embrace prototyping using web standards such as HTML, CSS, and JavaScript as an effective means to improve user experience, enhance accessibility, and confidently "build the right thing".'
 tags:
   - Prototyping
   - User Experience
