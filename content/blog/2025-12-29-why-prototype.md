@@ -1,7 +1,7 @@
 ---
-title: "What is UX prototyping and why you should use it"
+title: 'What is "UX prototyping" and why you need it'
 date: 2025-12-29
-teaser: "Advocating for prototyping using the web platform as an effective means to improve team collaboration and user experience."
+teaser: 'A plea for organizations to embrace prototyping using web standards such as HTML, CSS, and JavaScript as an effective means to improve user experience, enhance accessibility, and confidently "build the right thing".'
 tags:
   - Prototyping
   - User Experience
