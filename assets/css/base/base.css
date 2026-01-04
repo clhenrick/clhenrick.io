@@ -49,6 +49,8 @@
   --line-height-body: 1.65;
   --line-height-heading: 1.15;
 
+  --letter-spacing: 0.0625em;
+
   /* spacing variables */
   --spacing-xxs: 4px;
   --spacing-xs: 8px;
