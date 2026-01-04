@@ -58,14 +58,15 @@
       frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
-      tabindex="0"
       title="{{ title }}"
       loading="lazy"
     ></iframe>
   </div>
 
   {% if description %}
-    <h3>Video Description</h3>
-    {{ description | markdown | safe }}
+    <details open>
+      <summary>Video Description</summary>
+      {{ description | markdown | safe }}
+    </details>
   {% endif %}
 {% endmacro %}

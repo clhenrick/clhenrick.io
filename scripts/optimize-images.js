@@ -20,7 +20,7 @@ const webpQuality = parseInt(argv["webp-quality"] ?? DEFAULT_IMG_QUALITY);
 const isMissingRequiredArgs = !inputFile && !inputDir && !pattern;
 
 if (isMissingRequiredArgs || help) {
-  echo("usage: zx optimize-images --path=relative/path/to/images/");
+  echo("usage: zx optimize-images --file- path=relative/path/to/images/");
   echo("see scripts/README.md for further usage.");
   process.exit(0);
 }

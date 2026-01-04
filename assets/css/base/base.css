@@ -1,9 +1,10 @@
 :root {
   /* credit: https://modernfontstacks.com/ */
-  --font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
-    sans-serif;
-  --font-family-monospace: ui-monospace, "Cascadia Code", "Source Code Pro",
-    Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --font-family:
+    Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro, sans-serif;
+  --font-family-monospace:
+    ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
 
   --color-white: #fff;
   --color-off-white: #f8f6f4;
@@ -160,6 +161,7 @@ body {
 
 html {
   overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -281,10 +283,15 @@ h5 {
   font-size: var(--text-size-h5);
 }
 
-p {
+p,
+:is(ul, ol):not([role="list"]) li {
   max-width: 77ch;
   margin-bottom: 1lh;
   text-wrap: pretty;
+}
+
+p {
+  margin-bottom: var(--spacing-mmd);
 }
 
 p:last-child {

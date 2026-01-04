@@ -28,6 +28,7 @@
   content: "✦" / "";
   font-size: 0.75rem;
   color: var(--color-accent);
+  padding-inline-end: var(--spacing-xxs);
 }
 
 #nav-secondary ul li:has([aria-current])::before {

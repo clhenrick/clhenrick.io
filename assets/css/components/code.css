@@ -85,7 +85,7 @@ pre[class*="language-"] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  word-wrap: normal;
+  overflow-wrap: normal;
   line-height: 1.5;
   tab-size: 4;
   hyphens: none;
@@ -149,6 +149,7 @@ pre[class*="language-"] {
 
 .token.selector,
 .token.attr-name,
+.token.class-name,
 .token.string,
 .token.char,
 .token.builtin,
@@ -219,17 +220,22 @@ pre[class*="language-"] {
 @media screen and (-ms-high-contrast: active) {
   code[class*="language-"],
   pre[class*="language-"] {
+    /* stylelint-disable-next-line */
     color: windowText;
+    /* stylelint-disable-next-line */
     background: window;
   }
 
   :not(pre) > code[class*="language-"],
   pre[class*="language-"] {
+    /* stylelint-disable-next-line */
     background: window;
   }
 
   .token.important {
+    /* stylelint-disable-next-line */
     background: highlight;
+    /* stylelint-disable-next-line */
     color: window;
     font-weight: normal;
   }
