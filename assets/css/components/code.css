@@ -93,10 +93,10 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 1em;
+  padding: var(--spacing-md);
   margin: 0.5em 0;
   overflow: auto;
-  border-radius: 0.3em;
+  border-radius: var(--spacing-xxs);
 }
 
 pre[class*="language-"][tabindex]:focus-visible {
@@ -118,8 +118,8 @@ pre[class*="language-"] {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-  padding: 0.1em;
-  border-radius: 0.3em;
+  padding: var(--spacing-xxs);
+  border-radius: var(--spacing-xxs);
   white-space: normal;
 }
 
