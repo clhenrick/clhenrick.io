@@ -432,11 +432,10 @@ useImperativeHandle(
 We may type the forwarded ref as follows:
 
 ```ts
-export interface ModalDialogRef
-  extends Pick<
-    HTMLDialogElement,
-    "addEventListener" | "removeEventListener" | "close" | "showModal"
-  > {
+export interface ModalDialogRef extends Pick<
+  HTMLDialogElement,
+  "addEventListener" | "removeEventListener" | "close" | "showModal"
+> {
   isOpen: () => boolean;
 }
 ```
@@ -898,11 +897,10 @@ export type ModalDialogProps = PropsWithChildren &
   };
 
 /** The allow listed properties of the HTML dialog element exposed to the parent in a ref. We do not expose all properties (specifically dialog.show() and dialog.open) to prevent improper use of the dialog element (e.g. as a _non-modal_ dialog). */
-export interface ModalDialogRef
-  extends Pick<
-    HTMLDialogElement,
-    "addEventListener" | "removeEventListener" | "close" | "showModal"
-  > {
+export interface ModalDialogRef extends Pick<
+  HTMLDialogElement,
+  "addEventListener" | "removeEventListener" | "close" | "showModal"
+> {
   /** is the dialog's open property set to true
    * Intentionally makes the dialog's `open` property read-only. We DO NOT want to set the `open` attribute/property using JSX or JavaScript as it will break the modal functionality. */
   isOpen: () => boolean;

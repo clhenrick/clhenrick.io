@@ -85,7 +85,7 @@ pre[class*="language-"] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  word-wrap: normal;
+  overflow-wrap: normal;
   line-height: 1.5;
   tab-size: 4;
   hyphens: none;
@@ -93,10 +93,10 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 1em;
+  padding: var(--spacing-md);
   margin: 0.5em 0;
   overflow: auto;
-  border-radius: 0.3em;
+  border-radius: var(--spacing-xxs);
 }
 
 pre[class*="language-"][tabindex]:focus-visible {
@@ -118,8 +118,8 @@ pre[class*="language-"] {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-  padding: 0.1em;
-  border-radius: 0.3em;
+  padding: var(--spacing-xxs);
+  border-radius: var(--spacing-xxs);
   white-space: normal;
 }
 
@@ -220,17 +220,22 @@ pre[class*="language-"] {
 @media screen and (-ms-high-contrast: active) {
   code[class*="language-"],
   pre[class*="language-"] {
+    /* stylelint-disable-next-line */
     color: windowText;
+    /* stylelint-disable-next-line */
     background: window;
   }
 
   :not(pre) > code[class*="language-"],
   pre[class*="language-"] {
+    /* stylelint-disable-next-line */
     background: window;
   }
 
   .token.important {
+    /* stylelint-disable-next-line */
     background: highlight;
+    /* stylelint-disable-next-line */
     color: window;
     font-weight: normal;
   }

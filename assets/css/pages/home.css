@@ -84,7 +84,7 @@ main section h2 {
   );
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing);
   overflow-wrap: anywhere;
   margin-bottom: 0;
 }

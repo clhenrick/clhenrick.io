@@ -1,19 +1,19 @@
 section,
 div.md-block {
-  margin-bottom: 2.5rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 ul.screenshots,
 ul.tech-tags {
   display: flex;
   align-items: baseline;
-  gap: 0 1rem;
+  gap: 0 var(--spacing-md);
   flex-wrap: wrap;
 }
 
 ul.screenshots {
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--spacing-xl);
 }
 
 ul.screenshots img,
@@ -30,7 +30,7 @@ nav.secondary {
 nav.secondary span[aria-hidden] {
   display: inline-block;
   font-size: 1.5rem;
-  padding: 0 0.5rem;
+  padding: 0 var(--spacing-xs);
 }
 
 nav.secondary a {

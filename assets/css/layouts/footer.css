@@ -9,7 +9,7 @@ footer {
   flex-wrap: wrap;
   gap: var(--spacing-xl);
   align-items: baseline;
-  padding: 0 var(--spacing-mmd) 2rem;
+  padding: 0 var(--spacing-mmd) var(--spacing-xl);
 }
 
 footer section:first-of-type {

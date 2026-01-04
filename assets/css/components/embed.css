@@ -12,7 +12,7 @@
 @supports (--custom: property) {
   [style*="--aspect-ratio"] {
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: var(--spacing-xl);
   }
 
   [style*="--aspect-ratio"]::before {

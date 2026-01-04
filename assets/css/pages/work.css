@@ -51,7 +51,7 @@ main p:first-of-type {
 
 .project-filters button.button {
   text-transform: capitalize;
-  letter-spacing: 0.1rem;
+  letter-spacing: var(--letter-spacing);
   color: var(--button-text-color);
   background-color: var(--button-bg);
 }

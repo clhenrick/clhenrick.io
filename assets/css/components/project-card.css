@@ -8,18 +8,18 @@
     auto-fill,
     minmax(var(--card-min-width, 20rem), 1fr)
   );
-  gap: 1.5rem;
+  gap: var(--spacing-mmd);
 }
 
 .tags {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .card {
-  --card-text-margin: 0.75rem;
+  --card-text-margin: var(--spacing-sm);
   background-color: var(--color-accent-invert);
   overflow: hidden;
   position: relative;
@@ -36,7 +36,7 @@
 
 .card .text {
   flex-grow: 1;
-  padding: 1.25rem;
+  padding: calc(var(--spacing-md) + 4px);
   font-weight: normal;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .card .img {
-  height: 8rem;
+  height: 128px;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1rem));
 }
 
@@ -76,11 +76,7 @@
   display: none;
 }
 
-.card:hover {
-  border: 1px solid transparent;
-  box-shadow: var(--focus-style-box-shadow);
-}
-
+.card:hover,
 .card:focus-within {
   outline: var(--focus-style-outline);
   outline-offset: var(--focus-style-outline-offset);

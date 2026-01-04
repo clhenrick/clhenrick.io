@@ -39,7 +39,7 @@ select::-ms-expand {
 
   border: 1px solid currentColor;
   border-radius: var(--border-radius);
-  padding: 0.25em 0.5em;
+  padding: var(--spacing-xxs) var(--spacing-xs);
 
   font-size: inherit;
   cursor: pointer;
