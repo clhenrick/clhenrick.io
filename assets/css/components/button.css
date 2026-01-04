@@ -4,7 +4,7 @@
   inline-size: fit-content;
   touch-action: manipulation;
   user-select: none;
-  padding: 0.75rem 1.75rem;
+  padding: var(--spacing-sm) var(--spacing-mmd);
   background-color: var(--color-accent);
   color: var(--color-accent-invert);
   font-weight: bold;
