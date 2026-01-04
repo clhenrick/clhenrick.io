@@ -14,7 +14,7 @@ header.page-header {
 }
 
 /* NOTE: at 784px width switch to horizontal navigation */
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   .page-header-inner {
     padding: var(--spacing-xs) 0;
   }
@@ -97,7 +97,7 @@ header.page-header {
   z-index: 1;
 }
 
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   .page-header nav.main-nav {
     grid-template-columns: auto 1fr;
     justify-content: initial;
@@ -108,8 +108,8 @@ button.nav-button {
   display: flex;
   margin-left: auto;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem 0.75rem;
+  gap: var(--spacing-xxs);
+  padding: var(--spacing-xs) var(--spacing-sm);
   font-weight: normal;
   color: var(--color-accent);
   background-color: transparent;
@@ -125,7 +125,7 @@ button.nav-button svg {
   height: 1.5rem;
 }
 
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   button.nav-button {
     display: none;
   }
@@ -140,7 +140,7 @@ nav.main-nav ul.nav-list {
   grid-column: span 2;
 }
 
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   nav.main-nav ul.nav-list {
     grid-column: span 1;
   }
@@ -158,7 +158,7 @@ nav.main-nav ul.nav-list {
   flex-direction: column;
 }
 
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   .js-enabled nav.main-nav > ul,
   nav.main-nav > ul {
     position: relative;
@@ -175,7 +175,7 @@ nav.main-nav ul li a {
   border-bottom: 1px solid;
 }
 
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   nav.main-nav ul > li:nth-last-child(2) {
     margin-left: auto;
   }
@@ -186,7 +186,7 @@ nav.main-nav ul li a {
   }
 }
 
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   nav.main-nav ul li > ul.with-dropdown {
     display: none;
   }
@@ -197,7 +197,7 @@ nav.main-nav ul li a[href] {
   width: 100%;
 }
 
-@media screen and (width >= 748px) {
+@media screen and (width >= 46.75rem) {
   nav.main-nav ul li,
   nav.main-nav ul li a[href] {
     width: auto;
