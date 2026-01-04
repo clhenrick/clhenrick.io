@@ -67,7 +67,6 @@ header.page-header {
 .page-header a[href].skip-link:focus-visible {
   height: auto;
   width: auto;
-  clip: initial;
   clip-path: initial;
   overflow: initial;
   white-space: initial;
@@ -77,7 +76,6 @@ header.page-header {
   .page-header a[href].skip-link:focus {
     height: auto;
     width: auto;
-    clip: initial;
     clip-path: initial;
     overflow: initial;
     white-space: initial;
