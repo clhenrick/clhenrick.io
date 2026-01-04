@@ -8,8 +8,7 @@
 {%- set headDescription = teaser or description or metadata.description %}
 {%- set headImageAlt = imageAlt or metadata.titleImageAlt %}
 {%- set headImageType = imageType or metadata.titleImageType %}
-{%- set headOGType = "link" if page.url.includes("/blog/") else "website" %}
-{%- set headAuthors = [{ name: metadata.author.name, url: metadata.author.url, account: metadata.socialHandles.get('Mastodon') }] %}
+{%- set headOGType = "article" if page.url.includes("/blog/") else "website" %}
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -82,7 +81,6 @@
   />
 
   {# Social: Open Graph tags #}
-  <meta property="og:authors" content="{{ headAuthors | dump }}" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="{{ headTitle }}" />
   <meta property="og:description" content="{{ headDescription }}" />
