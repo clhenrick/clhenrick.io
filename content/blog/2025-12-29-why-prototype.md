@@ -1,7 +1,7 @@
 ---
-title: "What is UX prototyping and why do it?"
+title: "What is UX prototyping and why you should use it"
 date: 2025-12-29
-teaser: "Musings on prototyping using the web platform as an effective means to improve team collaboration and user experience."
+teaser: "Advocating for prototyping using the web platform as an effective means to improve team collaboration and user experience."
 tags:
   - Prototyping
   - User Experience
