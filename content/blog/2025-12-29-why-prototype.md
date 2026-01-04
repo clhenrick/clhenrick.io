@@ -1,7 +1,7 @@
 ---
-title: "Why Prototype?"
+title: "What is UX prototyping and why do it?"
 date: 2025-12-29
-teaser: "Why UX prototyping still matters in the era of Generative AI."
+teaser: "Musings on prototyping using the web platform as an effective means to improve team collaboration and user experience."
 tags:
   - Prototyping
   - User Experience
