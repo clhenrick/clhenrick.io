@@ -156,223 +156,225 @@
   }
 }
 
-html,
-body {
-  background-color: var(--background-color);
-}
-
-html {
-  overflow-y: scroll;
-  scrollbar-gutter: stable;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+@layer base {
+  html,
+  body {
+    background-color: var(--background-color);
   }
-}
 
-body {
-  font-family: var(--font-family);
-  font-size: var(--text-size-md);
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  color: var(--text-color);
-  line-height: var(--line-height-body);
-  overflow-x: hidden;
-  accent-color: var(--color-accent);
-}
+  html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
 
-body[data-page-size="fullwidth"] {
-  --desktop-max-width: var(--page-width-wide);
-}
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 
-body[data-page-size="normal"] {
-  --desktop-max-width: var(--page-width-normal);
-}
+  body {
+    font-family: var(--font-family);
+    font-size: var(--text-size-md);
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-color);
+    line-height: var(--line-height-body);
+    overflow-x: hidden;
+    accent-color: var(--color-accent);
+  }
 
-header,
-main,
-footer {
-  margin: 0 auto;
-}
+  body[data-page-size="fullwidth"] {
+    --desktop-max-width: var(--page-width-wide);
+  }
 
-main {
-  max-width: var(--desktop-max-width);
-  padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxxl);
-}
+  body[data-page-size="normal"] {
+    --desktop-max-width: var(--page-width-normal);
+  }
 
-main:first-child {
-  margin-top: 0;
-}
+  header,
+  main,
+  footer {
+    margin: 0 auto;
+  }
 
-/* handles focus style for header .skip-link */
-main:focus-visible {
-  outline: var(--focus-style-outline);
-  outline-offset: calc(-1 * var(--focus-style-width));
-}
+  main {
+    max-width: var(--desktop-max-width);
+    padding: var(--spacing-lg) var(--spacing-mmd) var(--spacing-xxxl);
+  }
 
-@supports not selector(:focus-visible) {
-  main:focus {
+  main:first-child {
+    margin-top: 0;
+  }
+
+  /* handles focus style for header .skip-link */
+  main:focus-visible {
     outline: var(--focus-style-outline);
     outline-offset: calc(-1 * var(--focus-style-width));
   }
-}
 
-*::selection {
-  color: var(--color-accent-invert);
-  background-color: var(--color-accent);
-}
+  @supports not selector(:focus-visible) {
+    main:focus {
+      outline: var(--focus-style-outline);
+      outline-offset: calc(-1 * var(--focus-style-width));
+    }
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin-top: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
-  line-height: var(--line-height-heading);
-  text-wrap: balance;
-}
+  *::selection {
+    color: var(--color-accent-invert);
+    background-color: var(--color-accent);
+  }
 
-/* sets focus style on jump link fragments */
-h2[id]:target,
-h3[id]:target,
-h4[id]:target,
-h5[id]:target {
-  margin-left: calc(-1 * var(--spacing-md));
-  margin-right: calc(-1 * var(--spacing-md));
-  padding-left: var(--spacing-md);
-  padding-right: var(--spacing-md);
-  color: var(--color-accent-invert);
-  background-color: var(--color-accent);
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-heading);
+    text-wrap: balance;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
+  /* sets focus style on jump link fragments */
   h2[id]:target,
   h3[id]:target,
   h4[id]:target,
   h5[id]:target {
-    transition: background-color 1s ease-in-out;
+    margin-left: calc(-1 * var(--spacing-md));
+    margin-right: calc(-1 * var(--spacing-md));
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    color: var(--color-accent-invert);
+    background-color: var(--color-accent);
+  }
 
-    @starting-style {
-      background-color: transparent;
+  @media (prefers-reduced-motion: no-preference) {
+    h2[id]:target,
+    h3[id]:target,
+    h4[id]:target,
+    h5[id]:target {
+      transition: background-color 1s ease-in-out;
+
+      @starting-style {
+        background-color: transparent;
+      }
     }
   }
-}
 
-h1 {
-  font-size: var(--text-size-h1);
-  margin-top: 0;
-  margin-bottom: var(--spacing-xl);
-}
-
-h2 {
-  margin-top: var(--spacing-xl);
-  font-size: var(--text-size-h2);
-}
-
-h3 {
-  font-size: var(--text-size-h3);
-}
-
-h4 {
-  font-size: var(--text-size-h4);
-}
-
-h5 {
-  font-size: var(--text-size-h5);
-}
-
-p,
-:is(ul, ol):not([role="list"]) li {
-  max-width: 77ch;
-  margin-bottom: 1lh;
-  text-wrap: pretty;
-}
-
-p {
-  margin-bottom: var(--spacing-mmd);
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-caption,
-figcaption {
-  font-size: var(--text-size-sm);
-}
-
-small {
-  font-size: var(--text-size-xsm);
-}
-
-:where([href]) {
-  color: var(--text-color-link);
-  text-decoration-skip-ink: auto;
-  text-decoration-thickness: 0.125rem;
-  text-underline-offset: 0.2em;
-  transition: text-decoration-thickness 0.25s ease-in;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :where([href]) {
-    transition: none;
+  h1 {
+    font-size: var(--text-size-h1);
+    margin-top: 0;
+    margin-bottom: var(--spacing-xl);
   }
-}
 
-:where(a[href]:visited) {
-  color: var(--text-color-link-visited);
-}
+  h2 {
+    margin-top: var(--spacing-xl);
+    font-size: var(--text-size-h2);
+  }
 
-:where(a[href]:active) {
-  color: var(--text-color-link-active);
-}
+  h3 {
+    font-size: var(--text-size-h3);
+  }
 
-:where(a[href]:hover, a[href]:focus) {
-  color: var(--color-accent-focus);
-  outline: transparent;
-  text-decoration-thickness: 0.5rem;
-  text-decoration-skip-ink: none;
-}
+  h4 {
+    font-size: var(--text-size-h4);
+  }
 
-dl > div {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0 var(--spacing-md);
-  line-height: 1.75;
-}
+  h5 {
+    font-size: var(--text-size-h5);
+  }
 
-:where(dl),
-:where(ul),
-:where(ol) {
-  margin-bottom: var(--spacing-mmd);
-}
+  p,
+  :is(ul, ol):not([role="list"]) li {
+    max-width: 77ch;
+    margin-bottom: 1lh;
+    text-wrap: pretty;
+  }
 
-:where(li > ul),
-:where([role="list"]) {
-  margin-bottom: 0;
-}
+  p {
+    margin-bottom: var(--spacing-mmd);
+  }
 
-:where([role="list"]) {
-  padding: 0;
-}
+  p:last-child {
+    margin-bottom: 0;
+  }
 
-:where([role="list"]) li {
-  list-style: none;
-}
+  caption,
+  figcaption {
+    font-size: var(--text-size-sm);
+  }
 
-:where(ul:not([role="list"])) li,
-:where(ol:not([role="list"])) li {
-  margin-bottom: var(--spacing-md);
-}
+  small {
+    font-size: var(--text-size-xsm);
+  }
 
-ul.inline,
-ol.inline {
-  display: flex;
-  align-items: baseline;
-  gap: var(--gap, var(--spacing-sm));
+  :where([href]) {
+    color: var(--text-color-link);
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-thickness 0.25s ease-in;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where([href]) {
+      transition: none;
+    }
+  }
+
+  :where(a[href]:visited) {
+    color: var(--text-color-link-visited);
+  }
+
+  :where(a[href]:active) {
+    color: var(--text-color-link-active);
+  }
+
+  :where(a[href]:hover, a[href]:focus) {
+    color: var(--color-accent-focus);
+    outline: transparent;
+    text-decoration-thickness: 0.5rem;
+    text-decoration-skip-ink: none;
+  }
+
+  dl > div {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0 var(--spacing-md);
+    line-height: 1.75;
+  }
+
+  :where(dl),
+  :where(ul),
+  :where(ol) {
+    margin-bottom: var(--spacing-mmd);
+  }
+
+  :where(li > ul),
+  :where([role="list"]) {
+    margin-bottom: 0;
+  }
+
+  :where([role="list"]) {
+    padding: 0;
+  }
+
+  :where([role="list"]) li {
+    list-style: none;
+  }
+
+  :where(ul:not([role="list"])) li,
+  :where(ol:not([role="list"])) li {
+    margin-bottom: var(--spacing-md);
+  }
+
+  ul.inline,
+  ol.inline {
+    display: flex;
+    align-items: baseline;
+    gap: var(--gap, var(--spacing-sm));
+  }
 }
