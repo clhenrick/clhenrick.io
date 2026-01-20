@@ -106,7 +106,7 @@
 
   {# NOTE: All common CSS used throughout the site are added here. In dev they are created as links, in prod all CSS is concatenated and inlined for a small performance boost. #}
   {%- set partials %}
-    base/reset, base/base, base/utils, components/button,
+    base/layer, base/reset, base/base, base/utils, components/button,
     components/theme-toggle, layouts/header, layouts/footer
   {% endset %}
   {% include "styles.njk" %}
