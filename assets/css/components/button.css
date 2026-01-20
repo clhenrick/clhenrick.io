@@ -1,48 +1,50 @@
-.button {
-  --button-border-width: 2px;
-  display: inline-block;
-  inline-size: fit-content;
-  touch-action: manipulation;
-  user-select: none;
-  padding: var(--spacing-sm) var(--spacing-mmd);
-  background-color: var(--color-accent);
-  color: var(--color-accent-invert);
-  font-weight: bold;
-  border: var(--button-border-width) solid transparent;
-  border-radius: var(--border-radius);
-  text-align: center;
-  text-decoration: none;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    color ease-in 0.2s,
-    background-color ease-in 0.2s;
-}
+@layer components {
+  .button {
+    --button-border-width: 2px;
+    display: inline-block;
+    inline-size: fit-content;
+    touch-action: manipulation;
+    user-select: none;
+    padding: var(--spacing-sm) var(--spacing-mmd);
+    background-color: var(--color-accent);
+    color: var(--color-accent-invert);
+    font-weight: bold;
+    border: var(--button-border-width) solid transparent;
+    border-radius: var(--border-radius);
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      color ease-in 0.2s,
+      background-color ease-in 0.2s;
+  }
 
-.button:visited {
-  color: var(--color-accent-invert);
-}
+  .button:visited {
+    color: var(--color-accent-invert);
+  }
 
-.button:hover {
-  color: var(--color-accent);
-  background-color: var(--background-color);
-  border: var(--button-border-width) solid var(--color-accent);
-}
+  .button:hover {
+    color: var(--color-accent);
+    background-color: var(--background-color);
+    border: var(--button-border-width) solid var(--color-accent);
+  }
 
-.button:active {
-  color: var(--color-accent-secondary);
-}
+  .button:active {
+    color: var(--color-accent-secondary);
+  }
 
-.button:focus-visible {
-  outline: 3px solid var(--background-color);
-  outline-offset: 0;
-  box-shadow: var(--focus-style-button-box-shadow);
-}
-
-@supports not selector(:focus-visible) {
-  .button:focus {
+  .button:focus-visible {
     outline: 3px solid var(--background-color);
     outline-offset: 0;
     box-shadow: var(--focus-style-button-box-shadow);
+  }
+
+  @supports not selector(:focus-visible) {
+    .button:focus {
+      outline: 3px solid var(--background-color);
+      outline-offset: 0;
+      box-shadow: var(--focus-style-button-box-shadow);
+    }
   }
 }
