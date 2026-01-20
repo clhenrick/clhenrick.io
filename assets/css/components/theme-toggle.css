@@ -1,65 +1,67 @@
-/* styles for the site wide light / dark theme toggle */
-#site-theme-toggle {
-  display: none;
-}
+@layer components {
+  /* styles for the site wide light / dark theme toggle */
+  #site-theme-toggle {
+    display: none;
+  }
 
-.js-enabled #site-theme-toggle {
-  display: inline-flex;
-  align-items: baseline;
-  gap: var(--spacing-md);
-  font-size: 1rem;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
+  .js-enabled #site-theme-toggle {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--spacing-md);
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
 
-#site-theme-toggle:target {
-  outline: 5px solid var(--color-accent);
-  outline-offset: var(--focus-style-outline-offset);
-}
-
-@media (prefers-reduced-motion: no-preference) {
   #site-theme-toggle:target {
-    transition: outline 3s ease-in-out;
+    outline: 5px solid var(--color-accent);
+    outline-offset: var(--focus-style-outline-offset);
+  }
 
-    @starting-style {
-      outline: transparent;
+  @media (prefers-reduced-motion: no-preference) {
+    #site-theme-toggle:target {
+      transition: outline 3s ease-in-out;
+
+      @starting-style {
+        outline: transparent;
+      }
     }
   }
-}
 
-#site-theme-toggle span {
-  font-weight: bold;
-}
-
-#site-theme-toggle label {
-  text-transform: capitalize;
-}
-
-#site-theme-toggle input[type="radio"] {
-  width: 0.8rem;
-  height: 0.8rem;
-}
-
-#site-theme-toggle input[type="radio"]:focus {
-  outline: var(--focus-style-outline);
-}
-
-#site-theme-toggle .form-control {
-  border-radius: var(--border-radius);
-
-  /* undoes margin top / bottom in form-controls.css */
-  margin: 0;
-}
-
-@supports (selector(:focus-visible)) and (selector(:has(a))) {
-  #site-theme-toggle input[type="radio"]:focus {
-    outline-color: transparent;
+  #site-theme-toggle span {
+    font-weight: bold;
   }
 
-  /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */
-  #site-theme-toggle .form-control:has(:focus-visible) {
+  #site-theme-toggle label {
+    text-transform: capitalize;
+  }
+
+  #site-theme-toggle input[type="radio"] {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  #site-theme-toggle input[type="radio"]:focus {
     outline: var(--focus-style-outline);
-    outline-offset: var(--focus-style-outline-offset);
+  }
+
+  #site-theme-toggle .form-control {
+    border-radius: var(--border-radius);
+
+    /* undoes margin top / bottom in form-controls.css */
+    margin: 0;
+  }
+
+  @supports (selector(:focus-visible)) and (selector(:has(a))) {
+    #site-theme-toggle input[type="radio"]:focus {
+      outline-color: transparent;
+    }
+
+    /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */
+    #site-theme-toggle .form-control:has(:focus-visible) {
+      outline: var(--focus-style-outline);
+      outline-offset: var(--focus-style-outline-offset);
+    }
   }
 }
