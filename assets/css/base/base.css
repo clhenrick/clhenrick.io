@@ -352,6 +352,10 @@
   ul,
   ol {
     margin-bottom: var(--spacing-mmd);
+
+    li & {
+      margin-top: var(--spacing-md);
+    }
   }
 
   li > ul,
