@@ -310,7 +310,7 @@
     font-size: var(--text-size-xsm);
   }
 
-  :where([href]) {
+  [href] {
     color: var(--text-color-link);
     text-decoration-skip-ink: auto;
     text-decoration-thickness: 0.125rem;
@@ -319,20 +319,21 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :where([href]) {
+    [href] {
       transition: none;
     }
   }
 
-  :where(a[href]:visited) {
+  a[href]:visited {
     color: var(--text-color-link-visited);
   }
 
-  :where(a[href]:active) {
+  a[href]:active {
     color: var(--text-color-link-active);
   }
 
-  :where(a[href]:hover, a[href]:focus) {
+  a[href]:hover,
+  a[href]:focus {
     color: var(--color-accent-focus);
     outline: transparent;
     text-decoration-thickness: 0.5rem;
@@ -347,27 +348,27 @@
     line-height: 1.75;
   }
 
-  :where(dl),
-  :where(ul),
-  :where(ol) {
+  dl,
+  ul,
+  ol {
     margin-bottom: var(--spacing-mmd);
   }
 
-  :where(li > ul),
-  :where([role="list"]) {
+  li > ul,
+  [role="list"] {
     margin-bottom: 0;
   }
 
-  :where([role="list"]) {
+  [role="list"] {
     padding: 0;
   }
 
-  :where([role="list"]) li {
+  [role="list"] li {
     list-style: none;
   }
 
-  :where(ul:not([role="list"])) li,
-  :where(ol:not([role="list"])) li {
+  ul:not([role="list"]) li,
+  ol:not([role="list"]) li {
     margin-bottom: var(--spacing-md);
   }
 
