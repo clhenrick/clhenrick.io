@@ -1,35 +1,37 @@
-:where(details) {
-  margin-bottom: var(--spacing-md);
-}
+@layer components {
+  :where(details) {
+    margin-bottom: var(--spacing-md);
+  }
 
-:where(details > *:nth-child(2)) {
-  margin-top: var(--spacing-sm);
-}
+  :where(details > *:nth-child(2)) {
+    margin-top: var(--spacing-sm);
+  }
 
-:where(summary) {
-  font-weight: bold;
-  border-radius: var(--border-radius);
-  padding: var(--spacing-xs) 0;
-}
+  :where(summary) {
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xs) 0;
+  }
 
-:where(summary:hover) {
-  cursor: pointer;
-  color: var(--color-accent);
-}
+  :where(summary:hover) {
+    cursor: pointer;
+    color: var(--color-accent);
+  }
 
-:where(summary:focus-visible) {
-  outline: var(--focus-style-outline);
-  outline-offset: var(--focus-style-outline-offset);
-}
-
-/* keeps any block level child element on the same baseline as the disclosure widget triangle */
-:where(summary > *) {
-  display: inline;
-}
-
-@supports not selector(:focus-visible) {
-  :where(summary:focus) {
+  :where(summary:focus-visible) {
     outline: var(--focus-style-outline);
     outline-offset: var(--focus-style-outline-offset);
+  }
+
+  /* keeps any block level child element on the same baseline as the disclosure widget triangle */
+  :where(summary > *) {
+    display: inline;
+  }
+
+  @supports not selector(:focus-visible) {
+    :where(summary:focus) {
+      outline: var(--focus-style-outline);
+      outline-offset: var(--focus-style-outline-offset);
+    }
   }
 }
