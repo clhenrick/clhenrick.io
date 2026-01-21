@@ -12,21 +12,21 @@
     font-weight: bold;
     border-radius: var(--border-radius);
     padding: var(--spacing-xs) 0;
-  }
 
-  summary:hover {
-    cursor: pointer;
-    color: var(--color-accent);
-  }
+    &:hover {
+      cursor: pointer;
+      color: var(--color-accent);
+    }
 
-  summary:focus-visible {
-    outline: var(--focus-style-outline);
-    outline-offset: var(--focus-style-outline-offset);
-  }
+    &:focus-visible {
+      outline: var(--focus-style-outline);
+      outline-offset: var(--focus-style-outline-offset);
+    }
 
-  /* keeps any block level child element on the same baseline as the disclosure widget triangle */
-  summary > * {
-    display: inline;
+    /* keeps any block level child element on the same baseline as the disclosure widget triangle */
+    > * {
+      display: inline;
+    }
   }
 
   @supports not selector(:focus-visible) {
