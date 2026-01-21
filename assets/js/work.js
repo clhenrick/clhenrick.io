@@ -27,13 +27,16 @@
 
   function onFilterButtonClick(event) {
     if (shouldAnimate) {
-      document.startViewTransition(() => {
+      const viewTransition = document.startViewTransition(() => {
         filterCards(event);
       });
+      viewTransition.updateCallbackDone.then(() =>
+        updateOutputText(event.target.value)
+      );
     } else {
       filterCards(event);
+      updateOutputText(event.target.value);
     }
-    updateOutputText(event.target.value);
   }
 
   function filterCards(event) {
@@ -71,8 +74,8 @@
         (el) => el.getAttribute("aria-pressed") === "true"
       )?.value;
       announce.innerText = `Shuffled the order of ${numberShownCards} ${projectType} projects.`;
-      if (numberShuffles) {
-        announce.innerText += ` (${numberShuffles + 1}x).`;
+      if (numberShuffles > 1) {
+        announce.innerText += ` (${numberShuffles}x).`;
       }
     } else {
       announce.innerText = `Showing ${numberShownCards} ${projectTypeOrAction} projects.`;
@@ -81,13 +84,16 @@
 
   function onShuffleButtonClick() {
     if (shouldAnimate) {
-      document.startViewTransition(() => {
+      const viewTransition = document.startViewTransition(() => {
         shuffleCards();
+      });
+      viewTransition.updateCallbackDone.then(() => {
+        updateOutputText("shuffle");
       });
     } else {
       shuffleCards();
+      updateOutputText("shuffle");
     }
-    updateOutputText("shuffle");
   }
 
   function shuffleCards() {
