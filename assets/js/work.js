@@ -1,6 +1,14 @@
 // handles filtering project cards in /content/work/index.njk
 (() => {
   let numberShuffles = 0;
+
+  const prefersReducedMotion = window.matchMedia(
+    `(prefers-reduced-motion)`
+  ).matches;
+  const shouldAnimate =
+    typeof document.startViewTransition !== "undefined" &&
+    !prefersReducedMotion;
+
   const cards = Array.from(document.querySelectorAll(".card"));
   const cardsContainer = document.querySelector(".cards-container");
 
@@ -18,7 +26,7 @@
   updateOutputText("all");
 
   function onFilterButtonClick(event) {
-    if (document.startViewTransition) {
+    if (shouldAnimate) {
       document.startViewTransition(() => {
         filterCards(event);
       });
@@ -72,7 +80,7 @@
   }
 
   function onShuffleButtonClick() {
-    if (document.startViewTransition) {
+    if (shouldAnimate) {
       document.startViewTransition(() => {
         shuffleCards();
       });
