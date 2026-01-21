@@ -18,26 +18,26 @@
     transition:
       color ease-in 0.2s,
       background-color ease-in 0.2s;
-  }
 
-  .button:visited {
-    color: var(--color-accent-invert);
-  }
+    &:visited {
+      color: var(--color-accent-invert);
+    }
 
-  .button:hover {
-    color: var(--color-accent);
-    background-color: var(--background-color);
-    border: var(--button-border-width) solid var(--color-accent);
-  }
+    &:hover {
+      color: var(--color-accent);
+      background-color: var(--background-color);
+      border: var(--button-border-width) solid var(--color-accent);
+    }
 
-  .button:active {
-    color: var(--color-accent-secondary);
-  }
+    &:active {
+      color: var(--color-accent-secondary);
+    }
 
-  .button:focus-visible {
-    outline: 3px solid var(--background-color);
-    outline-offset: 0;
-    box-shadow: var(--focus-style-button-box-shadow);
+    &:focus-visible {
+      outline: 3px solid var(--background-color);
+      outline-offset: 0;
+      box-shadow: var(--focus-style-button-box-shadow);
+    }
   }
 
   @supports not selector(:focus-visible) {
