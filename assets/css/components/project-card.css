@@ -26,6 +26,7 @@
   border: 1px solid;
   border-radius: var(--border-radius);
   cursor: pointer;
+  view-transition-name: match-element;
 }
 
 .card,

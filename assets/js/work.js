@@ -18,6 +18,17 @@
   updateOutputText("all");
 
   function onFilterButtonClick(event) {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        filterCards(event);
+      });
+    } else {
+      filterCards(event);
+    }
+    updateOutputText(event.target.value);
+  }
+
+  function filterCards(event) {
     const value = event.target.value;
 
     filterButtons.forEach((button) => {
@@ -41,7 +52,6 @@
     });
 
     numberShuffles = 0;
-    updateOutputText(value);
   }
 
   function updateOutputText(projectTypeOrAction) {
@@ -62,12 +72,22 @@
   }
 
   function onShuffleButtonClick() {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        shuffleCards();
+      });
+    } else {
+      shuffleCards();
+    }
+    updateOutputText("shuffle");
+  }
+
+  function shuffleCards() {
     const shuffled = shuffle(cards);
     cardsContainer.innerHTML = "";
     shuffled.forEach((card) => {
       cardsContainer.appendChild(card);
     });
-    updateOutputText("shuffle");
     numberShuffles += 1;
   }
 
