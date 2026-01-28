@@ -3,6 +3,10 @@
 
   /* some code borrowed from: https://inclusive-components.design/cards/ */
 
+  ::view-transition-group(*) {
+    animation-duration: 0.75s;
+  }
+
   .cards-container {
     display: grid;
     grid-template-columns: repeat(
@@ -27,6 +31,7 @@
     border: 1px solid;
     border-radius: var(--border-radius);
     cursor: pointer;
+    view-transition-name: match-element;
   }
 
   .card,
