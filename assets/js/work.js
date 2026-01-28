@@ -1,6 +1,14 @@
 // handles filtering project cards in /content/work/index.njk
 (() => {
   let numberShuffles = 0;
+
+  const prefersReducedMotion = window.matchMedia(
+    `(prefers-reduced-motion)`
+  ).matches;
+  const shouldAnimate =
+    typeof document.startViewTransition !== "undefined" &&
+    !prefersReducedMotion;
+
   const cards = Array.from(document.querySelectorAll(".card"));
   const cardsContainer = document.querySelector(".cards-container");
 
@@ -18,6 +26,20 @@
   updateOutputText("all");
 
   function onFilterButtonClick(event) {
+    if (shouldAnimate) {
+      const viewTransition = document.startViewTransition(() => {
+        filterCards(event);
+      });
+      viewTransition.updateCallbackDone.then(() =>
+        updateOutputText(event.target.value)
+      );
+    } else {
+      filterCards(event);
+      updateOutputText(event.target.value);
+    }
+  }
+
+  function filterCards(event) {
     const value = event.target.value;
 
     filterButtons.forEach((button) => {
@@ -41,7 +63,6 @@
     });
 
     numberShuffles = 0;
-    updateOutputText(value);
   }
 
   function updateOutputText(projectTypeOrAction) {
@@ -53,8 +74,8 @@
         (el) => el.getAttribute("aria-pressed") === "true"
       )?.value;
       announce.innerText = `Shuffled the order of ${numberShownCards} ${projectType} projects.`;
-      if (numberShuffles) {
-        announce.innerText += ` (${numberShuffles + 1}x).`;
+      if (numberShuffles > 1) {
+        announce.innerText += ` (${numberShuffles}x).`;
       }
     } else {
       announce.innerText = `Showing ${numberShownCards} ${projectTypeOrAction} projects.`;
@@ -62,12 +83,25 @@
   }
 
   function onShuffleButtonClick() {
+    if (shouldAnimate) {
+      const viewTransition = document.startViewTransition(() => {
+        shuffleCards();
+      });
+      viewTransition.updateCallbackDone.then(() => {
+        updateOutputText("shuffle");
+      });
+    } else {
+      shuffleCards();
+      updateOutputText("shuffle");
+    }
+  }
+
+  function shuffleCards() {
     const shuffled = shuffle(cards);
     cardsContainer.innerHTML = "";
     shuffled.forEach((card) => {
       cardsContainer.appendChild(card);
     });
-    updateOutputText("shuffle");
     numberShuffles += 1;
   }
 

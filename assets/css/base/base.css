@@ -156,6 +156,10 @@
   }
 }
 
+::view-transition-group(*) {
+  animation-duration: 0.75s;
+}
+
 html,
 body {
   background-color: var(--background-color);
