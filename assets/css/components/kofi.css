@@ -1,36 +1,38 @@
-article.kofi {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-sm);
-  margin: var(--spacing-xl) 0;
-  border: 2px solid var(--text-color);
-  border-radius: var(--border-radius);
-  background-color: var(--color-accent-invert);
-}
-
-@media screen and (width >= 748px) {
+@layer components {
   article.kofi {
-    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xl) 0;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: var(--color-accent-invert);
   }
-}
 
-article.kofi p {
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-  text-align: center;
-  text-wrap: balance;
-}
+  @media screen and (width >= 748px) {
+    article.kofi {
+      padding: var(--spacing-md);
+    }
+  }
 
-article.kofi p:first-of-type {
-  font-style: italic;
-  font-weight: bold;
-}
+  article.kofi p {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    text-wrap: balance;
+  }
 
-article.kofi .kofi-emoji {
-  font-size: 2rem;
-  vertical-align: middle;
-  line-height: 1;
+  article.kofi p:first-of-type {
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  article.kofi .kofi-emoji {
+    font-size: 2rem;
+    vertical-align: middle;
+    line-height: 1;
+  }
 }
