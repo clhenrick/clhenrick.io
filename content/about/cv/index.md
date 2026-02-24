@@ -43,21 +43,21 @@ Product Contributions:
 
 - Collaborated with the Story Maps design team to design and implement a "universal focus indicator" to improve accessibility across ArcGIS Story Maps. Designed and implemented a flexible solution that works with product theming and meets five WCAG Success Criteria (Levels AA and AAA) related to focus indicators for keyboard navigation. Educated developers, designers, and product engineers on the solution through team presentations, code reviews, and design reviews.
 
-- Independently prototyped and productionized the Activity Block, a pre-configured dashboard for user provided GPX data related to outdoor athletic activities, for StoryMaps.com (product has been sunsetted). Leveraged UX and technical protoytyping to improve the visual design, accessibility, and usability of the feature. Incrementally and iteratively built out the production code using ReactJS, NextJS, CSS in JS, D3JS, and the ArcGIS JS SDK.
+- Independently prototyped and productionized the Activity Block, a pre-configured dashboard for user provided GPX data related to outdoor athletic activities, for StoryMaps.com (product has since been sunsetted). Leveraged UX and technical protoytyping to improve the visual design, accessibility, and usability of the feature. Incrementally and iteratively built out the production code using ReactJS, NextJS, CSS in JS, D3JS, and the ArcGIS JS SDK.
 
-- Submitted over forty pull requests related to migrating five different Instant Apps code repositories to a single mono-repo. Work included improving mono-repo tooling using Turbo Repo, Yarn Workspaces, git commit hooks, Github Actions, and shared configurations for TypeScript, ES Lint, Prettier, and package / dependency management.
+- Submitted over forty pull requests related to migrating five different Instant Apps code repositories to a single mono-repo. Work included improving mono-repo tooling using Turbo Repo, Yarn Workspaces, Git commit hooks, Github Actions, and shared configurations for TypeScript, ES Lint, Prettier, and dependency management.
 
-- Collaborated with the Story Maps design team on implementing accessibility annotations to Figma design mocks for new product features and for the Story Maps design system. Educated designers on common patterns to annotate such as accessible names, focus indicators, ARIA roles, states, and properties, correct usage of UI components.
+- Collaborated with the Story Maps design team on implementing accessibility annotations to Figma design mocks for new product features and for the Story Maps design system. Educated designers on common patterns to annotate such as heading levels, accessible names and descriptions, focus indicator states, focus management, ARIA roles, states, and properties, correct usage of UI components. Resulted in catching more accessibility issues in the design phase and avoiding fixes in production.
 
-- Improved software engineering processes by advocating for the development team to adopt writing and reviewing of software design documents prior to starting production engineering work.
+- Improved software engineering processes by advocating for the development team to adopt writing and reviewing of software design documents prior to starting production engineering work related to developing new features, large refactors, and UI components.
 
 Team Development:
 
-- Initiated and led the Story Maps team's Accessibility Working Group to strategize improving the accessibility of ArcGIS Story Maps and facilitate cross functional knowledge sharing around web accessibility for the team from 2023 - 2025.
+- Initiated and led the Story Maps team's Accessibility Working Group that met monthly to strategize improving the accessibility of ArcGIS Story Maps and facilitate cross functional knowledge sharing around web accessibility for the team from 2023 - 2025.
 
-- Organized and led a bi-weekly "book club" discussion of the Practical Accessibility course for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
+- Organized and led a bi-weekly "book club" discussion of the Practical Accessibility online course for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
 
-- Liaison to the Story Maps design team: participated in design critiques and reviews; paired with designers on UX and UI designs of new product features; performed accessibility reviews of design mocks; prototyped new features to inform design prior to production implementation.
+- Liaison to the Story Maps design team: participated in design critiques and reviews; paired with designers on UX and UI designs of new product features; performed accessibility reviews of Figma mocks; prototyped new features to inform overall UI/UX design prior to production implementation.
 
 ### University of California, Berkeley
 
