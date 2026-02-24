@@ -292,7 +292,6 @@ h5 {
 p,
 :is(ul, ol):not([role="list"]) li {
   max-width: 77ch;
-  margin-bottom: 1lh;
   text-wrap: pretty;
 }
 
