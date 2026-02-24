@@ -30,12 +30,13 @@ Redlands, CA / Remote
 
 - **June, 2025 - present:** Senior Software Development Engineer on the [ArcGIS Instant Apps](https://www.esri.com/en-us/arcgis/products/arcgis-instant-apps/overview) team.
 - **August, 2022 - April, 2025:** Senior Software Development Engineer on the [ArcGIS StoryMaps](https://storymaps.arcgis.com/) team.
-- Production front-end engineering utilizing a tech stack consisting of ReactJS, TypeScript, AstroJS, CSS, Lit (Web Components), D3JS, Calcite Design System, ArcGIS JS SDK.
+- Production front-end engineering utilizing a tech stack consisting of ReactJS, TypeScript, AstroJS, CSS, Lit (Web Components), D3JS, Calcite Design System, ArcGIS JS SDK, Yarn, Git / Github.
 - Focusing on feature development relating to interactive geographic maps and geospatial data visualization.
 - Integrating front-end user interfaces with backend systems such as ArcGIS Online and JSON / REST APIs.
 - Prototyping new features such as keyboard accessible interactive geographic maps for usability testing, technical assessment, visual fidelity, stakeholder alignment, and improving overall product usability.
 - Leveraging Github CoPilot to improve development processes such as writing component and unit tests, conducting code reviews, improving documentation, and scaffolding new UI components and web applications.
 - Mentoring junior engineers on web accessibility, code quality, data visualization, and UI component architecture.
+- Maintaining Instant Apps mono-repo package shared dependencies and configuration using Yarn workspaces, NodeJS and Bash scripts, Turbo Repo, ES Lint, Prettier, TypeScript, Git Hooks, Github Actions, Github CoPilot.
 
 #### Accomplishments
 
