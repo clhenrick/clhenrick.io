@@ -22,7 +22,7 @@ You may skip ahead to a section of this CV using the following jump links:
 
 ## Professional Experience
 
-### Environmental Systems Research Institute (ESRI)
+### Environmental Systems Research Institute (Esri)
 
 **Senior Software Development Engineer**<br>
 _August, 2022 – present_<br>
@@ -66,7 +66,7 @@ Team Development:
 _July, 2021 – July, 2022_<br>
 Berkeley, CA / Remote
 
-As a team member of the [Geospatial Innovation Facility](http://gif.berkeley.edu) (GIF) at UC Berkeley's Rausser College of Natural Resources I performed front-end Web Development, interactive Data Visualization, and UI/UX Design for [Cal-Adapt](https://cal-adapt.org) and related projects that utilize climate data to address the adaptation and mitigation of climate change for the public and private sectors in California.
+As a team member of the [Geospatial Innovation Facility](http://gif.berkeley.edu) (GIF) at UC Berkeley's Rausser College of Natural Resources I performed front-end Web Development, interactive Data Visualization, and UI/UX Design for [Cal-Adapt](https://cal-adapt.org) and related projects that utilize climate model data to address the adaptation and mitigation of climate change for the public and private sectors in California.
 
 #### Accomplishments
 
@@ -90,10 +90,10 @@ Team Development:
 _September, 2018 – June, 2021_<br>
 San Francisco, CA
 
-User Experience Engineer focused on prototyping data visualization UI components and developing internal software for the [Google Cloud Platform](https://cloud.google.com/).
+User Experience Engineer, design lens, focused on prototyping data novel visualization UI components and developing internal software for the [Google Cloud Platform](https://cloud.google.com/).
 
+- Independently develop unique web prototypes at varying levels of fidelity for interactive design concepts using modern web standards and technologies such as React, Angular, D3JS, TypeScript, JavaScript, Lit (Web Components), Material Design, CSS, and HTML.
 - Collaborated with UX Designers, UX Researchers, Data Scientists, Program Managers, and Software Engineers in the product development lifecycle.
-- Created web prototypes at varying levels of fidelity for interactive design concepts using modern web standards and technologies such as React, Angular, D3JS, TypeScript, LitElement, (S)CSS, HTML, etc.
 - Advocated UX Design to areas such as UI component design, web accessibility, visual design, and interaction design.
 - Analyzed datasets and documented data transformation pipelines using CoLab/Jupyter Notebooks, SQL, Pandas, Altair.
 - From August through December of 2020 took part in a [Google.org](https://www.google.org/) fellowship with [Morehouse School of Medicine](https://msm.edu/)'s [Satcher Health Leadership Institute](https://satcherinstitute.org/) to help develop the [Health Equity Tracker](https://healthequitytracker.org/), a web application that uses health related data and data visualization to empower health equity advocates within the U.S.
