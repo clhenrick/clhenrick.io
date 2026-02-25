@@ -26,9 +26,39 @@ You may skip ahead to a section of this CV using the following jump links:
 
 **Senior Software Development Engineer**<br>
 _August, 2022 – present_<br>
-Redlands, CA / Remote
+Remote
 
-Senior Software Engineer working on [ArcGIS StoryMaps](https://storymaps.arcgis.com/) and [StoryMaps.com](https://storymaps.com) with a focus on feature development relating to interactive geographic maps and geospatial data visualization.
+- **June, 2025 - present:** Senior Software Development Engineer on the [ArcGIS Instant Apps](https://www.esri.com/en-us/arcgis/products/arcgis-instant-apps/overview) team.
+- **August, 2022 - April, 2025:** Senior Software Development Engineer on the [ArcGIS StoryMaps](https://storymaps.arcgis.com/) team.
+- Production front-end engineering utilizing a tech stack consisting of ReactJS, TypeScript, AstroJS, CSS, Lit (Web Components), D3JS, Calcite Design System, ArcGIS JS SDK, Vite, Yarn, Git / Github.
+- Focusing on feature development relating to interactive geographic maps and geospatial data visualization.
+- Integrating front-end user interfaces with back-end systems such as ArcGIS Online and JSON / REST APIs.
+- Prototyping new features for usability testing, technical assessment, visual fidelity, stakeholder alignment, and improving overall product design.
+- Leveraging Github CoPilot to improve development processes such as writing component and unit tests, conducting code reviews, improving documentation, and scaffolding new UI components and web applications.
+- Mentoring junior engineers on web accessibility, code quality, data visualization, and UI component architecture.
+- Maintaining the Instant Apps mono-repo package shared dependencies, configuration, and architecture with Yarn workspaces, NodeJS and Bash scripts, Turbo Repo, ES Lint, Prettier, TypeScript, Git Hooks, Github Actions, Github CoPilot.
+
+#### Accomplishments
+
+Product Contributions:
+
+- Led the visual design and technical implementation of a "universal focus indicator" to improve accessibility across ArcGIS Story Maps. Co-designed and independently implemented a flexible solution that works with product theming and meets five WCAG Success Criteria (Levels AA and AAA) related to focus indicators for keyboard navigation. Educated developers, designers, and product engineers on the solution through presentations, code reviews, and design reviews.
+
+- Independently prototyped and productionized the Activity Block, a pre-configured dashboard for user provided GPX data related to outdoor athletic activities, for StoryMaps.com (product has since been sunsetted). Leveraged UX and technical protoytyping to improve the visual design, accessibility, and usability of the feature. Incrementally and iteratively built out the production code using ReactJS, TypeScript, NextJS, CSS in JS, D3JS, and the ArcGIS JS SDK.
+
+- Submitted over forty pull requests related to migrating five different Instant Apps code repositories to a single mono-repo. Work included improving mono-repo tooling using Turbo Repo, Yarn Workspaces, Git commit hooks, Github Actions, and shared configurations for TypeScript, ES Lint, Prettier, and dependency management.
+
+- Collaborated with the Story Maps design team on implementing accessibility annotations to Figma design mocks for new product features and for the Story Maps design system. Educated designers on what to annotate such as heading levels, accessible names and descriptions, focus indicator states, focus management, ARIA roles, states, and properties, and correct usage of UI components. Resulted in catching more accessibility issues in the design phase and avoiding creating accessibility issues in production code.
+
+- Improved software engineering processes by advocating for the development team to adopt writing and reviewing of software design documents prior to starting production engineering work related to developing new features, large refactors, and new UI components.
+
+Team Development:
+
+- Initiated and led the Story Maps team's Accessibility Working Group that met monthly from 2023 - 2025 to strategize improving the accessibility of ArcGIS Story Maps and facilitate cross functional knowledge sharing around web accessibility.
+
+- Organized and led a bi-weekly "book club" discussion of the Practical Accessibility online course for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
+
+- Liaison to the Story Maps design team: participated in design critiques and reviews, paired with designers on UX and UI designs of new product features, performed accessibility reviews of Figma mocks, prototyped new features to inform overall UI/UX design prior to production implementation.
 
 ### University of California, Berkeley
 
@@ -38,7 +68,7 @@ Berkeley, CA / Remote
 
 As a team member of the [Geospatial Innovation Facility](http://gif.berkeley.edu) (GIF) at UC Berkeley's Rausser College of Natural Resources I performed front-end Web Development, interactive Data Visualization, and UI/UX Design for [Cal-Adapt](https://cal-adapt.org) and related projects that utilize climate data to address the adaptation and mitigation of climate change for the public and private sectors in California.
 
-#### Accomplishments:
+#### Accomplishments
 
 Product Contributions:
 
