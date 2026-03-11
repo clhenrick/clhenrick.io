@@ -54,7 +54,7 @@ export default {
   /** @type {{ name: string; email: string; url: string; }} site author metadata */
   author: {
     name: "Chris Henrick",
-    email: "chrishenrick@gmail.com",
+    email: "info@clhenrick.io",
     url: "https://clhenrick.io/about/",
   },
 
