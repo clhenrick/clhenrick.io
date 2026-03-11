@@ -891,7 +891,7 @@
   description: >-
     Historic coastal grassland, bay, and shoreline over the current day built up land area of Oakland, California.
   description_long: >-
-    An original map for the [Oakland Museum of California](https://museumca.org)'s exhibit *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area.
+    An original map for the [Oakland Museum of California](https://museumca.org)'s exhibit *Oakland: Then and Now*. This map shows historic coastal grassland areas with the historic bay and shoreline over the current day built up land area. Published in the Bay Area Automated Mapping Association journal, Spring 2013.
   thumb: oak-then-now-grass-thumb.jpg
   imgs:
     - oak-then-now-grass.jpg
@@ -908,11 +908,11 @@
   description_long: >-
     An original map for the [Oakland Museum of California](https://museumca.org)'s
     exhibit *Oakland: Then and Now*. This map shows historic oak
-    woodland areas with the historic bay and shoreline over the current day built up land area.
+    woodland areas with the historic bay and shoreline over the current day built up land area. Published in the Bay Area Automated Mapping Association journal, Spring 2013.
   thumb: oak-then-now-oak-thumb.jpg
   imgs:
     - oak-then-now-oak.jpg
-  date: "2015-01-01"
+  date: "2013-01-01"
   tech:
     - QGIS
     - MAPublisher
@@ -932,7 +932,7 @@
   tech:
     - ArcGIS
     - Adobe Illustrator
-  date: "2015-01-01"
+  date: "2011-01-01"
 
 - title: CA Private Public Land
   tags:
@@ -948,7 +948,7 @@
   tech:
     - ArcGIS
     - Adobe Illustrator
-  date: "2010-06-01"
+  date: "2011-06-01"
 
 - title: Ontario
   tags:
