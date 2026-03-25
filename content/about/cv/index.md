@@ -289,10 +289,10 @@ GPA 3.91
 
 MFA thesis [Am I Rent Stabilized?](/work/am-i-rent-stabilized/), an interactive and informative web based guide about rent regulation and tenants rights in New York City.
 
-Areas of focus in [MFA DT](http://www.newschool.edu/parsons/mfa-design-technology/) included interactive web-mapping, data-visualization, web development, User Experience Design, game design, interactive narrative, open-source GIS, and creative coding.
+Areas of focus in [MFA DT](http://www.newschool.edu/parsons/mfa-design-technology/) included interactive web-mapping, data-visualization, web development, JavaScript, UX design, game design, interactive narrative, open-source GIS, and creative coding.
 
-- Selected for a three week intensive bootcamp teaching fellowship for the incoming MFA DT class.
-- Taught a two day workshop on NodeJS to the incoming class of Parsons MS in Data Visualization.
+- As a second year MFA DT student I was selected for a paid three week intensive bootcamp teaching fellowship. Participation in the bootcamp is required by all incoming MFA DT cohorts.
+- Taught a two day intensive workshop, An Introduction to NodeJS, to the incoming class of Parsons MS in Data Visualization.
 
 ### U.C. Berkeley Extension
 
