@@ -287,12 +287,12 @@ The final project for this course was a ten minute presentation on a topic of th
 New York, NY<br>
 GPA 3.91
 
-MFA Thesis: [Am I Rent Stabilized?](/work/am-i-rent-stabilized/), an interactive web-app about rent-stabilization in New York City.
+MFA thesis [Am I Rent Stabilized?](/work/am-i-rent-stabilized/), an interactive and informative web based guide about rent regulation and tenants rights in New York City.
 
 Areas of focus in [MFA DT](http://www.newschool.edu/parsons/mfa-design-technology/) included interactive web-mapping, data-visualization, web development, User Experience Design, game design, interactive narrative, open-source GIS, and creative coding.
 
-- Taught a daily front end web development class as part of a three week intensive "bootcamp" to the incoming 2014 MFA DT class.
-- Taught a two day workshop on NodeJS to the incoming class of Parsons MS in Data Visualization class of 2015.
+- Selected for a three week intensive bootcamp teaching fellowship for the incoming MFA DT class.
+- Taught a two day workshop on NodeJS to the incoming class of Parsons MS in Data Visualization.
 
 ### U.C. Berkeley Extension
 
