@@ -324,6 +324,6 @@ Studies included drawing, print making, painting, mixed media, and graphic desig
 - **Frameworks and Libraries**: ReactJS, SvelteJS, Lit, Web Components, Jest, Vitest
 - **Tools and Technologies**: NodeJS, NPM, Yarn, Vite, Webpack, Git, GitHub, NextJS, SvelteKit, Command Line Interface, AWS, Google Cloud
 - **Data Visualization**: D3JS, ArcGIS JS SDK, MapBoxGLJS, LeafletJS, Vega/VegaLite, Jupyter Notebooks, Observable Notebooks
-- **Web Accessibility**: WCAG, Semantic HTML, WAI ARIA, Screen Readers (VoiceOver, TalkBack, NVDA, JAWS)
+- **Web Accessibility**: WCAG 2.2, Semantic HTML, WAI ARIA, Screen Readers (VoiceOver, TalkBack, NVDA, JAWS)
 - **Design Software**: Figma, Sketch, Adobe Illustrator, Adobe Photoshop
 - **GIS Software**: ArcGIS Online, QGIS, GDAL, PostGIS, MAPublisher, MapShaper, TurfJS
