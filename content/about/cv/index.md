@@ -38,27 +38,27 @@ Remote
 - Mentoring junior engineers on web accessibility, code quality, data visualization, and UI component architecture.
 - Maintaining the Instant Apps mono-repo package shared dependencies, configuration, and architecture with Yarn workspaces, NodeJS and Bash scripts, Turbo Repo, ES Lint, Prettier, TypeScript, Git Hooks, Github Actions, Github CoPilot.
 
-#### Accomplishments
+#### Notable Accomplishments
 
 Product Contributions:
 
-- Led the visual design and technical implementation of a "universal focus indicator" to improve accessibility across ArcGIS Story Maps. Co-designed and independently implemented a flexible solution that works with product theming and meets five WCAG Success Criteria (Levels AA and AAA) related to focus indicators for keyboard navigation. Educated developers, designers, and product engineers on the solution through presentations, code reviews, and design reviews.
+- Led the visual design and technical implementation of a ["universal focus indicator"](https://www.sarasoueidan.com/blog/focus-indicators/) to improve the accessibility of keyboard navigation across the ArcGIS Story Maps product. Co-designed and independently implemented a flexible solution that works with product theming and meets five WCAG Success Criteria (Levels AA and AAA) related to focus indicators for keyboard navigation. Educated developers, designers, and product engineers on the solution and success criteria through team presentations, code reviews, and design reviews.
 
-- Independently prototyped and productionized the Activity Block, a pre-configured dashboard for user provided GPX data related to outdoor athletic activities, for StoryMaps.com (product has since been sunsetted). Leveraged UX and technical protoytyping to improve the visual design, accessibility, and usability of the feature. Incrementally and iteratively built out the production code using ReactJS, TypeScript, NextJS, CSS in JS, D3JS, and the ArcGIS JS SDK.
+- Independently prototyped and productionized the [Activity Map Block](/work/storymaps-activity-map-block/), a pre-configured dashboard for user provided GPX data related to outdoor athletic activities, for StoryMaps.com (product has since been sunsetted). Leveraged UX and technical protoytyping to improve the visual design, accessibility, and usability of the feature. Incrementally and iteratively built out the production code using ReactJS, TypeScript, NextJS, CSS in JS, D3JS, and the ArcGIS JS SDK.
 
-- Submitted over forty pull requests related to migrating five different Instant Apps code repositories to a single mono-repo. Work included improving mono-repo tooling using Turbo Repo, Yarn Workspaces, Git commit hooks, Github Actions, and shared configurations for TypeScript, ES Lint, Prettier, and dependency management.
+- Submitted over 40 pull requests related to migrating five different Instant Apps code repositories to a single mono-repo. Work included improving mono-repo tooling using Turbo Repo, Yarn Workspaces, Git commit hooks, Github Actions, and shared configurations for TypeScript, ES Lint, Prettier, and dependency management.
 
-- Collaborated with the Story Maps design team on implementing accessibility annotations to Figma design mocks for new product features and for the Story Maps design system. Educated designers on what to annotate such as heading levels, accessible names and descriptions, focus indicator states, focus management, ARIA roles, states, and properties, and correct usage of UI components. Resulted in catching more accessibility issues in the design phase and avoiding creating accessibility issues in production code.
+- Collaborated with the Story Maps design team on adding accessibility annotations in Figma design mocks for new product features and for the Story Maps design system. Educated designers on what to annotate such as heading levels, accessible names and descriptions, focus indicator states, focus management, ARIA roles, states, and properties, and correct usage of UI components. Resulted in catching more accessibility issues in the design phase and avoiding creating accessibility issues in the product.
 
 - Improved software engineering processes by advocating for the development team to adopt writing and reviewing of software design documents prior to starting production engineering work related to developing new features, large refactors, and new UI components.
 
 Team Development:
 
-- Initiated and led the Story Maps team's Accessibility Working Group that met monthly from 2023 - 2025 to strategize improving the accessibility of ArcGIS Story Maps and facilitate cross functional knowledge sharing around web accessibility.
+- Initiated and led the Story Maps team's Accessibility Working Group that met monthly from 2023 - 2025 to strategize improving the accessibility of ArcGIS Story Maps and to facilitate cross functional knowledge sharing around web accessibility.
 
-- Organized and led a bi-weekly "book club" discussion of the Practical Accessibility online course for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
+- Organized and led a bi-weekly discussion of the [Practical Accessibility online course](https://practical-accessibility.today) for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
 
-- Liaison to the Story Maps design team: participated in design critiques and reviews, paired with designers on UX and UI designs of new product features, performed accessibility reviews of Figma mocks, prototyped new features to inform overall UI/UX design prior to production implementation.
+- Appointed developer liaison to the Story Maps design team. Frequently participated in design critiques and reviews, paired with designers on UX and UI designs of new product features, performed accessibility reviews of Figma mocks, prototyped new features to inform overall UI/UX design prior to developer handoff.
 
 ### University of California, Berkeley
 
@@ -68,7 +68,7 @@ Berkeley, CA / Remote
 
 As a team member of the [Geospatial Innovation Facility](http://gif.berkeley.edu) (GIF) at UC Berkeley's Rausser College of Natural Resources I performed front-end Web Development, interactive Data Visualization, and UI/UX Design for [Cal-Adapt](https://cal-adapt.org) and related projects that utilize climate model data to address the adaptation and mitigation of climate change for the public and private sectors in California.
 
-#### Accomplishments
+#### Notable Accomplishments
 
 Product Contributions:
 
