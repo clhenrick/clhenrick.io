@@ -38,27 +38,27 @@ Remote
 - Mentoring junior engineers on web accessibility, code quality, data visualization, and UI component architecture.
 - Maintaining the Instant Apps mono-repo package shared dependencies, configuration, and architecture with Yarn workspaces, NodeJS and Bash scripts, Turbo Repo, ES Lint, Prettier, TypeScript, Git Hooks, Github Actions, Github CoPilot.
 
-#### Accomplishments
+#### Notable Accomplishments
 
 Product Contributions:
 
-- Led the visual design and technical implementation of a "universal focus indicator" to improve accessibility across ArcGIS Story Maps. Co-designed and independently implemented a flexible solution that works with product theming and meets five WCAG Success Criteria (Levels AA and AAA) related to focus indicators for keyboard navigation. Educated developers, designers, and product engineers on the solution through presentations, code reviews, and design reviews.
+- Led the visual design and technical implementation of a ["universal focus indicator"](https://www.sarasoueidan.com/blog/focus-indicators/) to improve the accessibility of keyboard navigation across the ArcGIS Story Maps product. Co-designed and independently implemented a flexible solution that works with product theming and meets five WCAG Success Criteria (Levels AA and AAA) related to focus indicators for keyboard navigation. Educated developers, designers, and product engineers on the solution and success criteria through team presentations, code reviews, and design reviews.
 
-- Independently prototyped and productionized the Activity Block, a pre-configured dashboard for user provided GPX data related to outdoor athletic activities, for StoryMaps.com (product has since been sunsetted). Leveraged UX and technical protoytyping to improve the visual design, accessibility, and usability of the feature. Incrementally and iteratively built out the production code using ReactJS, TypeScript, NextJS, CSS in JS, D3JS, and the ArcGIS JS SDK.
+- Independently prototyped and productionized the [Activity Map Block](/work/storymaps-activity-map-block/), a pre-configured dashboard for user provided GPX data related to outdoor athletic activities, for StoryMaps.com (product has since been sunsetted). Leveraged UX and technical protoytyping to improve the visual design, accessibility, and usability of the feature. Incrementally and iteratively built out the production code using ReactJS, TypeScript, NextJS, CSS in JS, D3JS, and the ArcGIS JS SDK.
 
-- Submitted over forty pull requests related to migrating five different Instant Apps code repositories to a single mono-repo. Work included improving mono-repo tooling using Turbo Repo, Yarn Workspaces, Git commit hooks, Github Actions, and shared configurations for TypeScript, ES Lint, Prettier, and dependency management.
+- Submitted over 40 pull requests related to migrating five different Instant Apps code repositories to a single mono-repo. Work included improving mono-repo tooling using Turbo Repo, Yarn Workspaces, Git commit hooks, Github Actions, and shared configurations for TypeScript, ES Lint, Prettier, and dependency management.
 
-- Collaborated with the Story Maps design team on implementing accessibility annotations to Figma design mocks for new product features and for the Story Maps design system. Educated designers on what to annotate such as heading levels, accessible names and descriptions, focus indicator states, focus management, ARIA roles, states, and properties, and correct usage of UI components. Resulted in catching more accessibility issues in the design phase and avoiding creating accessibility issues in production code.
+- Collaborated with the Story Maps design team on adding accessibility annotations in Figma design mocks for new product features and for the Story Maps design system. Educated designers on what to annotate such as heading levels, accessible names and descriptions, focus indicator states, focus management, ARIA roles, states, and properties, and correct usage of UI components. Resulted in catching more accessibility issues in the design phase and avoiding creating accessibility issues in the product.
 
 - Improved software engineering processes by advocating for the development team to adopt writing and reviewing of software design documents prior to starting production engineering work related to developing new features, large refactors, and new UI components.
 
 Team Development:
 
-- Initiated and led the Story Maps team's Accessibility Working Group that met monthly from 2023 - 2025 to strategize improving the accessibility of ArcGIS Story Maps and facilitate cross functional knowledge sharing around web accessibility.
+- Initiated and led the Story Maps team's Accessibility Working Group that met monthly from 2023 - 2025 to strategize improving the accessibility of ArcGIS Story Maps and to facilitate cross functional knowledge sharing around web accessibility.
 
-- Organized and led a bi-weekly "book club" discussion of the Practical Accessibility online course for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
+- Organized and led a bi-weekly discussion of the [Practical Accessibility online course](https://practical-accessibility.today) for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
 
-- Liaison to the Story Maps design team: participated in design critiques and reviews, paired with designers on UX and UI designs of new product features, performed accessibility reviews of Figma mocks, prototyped new features to inform overall UI/UX design prior to production implementation.
+- Appointed _developer liaison_ to the Story Maps design team by the lead designer to advise on technical feasibility and accessibility of all proposed design concepts. Contributed to formal and informal design critiques and reviews, paired with designers on UX and UI designs of new product features, performed accessibility reviews of Figma mocks, prototyped new features using web technologies to reduce uncertainty and ambiguity prior to developer handoff.
 
 ### University of California, Berkeley
 
@@ -68,7 +68,7 @@ Berkeley, CA / Remote
 
 As a team member of the [Geospatial Innovation Facility](http://gif.berkeley.edu) (GIF) at UC Berkeley's Rausser College of Natural Resources I performed front-end Web Development, interactive Data Visualization, and UI/UX Design for [Cal-Adapt](https://cal-adapt.org) and related projects that utilize climate model data to address the adaptation and mitigation of climate change for the public and private sectors in California.
 
-#### Accomplishments
+#### Notable Accomplishments
 
 Product Contributions:
 
@@ -287,12 +287,12 @@ The final project for this course was a ten minute presentation on a topic of th
 New York, NY<br>
 GPA 3.91
 
-MFA Thesis: [Am I Rent Stabilized?](/work/am-i-rent-stabilized/), an interactive web-app about rent-stabilization in New York City.
+MFA thesis [Am I Rent Stabilized?](/work/am-i-rent-stabilized/), an interactive and informative web based guide about rent regulation and tenants rights in New York City.
 
-Areas of focus in [MFA DT](http://www.newschool.edu/parsons/mfa-design-technology/) included interactive web-mapping, data-visualization, web development, User Experience Design, game design, interactive narrative, open-source GIS, and creative coding.
+Areas of focus in [MFA DT](http://www.newschool.edu/parsons/mfa-design-technology/) included interactive web-mapping, data-visualization, web development, JavaScript, UX design, game design, interactive narrative, open-source GIS, and creative coding.
 
-- Taught a daily front end web development class as part of a three week intensive "bootcamp" to the incoming 2014 MFA DT class.
-- Taught a two day workshop on NodeJS to the incoming class of Parsons MS in Data Visualization class of 2015.
+- As a second year MFA DT student I was selected for a paid three week intensive bootcamp teaching fellowship. Participation in the bootcamp is required by all incoming MFA DT cohorts.
+- Taught a two day intensive workshop, An Introduction to NodeJS, to the incoming class of Parsons MS in Data Visualization.
 
 ### U.C. Berkeley Extension
 
@@ -320,21 +320,10 @@ Studies included drawing, print making, painting, mixed media, and graphic desig
 
 ## Technical Skills
 
-- JavaScript (ES6+)
-- TypeScript
-- JavaScript Frameworks: React, Angular, Vue, Lit, Svelte
-- JavaScript Module Bundlers (Webpack, Rollup, Parcel, Vite)
-- NodeJS and NPM
-- Data Visualization: D3JS, MapBoxGLJS, Leaflet, Vega / VegaLite
-- CSS and CSS PreProcessors (SCSS, PostCSS)
-- Web Standards (HTML, SVG, ARIA, JSON, HTTP, Browser APIs)
-- Web Accessibility (Semantic HTML, WCAG, Assistive Technology testing)
-- Git & Github
-- SQL (PostgreSQL, SQLite)
-- Geographic Information Systems (QGIS, PostGIS, GDAL)
-- Python (2.x, 3.x)
-- Jupyter Notebooks, Pandas, Geo Pandas, Altair
-- Cloud Computing (AWS, GCP, Digital Ocean)
-- CARTO platform, JavaScript SDK, & API's
-- Design software: Figma, Sketch, Adobe Illustrator
-- MAPublisher (GIS & Cartography plug-in for Adobe Illustrator)
+- **Programming Languages**: TypeScript, JavaScript (ES6+), CSS3, SCSS/Sass, HTML5, SVG, Python3, Bash, SQL
+- **Frameworks and Libraries**: ReactJS, SvelteJS, Lit, Web Components, Jest, Vitest
+- **Tools and Technologies**: NodeJS, NPM, Yarn, Vite, Webpack, Git, GitHub, NextJS, SvelteKit, Command Line Interface, AWS, Google Cloud
+- **Data Visualization**: D3JS, ArcGIS JS SDK, MapBoxGLJS, LeafletJS, Vega/VegaLite, Jupyter Notebooks, Observable Notebooks
+- **Web Accessibility**: WCAG 2.2, Semantic HTML, WAI ARIA, Screen Readers (VoiceOver, TalkBack, NVDA, JAWS)
+- **Design Software**: Figma, Sketch, Adobe Illustrator, Adobe Photoshop
+- **GIS Software**: ArcGIS Online, QGIS, GDAL, PostGIS, MAPublisher, MapShaper, TurfJS
