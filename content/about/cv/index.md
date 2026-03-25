@@ -320,21 +320,10 @@ Studies included drawing, print making, painting, mixed media, and graphic desig
 
 ## Technical Skills
 
-- JavaScript (ES6+)
-- TypeScript
-- JavaScript Frameworks: React, Angular, Vue, Lit, Svelte
-- JavaScript Module Bundlers (Webpack, Rollup, Parcel, Vite)
-- NodeJS and NPM
-- Data Visualization: D3JS, MapBoxGLJS, Leaflet, Vega / VegaLite
-- CSS and CSS PreProcessors (SCSS, PostCSS)
-- Web Standards (HTML, SVG, ARIA, JSON, HTTP, Browser APIs)
-- Web Accessibility (Semantic HTML, WCAG, Assistive Technology testing)
-- Git & Github
-- SQL (PostgreSQL, SQLite)
-- Geographic Information Systems (QGIS, PostGIS, GDAL)
-- Python (2.x, 3.x)
-- Jupyter Notebooks, Pandas, Geo Pandas, Altair
-- Cloud Computing (AWS, GCP, Digital Ocean)
-- CARTO platform, JavaScript SDK, & API's
-- Design software: Figma, Sketch, Adobe Illustrator
-- MAPublisher (GIS & Cartography plug-in for Adobe Illustrator)
+- **Programming Languages**: TypeScript, JavaScript (ES6+), CSS3, SCSS/Sass, HTML5, SVG, Python3, Bash, SQL
+- **Frameworks and Libraries**: ReactJS, SvelteJS, Lit, Web Components, Jest, Vitest
+- **Tools and Technologies**: NodeJS, NPM, Yarn, Vite, Webpack, Git, GitHub, NextJS, SvelteKit, Command Line Interface, AWS, Google Cloud
+- **Data Visualization**: D3JS, ArcGIS JS SDK, MapBoxGLJS, LeafletJS, Vega/VegaLite, Jupyter Notebooks, Observable Notebooks
+- **Web Accessibility**: WCAG, Semantic HTML, WAI ARIA, Screen Readers (VoiceOver, TalkBack, NVDA, JAWS)
+- **Design Software**: Figma, Sketch, Adobe Illustrator, Adobe Photoshop
+- **GIS Software**: ArcGIS Online, QGIS, GDAL, PostGIS, MAPublisher, MapShaper, TurfJS
