@@ -58,7 +58,7 @@ Team Development:
 
 - Organized and led a bi-weekly discussion of the [Practical Accessibility online course](https://practical-accessibility.today) for over a dozen Story Maps team members that met fifteen times, including developers, designers, and product engineers.
 
-- Appointed developer liaison to the Story Maps design team. Frequently participated in design critiques and reviews, paired with designers on UX and UI designs of new product features, performed accessibility reviews of Figma mocks, prototyped new features to inform overall UI/UX design prior to developer handoff.
+- Appointed _developer liaison_ to the Story Maps design team by the lead designer to advise on technical feasibility and accessibility of all proposed design concepts. Contributed to formal and informal design critiques and reviews, paired with designers on UX and UI designs of new product features, performed accessibility reviews of Figma mocks, prototyped new features using web technologies to reduce uncertainty and ambiguity prior to developer handoff.
 
 ### University of California, Berkeley
 
