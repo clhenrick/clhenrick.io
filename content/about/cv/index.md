@@ -22,7 +22,7 @@ You may skip ahead to a section of this CV using the following jump links:
 
 ## Professional Experience
 
-### Environmental Systems Research Institute (Esri)
+### Environmental Systems Research Inc (Esri)
 
 **Senior Software Development Engineer**<br>
 _August, 2022 – present_<br>
