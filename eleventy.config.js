@@ -161,6 +161,14 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("isArray", (value) => Array.isArray(value));
 
+  /** obfuscates an email address by inserting a hidden HTML span element to throw off web scrapers to prevent spam */
+  eleventyConfig.addShortcode("obfuscateEmail", (value) => {
+    // NOTE: the second span is hidden via `display: none` in contact.css
+    return value
+      .replace(/@/, "<span>@</span>")
+      .replace(/\./, "<span>.hella</span>.");
+  });
+
   eleventyConfig.addPairedShortcode(
     "figure",
     (content, caption, className = "figure") => {
