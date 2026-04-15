@@ -58,3 +58,8 @@ button[type="submit"] {
 #s-h-p {
   display: none;
 }
+
+/* for email obfuscation (see 11ty shortcode in eleventy.config.js) */
+.email > span:nth-child(2) {
+  display: none;
+}
