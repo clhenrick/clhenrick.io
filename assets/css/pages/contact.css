@@ -59,7 +59,13 @@ button[type="submit"] {
   display: none;
 }
 
-/* for email obfuscation (see 11ty shortcode in eleventy.config.js) */
-.email > span:nth-child(2) {
-  display: none;
+.email {
+  > span {
+    color: var(--color-accent);
+  }
+
+  /* for email obfuscation (see 11ty shortcode in eleventy.config.js) */
+  span:nth-child(2) {
+    display: none;
+  }
 }
