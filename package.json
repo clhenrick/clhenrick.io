@@ -7,7 +7,7 @@
   "type": "module",
   "engines": {
     "node": ">22",
-    "npm": ">=11.10.1"
+    "npm": ">=11.14.1"
   },
   "scripts": {
     "build": "npx @11ty/eleventy",
