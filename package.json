@@ -5,6 +5,10 @@
   "main": "index.js",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">22",
+    "npm": ">=11.14.1"
+  },
   "scripts": {
     "build": "npx @11ty/eleventy",
     "build:prod": "NODE_ENV=production npm run build",
