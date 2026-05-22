@@ -1,124 +1,130 @@
-/* projectCard macro/component styles */
+@layer components {
+  /* projectCard macro/component styles */
 
-/* some code borrowed from: https://inclusive-components.design/cards/ */
+  /* some code borrowed from: https://inclusive-components.design/cards/ */
 
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(var(--card-min-width, 20rem), 1fr)
-  );
-  gap: var(--spacing-mmd);
-}
+  ::view-transition-group(*) {
+    animation-duration: 0.75s;
+  }
 
-.tags {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: var(--spacing-md);
-}
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--card-min-width, 20rem), 1fr)
+    );
+    gap: var(--spacing-mmd);
+  }
 
-.card {
-  --card-text-margin: var(--spacing-sm);
-  background-color: var(--color-accent-invert);
-  overflow: hidden;
-  position: relative;
-  border: 1px solid;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  view-transition-name: match-element;
-}
+  .tags {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
 
-.card,
-.card > .text {
-  display: flex;
-  flex-direction: column;
-}
-
-.card .text {
-  flex-grow: 1;
-  padding: calc(var(--spacing-md) + 4px);
-  font-weight: normal;
-}
-
-.card .text > * + * {
-  margin-top: var(--card-text-margin);
-}
-
-.card .text > *:last-child {
-  margin-top: auto;
-  margin-bottom: 0;
-}
-
-.card .text > *:nth-last-child(2) {
-  margin-bottom: var(--card-text-margin);
-}
-
-.card .img {
-  height: 128px;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1rem));
-}
-
-.card .img img {
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-}
-
-@media (prefers-reduced-motion: no-preference) {
   .card {
-    transition:
-      border ease-in 0.2s,
-      box-shadow ease-in 0.2s;
+    --card-text-margin: var(--spacing-sm);
+    background-color: var(--color-accent-invert);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    view-transition-name: match-element;
   }
-}
 
-.card[hidden] {
-  display: none;
-}
+  .card,
+  .card > .text {
+    display: flex;
+    flex-direction: column;
+  }
 
-.card:hover,
-.card:focus-within {
-  outline: var(--focus-style-outline);
-  outline-offset: var(--focus-style-outline-offset);
-}
+  .card .text {
+    flex-grow: 1;
+    padding: calc(var(--spacing-md) + 4px);
+    font-weight: normal;
+  }
 
-.card h2 {
-  font-size: 1.25em;
-  margin: 0;
-}
+  .card .text > * + * {
+    margin-top: var(--card-text-margin);
+  }
 
-.card a[href] {
-  text-decoration: none;
-}
+  .card .text > *:last-child {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
 
-.card a[href],
-.card a[href]:visited,
-.card a[href]:hover,
-.card a[href]:focus {
-  color: var(--text-color);
-}
+  .card .text > *:nth-last-child(2) {
+    margin-bottom: var(--card-text-margin);
+  }
 
-.card:focus-within a[href]:focus {
-  text-decoration: none;
-  outline-color: transparent;
-  box-shadow: none;
-}
+  .card .img {
+    height: 128px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1rem));
+  }
 
-@supports not selector(:focus-within) {
+  .card .img img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card {
+      transition:
+        border ease-in 0.2s,
+        box-shadow ease-in 0.2s;
+    }
+  }
+
+  .card[hidden] {
+    display: none;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-outline-offset);
+  }
+
+  .card h2 {
+    font-size: 1.25em;
+    margin: 0;
+  }
+
+  .card a[href] {
+    text-decoration: none;
+  }
+
+  .card a[href],
+  .card a[href]:visited,
+  .card a[href]:hover,
   .card a[href]:focus {
-    text-decoration: underline;
-    text-decoration-thickness: 0.2rem;
+    color: var(--text-color);
   }
-}
 
-.card a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
+  .card:focus-within a[href]:focus {
+    text-decoration: none;
+    outline-color: transparent;
+    box-shadow: none;
+  }
 
-.tags > .tag {
-  font-size: 0.8em;
-  margin: 0;
+  @supports not selector(:focus-within) {
+    .card a[href]:focus {
+      text-decoration: underline;
+      text-decoration-thickness: 0.2rem;
+    }
+  }
+
+  .card a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .tags > .tag {
+    font-size: 0.8em;
+    margin: 0;
+  }
 }

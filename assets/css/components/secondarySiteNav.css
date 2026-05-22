@@ -1,52 +1,54 @@
-#nav-secondary ul {
-  display: grid;
-  grid-template-rows: repeat(auto-fill, 2.25rem);
-  gap: var(--spacing-xs);
-  margin: 0 0 var(--spacing-md);
-  padding: 0;
-  background: inherit;
-  text-align: start;
-}
-
-@media screen and (width >= 748px) {
+@layer components {
   #nav-secondary ul {
-    display: flex;
-    flex-flow: row wrap;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 2.25rem);
+    gap: var(--spacing-xs);
+    margin: 0 0 var(--spacing-md);
+    padding: 0;
+    background: inherit;
+    text-align: start;
   }
-}
 
-#nav-secondary ul li {
-  margin: 0;
-  width: auto;
-  display: inline-block;
-  list-style: none;
-}
+  @media screen and (width >= 748px) {
+    #nav-secondary ul {
+      display: flex;
+      flex-flow: row wrap;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+  }
 
-#nav-secondary ul li::before {
-  content: "✦" / "";
-  font-size: 0.75rem;
-  color: var(--color-accent);
-  padding-inline-end: var(--spacing-xxs);
-}
+  #nav-secondary ul li {
+    margin: 0;
+    width: auto;
+    display: inline-block;
+    list-style: none;
+  }
 
-#nav-secondary ul li:has([aria-current])::before {
-  font-size: 1.1rem;
-}
+  #nav-secondary ul li::before {
+    content: "✦" / "";
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    padding-inline-end: var(--spacing-xxs);
+  }
 
-#nav-secondary a[href] {
-  text-decoration: none;
-  border: none;
-  font-size: 1.15rem;
-  vertical-align: middle;
-}
+  #nav-secondary ul li:has([aria-current])::before {
+    font-size: 1.1rem;
+  }
 
-#nav-secondary a[href]:focus-visible {
-  outline: var(--focus-style-outline);
-  outline-offset: var(--focus-style-outline-offset);
-}
+  #nav-secondary a[href] {
+    text-decoration: none;
+    border: none;
+    font-size: 1.15rem;
+    vertical-align: middle;
+  }
 
-#nav-secondary a[href][aria-current] {
-  border-bottom: 2px solid currentColor;
+  #nav-secondary a[href]:focus-visible {
+    outline: var(--focus-style-outline);
+    outline-offset: var(--focus-style-outline-offset);
+  }
+
+  #nav-secondary a[href][aria-current] {
+    border-bottom: 2px solid currentColor;
+  }
 }

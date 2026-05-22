@@ -1,89 +1,91 @@
-label {
-  display: block;
-  margin: var(--spacing-xs) 0;
-}
+@layer components {
+  label {
+    display: block;
+    margin: var(--spacing-xs) 0;
+  }
 
-fieldset {
-  padding: 0 var(--spacing-md);
-  margin: 0 var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
-  border: 1px solid currentcolor;
-}
+  fieldset {
+    padding: 0 var(--spacing-md);
+    margin: 0 var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
+    border: 1px solid currentcolor;
+  }
 
-textarea,
-input:not(
+  textarea,
+  input:not(
     [type="checkbox"],
     [type="file"],
     [type="image"],
     [type="radio"],
     [type="range"]
   ) {
-  border: solid 0.1em currentcolor;
-  border-radius: var(--border-radius);
-  background-color: var(--background-color-secondary);
-  padding: var(--spacing-xs);
-  margin-bottom: var(--spacing-mmd);
-}
+    border: solid 0.1em currentcolor;
+    border-radius: var(--border-radius);
+    background-color: var(--background-color-secondary);
+    padding: var(--spacing-xs);
+    margin-bottom: var(--spacing-mmd);
+  }
 
-textarea::placeholder,
-input:not(
-    [type="checkbox"],
-    [type="file"],
-    [type="image"],
-    [type="radio"],
-    [type="range"]
-  )::placeholder {
-  opacity: 0.8;
-  color: inherit;
-}
+  textarea::placeholder,
+  input:not(
+      [type="checkbox"],
+      [type="file"],
+      [type="image"],
+      [type="radio"],
+      [type="range"]
+    )::placeholder {
+    opacity: 0.8;
+    color: inherit;
+  }
 
-textarea:focus,
-input:not(
-    [type="checkbox"],
-    [type="file"],
-    [type="image"],
-    [type="radio"],
-    [type="range"]
-  ):focus {
-  outline: 0.15em solid var(--color-accent);
-  box-shadow: var(--focus-style-box-shadow);
-}
+  textarea:focus,
+  input:not(
+      [type="checkbox"],
+      [type="file"],
+      [type="image"],
+      [type="radio"],
+      [type="range"]
+    ):focus {
+    outline: 0.15em solid var(--color-accent);
+    box-shadow: var(--focus-style-box-shadow);
+  }
 
-/* class applied to a div that wraps an input and label */
-.form-control {
-  display: flex;
-  flex-direction: row;
-  gap: var(--spacing-xs);
-  align-items: center;
-  padding: 0 var(--spacing-xs);
-  border-radius: var(--border-radius);
-}
+  /* class applied to a div that wraps an input and label */
+  .form-control {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-xs);
+    align-items: center;
+    padding: 0 var(--spacing-xs);
+    border-radius: var(--border-radius);
+  }
 
-.form-control + .form-control {
-  margin-top: var(--spacing-xs);
-}
+  .form-control + .form-control {
+    margin-top: var(--spacing-xs);
+  }
 
-.form-control:last-child {
-  margin-bottom: var(--spacing-xs);
-}
+  .form-control:last-child {
+    margin-bottom: var(--spacing-xs);
+  }
 
-.form-control input[type="checkbox"]:focus,
-.form-control input[type="radio"]:focus {
-  outline: var(--focus-style-outline);
-}
-
-@supports (selector(:focus-visible)) and (selector(:has(a))) {
   .form-control input[type="checkbox"]:focus,
   .form-control input[type="radio"]:focus {
-    outline-color: transparent;
-  }
-
-  /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */
-  .form-control:has(:focus-visible) {
     outline: var(--focus-style-outline);
-    outline-offset: var(--focus-style-outline-offset);
   }
-}
 
-.form-control > label {
-  margin: 0;
+  @supports (selector(:focus-visible)) and (selector(:has(a))) {
+    .form-control input[type="checkbox"]:focus,
+    .form-control input[type="radio"]:focus {
+      outline-color: transparent;
+    }
+
+    /* :focus-visible-within hack credit: https://larsmagnus.co/blog/focus-visible-within-the-missing-pseudo-class */
+    .form-control:has(:focus-visible) {
+      outline: var(--focus-style-outline);
+      outline-offset: var(--focus-style-outline-offset);
+    }
+  }
+
+  .form-control > label {
+    margin: 0;
+  }
 }

@@ -1,12 +1,14 @@
-picture#oakland-map {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
+@layer components {
+  picture#oakland-map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 
-picture#oakland-map img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  picture#oakland-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 }

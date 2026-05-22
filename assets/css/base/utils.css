@@ -1,23 +1,25 @@
-/* credit: https://www.a11yproject.com/posts/how-to-hide-content/ */
-.visually-hidden {
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-}
+@layer utils {
+  /* credit: https://www.a11yproject.com/posts/how-to-hide-content/ */
+  .visually-hidden {
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
 
-.font-mono {
-  font-family: var(--font-family-monospace);
-}
+  .font-mono {
+    font-family: var(--font-family-monospace);
+  }
 
-/* credit: https://codepen.io/maddesigns/pen/rOMgpQ/ */
-.full-viewport-width {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  /* credit: https://codepen.io/maddesigns/pen/rOMgpQ/ */
+  .full-viewport-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
 }
