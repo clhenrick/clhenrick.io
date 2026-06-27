@@ -1,5 +1,5 @@
 /* credit: https://www.a11yproject.com/posts/how-to-hide-content/ */
-.visually-hidden {
+.visually-hidden:not(:focus, :active) {
   clip-path: inset(50%);
   width: 1px;
   height: 1px;
