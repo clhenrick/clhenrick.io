@@ -105,15 +105,17 @@ Because the existing `Select` component in our codebase accepts custom content f
 
 After spending some time porting the [WAI APG's example code][select-only-codepen] (written in HTML, CSS, and "vanilla" JavaScript) to React, I decided to do manual accessibility testing on it using screen reader software. Using a Windows computer with the [NVDA][nvda] screen reader installed on it and the Chrome web browser, I tried the React code out and all seemed to work as expected. Navigating via the keyboard to the component read aloud "Select a Fruit, Combobox, Apples". As I used my keyboard to open the list of options NVDA told me the ComboBox was open. When I used my up and down arrow keys to navigate the list of options, their text was read aloud with their position (e.g. "3 of 12"), and whether they were "selected". So far so good!
 
-Here's the implementation / prototype of the WAI APG's "Select-Only" Combobox in React (note it uses [tippy.js][tippy-js] via [@tippy/react][tippy-react] as we use this library elsewhere in our codebase for handling UI that requires dropdowns, pop-ups, and tooltips):
+Here is a Code Sandbox embed containing the implementation / prototype of the WAI APG's "Select-Only" Combobox in React (note it uses [tippy.js][tippy-js] via [@tippy/react][tippy-react] as we use this library elsewhere in our codebase for handling UI that requires dropdowns, pop-ups, and tooltips). You may view the demo directly in [Code Sandbox][react-select-only-tippy-codesandbox] or in a [separate window without the editor](https://58p0v1.csb.app/).
+
+<a class="visually-hidden" href="#testing-the-custom-select-menu">Skip Code Sandbox embed</a>
 
 <iframe src="https://codesandbox.io/embed/react-combobox-select-only-with-tippy-58p0v1?fontsize=14&hidenavigation=1&theme=dark&view=preview"
 	style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-	title="React ComboBox Select-Only"
+	title="React ComboBox Select-Only demo"
 	sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-You may view the above demo in [CodeSandbox][react-select-only-tippy-codesandbox] or in a [separate window without the editor](https://58p0v1.csb.app/).
+## Testing the Custom Select Menu
 
 Next, I decided to try testing the code I'd ported to React using the [VoiceOver screen reader][voiceover] on Safari on my MacBook. To my dismay, I discovered that this example did not work with VoiceOver! When opening the list of options, nothing was announced. Ditto when navigating the list of options and making a selection with my keyboard. "Clearly there must be something wrong with my code, so I'll do a test with VoiceOver on the original WAI APG example code" I thought to myself. Unfortunately I encountered the same set of issues. How could it be that this ARIA pattern sanctioned by the W3C's WAI was flawed? Why would such an example be so prominently displayed and documented on the ARIA patterns part of their APG site if it didn't work across commonly used screen reader software? "There must be an explanation" I told myself as I sought to look for answers. I did find answers, but it only made the plot thicken.
 
