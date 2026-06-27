@@ -244,7 +244,7 @@ The native `<button>` element has other accessible benefits. For example it has 
 
 Before ending this post I'd like to mention that in researching custom select menu patterns I happened to stumble upon [Sarah Higley][sarah-higley]'s very in-depth article [Select Your Poison (part two)][select-your-poison-2]. Sarah did an incredible amount of research, including actual user testing of various custom select and combobox UI patterns with people who use screen readers, and generously reported her findings in the aforementioned article. Long story short, the best option in terms of accessibility for a select menu happens to be the native `<select>` HTML element! However, in a dramatic twist, Sarah reports that making the native select a multi-select via `<select multiple>` actually results in a degraded user experience for people that use screen readers.
 
-The moral of the story to me here is always make sure to do manual accessibility testing on your app's or website's components, even if you are using a native, semantic HTML element in your component. Better yet, do testing with people who use assistive technology in their daily lives to get better feedback.
+The moral of the story to me here is always make sure to do manual accessibility testing on your app's or website's components, even if you are using a native, semantic HTML element in your component. Better yet, do testing with people who use assistive technology in their daily lives to ensure what you're building is truly usable for people with disabilities.
 
 ## Next
 
