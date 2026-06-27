@@ -145,9 +145,9 @@ The native `<select>` HTML element behaves similar to the WAI ARIA ComboBox patt
   </div>
 </form>
 
-Generally speaking, for certain user interface components that contain interactive child elements, the keyboard arrow keys may used to navigate their children while the Tab key may be reserved for focusing in and out of the component.
+Generally speaking, for certain user interface components that contain interactive child elements, the keyboard arrow keys may be used to navigate their children while the Tab key may be reserved for focusing in and out of the component.
 
-Another example of this is in native HTML-land are radio button groups where the Tab key navigates to either the first or selected radio button. The keyboard up and down arrow keys then move focus between each radio button. Pressing the Tab key moves focus out of the group to the next focusable element on the page. Notice that using the keyboard arrow keys to move through each radio button also selects it, that is the expected behavior:
+Another example of this is in native HTML-land are radio button groups where the Tab key navigates to either the first or selected radio button. The keyboard up and down arrow keys then move focus between each radio button. Pressing the Tab key moves focus out of the group to the next focusable element on the page. Notice that using the keyboard arrow keys to move through each radio button also selects it; that is the expected behavior:
 
 <form>
   <fieldset>
@@ -174,8 +174,6 @@ Another example of this is in native HTML-land are radio button groups where the
     </div>
   </fieldset>
 </form>
-
-Tabs are another user interface component that shares this behavior, typically using the right and left arrow keys to navigate individual tabs, while the Tab key on the keyboard is reserved for moving focus in and out of the entire tab group.
 
 Interestingly for checkboxes, the expected keyboard interaction pattern is to use the Tab key to move focus to each checkbox and to use the Space key to check and uncheck it:
 
@@ -206,8 +204,6 @@ Interestingly for checkboxes, the expected keyboard interaction pattern is to us
 </form>
 
 Perhaps this is because checkboxes are considered an individual user interface component (more specifically a single form control) that may live on their own rather than in a group. For example, we might use a single checkbox to "Subscribe to marketing email spam" in our online store when asking for someone's email address. Tabbing to each checkbox is similar to tabbing to a native HTML button where each button has its own tab stop. Conversely, radio buttons and tabs UI don't exist in isolation, they're associated with a group that allows the user to make a single selection from a list whereas checkboxes are often used for making multiple selections.
-
-Now, back to our custom select component problems.
 
 With the legacy Select component in our app, one would have to use the `Tab` and `Shift` + `Tab` keys to navigate between the list of options. The problem with this approach is that it moves focus out of the Select component, to its list of options, and then to the first option in the list. When an option is selected using the keyboard, focus does not return to the Select and is lost which is disorienting for users of assistive tech like screen readers. Furthermore, when using a screen reader, the `Select` component is not announced as a "combobox" as it should be and is instead announced as a "menu", another aspect that is likely to result in confusion of the component's intent or affordance.
 
@@ -246,9 +242,9 @@ The native `<button>` element has other accessible benefits. For example it has 
 
 ## Credits
 
-Before ending this post I'd like to mention that in researching custom select menu patterns I happened to stumble upon [Sarah Higley][sarah-higley]'s very in-depth article [Select Your Poison (part two)][select-your-poison-2]. Sarah did an incredible amount of research, including actual user testing of various custom select and combobox UI patterns with people who use screen readers, and generously reported her findings in the aforementioned article. Long story short, the best option in terms of accessibility for a select menu happens to be the native `<select>` HTML element! However, in a dramatic twist, Sarah reports that making the native select a multi-select via `<select multiple>` actually results in a degraded user experience for people that use screen readers. The web is a complicated place!
+Before ending this post I'd like to mention that in researching custom select menu patterns I happened to stumble upon [Sarah Higley][sarah-higley]'s very in-depth article [Select Your Poison (part two)][select-your-poison-2]. Sarah did an incredible amount of research, including actual user testing of various custom select and combobox UI patterns with people who use screen readers, and generously reported her findings in the aforementioned article. Long story short, the best option in terms of accessibility for a select menu happens to be the native `<select>` HTML element! However, in a dramatic twist, Sarah reports that making the native select a multi-select via `<select multiple>` actually results in a degraded user experience for people that use screen readers.
 
-The moral of the story to me here is always make sure to do manual accessibility testing on your app's or website's components, even if you are using a native, semantic HTML element in your component.
+The moral of the story to me here is always make sure to do manual accessibility testing on your app's or website's components, even if you are using a native, semantic HTML element in your component. Better yet, do testing with people who use assistive technology in their daily lives to get better feedback.
 
 ## Next
 
