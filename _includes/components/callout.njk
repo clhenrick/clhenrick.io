@@ -1,0 +1,8 @@
+{# aside callout block level element for blog posts #}
+{% macro callout(title, content) %}
+  <aside class="callout" aria-label="{{ title }}">
+    <p class="callout-title" aria-hidden="true">{{ title }}</p>
+    <hr />
+    {{ content }}
+  </aside>
+{% endmacro %}
