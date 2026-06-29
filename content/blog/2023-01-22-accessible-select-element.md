@@ -13,6 +13,8 @@ tags:
   - JavaScript
 ---
 
+{% from "components/callout.njk" import callout %}
+
 ## Introduction
 
 When developing User Interface components, developers sometimes face the choice of either using native/semantic HTML elements or rolling their own custom component. As a contrived example, one might choose between a native HTML `<button>` element or styling a `<div>` element to look like a button and respond like a button when one clicks it (_Aside: it's really better **to not to do the clickable div approach**, more on why later_).
@@ -87,7 +89,10 @@ export const ButtonPrimary = ({ className, ...otherProps }) => {
 
 Imagine repeating the above code for the other button variants, secondary and tertiary, or even using it for a new button type such as a `<ButtonLoading />` that displays a loading animation inside it after being clicked on and then stops the animation once something has finished loading.
 
-**_Aside:_** _I know many UI developers who use React have opinions on how to implement component libraries and may not agree 100% with this example, but bare with me as I'm only using it to describe one way of how component composition is used to someone who may not be familiar with it, or to give it a name to someone who has used it but hasn't heard the term "composition" to describe it before._
+{%- set calloutContent %}
+I realize that UI developers who use React tend to have strong opinions on how to implement component libraries and may not agree 100% with this contrived example. Bare with me as my intention is to describe one way of how component composition is used to someone who may not be familiar with it, and/or to give it a name to someone who has used it but hasn't heard the term "composition" to describe it before.
+{%- endset %}
+{{ callout("A Note on the Button Pattern", calloutContent) }}
 
 While there's nothing wrong about this approach (assuming it's done cautiously and thoughtfully) it can easily become abused if care is not taken. Take for example the concept of a "dropdown" menu. The concept of something that "drops down" in User Interface design has different meanings. It could be a submenu that "drops down" below a button in a navigation menu when clicked on. It might be a select menu that displays a list of options after a user opens it. Maybe a developer sees such an existing "dropdown" component in the codebase and thinks "I could use this dropdown component for a dialog menu I need to create (e.g. a popup that appears when clicking on a button somewhere in the UI) because it already handles the behavior I need." Naively speaking, these various "dropdown" patterns sound like they're similar enough that they can use the same underlying component (one that implements the "dropdown" or popup behavior). When taking a closer look however, it is apparent that each of these types of UI components have different semantics and accessibility requirements.
 

@@ -1,0 +1,17 @@
+aside.callout {
+  border: 1px solid var(--text-color);
+  padding: var(--spacing-md);
+  margin-block-end: var(--spacing-mmd);
+
+  hr {
+    border: none;
+    border-block-start: 3px solid var(--color-accent);
+    margin-block: var(--spacing-sm);
+  }
+
+  p.callout-title {
+    font-size: var(--text-size-h5);
+    font-weight: bold;
+    margin-block-end: var(--spacing-sm);
+  }
+}
