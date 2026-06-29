@@ -2,8 +2,7 @@
 .plot-container {
   width: 100%;
   margin-bottom: var(--spacing-mmd);
-  border: 2px solid currentColor;
-  border-radius: var(--border-radius);
+  border: 1px solid currentColor;
   padding: var(--spacing-md);
 }
 
