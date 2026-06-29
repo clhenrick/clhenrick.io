@@ -16,9 +16,6 @@
       y="30"
       text-anchor="middle"
       fill="{{ textColor }}"
-      {% if not showText %}hidden{% endif %}
-    >
-      {{ color }}
-    </text>
+      {% if not showText %}hidden{%- endif %}>{{ color }}</text>
   </svg>
 {% endmacro %}
