@@ -1,7 +1,7 @@
 ---
 title: "Color experiments with OKLCH"
 date: 2024-09-01
-updated: 2024-09-14
+updated: 2026-06-28
 teaser: "Creating color palettes programmatically and fixing color contrast issues using the OKLCH color space in CSS."
 tags:
   - Color
@@ -14,6 +14,7 @@ tags:
 {% from '_includes/components/blog-posts/color-experiments-oklch/colorSwatch.njk' import colorSwatch %}
 {% from '_includes/components/blog-posts/color-experiments-oklch/colorSwatchFigure.njk' import colorSwatchFigure %}
 {% from '_includes/components/blog-posts/color-experiments-oklch/lineChartFigure.njk' import lineChartFigure %}
+{% from "components/callout.njk" import callout %}
 
 ## Intro and some background on (OK)LCH
 
@@ -21,7 +22,10 @@ Recently I've been getting to know the _Lightness, Chroma, and Hue_ (typically a
 
 The "TLDR" is that the LCH color space provides a way to manipulate colors while maintaining lightness that is perceptually similar across different hues. That might not sound like a big deal, but when you consider the implications it has for working with color programmatically, I think it's pretty huge, and it's why I decided to write about it here.
 
-> **Quick fact**: the LCH color space is really the [(CIE)LAB][wikipedia-cielab] color space with two different channels, chroma and hue, that are more intuitive for specifying a color than LAB's "a" and "b" channels. Chroma (which is similar to saturation) and hue are "polar coordinates" of the LAB color space, while "a" and "b" are cartesian coordinates for specifying green - red and blue - yellow respectively. The LCH color space was created to make working with LAB more intuitive and user friendly.
+{%- set calloutContentLchSpace %}
+The LCH color space is really the [(CIE)LAB][wikipedia-cielab] color space with two different channels, chroma and hue, that are more intuitive for specifying a color than LAB's "a" and "b" channels. Chroma (which is similar to saturation) and hue are "polar coordinates" of the LAB color space, while "a" and "b" are cartesian coordinates for specifying green - red and blue - yellow respectively. The LCH color space was created to make working with LAB more intuitive and user friendly.
+{%- endset %}
+{{ callout("LCH vs LAB", calloutContentLchSpace) }}
 
 The _"maintains perceptual lightness across hues"_ part of the LCH color space is what makes it different than the more commonly used HSL and HSV color spaces. In HSL or HSV when the same lightness value is used with different hues, the resulting colors may look noticeably different in terms of their perceived lightness. In other words, the colors will look lighter or darker depending on their hue even though they share the same lightness value. This is a problem that the LAB and LCH color spaces attempt to solve.
 
@@ -47,9 +51,10 @@ The lightness of the two colors doesn't look quite the same in HSL, magenta is c
 
 You may have noticed that the hue values in the LCH swatches were adjusted slightly. Hues don't map evenly between HSL and LCH, so a hue of 300 degrees in HSL will produce a vivid magenta while in LCH 300 is a little more on the violet side.
 
-> **Minor detail**: The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original. In CSS Color Modules 4 we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
-
-> **Quick FYI**: The `oklch` function in CSS has a baseline of "newly available", meaning that it is available in all up to date browsers. Even so, it's probably worth using the CSS `@supports` to detect that it's available before using it, especially if you know people viewing your site might be on an older device or browser that isn't up to date.
+{%- set calloutContentOklch %}
+The use of the CSS `oklch()` function instead of the regular `lch()` function means that we are using an updated version of the LCH color model that contains some corrections to the original. In CSS Color Modules 4 we can use either `oklch` or `lch`, but it seems more reasonable to prefer `oklch` for most use cases in order to benefit from the improved upon implementation.
+{%- endset %}
+{{ callout("OKLCH vs LCH", calloutContentOklch) }}
 
 <!-- TODO: keep this paragraph? It's saying the same thing that was previously mentioned -->
 <!-- When researching LCH I was surprised to learn that the LCH color space is similar to the [Lab color space](#)(TODO: link), which I had used previously when creating multi hue color gradients to avoid the dreaded middle gray dead zone that is common when creating linear gradients using RGB and HSL. LCH and Lab use the same color model, while LCH allows for specifying the desired color using polar color coordinates instead of cartesian (TODO: or is it the other way around?). This makes LCH a little more intuitive to use from a designer's perspective. -->
@@ -314,7 +319,11 @@ If you'd like to play around with this experiment, you may try interacting with 
 
 The last experiment's goal was to utilize the OKLCH colorspace for adjusting the color contrast of two colors for accessibility purposes. The [Web Content Accessibility Guidelines][wcag-overview] (WCAG) has Success Criteria (SC) for [color contrast][wcag-sc-1-4-3] which must be passed if one is striving to make their website or application conform to WCAG. The SC states that at a minimum, a text's color must contrast 4.5 to 1 with its background color in order for it to be considered accessible. For graphical objects and user interface components the minimum contrast must be 3 to 1 with the background color. There is also related contrast success criteria for focus indicators, [SC 1.4.11][wcag-sc-1-4-11] and [SC 2.4.13][wcag-sc-2-4-13], which require a minimum 3 to 1 color contrast betwen a the focus indicator color and its background color.
 
-> **Jargon explainer**: A "focus indicator" is the visual outline that appears to indicate something has focus, such as when using your keyboard to navigate interactive user interface elements like buttons, form fields, and links. It is a very important part of making a website or application accessible as it helps people interact with the page who cannot use a mouse.
+{%- set calloutContentFocusIndicator %}
+A "focus indicator" is the visual outline that appears to indicate something has focus, such as when using your keyboard to navigate interactive user interface elements like buttons, form fields, and links. It is a very important part of making a website or application accessible as it helps people interact with the page who cannot use a mouse.
+{%- endset %}
+
+{{ callout("What's a focus indicator?", calloutContentFocusIndicator )}}
 
 My thinking was that perhaps the OKLCH color space would work better for adjusting color contrast than the HSL color space since changing lightness in OKLCH is an improvement over HSL.
 
@@ -342,7 +351,11 @@ Adjusting the colors using OKCLH results in our new colors looking fairly simila
 
 It's worth remembering that the minimum color contrast ratio of 4.5 to 1 is _the bare minimum_ color contrast ratio for text to be considered accessible according to WCAG. A ratio of 7 to 1 is required for "triple A" (AAA) conformance and will make text more accessible to a wider segment of the population. Remember that _conformance_ doesn't necessarily mean _usable_ when it comes to WCAG and accessibility, and that we should always strive to make things as usable to the widest range of people as possible.
 
-> **A word of caution:** when using this approach keep in mind that adjusting the OKLCH's lightness value may result in creating a color with a gamut outside of sRGB and that browsers will auto-correct such a color if the user's device does not support HD color gamuts such as P3 and Rec2020. This auto gamut correction could result in a color contrast different from the HD color contrast, which might mean the sRGB color contrast fails WCAG. For this reason make sure to always provide a intentional sRGB fallback color when using and adjusting a OKLCH CSS color to fix color contrast issues.
+{%- set calloutContentCaution %}
+When using this approach keep in mind that adjusting the OKLCH's lightness value may result in creating a color with a gamut outside of sRGB and that browsers will auto-correct such a color if the user's device does not support HD color gamuts such as P3 and Rec2020. This auto gamut correction could result in a color contrast different from the HD color contrast, which might mean the sRGB color contrast fails WCAG. For this reason make sure to always provide a intentional sRGB fallback color when using and adjusting a OKLCH CSS color to fix color contrast issues.
+{%- endset %}
+
+{{ callout("A word of caution", calloutContentCaution )}}
 
 I'm considering porting the Observable notebook code into a stand alone Svelte web app to make this a more user friendly and easy to find tool. The other color contrast tools I've come across on the web don't use the LCH color space for adjusting color contrast, so it seems like an opportunity for an improved color contrast evaluator and fixer tool.
 
