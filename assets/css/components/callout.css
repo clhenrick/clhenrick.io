@@ -5,7 +5,14 @@ aside.callout {
 
   hr {
     border: none;
-    border-block-start: 3px solid var(--color-accent);
+    border-block-start-width: 3px;
+    border-block-start-style: solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+      to right,
+      var(--color-accent),
+      var(--color-accent-secondary)
+    );
     margin-block: var(--spacing-sm);
   }
 

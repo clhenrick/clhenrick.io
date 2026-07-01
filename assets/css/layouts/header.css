@@ -31,11 +31,6 @@ header.page-header {
   text-decoration: none;
 }
 
-.page-header a[href]:hover {
-  color: var(--color-accent-invert);
-  background-color: var(--color-accent);
-}
-
 .page-header a[href]:focus-visible,
 .page-header button.nav-button:focus-visible {
   outline: var(--focus-style-outline);
