@@ -114,6 +114,13 @@
 
   {# NOTE: prevents a flash of un-themed content. See theme-toggle.js for related code. #}
   {# prettier-ignore-start #}
-  <script>const theme=localStorage.getItem("theme");if(theme){document.documentElement.dataset.theme=theme}</script>
+  <script>
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      document.documentElement.dataset.theme = theme;
+      document.querySelector("meta[name='color-scheme']")
+        .setAttribute("content", theme === "auto" ? "light dark" : theme);
+    }
+  </script>
   {# prettier-ignore-end #}
 </head>
