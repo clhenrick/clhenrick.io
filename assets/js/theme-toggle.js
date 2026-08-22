@@ -1,5 +1,9 @@
 // TODO: consider moving homepage specific JS to separate script?
-/** handles the logic for the theme toggle radio group in themeToggle.njk */
+/**
+ * handles the logic for the theme toggle radio group in themeToggle.njk
+ * The data-theme on the root element is only used to style the home page banner text shadow,
+ * since the text-shadow property cannot be styled with light-dark().
+ */
 (() => {
   const documentEl = document.documentElement;
   const metaColorSchemeEl = document.querySelector("meta[name='color-scheme']");
