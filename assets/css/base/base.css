@@ -92,14 +92,6 @@
 
   --text-color: light-dark(var(--color-gray-90), var(--color-gray-10));
 
-  /* text shadows used for banner text in home page */
-  --text-shadow-light:
-    -1px -1px 0 var(--color-white), 1px -1px 0 var(--color-white),
-    -1px 1px 0 var(--color-white), 1px 1px 0 var(--color-white);
-  --text-shadow-dark:
-    -1px -1px 0 var(--color-gray-90), 1px -1px 0 var(--color-gray-90),
-    -1px 1px 0 var(--color-gray-90), 1px 1px 0 var(--color-gray-90);
-
   --text-color-link: light-dark(
     var(--color-accent),
     var(--color-accent-secondary)
@@ -112,6 +104,14 @@
     var(--color-accent-secondary),
     var(--color-accent)
   );
+
+  /* text shadows used for banner text in home page */
+  --text-shadow-light:
+    -1px -1px 0 var(--color-white), 1px -1px 0 var(--color-white),
+    -1px 1px 0 var(--color-white), 1px 1px 0 var(--color-white);
+  --text-shadow-dark:
+    -1px -1px 0 var(--color-gray-90), 1px -1px 0 var(--color-gray-90),
+    -1px 1px 0 var(--color-gray-90), 1px 1px 0 var(--color-gray-90);
 }
 
 /* modify color palette for richer colors when p3 is available */
