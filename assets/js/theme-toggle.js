@@ -1,7 +1,12 @@
 // TODO: consider moving homepage specific JS to separate script?
-/** handles the logic for the theme toggle radio group in themeToggle.njk */
+/**
+ * handles the logic for the theme toggle radio group in themeToggle.njk
+ * The data-theme on the root element is only used to style the home page banner text shadow,
+ * since the text-shadow property cannot be styled with light-dark().
+ */
 (() => {
   const documentEl = document.documentElement;
+  const metaColorSchemeEl = document.querySelector("meta[name='color-scheme']");
   const themePicker = document.querySelector("#site-theme-toggle");
   const bannerPicture = document.querySelector("#oakland-map");
   const darkSources = bannerPicture?.querySelectorAll(
@@ -28,7 +33,7 @@
   }
 
   function handleMediaQueryChange() {
-    const theme = documentEl.dataset.theme;
+    const theme = metaColorSchemeEl.getAttribute("content");
     maybeUpdateHomeBannerImage(theme);
   }
 
@@ -43,9 +48,11 @@
   function handleThemePickerChange(event) {
     const theme = event.target.value;
     if (theme === "auto") {
+      metaColorSchemeEl.setAttribute("content", "light dark");
       delete documentEl.dataset.theme;
       localStorage.removeItem("theme");
     } else {
+      metaColorSchemeEl.setAttribute("content", theme);
       documentEl.dataset.theme = theme;
       localStorage.setItem("theme", theme);
     }

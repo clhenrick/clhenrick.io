@@ -32,10 +32,6 @@
   --color-turquoise-dark: #00606f;
   --color-turquoise-light: #00cbc3;
 
-  --text-color-link: var(--color-accent);
-  --text-color-link-active: var(--color-accent-secondary);
-  --text-color-link-visited: var(--color-accent-secondary);
-
   /* type scale ratio: 1.25 */
   --text-size-md: 1.25rem; /* 20px */
   --text-size-sm: 1rem; /* 16px */
@@ -77,6 +73,45 @@
   --focus-style-outline-offset: var(--spacing-xxs);
   --focus-style-box-shadow: 0 0 0 4px var(--focus-color);
   --focus-style-button-box-shadow: 0 0 0 6px var(--focus-color);
+
+  /* color palette */
+  --color-accent: light-dark(var(--color-blue), var(--color-orange));
+  --color-accent-focus: light-dark(var(--color-blue-2), var(--color-orange-2));
+  --color-accent-secondary: light-dark(
+    var(--color-blue-3),
+    var(--color-orange-3)
+  );
+  --color-accent-invert: light-dark(var(--color-white), var(--color-blue-3));
+  --color-accent-bg: light-dark(transparent, #3c2a1f);
+  --color-accent-bg-hover: light-dark(#add5fa, rgb(230 137 51 / 12%));
+
+  --background-color: light-dark(var(--color-off-white), #222);
+  --background-color-secondary: light-dark(var(--color-off-white-3), #1e1810);
+
+  --color-error: light-dark(var(--color-red), var(--color-red-2));
+
+  --text-color: light-dark(var(--color-gray-90), var(--color-gray-10));
+
+  --text-color-link: light-dark(
+    var(--color-accent),
+    var(--color-accent-secondary)
+  );
+  --text-color-link-active: light-dark(
+    var(--color-accent-secondary),
+    var(--color-accent)
+  );
+  --text-color-link-visited: light-dark(
+    var(--color-accent-secondary),
+    var(--color-accent)
+  );
+
+  /* text shadows used for banner text in home page */
+  --text-shadow-light:
+    -1px -1px 0 var(--color-white), 1px -1px 0 var(--color-white),
+    -1px 1px 0 var(--color-white), 1px 1px 0 var(--color-white);
+  --text-shadow-dark:
+    -1px -1px 0 var(--color-gray-90), 1px -1px 0 var(--color-gray-90),
+    -1px 1px 0 var(--color-gray-90), 1px 1px 0 var(--color-gray-90);
 }
 
 /* modify color palette for richer colors when p3 is available */
@@ -101,58 +136,6 @@
 @media screen and (width >= 46.75rem) {
   :root {
     --main-nav-height: 4.375rem;
-  }
-}
-
-:root,
-:root[data-theme="light"] {
-  color-scheme: light;
-  --color-accent: var(--color-blue);
-  --color-accent-focus: var(--color-blue-2);
-  --color-accent-secondary: var(--color-blue-3);
-  --color-accent-invert: var(--color-white);
-  --color-accent-bg: transparent;
-  --color-accent-bg-hover: #add5fa;
-  --background-color: var(--color-off-white);
-  --background-color-secondary: var(--color-off-white-3);
-  --text-color: var(--color-gray-90);
-  --color-error: var(--color-red);
-}
-
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --color-accent: var(--color-orange);
-  --color-accent-focus: var(--color-orange-2);
-  --color-accent-secondary: var(--color-orange-3);
-  --color-accent-invert: var(--color-blue-3);
-  --color-accent-bg: #3c2a1f;
-  --color-accent-bg-hover: rgb(230 137 51 / 12%);
-  --background-color: #222;
-  --background-color-secondary: #1e1810;
-  --text-color: var(--color-gray-10);
-  --text-color-link: var(--color-accent-secondary);
-  --text-color-link-active: var(--color-accent);
-  --text-color-link-visited: var(--color-accent);
-  --color-error: var(--color-red-2);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    /* NOTE: duplicate of code block directly above */
-    color-scheme: dark;
-    --color-accent: var(--color-orange);
-    --color-accent-focus: var(--color-orange-2);
-    --color-accent-secondary: var(--color-orange-3);
-    --color-accent-invert: var(--color-blue-3);
-    --color-accent-bg: #3c2a1f;
-    --color-accent-bg-hover: rgb(230 137 51 / 12%);
-    --background-color: #222;
-    --background-color-secondary: #1e1810;
-    --text-color: var(--color-gray-10);
-    --text-color-link: var(--color-accent-secondary);
-    --text-color-link-active: var(--color-accent);
-    --text-color-link-visited: var(--color-accent);
-    --color-error: var(--color-red-2);
   }
 }
 

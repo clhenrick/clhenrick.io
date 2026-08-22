@@ -7,64 +7,23 @@
  * See this Observable Notebook for how modifications were made: https://observablehq.com/@clhenrick/a11y-syntax-highlighting-modifications
  */
 
-:root,
-:root[data-theme="light"] {
-  --color-syntax-1: #545454;
-  --color-syntax-2: #fefefe;
-  --color-syntax-3: #696969;
-  --color-syntax-4: #545454;
-  --color-syntax-5: #007299;
-  --color-syntax-6: #008000;
-  --color-syntax-7: #aa5d00;
-  --color-syntax-8: #008000;
-  --color-syntax-9: #aa5d00;
-  --color-syntax-10: #d91e18;
-  --color-syntax-11: #d91e18;
-  --color-syntax-12: rgb(183 134 11 / 7.5%);
-  --color-syntax-13: #b8860b;
-  --color-syntax-14: #b8860b;
-  --color-syntax-15: #aa5d00;
-  --color-syntax-16: #696969;
-}
-
-:root[data-theme="dark"] {
-  --color-syntax-1: #f8f8f2;
-  --color-syntax-2: #2b2b2b;
-  --color-syntax-3: #d4d0ab;
-  --color-syntax-4: #fefefe;
-  --color-syntax-5: #ffa07a;
-  --color-syntax-6: #00e0e0;
-  --color-syntax-7: #abe338;
-  --color-syntax-8: #00e0e0;
-  --color-syntax-9: #ffd700;
-  --color-syntax-10: #00e0e0;
-  --color-syntax-11: #ffd700;
-  --color-syntax-12: rgb(255 217 0 / 10%);
-  --color-syntax-13: rgb(255 217 0 / 55%);
-  --color-syntax-14: rgb(255 217 0 / 55%);
-  --color-syntax-15: #f8f8f2;
-  --color-syntax-16: #d4d0ab;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --color-syntax-1: #f8f8f2;
-    --color-syntax-2: #2b2b2b;
-    --color-syntax-3: #d4d0ab;
-    --color-syntax-4: #fefefe;
-    --color-syntax-5: #ffa07a;
-    --color-syntax-6: #00e0e0;
-    --color-syntax-7: #abe338;
-    --color-syntax-8: #00e0e0;
-    --color-syntax-9: #ffd700;
-    --color-syntax-10: #00e0e0;
-    --color-syntax-11: #ffd700;
-    --color-syntax-12: rgb(255 217 0 / 10%);
-    --color-syntax-13: rgb(255 217 0 / 55%);
-    --color-syntax-14: rgb(255 217 0 / 55%);
-    --color-syntax-15: #f8f8f2;
-    --color-syntax-16: #d4d0ab;
-  }
+:root {
+  --color-syntax-1: light-dark(#545454, #f8f8f2);
+  --color-syntax-2: light-dark(#fefefe, #2b2b2b);
+  --color-syntax-3: light-dark(#696969, #d4d0ab);
+  --color-syntax-4: light-dark(#545454, #fefefe);
+  --color-syntax-5: light-dark(#007299, #ffa07a);
+  --color-syntax-6: light-dark(#008000, #00e0e0);
+  --color-syntax-7: light-dark(#aa5d00, #abe338);
+  --color-syntax-8: light-dark(#008000, #00e0e0);
+  --color-syntax-9: light-dark(#aa5d00, #ffd700);
+  --color-syntax-10: light-dark(#d91e18, #00e0e0);
+  --color-syntax-11: light-dark(#d91e18, #ffd700);
+  --color-syntax-12: light-dark(rgb(183 134 11 / 7.5%), rgb(255 217 0 / 10%));
+  --color-syntax-13: light-dark(#b8860b, rgb(255 217 0 / 55%));
+  --color-syntax-14: light-dark(#b8860b, rgb(255 217 0 / 55%));
+  --color-syntax-15: light-dark(#aa5d00, #f8f8f2);
+  --color-syntax-16: light-dark(#696969, #d4d0ab);
 }
 
 pre,
